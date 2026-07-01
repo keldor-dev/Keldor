@@ -1,14 +1,14 @@
-# WSTools
+# Keldor
 
-![WSTools Logo](https://github.com/WanderingStag/WSTools/blob/master/WSTools_PowerShell_Module.png)
+![Keldor Logo](https://github.com/keldor-dev/Keldor/blob/master/Keldor_PowerShell_Module.png)
 
 ## Issues
 
-Please **_[Open an issue](https://github.com/WanderingStag/WSTools/issues "WSTools Issues")_** if there are any problems or requests.
+Please **_[Open an issue](https://github.com/keldor-dev/Keldor/issues "Keldor Issues")_** if there are any problems or requests.
 
 ## Introduction
 
-Are we Windows System Tools? Windows Security Tools? Windows Server Tools? Yes and no. WSTools are all those things and more. Whatever you decide you want to call WSTools is up to you! However, officially, we are Wandering Stag Tools (WSTools). WSTools was written for System Administrators, Help Desk Technicians, and other Network Operations personnel to automate tasks and provide valuable tools. As of May 2023 there are over 330 functions in this module. Some functionality includes:
+Are we Windows System Tools? Windows Security Tools? Windows Server Tools? Yes and no. Keldor are all those things and more. Whatever you decide you want to call Keldor is up to you! However, officially, we are Wandering Stag Tools (Keldor). Keldor was written for System Administrators, Help Desk Technicians, and other Network Operations personnel to automate tasks and provide valuable tools. As of May 2023 there are over 330 functions in this module. Some functionality includes:
 
 - Active Directory functions, reports, and shortcuts allowing for easier domain management and awareness
 - Computer/Server Management
@@ -35,13 +35,13 @@ Then look at the _`Version`_ attribute.
 1. Install from the PowerShell Gallery using this command:
 
     ```PowerShell
-    Install-Module WSTools
+    Install-Module Keldor
     ```
 
 2. For only the current user, use this command:
 
     ```PowerShell
-    Install-Module WSTools -Scope CurrentUser
+    Install-Module Keldor -Scope CurrentUser
     ```
 
 ### Initial changes to make after copying to computer
@@ -50,12 +50,12 @@ General Configuration
 
 1. Open PowerShell.
 2. Type **```Set-WSToolsConfig```** and then press `Enter`. In the file that opens you will need to update the values so they work on your network.
-    > Recommend copying this file (config.ps1) to another location after you modify it so if you download a newer version of WSTools you can just paste the config file back unless there are changes in the config file.
+    > Recommend copying this file (config.ps1) to another location after you modify it so if you download a newer version of Keldor you can just paste the config file back unless there are changes in the config file.
 
 Remote installation of .msu files and a select few other things:
 
-1. Open WSTools Module Path then edit InstallRemote.ps1
-    > Typically _C:\Program Files\WindowsPowerShell\Modules\WSTools\VersionNumber_ or _C:\Users\\<USERNAME\>\Documents\WindowsPowerShell\Modules\WSTools\VersionNumber_
+1. Open Keldor Module Path then edit InstallRemote.ps1
+    > Typically _C:\Program Files\WindowsPowerShell\Modules\Keldor\VersionNumber_ or _C:\Users\\<USERNAME\>\Documents\WindowsPowerShell\Modules\Keldor\VersionNumber_
 2. On Line 1 of InstallRemote.ps1 change the value of $PatchFolderPath to the directory on remote computers you store windows updates. This is predefined as "C:\Patches".
 
 ## Visual Studio Code setup
@@ -68,13 +68,13 @@ For adding the Visual Studio Code PowerShell Snippets do the following:
 
 **_or_**
 
-1. Open the WSTools folder
-    > Typically _C:\Program Files\WindowsPowerShell\Modules\WSTools\VersionNumber_ or _C:\Users\\<USERNAME\>\Documents\WindowsPowerShell\Modules\WSTools\VersionNumber_
+1. Open the Keldor folder
+    > Typically _C:\Program Files\WindowsPowerShell\Modules\Keldor\VersionNumber_ or _C:\Users\\<USERNAME\>\Documents\WindowsPowerShell\Modules\Keldor\VersionNumber_
 2. Cut and paste powershell.json to **%AppData%\Roaming\Code\User\Snippets** directory.
 
 **_or_**
 
-1. Open powershell.json (located in the WSTools module folder) and copy the text then in VSCode Command Palette (Ctrl + Shift + P)
+1. Open powershell.json (located in the Keldor module folder) and copy the text then in VSCode Command Palette (Ctrl + Shift + P)
 2. Type **Snippet** and select **Preferences: Configure User Snippets**.
 3. Type **PowerShell** then press **Enter**.
 4. Select **powershell.json**.

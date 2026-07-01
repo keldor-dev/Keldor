@@ -1,0 +1,253 @@
+{
+	"Admin Check": {
+		"scope": "powershell",
+		"prefix": ["AdminCheck","keldor-admincheck"],
+		"body": [
+			"\\$currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())",
+			"if (\\$currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {\\$Role = 'Admin'}# instead of using these flags you should put the code in this block",
+			"else {\\$Role = 'User'}# instead of using these flags you should put the code in this block"
+		],
+		"description": "Adds admin check code (checks the Security roles to see what the user is running the window as.)"
+	},
+	"Active Directory Module check": {
+		"scope": "powershell",
+		"prefix": "ADmoduleCheck",
+		"body": [
+			"if (\\$null -eq (Get-Module -ListAvailable ActiveDir*).Path) {",
+			"\tthrow \"Active Directory module not installed\"",
+			"}"
+		],
+		"description": "Adds Active Directory module check code."
+	},
+	"Browser Block": {
+		"scope": "powershell",
+		"prefix": ["browserblock","keldor-browserblock"],
+		"body": [
+			"if ($${name:Chrome}) {Start-Process \"chrome.exe\" $${name:URL}}",
+			"elseif ($${name:Edge}) {Start-Process Microsoft-Edge:$${name:URL}}",
+			"elseif ($${name:Firefox}) {Start-Process \"firefox.exe\" $${name:URL}}",
+			"else {",
+			"\t#open in default browser",
+			"\t(New-Object -com Shell.Application).Open($${name:URL})",
+			"}"
+		],
+		"description": "Adds a browser switch check to the body"
+	},
+	"Created Before 2017": {
+		"scope": "powershell",
+		"prefix": "createdbefore2017",
+		"body": [
+			"Sometime before 2017-08-07"
+		],
+		"description": "Add sometime before 2017 text"
+	},
+	"Date": {
+		"prefix": ["date","keldor-date"],
+		"body": [
+			"$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND"
+		],
+		"description": "Adds current time in YYYY-MM-DD HH:MM:SS format"
+	},
+	"Domain Check": {
+		"scope": "powershell",
+		"prefix": ["domaincheck","keldor-domaincheck"],
+		"body": [
+			"if (\\$env:USERDNSDOMAIN -match \"${DomainName1}\") {",
+			"\t",
+			"}",
+			"elseif (\\$env:USERDNSDOMAIN -match \"${DomainName2\") {",
+			"\t"
+		],
+		"description": "Adds if statements to check domain"
+	},
+	"IsNullOrWhiteSpace": {
+		"scope": "powershell",
+		"prefix": ["IsNullOrWhiteSpace","keldor-IsNullOrWhiteSpace"],
+		"body": [
+			"[string]::IsNullOrWhiteSpace(${variable})"
+		],
+		"description": "Adds string check IsNullOrWhiteSpace"
+	},
+	"Link": {
+		"scope": "powershell",
+		"prefix": ["link","keldor-link"],
+		"body": [
+			".LINK",
+			"\thttps://docs.keldor.dev"
+		],
+		"description": "Link section for help block"
+	},
+	"ProgressBar": {
+		"scope": "powershell",
+		"prefix": ["progressbar","keldor-progressbar"],
+		"body": [
+			"\\$$i = 0",
+			"\\$number = \\$$ComputerName.${1|length,count|}# Place this line and one above outside foreach loop if you are using one and block below inside foreach block",
+			"",
+			"# Progress Bar",
+			"if (\\$number -gt \"1\") {",
+			"\t\\$$i++",
+			"\t\\$amount = (\\$$i / \\$number)",
+			"\t\\$perc1 = \\$amount.ToString(\"P\")",
+			"\tWrite-Progress -activity \"$CurrentlyDoingSomething\" -status \"$Computer \\$$i of \\$number. Percent complete:  \\$perc1\" -PercentComplete ((\\$$i / \\$$ComputerName.length)  * 100)",
+			"}# if length"
+		],
+		"description": "Adds code for a progress bar."
+	},
+	"PSObject": {
+		"scope": "powershell",
+		"prefix": ["psobject","keldor-psobject"],
+		"body": [
+			"New-Object -TypeName PSObject -Property @{",
+			"\t$ComputerName = $value$0",
+			"}# new object"
+		],
+		"description": "Adds PSObject code"
+	},
+	"Switch": {
+		"scope": "powershell",
+		"prefix": ["switch","keldor-switch"],
+		"body": [
+			"switch (${1:variable}) {",
+			"\t{${value}} {${variable} = ${AnotherValue}}",
+			"\t{'${value2}','${value3}' -contains \\$_} {${variable} = ${AnotherValue2}}",
+			"\t{${value4} -match ${1:variable}} {${variable} = ${AnotherValue3}}",
+			"\tDefault {}",
+			"}"
+		],
+		"description": "Switch statement"
+	},
+	"Keldor config": {
+		"scope": "powershell",
+		"prefix": ["config","keldor-config"],
+		"body": [
+			"\\$config = \\$Global:KeldorConfig\r"
+		],
+		"description": "Adds config variable for Keldor"
+	},
+	"Keldor PowerShell Function": {
+		"scope": "powershell",
+		"prefix": ["function","keldor-function"],
+		"body": [
+			"function ${Verb}-${Noun} {",
+			"\t<#",
+			"\t.SYNOPSIS",
+			"\t\tShort description",
+			"",
+			"\t.DESCRIPTION",
+			"\t\tLong description",
+			"",
+			"\t.PARAMETER ComputerName",
+			"\t\tSpecifies the name of one or more computers.",
+			"",
+			"\t.PARAMETER Path",
+			"\t\tSpecifies a path to one or more locations.",
+			"",
+			"\t.EXAMPLE",
+			"\t\tC:\\PS>${Verb}-${Noun}",
+			"\t\tExample of how to use this cmdlet",
+			"",
+			"\t.EXAMPLE",
+			"\t\tC:\\PS>${Verb}-${Noun} -PARAMETER",
+			"\t\tAnother example of how to use this cmdlet but with a parameter or switch.",
+			"",
+			"\t.INPUTS",
+			"\t\tSystem.String",
+			"",
+			"\t.OUTPUTS",
+			"\t\tSystem.Management.Automation.PSCustomObject",
+			"",
+			"\t.COMPONENT",
+			"\t\t$WORKSPACE_NAME",
+			"",
+			"\t.FUNCTIONALITY",
+			"\t\tThe functionality (keywords) that best describes this cmdlet",
+			"",
+			"\t.NOTES",
+			"\t\tAuthor: ${Author}",
+			"\t\tCreated: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+			"\t\tLast Edit: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+			"\t\tRequires:",
+			"\t\t\t-Module ActiveDirectory",
+			"\t\t\t-RunAsAdministrator",
+			"",
+			"\t.LINK",
+			"\t\thttps://docs.keldor.dev",
+			"\t#>",
+			"\t[CmdletBinding()]",
+			"\t[Alias()]",
+			"\tparam(",
+			"\t\t[Parameter(",
+			"\t\t\t#HelpMessage = \"Enter one or more computer names separated by commas.\",",
+			"\t\t\tMandatory=\\$false#,",
+			"\t\t\t#Position=0,",
+			"\t\t\t#ValueFromPipeline = \\$true",
+			"\t\t)]",
+			"\t\t[ValidateNotNullOrEmpty()]",
+			"\t\t[ValidateCount(min,max)]",
+			"\t\t[ValidateLength(min,max)]",
+			"\t\t[ValidateSet('Info','Error','Warning','One','Two','Three')]",
+			"\t\t[Alias('Host','Name','Computer','CN')]",
+			"\t\t[string[]]\\$ComputerName = \"\\$env:COMPUTERNAME\"",
+			"\t)",
+			"",
+			"\tBegin {}",
+			"\tProcess {",
+			"\t\tforeach (\\$Comp in \\$ComputerName) {",
+			"\t\t\t$0",
+			"\t\t}",
+			"\t}",
+			"\tEnd {}",
+			"}"
+		],
+		"description": "Adds Keldor function format."
+	},
+	"Keldor Help": {
+		"scope": "powershell",
+		"prefix": ["help","keldor-help"],
+		"body": [
+			"\t<#",
+			"\t.SYNOPSIS",
+			"\t\tA short one-line action-based description, e.g. 'Tests if a function is valid'",
+			"",
+			"\t.DESCRIPTION",
+			"\t\tA longer description of the function, its purpose, common use cases, etc.",
+			"",
+			"\t.PARAMETER ComputerName",
+			"\t\tSpecifies the name of one or more computers.",
+			"",
+			"\t.EXAMPLE",
+			"\t\tC:\\PS>${Verb}-${Noun}",
+			"\t\tExample of how to use this cmdlet",
+			"",
+			"\t.EXAMPLE",
+			"\t\tC:\\PS>${Verb}-${Noun} -PARAMETER",
+			"\t\tAnother example of how to use this cmdlet but with a parameter or switch.",
+			"",
+			"\t.INPUTS",
+			"\t\tSystem.String",
+			"",
+			"\t.OUTPUTS",
+			"\t\tSystem.Management.Automation.PSCustomObject",
+			"",
+			"\t.COMPONENT",
+			"\t\t$WORKSPACE_NAME",
+			"",
+			"\t.FUNCTIONALITY",
+			"\t\tThe functionality (keywords) that best describes this cmdlet",
+			"",
+			"\t.NOTES",
+			"\t\tAuthor: ${Author}",
+			"\t\tCreated: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+			"\t\tLast Edit: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+			"\t\tRequires:",
+			"\t\t\t-Module ActiveDirectory",
+			"\t\t\t-RunAsAdministrator",
+			"",
+			"\t.LINK",
+			"\t\tSpecify a URI to a help page, this will show when Get-Help -Online is used. Ex: https://docs.keldor.dev/CommentBasedHelp.html",
+			"\t#>"
+		],
+		"description": "Generic Help comment block"
+	}
+}
