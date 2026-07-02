@@ -1,0 +1,15 @@
+# macOS / Windows OS cruft
+.DS_Store
+Thumbs.db
+
+# Editor settings
+.vscode/
+.idea/
+
+# Logs and temp files
+*.log
+*.tmp
+*.temp
+
+# PowerShell module analysis caches
+*.cache
