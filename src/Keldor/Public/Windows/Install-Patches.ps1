@@ -46,7 +46,8 @@ function Install-Patches {
     $config = $Global:KeldorConfig
     $Patches = $config.LocalPatches
 
-    $fp = $PSScriptRoot.Substring(0,($PSScriptRoot.Length-15)) + "\InstallRemote.ps1"
+    $ModuleRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
+    $fp = Join-Path -Path $ModuleRoot -ChildPath 'InstallRemote.ps1'
 
     if ($ComputerName -eq $env:COMPUTERNAME) {
         Copy-Item -Path $fp -Destination $Patches

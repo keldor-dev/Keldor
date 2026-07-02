@@ -7,11 +7,17 @@ Class Keldor {
 
 	#Methods
 	hidden Init () {
-        $root = $PSScriptRoot.Substring(0,($PSScriptRoot.Length-10))
-		$this.ScriptRoot = $root
+		$manifestPath = Join-Path -Path $PSScriptRoot -ChildPath 'Keldor.psd1'
+		if (!(Test-Path -Path $manifestPath)) {
+			$root = Split-Path -Parent $PSScriptRoot
+			$versionPath = Join-Path -Path $root -ChildPath '2024.12.1'
+			$manifestPath = Join-Path -Path $versionPath -ChildPath 'Keldor.psd1'
+		}
+
+		$this.ScriptRoot = Split-Path -Parent $manifestPath
 		$this.Config = $Global:KeldorConfig
-		$this.Version = (Test-ModuleManifest $root\2024.12.1\Keldor.psd1).Version
-		$this.LastUpdate = (Get-Item $root\2024.12.1\Keldor.psd1).LastWriteTime
+		$this.Version = (Test-ModuleManifest $manifestPath).Version
+		$this.LastUpdate = (Get-Item $manifestPath).LastWriteTime
 	}
 
 	[void] AddUserConfigItem ($Name, $Value) {

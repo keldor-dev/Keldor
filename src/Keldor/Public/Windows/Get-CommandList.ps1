@@ -25,7 +25,8 @@ function Get-CommandList {
     }
     else {$commands = Get-Command -All | Select-Object HelpUri,ResolvedCommandName,Definition,Name,CommandType,ModuleName,RemotingCapability,Path,FileVersionInfo}
     $commands = $commands | Select-Object HelpUri,ResolvedCommandName,Definition,Name,CommandType,ModuleName,RemotingCapability,Path,FileVersionInfo -Unique
-    $slist = Import-Csv $PSScriptRoot\CommandListModules.csv
+    $ModuleRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
+    $slist = Import-Csv (Join-Path -Path $ModuleRoot -ChildPath 'CommandListModules.csv')
 
     $i = 0
     $number = $commands.length

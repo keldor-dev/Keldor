@@ -21,6 +21,41 @@ Are we Windows System Tools? Windows Security Tools? Windows Server Tools? Yes a
 
 ## Download, Install, and Configuration
 
+## Platform-aware loading
+
+Keldor loads functions based on the operating system that imports the module. Common functions load everywhere. Windows-only functions load only on Windows. macOS-only and Linux-only functions load only on their matching platforms.
+
+The module uses a private `Get-KeldorPlatform` helper so it works in both Windows PowerShell 5.1 and PowerShell 7+. If the platform cannot be determined, Keldor loads only common functions and displays a warning instead of failing the import.
+
+### Module folder structure
+
+```text
+Public/
+    Common/
+    Windows/
+    macOS/
+    Linux/
+Private/
+    Common/
+    Windows/
+    macOS/
+    Linux/
+```
+
+Only functions in `Public` folders are exported. Functions in `Private` folders are dot-sourced for internal use and are not exported.
+
+### Adding functions
+
+To add a new common function, place the `.ps1` file in `Public/Common`. Use this for cross-platform functions that rely only on PowerShell or .NET APIs available on every supported platform.
+
+To add a Windows-only function, place the `.ps1` file in `Public/Windows`. Use this for functions that rely on the registry, WMI/CIM, Windows event logs, Windows services, scheduled tasks, Active Directory, Exchange, SCCM, Windows paths, COM, or Windows-only administration tools.
+
+To add a macOS-only function, place the `.ps1` file in `Public/macOS`. Use this for functions that rely on Apple-specific tools or paths such as `system_profiler`, `sw_vers`, `defaults`, `launchctl`, or `/Applications`.
+
+To add a Linux-only function, place the `.ps1` file in `Public/Linux`. Use this for functions that rely on Linux-specific tools or paths such as `systemd`, `journalctl`, `apt`, `dnf`, `yum`, `pacman`, or `/etc`.
+
+For internal helpers, use the matching `Private` folder instead of `Public`. For example, a helper used by every platform belongs in `Private/Common`, while a helper used only by Windows functions belongs in `Private/Windows`.
+
 ### Prerequisites
 
 1. **PowerShell:** Most functions in this module have been updated to require version 3 or version 5. Some plans have been made to add some functions that require version 7. Check your version of PowerShell by entering the following command: **`$host`**

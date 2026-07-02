@@ -1,15 +1,79 @@
 #Requires -Version 3
-# Get public and private function definition files.
-$Functions = @( Get-ChildItem -Path $PSScriptRoot\Functions\*.ps1 -Recurse -ErrorAction SilentlyContinue )
 
-# Dot source the files
-Foreach ($import in @($Functions)) {
-    Try {
-        . $import.fullname
+function Get-KeldorScriptFiles {
+    param(
+        [Parameter(Mandatory=$true)]
+        [string]$RelativePath
+    )
+
+    $path = Join-Path -Path $PSScriptRoot -ChildPath $RelativePath
+    if (!(Test-Path -Path $path)) {
+        return @()
     }
-    Catch {
-        Write-Error -Message "Failed to import function $($import.fullname): $_"
+
+    @(Get-ChildItem -Path $path -Recurse -ErrorAction SilentlyContinue | Where-Object {!$_.PSIsContainer -and $_.Extension -ieq '.ps1'})
+}
+
+$PublicFunctions = @()
+
+$CommonFolders = @(
+    @{ Path = 'Private/Common'; Public = $false }
+    @{ Path = 'Public/Common'; Public = $true }
+)
+
+$PlatformFolders = @{
+    Windows = @(
+        @{ Path = 'Private/Windows'; Public = $false }
+        @{ Path = 'Public/Windows'; Public = $true }
+    )
+    macOS = @(
+        @{ Path = 'Private/macOS'; Public = $false }
+        @{ Path = 'Public/macOS'; Public = $true }
+    )
+    Linux = @(
+        @{ Path = 'Private/Linux'; Public = $false }
+        @{ Path = 'Public/Linux'; Public = $true }
+    )
+}
+
+foreach ($folder in $CommonFolders) {
+    $files = Get-KeldorScriptFiles -RelativePath $folder.Path
+    foreach ($file in $files) {
+        try {
+            . $file.FullName
+        }
+        catch {
+            Write-Error -Message "Failed to import script file $($file.FullName): $_"
+        }
+    }
+
+    if ($folder.Public) {
+        $PublicFunctions += $files
     }
 }
 
-Export-ModuleMember -Function $Functions.Basename
+$KeldorPlatform = Get-KeldorPlatform
+
+if ($PlatformFolders.ContainsKey($KeldorPlatform)) {
+    foreach ($folder in $PlatformFolders[$KeldorPlatform]) {
+        $files = Get-KeldorScriptFiles -RelativePath $folder.Path
+        foreach ($file in $files) {
+            try {
+                . $file.FullName
+            }
+            catch {
+                Write-Error -Message "Failed to import script file $($file.FullName): $_"
+            }
+        }
+
+        if ($folder.Public) {
+            $PublicFunctions += $files
+        }
+    }
+}
+else {
+    Write-Warning "Keldor could not determine the current platform. Only common functions were loaded."
+}
+
+$PublicFunctionNames = @($PublicFunctions | Select-Object -ExpandProperty BaseName -Unique)
+Export-ModuleMember -Function $PublicFunctionNames

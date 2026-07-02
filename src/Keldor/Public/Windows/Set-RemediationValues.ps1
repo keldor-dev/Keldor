@@ -287,7 +287,8 @@ function Set-RemediationValues {
 
         #For local computer, properly set SHA and PKCS
         if ($comp -eq $env:COMPUTERNAME) {
-            $filepath = $PSScriptRoot.Substring(0,($PSScriptRoot.Length-15)) + "\SHAandPKCS.reg"
+            $ModuleRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
+            $filepath = Join-Path -Path $ModuleRoot -ChildPath 'SHAandPKCS.reg'
             reg import $filepath
         }
 

@@ -31,5 +31,6 @@ function Copy-PowerShellJSON {
     if (!(Test-Path $env:APPDATA\Code\User\snippets)) {
         New-Item -Path $env:APPDATA\Code\User -ItemType Directory -Name snippets -Force
     }
-    Copy-Item -Path $PSScriptRoot\powershell.json -Destination $env:APPDATA\Code\User\snippets\powershell.json -Force
+    $ModuleRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
+    Copy-Item -Path (Join-Path -Path $ModuleRoot -ChildPath 'powershell.json') -Destination $env:APPDATA\Code\User\snippets\powershell.json -Force
 }

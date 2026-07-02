@@ -35,7 +35,8 @@ function Get-ModuleList {
     $modules = Get-Module -ListAvailable | Select-Object -Unique
     if ($NotInCommandListModules) {
         $nil = @()
-        $clm = Import-Csv $PSScriptRoot\CommandListModules.csv
+        $ModuleRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
+        $clm = Import-Csv (Join-Path -Path $ModuleRoot -ChildPath 'CommandListModules.csv')
         $cm = $clm.Module
         foreach ($m in $modules) {
             $mn = $m.Name

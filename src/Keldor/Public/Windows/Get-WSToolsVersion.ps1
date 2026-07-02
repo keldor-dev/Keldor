@@ -48,7 +48,8 @@ function Get-WSToolsVersion {
         }
     }
     else {
-        $path = "$PSScriptRoot\Keldor.psd1"
+        $ModuleRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
+        $path = Join-Path -Path $ModuleRoot -ChildPath 'Keldor.psd1'
         try {
             $info = Test-ModuleManifest $path
             $ver = $info.Version
