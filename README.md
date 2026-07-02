@@ -1,118 +1,117 @@
 # Keldor
 
-![Keldor Logo](https://github.com/keldor-dev/Keldor/blob/master/Keldor_PowerShell_Module.png)
+[![PowerShell Gallery Version](https://img.shields.io/powershellgallery/v/Keldor?label=PowerShell%20Gallery)](https://www.powershellgallery.com/packages/Keldor)
+[![PowerShell Gallery Downloads](https://img.shields.io/powershellgallery/dt/Keldor?label=Downloads)](https://www.powershellgallery.com/packages/Keldor)
+[![PSScriptAnalyzer](https://github.com/keldor-dev/Keldor/actions/workflows/powershell.yml/badge.svg)](https://github.com/keldor-dev/Keldor/actions/workflows/powershell.yml)
+[![DevSkim](https://github.com/keldor-dev/Keldor/actions/workflows/devskim.yml/badge.svg)](https://github.com/keldor-dev/Keldor/actions/workflows/devskim.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/keldor-dev/Keldor/blob/master/LICENSE)
 
-## Issues
+![Keldor Logo](https://github.com/keldor-dev/Keldor/blob/6562686bdf7e852ba74f9805ef1439a7b1096386/src/Keldor/Resources/keldor-logo.png)
 
-Please **_[Open an issue](https://github.com/keldor-dev/Keldor/issues "Keldor Issues")_** if there are any problems or requests.
+Keldor is a PowerShell automation toolkit for systems administration, help desk operations, and enterprise engineering workflows.
 
-## Introduction
+## Why Keldor
 
-Are we Windows System Tools? Windows Security Tools? Windows Server Tools? Yes and no. Keldor are all those things and more. Whatever you decide you want to call Keldor is up to you! However, officially, we are Wandering Stag Tools (Keldor). Keldor was written for System Administrators, Help Desk Technicians, and other Network Operations personnel to automate tasks and provide valuable tools. As of May 2023 there are over 330 functions in this module. Some functionality includes:
+- 330+ automation-focused functions
+- Active Directory and infrastructure operations support
+- Platform-aware loading for Windows, macOS, and Linux
+- Utility functions for remediation, reporting, and conversions
+- Reusable snippets and helper tooling for day-to-day admin work
 
-- Active Directory functions, reports, and shortcuts allowing for easier domain management and awareness
-- Computer/Server Management
-  - Install/uninstall software
-  - Remediation tasks such as disabling vulnerable SCHANNEL settings
-  - Set network and system settings
-  - Reports
-- PowerShell snippets in PowerShell ISE and VS Code for easier coding
-- Conversions such as image files to base64, int64 to/from IP, uint16 to string
+## Quick Start
 
-## Download, Install, and Configuration
+### Prerequisites
 
-## Platform-aware loading
+1. PowerShell 5.1+ (PowerShell 7+ supported for many functions)
+2. Optional modules/features based on function usage:
+   - ActiveDirectory module
+   - NetIQ DRA PowerShell REST Extensions
+   - LAPS (AdmPwd.PS)
+   - Microsoft.Exchange.Management.PowerShell.Admin (for Exchange-specific commands)
 
-Keldor loads functions based on the operating system that imports the module. Common functions load everywhere. Windows-only functions load only on Windows. macOS-only and Linux-only functions load only on their matching platforms.
+### Install
 
-The module uses a private `Get-KeldorPlatform` helper so it works in both Windows PowerShell 5.1 and PowerShell 7+. If the platform cannot be determined, Keldor loads only common functions and displays a warning instead of failing the import.
+Install for all users:
+
+```powershell
+Install-Module Keldor
+```
+
+Install for current user only:
+
+```powershell
+Install-Module Keldor -Scope CurrentUser
+```
+
+## Configuration
+
+### Initial configuration
+
+Run the config command and update values for your environment:
+
+```powershell
+Set-WSToolsConfig
+```
+
+The command name is retained for backward compatibility. It opens the Keldor config file so you can tune paths and environment-specific settings.
+
+### Remote patch settings
+
+For remote `.msu` installation workflows, edit `InstallRemote.ps1` in your installed module path and set `$PatchFolderPath` to your remote patch directory.
+
+## Platform-Aware Loading
+
+Keldor loads functions based on the OS importing the module:
+
+- `Common` functions load on all platforms
+- `Windows` functions load only on Windows
+- `macOS` functions load only on macOS
+- `Linux` functions load only on Linux
+
+If platform detection fails, Keldor safely loads only common functions and warns instead of failing module import.
 
 ### Module folder structure
 
 ```text
 Public/
-    Common/
-    Windows/
-    macOS/
-    Linux/
+  Common/
+  Windows/
+  macOS/
+  Linux/
 Private/
-    Common/
-    Windows/
-    macOS/
-    Linux/
+  Common/
+  Windows/
+  macOS/
+  Linux/
 ```
 
-Only functions in `Public` folders are exported. Functions in `Private` folders are dot-sourced for internal use and are not exported.
+Functions in `Public` are exported. Functions in `Private` are internal helpers and are not exported.
 
-### Adding functions
+## Adding Functions
 
-To add a new common function, place the `.ps1` file in `Public/Common`. Use this for cross-platform functions that rely only on PowerShell or .NET APIs available on every supported platform.
+- Add cross-platform exported functions to `Public/Common`
+- Add Windows-only exported functions to `Public/Windows`
+- Add macOS-only exported functions to `Public/macOS`
+- Add Linux-only exported functions to `Public/Linux`
+- Add internal helpers to matching `Private/*` folders
 
-To add a Windows-only function, place the `.ps1` file in `Public/Windows`. Use this for functions that rely on the registry, WMI/CIM, Windows event logs, Windows services, scheduled tasks, Active Directory, Exchange, SCCM, Windows paths, COM, or Windows-only administration tools.
+## Visual Studio Code Snippets
 
-To add a macOS-only function, place the `.ps1` file in `Public/macOS`. Use this for functions that rely on Apple-specific tools or paths such as `system_profiler`, `sw_vers`, `defaults`, `launchctl`, or `/Applications`.
+To load Keldor PowerShell snippets, run:
 
-To add a Linux-only function, place the `.ps1` file in `Public/Linux`. Use this for functions that rely on Linux-specific tools or paths such as `systemd`, `journalctl`, `apt`, `dnf`, `yum`, `pacman`, or `/etc`.
+```powershell
+Set-PowerShellJSON
+```
 
-For internal helpers, use the matching `Private` folder instead of `Public`. For example, a helper used by every platform belongs in `Private/Common`, while a helper used only by Windows functions belongs in `Private/Windows`.
+Or manually copy `powershell.json` from the module folder into your user snippets location.
 
-### Prerequisites
+## Documentation
 
-1. **PowerShell:** Most functions in this module have been updated to require version 3 or version 5. Some plans have been made to add some functions that require version 7. Check your version of PowerShell by entering the following command: **`$host`**
-Then look at the _`Version`_ attribute.
-2. **Active Directory PowerShell module:** Not needed for everything but is necessary for 30+ functions.
-3. **NetIQ DRA PowerShell REST Extensions:** Not needed for many functions at the moment but there are plans to add more.
-4. **Local Admin Password Solution (LAPS):** Actual module name: AdmPwd.PS. There are a handful of functions that require the full install of LAPS to get the module and not just the basic install. However, if you are not using LAPS on your network then there are no worries.
-5. **Microsoft.Exchange.Management.PowerShell.Admin PSSnapin:** Required for the very few Exchange server related functions.
+- Docs site: https://docs.keldor.dev
+- Repository: https://github.com/keldor-dev/Keldor
 
-### Install
+## Issues and Requests
 
-1. Install from the PowerShell Gallery using this command:
+Open an issue for bugs, requests, or ideas:
 
-    ```PowerShell
-    Install-Module Keldor
-    ```
-
-2. For only the current user, use this command:
-
-    ```PowerShell
-    Install-Module Keldor -Scope CurrentUser
-    ```
-
-### Initial changes to make after copying to computer
-
-General Configuration
-
-1. Open PowerShell.
-2. Type **```Set-WSToolsConfig```** and then press `Enter`. In the file that opens you will need to update the values so they work on your network.
-    > Recommend copying this file (config.ps1) to another location after you modify it so if you download a newer version of Keldor you can just paste the config file back unless there are changes in the config file.
-
-Remote installation of .msu files and a select few other things:
-
-1. Open Keldor Module Path then edit InstallRemote.ps1
-    > Typically _C:\Program Files\WindowsPowerShell\Modules\Keldor\VersionNumber_ or _C:\Users\\<USERNAME\>\Documents\WindowsPowerShell\Modules\Keldor\VersionNumber_
-2. On Line 1 of InstallRemote.ps1 change the value of $PatchFolderPath to the directory on remote computers you store windows updates. This is predefined as "C:\Patches".
-
-## Visual Studio Code setup
-
-For adding the Visual Studio Code PowerShell Snippets do the following:
-
-1. Open PowerShell.
-2. Type the following command:
-    **```Set-PowerShellJSON```**
-
-**_or_**
-
-1. Open the Keldor folder
-    > Typically _C:\Program Files\WindowsPowerShell\Modules\Keldor\VersionNumber_ or _C:\Users\\<USERNAME\>\Documents\WindowsPowerShell\Modules\Keldor\VersionNumber_
-2. Cut and paste powershell.json to **%AppData%\Roaming\Code\User\Snippets** directory.
-
-**_or_**
-
-1. Open powershell.json (located in the Keldor module folder) and copy the text then in VSCode Command Palette (Ctrl + Shift + P)
-2. Type **Snippet** and select **Preferences: Configure User Snippets**.
-3. Type **PowerShell** then press **Enter**.
-4. Select **powershell.json**.
-5. Paste the copied text between the { } brackets and save the file.
-
-get more open commands here: <https://sysadminstricks.com/tricks/most-useful-microsoft-management-console-snap-in-control-files-msc-files.html>
+https://github.com/keldor-dev/Keldor/issues
