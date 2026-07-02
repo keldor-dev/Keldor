@@ -3,19 +3,41 @@
 # Get-HBSSStatus (Get-Content .\computers.txt) | Export-Csv .\hbssstatus.csv -NoTypeInformation
 function Get-HBSSStatus {
 <#
-.Notes
+.SYNOPSIS
+    Gets HBSS Status.
+
+.DESCRIPTION
+    Gets HBSS Status.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Get-HBSSStatus
+    Runs Get-HBSSStatus.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 08/18/2017 21:11:01
     LASTEDIT: 09/25/2019 14:42:42
     KEYWORDS:
     REQUIRES:
-        #Requires -Version 3.0
-        #Requires -Modules ActiveDirectory
-        #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-        #Requires -RunAsAdministrator
+    #Requires -Version 3.0
+    #Requires -Modules ActiveDirectory
+    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
+    #Requires -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-HBSSStatus
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-HBSSStatus')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]

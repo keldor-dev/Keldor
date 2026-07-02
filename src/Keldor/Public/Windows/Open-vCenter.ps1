@@ -1,13 +1,44 @@
 function Open-vCenter {
 <#
-.Notes
+.SYNOPSIS
+    Opens v Center.
+
+.DESCRIPTION
+    Opens v Center.
+
+.PARAMETER Chrome
+    Specifies whether to enable the Chrome option.
+
+.PARAMETER Edge
+    Specifies whether to enable the Edge option.
+
+.PARAMETER Firefox
+    Specifies whether to enable the Firefox option.
+
+.PARAMETER InternetExplorer
+    Specifies whether to enable the Internet Explorer option.
+
+.EXAMPLE
+    Open-vCenter
+    Runs Open-vCenter.
+
+.OUTPUTS
+    None
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 10/18/2017 10:34:22
     LASTEDIT: 02/13/2018 11:05:06
     KEYWORDS:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-vCenter
 #>
+
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
         "",

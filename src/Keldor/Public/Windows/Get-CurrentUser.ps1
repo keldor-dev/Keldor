@@ -1,14 +1,36 @@
 function Get-CurrentUser {
 <#
+.SYNOPSIS
+    Gets Current User.
+
+.DESCRIPTION
+    Gets Current User.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Get-CurrentUser -ComputerName <value>
+    Runs Get-CurrentUser.
+
+.OUTPUTS
+    System.Object
+
 .NOTES
     Author: Skyler Hart
     Created: 08/18/2017 20:58:42
     Last Edit: 2021-01-25 15:35:47
     Requires:
-        -RunAsAdministrator
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-CurrentUser
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-CurrentUser')]
     Param (
         [Parameter(Mandatory=$true, Position=0)]

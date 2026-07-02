@@ -1,14 +1,39 @@
 function Set-PrintNightmareFix {
 <#
+.SYNOPSIS
+    Sets Print Nightmare Fix.
+
+.DESCRIPTION
+    Sets Print Nightmare Fix.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.PARAMETER DisableSpooler
+    Specifies whether to enable the Disable Spooler option.
+
+.EXAMPLE
+    Set-PrintNightmareFix
+    Runs Set-PrintNightmareFix.
+
+.OUTPUTS
+    None
+
 .NOTES
     Author: Skyler Hart
     Created: 2021-07-14 20:47:02
     Last Edit: 2021-10-19 10:39:03
     Requires:
-        -RunAsAdministrator
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-PrintNightmareFix
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-PrintNightmareFix')]
     param(
         [Parameter(

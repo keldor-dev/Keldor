@@ -1,16 +1,46 @@
 function Copy-UserProfile {
 <#
-.Notes
+.SYNOPSIS
+    Copies User Profile.
+
+.DESCRIPTION
+    Copies User Profile.
+
+.PARAMETER User
+    Specifies the User value.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.PARAMETER Destination
+    Specifies the Destination value.
+
+.EXAMPLE
+    Copy-UserProfile -User <value>
+    Runs Copy-UserProfile.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 04/06/2020 19:39:42
     LASTEDIT: 04/06/2020 20:10:59
     KEYWORDS:
     REQUIRES:
-        -Version 3.0
-        -RunAsAdministrator
+    -Version 3.0
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Copy-UserProfile
 #>
+
+
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Copy-UserProfile')]
     Param (
         [Parameter(

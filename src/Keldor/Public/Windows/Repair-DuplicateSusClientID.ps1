@@ -2,34 +2,40 @@ function Repair-DuplicateSusClientID {
 <#
 .SYNOPSIS
     Removes SusClientID registry key on the local or remote computer.
+
 .DESCRIPTION
     When creating a computer from a template (virtual disc) the SusClientID isn't changed and will result in WSUS only having one object for all the computers created. This function clears the SusClientID from the registry on the local or remote computer(s) so when syncing with WSUS a new SusClientID will be created. The first initial sync with WSUS typically fails. It may take several minutes for the computer to sync appropriately with WSUS.
+
 .PARAMETER ComputerName
     Specifies the name of one or more computers.
+
 .EXAMPLE
-    C:\PS>Repair-DuplicateSusClientID
+    Repair-DuplicateSusClientID
     Example of how to use this cmdlet to fix a duplicate SusClientID on the local computer.
+
 .EXAMPLE
-    C:\PS>Repair-DuplicateSusClientID -ComputerName Server1
+    Repair-DuplicateSusClientID -ComputerName Server1
     Another example of how to use this cmdlet but with the ComputerName parameter. In this example, Server1 is a remote computer.
-.INPUTS
-    System.String
+
 .OUTPUTS
     System.String
-.COMPONENT
-    Keldor
-.FUNCTIONALITY
-    WSUS, fix, repair, SusClientID
+
 .NOTES
     Author: Skyler Hart
     Created: 2022-07-15 21:05:27
     Last Edit: 2022-07-15 21:05:27
     Other:
     Requires:
-        -RunAsAdministrator
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Repair-DuplicateSusClientID
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Repair-DuplicateSusClientID')]
     param(
         [Parameter(

@@ -1,18 +1,42 @@
 function Enable-RC4 {
 <#
-.Notes
+.SYNOPSIS
+    Enables RC4.
+
+.DESCRIPTION
+    Enables RC4.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Enable-RC4
+    Runs Enable-RC4.
+
+.OUTPUTS
+    None
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 04/23/2018 15:00:19
     LASTEDIT: 04/23/2018 15:00:19
     KEYWORDS:
     REQUIRES:
-        #Requires -Version 3.0
-        #Requires -Modules ActiveDirectory
-        #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-        #Requires -RunAsAdministrator
+    #Requires -Version 3.0
+    #Requires -Modules ActiveDirectory
+    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
+    #Requires -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Enable-RC4
 #>
+
+
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Enable-RC4')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]

@@ -1,26 +1,46 @@
 function Set-LAPSshortcut {
 <#
+.SYNOPSIS
+    Sets LAP Sshortcut.
+
+.DESCRIPTION
+    Sets LAP Sshortcut.
+
 .PARAMETER Path
     Specifies whether to save to the Public Desktop or the logged on users desktop.
+
 .EXAMPLE
-    C:\PS>Set-LAPSshortcut PublicDesktop
+    Set-LAPSshortcut PublicDesktop
     Shows how to setup the LAPS shortcut on the Public Desktop.
+
 .EXAMPLE
-    C:\PS>Set-LAPSshortcut UserDesktop
+    Set-LAPSshortcut UserDesktop
     Shows how to setup the LAPS shortcut on the logged on users desktop.
+
 .EXAMPLE
-    C:\PS>Set-LAPSshortcut -Path PublicDesktop
+    Set-LAPSshortcut -Path PublicDesktop
     Shows how to setup the LAPS shortcut on the Public Desktop.
+
 .EXAMPLE
-    C:\PS>Set-LAPSshortcut -Path UserDesktop
+    Set-LAPSshortcut -Path UserDesktop
     Shows how to setup the LAPS shortcut on the logged on users desktop.
+
+.OUTPUTS
+    None
+
 .NOTES
     Author: Skyler Hart
     Created: 2020-05-08 22:34:49
     Last Edit: 2021-10-13 20:48:50
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-LAPSshortcut
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-LAPSshortcut')]
     param(
         [Parameter(

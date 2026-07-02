@@ -1,13 +1,44 @@
 function Open-RackElevation {
 <#
+.SYNOPSIS
+    Opens Rack Elevation.
+
+.DESCRIPTION
+    Opens Rack Elevation.
+
+.PARAMETER Chrome
+    Specifies whether to enable the Chrome option.
+
+.PARAMETER Edge
+    Specifies whether to enable the Edge option.
+
+.PARAMETER Firefox
+    Specifies whether to enable the Firefox option.
+
+.PARAMETER InternetExplorer
+    Specifies whether to enable the Internet Explorer option.
+
+.EXAMPLE
+    Open-RackElevation
+    Runs Open-RackElevation.
+
+.OUTPUTS
+    None
+
 .NOTES
     Author: Skyler Hart
     Created: 2022-07-07 21:22:25
     Last Edit: 2022-07-07 21:22:25
     Other:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-RackElevation
 #>
+
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
         "",

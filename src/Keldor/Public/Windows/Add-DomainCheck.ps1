@@ -1,18 +1,39 @@
 function Add-DomainCheck {
 <#
-.Notes
+.SYNOPSIS
+    Adds Domain Check.
+
+.DESCRIPTION
+    Adds Domain Check.
+
+.EXAMPLE
+    Add-DomainCheck
+    Runs Add-DomainCheck.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 06/13/2018 14:42:45
     LASTEDIT: 10/04/2018 21:16:04
     KEYWORDS:
     REQUIRES:
-        #Requires -Version 3.0
-        #Requires -Modules ActiveDirectory
-        #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-        #Requires -RunAsAdministrator
+    #Requires -Version 3.0
+    #Requires -Modules ActiveDirectory
+    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
+    #Requires -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Add-DomainCheck
 #>
+
+
+
+
+
+
+
 
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-DomainCheck')]
     Param ()

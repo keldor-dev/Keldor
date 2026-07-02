@@ -1,15 +1,34 @@
 function Get-UserWithThumbnail {
 <#
-.Notes
+.SYNOPSIS
+    Gets User With Thumbnail.
+
+.DESCRIPTION
+    Gets User With Thumbnail.
+
+.EXAMPLE
+    Get-UserWithThumbnail
+    Runs Get-UserWithThumbnail.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 10/03/2014 14:18:42
     LASTEDIT: 2022-09-04 11:56:28
     KEYWORDS:
     REQUIRES:
-        -Modules ActiveDirectory
+    -Modules ActiveDirectory
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-UserWithThumbnail
 #>
+
+
+
+
+
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-UserWithThumbnail')]
     Param ()
 if (Get-Module -ListAvailable -Name ActiveDirectory) {

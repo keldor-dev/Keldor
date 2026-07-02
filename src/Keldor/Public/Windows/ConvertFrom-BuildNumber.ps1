@@ -1,39 +1,37 @@
 function ConvertFrom-BuildNumber {
-    <#
-    .SYNOPSIS
-        Converts a Microsoft Build number to a version number.
+<#
+.SYNOPSIS
+    Converts a Microsoft Build number to a version number.
 
-    .DESCRIPTION
-        Takes a build number for Windows 8/Server 2012 or newer and converts it to a version number and Operatiing System.
+.DESCRIPTION
+    Takes a build number for Windows 8/Server 2012 or newer and converts it to a version number and Operatiing System.
 
-    .PARAMETER Build
-        Specifies the number of the Microsoft Build.
+.PARAMETER Build
+    Specifies the number of the Microsoft Build.
 
-    .EXAMPLE
-        C:\PS>ConvertFrom-BuildNumber 20348
-        Example of how to use this cmdlet. This example will return Windows Server 2022.
+.EXAMPLE
+    ConvertFrom-BuildNumber 20348
+    Example of how to use this cmdlet. This example will return Windows Server 2022.
 
-    .INPUTS
-        System.Int32
+.OUTPUTS
+    System.Management.Automation.PSCustomObject
 
-    .OUTPUTS
-        System.Management.Automation.PSCustomObject
+.NOTES
+    Author: Skyler Hart
+    Created: 2023-09-22 12:04:10
+    Last Edit: 2023-09-22 12:21:16
+    Other:
 
-    .COMPONENT
-        Keldor
+.LINK
+    https://docs.keldor.dev/powershell/keldor/ConvertFrom-BuildNumber
+#>
 
-    .FUNCTIONALITY
-        Microsoft, Build, Version, conversion
 
-    .NOTES
-        Author: Skyler Hart
-        Created: 2023-09-22 12:04:10
-        Last Edit: 2023-09-22 12:21:16
-        Other:
 
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/ConvertFrom-BuildNumber
-    #>
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/ConvertFrom-BuildNumber')]
     [Alias('ConvertFrom-MicrosoftBuildNumber')]
     param(

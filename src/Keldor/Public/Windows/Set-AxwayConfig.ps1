@@ -1,5 +1,24 @@
 function Set-AxwayConfig {
 <#
+.SYNOPSIS
+    Sets Axway Config.
+
+.DESCRIPTION
+    Sets Axway Config.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.PARAMETER ConfigFile
+    Specifies the Config File value.
+
+.EXAMPLE
+    Set-AxwayConfig -ConfigFile <value>
+    Runs Set-AxwayConfig.
+
+.OUTPUTS
+    System.Object
+
 .NOTES
     Author: Skyler Hart
     Created: 2021-06-16 22:10:29
@@ -7,10 +26,16 @@ function Set-AxwayConfig {
     Keywords:
     Other:
     Requires:
-        -RunAsAdministrator
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-AxwayConfig
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-AxwayConfig')]
     [Alias('Import-AxwayConfig')]
     param(

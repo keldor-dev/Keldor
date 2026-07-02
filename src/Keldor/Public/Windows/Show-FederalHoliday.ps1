@@ -1,13 +1,41 @@
 function Show-FederalHoliday {
 <#
+.SYNOPSIS
+    Shows Federal Holiday.
+
+.DESCRIPTION
+    Shows Federal Holiday.
+
+.PARAMETER Name
+    Specifies the Name value.
+
+.PARAMETER Year
+    Specifies the Year value.
+
+.PARAMETER AllYears
+    Specifies whether to enable the All Years option.
+
+.EXAMPLE
+    Show-FederalHoliday
+    Runs Show-FederalHoliday.
+
+.OUTPUTS
+    System.Object
+
 .NOTES
     Author: Skyler Hart
     Created: 2021-06-20 17:20:14
     Last Edit: 2023-02-01 21:24:05
     Keywords:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Show-FederalHoliday
 #>
+
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
         "",

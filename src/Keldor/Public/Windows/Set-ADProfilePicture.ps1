@@ -1,15 +1,37 @@
 function Set-ADProfilePicture {
 <#
+.SYNOPSIS
+    Sets AD Profile Picture.
+
+.DESCRIPTION
+    Sets AD Profile Picture.
+
+.PARAMETER Username
+    Specifies the Username value.
+
+.EXAMPLE
+    Set-ADProfilePicture -Username <value>
+    Runs Set-ADProfilePicture.
+
+.OUTPUTS
+    None
+
 .NOTES
     Author: Skyler Hart
     Created: 2017-08-18 20:47:20
     Last Edit: 2022-09-04 12:42:30
     Other:
     Requires:
-        -Module ActiveDirectory
+    -Module ActiveDirectory
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-ADProfilePicture
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ADProfilePicture')]
     Param (
         [Parameter(Mandatory=$true, Position=0)]

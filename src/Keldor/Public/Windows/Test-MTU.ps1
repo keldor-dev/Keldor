@@ -2,41 +2,50 @@ function Test-MTU {
 <#
 .SYNOPSIS
     Finds the MTU size for packets to a remote computer.
+
 .DESCRIPTION
     Will find the point where packets don't fragment (MTU) to a remote source, which defaults to the computers logon server if an address isn't specified.
+
 .PARAMETER RemoteAddress
     Specifies the name or IP of one or more remote computers.
+
 .PARAMETER BufferSizeMax
     Allows you to specify the highest MTU to test.
+
 .EXAMPLE
-    C:\PS>Test-MTU
+    Test-MTU
     Example of how to use this cmdlet.
+
 .EXAMPLE
-    C:\PS>Test-MTU www.wanderingstag.com
+    Test-MTU www.wanderingstag.com
     Shows how to test the MTU to the website www.wanderingstag.com.
+
 .EXAMPLE
-    C:\PS>Test-MTU COMP1,www.wanderingstag.com
+    Test-MTU COMP1,www.wanderingstag.com
     Shows how to test the MTU to the computer COMP1 and the website www.wanderingstag.com.
+
 .EXAMPLE
-    C:\PS>Test-MTU COMP1 1272
+    Test-MTU COMP1 1272
     Shows how to test the MTU to the computer COMP1, the max buffer size (MTU) will start at 1272.
-.INPUTS
-    System.String
+
 .OUTPUTS
     System.Management.Automation.PSCustomObject
-.COMPONENT
-    Keldor
-.FUNCTIONALITY
-    Maximum Transmission Unit, MTU, network, connectivity, troubleshooting
+
 .NOTES
     Author: Skyler Hart
     Created: 2022-11-22 21:27:58
     Last Edit: 2022-11-22 23:06:11
     Other:
     Requires:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Test-MTU
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-MTU')]
     param(
         [Parameter(Mandatory=$false)]

@@ -1,12 +1,31 @@
 function Set-Profile {
 <#
-.Notes
+.SYNOPSIS
+    Sets Profile.
+
+.DESCRIPTION
+    Sets Profile.
+
+.EXAMPLE
+    Set-Profile
+    Runs Set-Profile.
+
+.OUTPUTS
+    None
+
+.NOTES
     AUTHOR: Skyler Hart
     LASTEDIT: 08/18/2017 21:07:03
     KEYWORDS:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-Profile
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-Profile')]
     [Alias('Edit-Profile','Profile')]
     param()

@@ -1,13 +1,32 @@
 function Get-FolderPath {
 <#
-.Notes
+.SYNOPSIS
+    Gets Folder Path.
+
+.DESCRIPTION
+    Gets Folder Path.
+
+.EXAMPLE
+    Get-FolderPath
+    Runs Get-FolderPath.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 09/21/2017 13:05:51
     LASTEDIT: 09/21/2017 13:05:51
     KEYWORDS:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-FolderPath
 #>
+
+
+
+
+
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-FolderPath')]
     Param ()
 Write-Output "The folder selection window is open. It may be hidden behind windows."

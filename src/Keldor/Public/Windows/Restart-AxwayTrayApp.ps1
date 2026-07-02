@@ -2,18 +2,21 @@ function Restart-AxwayTrayApp {
 <#
 .SYNOPSIS
     Short description
+
 .DESCRIPTION
     Long description
-.PARAMETER ComputerName
-    Specifies the name of one or more computers.
-.PARAMETER Path
-    Specifies a path to one or more locations.
+
 .EXAMPLE
-    C:\PS>Restart-AxwayTrayApp
+    Restart-AxwayTrayApp
     Example of how to use this cmdlet
+
 .EXAMPLE
-    C:\PS>Restart-AxwayTrayApp -PARAMETER
+    Restart-AxwayTrayApp -PARAMETER
     Another example of how to use this cmdlet but with a parameter or switch.
+
+.OUTPUTS
+    None
+
 .NOTES
     Author: Skyler Hart
     Created: 2021-06-16 23:25:56
@@ -21,12 +24,18 @@ function Restart-AxwayTrayApp {
     Keywords:
     Other:
     Requires:
-        -Module ActiveDirectory
-        -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-        -RunAsAdministrator
+    -Module ActiveDirectory
+    -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Restart-AxwayTrayApp
 #>
+
+
+
+
+
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Restart-AxwayTrayApp')]
     Param ()
 Get-Process | Where-Object {$_.Name -match "dvtray"} | Stop-Process -Force | Out-Null

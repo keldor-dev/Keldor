@@ -1,13 +1,34 @@
 function Get-IEVersion {
-    <#
-    .Notes
-        AUTHOR: Skyler Hart
-        CREATED: 09/21/2017 13:06:15
-        LASTEDIT: 09/21/2017 13:06:15
+<#
+.SYNOPSIS
+    Gets IE Version.
 
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Get-IEVersion
-    #>
+.DESCRIPTION
+    Gets IE Version.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Get-IEVersion
+    Runs Get-IEVersion.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
+    AUTHOR: Skyler Hart
+    CREATED: 09/21/2017 13:06:15
+    LASTEDIT: 09/21/2017 13:06:15
+
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Get-IEVersion
+#>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-IEVersion')]
     Param (
         [Parameter(

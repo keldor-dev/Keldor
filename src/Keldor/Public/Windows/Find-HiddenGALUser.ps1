@@ -1,29 +1,39 @@
 function Find-HiddenGALUser {
-    <#
-    .Synopsis
-        This function gets all users that are hidden from the GAL.
+<#
+.SYNOPSIS
+    This function gets all users that are hidden from the GAL.
 
-    .Description
-        This function gets all users that are hidden from the Global Address List (GAL) in a domain or you can specify an OU to search.
+.DESCRIPTION
+    This function gets all users that are hidden from the Global Address List (GAL) in a domain or you can specify an OU to search.
 
-    .Example
-        Find-HiddenGALUsers -SearchBase "OU=Test,DC=mydomain,DC=com"
-        This function gets all users that are hidden from the GAL in a domain or you can specify an OU to search.
+.PARAMETER SearchBase
+    Specific OU to search. If not included, the entire domain will be searched.
 
-    .Parameter SearchBase
-        Specific OU to search. If not included, the entire domain will be searched.
+.EXAMPLE
+    Find-HiddenGALUsers -SearchBase "OU=Test,DC=mydomain,DC=com"
+    This function gets all users that are hidden from the GAL in a domain or you can specify an OU to search.
 
-    .Notes
-        AUTHOR: Skyler Hart
-        CREATED: 2014-01-18 02:50:00
-        LASTEDIT: 2022-09-01 22:30:56
-        KEYWORDS: Hidden Users, User, Exchange, GAL, Global Address List
-        REQUIRES:
-            ActiveDirectory
+.OUTPUTS
+    System.Object
 
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Find-HiddenGALUser
-    #>
+.NOTES
+    AUTHOR: Skyler Hart
+    CREATED: 2014-01-18 02:50:00
+    LASTEDIT: 2022-09-01 22:30:56
+    KEYWORDS: Hidden Users, User, Exchange, GAL, Global Address List
+    REQUIRES:
+        ActiveDirectory
+
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Find-HiddenGALUser
+#>
+
+
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Find-HiddenGALUser')]
     Param (
         [Parameter(

@@ -1,16 +1,41 @@
 function Restart-ActiveDirectory {
 <#
-.Notes
+.SYNOPSIS
+    Restarts Active Directory.
+
+.DESCRIPTION
+    Restarts Active Directory.
+
+.PARAMETER DC
+    Specifies the DC value.
+
+.PARAMETER All
+    Specifies whether to enable the All option.
+
+.EXAMPLE
+    Restart-ActiveDirectory
+    Runs Restart-ActiveDirectory.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 09/08/2017 16:03:23
     LASTEDIT: 2022-09-04 12:22:27
     KEYWORDS:
     REQUIRES:
-        -Modules ActiveDirectory
-        -RunAsAdministrator
+    -Modules ActiveDirectory
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Restart-ActiveDirectory
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Restart-ActiveDirectory')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]

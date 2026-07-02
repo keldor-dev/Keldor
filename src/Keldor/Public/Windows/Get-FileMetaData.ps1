@@ -1,52 +1,49 @@
 function Get-FileMetaData {
-    <#
-    .Synopsis
-        This function gets file metadata and returns it as a custom PS Object.
+<#
+.SYNOPSIS
+    This function gets file metadata and returns it as a custom PS Object.
 
-    .Description
-        This function gets file metadata using the Shell.Application object and
-        returns a custom PSObject object that can be sorted, filtered or otherwise
-        manipulated.
+.DESCRIPTION
+    This function gets file metadata using the Shell.Application object and returns a custom PSObject object that can be sorted, filtered or otherwise manipulated.
 
-    .Example
-        Get-FileMetaData -Path "e:\music"
-        Gets file metadata for all files in the e:\music directory
+.PARAMETER Path
+    The path that is parsed for files
 
-    .Example
-        Get-FileMetaData -Path (gci e:\music -Recurse -Directory).FullName
-        This example uses the Get-ChildItem cmdlet to do a recursive lookup of
-        all directories in the e:\music folder and then it goes through and gets
-        all of the file metada for all the files in the directories and in the
-        subdirectories.
+.EXAMPLE
+    Get-FileMetaData -Path "e:\music"
+    Gets file metadata for all files in the e:\music directory
 
-    .Example
-        Get-FileMetaData -Path "c:\fso","E:\music\Big Boi"
-        Gets file metadata from files in both the c:\fso directory and the
-        e:\music\big boi directory.
+.EXAMPLE
+    Get-FileMetaData -Path (gci e:\music -Recurse -Directory).FullName
+    This example uses the Get-ChildItem cmdlet to do a recursive lookup of all directories in the e:\music folder and then it goes through and gets all of the file metada for all the files in the directories and in the subdirectories.
 
-    .Example
-        $meta = Get-FileMetaData -Path "E:\music"
-        This example gets file metadata from all files in the root of the
-        e:\music directory and stores the returned custom objects in a $meta
-        variable for later processing and manipulation.
+.EXAMPLE
+    Get-FileMetaData -Path "c:\fso","E:\music\Big Boi"
+    Gets file metadata from files in both the c:\fso directory and the e:\music\big boi directory.
 
-    .Parameter Path
-        The path that is parsed for files
+.EXAMPLE
+    $meta = Get-FileMetaData -Path "E:\music"
+    This example gets file metadata from all files in the root of the e:\music directory and stores the returned custom objects in a $meta variable for later processing and manipulation.
 
-    .Notes
-        NAME:  Get-FileMetaData
-        AUTHOR: ed wilson, msft
-        Edited By: Skyler Hart
-        Original: 01/24/2014 14:08:24
-        Last Edit: 2021-12-19 18:54:58
-        KEYWORDS: Storage, Files, Metadata
+.OUTPUTS
+    System.Object
 
-    .Link
-        https://devblogs.microsoft.com/scripting/
-    #Requires -Version 2.0
-    .LINK
+.NOTES
+    NAME:  Get-FileMetaData
+    AUTHOR: ed wilson, msft
+    Edited By: Skyler Hart
+    Original: 01/24/2014 14:08:24
+    Last Edit: 2021-12-19 18:54:58
+    KEYWORDS: Storage, Files, Metadata
+
+.LINK
     https://docs.keldor.dev/powershell/keldor/Get-FileMetaData
-    #>
+#>
+
+
+
+
+
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-FileMetaData')]
 Param([string[]]$Path)
     foreach($sFolder in $Path) {

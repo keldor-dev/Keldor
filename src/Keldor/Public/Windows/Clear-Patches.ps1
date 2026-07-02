@@ -2,26 +2,47 @@ function Clear-Patches {
 <#
 .SYNOPSIS
     Clears the C:\Patches folder.
+
 .DESCRIPTION
     Removes items in the C:\Patches folder on the local or remote computer.
-.PARAMETER ComputerName
-    Specifies the name of one or more computers.
+
+.PARAMETER ObjectList
+    Specifies the Object List value.
+
 .PARAMETER Recursive
     Removes all files and folders in the Patches folder on the specified computer.
+
 .PARAMETER Old
     Removes files in the root of the C:\Patches folder (except Install.ps1) that are older than 28 days.
+
+.PARAMETER MaxThreads
+    Specifies the Max Threads value.
+
+.PARAMETER SleepTimer
+    Specifies the Sleep Timer value.
+
+.PARAMETER MaxResultTime
+    Specifies the Max Result Time value.
+
 .EXAMPLE
-    C:\PS>Clear-Patches
+    Clear-Patches
     Clears C:\Patches folder on the local computer (but not the inidividual program folders.)
+
 .EXAMPLE
-    C:\PS>Clear-Patches -ComputerName COMP1
+    Clear-Patches -ComputerName COMP1
     Clears C:\Patches folder on the computer COMP1.
+
 .EXAMPLE
-    C:\PS>Clear-Patches -ComputerName (gc c:\complist.txt) -Recursive
+    Clear-Patches -ComputerName (gc c:\complist.txt) -Recursive
     Clears all files and folders in C:\Patches on the computers listed in the file c:\complist.txt.
+
 .EXAMPLE
-    C:\PS>Clear-Patches -ComputerName (gc c:\complist.txt) -Old
+    Clear-Patches -ComputerName (gc c:\complist.txt) -Old
     Clears files in the root of C:\Patches that are older than 28 days on the computers listed in the file c:\complist.txt.
+
+.OUTPUTS
+    System.Object
+
 .NOTES
     Author: Skyler Hart
     Created: 2020-08-18 09:58:51
@@ -29,10 +50,18 @@ function Clear-Patches {
     Keywords: Delete, temp, patches
     Other: Needs to be ran as a user that has administrator rights
     Requires:
-        -RunAsAdministrator
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Clear-Patches
 #>
+
+
+
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSUseSingularNouns",
         "",

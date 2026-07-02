@@ -1,13 +1,32 @@
 function Open-VisualStudioCodeSettings {
 <#
+.SYNOPSIS
+    Opens Visual Studio Code Settings.
+
+.DESCRIPTION
+    Opens Visual Studio Code Settings.
+
+.EXAMPLE
+    Open-VisualStudioCodeSettings
+    Runs Open-VisualStudioCodeSettings.
+
+.OUTPUTS
+    None
+
 .NOTES
     Author: Skyler Hart
     Created: 2021-05-18 21:18:59
     Last Edit: 2021-05-18 21:27:47
     Keywords:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-VisualStudioCodeSettings
 #>
+
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSUseSingularNouns",
         "",

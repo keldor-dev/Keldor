@@ -1,12 +1,43 @@
 function Open-SDN {
 <#
-.Notes
+.SYNOPSIS
+    Opens SDN.
+
+.DESCRIPTION
+    Opens SDN.
+
+.PARAMETER Chrome
+    Specifies whether to enable the Chrome option.
+
+.PARAMETER Edge
+    Specifies whether to enable the Edge option.
+
+.PARAMETER Firefox
+    Specifies whether to enable the Firefox option.
+
+.PARAMETER InternetExplorer
+    Specifies whether to enable the Internet Explorer option.
+
+.EXAMPLE
+    Open-SDN
+    Runs Open-SDN.
+
+.OUTPUTS
+    None
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 2021-10-18 22:38:19
     LASTEDIT: 2021-10-18 22:39:28
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-SDN
 #>
+
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
         "",

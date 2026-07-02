@@ -2,38 +2,42 @@ function Install-SCCMUpdate {
 <#
 .SYNOPSIS
     Short description
+
 .DESCRIPTION
     Long description
+
 .PARAMETER ComputerName
     Specifies the name of one or more computers.
-.PARAMETER Path
-    Specifies a path to one or more locations.
+
 .EXAMPLE
-    C:\PS>Install-SCCMUpdate
+    Install-SCCMUpdate
     Example of how to use this cmdlet
+
 .EXAMPLE
-    C:\PS>Install-SCCMUpdate -PARAMETER
+    Install-SCCMUpdate -PARAMETER
     Another example of how to use this cmdlet but with a parameter or switch.
-.INPUTS
-    System.String
+
 .OUTPUTS
     System.Management.Automation.PSCustomObject
-.COMPONENT
-    Keldor
-.FUNCTIONALITY
-    The functionality (keywords) that best describes this cmdlet
+
 .NOTES
     Author: Skyler Hart
     Created: 2023-03-29 22:42:28
     Last Edit: 2023-03-29 22:42:28
     Other:
     Requires:
-        -Module ActiveDirectory
-        -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-        -RunAsAdministrator
+    -Module ActiveDirectory
+    -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Install-SCCMUpdate
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Install-SCCMUpdate')]
     [Alias()]
     param(

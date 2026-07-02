@@ -1,15 +1,37 @@
 function Open-SCCMLogsFolder {
 <#
-.Notes
+.SYNOPSIS
+    Opens SCCM Logs Folder.
+
+.DESCRIPTION
+    Opens SCCM Logs Folder.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Open-SCCMLogsFolder
+    Runs Open-SCCMLogsFolder.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: Sometime before 2017-08-07
     LASTEDIT: 2020-09-28 09:25:48
     KEYWORDS:
     REQUIRES:
-        -RunAsAdministrator on remote computers
+    -RunAsAdministrator on remote computers
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-SCCMLogsFolder
 #>
+
+
+
+
+
 <#--
 CAS.log
 Provides information about the process of downloading software updates to the local cache and cache management.

@@ -1,15 +1,36 @@
 function Test-Online {
 <#
-   .Notes
+.SYNOPSIS
+    Tests Online.
+
+.DESCRIPTION
+    Tests Online.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Test-Online
+    Runs Test-Online.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     LASTEDIT: 08/18/2017 20:47:56
 
     TODO: Add functionality to convert ip to computername and vice versa. Enter ip range 192.168.0.0/26
     and have it convert it. Or 192.168.0.0-255 and check all computers. Write help. Add aliases and fix pipeline.
 
-    .LINK
+.LINK
     https://docs.keldor.dev/powershell/keldor/Test-Online
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-Online')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]

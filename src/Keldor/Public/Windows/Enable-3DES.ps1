@@ -1,18 +1,42 @@
 function Enable-3DES {
 <#
-.Notes
+.SYNOPSIS
+    Enables 3 DES.
+
+.DESCRIPTION
+    Enables 3 DES.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Enable-3DES
+    Runs Enable-3DES.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 04/23/2018 14:41:22
     LASTEDIT: 04/23/2018 14:41:22
     KEYWORDS:
     REQUIRES:
-        #Requires -Version 3.0
-        #Requires -Modules ActiveDirectory
-        #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-        #Requires -RunAsAdministrator
+    #Requires -Version 3.0
+    #Requires -Modules ActiveDirectory
+    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
+    #Requires -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Enable-3DES
 #>
+
+
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Enable-3DES')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]

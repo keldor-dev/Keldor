@@ -1,18 +1,48 @@
 function Add-Function {
 <#
-.Notes
+.SYNOPSIS
+    Adds Function.
+
+.DESCRIPTION
+    Adds Function.
+
+.PARAMETER Browsers
+    Specifies whether to enable the Browsers option.
+
+.PARAMETER Object
+    Specifies whether to enable the Object option.
+
+.PARAMETER User
+    Specifies whether to enable the User option.
+
+.EXAMPLE
+    Add-Function
+    Runs Add-Function.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 10/18/2017 13:58:17
     LASTEDIT: 12/20/2019 22:18:43
     KEYWORDS:
     REQUIRES:
-        #Requires -Version 3.0
-        #Requires -Modules ActiveDirectory
-        #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-        #Requires -RunAsAdministrator
+    #Requires -Version 3.0
+    #Requires -Modules ActiveDirectory
+    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
+    #Requires -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Add-Function
 #>
+
+
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-Function')]
     Param (
         [Parameter(Mandatory=$false)]

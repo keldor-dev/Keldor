@@ -1,16 +1,38 @@
 function Set-RemediationValues {
 <#
-.Notes
+.SYNOPSIS
+    Sets Remediation Values.
+
+.DESCRIPTION
+    Sets Remediation Values.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Set-RemediationValues
+    Runs Set-RemediationValues.
+
+.OUTPUTS
+    None
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 02/08/2018 22:10:17
     LASTEDIT: 2023-11-17 16:58:54
     KEYWORDS:
     REQUIRES:
-        #Requires -Version 3.0
-        #Requires -RunAsAdministrator
+    #Requires -Version 3.0
+    #Requires -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-RemediationValues
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-RemediationValues')]
     Param (
         [Parameter(

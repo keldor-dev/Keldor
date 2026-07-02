@@ -1,15 +1,49 @@
 function Get-WSLocalGroup {
 <#
+.SYNOPSIS
+    Gets WS Local Group.
+
+.DESCRIPTION
+    Gets WS Local Group.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.PARAMETER MaxThreads
+    Specifies the Max Threads value.
+
+.PARAMETER SleepTimer
+    Specifies the Sleep Timer value.
+
+.PARAMETER MaxResultTime
+    Specifies the Max Result Time value.
+
+.PARAMETER Output
+    Specifies the Output value.
+
+.EXAMPLE
+    Get-WSLocalGroup
+    Runs Get-WSLocalGroup.
+
+.OUTPUTS
+    System.Object
+
 .NOTES
     Author: Skyler Hart
     Created: 2021-02-28 19:52:59
     Last Edit: 2021-02-28 21:06:49
     Keywords:
     Requires:
-        -RunAsAdministrator
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-WSLocalGroup
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-WSLocalGroup')]
     param(
         [Parameter(

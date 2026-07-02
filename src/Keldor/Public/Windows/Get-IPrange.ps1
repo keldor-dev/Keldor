@@ -1,42 +1,50 @@
 function Get-IPrange {
-    <#
-    .SYNOPSIS
-        Lists IPs within a range, subnet, or CIDR block.
+<#
+.SYNOPSIS
+    Lists IPs within a range, subnet, or CIDR block.
 
-    .DESCRIPTION
-        Lists IPs within a range, subnet, or CIDR block.
+.DESCRIPTION
+    Lists IPs within a range, subnet, or CIDR block.
 
-    .PARAMETER CIDR
-        Specifies what CIDR block notation you want to list IPs from.
+.PARAMETER IP
+    An IP from the subnet mask or CIDR block you want a range for.
 
-    .PARAMETER End
-        The ending IP in a range.
+.PARAMETER CIDR
+    Specifies what CIDR block notation you want to list IPs from.
 
-    .PARAMETER IP
-        An IP from the subnet mask or CIDR block you want a range for.
+.PARAMETER Subnet
+    The subnet mask you want a range for.
 
-    .PARAMETER Start
-        Specifies a path to one or more locations.
+.PARAMETER Start
+    Specifies a path to one or more locations.
 
-    .PARAMETER Subnet
-        The subnet mask you want a range for.
+.PARAMETER End
+    The ending IP in a range.
 
-    .EXAMPLE
-        C:\PS>Get-IPrange -ip 192.168.0.3 -subnet 255.255.255.192
-        Will show all IPs within the 192.168.0.0 space with a subnet mask of 255.255.255.192 (CIDR 26.)
+.EXAMPLE
+    Get-IPrange -ip 192.168.0.3 -subnet 255.255.255.192
+    Will show all IPs within the 192.168.0.0 space with a subnet mask of 255.255.255.192 (CIDR 26.)
 
-    .EXAMPLE
-        C:\PS>Get-IPrange -PARAMETER
-        Another example of how to use this cmdlet but with a parameter or switch.
+.EXAMPLE
+    Get-IPrange -PARAMETER
+    Another example of how to use this cmdlet but with a parameter or switch.
 
-    .NOTES
-        Author: Skyler Hart
-        Created: Sometime before 8/7/2017
-        Last Edit: 2020-08-20 09:11:46
+.OUTPUTS
+    System.Object
 
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Get-IPrange
-    #>
+.NOTES
+    Author: Skyler Hart
+    Created: Sometime before 8/7/2017
+    Last Edit: 2020-08-20 09:11:46
+
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Get-IPrange
+#>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-IPrange')]
     Param (
         [Parameter(

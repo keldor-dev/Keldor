@@ -1,17 +1,44 @@
 function Find-UserProfileWithPSTSearch {
 <#
-.Notes
+.SYNOPSIS
+    Finds User Profile With PST Search.
+
+.DESCRIPTION
+    Finds User Profile With PST Search.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.PARAMETER Username
+    Specifies the Username value.
+
+.EXAMPLE
+    Find-UserProfileWithPSTSearch
+    Runs Find-UserProfileWithPSTSearch.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     LASTEDIT: 08/18/2017 20:58:26
     KEYWORDS:
     REQUIRES:
-        #Requires -Version 3.0
-        #Requires -Modules ActiveDirectory
-        #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-        #Requires -RunAsAdministrator
+    #Requires -Version 3.0
+    #Requires -Modules ActiveDirectory
+    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
+    #Requires -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Find-UserProfileWithPSTSearch
 #>
+
+
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Find-UserProfileWithPSTSearch')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]

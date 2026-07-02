@@ -3,29 +3,59 @@ function Send-ToastNotification {
 <#
 .SYNOPSIS
     Short description
+
 .DESCRIPTION
     Long description
+
+.PARAMETER Message
+    Specifies the Message value.
+
+.PARAMETER Sender
+    Specifies the Sender value.
+
 .PARAMETER ComputerName
     Specifies the name of one or more computers.
-.PARAMETER Path
-    Specifies a path to one or more locations.
+
+.PARAMETER Title
+    Specifies the Title value.
+
+.PARAMETER AudioSource
+    Specifies the Audio Source value.
+
+.PARAMETER ShortDuration
+    Specifies whether to enable the Short Duration option.
+
+.PARAMETER RequireDismiss
+    Specifies whether to enable the Require Dismiss option.
+
 .EXAMPLE
-    C:\PS>Send-ToastNotification
+    Send-ToastNotification
     Example of how to use this cmdlet
+
 .EXAMPLE
-    C:\PS>Send-ToastNotification -PARAMETER
+    Send-ToastNotification -PARAMETER
     Another example of how to use this cmdlet but with a parameter or switch.
+
+.OUTPUTS
+    None
+
 .NOTES
     Author: Skyler Hart
     Created: 2020-11-08 14:57:29
     Last Edit: 2021-07-16 23:08:42
     Requires:
-        -Module ActiveDirectory
-        -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-        -RunAsAdministrator
+    -Module ActiveDirectory
+    -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Send-ToastNotification
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Send-ToastNotification')]
     param(
         [Parameter(

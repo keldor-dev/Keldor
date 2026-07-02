@@ -1,14 +1,36 @@
 function Test-EmailRelay {
-    <#
-       .Notes
-        AUTHOR: Skyler Hart
-        CREATED: 08/18/2017 20:40:04
-        LASTEDIT: 2021-10-12 22:09:30
-        KEYWORDS: E-mail, email, relay, smtp
-        REMARKS: On secure networks, port 25 has to be open
+<#
+.SYNOPSIS
+    Tests Email Relay.
+
+.DESCRIPTION
+    Tests Email Relay.
+
+.PARAMETER Recipient
+    Specifies the Recipient value.
+
+.EXAMPLE
+    Test-EmailRelay -Recipient <value>
+    Runs Test-EmailRelay.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
+    AUTHOR: Skyler Hart
+    CREATED: 08/18/2017 20:40:04
+    LASTEDIT: 2021-10-12 22:09:30
+    KEYWORDS: E-mail, email, relay, smtp
+    REMARKS: On secure networks, port 25 has to be open
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Test-EmailRelay
 #>
+
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
         "",

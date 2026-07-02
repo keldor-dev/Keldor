@@ -1,16 +1,41 @@
 function Restart-DNS {
 <#
-.Notes
+.SYNOPSIS
+    Restarts DNS.
+
+.DESCRIPTION
+    Restarts DNS.
+
+.PARAMETER DC
+    Specifies the DC value.
+
+.PARAMETER All
+    Specifies whether to enable the All option.
+
+.EXAMPLE
+    Restart-DNS
+    Runs Restart-DNS.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 09/08/2017 17:23:43
     LASTEDIT: 2022-09-04 12:35:59
     KEYWORDS:
     REQUIRES:
-        -Modules ActiveDirectory
-        -RunAsAdministrator
+    -Modules ActiveDirectory
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Restart-DNS
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Restart-DNS')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]

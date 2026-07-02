@@ -1,15 +1,46 @@
 function Disable-TLS1.2 { #DevSkim: ignore DS169125,DS440000
+
+
+
+
+
+
+
 <#
+.SYNOPSIS
+    Disables TLS1.2.
+
+.DESCRIPTION
+    Disables TLS1.2.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Disable-TLS1.2
+    Runs Disable-TLS1.2.
+
+.OUTPUTS
+    None
+
 .NOTES
     Author: Skyler Hart
     Created: 2021-04-22 19:18:49
     Last Edit: 2021-04-22 19:18:49
     Keywords:
     Requires:
-        -RunAsAdministrator
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Disable-TLS1.2
 #>
+
+
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Disable-TLS1.2')]
     param(
         [Parameter(

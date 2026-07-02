@@ -1,16 +1,41 @@
 function Restart-KDC {
 <#
-.Notes
+.SYNOPSIS
+    Restarts KDC.
+
+.DESCRIPTION
+    Restarts KDC.
+
+.PARAMETER DC
+    Specifies the DC value.
+
+.PARAMETER All
+    Specifies whether to enable the All option.
+
+.EXAMPLE
+    Restart-KDC
+    Runs Restart-KDC.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 08/18/2017 02:45:00
     LASTEDIT: 2022-09-04 12:38:21
     KEYWORDS:
     REQUIRES:
-        -Modules ActiveDirectory
-        -RunAsAdministrator
+    -Modules ActiveDirectory
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Restart-KDC
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Restart-KDC')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]

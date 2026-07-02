@@ -1,13 +1,41 @@
 function Show-MessageBox {
 <#
-   .Notes
+.SYNOPSIS
+    Shows Message Box.
+
+.DESCRIPTION
+    Shows Message Box.
+
+.PARAMETER Text
+    Specifies the Text value.
+
+.PARAMETER Title
+    Specifies the Title value.
+
+.PARAMETER Timeout
+    Specifies the Timeout value.
+
+.EXAMPLE
+    Show-MessageBox -Text <value> -Title <value>
+    Runs Show-MessageBox.
+
+.OUTPUTS
+    None
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: Sometime before 2017-08-07
     LASTEDIT: 08/18/2017 20:47:49
     KEYWORDS:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Show-MessageBox
 #>
+
+
+
+
+
 #info: https://msdn.microsoft.com/en-us/library/x83z1d9f(v=vs.84).aspx
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Show-MessageBox')]
     [Alias('message')]

@@ -1,13 +1,32 @@
 function Open-ADSitesAndServices {
 <#
-.Notes
+.SYNOPSIS
+    Opens AD Sites And Services.
+
+.DESCRIPTION
+    Opens AD Sites And Services.
+
+.EXAMPLE
+    Open-ADSitesAndServices
+    Runs Open-ADSitesAndServices.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 08/19/2017 22:29:08
     LASTEDIT: 2022-09-04 12:06:04
     KEYWORDS:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-ADSitesAndServices
 #>
+
+
+
+
+
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-ADSitesAndServices')]
     Param ()
 try {

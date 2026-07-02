@@ -1,86 +1,79 @@
 function Get-ADComplianceReport {
-    <#
-    .SYNOPSIS
-        Checks attributes on Active Directory objects against a set of compliance rules.
+<#
+.SYNOPSIS
+    Checks attributes on Active Directory objects against a set of compliance rules.
 
-    .DESCRIPTION
-        Checks attributes on Active Directory objects against a set of compliance rules and provides a report. It also
-        takes several attributes and makes them human readable.
+.DESCRIPTION
+    Checks attributes on Active Directory objects against a set of compliance rules and provides a report. It also takes several attributes and makes them human readable.
 
-    .PARAMETER UserSearchBase
-        Specify the distinguishedName(s) of organizational units (OUs) to search for user objects.
+.PARAMETER UserSearchBase
+    Specify the distinguishedName(s) of organizational units (OUs) to search for user objects.
 
-    .PARAMETER UserGroupSearchBase
-        Specify the distinguishedName(s) of organizational units (OUs) to search for group objects that have users.
+.PARAMETER UserGroupSearchBase
+    Specify the distinguishedName(s) of organizational units (OUs) to search for group objects that have users.
 
-    .PARAMETER AdminSearchBase
-        Specify the distinguishedName(s) of organizational units (OUs) to search for admin objects.
+.PARAMETER AdminSearchBase
+    Specify the distinguishedName(s) of organizational units (OUs) to search for admin objects.
 
-    .PARAMETER AdminGroupSearchBase
-        Specify the distinguishedName(s) of organizational units (OUs) to search for group objects that have admins.
+.PARAMETER AdminGroupSearchBase
+    Specify the distinguishedName(s) of organizational units (OUs) to search for group objects that have admins.
 
-    .PARAMETER ComputerSearchBase
-        Specify the distinguishedName(s) of organizational units (OUs) to search for computer objects.
+.PARAMETER ComputerSearchBase
+    Specify the distinguishedName(s) of organizational units (OUs) to search for computer objects.
 
-    .PARAMETER MSASearchBase
-        Specify the distinguishedName(s) of organizational units (OUs) to search for Managed Service Account objects.
+.PARAMETER MSASearchBase
+    Specify the distinguishedName(s) of organizational units (OUs) to search for Managed Service Account objects.
 
-    .PARAMETER OrganizationalSearchBase
-        Specify the distinguishedName(s) of organizational units (OUs) to search for org boxes or shared account objects.
+.PARAMETER OrganizationalSearchBase
+    Specify the distinguishedName(s) of organizational units (OUs) to search for org boxes or shared account objects.
 
-    .PARAMETER ServerSearchBase
-        Specify the distinguishedName(s) of organizational units (OUs) to search for server objects.
+.PARAMETER ServerSearchBase
+    Specify the distinguishedName(s) of organizational units (OUs) to search for server objects.
 
-    .PARAMETER ServiceAccountSearchBase
-        Specify the distinguishedName(s) of organizational units (OUs) to search for Service Account objects.
+.PARAMETER ServiceAccountSearchBase
+    Specify the distinguishedName(s) of organizational units (OUs) to search for Service Account objects.
 
-    .PARAMETER SaveADReports
-        Will save data pulled from Active Directory to reports for each object matching their type to path in
-        ReportFolder parameter.
+.PARAMETER SaveADReports
+    Will save data pulled from Active Directory to reports for each object matching their type to path in ReportFolder parameter.
 
-    .PARAMETER ReportFolder
-        Specify where you want to save reports to. If you do not specify a path and use either the SaveADReports or
-        SaveReport switches this defaults to C:\Scripts.
+.PARAMETER ReportFolder
+    Specify where you want to save reports to. If you do not specify a path and use either the SaveADReports or SaveReport switches this defaults to C:\Scripts.
 
-    .PARAMETER SaveReport
-        Will save the report in csv format. If a path isn't specified using the ReportFolder parameter it will save to
-        C:\Scripts.
+.PARAMETER SaveReport
+    Will save the report in csv format. If a path isn't specified using the ReportFolder parameter it will save to C:\Scripts.
 
-    .EXAMPLE
-        C:\PS>Get-ADComplianceReport
-        Example of how to use this cmdlet. Will default to OUs in config file.
+.EXAMPLE
+    Get-ADComplianceReport
+    Example of how to use this cmdlet. Will default to OUs in config file.
 
-    .EXAMPLE
-        C:\PS>Get-ADComplianceReport -UserSearchBase 'OU=Example User OU,DC=keldor,DC=dev'
-        Will search the 'OU=Example User OU,DC=keldor,DC=dev' OU for user objects and report on them.
+.EXAMPLE
+    Get-ADComplianceReport -UserSearchBase 'OU=Example User OU,DC=keldor,DC=dev'
+    Will search the 'OU=Example User OU,DC=keldor,DC=dev' OU for user objects and report on them.
 
-    .EXAMPLE
-        C:\PS>Get-ADComplianceReport -UserSearchBase 'OU=Example User OU,DC=keldor,DC=dev' -SaveReport
-        Will search the 'OU=Example User OU,DC=keldor,DC=dev' OU for user objects and because the -ReportFolder parameter
-        is not used to specify a path, it will save the report to C:\Scripts.
+.EXAMPLE
+    Get-ADComplianceReport -UserSearchBase 'OU=Example User OU,DC=keldor,DC=dev' -SaveReport
+    Will search the 'OU=Example User OU,DC=keldor,DC=dev' OU for user objects and because the -ReportFolder parameter is not used to specify a path, it will save the report to C:\Scripts.
 
-    .INPUTS
-        System.String
+.OUTPUTS
+    System.Management.Automation.PSCustomObject
 
-    .OUTPUTS
-        System.Management.Automation.PSCustomObject
+.NOTES
+    Author: Skyler Hart
+    Created: 2019-07-02 13:32:53
+    Last Edit: 2023-05-06 21:50:15
+    Requires:
+        -Module ActiveDirectory
 
-    .COMPONENT
-        Keldor
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Get-ADComplianceReport
+#>
 
-    .FUNCTIONALITY
-        Active Directory, compliance, report, InTh, Insider Threat, remediation, security
 
-    .NOTES
-        Author: Skyler Hart
-        Created: 2019-07-02 13:32:53
-        Last Edit: 2023-05-06 21:50:15
-        Requires:
-            -Module ActiveDirectory
 
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Get-ADComplianceReport
-    #>
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ADComplianceReport')]
     param(
         [Parameter(

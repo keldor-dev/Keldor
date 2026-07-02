@@ -1,14 +1,39 @@
 function Get-User {
 <#
+.SYNOPSIS
+    Gets User.
+
+.DESCRIPTION
+    Gets User.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.PARAMETER User
+    Specifies the User value.
+
+.EXAMPLE
+    Get-User
+    Runs Get-User.
+
+.OUTPUTS
+    System.Object
+
 .NOTES
     Author: Skyler Hart
     Created: 2020-04-20 19:51:03
     Last Edit: 2020-04-20 23:14:32
     Requires:
-        -RunAsAdministrator
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-User
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-User')]
     param(
         [Parameter(

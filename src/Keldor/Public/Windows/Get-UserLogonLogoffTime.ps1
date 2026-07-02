@@ -1,14 +1,39 @@
 function Get-UserLogonLogoffTime {
 <#
-.Notes
+.SYNOPSIS
+    Gets User Logon Logoff Time.
+
+.DESCRIPTION
+    Gets User Logon Logoff Time.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.PARAMETER DaysBackToSearch
+    Specifies the Days Back To Search value.
+
+.EXAMPLE
+    Get-UserLogonLogoffTime
+    Runs Get-UserLogonLogoffTime.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     LASTEDIT: 08/18/2017 21:00:47
     KEYWORDS:
     REQUIRES:
-        -RunAsAdministrator
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-UserLogonLogoffTime
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-UserLogonLogoffTime')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]

@@ -2,38 +2,42 @@ function Start-SCCMUpdateScan {
 <#
 .SYNOPSIS
     Short description
+
 .DESCRIPTION
     Long description
+
 .PARAMETER ComputerName
     Specifies the name of one or more computers.
-.PARAMETER Path
-    Specifies a path to one or more locations.
+
 .EXAMPLE
-    C:\PS>Start-SCCMUpdateScan
+    Start-SCCMUpdateScan
     Example of how to use this cmdlet
+
 .EXAMPLE
-    C:\PS>Start-SCCMUpdateScan -PARAMETER
+    Start-SCCMUpdateScan -PARAMETER
     Another example of how to use this cmdlet but with a parameter or switch.
-.INPUTS
-    System.String
+
 .OUTPUTS
     System.Management.Automation.PSCustomObject
-.COMPONENT
-    Keldor
-.FUNCTIONALITY
-    The functionality (keywords) that best describes this cmdlet
+
 .NOTES
     Author: Skyler Hart
     Created: 2023-03-29 21:50:02
     Last Edit: 2023-03-29 21:50:02
     Other:
     Requires:
-        -Module ActiveDirectory
-        -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-        -RunAsAdministrator
+    -Module ActiveDirectory
+    -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Start-SCCMUpdateScan
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Start-SCCMUpdateScan')]
     [Alias()]
     param(

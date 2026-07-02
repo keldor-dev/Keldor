@@ -2,38 +2,41 @@ function Get-SCHANNELSetting {
 <#
 .SYNOPSIS
     Gets the SCHANNEL settings on the current machine.
+
 .DESCRIPTION
     Displays the name and value of SCHANNEL settings on the local computer. Blank entries means the value is not created.
+
 .PARAMETER Name
     Used to specify the name of a SCHANNEL setting to display. Uses matching.
+
 .EXAMPLE
-    C:\PS>Get-SCHANNELSetting
-    Example of how to use this cmdlet. Will show all SCHANNEL settings on the computer. Will output something similar to this:
-    Name                                 DisabledByDefault    Enabled FullPath
-    ----                                 -----------------    ------- --------
-    Ciphers\DES 56/56                                               0 HKLM:\SYSTEM\CurrentControlSet\Control\SecurityPro...
-    Ciphers\NULL                                                    0 HKLM:\SYSTEM\CurrentControlSet\Control\SecurityPro.
+    Get-SCHANNELSetting
+    Example of how to use this cmdlet. Will show all SCHANNEL settings on the computer. Will output something similar to this: Name DisabledByDefault Enabled FullPath ---- ----------------- ------- -------- Ciphers\DES 56/56 0 HKLM:\SYSTEM\CurrentControlSet\Control\SecurityPro... Ciphers\NULL 0 HKLM:\SYSTEM\CurrentControlSet\Control\SecurityPro.
+
 .EXAMPLE
-    C:\PS>Get-SCHANNELSetting -Name Ciphers
+    Get-SCHANNELSetting -Name Ciphers
     Will show all the Ciphers configured in the SCHANNEL registry settings.
+
 .EXAMPLE
-    C:\PS>Get-SCHANNELSetting -Name "TLS 1.0"
+    Get-SCHANNELSetting -Name "TLS 1.0"
     Will show all the TLS 1.0 SCHANNEL registry settings configured on the computer.
-.INPUTS
-    System.String
+
 .OUTPUTS
     System.Management.Automation.PSCustomObject
-.COMPONENT
-    Keldor
-.FUNCTIONALITY
-    SCHANNEL, registry, remediation
+
 .NOTES
     Author: Skyler Hart
     Created: 2022-09-05 00:24:25
     Last Edit: 2022-09-05 00:56:53
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-SCHANNELSetting
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-SCHANNELSetting')]
     param(
         [Parameter(

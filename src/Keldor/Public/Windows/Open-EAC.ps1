@@ -1,12 +1,43 @@
 function Open-EAC {
 <#
-.Notes
+.SYNOPSIS
+    Opens EAC.
+
+.DESCRIPTION
+    Opens EAC.
+
+.PARAMETER Chrome
+    Specifies whether to enable the Chrome option.
+
+.PARAMETER Edge
+    Specifies whether to enable the Edge option.
+
+.PARAMETER Firefox
+    Specifies whether to enable the Firefox option.
+
+.PARAMETER InternetExplorer
+    Specifies whether to enable the Internet Explorer option.
+
+.EXAMPLE
+    Open-EAC
+    Runs Open-EAC.
+
+.OUTPUTS
+    None
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 2021-10-18 22:55:39
     LASTEDIT: 2021-10-18 22:56:47
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-EAC
 #>
+
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
         "",

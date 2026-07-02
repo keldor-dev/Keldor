@@ -1,5 +1,21 @@
 function Update-HelpFromFile {
 <#
+.SYNOPSIS
+    Updates Help From File.
+
+.DESCRIPTION
+    Updates Help From File.
+
+.PARAMETER SourcePath
+    Specifies the path to use.
+
+.EXAMPLE
+    Update-HelpFromFile
+    Runs Update-HelpFromFile.
+
+.OUTPUTS
+    None
+
 .NOTES
     Author: Skyler Hart
     Created: 2021-12-17 22:54:13
@@ -7,10 +23,16 @@ function Update-HelpFromFile {
     Keywords:
     Other:
     Requires:
-        -RunAsAdministrator
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Update-HelpFromFile
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Update-HelpFromFile')]
     param(
         [Parameter()]

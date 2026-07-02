@@ -2,38 +2,42 @@ function Get-SCCMInstallStatus {
 <#
 .SYNOPSIS
     Short description
+
 .DESCRIPTION
     Long description
+
 .PARAMETER ComputerName
     Specifies the name of one or more computers.
-.PARAMETER Path
-    Specifies a path to one or more locations.
+
 .EXAMPLE
-    C:\PS>Get-SCCMInstallStatus
+    Get-SCCMInstallStatus
     Example of how to use this cmdlet
+
 .EXAMPLE
-    C:\PS>Get-SCCMInstallStatus -PARAMETER
+    Get-SCCMInstallStatus -PARAMETER
     Another example of how to use this cmdlet but with a parameter or switch.
-.INPUTS
-    System.String
+
 .OUTPUTS
     System.Management.Automation.PSCustomObject
-.COMPONENT
-    Keldor
-.FUNCTIONALITY
-    The functionality (keywords) that best describes this cmdlet
+
 .NOTES
     Author: Skyler Hart
     Created: 2023-03-29 23:01:59
     Last Edit: 2023-03-29 23:01:59
     Other:
     Requires:
-        -Module ActiveDirectory
-        -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-        -RunAsAdministrator
+    -Module ActiveDirectory
+    -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-SCCMInstallStatus
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-SCCMInstallStatus')]
     [Alias()]
     param(

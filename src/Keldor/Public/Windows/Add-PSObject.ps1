@@ -1,13 +1,37 @@
 function Add-PSObject {
 <#
-.Notes
+.SYNOPSIS
+    Adds PS Object.
+
+.DESCRIPTION
+    Adds PS Object.
+
+.PARAMETER CustomObject
+    Specifies whether to enable the Custom Object option.
+
+.EXAMPLE
+    Add-PSObject
+    Runs Add-PSObject.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 09/27/2017 17:13:32
     LASTEDIT: 12/21/2019 23:35:03
     KEYWORDS:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Add-PSObject
 #>
+
+
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-PSObject')]
     Param (
         [Parameter()]

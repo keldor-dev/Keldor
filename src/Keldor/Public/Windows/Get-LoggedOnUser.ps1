@@ -1,17 +1,42 @@
 function Get-LoggedOnUser {
 <#
-.Notes
+.SYNOPSIS
+    Gets Logged On User.
+
+.DESCRIPTION
+    Gets Logged On User.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.PARAMETER Lookup
+    Specifies whether to enable the Lookup option.
+
+.EXAMPLE
+    Get-LoggedOnUser
+    Runs Get-LoggedOnUser.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     LASTEDIT: 08/18/2017 20:58:59
     KEYWORDS:
     REQUIRES:
-        #Requires -Version 3.0
-        #Requires -Modules ActiveDirectory
-        #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-        #Requires -RunAsAdministrator
+    #Requires -Version 3.0
+    #Requires -Modules ActiveDirectory
+    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
+    #Requires -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-LoggedOnUser
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-LoggedOnUser')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]

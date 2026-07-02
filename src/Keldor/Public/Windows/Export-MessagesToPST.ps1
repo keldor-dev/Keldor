@@ -1,32 +1,47 @@
 function Export-MessagesToPST {
 <#
-   .Synopsis
+.SYNOPSIS
     This function exports a users mailbox to a pst.
-   .Description
+
+.DESCRIPTION
     This function exports a users mailbox to a pst.
-   .Example
-    Export-MessagesToPST -TargetUserAlias joe.snuffy
-    Exports joe.snuffy's mailbox to C:\Users\Desktop\joe.snuffy_mailboxyyyyMMddhhmm.pst where yyyyMMddhhmm is
-    the date and time the mailbox was exported.
-   .Example
-    Export-MessagesToPST -TargetUserAlias joe.snuffy -ExportPath "c:\test"
-    Exports joe.snuffy's mailbox to C:\test\joe.snuffy_mailboxyyyyMMddhhmm.pst where yyyyMMddhhmm is the date
-    and time the mailbox was exported.
-   .Parameter TargetUserAlias
+
+.PARAMETER TargetUserAlias
     Mandatory parameter. Specify the users alias in Exchange or primary smtp address.
-   .Parameter ExportPath
+
+.PARAMETER ExportPath
     By default saves to the logged on users desktop. You can specify where to save the pst to.
-   .Notes
+
+.EXAMPLE
+    Export-MessagesToPST -TargetUserAlias joe.snuffy
+    Exports joe.snuffy's mailbox to C:\Users\Desktop\joe.snuffy_mailboxyyyyMMddhhmm.pst where yyyyMMddhhmm is the date and time the mailbox was exported.
+
+.EXAMPLE
+    Export-MessagesToPST -TargetUserAlias joe.snuffy -ExportPath "c:\test"
+    Exports joe.snuffy's mailbox to C:\test\joe.snuffy_mailboxyyyyMMddhhmm.pst where yyyyMMddhhmm is the date and time the mailbox was exported.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 01/19/2014 01:20:00
     LASTEDIT: 2021-10-13 20:39:47
     KEYWORDS: Exchange, Mailbox, PST, export, InTh, Insider Threat
     REQUIRES:
-        #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-        #Requires -RunAsAdministrator
+    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
+    #Requires -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Export-MessagesToPST
 #>
+
+
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Export-MessagesToPST')]
     Param (
         [Parameter(Mandatory=$true, Position=0)]

@@ -1,18 +1,40 @@
 function Get-ENSStatus {
 <#
-.Notes
+.SYNOPSIS
+    Gets ENS Status.
+
+.DESCRIPTION
+    Gets ENS Status.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Get-ENSStatus
+    Runs Get-ENSStatus.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 09/10/2019 21:57:28
     LASTEDIT: 09/25/2019 14:43:59
     KEYWORDS:
     REQUIRES:
-        #Requires -Version 3.0
-        #Requires -Modules ActiveDirectory
-        #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-        #Requires -RunAsAdministrator
+    #Requires -Version 3.0
+    #Requires -Modules ActiveDirectory
+    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
+    #Requires -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-ENSStatus
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ENSStatus')]
     [Alias('ENS','Get-ENSInfo','ESS','Get-ESSInfo')]
     Param (

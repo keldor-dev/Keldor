@@ -1,12 +1,43 @@
 function Open-LexmarkManagementConsole {
 <#
-.Notes
+.SYNOPSIS
+    Opens Lexmark Management Console.
+
+.DESCRIPTION
+    Opens Lexmark Management Console.
+
+.PARAMETER Chrome
+    Specifies whether to enable the Chrome option.
+
+.PARAMETER Edge
+    Specifies whether to enable the Edge option.
+
+.PARAMETER Firefox
+    Specifies whether to enable the Firefox option.
+
+.PARAMETER InternetExplorer
+    Specifies whether to enable the Internet Explorer option.
+
+.EXAMPLE
+    Open-LexmarkManagementConsole
+    Runs Open-LexmarkManagementConsole.
+
+.OUTPUTS
+    None
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 2022-03-08 22:02:21
     LASTEDIT: 2022-03-08 22:02:21
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-LexmarkManagementConsole
 #>
+
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
         "",

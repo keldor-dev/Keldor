@@ -1,12 +1,43 @@
 function Open-CMLibrary {
 <#
-.Notes
+.SYNOPSIS
+    Opens CM Library.
+
+.DESCRIPTION
+    Opens CM Library.
+
+.PARAMETER Chrome
+    Specifies whether to enable the Chrome option.
+
+.PARAMETER Edge
+    Specifies whether to enable the Edge option.
+
+.PARAMETER Firefox
+    Specifies whether to enable the Firefox option.
+
+.PARAMETER InternetExplorer
+    Specifies whether to enable the Internet Explorer option.
+
+.EXAMPLE
+    Open-CMLibrary
+    Runs Open-CMLibrary.
+
+.OUTPUTS
+    None
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 2021-10-18 22:49:11
     LASTEDIT: 2021-10-18 22:51:31
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-CMLibrary
 #>
+
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
         "",

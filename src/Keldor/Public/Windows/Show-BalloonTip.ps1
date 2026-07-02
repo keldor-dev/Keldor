@@ -1,13 +1,44 @@
 function Show-BalloonTip {
 <#
-   .Notes
+.SYNOPSIS
+    Shows Balloon Tip.
+
+.DESCRIPTION
+    Shows Balloon Tip.
+
+.PARAMETER Text
+    Specifies the Text value.
+
+.PARAMETER Title
+    Specifies the Title value.
+
+.PARAMETER Icon
+    Specifies the Icon value.
+
+.PARAMETER Timeout
+    Specifies the Timeout value.
+
+.EXAMPLE
+    Show-BalloonTip -Text <value> -Title <value>
+    Runs Show-BalloonTip.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: Sometime before 2017-08-07
     LASTEDIT: 08/18/2017 20:47:33
     KEYWORDS:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Show-BalloonTip
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Show-BalloonTip')]
     [Alias('tip')]
     Param (

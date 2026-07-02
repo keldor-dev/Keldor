@@ -1,15 +1,34 @@
 function Stop-Database {
 <#
+.SYNOPSIS
+    Stops Database.
+
+.DESCRIPTION
+    Stops Database.
+
+.EXAMPLE
+    Stop-Database
+    Runs Stop-Database.
+
+.OUTPUTS
+    System.Object
+
 .NOTES
     Author: Skyler Hart
     Created: 2020-10-24 19:01:26
     Last Edit: 2023-02-07 22:33:18
     Keywords:
     Requires:
-        -RunAsAdministrator
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Stop-Database
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Stop-Database')]
     [Alias('Stop-Oracle','Stop-SQL','Stop-MongoDB')]
     param()

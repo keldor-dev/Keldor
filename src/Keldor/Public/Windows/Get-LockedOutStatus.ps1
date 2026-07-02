@@ -1,15 +1,37 @@
 function Get-LockedOutStatus {
 <#
-.Notes
+.SYNOPSIS
+    Gets Locked Out Status.
+
+.DESCRIPTION
+    Gets Locked Out Status.
+
+.PARAMETER Username
+    Specifies the Username value.
+
+.EXAMPLE
+    Get-LockedOutStatus
+    Runs Get-LockedOutStatus.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 09/21/2017 13:06:06
     LASTEDIT: 2022-09-01 23:01:39
     KEYWORDS:
     REQUIRES:
-        -Modules ActiveDirectory
+    -Modules ActiveDirectory
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-LockedOutStatus
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-LockedOutStatus')]
     Param (
         [Parameter(

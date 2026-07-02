@@ -1,13 +1,34 @@
 function Add-ProgressBar {
 <#
-.Notes
+.SYNOPSIS
+    Adds Progress Bar.
+
+.DESCRIPTION
+    Adds Progress Bar.
+
+.EXAMPLE
+    Add-ProgressBar
+    Runs Add-ProgressBar.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 04/23/2018 10:53:40
     LASTEDIT: 04/23/2018 10:53:40
     KEYWORDS:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Add-ProgressBar
 #>
+
+
+
+
+
+
+
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-ProgressBar')]
     Param ()
 $objectText = @"

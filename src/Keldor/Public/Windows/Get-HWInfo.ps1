@@ -1,15 +1,36 @@
 function Get-HWInfo {
-    <#
-    .NOTES
-        Author: Skyler Hart
-        Created: 2021-05-11 18:29:12
-        Last Edit: 2021-05-11 23:48:31
-        Requires:
-            -RunAsAdministrator
+<#
+.SYNOPSIS
+    Gets HW Info.
 
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Get-HWInfo
-    #>
+.DESCRIPTION
+    Gets HW Info.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Get-HWInfo
+    Runs Get-HWInfo.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
+    Author: Skyler Hart
+    Created: 2021-05-11 18:29:12
+    Last Edit: 2021-05-11 23:48:31
+    Requires:
+        -RunAsAdministrator
+
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Get-HWInfo
+#>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-HWInfo')]
     param(
         [Parameter(

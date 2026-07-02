@@ -2,47 +2,59 @@ function Test-NetworkSpeed {
 <#
 .SYNOPSIS
     Test network file transfer speeds, upload and download.
+
 .DESCRIPTION
     Will test the file transfer speed of a generated file and provide you with the speed in Mbps (Megabit) and MBps (Megabyte) for uploads and downloads to a SMB file share.
-.PARAMETER FileSize
-    Specifies the file size of the file to be generated and transferred. Enter in the format xxKB, xxMB, or xxGB.
+
 .PARAMETER LocalPath
     Specifies the path to the local folder where a file will be generated and where a file will be copied to.
+
 .PARAMETER RemotePath
     Specifies the path to the remote folder where a file will be generated and where a file will be copied to.
+
+.PARAMETER FileSize
+    Specifies the file size of the file to be generated and transferred. Enter in the format xxKB, xxMB, or xxGB.
+
 .EXAMPLE
-    C:\PS>Test-NetworkSpeed
+    Test-NetworkSpeed
     Example of how to use this cmdlet using the configured values in the Keldor config.ps1 file.
+
 .EXAMPLE
-    C:\PS>Test-NetworkSpeed -FileSize 500KB
+    Test-NetworkSpeed -FileSize 500KB
     Another example of how to use this cmdlet but with the FileSize parameter. This example will generate 500 Kilobyte files to transfer.
+
 .EXAMPLE
-    C:\PS>Test-NetworkSpeed -FileSize 100MB
+    Test-NetworkSpeed -FileSize 100MB
     Another example of how to use this cmdlet but with the FileSize parameter. This example will generate 100 Megabyte files to transfer.
+
 .EXAMPLE
-    C:\PS>Test-NetworkSpeed -FileSize 1GB
+    Test-NetworkSpeed -FileSize 1GB
     Another example of how to use this cmdlet but with the FileSize parameter. This example will generate 1 Gigabyte files to transfer.
+
 .EXAMPLE
-    C:\PS>Test-NetworkSpeed -LocalPath C:\Transfer
+    Test-NetworkSpeed -LocalPath C:\Transfer
     Another example of how to use this cmdlet but with the local path parameter.
+
 .EXAMPLE
-    C:\PS>Test-NetworkSpeed -LocalPath D:\Temp -RemotePath \\server1.keldor.dev\Transfer
+    Test-NetworkSpeed -LocalPath D:\Temp -RemotePath \\server1.keldor.dev\Transfer
     Another example of how to use this cmdlet but with the local and remote path parameters.
-.INPUTS
-    System.String, System.Int64
+
 .OUTPUTS
     System.Management.Automation.PSCustomObject
-.COMPONENT
-    Keldor
-.FUNCTIONALITY
-    Network, troubleshooting, speedtest, test
+
 .NOTES
     Author: Skyler Hart
     Created: 2022-06-24 18:21:40
     Last Edit: 2022-06-24 18:21:40
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Test-NetworkSpeed
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-NetworkSpeed')]
     param(
         [Parameter(

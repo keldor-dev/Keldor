@@ -1,44 +1,53 @@
 function Clear-Space {
-    <#
-    .Synopsis
-        Clears harddrive space
+<#
+.SYNOPSIS
+    Clears harddrive space
 
-    .Description
-        Clears harddrive space by clearing temp files and caches. Invoke method does not clear as many locations.       #DevSkim: ignore DS104456
+.DESCRIPTION
+    Clears harddrive space by clearing temp files and caches. Invoke method does not clear as many locations. #DevSkim: ignore DS104456
 
-    .Example
-        Clear-Space
-        Clears temp and cache data on the local computer
+.PARAMETER ComputerName
+    Specifies the computer or computers to clear space on
 
-    .Example
-        Clear-Space -ComputerName COMP1
-        Clears temp and cache data on the computer COMP1
+.PARAMETER InvokeMethod
+    Specifies the computer or computers to clear space on using the Invoke-WMIMethod command #DevSkim: ignore DS104456
 
-    .Example
-        Clear-Space -ComputerName (gc c:\complist.txt)
-        Clears temp and cache data on the computers listed in the file c:\complist.txt
+.EXAMPLE
+    Clear-Space
+    Clears temp and cache data on the local computer
 
-    .Example
-        Clear-Space -ComputerName (gc c:\complist.txt) -InvokeMethod
-        Clears temp and cache data on the computers listed in the file c:\complist.txt using the Invoke-WMIMethod
-        command.                                                                                                        #DevSkim: ignore DS104456
+.EXAMPLE
+    Clear-Space -ComputerName COMP1
+    Clears temp and cache data on the computer COMP1
 
-    .Parameter ComputerName
-        Specifies the computer or computers to clear space on
+.EXAMPLE
+    Clear-Space -ComputerName (gc c:\complist.txt)
+    Clears temp and cache data on the computers listed in the file c:\complist.txt
 
-    .Parameter InvokeMethod
-        Specifies the computer or computers to clear space on using the Invoke-WMIMethod command                        #DevSkim: ignore DS104456
+.EXAMPLE
+    Clear-Space -ComputerName (gc c:\complist.txt) -InvokeMethod
+    Clears temp and cache data on the computers listed in the file c:\complist.txt using the Invoke-WMIMethod command. #DevSkim: ignore DS104456
 
-    .Notes
-        AUTHOR: Skyler Hart
-        CREATED: 05/19/2017 20:16:47
-        LASTEDIT: 07/22/2019 14:21:15
-        KEYWORDS: Delete, temp, patches, cache, prefetch, SCCM
-        REMARKS: Needs to be ran as a user that has administrator rights
+.OUTPUTS
+    System.Object
 
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Clear-Space
-    #>
+.NOTES
+    AUTHOR: Skyler Hart
+    CREATED: 05/19/2017 20:16:47
+    LASTEDIT: 07/22/2019 14:21:15
+    KEYWORDS: Delete, temp, patches, cache, prefetch, SCCM
+    REMARKS: Needs to be ran as a user that has administrator rights
+
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Clear-Space
+#>
+
+
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Clear-Space')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]

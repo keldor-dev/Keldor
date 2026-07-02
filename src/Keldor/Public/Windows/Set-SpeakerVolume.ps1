@@ -1,13 +1,44 @@
 function Set-SpeakerVolume {
 <#
-.Notes
+.SYNOPSIS
+    Sets Speaker Volume.
+
+.DESCRIPTION
+    Sets Speaker Volume.
+
+.PARAMETER min
+    Specifies whether to enable the min option.
+
+.PARAMETER max
+    Specifies whether to enable the max option.
+
+.PARAMETER volume
+    Specifies the volume value.
+
+.PARAMETER mute
+    Specifies whether to enable the mute option.
+
+.EXAMPLE
+    Set-SpeakerVolume
+    Runs Set-SpeakerVolume.
+
+.OUTPUTS
+    None
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: Sometime before 2017-08-07
     LASTEDIT: 08/18/2017 20:47:06
     KEYWORDS:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-SpeakerVolume
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-SpeakerVolume')]
     [Alias('Volume')]
     Param (

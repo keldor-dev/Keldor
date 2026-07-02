@@ -1,25 +1,34 @@
 function Disable-RDP {
-    <#
-    .SYNOPSIS
-        Disables Remote Desktop Protocol (RDP) on the local computer.
+<#
+.SYNOPSIS
+    Disables Remote Desktop Protocol (RDP) on the local computer.
 
-    .DESCRIPTION
-        This function disables RDP on the local computer by modifying the appropriate registry key to deny RDP connections.
-        It requires administrative privileges to execute.
+.DESCRIPTION
+    This function disables RDP on the local computer by modifying the appropriate registry key to deny RDP connections. It requires administrative privileges to execute.
 
-    .EXAMPLE
-        Disable-RDP
-        Disables RDP on the local computer.
+.EXAMPLE
+    Disable-RDP
+    Disables RDP on the local computer.
 
-    .NOTES
-        AUTHOR: Skyler Hart
-        CREATED: 2021-02-27 11:44:34
-        LASTEDIT: 2024-11-27 13:00:00
-        REQUIRES: RunAsAdministrator
+.OUTPUTS
+    None
 
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Disable-RDP
-    #>
+.NOTES
+    AUTHOR: Skyler Hart
+    CREATED: 2021-02-27 11:44:34
+    LASTEDIT: 2024-11-27 13:00:00
+    REQUIRES: RunAsAdministrator
+
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Disable-RDP
+#>
+
+
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Disable-RDP')]
     param ()
 

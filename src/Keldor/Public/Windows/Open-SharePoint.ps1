@@ -1,12 +1,43 @@
 function Open-SharePoint {
 <#
-.Notes
+.SYNOPSIS
+    Opens Share Point.
+
+.DESCRIPTION
+    Opens Share Point.
+
+.PARAMETER Chrome
+    Specifies whether to enable the Chrome option.
+
+.PARAMETER Edge
+    Specifies whether to enable the Edge option.
+
+.PARAMETER Firefox
+    Specifies whether to enable the Firefox option.
+
+.PARAMETER InternetExplorer
+    Specifies whether to enable the Internet Explorer option.
+
+.EXAMPLE
+    Open-SharePoint
+    Runs Open-SharePoint.
+
+.OUTPUTS
+    None
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 2021-10-18 22:51:47
     LASTEDIT: 2021-10-18 22:52:18
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-SharePoint
 #>
+
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
         "",

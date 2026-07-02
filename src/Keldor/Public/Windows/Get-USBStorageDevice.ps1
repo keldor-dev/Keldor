@@ -2,24 +2,38 @@ function Get-USBStorageDevice {
 <#
 .SYNOPSIS
     Shows USB storage devices that have connected to a computer.
+
 .DESCRIPTION
     Shows USB storage devices that have connected to a local or remote computer. Limitations apply. Only shows devices that are listed in the registry. Sometimes, depending on the computer that is only the most recent device.
+
 .PARAMETER ComputerName
     Specifies the name of one or more computers.
+
 .EXAMPLE
-    C:\PS>Get-USBStorageDevice
+    Get-USBStorageDevice
     Example of how to use this cmdlet on a local computer.
+
 .EXAMPLE
-    C:\PS>Get-USBStorageDevice -ComputerName COMP1
+    Get-USBStorageDevice -ComputerName COMP1
     Shows the USB storage devices that have connected to the remote computer COMP1.
+
+.OUTPUTS
+    System.Object
+
 .NOTES
     Author: Skyler Hart
     Created: Sometime before 8/7/2017
     Last Edit: 2021-06-28 22:46:02
     Keywords:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-USBStorageDevice
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-USBStorageDevice')]
     Param (
         [Parameter(

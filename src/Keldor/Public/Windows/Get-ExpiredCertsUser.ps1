@@ -1,13 +1,31 @@
 function Get-ExpiredCertsUser {
-    <#
-    .Notes
-        AUTHOR: Skyler Hart
-        CREATED: 10/04/2018 21:08:39
-        LASTEDIT: 10/04/2018 21:09:34
+<#
+.SYNOPSIS
+    Gets Expired Certs User.
 
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Get-ExpiredCertsUser
-    #>
+.DESCRIPTION
+    Gets Expired Certs User.
+
+.EXAMPLE
+    Get-ExpiredCertsUser
+    Runs Get-ExpiredCertsUser.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
+    AUTHOR: Skyler Hart
+    CREATED: 10/04/2018 21:08:39
+    LASTEDIT: 10/04/2018 21:09:34
+
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Get-ExpiredCertsUser
+#>
+
+
+
+
+
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ExpiredCertsUser')]
     Param ()
 $cd = Get-Date

@@ -1,15 +1,40 @@
 function Set-FirefoxAutoUpdate {
 <#
-.Notes
+.SYNOPSIS
+    Sets Firefox Auto Update.
+
+.DESCRIPTION
+    Sets Firefox Auto Update.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.PARAMETER Enable
+    Specifies whether to enable the Enable option.
+
+.EXAMPLE
+    Set-FirefoxAutoUpdate
+    Runs Set-FirefoxAutoUpdate.
+
+.OUTPUTS
+    None
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 2021-06-20 01:01:26
     LASTEDIT: 2021-06-20 01:08:02
     KEYWORDS:
     REQUIRES:
-        #Requires -RunAsAdministrator
+    #Requires -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-FirefoxAutoUpdate
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-FirefoxAutoUpdate')]
     Param (
         [Parameter(

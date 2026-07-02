@@ -1,15 +1,37 @@
 function Initialize-GPUpdate {
 <#
+.SYNOPSIS
+    Initializes GP Update.
+
+.DESCRIPTION
+    Initializes GP Update.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Initialize-GPUpdate
+    Runs Initialize-GPUpdate.
+
+.OUTPUTS
+    System.Object
+
 .NOTES
     Author: Skyler Hart
     Created: 2021-06-16 21:41:53
     Last Edit: 2021-06-16 21:41:53
     Keywords:
     Requires:
-        -RunAsAdministrator
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Initialize-GPUpdate
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Initialize-GPUpdate')]
     param(
         [Parameter(Mandatory=$false)]

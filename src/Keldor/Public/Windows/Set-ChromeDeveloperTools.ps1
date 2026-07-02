@@ -2,34 +2,40 @@ function Set-ChromeDeveloperTools {
 <#
 .SYNOPSIS
     Will enable or disable Chrome Developer tools.
+
 .DESCRIPTION
     Sets the registry entry HKLM:\SOFTWARE\Policies\Google\Chrome\DeveloperToolsDisabled to 1 (Disabled) or 0 (Enabled)
+
 .PARAMETER Disable
     Will Disable Chrome Developer Tools.
+
 .EXAMPLE
-    C:\PS>Set-ChromeDeveloperTools
+    Set-ChromeDeveloperTools
     Example of how to use this cmdlet to enable Chrome Developer Tools.
+
 .EXAMPLE
-    C:\PS>Set-ChromeDeveloperTools -Disable
+    Set-ChromeDeveloperTools -Disable
     Example of how to use this cmdlet to disable Chrome Developer Tools.
-.INPUTS
-    System.String
+
 .OUTPUTS
     System.Management.Automation.PSCustomObject
-.COMPONENT
-    Keldor
-.FUNCTIONALITY
-    Chrome, Developer Tools
+
 .NOTES
     Author: Skyler Hart
     Created: 2022-09-20 19:53:22
     Last Edit: 2022-09-20 19:53:22
     Other:
     Requires:
-        -RunAsAdministrator
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-ChromeDeveloperTools
 #>
+
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSUseSingularNouns",
         "",

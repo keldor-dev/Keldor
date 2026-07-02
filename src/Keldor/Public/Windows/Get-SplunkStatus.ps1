@@ -1,15 +1,37 @@
 function Get-SplunkStatus {
 <#
+.SYNOPSIS
+    Gets Splunk Status.
+
+.DESCRIPTION
+    Gets Splunk Status.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Get-SplunkStatus
+    Runs Get-SplunkStatus.
+
+.OUTPUTS
+    System.Object
+
 .NOTES
     Author: Skyler Hart
     Created: 2021-08-13 21:52:22
     Last Edit: 2021-08-13 21:52:22
     Keywords:
     Other:
-        -RunAsAdministrator
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-SplunkStatus
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-SplunkStatus')]
     param(
         [Parameter(

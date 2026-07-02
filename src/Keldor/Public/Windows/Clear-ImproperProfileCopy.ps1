@@ -1,35 +1,44 @@
 function Clear-ImproperProfileCopy {
-    <#
-    .Synopsis
-        Clears Application Data folder that was improperly copied which happens when copy and pasting a profile.
+<#
+.SYNOPSIS
+    Clears Application Data folder that was improperly copied which happens when copy and pasting a profile.
 
-    .Description
-        Copies nested Application Data folders to a higher level (by default to C:\f2) and deletes them.
+.DESCRIPTION
+    Copies nested Application Data folders to a higher level (by default to C:\f2) and deletes them.
 
-    .Example
-        Clear-ImproperProfileCopy -Source \\fileserver\example\user -Destination E:\f2
-        Clears nested Application Data folders from \\fileserver\example\user. Uses E:\f2 as the folder for
-        clearing.
+.PARAMETER Source
+    Specifies the folder that contains the Application Data folder causing issues.
 
-    .Example
-        Clear-ImproperProfileCopy E:\temp\Profile E:\f2
-        Clears nested Application Data folders from E:\temp\Profile. Uses E:\f2 as the folder for clearing.
+.PARAMETER Destination
+    Specifies the folder that is used to copy the nested folders to and deletes them.
 
-    .Parameter Source
-        Specifies the folder that contains the Application Data folder causing issues.
+.EXAMPLE
+    Clear-ImproperProfileCopy -Source \\fileserver\example\user -Destination E:\f2
+    Clears nested Application Data folders from \\fileserver\example\user. Uses E:\f2 as the folder for clearing.
 
-    .Parameter Destination
-        Specifies the folder that is used to copy the nested folders to and deletes them.
+.EXAMPLE
+    Clear-ImproperProfileCopy E:\temp\Profile E:\f2
+    Clears nested Application Data folders from E:\temp\Profile. Uses E:\f2 as the folder for clearing.
 
-    .Notes
-        AUTHOR: Skyler Hart
-        CREATED: 06/11/2016 20:37:14
-        LASTEDIT: 2020-04-15 21:54:21
-        KEYWORDS: user, profile, app data, application data, cleanup, clear, improper
+.OUTPUTS
+    System.Object
 
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Clear-ImproperProfileCopy
-    #>
+.NOTES
+    AUTHOR: Skyler Hart
+    CREATED: 06/11/2016 20:37:14
+    LASTEDIT: 2020-04-15 21:54:21
+    KEYWORDS: user, profile, app data, application data, cleanup, clear, improper
+
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Clear-ImproperProfileCopy
+#>
+
+
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Clear-ImproperProfileCopy')]
     Param (
         [Parameter(Mandatory=$true, Position=0)]

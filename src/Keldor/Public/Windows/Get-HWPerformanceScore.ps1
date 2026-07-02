@@ -1,15 +1,45 @@
 function Get-HWPerformanceScore {
-    <#
-    .NOTES
-        Author: Skyler Hart
-        Created: 2022-06-04 22:43:29
-        Last Edit: 2022-06-04 22:43:29
-        Requires:
-            -RunAsAdministrator
+<#
+.SYNOPSIS
+    Gets HW Performance Score.
 
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Get-HWPerformanceScore
-    #>
+.DESCRIPTION
+    Gets HW Performance Score.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.PARAMETER MaxThreads
+    Specifies the Max Threads value.
+
+.PARAMETER SleepTimer
+    Specifies the Sleep Timer value.
+
+.PARAMETER MaxResultTime
+    Specifies the Max Result Time value.
+
+.EXAMPLE
+    Get-HWPerformanceScore
+    Runs Get-HWPerformanceScore.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
+    Author: Skyler Hart
+    Created: 2022-06-04 22:43:29
+    Last Edit: 2022-06-04 22:43:29
+    Requires:
+        -RunAsAdministrator
+
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Get-HWPerformanceScore
+#>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-HWPerformanceScore')]
     Param (
         [Parameter(

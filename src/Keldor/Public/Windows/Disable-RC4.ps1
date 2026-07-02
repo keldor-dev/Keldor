@@ -1,18 +1,42 @@
 function Disable-RC4 {
 <#
-.Notes
+.SYNOPSIS
+    Disables RC4.
+
+.DESCRIPTION
+    Disables RC4.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Disable-RC4
+    Runs Disable-RC4.
+
+.OUTPUTS
+    None
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 04/23/2018 15:00:09
     LASTEDIT: 04/23/2018 15:00:09
     KEYWORDS:
     REQUIRES:
-        #Requires -Version 3.0
-        #Requires -Modules ActiveDirectory
-        #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-        #Requires -RunAsAdministrator
+    #Requires -Version 3.0
+    #Requires -Modules ActiveDirectory
+    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
+    #Requires -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Disable-RC4
 #>
+
+
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Disable-RC4')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]

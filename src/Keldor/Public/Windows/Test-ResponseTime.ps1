@@ -2,42 +2,50 @@ function Test-ResponseTime {
 <#
 .SYNOPSIS
     Finds the response time of a remote computer.
+
 .DESCRIPTION
     Will find average, minimum, and maximum response times (from four pings) of a remote computer, which defaults to the computers logon server if an address is not specified.
 
 .PARAMETER RemoteAddress
     Specifies the name of one or more remote computers.
+
 .PARAMETER ThrottleLimit
     Allows you to specify the most remote computers that will be tested at a time, defaults to 5.
+
 .EXAMPLE
-    C:\PS>Test-ResponseTime
+    Test-ResponseTime
     Example of how to use this cmdlet.
+
 .EXAMPLE
-    C:\PS>Test-ResponseTime www.wanderingstag.com
+    Test-ResponseTime www.wanderingstag.com
     Shows how to test the response time to the website www.wanderingstag.com.
+
 .EXAMPLE
-    C:\PS>Test-ResponseTime COMP1,www.wanderingstag.com
+    Test-ResponseTime COMP1,www.wanderingstag.com
     Shows how to test the response time to the computer COMP1 and the website www.wanderingstag.com.
+
 .EXAMPLE
-    C:\PS>Test-MTU COMP1,COMP2,COMP3,www.wanderingstag.com -ThrottleLimit 2
+    Test-MTU COMP1,COMP2,COMP3,www.wanderingstag.com -ThrottleLimit 2
     Shows how to test the response times to multiple computers, the test will be performed against two of the computers at a time.
-.INPUTS
-    System.String
+
 .OUTPUTS
     System.Management.Automation.PSCustomObject
-.COMPONENT
-    Keldor
-.FUNCTIONALITY
-    Response time, ping, network, connectivity, troubleshooting
+
 .NOTES
     Author: Skyler Hart
     Created: 2023-02-01 22:51:01
     Last Edit: 2023-02-01 22:51:01
     Other:
     Requires:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Test-ResponseTime
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-ResponseTime')]
     param (
         [Parameter()]

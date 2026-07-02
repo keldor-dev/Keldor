@@ -1,50 +1,58 @@
 function Get-InstalledProgram {
-    <#
-    .SYNOPSIS
-        Displays installed programs on a computer.
+<#
+.SYNOPSIS
+    Displays installed programs on a computer.
 
-    .DESCRIPTION
-        Displays a list of installed programs on a local or remote computer by querying the registry.
+.DESCRIPTION
+    Displays a list of installed programs on a local or remote computer by querying the registry.
 
-    .PARAMETER ComputerName
-        Specifies the name of one or more computers.
+.PARAMETER ComputerName
+    Specifies the name of one or more computers.
 
-    .PARAMETER Property
-        Will add additional properties to pull from the Uninstall key in the registry.
+.PARAMETER Property
+    Will add additional properties to pull from the Uninstall key in the registry.
 
-    .EXAMPLE
-        C:\PS>Get-InstalledProgram
-        Shows the installed programs on the local computer.
+.EXAMPLE
+    Get-InstalledProgram
+    Shows the installed programs on the local computer.
 
-    .EXAMPLE
-        C:\PS>Get-InstalledProgram -ComputerName COMPUTER1
-        Shows the installed programs on the remote computer COMPUTER1.
+.EXAMPLE
+    Get-InstalledProgram -ComputerName COMPUTER1
+    Shows the installed programs on the remote computer COMPUTER1.
 
-    .EXAMPLE
-        C:\PS>Get-InstalledProgram -ComputerName COMPUTER1,COMPUTER2
-        Shows the installed programs on the remote computers COMPUTER1 and COMPUTER2.
+.EXAMPLE
+    Get-InstalledProgram -ComputerName COMPUTER1,COMPUTER2
+    Shows the installed programs on the remote computers COMPUTER1 and COMPUTER2.
 
-    .EXAMPLE
-        C:\PS>Get-InstalledProgram (gc C:\Temp\computers.txt)
-        Shows the installed programs on the remote computers listed in the computers.txt file (each computer name on a new line.)
+.EXAMPLE
+    Get-InstalledProgram (gc C:\Temp\computers.txt)
+    Shows the installed programs on the remote computers listed in the computers.txt file (each computer name on a new line.)
 
-    .EXAMPLE
-        C:\PS>Get-InstalledProgram COMPUTER1 -Property InstallSource
-        Shows the installed programs on the remote computer COMPUTER1 and also shows the additional property InstallSource from the registry.
+.EXAMPLE
+    Get-InstalledProgram COMPUTER1 -Property InstallSource
+    Shows the installed programs on the remote computer COMPUTER1 and also shows the additional property InstallSource from the registry.
 
-    .EXAMPLE
-        C:\PS>Get-InstalledProgram COMPUTER1,COMPUTER2 -Property InstallSource,Comments
-        Shows the installed programs on the remote computers COMPUTER1 and COMPUTER2. Also shows the additional properties InstallSource and Comments from the registry.
+.EXAMPLE
+    Get-InstalledProgram COMPUTER1,COMPUTER2 -Property InstallSource,Comments
+    Shows the installed programs on the remote computers COMPUTER1 and COMPUTER2. Also shows the additional properties InstallSource and Comments from the registry.
 
-    .NOTES
-        Author: Skyler Hart
-        Created: Sometime prior to 2017-08
-        Last Edit: 2020-08-19 23:03:32
-        Keywords: Software, Programs, management
+.OUTPUTS
+    System.Object
 
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Get-InstalledProgram
-    #>
+.NOTES
+    Author: Skyler Hart
+    Created: Sometime prior to 2017-08
+    Last Edit: 2020-08-19 23:03:32
+    Keywords: Software, Programs, management
+
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Get-InstalledProgram
+#>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-InstalledProgram', SupportsShouldProcess=$true)]
     param(
         [Parameter(ValueFromPipeline=$true,

@@ -1,15 +1,37 @@
 function Set-RemoteDesktopCert {
 <#
+.SYNOPSIS
+    Sets Remote Desktop Cert.
+
+.DESCRIPTION
+    Sets Remote Desktop Cert.
+
+.PARAMETER Thumbprint
+    Specifies the Thumbprint value.
+
+.EXAMPLE
+    Set-RemoteDesktopCert -Thumbprint <value>
+    Runs Set-RemoteDesktopCert.
+
+.OUTPUTS
+    System.Object
+
 .NOTES
     Author: Skyler Hart
     Created: 2021-11-18 22:53:02
     Last Edit: 2021-11-18 22:53:02
     Keywords:
     Requires:
-        -RunAsAdministrator
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-RemoteDesktopCert
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-RemoteDesktopCert')]
     [Alias('Set-RDPCert')]
     param(

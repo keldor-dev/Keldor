@@ -1,13 +1,35 @@
 function Get-NetworkLevelAuthentication {
 <#
+.SYNOPSIS
+    Gets Network Level Authentication.
+
+.DESCRIPTION
+    Gets Network Level Authentication.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Get-NetworkLevelAuthentication
+    Runs Get-NetworkLevelAuthentication.
+
+.OUTPUTS
+    System.Object
+
 .NOTES
     Author: Skyler Hart
     Created: 2020-04-18 15:28:10
     Last Edit: 2020-04-18 15:28:10
     Keywords: Network, NLA, Network Level Authentication, RDP, Remote Desktop
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-NetworkLevelAuthentication
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-NetworkLevelAuthentication')]
     [Alias('Get-NLA')]
     param(

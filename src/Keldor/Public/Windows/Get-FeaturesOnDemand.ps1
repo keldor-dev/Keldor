@@ -1,15 +1,33 @@
 function Get-FeaturesOnDemand {
-    <#
-    .Notes
-        AUTHOR: Skyler Hart
-        CREATED: 09/25/2019 14:13:50
-        LASTEDIT: 2020-08-31 21:44:37
-        REQUIRES:
-            Requires -RunAsAdministrator
+<#
+.SYNOPSIS
+    Gets Features On Demand.
 
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Get-FeaturesOnDemand
-    #>
+.DESCRIPTION
+    Gets Features On Demand.
+
+.EXAMPLE
+    Get-FeaturesOnDemand
+    Runs Get-FeaturesOnDemand.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
+    AUTHOR: Skyler Hart
+    CREATED: 09/25/2019 14:13:50
+    LASTEDIT: 2020-08-31 21:44:37
+    REQUIRES:
+        Requires -RunAsAdministrator
+
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Get-FeaturesOnDemand
+#>
+
+
+
+
+
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-FeaturesOnDemand')]
     Param ()
 $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())

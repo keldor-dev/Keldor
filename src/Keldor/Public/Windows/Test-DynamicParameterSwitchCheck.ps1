@@ -2,20 +2,37 @@ function Test-DynamicParameterSwitchCheck {
 <#
 .SYNOPSIS
     Non-functional. For reference.
+
 .DESCRIPTION
     Shows how to create a function with dynamic parameters (Add and Modify) that only appear if the username parameter is populated and the Enable switch is added.
-.COMPONENT
-    Keldor
-.FUNCTIONALITY
-    Example, Reference
+
+.PARAMETER UserName
+    Specifies the User Name value.
+
+.PARAMETER Enable
+    Specifies whether to enable the Enable option.
+
+.EXAMPLE
+    Test-DynamicParameterSwitchCheck
+    Runs Test-DynamicParameterSwitchCheck.
+
+.OUTPUTS
+    System.Object
+
 .NOTES
     Author: Skyler Hart
     Created: 2022-09-11 01:28:57
     Last Edit: 2022-09-11 01:41:04
     Other:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Test-DynamicParameterSwitchCheck
 #>
+
+
+
+
+
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-DynamicParameterSwitchCheck')]
 Param (
         [Parameter(Mandatory = $false)]

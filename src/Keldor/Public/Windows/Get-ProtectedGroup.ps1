@@ -1,15 +1,34 @@
 function Get-ProtectedGroup {
 <#
-.Notes
+.SYNOPSIS
+    Gets Protected Group.
+
+.DESCRIPTION
+    Gets Protected Group.
+
+.EXAMPLE
+    Get-ProtectedGroup
+    Runs Get-ProtectedGroup.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 02/05/2018 17:24:35
     LASTEDIT: 2022-09-04 02:30:15
     KEYWORDS:
     REQUIRES:
-        -Modules ActiveDirectory
+    -Modules ActiveDirectory
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-ProtectedGroup
 #>
+
+
+
+
+
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ProtectedGroup')]
     Param ()
 if (Get-Module -ListAvailable -Name ActiveDirectory) {

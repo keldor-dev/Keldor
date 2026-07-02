@@ -1,17 +1,48 @@
 function Update-ModulesFromLocalRepo {
 <#
+.SYNOPSIS
+    Updates Modules From Local Repo.
+
+.DESCRIPTION
+    Updates Modules From Local Repo.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.PARAMETER MaxThreads
+    Specifies the Max Threads value.
+
+.PARAMETER SleepTimer
+    Specifies the Sleep Timer value.
+
+.PARAMETER MaxResultTime
+    Specifies the Max Result Time value.
+
+.EXAMPLE
+    Update-ModulesFromLocalRepo
+    Runs Update-ModulesFromLocalRepo.
+
+.OUTPUTS
+    System.Object
+
 .NOTES
     Author: Skyler Hart
     Created: 2022-06-29 21:51:12
     Last Edit: 2022-06-29 21:51:12
     Other:
     Requires:
-        -Module ActiveDirectory
-        -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-        -RunAsAdministrator
+    -Module ActiveDirectory
+    -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Update-ModulesFromLocalRepo
 #>
+
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
         "",

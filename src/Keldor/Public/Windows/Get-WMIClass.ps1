@@ -1,14 +1,36 @@
 #Look up "root\WMI" or "root\CCM" using Get-ComputerWMINamespaces
 function Get-WMIClass {
 <#
-.Notes
+.SYNOPSIS
+    Gets WMI Class.
+
+.DESCRIPTION
+    Gets WMI Class.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Get-WMIClass
+    Runs Get-WMIClass.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 09/21/2017 13:05:10
     LASTEDIT: 09/21/2017 13:05:10
     KEYWORDS:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-WMIClass
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-WMIClass')]
     Param (
         [Parameter(

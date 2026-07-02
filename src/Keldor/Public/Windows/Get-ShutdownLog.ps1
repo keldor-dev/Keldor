@@ -1,13 +1,41 @@
 function Get-ShutdownLog {
 <#
-.Notes
+.SYNOPSIS
+    Gets Shutdown Log.
+
+.DESCRIPTION
+    Gets Shutdown Log.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.PARAMETER DaysBackToSearch
+    Specifies the Days Back To Search value.
+
+.PARAMETER MostRecent
+    Specifies the Most Recent value.
+
+.EXAMPLE
+    Get-ShutdownLog
+    Runs Get-ShutdownLog.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 08/28/2019 22:13:23
     LASTEDIT: 08/29/2019 00:17:09
     KEYWORDS:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-ShutdownLog
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ShutdownLog')]
     Param (
         [Parameter(HelpMessage = "Enter one or more computer names separated by commas.",

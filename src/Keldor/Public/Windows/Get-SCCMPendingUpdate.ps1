@@ -2,38 +2,42 @@ function Get-SCCMPendingUpdate {
 <#
 .SYNOPSIS
     Short description
+
 .DESCRIPTION
     Long description
+
 .PARAMETER ComputerName
     Specifies the name of one or more computers.
-.PARAMETER Path
-    Specifies a path to one or more locations.
+
 .EXAMPLE
-    C:\PS>Get-SCCMPendingUpdate
+    Get-SCCMPendingUpdate
     Example of how to use this cmdlet
+
 .EXAMPLE
-    C:\PS>Get-SCCMPendingUpdate -PARAMETER
+    Get-SCCMPendingUpdate -PARAMETER
     Another example of how to use this cmdlet but with a parameter or switch.
-.INPUTS
-    System.String
+
 .OUTPUTS
     System.Management.Automation.PSCustomObject
-.COMPONENT
-    Keldor
-.FUNCTIONALITY
-    The functionality (keywords) that best describes this cmdlet
+
 .NOTES
     Author: Skyler Hart
     Created: 2023-03-29 22:31:19
     Last Edit: 2023-03-29 22:31:19
     Other:
     Requires:
-        -Module ActiveDirectory
-        -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-        -RunAsAdministrator
+    -Module ActiveDirectory
+    -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-SCCMPendingUpdate
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-SCCMPendingUpdate')]
     [Alias()]
     param(

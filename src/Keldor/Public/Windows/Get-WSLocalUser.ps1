@@ -1,15 +1,49 @@
 function Get-WSLocalUser {
 <#
+.SYNOPSIS
+    Gets WS Local User.
+
+.DESCRIPTION
+    Gets WS Local User.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.PARAMETER MaxThreads
+    Specifies the Max Threads value.
+
+.PARAMETER SleepTimer
+    Specifies the Sleep Timer value.
+
+.PARAMETER MaxResultTime
+    Specifies the Max Result Time value.
+
+.PARAMETER Output
+    Specifies the Output value.
+
+.EXAMPLE
+    Get-WSLocalUser
+    Runs Get-WSLocalUser.
+
+.OUTPUTS
+    System.Object
+
 .NOTES
     Author: Skyler Hart
     Created: 2021-02-27 22:05:08
     Last Edit: 2021-02-28 21:05:57
     Keywords:
     Requires:
-        -RunAsAdministrator
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-WSLocalUser
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-WSLocalUser')]
     param(
         [Parameter(

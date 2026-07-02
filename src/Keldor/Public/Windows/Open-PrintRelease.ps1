@@ -1,12 +1,43 @@
 function Open-PrintRelease {
 <#
-.Notes
+.SYNOPSIS
+    Opens Print Release.
+
+.DESCRIPTION
+    Opens Print Release.
+
+.PARAMETER Chrome
+    Specifies whether to enable the Chrome option.
+
+.PARAMETER Edge
+    Specifies whether to enable the Edge option.
+
+.PARAMETER Firefox
+    Specifies whether to enable the Firefox option.
+
+.PARAMETER InternetExplorer
+    Specifies whether to enable the Internet Explorer option.
+
+.EXAMPLE
+    Open-PrintRelease
+    Runs Open-PrintRelease.
+
+.OUTPUTS
+    None
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 2022-03-08 22:02:21
     LASTEDIT: 2022-03-08 22:02:21
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-PrintRelease
 #>
+
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
         "",

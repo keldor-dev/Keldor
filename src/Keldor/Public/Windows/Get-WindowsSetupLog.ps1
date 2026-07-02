@@ -1,13 +1,41 @@
 function Get-WindowsSetupLog {
 <#
-   .Notes
+.SYNOPSIS
+    Gets Windows Setup Log.
+
+.DESCRIPTION
+    Gets Windows Setup Log.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.PARAMETER DaysBackToSearch
+    Specifies the Days Back To Search value.
+
+.PARAMETER MostRecent
+    Specifies the Most Recent value.
+
+.EXAMPLE
+    Get-WindowsSetupLog
+    Runs Get-WindowsSetupLog.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 03/18/2019 15:43:03
     LASTEDIT: 08/28/2019 22:06:44
     KEYWORDS:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-WindowsSetupLog
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-WindowsSetupLog')]
     [Alias('Get-UpdateStatus','Get-UpdateLog')]
     Param (

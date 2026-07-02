@@ -1,16 +1,39 @@
 function Get-BitLockerStatus {
-    <#
-    .NOTES
-        Author: Skyler Hart
-        Created: 2020-04-22 22:10:27
-        Last Edit: 2020-04-22 22:10:27
-        Keywords: BitLocker, Local, Remote, manage, manage-bde, bde
-        Requires:
-            -RunAsAdministrator
+<#
+.SYNOPSIS
+    Gets Bit Locker Status.
 
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Get-BitLockerStatus
-    #>
+.DESCRIPTION
+    Gets Bit Locker Status.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Get-BitLockerStatus
+    Runs Get-BitLockerStatus.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
+    Author: Skyler Hart
+    Created: 2020-04-22 22:10:27
+    Last Edit: 2020-04-22 22:10:27
+    Keywords: BitLocker, Local, Remote, manage, manage-bde, bde
+    Requires:
+        -RunAsAdministrator
+
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Get-BitLockerStatus
+#>
+
+
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-BitLockerStatus')]
     param(
         [Parameter(

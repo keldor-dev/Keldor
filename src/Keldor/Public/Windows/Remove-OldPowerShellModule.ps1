@@ -1,5 +1,30 @@
 function Remove-OldPowerShellModule {
 <#
+.SYNOPSIS
+    Removes Old Power Shell Module.
+
+.DESCRIPTION
+    Removes Old Power Shell Module.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.PARAMETER MaxThreads
+    Specifies the Max Threads value.
+
+.PARAMETER SleepTimer
+    Specifies the Sleep Timer value.
+
+.PARAMETER MaxResultTime
+    Specifies the Max Result Time value.
+
+.EXAMPLE
+    Remove-OldPowerShellModule
+    Runs Remove-OldPowerShellModule.
+
+.OUTPUTS
+    System.Object
+
 .NOTES
     Author: Skyler Hart
     Created: 2021-08-31 23:58:29
@@ -7,10 +32,16 @@ function Remove-OldPowerShellModule {
     Keywords:
     Other:
     Requires:
-        -RunAsAdministrator
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Remove-OldPowerShellModule
 #>
+
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
         "",

@@ -1,13 +1,34 @@
 function Get-DirectoryStat {
-    <#
-    .NOTES
-        Author: Skyler Hart
-        Created: 2020-08-09 10:07:49
-        Last Edit: 2020-08-09 21:35:14
+<#
+.SYNOPSIS
+    Gets Directory Stat.
 
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Get-DirectoryStat
-    #>
+.DESCRIPTION
+    Gets Directory Stat.
+
+.PARAMETER DirectoryName
+    Specifies the path to use.
+
+.EXAMPLE
+    Get-DirectoryStat -DirectoryName <value>
+    Runs Get-DirectoryStat.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
+    Author: Skyler Hart
+    Created: 2020-08-09 10:07:49
+    Last Edit: 2020-08-09 21:35:14
+
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Get-DirectoryStat
+#>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-DirectoryStat')]
     param(
         [Parameter(

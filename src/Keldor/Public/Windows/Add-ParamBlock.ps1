@@ -1,13 +1,34 @@
 function Add-ParamBlock {
 <#
-.Notes
+.SYNOPSIS
+    Adds Param Block.
+
+.DESCRIPTION
+    Adds Param Block.
+
+.EXAMPLE
+    Add-ParamBlock
+    Runs Add-ParamBlock.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 09/27/2017 15:14:53
     LASTEDIT: 12/20/2019 22:15:51
     KEYWORDS:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Add-ParamBlock
 #>
+
+
+
+
+
+
+
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-ParamBlock')]
     Param ()
 $paramblockText = @"

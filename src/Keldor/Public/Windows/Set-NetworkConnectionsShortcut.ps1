@@ -1,15 +1,37 @@
 function Set-NetworkConnectionsShortcut {
 <#
+.SYNOPSIS
+    Sets Network Connections Shortcut.
+
+.DESCRIPTION
+    Sets Network Connections Shortcut.
+
+.PARAMETER Path
+    Specifies the path to use.
+
+.EXAMPLE
+    Set-NetworkConnectionsShortcut -Path <value>
+    Runs Set-NetworkConnectionsShortcut.
+
+.OUTPUTS
+    None
+
 .NOTES
     Author: Skyler Hart
     Created: 2020-05-08 23:01:21
     Last Edit: 2021-10-13 20:55:00
     Keywords:
     Requires:
-        -RunAsAdministrator if placing in Public Desktop.
+    -RunAsAdministrator if placing in Public Desktop.
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-NetworkConnectionsShortcut
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-NetworkConnectionsShortcut')]
     param(
         [Parameter(

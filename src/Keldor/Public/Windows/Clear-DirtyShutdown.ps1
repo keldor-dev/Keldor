@@ -1,44 +1,41 @@
 function Clear-DirtyShutdown {
-    <#
-    .SYNOPSIS
-        Clears dirty shutdown registry key.
+<#
+.SYNOPSIS
+    Clears dirty shutdown registry key.
 
-    .DESCRIPTION
-        Clears the registry key that prompts you to enter a reason the computer/server was shutdown, even after a
-        clean shutdown.
+.DESCRIPTION
+    Clears the registry key that prompts you to enter a reason the computer/server was shutdown, even after a clean shutdown.
 
-    .PARAMETER ComputerName
-        Specifies the name of one or more computers.
+.PARAMETER ComputerName
+    Specifies the name of one or more computers.
 
-    .EXAMPLE
-        C:\PS>Clear-DirtyShutdown
-        Will clear a dirty shutdown that causes the shutdown tracker to appear.
+.EXAMPLE
+    Clear-DirtyShutdown
+    Will clear a dirty shutdown that causes the shutdown tracker to appear.
 
-    .EXAMPLE
-        C:\PS>Clear-DirtyShutdown -ComputerName COMP1
-        Will clear the dirty shutdown on COMP1. You must have admin rights on the remote computer.
+.EXAMPLE
+    Clear-DirtyShutdown -ComputerName COMP1
+    Will clear the dirty shutdown on COMP1. You must have admin rights on the remote computer.
 
-    .INPUTS
-        System.String
+.OUTPUTS
+    No output
 
-    .OUTPUTS
-        No output
+.NOTES
+    Author: Skyler Hart
+    Created: 2020-05-08 17:54:09
+    Last Edit: 2021-12-19 23:58:28
+    Requires -RunAsAdministrator
 
-    .COMPONENT
-        Keldor
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Clear-DirtyShutdown
+#>
 
-    .FUNCTIONALITY
-        registry, dirty shutdown, computer management, server
 
-    .NOTES
-        Author: Skyler Hart
-        Created: 2020-05-08 17:54:09
-        Last Edit: 2021-12-19 23:58:28
-        Requires -RunAsAdministrator
 
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Clear-DirtyShutdown
-    #>
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Clear-DirtyShutdown')]
     param(
         [Parameter(

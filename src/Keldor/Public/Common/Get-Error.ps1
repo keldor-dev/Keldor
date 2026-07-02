@@ -1,13 +1,36 @@
 function Get-Error {
-    <#
-    .NOTES
-        Author: Skyler Hart
-        Created: 2020-04-18 16:42:46
-        Last Edit: 2020-04-18 19:08:44
+<#
+.SYNOPSIS
+    Gets Error.
 
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Get-Error
-    #>
+.DESCRIPTION
+    Gets Error.
+
+.PARAMETER HowMany
+    Specifies the How Many value.
+
+.EXAMPLE
+    Get-Error
+    Runs Get-Error.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
+    Author: Skyler Hart
+    Created: 2020-04-18 16:42:46
+    Last Edit: 2020-04-18 19:08:44
+
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Get-Error
+#>
+
+
+
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
         "",

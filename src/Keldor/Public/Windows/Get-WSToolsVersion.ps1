@@ -1,13 +1,38 @@
 function Get-WSToolsVersion {
 <#
-.Notes
+.SYNOPSIS
+    Gets WS Tools Version.
+
+.DESCRIPTION
+    Gets WS Tools Version.
+
+.PARAMETER Remote
+    Specifies whether to enable the Remote option.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Get-WSToolsVersion
+    Runs Get-WSToolsVersion.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 02/09/2018 00:23:25
     LASTEDIT: 02/14/2018 11:05:37
     KEYWORDS:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-WSToolsVersion
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-WSToolsVersion')]
     [Alias('WSToolsVersion')]
     Param (

@@ -1,14 +1,45 @@
 function Open-EITSM {
-    <#
-       .Notes
-        AUTHOR: Skyler Hart
-        CREATED: 10/03/2017 10:52:44
-        LASTEDIT: 2020-04-17 15:47:44
-        KEYWORDS:
-        REQUIRES:
+<#
+.SYNOPSIS
+    Opens EITSM.
+
+.DESCRIPTION
+    Opens EITSM.
+
+.PARAMETER Chrome
+    Specifies whether to enable the Chrome option.
+
+.PARAMETER Edge
+    Specifies whether to enable the Edge option.
+
+.PARAMETER Firefox
+    Specifies whether to enable the Firefox option.
+
+.PARAMETER InternetExplorer
+    Specifies whether to enable the Internet Explorer option.
+
+.EXAMPLE
+    Open-EITSM
+    Runs Open-EITSM.
+
+.OUTPUTS
+    None
+
+.NOTES
+    AUTHOR: Skyler Hart
+    CREATED: 10/03/2017 10:52:44
+    LASTEDIT: 2020-04-17 15:47:44
+    KEYWORDS:
+    REQUIRES:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-EITSM
 #>
+
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
         "",

@@ -1,13 +1,38 @@
 function Get-ModuleCommandCount {
-    <#
-    .NOTES
-        Author: Skyler Hart
-        Created: 2021-10-19 19:50:28
-        Last Edit: 2021-10-19 19:50:28
-        Keywords:
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Get-ModuleCommandCount
-    #>
+<#
+.SYNOPSIS
+    Gets Module Command Count.
+
+.DESCRIPTION
+    Gets Module Command Count.
+
+.PARAMETER Name
+    Specifies the Name value.
+
+.PARAMETER Functions
+    Specifies whether to enable the Functions option.
+
+.EXAMPLE
+    Get-ModuleCommandCount -Name <value>
+    Runs Get-ModuleCommandCount.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
+    Author: Skyler Hart
+    Created: 2021-10-19 19:50:28
+    Last Edit: 2021-10-19 19:50:28
+    Keywords:
+
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Get-ModuleCommandCount
+#>
+
+
+
+
+
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ModuleCommandCount')]
         param(
             [Parameter(

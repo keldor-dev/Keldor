@@ -1,15 +1,46 @@
 function Enable-TLS1.1 { #DevSkim: ignore DS169125,DS440000
+
+
+
+
+
+
+
 <#
+.SYNOPSIS
+    Enables TLS1.1.
+
+.DESCRIPTION
+    Enables TLS1.1.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Enable-TLS1.1
+    Runs Enable-TLS1.1.
+
+.OUTPUTS
+    None
+
 .NOTES
     Author: Skyler Hart
     Created: 2021-04-22 19:16:48
     Last Edit: 2021-04-22 19:16:48
     Keywords:
     Requires:
-        -RunAsAdministrator
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Enable-TLS1.1
 #>
+
+
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Enable-TLS1.1')]
     param(
         [Parameter(

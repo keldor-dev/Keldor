@@ -1,26 +1,33 @@
 function Copy-VSCodeSettingsToProfile {
-    <#
-    .SYNOPSIS
-        Copies Visual Studio Code settings to the user's profile.
+<#
+.SYNOPSIS
+    Copies Visual Studio Code settings to the user's profile.
 
-    .DESCRIPTION
-        This function copies Visual Studio Code settings from a configured repository path to the user's profile, ensuring the settings are up-to-date.
+.DESCRIPTION
+    This function copies Visual Studio Code settings from a configured repository path to the user's profile, ensuring the settings are up-to-date.
 
-    .PARAMETER VSCodeSettingsPath
-        Specifies the path to the Visual Studio Code settings file. This path should be pre-configured in the Keldor configuration.
+.EXAMPLE
+    Copy-VSCodeSettingsToProfile
+    Copies the VSCode settings from the configured repository path to the user's profile settings.
 
-    .EXAMPLE
-        Copy-VSCodeSettingsToProfile
-        Copies the VSCode settings from the configured repository path to the user's profile settings.
+.OUTPUTS
+    None
 
-    .NOTES
-        AUTHOR: Skyler Hart
-        CREATED: 2021-11-01 22:14:14
-        LASTEDIT: 2024-11-27 13:00:00
+.NOTES
+    AUTHOR: Skyler Hart
+    CREATED: 2021-11-01 22:14:14
+    LASTEDIT: 2024-11-27 13:00:00
 
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Copy-VSCodeSettingsToProfile
-    #>
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Copy-VSCodeSettingsToProfile
+#>
+
+
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Copy-VSCodeSettingsToProfile')]
     param ()
 

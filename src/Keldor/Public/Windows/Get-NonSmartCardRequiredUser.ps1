@@ -1,40 +1,36 @@
 function Get-NonSmartCardRequiredUser {
-    <#
-    .SYNOPSIS
-        Displays users in domain with SmartCardRequired attribute set to false.
+<#
+.SYNOPSIS
+    Displays users in domain with SmartCardRequired attribute set to false.
 
-    .DESCRIPTION
-        Displays all users in the domain with SmartCardRequired attribute on account set to false.
+.DESCRIPTION
+    Displays all users in the domain with SmartCardRequired attribute on account set to false.
 
-    .PARAMETER ComputerName
-        Specifies the name of one or more computers.
+.PARAMETER Name
+    Specifies the Name value.
 
-    .EXAMPLE
-        C:\PS>Get-NonSmartCardRequiredUser
-        Example of how to use this cmdlet
+.EXAMPLE
+    Get-NonSmartCardRequiredUser
+    Example of how to use this cmdlet
 
-    .INPUTS
-        None
+.OUTPUTS
+    System.Array
 
-    .OUTPUTS
-        System.Array
+.NOTES
+    Author: Skyler Hart
+    Created: 2023-05-02 17:16:53
+    Last Edit: 2023-05-02 17:16:53
+    Requires:
+        -Module ActiveDirectory
 
-    .COMPONENT
-        Keldor
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Get-NonSmartCardRequiredUser
+#>
 
-    .FUNCTIONALITY
-        Active Directory, Smartcard, Smart Card, InTh, Insider Threat
 
-    .NOTES
-        Author: Skyler Hart
-        Created: 2023-05-02 17:16:53
-        Last Edit: 2023-05-02 17:16:53
-        Requires:
-            -Module ActiveDirectory
 
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Get-NonSmartCardRequiredUser
-    #>
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-NonSmartCardRequiredUser')]
     Param (
         [AllowEmptyString()]

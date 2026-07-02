@@ -1,27 +1,41 @@
 function Set-SMBv1Fix {
 <#
-   .Synopsis
+.SYNOPSIS
     Enables SMB v1.
-   .Description
+
+.DESCRIPTION
     Turns SMBv1 on. While this fix action turns SMBv1 on, group policy can turn SMBv1 off, which is counted on.
-   .Example
+
+.PARAMETER ComputerName
+    Specifies the computer or computers
+
+.EXAMPLE
     Set-SMBv1Fix COMP1
     Sets the fix action on COMP1. After the fix action is applied, COMP1 will need to be rebooted.
-   .Example
+
+.EXAMPLE
     Set-SMBv1Fix
     Sets the fix action on the local computer. After the fix action is applied, the local computer will need to be rebooted.
-   .Parameter ComputerName
-    Specifies the computer or computers
-   .Notes
+
+.OUTPUTS
+    None
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 12/18/2018 09:36:43
     LASTEDIT: 12/18/2018 10:25:19
     KEYWORDS: fix action, fix, SMB, SMBv1
     REQUIRES:
-        -RunAsAdministrator
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-SMBv1Fix
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-SMBv1Fix')]
     Param (
         [Parameter(

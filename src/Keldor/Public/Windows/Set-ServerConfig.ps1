@@ -1,15 +1,34 @@
 function Set-ServerConfig {
 <#
+.SYNOPSIS
+    Sets Server Config.
+
+.DESCRIPTION
+    Sets Server Config.
+
+.EXAMPLE
+    Set-ServerConfig
+    Runs Set-ServerConfig.
+
+.OUTPUTS
+    System.Object
+
 .NOTES
     Author: Skyler Hart
     Created: 2020-10-24 20:09:27
     Last Edit: 2020-10-24 20:09:27
     Keywords:
     Requires:
-        -RunAsAdministrator
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-ServerConfig
 #>
+
+
+
+
+
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ServerConfig')]
     Param ()
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute(

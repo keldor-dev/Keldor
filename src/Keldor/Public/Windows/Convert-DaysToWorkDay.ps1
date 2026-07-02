@@ -1,19 +1,44 @@
 function Convert-DaysToWorkDay {
 <#
+.SYNOPSIS
+    Converts Days To Work Day.
+
+.DESCRIPTION
+    Converts Days To Work Day.
+
+.PARAMETER Days
+    Specifies the Days value.
+
+.PARAMETER StartDay
+    Specifies the Start Day value.
+
 .EXAMPLE
-    C:\PS>Convert-DaysToWorkDay 1
+    Convert-DaysToWorkDay 1
     Example of how to use this cmdlet
+
 .EXAMPLE
-    C:\PS>Convert-DaysToWorkDay -1
+    Convert-DaysToWorkDay -1
     Another example of how to use this cmdlet.
+
+.OUTPUTS
+    System.Object
+
 .NOTES
     Author: Skyler Hart
     Created: 2021-03-04 18:54:31
     Last Edit: 2021-06-20 17:13:33
     Keywords:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Convert-DaysToWorkDay
 #>
+
+
+
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
         "",

@@ -1,18 +1,43 @@
 function Show-FileExtensions {
 <#
-   .Notes
+.SYNOPSIS
+    Shows File Extensions.
+
+.DESCRIPTION
+    Shows File Extensions.
+
+.PARAMETER Yes
+    Specifies whether to enable the Yes option.
+
+.PARAMETER No
+    Specifies whether to enable the No option.
+
+.EXAMPLE
+    Show-FileExtensions
+    Runs Show-FileExtensions.
+
+.OUTPUTS
+    None
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 02/08/2018 21:41:37
     LASTEDIT: 02/08/2018 21:41:37
     KEYWORDS:
     REQUIRES:
-        #Requires -Version 3.0
-        #Requires -Modules ActiveDirectory
-        #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-        #Requires -RunAsAdministrator
+    #Requires -Version 3.0
+    #Requires -Modules ActiveDirectory
+    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
+    #Requires -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Show-FileExtensions
 #>
+
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSUseSingularNouns",
         "",

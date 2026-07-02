@@ -1,18 +1,40 @@
 function Set-MS15124 {
 <#
-.Notes
+.SYNOPSIS
+    Sets MS15124.
+
+.DESCRIPTION
+    Sets MS15124.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Set-MS15124
+    Runs Set-MS15124.
+
+.OUTPUTS
+    None
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 12/21/2017 12:43:44
     LASTEDIT: 12/21/2017 12:48:58
     KEYWORDS:
     REQUIRES:
-        #Requires -Version 3.0
-        #Requires -Modules ActiveDirectory
-        #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-        #Requires -RunAsAdministrator
+    #Requires -Version 3.0
+    #Requires -Modules ActiveDirectory
+    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
+    #Requires -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-MS15124
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-MS15124')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]

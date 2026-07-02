@@ -2,29 +2,30 @@ function Get-HttpHeaderSetting {
 <#
 .SYNOPSIS
     Gets the Http Header setting on the current machine.
+
 .DESCRIPTION
     Displays the name and value of Http Header settings on the local computer. Blank entries means the value is not created.
+
 .EXAMPLE
-    C:\PS>Get-HttpHeaderSetting
-    Example of how to use this cmdlet. Will show Http Header settings on the computer. Will output something similar to this:
-    Name       Disabled FullPath
-    ----       -------- --------
-    Parameters        1 HKLM:\SYSTEM\CurrentControlSet\Services\HTTP\Parameters
-.INPUTS
-    System.String
+    Get-HttpHeaderSetting
+    Example of how to use this cmdlet. Will show Http Header settings on the computer. Will output something similar to this: Name Disabled FullPath ---- -------- -------- Parameters 1 HKLM:\SYSTEM\CurrentControlSet\Services\HTTP\Parameters
+
 .OUTPUTS
     System.Management.Automation.PSCustomObject
-.COMPONENT
-    Keldor
-.FUNCTIONALITY
-    HTTP Header, registry, remediation
+
 .NOTES
     Author: Skyler Hart
     Created: 2022-11-30 23:43:58
     Last Edit: 2022-11-30 23:43:58
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-HttpHeaderSetting
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-HttpHeaderSetting')]
     param()
 

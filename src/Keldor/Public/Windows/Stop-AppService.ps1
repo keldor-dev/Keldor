@@ -1,15 +1,34 @@
 function Stop-AppService {
 <#
+.SYNOPSIS
+    Stops App Service.
+
+.DESCRIPTION
+    Stops App Service.
+
+.EXAMPLE
+    Stop-AppService
+    Runs Stop-AppService.
+
+.OUTPUTS
+    System.Object
+
 .NOTES
     Author: Skyler Hart
     Created: 2021-06-19 23:06:20
     Last Edit: 2021-10-12 16:00:59
     Keywords:
     Requires:
-        -RunAsAdministrator
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Stop-AppService
 #>
+
+
+
+
+
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Stop-AppService')]
     Param ()
 $AppNames = ($Global:KeldorConfig).AppNames

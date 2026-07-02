@@ -1,13 +1,44 @@
 function Start-PowerShell {
 <#
-.Notes
+.SYNOPSIS
+    Starts Power Shell.
+
+.DESCRIPTION
+    Starts Power Shell.
+
+.PARAMETER Console
+    Specifies whether to enable the Console option.
+
+.PARAMETER ISE
+    Specifies whether to enable the ISE option.
+
+.PARAMETER VSC
+    Specifies whether to enable the VSC option.
+
+.PARAMETER RunAs
+    Specifies whether to enable the Run As option.
+
+.EXAMPLE
+    Start-PowerShell
+    Runs Start-PowerShell.
+
+.OUTPUTS
+    None
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 10/24/2017 14:41:52
     LASTEDIT: 10/24/2017 16:41:21
     KEYWORDS:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Start-PowerShell
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Start-PowerShell')]
     [Alias('Open-PowerShell')]
     Param (

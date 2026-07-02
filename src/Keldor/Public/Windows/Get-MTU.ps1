@@ -1,13 +1,35 @@
 function Get-MTU {
-    <#
-    .Notes
-        AUTHOR: Skyler Hart
-        CREATED: 09/21/2017 13:06:23
-        LASTEDIT: 2020-05-23 17:39:06
-        KEYWORDS:
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Get-MTU
-    #>
+<#
+.SYNOPSIS
+    Gets MTU.
+
+.DESCRIPTION
+    Gets MTU.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Get-MTU
+    Runs Get-MTU.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
+    AUTHOR: Skyler Hart
+    CREATED: 09/21/2017 13:06:23
+    LASTEDIT: 2020-05-23 17:39:06
+    KEYWORDS:
+
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Get-MTU
+#>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-MTU')]
     Param (
         [Parameter(

@@ -1,16 +1,37 @@
 function Get-DaysSinceLastLogon {
-    <#
-    .Notes
-        AUTHOR: Skyler Hart
-        CREATED: 02/01/2018 10:31:35
-        LASTEDIT: 02/01/2018 10:31:35
-        KEYWORDS:
-        REQUIRES:
-            -RunAsAdministrator
+<#
+.SYNOPSIS
+    Gets Days Since Last Logon.
 
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Get-DaysSinceLastLogon
-    #>
+.DESCRIPTION
+    Gets Days Since Last Logon.
+
+.PARAMETER Name
+    Specifies the Name value.
+
+.EXAMPLE
+    Get-DaysSinceLastLogon
+    Runs Get-DaysSinceLastLogon.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
+    AUTHOR: Skyler Hart
+    CREATED: 02/01/2018 10:31:35
+    LASTEDIT: 02/01/2018 10:31:35
+    KEYWORDS:
+    REQUIRES:
+        -RunAsAdministrator
+
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Get-DaysSinceLastLogon
+#>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-DaysSinceLastLogon')]
     Param (
         [Parameter(

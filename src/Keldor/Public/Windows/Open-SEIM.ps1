@@ -1,12 +1,43 @@
 function Open-SEIM {
 <#
-.Notes
+.SYNOPSIS
+    Opens SEIM.
+
+.DESCRIPTION
+    Opens SEIM.
+
+.PARAMETER Chrome
+    Specifies whether to enable the Chrome option.
+
+.PARAMETER Edge
+    Specifies whether to enable the Edge option.
+
+.PARAMETER Firefox
+    Specifies whether to enable the Firefox option.
+
+.PARAMETER InternetExplorer
+    Specifies whether to enable the Internet Explorer option.
+
+.EXAMPLE
+    Open-SEIM
+    Runs Open-SEIM.
+
+.OUTPUTS
+    None
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 2021-10-18 23:03:53
     LASTEDIT: 2021-10-18 23:04:54
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-SEIM
 #>
+
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
         "",

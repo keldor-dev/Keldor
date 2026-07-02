@@ -1,18 +1,42 @@
 function Disable-3DES {
 <#
-.Notes
+.SYNOPSIS
+    Disables 3 DES.
+
+.DESCRIPTION
+    Disables 3 DES.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Disable-3DES
+    Runs Disable-3DES.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 04/23/2018 14:40:00
     LASTEDIT: 04/23/2018 14:40:00
     KEYWORDS:
     REQUIRES:
-        #Requires -Version 3.0
-        #Requires -Modules ActiveDirectory
-        #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-        #Requires -RunAsAdministrator
+    #Requires -Version 3.0
+    #Requires -Modules ActiveDirectory
+    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
+    #Requires -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Disable-3DES
 #>
+
+
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Disable-3DES')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]

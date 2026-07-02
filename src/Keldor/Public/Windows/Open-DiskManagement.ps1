@@ -1,18 +1,40 @@
 function Open-DiskManagement {
 <#
-   .Notes
+.SYNOPSIS
+    Opens Disk Management.
+
+.DESCRIPTION
+    Opens Disk Management.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Open-DiskManagement
+    Runs Open-DiskManagement.
+
+.OUTPUTS
+    None
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 08/19/2017 22:19:32
     LASTEDIT: 08/19/2017 22:19:32
     KEYWORDS:
     REQUIRES:
-        #Requires -Version 3.0
-        #Requires -Modules ActiveDirectory
-        #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-        #Requires -RunAsAdministrator
+    #Requires -Version 3.0
+    #Requires -Modules ActiveDirectory
+    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
+    #Requires -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-DiskManagement
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-DiskManagement')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]

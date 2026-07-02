@@ -1,14 +1,40 @@
 function Get-DayOfYear {
-    <#
-    .NOTES
-        Author: Skyler Hart
-        Created: 2021-05-20 20:48:46
-        Last Edit: 2021-05-20 21:48:24
-        Keywords: Day of year, Julian
+<#
+.SYNOPSIS
+    Gets Day Of Year.
 
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Get-DayOfYear
-    #>
+.DESCRIPTION
+    Gets Day Of Year.
+
+.PARAMETER Day
+    Specifies the Day value.
+
+.PARAMETER Year
+    Specifies the Year value.
+
+.EXAMPLE
+    Get-DayOfYear
+    Runs Get-DayOfYear.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
+    Author: Skyler Hart
+    Created: 2021-05-20 20:48:46
+    Last Edit: 2021-05-20 21:48:24
+    Keywords: Day of year, Julian
+
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Get-DayOfYear
+#>
+
+
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-DayOfYear')]
     [Alias('Get-JulianDay','Get-JulianDate')]
     param(

@@ -1,20 +1,36 @@
 function Add-Help {
 <#
-   .Synopsis
+.SYNOPSIS
     This function adds help at current insertion point.
-   .Example
+
+.DESCRIPTION
+    This function adds help at current insertion point.
+
+.EXAMPLE
     Add-Help
     Adds comment based help at current insertion point in a PowerShell ISE window.
-   .Notes
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 09/07/2010 17:32:34
     LASTEDIT: 10/04/2018 20:26:05
     KEYWORDS: Scripting Techniques, Windows PowerShell ISE, Help
     REQUIRES:
-        #Requires -Version 2.0
+    #Requires -Version 2.0
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Add-Help
 #>
+
+
+
+
+
+
+
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-Help')]
     Param ()
 $helpText = @"

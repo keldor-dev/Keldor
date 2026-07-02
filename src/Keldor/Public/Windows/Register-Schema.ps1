@@ -1,15 +1,34 @@
 function Register-Schema {
 <#
-.Notes
+.SYNOPSIS
+    Registers Schema.
+
+.DESCRIPTION
+    Registers Schema.
+
+.EXAMPLE
+    Register-Schema
+    Runs Register-Schema.
+
+.OUTPUTS
+    None
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 02/12/2018 20:10:54
     LASTEDIT: 2022-09-04 12:20:42
     KEYWORDS:
     REQUIRES:
-        -RunAsAdministrator
+    -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Register-Schema
 #>
+
+
+
+
+
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Register-Schema')]
     Param ()
 if (Test-Path $env:windir\System32\schmmgmt.dll) {

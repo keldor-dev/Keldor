@@ -1,15 +1,34 @@
 function Restore-WindowsUpdate {
 <#
-.Notes
+.SYNOPSIS
+    Restores Windows Update.
+
+.DESCRIPTION
+    Restores Windows Update.
+
+.EXAMPLE
+    Restore-WindowsUpdate
+    Runs Restore-WindowsUpdate.
+
+.OUTPUTS
+    None
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 2021-12-03 19:41:37
     LASTEDIT: 2021-12-03 19:41:37
     KEYWORDS:
     REQUIRES:
-        -RunAsAdministrator
-.Link
+    -RunAsAdministrator
+
+.LINK
     https://docs.keldor.dev/powershell/keldor/Restore-WindowsUpdate
 #>
+
+
+
+
+
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Restore-WindowsUpdate')]
     Param ()
 $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())

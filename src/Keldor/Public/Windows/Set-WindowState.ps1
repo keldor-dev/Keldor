@@ -1,8 +1,35 @@
 function Set-WindowState {
-        <#
-        .LINK
-        https://docs.keldor.dev/powershell/keldor/Set-WindowState
-        #>
+<#
+.SYNOPSIS
+    Sets Window State.
+
+.DESCRIPTION
+    Sets Window State.
+
+.PARAMETER Style
+    Specifies the Style value.
+
+.PARAMETER MainWindowHandle
+    Specifies the Main Window Handle value.
+
+.EXAMPLE
+    Set-WindowState
+    Runs Set-WindowState.
+
+.OUTPUTS
+    None
+
+.NOTES
+    Author: Skyler Hart
+
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Set-WindowState
+#>
+
+
+
+
+
     # source: https://gist.github.com/jakeballard/11240204
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-WindowState')]
 param(

@@ -1,15 +1,36 @@
 function Get-LinesOfCode {
-    <#
-    .NOTES
-        Author: Skyler Hart
-        Created: 2021-10-19 19:10:36
-        Last Edit: 2021-10-19 19:10:36
-        Keywords:
-        Other: Excludes blank lines
+<#
+.SYNOPSIS
+    Gets Lines Of Code.
 
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Get-LinesOfCode
-    #>
+.DESCRIPTION
+    Gets Lines Of Code.
+
+.PARAMETER Path
+    Specifies the path to use.
+
+.EXAMPLE
+    Get-LinesOfCode -Path <value>
+    Runs Get-LinesOfCode.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
+    Author: Skyler Hart
+    Created: 2021-10-19 19:10:36
+    Last Edit: 2021-10-19 19:10:36
+    Keywords:
+    Other: Excludes blank lines
+
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Get-LinesOfCode
+#>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-LinesOfCode')]
     param(
         [Parameter(

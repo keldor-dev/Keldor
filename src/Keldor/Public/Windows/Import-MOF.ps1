@@ -1,26 +1,45 @@
 function Import-MOF {
 <#
+.SYNOPSIS
+    Imports MOF.
+
+.DESCRIPTION
+    Imports MOF.
+
 .PARAMETER Path
     Specifies the path to the mof file intended to import.
+
 .EXAMPLE
-    C:\PS>Import-MOF C:\Example\windows10.mof
+    Import-MOF C:\Example\windows10.mof
     Example of how to use this cmdlet.
+
 .EXAMPLE
-    C:\PS>New-WMIFilter 'C:\setup\GPOs\WMIs\Google Chrome\Google Chrome.mof'
+    New-WMIFilter 'C:\setup\GPOs\WMIs\Google Chrome\Google Chrome.mof'
     Example of how to use this cmdlet.
+
 .EXAMPLE
-    C:\PS>Import-MOF -Path C:\Example\virtualservers.mof
+    Import-MOF -Path C:\Example\virtualservers.mof
     Another example of how to use this cmdlet but with a parameter or switch.
+
+.OUTPUTS
+    None
+
 .NOTES
     Author: Skyler Hart
     Created: 10/27/2017 15:54:18
     Last Edit: 2020-05-08 20:30:19
     Keywords:
     Requires:
-        -Module ActiveDirectory
+    -Module ActiveDirectory
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Import-MOF
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Import-MOF')]
     [Alias('Import-WMIFilter')]
     Param (

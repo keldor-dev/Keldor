@@ -2,36 +2,43 @@ function Update-BrokenInheritance {
 <#
 .SYNOPSIS
     Finds and fixes users with broken inheritance.
+
 .DESCRIPTION
     Will search Active Directory for users that do not have permissions inheritance enabled and then fix the inheritance.
-.PARAMETER Identity
-    Specify a user to fix the inheritance on. Can use sAMAccountName or distinguishedName. If no user is specified it will find all users with broken inheritance.
+
 .PARAMETER SearchBase
     Specify the OU to search using the distinguishedName of the OU. If not specified it searches the whole domain.
+
+.PARAMETER Identity
+    Specify a user to fix the inheritance on. Can use sAMAccountName or distinguishedName. If no user is specified it will find all users with broken inheritance.
+
 .EXAMPLE
-    C:\PS>Update-BrokenInheritance -Identity "CN=Joe Snuffy,CN=Users,DC=keldor,DC=dev"
+    Update-BrokenInheritance -Identity "CN=Joe Snuffy,CN=Users,DC=keldor,DC=dev"
     Will fix the broken inheritance on the user Joe Snuffy.
+
 .EXAMPLE
-    C:\PS>Update-BrokenInheritance -SearchBase "CN=Users,DC=keldor,DC=dev"
+    Update-BrokenInheritance -SearchBase "CN=Users,DC=keldor,DC=dev"
     Will fix the broken inheritance on all users in the Users OU.
-.INPUTS
-    System.String
+
 .OUTPUTS
     System.String
-.COMPONENT
-    Keldor
-.FUNCTIONALITY
-    Permissions, Inheritance, Active Directory
+
 .NOTES
     Author: Skyler Hart
     Created: Sometime before 2017-08-07
     Last Edit: 2022-09-05 23:40:29
     Other:
     Requires:
-        -Module ActiveDirectory
+    -Module ActiveDirectory
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Update-BrokenInheritance
 #>
+
+
+
+
+
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Update-BrokenInheritance')]
 Param (
         [Parameter(

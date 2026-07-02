@@ -1,13 +1,38 @@
 function Save-UpdateHistory {
 <#
+.SYNOPSIS
+    Saves Update History.
+
+.DESCRIPTION
+    Saves Update History.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.PARAMETER ThrottleLimit
+    Specifies the Throttle Limit value.
+
+.EXAMPLE
+    Save-UpdateHistory
+    Runs Save-UpdateHistory.
+
+.OUTPUTS
+    System.Object
+
 .NOTES
     Author: Skyler Hart
     Created: 2020-06-15 13:03:22
     Last Edit: 2023-03-22 08:26:33
     Keywords:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Save-UpdateHistory
 #>
+
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
         "",

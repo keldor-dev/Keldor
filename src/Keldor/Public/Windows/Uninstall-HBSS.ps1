@@ -1,18 +1,49 @@
 function Uninstall-HBSS {
 <#
-.Notes
+.SYNOPSIS
+    Uninstalls HBSS.
+
+.DESCRIPTION
+    Uninstalls HBSS.
+
+.PARAMETER ObjectList
+    Specifies the Object List value.
+
+.PARAMETER MaxThreads
+    Specifies the Max Threads value.
+
+.PARAMETER SleepTimer
+    Specifies the Sleep Timer value.
+
+.PARAMETER MaxResultTime
+    Specifies the Max Result Time value.
+
+.EXAMPLE
+    Uninstall-HBSS
+    Runs Uninstall-HBSS.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 09/11/2019 15:37:31
     LASTEDIT: 09/11/2019 16:20:07
     KEYWORDS:
     REQUIRES:
-        #Requires -Version 3.0
-        #Requires -Modules ActiveDirectory
-        #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-        #Requires -RunAsAdministrator
+    #Requires -Version 3.0
+    #Requires -Modules ActiveDirectory
+    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
+    #Requires -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Uninstall-HBSS
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Uninstall-HBSS')]
     [Alias('Uninstall-ENS','Uninstall-ESS')]
     Param (

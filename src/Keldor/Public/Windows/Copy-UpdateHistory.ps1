@@ -1,48 +1,43 @@
 function Copy-UpdateHistory {
-    <#
-    .SYNOPSIS
-        Copies the UpdateHistory.csv report to the UHPath config item path.
+<#
+.SYNOPSIS
+    Copies the UpdateHistory.csv report to the UHPath config item path.
 
-    .DESCRIPTION
-        Copies the UpdateHistory.csv report created with Save-UpdateHistory to the UHPath config item path for the
-        local computer or remote computers.
+.DESCRIPTION
+    Copies the UpdateHistory.csv report created with Save-UpdateHistory to the UHPath config item path for the local computer or remote computers.
 
-    .PARAMETER ComputerName
-        Specifies the name of one or more computers.
+.PARAMETER ComputerName
+    Specifies the name of one or more computers.
 
-    .EXAMPLE
-        C:\PS>Copy-UpdateHistory
-        Example of how to use this cmdlet to copy the UpdateHistory.csv file for the local computer to the UHPath
-        location.
+.EXAMPLE
+    Copy-UpdateHistory
+    Example of how to use this cmdlet to copy the UpdateHistory.csv file for the local computer to the UHPath location.
 
-    .EXAMPLE
-        C:\PS>Copy-UpdateHistory -ComputerName Server1
-        Example of how to use this cmdlet to copy the UpdateHistory.csv file for the remote computer Server1 to the
-        UHPath location.
+.EXAMPLE
+    Copy-UpdateHistory -ComputerName Server1
+    Example of how to use this cmdlet to copy the UpdateHistory.csv file for the remote computer Server1 to the UHPath location.
 
-    .INPUTS
-        System.String
+.OUTPUTS
+    System.String
 
-    .OUTPUTS
-        System.String
+.NOTES
+    Author: Skyler Hart
+    Created: 2022-07-15 22:54:09
+    Last Edit: 2022-07-15 22:54:09
+    Other:
+    Requires:
+        -RunAsAdministrator
 
-    .COMPONENT
-        Keldor
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Copy-UpdateHistory
+#>
 
-    .FUNCTIONALITY
-        UpdateHistory, update history
 
-    .NOTES
-        Author: Skyler Hart
-        Created: 2022-07-15 22:54:09
-        Last Edit: 2022-07-15 22:54:09
-        Other:
-        Requires:
-            -RunAsAdministrator
 
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Copy-UpdateHistory
-    #>
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
         "",

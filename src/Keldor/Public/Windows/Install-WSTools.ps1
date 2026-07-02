@@ -2,24 +2,47 @@ function Install-WSTools {
 <#
 .SYNOPSIS
     Installs/copies the Keldor PowerShell module to a remote computer.
+
 .DESCRIPTION
     Copies the Keldor module from the location specified in the Keldor config file (config.ps1) for UpdatePath to the C:\Program Files\WindowsPowerShell\Modules\Keldor folder on the remote computer.
+
 .PARAMETER ComputerName
     Specifies the name of one or more computers.
+
+.PARAMETER MaxThreads
+    Specifies the Max Threads value.
+
+.PARAMETER SleepTimer
+    Specifies the Sleep Timer value.
+
+.PARAMETER MaxResultTime
+    Specifies the Max Result Time value.
+
 .EXAMPLE
-    C:\PS>Install-WSTools COMPNAME
+    Install-WSTools COMPNAME
     How to install the Keldor PowerShell module on the remote computer COMPNAME.
+
 .EXAMPLE
-    C:\PS>Install-WSTools -ComputerName COMPNAME1,COMPNAME2
+    Install-WSTools -ComputerName COMPNAME1,COMPNAME2
     How to install the Keldor PowerShell module on the remote computers COMPNAME1 and COMPNAME2.
+
+.OUTPUTS
+    System.Object
+
 .NOTES
     Author: Skyler Hart
     Created: 2018-06-13 14:17:09
     Last Edit: 2022-02-19 22:56:29
     Keywords:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Install-WSTools
 #>
+
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSUseSingularNouns",
         "",

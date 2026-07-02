@@ -1,34 +1,51 @@
 function Get-OperatingSystem {
 <#
-   .Synopsis
+.SYNOPSIS
     Gets Operating System information
-   .Description
+
+.DESCRIPTION
     Gets Operating System information via WMI query (Default) or Registry query (Switch.) Determines whether the computer is 32-bit or 64-bit, the Operating System name, and the OS Build number.
-   .Example
+
+.PARAMETER ComputerName
+    Specify computer or computer names to query
+
+.PARAMETER Registry
+    Use Registry queries instead of WMI queries
+
+.EXAMPLE
     Get-OperatingSystem
     Gets Operating System information for the local computer
-   .Example
+
+.EXAMPLE
     Get-OperatingSystem -Registry
     Gets Operating System information for the local computer via Registry query instead os WMI query
-   .Example
+
+.EXAMPLE
     Get-OperatingSystem -ComputerName SERVER1
     Gets Operating System information for computer SERVER1
-   .Example
+
+.EXAMPLE
     Get-OperatingSystem -ComputerName (gc c:\complist.txt) -Registry
     Gets Operating System information for all computers listed in c:\complist.txt via Registry queries
-   .Parameter ComputerName
-    Specify computer or computer names to query
-   .Parameter Registry
-    Use Registry queries instead of WMI queries
-   .Notes
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 06/06/2015 20:11:37
     LASTEDIT: 2021-11-26 17:02:59
     KEYWORDS: Operating System, OS
     REMARKS: For local computer it can be ran as user. For remote computers, it needs to be ran as a user who has administrative rights on the remote computer.
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-OperatingSystem
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-OperatingSystem')]
     Param (
         [Parameter(

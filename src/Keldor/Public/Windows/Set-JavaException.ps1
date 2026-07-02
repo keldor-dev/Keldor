@@ -1,15 +1,52 @@
 function Set-JavaException {
 <#
-.Notes
+.SYNOPSIS
+    Sets Java Exception.
+
+.DESCRIPTION
+    Sets Java Exception.
+
+.PARAMETER URL
+    Specifies the URL value.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.PARAMETER MaxThreads
+    Specifies the Max Threads value.
+
+.PARAMETER SleepTimer
+    Specifies the Sleep Timer value.
+
+.PARAMETER MaxResultTime
+    Specifies the Max Result Time value.
+
+.PARAMETER FromShare
+    Specifies whether to enable the From Share option.
+
+.EXAMPLE
+    Set-JavaException
+    Runs Set-JavaException.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 2021-11-09 22:51:15
     LASTEDIT: 2021-11-09 23:32:06
     KEYWORDS:
     REQUIRES:
-        -RunAsAdministrator
-.Link
+    -RunAsAdministrator
+
+.LINK
     https://docs.keldor.dev/powershell/keldor/Set-JavaException
 #>
+
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
         "",

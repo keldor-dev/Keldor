@@ -1,15 +1,37 @@
 function Get-RecentUser {
 <#
-.Notes
+.SYNOPSIS
+    Gets Recent User.
+
+.DESCRIPTION
+    Gets Recent User.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Get-RecentUser
+    Runs Get-RecentUser.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: Sometime before 8/7/2017
     LASTEDIT: 2023-09-20 17:47:45
     KEYWORDS:
     REQUIRES:
-        #Requires -RunAsAdministrator
+    #Requires -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-RecentUser
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-RecentUser')]
     Param (
         [Parameter(Mandatory=$false, Position=0, ValueFromPipeline=$true, ValueFromPipelineByPropertyName = $true)]

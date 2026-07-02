@@ -1,14 +1,45 @@
 function Open-HomeAssistant {
-    <#
-       .Notes
-        AUTHOR: Skyler Hart
-        CREATED: 2022-03-08 21:51:19
-        LASTEDIT: 2022-03-08 21:51:19
-        KEYWORDS:
-        REQUIRES:
+<#
+.SYNOPSIS
+    Opens Home Assistant.
+
+.DESCRIPTION
+    Opens Home Assistant.
+
+.PARAMETER Chrome
+    Specifies whether to enable the Chrome option.
+
+.PARAMETER Edge
+    Specifies whether to enable the Edge option.
+
+.PARAMETER Firefox
+    Specifies whether to enable the Firefox option.
+
+.PARAMETER InternetExplorer
+    Specifies whether to enable the Internet Explorer option.
+
+.EXAMPLE
+    Open-HomeAssistant
+    Runs Open-HomeAssistant.
+
+.OUTPUTS
+    None
+
+.NOTES
+    AUTHOR: Skyler Hart
+    CREATED: 2022-03-08 21:51:19
+    LASTEDIT: 2022-03-08 21:51:19
+    KEYWORDS:
+    REQUIRES:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-HomeAssistant
 #>
+
+
+
+
+
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
         "",

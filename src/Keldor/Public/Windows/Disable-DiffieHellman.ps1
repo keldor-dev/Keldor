@@ -1,18 +1,42 @@
 function Disable-DiffieHellman {
 <#
-.Notes
+.SYNOPSIS
+    Disables Diffie Hellman.
+
+.DESCRIPTION
+    Disables Diffie Hellman.
+
+.PARAMETER ComputerName
+    Specifies the computer name to use.
+
+.EXAMPLE
+    Disable-DiffieHellman
+    Runs Disable-DiffieHellman.
+
+.OUTPUTS
+    None
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 04/23/2018 16:38:23
     LASTEDIT: 04/23/2018 16:38:23
     KEYWORDS:
     REQUIRES:
-        #Requires -Version 3.0
-        #Requires -Modules ActiveDirectory
-        #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-        #Requires -RunAsAdministrator
+    #Requires -Version 3.0
+    #Requires -Modules ActiveDirectory
+    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
+    #Requires -RunAsAdministrator
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Disable-DiffieHellman
 #>
+
+
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Disable-DiffieHellman')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]

@@ -1,13 +1,34 @@
 function Add-ParamSwitchWithOption {
 <#
-.Notes
+.SYNOPSIS
+    Adds Param Switch With Option.
+
+.DESCRIPTION
+    Adds Param Switch With Option.
+
+.EXAMPLE
+    Add-ParamSwitchWithOption
+    Runs Add-ParamSwitchWithOption.
+
+.OUTPUTS
+    System.Object
+
+.NOTES
     AUTHOR: Skyler Hart
     CREATED: 10/23/2017 17:20:36
     LASTEDIT: 12/20/2019 22:14:54
     KEYWORDS:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Add-ParamSwitchWithOption
 #>
+
+
+
+
+
+
+
 
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-ParamSwitchWithOption')]
     Param ()

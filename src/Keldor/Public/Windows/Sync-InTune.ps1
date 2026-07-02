@@ -2,24 +2,32 @@ function Sync-InTune {
 <#
 .SYNOPSIS
     Will sync device with InTune/MEM.
+
 .DESCRIPTION
     Will initiate the sync process with InTune/Microsoft EndPoint Manager to receive new policies and report information.
+
 .EXAMPLE
-    C:\PS>Sync-InTune
+    Sync-InTune
     Example of how to use this cmdlet.
-.COMPONENT
-    Keldor
-.FUNCTIONALITY
-    InTune, Microsoft Endpoint Manager, MEM
+
+.OUTPUTS
+    None
+
 .NOTES
     Author: Skyler Hart
     Created: 2022-09-25 01:38:28
     Last Edit: 2022-09-25 01:38:28
     Other:
     Requires:
+
 .LINK
     https://docs.keldor.dev/powershell/keldor/Sync-InTune
 #>
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Sync-InTune')]
     [Alias('Sync-MEM')]
     param()

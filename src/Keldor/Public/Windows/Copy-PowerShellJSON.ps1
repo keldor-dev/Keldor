@@ -1,26 +1,34 @@
 function Copy-PowerShellJSON {
-    <#
-    .SYNOPSIS
-        Enables PowerShell Snippets in Visual Studio Code.
+<#
+.SYNOPSIS
+    Enables PowerShell Snippets in Visual Studio Code.
 
-    .DESCRIPTION
-        Copies the powershell.json file from the Keldor module folder to %AppData%\Roaming\Code\User\snippets for
-        the currently logged on user.
+.DESCRIPTION
+    Copies the powershell.json file from the Keldor module folder to %AppData%\Roaming\Code\User\snippets for the currently logged on user.
 
-    .EXAMPLE
-        C:\PS>Copy-PowerShellJSON
-        Copies the powershell.json file from the Keldor module folder to %AppData%\Roaming\Code\User\snippets for
-        the currently logged on user.
+.EXAMPLE
+    Copy-PowerShellJSON
+    Copies the powershell.json file from the Keldor module folder to %AppData%\Roaming\Code\User\snippets for the currently logged on user.
 
-    .NOTES
-        Author: Skyler Hart
-        Created: 2020-04-13 22:44:11
-        Last Edit: 2021-10-19 16:59:47
-        Keywords: Keldor, Visual Studio Code, PowerShell, JSON, Preferences, snippets, code blocks
+.OUTPUTS
+    None
 
-    .LINK
-        https://docs.keldor.dev/powershell/keldor/Copy-PowerShellJSON
-    #>
+.NOTES
+    Author: Skyler Hart
+    Created: 2020-04-13 22:44:11
+    Last Edit: 2021-10-19 16:59:47
+    Keywords: Keldor, Visual Studio Code, PowerShell, JSON, Preferences, snippets, code blocks
+
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Copy-PowerShellJSON
+#>
+
+
+
+
+
+
+
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Copy-PowerShellJSON')]
     [Alias('Update-PowerShellJSON','Set-PowerShellJSON')]
     param()
