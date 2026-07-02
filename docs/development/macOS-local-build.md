@@ -6,6 +6,8 @@ This guide explains how to build the Keldor PowerShell module locally on macOS, 
 
 Install or update PowerShell 7:
 
+Homebrew is the recommended way to install PowerShell on macOS for most users. It is usually the easiest way to install and keep PowerShell updated.
+
 If PowerShell was installed with Homebrew, update it with:
 
 ```bash
@@ -35,6 +37,34 @@ Verify PowerShell is available:
 
 ```bash
 pwsh --version
+```
+
+### Recommended Developer Modules
+
+For local development, install these modules:
+
+- PSReadLine
+- Pester
+- PSScriptAnalyzer
+- PlatyPS (recommended when working on documentation)
+
+PSReadLine is typically already included with Homebrew-installed PowerShell, but installing it explicitly is safe for developer environments.
+
+Install or update these modules:
+
+```powershell
+Install-Module PSReadLine -Scope CurrentUser -Force -SkipPublisherCheck
+Install-Module Pester -Scope CurrentUser -Force -SkipPublisherCheck
+Install-Module PSScriptAnalyzer -Scope CurrentUser -Force
+Install-Module PlatyPS -Scope CurrentUser -Force
+```
+
+Verify module availability:
+
+```powershell
+Get-Module -ListAvailable PSReadLine, Pester, PSScriptAnalyzer, PlatyPS |
+	Select-Object Name, Version, Path |
+	Sort-Object Name
 ```
 
 From PowerShell, confirm the platform:
