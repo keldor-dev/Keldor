@@ -8,7 +8,7 @@ function Sync-HBSSWithServer {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Sync-HBSSWithServer')]
     [Alias('Sync-HBSS','Sync-ENS','Sync-ESS')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]

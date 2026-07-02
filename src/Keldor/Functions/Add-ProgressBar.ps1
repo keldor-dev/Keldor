@@ -8,7 +8,9 @@ function Add-ProgressBar {
 .LINK
     https://docs.keldor.dev
 #>
-    $objectText = @"
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-ProgressBar')]
+    Param ()
+$objectText = @"
 `$i = 0
 `$number = `$ComputerName.length
 

@@ -13,7 +13,7 @@ function Get-ComputerModel {
     .LINK
         https://docs.keldor.dev
     #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ComputerModel')]
     [Alias('Get-Model')]
     Param (
         [Parameter(

@@ -37,7 +37,7 @@ function Test-MTU {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-MTU')]
     param(
         [Parameter(Mandatory=$false)]
         [Alias('Host', 'Name', 'Computer', 'ComputerName', 'TestAddress')]

@@ -11,7 +11,7 @@ function Get-DaysSinceLastLogon {
     .LINK
         https://docs.keldor.dev
     #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-DaysSinceLastLogon')]
     Param (
         [Parameter(
             Mandatory=$false,

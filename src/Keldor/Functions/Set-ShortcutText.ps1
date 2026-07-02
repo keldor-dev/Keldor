@@ -8,7 +8,7 @@ function Set-ShortcutText {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ShortcutText')]
     Param (
         [Switch]$Yes,
         [Switch]$No

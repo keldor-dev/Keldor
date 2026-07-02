@@ -12,7 +12,7 @@ function Open-OWA {
         "",
         Justification = "Have tried other methods and they do not work consistently."
     )]
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-OWA')]
     [Alias('OWA')]
     Param (
         [Parameter(Mandatory=$false)]

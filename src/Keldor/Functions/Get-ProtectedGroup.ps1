@@ -10,7 +10,9 @@ function Get-ProtectedGroup {
 .LINK
     https://docs.keldor.dev
 #>
-    if (Get-Module -ListAvailable -Name ActiveDirectory) {
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ProtectedGroup')]
+    Param ()
+if (Get-Module -ListAvailable -Name ActiveDirectory) {
         $groups = (Get-ADGroup -filter {admincount -eq "1"}).Name | Sort-Object
         $groups
     }

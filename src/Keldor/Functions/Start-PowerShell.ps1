@@ -8,7 +8,7 @@ function Start-PowerShell {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Start-PowerShell')]
     [Alias('Open-PowerShell')]
     Param (
         [Parameter(Mandatory=$false)]

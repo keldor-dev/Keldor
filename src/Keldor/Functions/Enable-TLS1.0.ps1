@@ -10,7 +10,7 @@ function Enable-TLS1.0 { #DevSkim: ignore DS169125,DS440000
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Enable-TLS1.0')]
     param(
         [Parameter(
             Mandatory=$false,

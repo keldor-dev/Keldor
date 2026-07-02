@@ -13,7 +13,7 @@ function Open-LocalGPeditor {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-LocalGPeditor')]
     [Alias('Open-LocalPolicyEditor','LocalPolicy')]
     param()
     gpedit.msc

@@ -13,7 +13,7 @@ function Join-File {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Join-File')]
     [Alias('Merge-File')]
     Param (
         [Parameter(HelpMessage = "Enter the path of the folder with the part files you want to join.",

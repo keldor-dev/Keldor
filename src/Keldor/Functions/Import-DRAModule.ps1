@@ -8,7 +8,9 @@ function Import-DRAModule {
 .LINK
     https://docs.keldor.dev
 #>
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Import-DRAModule')]
+    Param ()
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
         "",
         Justification = "Have tried other methods and they do not work consistently."

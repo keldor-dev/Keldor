@@ -14,7 +14,9 @@ function Add-DateTime {
     https://docs.keldor.dev
 #Requires -Version 2.0
 #>
-    $timeText = @"
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-DateTime')]
+    Param ()
+$timeText = @"
 $(Get-Date)
 "@
     $psise.CurrentFile.Editor.InsertText($timeText)

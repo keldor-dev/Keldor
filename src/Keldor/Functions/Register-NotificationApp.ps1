@@ -10,7 +10,7 @@ function Register-NotificationApp {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Register-NotificationApp')]
     param(
         [Parameter(
             HelpMessage = "Enter the short name of the application.",

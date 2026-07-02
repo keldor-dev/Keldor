@@ -16,7 +16,7 @@ WindowsUpdate.log
 Provides information about when the Windows Update Agent connects to the WSUS server and retrieves the
 software updates for compliance assessment and whether there are updates to the agent components.
 --#>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-WindowsUpdateLog')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]
         [Alias('Host','Name','Computer','CN')]

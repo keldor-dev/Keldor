@@ -9,7 +9,7 @@ function Get-User {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-User')]
     param(
         [Parameter(
             Mandatory=$false,

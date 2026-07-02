@@ -12,5 +12,7 @@ function Open-DevicesAndPrinters {
 .LINK
     https://docs.keldor.dev
 #>
-    control.exe printers
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-DevicesAndPrinters')]
+    Param ()
+control.exe printers
 }

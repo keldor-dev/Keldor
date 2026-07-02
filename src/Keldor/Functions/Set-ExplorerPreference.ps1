@@ -13,7 +13,7 @@ function Set-ExplorerPreference {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ExplorerPreference')]
     Param (
         [Switch]$ThisPC,
         [Switch]$QuickAccess

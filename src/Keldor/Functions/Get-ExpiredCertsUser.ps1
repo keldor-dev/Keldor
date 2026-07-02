@@ -8,7 +8,9 @@ function Get-ExpiredCertsUser {
     .LINK
         https://docs.keldor.dev
     #>
-    $cd = Get-Date
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ExpiredCertsUser')]
+    Param ()
+$cd = Get-Date
     $certs = Get-ChildItem -Path Cert:\CurrentUser -Recurse | Select-Object *
 
     $excerts = $null

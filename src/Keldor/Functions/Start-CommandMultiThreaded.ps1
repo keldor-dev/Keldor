@@ -52,7 +52,7 @@ function Start-CommandMultiThreaded {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Start-CommandMultiThreaded')]
     Param (
         [Parameter()]
         [string]$Command,

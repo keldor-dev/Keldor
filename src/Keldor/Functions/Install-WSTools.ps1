@@ -30,7 +30,7 @@ function Install-WSTools {
         "",
         Justification = "Have tried other methods and they do not work consistently."
     )]
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Install-WSTools')]
     [Alias('Copy-WSTools','Push-WSTools')]
     Param (
         [Parameter(

@@ -13,7 +13,7 @@ function Uninstall-HBSS {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Uninstall-HBSS')]
     [Alias('Uninstall-ENS','Uninstall-ESS')]
     Param (
         [Parameter(

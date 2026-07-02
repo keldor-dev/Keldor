@@ -20,7 +20,7 @@ function Enable-ServerManager {
     .LINK
         https://docs.keldor.dev
     #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Enable-ServerManager')]
     param ()
 
     $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())

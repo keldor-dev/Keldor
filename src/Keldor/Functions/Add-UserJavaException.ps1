@@ -34,7 +34,7 @@ function Add-UserJavaException {
     .LINK
         https://docs.keldor.dev
     #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-UserJavaException')]
     param(
         [Parameter(
             HelpMessage = "Enter the address of the website.",

@@ -10,7 +10,9 @@ function Get-ProtectedUser {
 .LINK
     https://docs.keldor.dev
 #>
-    if (Get-Module -ListAvailable -Name ActiveDirectory) {
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ProtectedUser')]
+    Param ()
+if (Get-Module -ListAvailable -Name ActiveDirectory) {
         $users = (Get-ADUser -filter {admincount -eq "1"}).Name | Sort-Object
         $users
     }

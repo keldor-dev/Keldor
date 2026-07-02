@@ -11,7 +11,7 @@ function Update-HelpFromFile {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Update-HelpFromFile')]
     param(
         [Parameter()]
         [Alias('Path','Folder','Source')]

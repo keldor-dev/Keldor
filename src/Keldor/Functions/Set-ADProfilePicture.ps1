@@ -10,7 +10,7 @@ function Set-ADProfilePicture {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ADProfilePicture')]
     Param (
         [Parameter(Mandatory=$true, Position=0)]
         [Alias('User','SamAccountname')]

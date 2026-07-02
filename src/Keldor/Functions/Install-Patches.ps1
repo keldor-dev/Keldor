@@ -32,7 +32,7 @@ function Install-Patches {
         "",
         Justification = "Have tried other methods and they do not work consistently."
     )]
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Install-Patches')]
     [Alias('Install-Updates')]
     Param (
         [Parameter(

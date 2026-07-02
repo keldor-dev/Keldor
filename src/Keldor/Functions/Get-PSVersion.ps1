@@ -8,7 +8,7 @@ function Get-PSVersion {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-PSVersion')]
     [Alias('Get-PowerShellVersion')]
     Param (
         [Parameter(HelpMessage = "Enter one or more computer names separated by commas.",

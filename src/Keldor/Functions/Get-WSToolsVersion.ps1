@@ -8,7 +8,7 @@ function Get-WSToolsVersion {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-WSToolsVersion')]
     [Alias('WSToolsVersion')]
     Param (
         [Parameter(Mandatory=$false)]

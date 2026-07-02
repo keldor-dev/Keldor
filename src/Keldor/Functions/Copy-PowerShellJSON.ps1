@@ -21,7 +21,7 @@ function Copy-PowerShellJSON {
     .LINK
         https://docs.keldor.dev
     #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Copy-PowerShellJSON')]
     [Alias('Update-PowerShellJSON','Set-PowerShellJSON')]
     param()
 

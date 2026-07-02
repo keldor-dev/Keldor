@@ -38,7 +38,7 @@ function Test-ResponseTime {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-ResponseTime')]
     param (
         [Parameter()]
         [Alias('Host','Name','Computer','ComputerName','TestAddress')]

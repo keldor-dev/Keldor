@@ -8,5 +8,7 @@ function Open-HomeDrive {
 .LINK
     https://docs.keldor.dev
 #>
-    explorer.exe $env:HOMESHARE
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-HomeDrive')]
+    Param ()
+explorer.exe $env:HOMESHARE
 }

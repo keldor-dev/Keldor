@@ -25,7 +25,7 @@ function Get-HttpHeaderSetting {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-HttpHeaderSetting')]
     param()
 
     $schannel = @()

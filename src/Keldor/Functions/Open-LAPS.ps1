@@ -10,7 +10,7 @@ function Open-LAPS {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-LAPS')]
     [Alias('laps')]
     param()
     try {

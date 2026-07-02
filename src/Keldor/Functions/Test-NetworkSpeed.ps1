@@ -43,7 +43,7 @@ function Test-NetworkSpeed {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-NetworkSpeed')]
     param(
         [Parameter(
             Mandatory=$false

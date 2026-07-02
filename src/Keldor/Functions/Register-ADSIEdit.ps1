@@ -8,7 +8,7 @@ function Register-ADSIEdit {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Register-ADSIEdit')]
     [Alias('Initialize-ADSIEdit','Enable-ADSIEdit')]
     param()
 

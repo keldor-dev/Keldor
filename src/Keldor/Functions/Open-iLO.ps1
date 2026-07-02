@@ -12,7 +12,7 @@ function Open-iLO {
         "",
         Justification = "Have tried other methods and they do not work consistently."
     )]
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-iLO')]
     [Alias('iLO')]
     Param (
         [Parameter(Mandatory=$false)]

@@ -10,7 +10,9 @@ function Set-ServerConfig {
 .LINK
     https://docs.keldor.dev
 #>
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ServerConfig')]
+    Param ()
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
         "",
         Justification = "Have tried other methods and they do not work consistently."

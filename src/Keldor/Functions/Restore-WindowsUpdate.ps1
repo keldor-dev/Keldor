@@ -10,7 +10,9 @@ function Restore-WindowsUpdate {
 .Link
     https://docs.keldor.dev
 #>
-    $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Restore-WindowsUpdate')]
+    Param ()
+$currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
     if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {dism.exe /Online /Cleanup-image /Restorehealth}
     else {Write-Error "Must be ran as admin"}
 }

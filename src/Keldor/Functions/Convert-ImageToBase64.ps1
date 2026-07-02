@@ -8,7 +8,7 @@ function Convert-ImageToBase64 {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Convert-ImageToBase64')]
     [Alias('Convert-ICOtoBase64')]
     param(
         [Parameter(

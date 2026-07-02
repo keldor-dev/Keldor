@@ -8,7 +8,7 @@ function Open-DHCPmgmt {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-DHCPmgmt')]
     [Alias('dhcp')]
     param()
     try {

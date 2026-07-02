@@ -8,7 +8,7 @@ function Get-UpdateHistory {
     .LINK
         https://docs.keldor.dev
     #>
-        [CmdletBinding()]
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-UpdateHistory')]
         param(
             [Parameter(Mandatory=$false, Position=0)]
             [Alias('DaysBackToSearch')]

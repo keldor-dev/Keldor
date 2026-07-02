@@ -27,5 +27,7 @@ function Stop-AxwayTrayApp {
 .LINK
     https://docs.keldor.dev
 #>
-    Get-Process | Where-Object {$_.Name -match "dvtray"} | Stop-Process -Force
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Stop-AxwayTrayApp')]
+    Param ()
+Get-Process | Where-Object {$_.Name -match "dvtray"} | Stop-Process -Force
 }

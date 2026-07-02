@@ -22,7 +22,7 @@ function Set-SMBv1Fix {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-SMBv1Fix')]
     Param (
         [Parameter(
             Mandatory=$false,

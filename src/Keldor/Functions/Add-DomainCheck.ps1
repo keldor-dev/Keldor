@@ -14,7 +14,9 @@ function Add-DomainCheck {
     https://docs.keldor.dev
 #>
 
-    $domainText = @"
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-DomainCheck')]
+    Param ()
+$domainText = @"
     if (`$env:USERDNSDOMAIN -match "skynet") {
 
     }#if skynet

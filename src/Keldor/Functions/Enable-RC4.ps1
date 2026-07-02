@@ -13,7 +13,7 @@ function Enable-RC4 {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Enable-RC4')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]
         [Alias('Host','Name','Computer','CN')]

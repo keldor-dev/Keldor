@@ -9,7 +9,7 @@ function Get-CurrentUser {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-CurrentUser')]
     Param (
         [Parameter(Mandatory=$true, Position=0)]
         [Alias('Host','Name','Computer','CN')]

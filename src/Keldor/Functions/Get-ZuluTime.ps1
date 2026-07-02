@@ -7,5 +7,7 @@ function Get-ZuluTime {
 .LINK
     https://docs.keldor.dev
 #>
-    (Get-Date).ToUniversalTime()
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ZuluTime')]
+    Param ()
+(Get-Date).ToUniversalTime()
 }

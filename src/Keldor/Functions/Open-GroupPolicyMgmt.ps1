@@ -8,7 +8,7 @@ function Open-GroupPolicyMgmt {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-GroupPolicyMgmt')]
     [Alias('gpo','gpmc','GroupPolicy')]
     param()
     try {

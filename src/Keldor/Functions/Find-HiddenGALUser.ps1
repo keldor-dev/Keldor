@@ -24,7 +24,7 @@ function Find-HiddenGALUser {
     .LINK
         https://docs.keldor.dev
     #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Find-HiddenGALUser')]
     Param (
         [Parameter(
             Mandatory=$false,

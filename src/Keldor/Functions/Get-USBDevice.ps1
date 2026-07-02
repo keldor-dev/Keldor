@@ -13,7 +13,7 @@ function Get-USBDevice {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-USBDevice')]
     [Alias('usb')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]

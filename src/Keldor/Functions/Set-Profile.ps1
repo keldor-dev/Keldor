@@ -7,7 +7,7 @@ function Set-Profile {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-Profile')]
     [Alias('Edit-Profile','Profile')]
     param()
 

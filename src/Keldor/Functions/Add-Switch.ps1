@@ -8,7 +8,9 @@ function Add-Switch {
 .LINK
     https://docs.keldor.dev
 #>
-    $objectText = @"
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-Switch')]
+    Param ()
+$objectText = @"
 switch (`$variable) {
     value {`$variable2 = "something"}
 

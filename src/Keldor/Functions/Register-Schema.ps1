@@ -10,7 +10,9 @@ function Register-Schema {
 .LINK
     https://docs.keldor.dev
 #>
-    if (Test-Path $env:windir\System32\schmmgmt.dll) {
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Register-Schema')]
+    Param ()
+if (Test-Path $env:windir\System32\schmmgmt.dll) {
         regsvr32.exe schmmgmt.dll
     }
     else {

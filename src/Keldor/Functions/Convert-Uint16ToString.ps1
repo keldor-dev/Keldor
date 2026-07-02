@@ -27,7 +27,7 @@ function Convert-Uint16ToString {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Convert-Uint16ToString')]
     param(
         [Parameter()]
         [uint16[]]$Members

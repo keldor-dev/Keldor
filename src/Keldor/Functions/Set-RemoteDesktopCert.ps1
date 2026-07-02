@@ -10,7 +10,7 @@ function Set-RemoteDesktopCert {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-RemoteDesktopCert')]
     [Alias('Set-RDPCert')]
     param(
         [Parameter(

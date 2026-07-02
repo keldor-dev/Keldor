@@ -25,7 +25,7 @@ function Connect-RDP {
     .LINK
         https://docs.keldor.dev
     #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Connect-RDP')]
     [alias('rdp')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]

@@ -11,7 +11,7 @@ function Set-AxwayConfig {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-AxwayConfig')]
     [Alias('Import-AxwayConfig')]
     param(
         [Parameter(

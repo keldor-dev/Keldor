@@ -10,7 +10,9 @@ function Stop-Exchange {
 .LINK
     https://docs.keldor.dev
 #>
-    $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Stop-Exchange')]
+    Param ()
+$currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
     if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
         Get-Service -Name * | Where-Object {$_.DisplayName -match "Exchange"} | Stop-Service -Force
     }

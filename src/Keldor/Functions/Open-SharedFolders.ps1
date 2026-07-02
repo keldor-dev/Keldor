@@ -10,7 +10,7 @@ function Open-SharedFolders {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-SharedFolders')]
     [Alias('Shares','Get-Shares')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]

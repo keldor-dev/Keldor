@@ -18,7 +18,7 @@ function Update-VisioStencils {
         "",
         Justification = "Have tried other methods and they do not work consistently."
     )]
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Update-VisioStencils')]
     [Alias('Copy-VisioStencils','Get-VisioStencils')]
     param()
 

@@ -8,7 +8,9 @@ function Get-Role {
 .LINK
     https://docs.keldor.dev
 #>
-    $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-Role')]
+    Param ()
+$currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
     if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {$Role = "Admin"}
     else {$Role = "Non-Admin"}
     $Role

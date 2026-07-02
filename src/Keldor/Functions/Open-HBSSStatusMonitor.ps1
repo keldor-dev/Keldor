@@ -13,7 +13,7 @@ function Open-HBSSStatusMonitor {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-HBSSStatusMonitor')]
     [Alias('HBSS')]
     param()
     if (Test-Path "$env:ProgramFiles\McAfee\Agent\cmdagent.exe") {

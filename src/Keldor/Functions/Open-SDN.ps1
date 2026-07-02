@@ -12,7 +12,7 @@ function Open-SDN {
         "",
         Justification = "Have tried other methods and they do not work consistently."
     )]
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-SDN')]
     [Alias('Open-SDNMgmt','SDN','Open-Unifi','unifi')]
     Param (
         [Parameter(Mandatory=$false)]

@@ -12,7 +12,7 @@ function Open-CMLibrary {
         "",
         Justification = "Have tried other methods and they do not work consistently."
     )]
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-CMLibrary')]
     Param (
         [Parameter(Mandatory=$false)]
         [Switch]$Chrome,

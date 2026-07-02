@@ -16,7 +16,8 @@ function Test-DynamicParameterSwitchCheck {
 .LINK
     https://docs.keldor.dev
 #>
-    Param (
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-DynamicParameterSwitchCheck')]
+Param (
         [Parameter(Mandatory = $false)]
         [Alias('EDIPI','DisplayName')]
         [string[]]$UserName,

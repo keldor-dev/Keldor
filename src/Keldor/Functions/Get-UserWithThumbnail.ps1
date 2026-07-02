@@ -10,7 +10,9 @@ function Get-UserWithThumbnail {
 .LINK
     https://docs.keldor.dev
 #>
-    if (Get-Module -ListAvailable -Name ActiveDirectory) {
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-UserWithThumbnail')]
+    Param ()
+if (Get-Module -ListAvailable -Name ActiveDirectory) {
         Write-Output "Getting OU names . . ."
         $ous = (Get-ADOrganizationalUnit -Filter 'Name -like "*"' | Select-Object DistinguishedName).DistinguishedName
 

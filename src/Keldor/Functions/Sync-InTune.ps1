@@ -20,7 +20,7 @@ function Sync-InTune {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Sync-InTune')]
     [Alias('Sync-MEM')]
     param()
 

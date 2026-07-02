@@ -7,7 +7,7 @@ function Set-Title {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-Title')]
     [Alias('title')]
     Param (
         [Parameter(Mandatory=$true, Position=0)]

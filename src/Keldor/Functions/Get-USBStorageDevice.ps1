@@ -20,7 +20,7 @@ function Get-USBStorageDevice {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-USBStorageDevice')]
     Param (
         [Parameter(
             Mandatory=$false,

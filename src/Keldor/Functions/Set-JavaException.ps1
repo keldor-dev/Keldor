@@ -15,7 +15,7 @@ function Set-JavaException {
         "",
         Justification = "Have tried other methods and they do not work consistently."
     )]
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-JavaException')]
     [Alias('Add-JavaException')]
     Param (
         [Parameter(

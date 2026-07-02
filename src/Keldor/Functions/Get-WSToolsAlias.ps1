@@ -8,7 +8,7 @@ function Get-WSToolsAlias {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-WSToolsAlias')]
     [Alias('WSToolsAliases')]
     param()
     Get-Alias | Where-Object {$_.Source -eq "Keldor"}

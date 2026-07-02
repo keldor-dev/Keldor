@@ -12,7 +12,7 @@ function Open-AdminTools {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-AdminTools')]
     [Alias('tools','admintools','admin')]
     param()
     control.exe admintools

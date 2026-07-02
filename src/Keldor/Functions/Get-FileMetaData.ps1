@@ -45,7 +45,8 @@ function Get-FileMetaData {
         https://devblogs.microsoft.com/scripting/
     #Requires -Version 2.0
     #>
-    Param([string[]]$Path)
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-FileMetaData')]
+Param([string[]]$Path)
     foreach($sFolder in $Path) {
         $ItemInfo = Get-Item $sFolder | Select-Object *
         if ($ItemInfo.Mode -like "d-*") {

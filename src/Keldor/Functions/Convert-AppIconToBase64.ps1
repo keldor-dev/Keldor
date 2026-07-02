@@ -27,7 +27,7 @@ function Convert-AppIconToBase64 {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Convert-AppIconToBase64')]
     param(
         [Parameter(
             HelpMessage = "Enter the path of the file to extract the icon from. Ex: C:\Temp\app.exe",

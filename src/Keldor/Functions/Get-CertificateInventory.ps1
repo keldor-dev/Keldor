@@ -9,7 +9,7 @@ function Get-CertificateInventory {
     .LINK
         https://docs.keldor.dev
     #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-CertificateInventory')]
     [Alias('Get-CertInv','Get-CertInfo')]
     param()
 

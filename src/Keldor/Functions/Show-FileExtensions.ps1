@@ -18,7 +18,7 @@ function Show-FileExtensions {
         "",
         Justification = "Expresses exactly what the function does."
     )]
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Show-FileExtensions')]
     Param (
         [Switch]$Yes,
         [Switch]$No

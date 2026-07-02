@@ -17,7 +17,7 @@ function Update-ModulesFromLocalRepo {
         "",
         Justification = "Have tried other methods and they do not work consistently."
     )]
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Update-ModulesFromLocalRepo')]
     Param (
         [Parameter(
             Mandatory = $false,

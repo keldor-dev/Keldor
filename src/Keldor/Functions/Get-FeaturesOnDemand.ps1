@@ -10,7 +10,9 @@ function Get-FeaturesOnDemand {
     .LINK
         https://docs.keldor.dev
     #>
-    $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-FeaturesOnDemand')]
+    Param ()
+$currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
     if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {$Role = 'Admin'}
     else {$Role = 'User'}
 

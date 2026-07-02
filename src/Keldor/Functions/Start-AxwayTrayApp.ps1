@@ -27,5 +27,7 @@ function Start-AxwayTrayApp {
 .LINK
     https://docs.keldor.dev
 #>
-    & 'C:\Program Files\Tumbleweed\Desktop Validator\DVTrayApp.exe'
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Start-AxwayTrayApp')]
+    Param ()
+& 'C:\Program Files\Tumbleweed\Desktop Validator\DVTrayApp.exe'
 }

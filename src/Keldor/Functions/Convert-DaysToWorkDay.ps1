@@ -19,7 +19,7 @@ function Convert-DaysToWorkDay {
         "",
         Justification = "Have tried other methods and they do not work consistently."
     )]
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Convert-DaysToWorkDay')]
     param(
         [Parameter(
             HelpMessage = "Enter the amount of days you want to convert. Must an a positive or negative integer (Ex: 1 or -1).",

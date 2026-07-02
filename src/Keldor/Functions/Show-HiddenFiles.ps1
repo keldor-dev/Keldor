@@ -18,7 +18,7 @@ function Show-HiddenFiles {
         "",
         Justification = "Expresses exactly what the function does."
     )]
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Show-HiddenFiles')]
     Param (
         [Switch]$Yes,
         [Switch]$No

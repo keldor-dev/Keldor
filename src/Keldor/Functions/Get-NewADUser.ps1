@@ -10,7 +10,7 @@ function Get-NewADUser {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-NewADUser')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]
         [int32]$Days = 1

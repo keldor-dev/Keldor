@@ -21,7 +21,7 @@ function Copy-VSCodeSettingsToProfile {
     .LINK
         https://docs.keldor.dev
     #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Copy-VSCodeSettingsToProfile')]
     param ()
 
     $vscs = ($Global:KeldorConfig).VSCodeSettingsPath

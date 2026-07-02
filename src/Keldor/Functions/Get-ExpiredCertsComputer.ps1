@@ -8,7 +8,9 @@ function Get-ExpiredCertsComputer {
     .LINK
         https://docs.keldor.dev
     #>
-    $cd = Get-Date
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ExpiredCertsComputer')]
+    Param ()
+$cd = Get-Date
     $certs = Get-ChildItem -Path Cert:\LocalMachine -Recurse | Select-Object *
 
     $excerts = $null

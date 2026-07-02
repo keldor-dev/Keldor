@@ -8,7 +8,7 @@ function Open-CMTrace {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-CMTrace')]
     [Alias('Open-CCMTrace','CMTrace','CCMTrace')]
     param(
         [Parameter(

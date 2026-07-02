@@ -72,7 +72,7 @@ WUSSyncXML.log
 Provides information about the Inventory Tool for Microsoft Updates synchronization process.
 This log is only on the client computer configured as the synchronization host for the Inventory Tool for Microsoft Updates.
 --#>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-SCCMLogsFolder')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]
         [Alias('Host','Name','Computer','CN')]

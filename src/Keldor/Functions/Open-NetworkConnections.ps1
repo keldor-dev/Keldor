@@ -12,7 +12,7 @@ function Open-NetworkConnections {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-NetworkConnections')]
     [Alias('network','connections')]
     param()
     control.exe ncpa.cpl

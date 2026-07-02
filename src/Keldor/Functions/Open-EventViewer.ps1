@@ -12,7 +12,7 @@ function Open-EventViewer {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-EventViewer')]
     [Alias('events')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]

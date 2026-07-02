@@ -10,7 +10,7 @@ function Set-MTU {
 .LINK
     https://docs.keldor.dev
 #>
-	[CmdletBinding()]
+	[CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-MTU')]
     Param (
         [Parameter(
             Mandatory=$false,

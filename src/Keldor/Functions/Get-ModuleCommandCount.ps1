@@ -8,7 +8,7 @@ function Get-ModuleCommandCount {
     .LINK
         https://docs.keldor.dev
     #>
-        [CmdletBinding()]
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ModuleCommandCount')]
         param(
             [Parameter(
                 HelpMessage = "Enter the name of the module. It must be one that is imported.",

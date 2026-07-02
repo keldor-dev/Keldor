@@ -8,7 +8,7 @@ function Get-WSToolsCommand {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-WSToolsCommand')]
     [Alias('WSToolsCommands')]
     param()
     $commands = (Get-Module Keldor | Select-Object ExportedCommands).ExportedCommands

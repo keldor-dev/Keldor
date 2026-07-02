@@ -22,7 +22,7 @@ function Find-SID {
     .LINK
         https://docs.keldor.dev
     #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Find-SID')]
     Param (
         [Parameter(
             Mandatory=$true,

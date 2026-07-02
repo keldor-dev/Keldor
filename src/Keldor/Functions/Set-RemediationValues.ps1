@@ -11,7 +11,7 @@ function Set-RemediationValues {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-RemediationValues')]
     Param (
         [Parameter(
             Mandatory=$false,

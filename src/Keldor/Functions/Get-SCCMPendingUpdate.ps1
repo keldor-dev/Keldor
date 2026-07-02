@@ -34,7 +34,7 @@ function Get-SCCMPendingUpdate {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-SCCMPendingUpdate')]
     [Alias()]
     param(
         [Parameter(

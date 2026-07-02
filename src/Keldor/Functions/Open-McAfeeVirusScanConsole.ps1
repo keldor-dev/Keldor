@@ -13,7 +13,9 @@ function Open-McAfeeVirusScanConsole {
 .LINK
     https://docs.keldor.dev
 #>
-    if (Test-Path "$env:ProgramFiles\McAfee\VirusScan Enterprise\mcconsol.exe") {
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-McAfeeVirusScanConsole')]
+    Param ()
+if (Test-Path "$env:ProgramFiles\McAfee\VirusScan Enterprise\mcconsol.exe") {
         Start-Process "$env:ProgramFiles\McAfee\VirusScan Enterprise\mcconsol.exe"
     }
     else {Start-Process "${env:ProgramFiles(x86)}\McAfee\VirusScan Enterprise\mcconsol.exe"}

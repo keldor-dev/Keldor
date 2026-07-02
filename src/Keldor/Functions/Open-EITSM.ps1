@@ -14,7 +14,7 @@ function Open-EITSM {
         "",
         Justification = "Have tried other methods and they do not work consistently."
     )]
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-EITSM')]
     [Alias('Remedy','EITSM','Open-Remedy','ServiceNow','SNOW','Open-ServiceNow')]
     Param (
         [Parameter(Mandatory=$false)]

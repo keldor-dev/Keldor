@@ -8,7 +8,9 @@ function Get-UserGroup {
 .LINK
     https://docs.keldor.dev
 #>
-    $id = [Security.Principal.WindowsIdentity]::GetCurrent()
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-UserGroup')]
+    Param ()
+$id = [Security.Principal.WindowsIdentity]::GetCurrent()
     $groups = $id.Groups | foreach-object {$_.Translate([Security.Principal.NTAccount])}
     $groups | Select-Object Value -ExpandProperty Value
 }

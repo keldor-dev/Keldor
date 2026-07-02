@@ -39,7 +39,7 @@ function Clear-DirtyShutdown {
     .LINK
         https://docs.keldor.dev
     #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Clear-DirtyShutdown')]
     param(
         [Parameter(
             Mandatory=$false

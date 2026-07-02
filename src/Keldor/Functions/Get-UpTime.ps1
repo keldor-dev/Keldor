@@ -8,7 +8,7 @@ function Get-UpTime {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-UpTime')]
     Param (
         [Parameter(
             Mandatory=$false,

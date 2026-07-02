@@ -9,7 +9,7 @@ function Get-FSMO {
     .LINK
         https://docs.keldor.dev
     #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-FSMO')]
     [Alias('fsmo')]
     Param (
         [Parameter()]

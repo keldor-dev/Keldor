@@ -10,7 +10,7 @@ function Stop-Database {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Stop-Database')]
     [Alias('Stop-Oracle','Stop-SQL','Stop-MongoDB')]
     param()
     $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())

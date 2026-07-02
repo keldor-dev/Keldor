@@ -10,7 +10,7 @@ function Set-NetworkConnectionsShortcut {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-NetworkConnectionsShortcut')]
     param(
         [Parameter(
             HelpMessage = "Enter either PublicDesktop or UserDesktop. PublicDesktop requires admin rights.",

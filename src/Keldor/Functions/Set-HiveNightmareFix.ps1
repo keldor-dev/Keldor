@@ -10,7 +10,9 @@ function Set-HiveNightmareFix {
 .LINK
     https://docs.keldor.dev
 #>
-    $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-HiveNightmareFix')]
+    Param ()
+$currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
     if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
         icacls $env:windir\system32\config\*.* /inheritance:e
         vssadmin.exe delete shadows /all

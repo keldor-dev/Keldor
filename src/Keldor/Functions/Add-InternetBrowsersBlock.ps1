@@ -13,7 +13,9 @@ function Add-InternetBrowsersBlock {
 .LINK
     https://docs.keldor.dev
 #>
-    $browserblockText = @"
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-InternetBrowsersBlock')]
+    Param ()
+$browserblockText = @"
     if (`$Chrome) {Start-Process "chrome.exe" `$URL}
     elseif (`$Edge) {Start-Process Microsoft-Edge:`$URL}
     elseif (`$Firefox) {Start-Process "firefox.exe" `$URL}

@@ -13,7 +13,7 @@ function Set-MS15124 {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-MS15124')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]
         [Alias('Host','Name','Computer','CN')]

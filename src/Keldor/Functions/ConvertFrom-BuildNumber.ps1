@@ -34,7 +34,7 @@ function ConvertFrom-BuildNumber {
     .LINK
         https://docs.keldor.dev
     #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/ConvertFrom-BuildNumber')]
     [Alias('ConvertFrom-MicrosoftBuildNumber')]
     param(
         [Parameter(

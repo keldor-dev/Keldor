@@ -10,7 +10,7 @@ function Split-File {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Split-File')]
     Param (
         [Parameter(HelpMessage = "Enter the path of the file you want to split.",
             Mandatory=$true,

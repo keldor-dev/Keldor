@@ -9,7 +9,7 @@ function Get-DayOfYear {
     .LINK
         https://docs.keldor.dev
     #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-DayOfYear')]
     [Alias('Get-JulianDay','Get-JulianDate')]
     param(
         [Parameter(

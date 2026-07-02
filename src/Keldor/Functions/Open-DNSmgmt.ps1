@@ -8,7 +8,7 @@ function Open-DNSmgmt {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-DNSmgmt')]
     [Alias('dns')]
     param()
     try {

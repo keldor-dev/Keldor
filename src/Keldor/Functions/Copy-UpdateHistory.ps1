@@ -48,7 +48,7 @@ function Copy-UpdateHistory {
         "",
         Justification = "Have tried other methods and they do not work consistently."
     )]
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Copy-UpdateHistory')]
     param(
         [Parameter(
             Mandatory=$false

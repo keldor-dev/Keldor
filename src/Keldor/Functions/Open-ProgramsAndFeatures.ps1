@@ -12,7 +12,7 @@ function Open-ProgramsAndFeatures {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-ProgramsAndFeatures')]
     [Alias('programs')]
     param()
     Start-Process appwiz.cpl

@@ -13,7 +13,7 @@ function Set-FeatureSettingsOverride {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-FeatureSettingsOverride')]
     Param (
         [Parameter(
             Mandatory=$false,

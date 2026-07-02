@@ -26,7 +26,7 @@ function Send-ToastNotification {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Send-ToastNotification')]
     param(
         [Parameter(
             HelpMessage = "Enter the message to send.",

@@ -12,5 +12,7 @@ function Open-SystemProperties {
 .LINK
     https://docs.keldor.dev
 #>
-    control.exe sysdm.cpl
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-SystemProperties')]
+    Param ()
+control.exe sysdm.cpl
 }

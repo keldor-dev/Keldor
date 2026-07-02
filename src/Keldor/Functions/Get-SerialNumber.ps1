@@ -8,7 +8,7 @@ function Get-SerialNumber {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-SerialNumber')]
     [Alias('Get-SN')]
     Param (
         [Parameter(HelpMessage = "Enter one or more computer names separated by commas.",

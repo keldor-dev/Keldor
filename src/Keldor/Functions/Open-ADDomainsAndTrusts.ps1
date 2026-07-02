@@ -8,7 +8,7 @@ function Open-ADDomainsAndTrusts {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-ADDomainsAndTrusts')]
     [Alias('trusts')]
     param()
     try {

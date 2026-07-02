@@ -32,7 +32,8 @@ function Update-BrokenInheritance {
 .LINK
     https://docs.keldor.dev
 #>
-    Param (
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Update-BrokenInheritance')]
+Param (
         [Parameter(
             HelpMessage="Enter the distinguishedName of the OU that you want to search",
             Mandatory=$false

@@ -34,7 +34,7 @@ function Get-SCCMInstallStatus {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-SCCMInstallStatus')]
     [Alias()]
     param(
         [Parameter(
@@ -44,8 +44,6 @@ function Get-SCCMInstallStatus {
             #ValueFromPipeline = $true
         )]
         [ValidateNotNullOrEmpty()]
-        [ValidateCount(min,max)]
-        [ValidateLength(min,max)]
         [ValidateSet('Info','Error','Warning','One','Two','Three')]
         [Alias('Host','Name','Computer','CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"

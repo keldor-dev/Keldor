@@ -10,7 +10,9 @@ function Stop-AppService {
 .LINK
     https://docs.keldor.dev
 #>
-    $AppNames = ($Global:KeldorConfig).AppNames
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Stop-AppService')]
+    Param ()
+$AppNames = ($Global:KeldorConfig).AppNames
     $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
     if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
         $services = Get-Service | Where-Object {$_.Status -eq "Running"}

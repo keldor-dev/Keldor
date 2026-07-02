@@ -45,7 +45,7 @@ function Get-InstalledProgram {
     .LINK
         https://docs.keldor.dev
     #>
-    [CmdletBinding(SupportsShouldProcess=$true)]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-InstalledProgram', SupportsShouldProcess=$true)]
     param(
         [Parameter(ValueFromPipeline=$true,
             ValueFromPipelineByPropertyName=$true,

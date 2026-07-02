@@ -8,7 +8,7 @@ function Get-NetworkLevelAuthentication {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-NetworkLevelAuthentication')]
     [Alias('Get-NLA')]
     param(
         [Parameter(

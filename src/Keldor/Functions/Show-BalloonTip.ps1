@@ -8,7 +8,7 @@ function Show-BalloonTip {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Show-BalloonTip')]
     [Alias('tip')]
     Param (
         [Parameter(Mandatory=$true)]

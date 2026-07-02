@@ -8,7 +8,9 @@ function Get-FilePath {
 .LINK
     https://docs.keldor.dev
 #>
-    [System.Reflection.Assembly]::LoadWithPartialName("System.windows.forms") | Out-Null
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-FilePath')]
+    Param ()
+[System.Reflection.Assembly]::LoadWithPartialName("System.windows.forms") | Out-Null
     $OpenFileDialog = New-Object System.Windows.Forms.OpenFileDialog
     $OpenFileDialog.initialDirectory = "C:\"
     $OpenFileDialog.filter = "All files (*.*)| *.*"

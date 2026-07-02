@@ -8,7 +8,7 @@ function Open-FileWithCMTrace {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-FileWithCMTrace')]
     [Alias('Open-Log')]
     param(
         [Parameter(

@@ -13,7 +13,7 @@ function Open-Services {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-Services')]
     [Alias('services')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]

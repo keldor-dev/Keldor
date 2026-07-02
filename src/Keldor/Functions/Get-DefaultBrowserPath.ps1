@@ -8,7 +8,9 @@ function Get-DefaultBrowserPath {
     .LINK
         https://docs.keldor.dev
     #>
-    New-PSDrive -Name HKCR -PSProvider Registry -Root Hkey_Classes_Root | Out-Null
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-DefaultBrowserPath')]
+    Param ()
+New-PSDrive -Name HKCR -PSProvider Registry -Root Hkey_Classes_Root | Out-Null
     $BrowserPath = ((Get-ItemProperty 'HKCR:\http\shell\open\command').'(default)').Split('"')[1]
     return $BrowserPath
     Remove-PSDrive -Name HKCR -Force -ErrorAction SilentlyContinue | Out-Null

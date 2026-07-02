@@ -8,5 +8,7 @@ function Get-HomeDrive {
     .LINK
         https://docs.keldor.dev
     #>
-    $env:HOMESHARE
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-HomeDrive')]
+    Param ()
+$env:HOMESHARE
 }

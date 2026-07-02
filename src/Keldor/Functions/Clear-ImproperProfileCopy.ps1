@@ -30,7 +30,7 @@ function Clear-ImproperProfileCopy {
     .LINK
         https://docs.keldor.dev
     #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Clear-ImproperProfileCopy')]
     Param (
         [Parameter(Mandatory=$true, Position=0)]
         [string]$Source,

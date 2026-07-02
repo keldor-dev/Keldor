@@ -34,7 +34,7 @@ function Start-SCCMUpdateScan {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Start-SCCMUpdateScan')]
     [Alias()]
     param(
         [Parameter(

@@ -8,7 +8,7 @@ function Import-XML {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Import-XML')]
     Param (
         [Parameter(Mandatory=$true, Position=0)]
         [string]$Path

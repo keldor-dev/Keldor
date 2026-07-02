@@ -15,7 +15,9 @@ function Add-Help {
 .LINK
     https://docs.keldor.dev
 #>
-    $helpText = @"
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-Help')]
+    Param ()
+$helpText = @"
 <#
    .Synopsis
     This does that

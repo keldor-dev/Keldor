@@ -8,7 +8,7 @@ function Get-ReplicationStatus {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ReplicationStatus')]
     [Alias('replsum')]
     param()
     repadmin /replsum

@@ -13,7 +13,7 @@ function Open-BitLocker {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-BitLocker')]
     [Alias('BitLocker')]
     param()
     control.exe /name Microsoft.BitLockerDriveEncryption

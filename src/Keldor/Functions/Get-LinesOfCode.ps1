@@ -10,7 +10,7 @@ function Get-LinesOfCode {
     .LINK
         https://docs.keldor.dev
     #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-LinesOfCode')]
     param(
         [Parameter(
             HelpMessage = "Enter the path of the folder you want to count lines of PowerShell and JSON code for",

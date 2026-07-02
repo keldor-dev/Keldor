@@ -8,7 +8,9 @@ function Get-FolderPath {
 .LINK
     https://docs.keldor.dev
 #>
-    Write-Output "The folder selection window is open. It may be hidden behind windows."
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-FolderPath')]
+    Param ()
+Write-Output "The folder selection window is open. It may be hidden behind windows."
     Add-Type -AssemblyName System.Windows.Forms
     $FolderBrowser = New-Object System.Windows.Forms.FolderBrowserDialog
     #$FolderBrowser.Description = "Select Folder"

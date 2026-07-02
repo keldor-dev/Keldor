@@ -12,7 +12,7 @@ function Open-EAC {
         "",
         Justification = "Have tried other methods and they do not work consistently."
     )]
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-EAC')]
     [Alias('Open-ECP','EAC','ECP')]
     Param (
         [Parameter(Mandatory=$false)]

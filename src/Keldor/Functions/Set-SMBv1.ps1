@@ -11,7 +11,7 @@ function Set-SMBv1 {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-SMBv1')]
     Param (
         [Parameter()]
         [Switch]$On

@@ -10,7 +10,7 @@ function Initialize-GPUpdate {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Initialize-GPUpdate')]
     param(
         [Parameter(Mandatory=$false)]
         [Alias('Host','Name','Computer','CN')]

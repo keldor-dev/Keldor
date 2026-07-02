@@ -8,7 +8,9 @@ function Open-NetLogonLog {
 .LINK
     https://docs.keldor.dev
 #>
-    $Continue = $false
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-NetLogonLog')]
+    Param ()
+$Continue = $false
     $file = "$env:windir\debug\netlogon.log"
     if (Test-Path "c:\Windows\ccm\CMTrace.exe") {
         $app = "c:\Windows\ccm\CMTrace.exe"

@@ -13,7 +13,7 @@ function Set-StoreLookup {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-StoreLookup')]
     Param (
         [Switch]$Yes,
         [Switch]$No

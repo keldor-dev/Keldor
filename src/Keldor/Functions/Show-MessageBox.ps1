@@ -9,7 +9,7 @@ function Show-MessageBox {
     https://docs.keldor.dev
 #>
 #info: https://msdn.microsoft.com/en-us/library/x83z1d9f(v=vs.84).aspx
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Show-MessageBox')]
     [Alias('message')]
     Param (
         [Parameter(Mandatory=$true)]

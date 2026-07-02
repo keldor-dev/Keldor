@@ -37,7 +37,7 @@ function Get-IPrange {
     .LINK
         https://docs.keldor.dev
     #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-IPrange')]
     Param (
         [Parameter(
             Mandatory=$false,

@@ -18,7 +18,7 @@ function Get-LockedOutLocation {
         Author:Jason Walker
         Last Modified: 3/20/2013
     #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-LockedOutLocation')]
     Param(
       [Parameter(Mandatory=$True)]
         [String]$Identity

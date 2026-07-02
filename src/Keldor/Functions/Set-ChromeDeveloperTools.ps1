@@ -35,7 +35,7 @@ function Set-ChromeDeveloperTools {
         "",
         Justification = "Developer Tools is the actual name of the setting so keeping it consistent."
     )]
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ChromeDeveloperTools')]
     [Alias('Set-DeveloperTools')]
     param(
         [Parameter()]

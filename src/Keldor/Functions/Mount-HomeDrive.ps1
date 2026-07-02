@@ -8,7 +8,7 @@ function Mount-HomeDrive {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Mount-HomeDrive')]
     [Alias('Add-HomeDrive')]
     param()
     net use $env:HOMEDRIVE $env:HOMESHARE /persistent:yes

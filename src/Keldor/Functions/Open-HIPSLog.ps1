@@ -13,5 +13,7 @@ function Open-HIPSLog {
 .LINK
     https://docs.keldor.dev
 #>
-    explorer "$env:ProgramData\McAfee\Host Intrusion Prevention"
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-HIPSLog')]
+    Param ()
+explorer "$env:ProgramData\McAfee\Host Intrusion Prevention"
 }

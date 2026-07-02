@@ -8,7 +8,7 @@ function Get-CommandList {
     .LINK
         https://docs.keldor.dev
     #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-CommandList')]
     Param (
         [Parameter(
             Mandatory=$false,

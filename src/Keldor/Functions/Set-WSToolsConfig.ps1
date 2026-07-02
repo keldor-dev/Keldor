@@ -7,5 +7,7 @@ function Set-WSToolsConfig {
 .LINK
     https://docs.keldor.dev
 #>
-    PowerShell_Ise "$PSScriptRoot\config.ps1"
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-WSToolsConfig')]
+    Param ()
+PowerShell_Ise "$PSScriptRoot\config.ps1"
 }

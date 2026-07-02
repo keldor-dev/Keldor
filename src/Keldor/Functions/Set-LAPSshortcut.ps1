@@ -21,7 +21,7 @@ function Set-LAPSshortcut {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-LAPSshortcut')]
     param(
         [Parameter(
             HelpMessage = "Enter either PublicDesktop or UserDesktop. PublicDesktop requires admin rights.",

@@ -8,7 +8,7 @@ function Start-WSToolsGUI {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Start-WSToolsGUI')]
     [Alias('wsgui','wstgui','Start-WSToolsTrayApp')]
     param()
     Start-Process powershell.exe -ArgumentList "`$host.ui.RawUI.WindowTitle = 'Keldor Taskbar App'; & '$PSScriptRoot\WSTools_SystemTrayApp.ps1'"

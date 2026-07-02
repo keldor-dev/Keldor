@@ -8,7 +8,7 @@ function Open-ADSIEdit {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-ADSIEdit')]
     [Alias('adsi')]
     param()
     try {

@@ -30,7 +30,7 @@ function Repair-DuplicateSusClientID {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Repair-DuplicateSusClientID')]
     param(
         [Parameter(
             Mandatory=$false

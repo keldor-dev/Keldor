@@ -8,7 +8,9 @@ function Add-ParamBlock {
 .LINK
     https://docs.keldor.dev
 #>
-    $paramblockText = @"
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-ParamBlock')]
+    Param ()
+$paramblockText = @"
     [CmdletBinding()]
     Param (
         [Parameter(HelpMessage = "Enter one or more computer names separated by commas.",

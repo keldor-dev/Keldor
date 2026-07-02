@@ -24,7 +24,7 @@ function Find-EmptyGroup {
     .LINK
         https://docs.keldor.dev
     #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Find-EmptyGroup')]
     Param (
         [Parameter(
             Mandatory=$false,

@@ -8,7 +8,9 @@ function Open-ADSitesAndServices {
 .LINK
     https://docs.keldor.dev
 #>
-    try {
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-ADSitesAndServices')]
+    Param ()
+try {
         $ErrorActionPreference = "Stop"
         dssite.msc
     }

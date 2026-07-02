@@ -13,7 +13,7 @@ function Open-VisualStudioCodeSettings {
         "",
         Justification = "Expresses exactly what the function does."
     )]
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-VisualStudioCodeSettings')]
     [Alias('Open-VSCCodeSettings')]
     param()
 

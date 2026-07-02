@@ -8,7 +8,7 @@ function Get-WindowsSetupLog {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-WindowsSetupLog')]
     [Alias('Get-UpdateStatus','Get-UpdateLog')]
     Param (
         [Parameter(

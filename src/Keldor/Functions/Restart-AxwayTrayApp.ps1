@@ -27,6 +27,8 @@ function Restart-AxwayTrayApp {
 .LINK
     https://docs.keldor.dev
 #>
-    Get-Process | Where-Object {$_.Name -match "dvtray"} | Stop-Process -Force | Out-Null
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Restart-AxwayTrayApp')]
+    Param ()
+Get-Process | Where-Object {$_.Name -match "dvtray"} | Stop-Process -Force | Out-Null
     & 'C:\Program Files\Tumbleweed\Desktop Validator\DVTrayApp.exe'
 }

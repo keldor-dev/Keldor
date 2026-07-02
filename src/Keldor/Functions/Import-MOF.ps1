@@ -21,7 +21,7 @@ function Import-MOF {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Import-MOF')]
     [Alias('Import-WMIFilter')]
     Param (
         [Parameter(

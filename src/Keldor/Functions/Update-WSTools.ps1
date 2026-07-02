@@ -16,7 +16,9 @@ function Update-WSTools {
 .LINK
     https://docs.keldor.dev
 #>
-    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Update-WSTools')]
+    Param ()
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSUseSingularNouns",
         "",
         Justification = "Keldor is the proper name for the module."

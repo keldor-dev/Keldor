@@ -8,7 +8,7 @@ function Open-HyperVmgmt {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-HyperVmgmt')]
     [Alias('hyperv')]
     param()
     try {

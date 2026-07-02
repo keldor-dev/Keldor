@@ -16,7 +16,7 @@ function Set-Reboot {
         "",
         Justification = "Have tried other methods and they do not work consistently."
     )]
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-Reboot')]
     Param (
         [Parameter(Mandatory=$false)]
         [Alias('Host','Name','Computer','CN')]

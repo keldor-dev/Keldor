@@ -12,7 +12,7 @@ function Open-LexmarkManagementConsole {
         "",
         Justification = "Have tried other methods and they do not work consistently."
     )]
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-LexmarkManagementConsole')]
     [Alias('lmc')]
     Param (
         [Parameter(Mandatory=$false)]

@@ -11,7 +11,7 @@ function Copy-UserProfile {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Copy-UserProfile')]
     Param (
         [Parameter(
             HelpMessage = 'Enter user name. Ex: "1234567890A" without quotes',

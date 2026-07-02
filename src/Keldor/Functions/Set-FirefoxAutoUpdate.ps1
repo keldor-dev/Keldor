@@ -10,7 +10,7 @@ function Set-FirefoxAutoUpdate {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-FirefoxAutoUpdate')]
     Param (
         [Parameter(
             Mandatory=$false,

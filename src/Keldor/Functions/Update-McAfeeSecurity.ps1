@@ -8,7 +8,9 @@ function Update-McAfeeSecurity {
 .LINK
     https://docs.keldor.dev
 #>
-    $fpath = "${env:ProgramFiles(x86)}\McAfee\Endpoint Security\Threat Prevention\amcfg.exe"
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Update-McAfeeSecurity')]
+    Param ()
+$fpath = "${env:ProgramFiles(x86)}\McAfee\Endpoint Security\Threat Prevention\amcfg.exe"
     if (Test-Path $fpath) {
         Start-Process $fpath -ArgumentList "/update"
     }

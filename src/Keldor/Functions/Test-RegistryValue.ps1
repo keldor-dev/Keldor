@@ -13,7 +13,7 @@ function Test-RegistryValue {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-RegistryValue')]
     Param (
         [Parameter(Mandatory=$true, Position=0)]
         [ValidateNotNullOrEmpty()]$Path,

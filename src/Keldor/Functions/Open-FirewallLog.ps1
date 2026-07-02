@@ -13,7 +13,7 @@ function Open-FirewallLog {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-FirewallLog')]
     Param (
         [Parameter()]
         [Switch]$Domain,

@@ -8,7 +8,7 @@ function Get-ShutdownLog {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ShutdownLog')]
     Param (
         [Parameter(HelpMessage = "Enter one or more computer names separated by commas.",
             Mandatory=$false,

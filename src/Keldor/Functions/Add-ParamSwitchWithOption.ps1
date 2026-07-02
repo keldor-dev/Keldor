@@ -9,7 +9,9 @@ function Add-ParamSwitchWithOption {
     https://docs.keldor.dev
 #>
 
-    $switchText = @"
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-ParamSwitchWithOption')]
+    Param ()
+$switchText = @"
 ,
 
         [Parameter(Mandatory=`$false)]

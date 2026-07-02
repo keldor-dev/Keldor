@@ -8,7 +8,7 @@ function Get-ProcessorCapability {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ProcessorCapability')]
     Param (
         [Parameter(
             Mandatory=$false,

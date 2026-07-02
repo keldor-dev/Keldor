@@ -8,7 +8,9 @@ function Add-ParamInternetBrowser {
 .LINK
     https://docs.keldor.dev
 #>
-    $paramIBText = @"
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-ParamInternetBrowser')]
+    Param ()
+$paramIBText = @"
         [Parameter(Mandatory=`$false)]
         [Switch]`$Chrome,
 

@@ -8,7 +8,7 @@ function Set-SpeakerVolume {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-SpeakerVolume')]
     [Alias('Volume')]
     Param (
         [switch]$min,

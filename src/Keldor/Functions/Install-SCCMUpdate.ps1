@@ -34,7 +34,7 @@ function Install-SCCMUpdate {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Install-SCCMUpdate')]
     [Alias()]
     param(
         [Parameter(

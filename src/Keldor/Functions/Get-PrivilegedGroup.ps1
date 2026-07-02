@@ -15,7 +15,7 @@ function Get-PrivilegedGroup {
         "",
         Justification = "Have tried other methods and they do not work consistently."
     )]
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-PrivilegedGroup')]
     Param (
         [Parameter()]
         [Switch]$GetParentGroups

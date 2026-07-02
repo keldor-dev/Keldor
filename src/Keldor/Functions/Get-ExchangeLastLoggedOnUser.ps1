@@ -13,7 +13,9 @@ function Get-ExchangeLastLoggedOnUser {
     https://docs.keldor.dev
 #>
  #Get-ADUser -Filter {EmailAddress -like "*"} -properties * | select EmailAddress | Export-Csv .\users.csv -NoTypeInformation
-    $userfile = ".\users.csv"
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ExchangeLastLoggedOnUser')]
+    Param ()
+$userfile = ".\users.csv"
     $users = "$userfile"
 
     foreach ($user in $users) {

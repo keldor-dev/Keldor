@@ -8,7 +8,7 @@ function Add-PSObject {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-PSObject')]
     Param (
         [Parameter()]
         [Switch]$CustomObject

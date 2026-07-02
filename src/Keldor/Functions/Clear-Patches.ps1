@@ -38,7 +38,7 @@ function Clear-Patches {
         "",
         Justification = "Expresses exactly what the function does and is what the folder name is called."
     )]
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Clear-Patches')]
     Param (
         [Parameter(HelpMessage = "Enter one or more computer names separated by commas.",
             Mandatory=$true,

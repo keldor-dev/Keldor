@@ -8,7 +8,7 @@ function Get-Accelerator {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-Accelerator')]
     [Alias('Get-TypeAccelerators','accelerators')]
     param()
 

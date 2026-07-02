@@ -25,7 +25,7 @@ function Format-IPList {
     .LINK
         https://docs.keldor.dev
     #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Format-IPList')]
     [Alias('Sort-IPList','Sort-IPs')]
     param(
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]

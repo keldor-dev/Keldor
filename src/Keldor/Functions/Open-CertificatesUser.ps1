@@ -13,5 +13,7 @@ function Open-CertificatesUser {
 .LINK
     https://docs.keldor.dev
 #>
-    certmgr.msc
+        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-CertificatesUser')]
+    Param ()
+certmgr.msc
 }

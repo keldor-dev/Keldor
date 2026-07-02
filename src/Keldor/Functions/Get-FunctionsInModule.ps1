@@ -8,7 +8,7 @@ function Get-FunctionsInModule {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-FunctionsInModule')]
     Param (
         [Parameter(Mandatory=$true, Position=0)]
         [string]$Module

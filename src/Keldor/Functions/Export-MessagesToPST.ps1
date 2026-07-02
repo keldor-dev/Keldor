@@ -27,7 +27,7 @@ function Export-MessagesToPST {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Export-MessagesToPST')]
     Param (
         [Parameter(Mandatory=$true, Position=0)]
         [string]$TargetUserAlias,

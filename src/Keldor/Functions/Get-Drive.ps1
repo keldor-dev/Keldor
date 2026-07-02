@@ -8,7 +8,7 @@ function Get-Drive {
     .LINK
         https://docs.keldor.dev
     #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-Drive')]
     [Alias('drive')]
     param()
     Get-PSDrive -Name *

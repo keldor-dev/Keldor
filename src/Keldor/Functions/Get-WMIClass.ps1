@@ -9,7 +9,7 @@ function Get-WMIClass {
 .LINK
     https://docs.keldor.dev
 #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-WMIClass')]
     Param (
         [Parameter(
             Mandatory=$false,
