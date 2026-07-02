@@ -32,7 +32,7 @@ function ConvertFrom-BuildNumber {
         Other:
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/ConvertFrom-BuildNumber
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/ConvertFrom-BuildNumber')]
     [Alias('ConvertFrom-MicrosoftBuildNumber')]

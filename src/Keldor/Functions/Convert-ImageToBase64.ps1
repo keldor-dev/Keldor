@@ -6,7 +6,7 @@ function Convert-ImageToBase64 {
     Last Edit: 2020-11-03 22:22:19
     Keywords:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Convert-ImageToBase64
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Convert-ImageToBase64')]
     [Alias('Convert-ICOtoBase64')]

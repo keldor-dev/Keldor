@@ -9,7 +9,7 @@ function Restart-DNS {
         -Modules ActiveDirectory
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Restart-DNS
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Restart-DNS')]
     Param (

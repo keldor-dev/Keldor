@@ -28,7 +28,7 @@ function Set-ChromeDeveloperTools {
     Requires:
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Set-ChromeDeveloperTools
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSUseSingularNouns",

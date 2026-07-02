@@ -6,7 +6,7 @@ function Open-ADDomainsAndTrusts {
     LASTEDIT: 2022-09-04 12:04:10
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-ADDomainsAndTrusts
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-ADDomainsAndTrusts')]
     [Alias('trusts')]

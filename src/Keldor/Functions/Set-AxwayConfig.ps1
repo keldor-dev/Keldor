@@ -9,7 +9,7 @@ function Set-AxwayConfig {
     Requires:
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Set-AxwayConfig
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-AxwayConfig')]
     [Alias('Import-AxwayConfig')]

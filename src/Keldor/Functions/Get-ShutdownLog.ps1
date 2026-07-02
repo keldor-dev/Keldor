@@ -6,7 +6,7 @@ function Get-ShutdownLog {
     LASTEDIT: 08/29/2019 00:17:09
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-ShutdownLog
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ShutdownLog')]
     Param (

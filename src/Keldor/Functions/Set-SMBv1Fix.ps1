@@ -20,7 +20,7 @@ function Set-SMBv1Fix {
     REQUIRES:
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Set-SMBv1Fix
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-SMBv1Fix')]
     Param (

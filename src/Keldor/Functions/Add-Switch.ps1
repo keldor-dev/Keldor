@@ -6,7 +6,7 @@ function Add-Switch {
     LASTEDIT: 07/31/2019 22:17:04
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Add-Switch
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-Switch')]
     Param ()

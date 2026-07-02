@@ -8,7 +8,7 @@ function Register-NotificationApp {
     Requires:
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Register-NotificationApp
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Register-NotificationApp')]
     param(

@@ -37,7 +37,7 @@ function Clear-Space {
         REMARKS: Needs to be ran as a user that has administrator rights
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Clear-Space
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Clear-Space')]
     Param (

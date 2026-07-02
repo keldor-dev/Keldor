@@ -6,7 +6,7 @@ function Open-FileWithCMTrace {
     Last Edit: 2021-06-22 17:35:23
     Keywords:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-FileWithCMTrace
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-FileWithCMTrace')]
     [Alias('Open-Log')]

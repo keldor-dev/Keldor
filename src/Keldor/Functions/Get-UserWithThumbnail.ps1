@@ -8,7 +8,7 @@ function Get-UserWithThumbnail {
     REQUIRES:
         -Modules ActiveDirectory
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-UserWithThumbnail
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-UserWithThumbnail')]
     Param ()

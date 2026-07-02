@@ -25,7 +25,7 @@ function Start-AxwayTrayApp {
         -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Start-AxwayTrayApp
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Start-AxwayTrayApp')]
     Param ()

@@ -5,7 +5,7 @@ function Open-SDN {
     CREATED: 2021-10-18 22:38:19
     LASTEDIT: 2021-10-18 22:39:28
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-SDN
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

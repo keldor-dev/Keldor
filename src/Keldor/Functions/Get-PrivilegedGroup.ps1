@@ -8,7 +8,7 @@ function Get-PrivilegedGroup {
     REQUIRES:
         -Modules ActiveDirectory
 .Link
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-PrivilegedGroup
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

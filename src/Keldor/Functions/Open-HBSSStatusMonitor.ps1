@@ -11,7 +11,7 @@ function Open-HBSSStatusMonitor {
         #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
         #Requires -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-HBSSStatusMonitor
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-HBSSStatusMonitor')]
     [Alias('HBSS')]

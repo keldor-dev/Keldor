@@ -6,7 +6,7 @@ function Get-ModuleCommandCount {
         Last Edit: 2021-10-19 19:50:28
         Keywords:
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-ModuleCommandCount
     #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ModuleCommandCount')]
         param(

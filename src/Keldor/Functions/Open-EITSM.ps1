@@ -7,7 +7,7 @@ function Open-EITSM {
         KEYWORDS:
         REQUIRES:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-EITSM
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

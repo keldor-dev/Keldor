@@ -6,7 +6,7 @@ function Save-MaintenanceReport {
     Last Edit: 2023-03-22 08:26:11
     Keywords:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Save-MaintenanceReport
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

@@ -8,7 +8,7 @@ function Get-HWInfo {
             -RunAsAdministrator
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-HWInfo
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-HWInfo')]
     param(

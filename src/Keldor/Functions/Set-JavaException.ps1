@@ -8,7 +8,7 @@ function Set-JavaException {
     REQUIRES:
         -RunAsAdministrator
 .Link
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Set-JavaException
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

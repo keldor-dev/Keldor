@@ -8,7 +8,7 @@ function Open-LAPS {
     REQUIRES:
         -Modules AdmPwd.PS
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-LAPS
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-LAPS')]
     [Alias('laps')]

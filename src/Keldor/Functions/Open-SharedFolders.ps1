@@ -8,7 +8,7 @@ function Open-SharedFolders {
     REQUIRES:
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-SharedFolders
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-SharedFolders')]
     [Alias('Shares','Get-Shares')]

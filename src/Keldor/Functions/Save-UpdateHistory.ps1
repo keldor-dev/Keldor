@@ -6,7 +6,7 @@ function Save-UpdateHistory {
     Last Edit: 2023-03-22 08:26:33
     Keywords:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Save-UpdateHistory
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

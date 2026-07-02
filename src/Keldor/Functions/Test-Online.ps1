@@ -8,7 +8,7 @@ function Test-Online {
     and have it convert it. Or 192.168.0.0-255 and check all computers. Write help. Add aliases and fix pipeline.
 
     .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Test-Online
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-Online')]
     Param (

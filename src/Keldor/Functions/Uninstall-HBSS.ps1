@@ -11,7 +11,7 @@ function Uninstall-HBSS {
         #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
         #Requires -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Uninstall-HBSS
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Uninstall-HBSS')]
     [Alias('Uninstall-ENS','Uninstall-ESS')]

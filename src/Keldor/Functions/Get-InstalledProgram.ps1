@@ -43,7 +43,7 @@ function Get-InstalledProgram {
         Keywords: Software, Programs, management
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-InstalledProgram
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-InstalledProgram', SupportsShouldProcess=$true)]
     param(

@@ -8,7 +8,7 @@ function Set-RemoteDesktopCert {
     Requires:
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Set-RemoteDesktopCert
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-RemoteDesktopCert')]
     [Alias('Set-RDPCert')]

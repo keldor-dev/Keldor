@@ -6,7 +6,7 @@ function Open-CMTrace {
     Last Edit: 2021-10-19 15:15:48
     Keywords:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-CMTrace
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-CMTrace')]
     [Alias('Open-CCMTrace','CMTrace','CCMTrace')]

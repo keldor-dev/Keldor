@@ -5,7 +5,7 @@ function Set-Title {
     LASTEDIT: 08/18/2017 20:47:14
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Set-Title
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-Title')]
     [Alias('title')]

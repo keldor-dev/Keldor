@@ -18,7 +18,7 @@ function Get-USBStorageDevice {
     Last Edit: 2021-06-28 22:46:02
     Keywords:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-USBStorageDevice
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-USBStorageDevice')]
     Param (

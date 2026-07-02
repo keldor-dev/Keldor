@@ -8,7 +8,7 @@ function Stop-Database {
     Requires:
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Stop-Database
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Stop-Database')]
     [Alias('Stop-Oracle','Stop-SQL','Stop-MongoDB')]

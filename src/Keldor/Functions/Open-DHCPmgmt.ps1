@@ -6,7 +6,7 @@ function Open-DHCPmgmt {
     LASTEDIT: 2022-09-04 12:09:18
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-DHCPmgmt
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-DHCPmgmt')]
     [Alias('dhcp')]

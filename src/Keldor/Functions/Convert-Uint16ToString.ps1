@@ -25,7 +25,7 @@ function Convert-Uint16ToString {
     Created: 2023-02-11 01:02:00
     Last Edit: 2023-02-11 01:02:00
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Convert-Uint16ToString
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Convert-Uint16ToString')]
     param(

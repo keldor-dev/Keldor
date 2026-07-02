@@ -8,7 +8,7 @@ function Stop-Exchange {
     Requires:
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Stop-Exchange
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Stop-Exchange')]
     Param ()

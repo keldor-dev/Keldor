@@ -8,7 +8,7 @@ function Open-SCCMLogsFolder {
     REQUIRES:
         -RunAsAdministrator on remote computers
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-SCCMLogsFolder
 #>
 <#--
 CAS.log

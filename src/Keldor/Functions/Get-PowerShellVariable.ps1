@@ -30,7 +30,7 @@ function Get-PowerShellVariable {
     Other:
     Requires:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-PowerShellVariable
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-PowerShellVariable')]
     param(

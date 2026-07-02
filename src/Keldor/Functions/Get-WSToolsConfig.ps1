@@ -6,7 +6,7 @@ function Get-WSToolsConfig {
     Last Edit: 2020-08-20 11:18:58
     Keywords:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-WSToolsConfig
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

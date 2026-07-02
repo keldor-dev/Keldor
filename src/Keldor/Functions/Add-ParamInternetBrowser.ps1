@@ -6,7 +6,7 @@ function Add-ParamInternetBrowser {
     LASTEDIT: 10/18/2017 14:37:37
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Add-ParamInternetBrowser
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-ParamInternetBrowser')]
     Param ()

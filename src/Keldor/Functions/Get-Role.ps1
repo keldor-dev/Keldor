@@ -6,7 +6,7 @@ function Get-Role {
     LASTEDIT: 10/20/2017 16:30:43
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-Role
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-Role')]
     Param ()

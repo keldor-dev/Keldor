@@ -5,7 +5,7 @@ function Get-ZuluTime {
     Created: 2021-06-10 22:28:39
     Last Edit: 2021-06-10 22:28:39
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-ZuluTime
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ZuluTime')]
     Param ()

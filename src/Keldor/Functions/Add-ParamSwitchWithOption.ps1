@@ -6,7 +6,7 @@ function Add-ParamSwitchWithOption {
     LASTEDIT: 12/20/2019 22:14:54
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Add-ParamSwitchWithOption
 #>
 
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-ParamSwitchWithOption')]

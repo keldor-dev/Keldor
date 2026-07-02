@@ -7,7 +7,7 @@ function Open-HomeAssistant {
         KEYWORDS:
         REQUIRES:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-HomeAssistant
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

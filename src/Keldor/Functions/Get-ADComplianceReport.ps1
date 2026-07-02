@@ -79,7 +79,7 @@ function Get-ADComplianceReport {
             -Module ActiveDirectory
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-ADComplianceReport
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ADComplianceReport')]
     param(

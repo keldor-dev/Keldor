@@ -23,7 +23,7 @@ function Get-HttpHeaderSetting {
     Created: 2022-11-30 23:43:58
     Last Edit: 2022-11-30 23:43:58
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-HttpHeaderSetting
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-HttpHeaderSetting')]
     param()

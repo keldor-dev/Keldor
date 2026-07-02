@@ -6,7 +6,7 @@ function Get-ProcessorCapability {
     Last Edit: 2020-04-18 22:46:31
     Keywords:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-ProcessorCapability
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ProcessorCapability')]
     Param (

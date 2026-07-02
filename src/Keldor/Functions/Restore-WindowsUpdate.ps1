@@ -8,7 +8,7 @@ function Restore-WindowsUpdate {
     REQUIRES:
         -RunAsAdministrator
 .Link
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Restore-WindowsUpdate
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Restore-WindowsUpdate')]
     Param ()

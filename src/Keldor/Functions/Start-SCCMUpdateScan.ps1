@@ -32,7 +32,7 @@ function Start-SCCMUpdateScan {
         -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Start-SCCMUpdateScan
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Start-SCCMUpdateScan')]
     [Alias()]

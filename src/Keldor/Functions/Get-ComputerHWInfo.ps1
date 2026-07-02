@@ -27,7 +27,7 @@ function Get-ComputerHWInfo {
             -RunAsAdministrator
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-ComputerHWInfo
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ComputerHWInfo')]
     Param (

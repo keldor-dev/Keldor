@@ -30,7 +30,7 @@ function Update-BrokenInheritance {
     Requires:
         -Module ActiveDirectory
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Update-BrokenInheritance
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Update-BrokenInheritance')]
 Param (

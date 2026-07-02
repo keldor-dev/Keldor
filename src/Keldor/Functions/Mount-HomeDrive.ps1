@@ -6,7 +6,7 @@ function Mount-HomeDrive {
     Last Edit: 2020-11-03 14:58:38
     Keywords:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Mount-HomeDrive
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Mount-HomeDrive')]
     [Alias('Add-HomeDrive')]

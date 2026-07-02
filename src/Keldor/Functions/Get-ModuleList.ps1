@@ -25,7 +25,7 @@ function Get-ModuleList {
             -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
             -RunAsAdministrator
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-ModuleList
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ModuleList')]
     param(

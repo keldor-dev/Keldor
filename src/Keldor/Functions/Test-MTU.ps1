@@ -35,7 +35,7 @@ function Test-MTU {
     Other:
     Requires:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Test-MTU
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-MTU')]
     param(

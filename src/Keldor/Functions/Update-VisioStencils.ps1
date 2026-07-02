@@ -6,7 +6,7 @@ function Update-VisioStencils {
     Last Edit: 2021-10-13 20:33:20
     Keywords: Visio, Stencils
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Update-VisioStencils
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSUseSingularNouns",

@@ -8,7 +8,7 @@ function Get-SplunkStatus {
     Other:
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-SplunkStatus
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-SplunkStatus')]
     param(

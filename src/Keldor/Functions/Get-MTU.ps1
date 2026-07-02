@@ -6,7 +6,7 @@ function Get-MTU {
         LASTEDIT: 2020-05-23 17:39:06
         KEYWORDS:
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-MTU
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-MTU')]
     Param (

@@ -6,7 +6,7 @@ function Show-FederalHoliday {
     Last Edit: 2023-02-01 21:24:05
     Keywords:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Show-FederalHoliday
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

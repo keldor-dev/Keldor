@@ -11,7 +11,7 @@ function Open-LocalGPeditor {
         #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
         #Requires -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-LocalGPeditor
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-LocalGPeditor')]
     [Alias('Open-LocalPolicyEditor','LocalPolicy')]

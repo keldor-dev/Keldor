@@ -19,7 +19,7 @@ function Copy-VSCodeSettingsToProfile {
         LASTEDIT: 2024-11-27 13:00:00
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Copy-VSCodeSettingsToProfile
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Copy-VSCodeSettingsToProfile')]
     param ()

@@ -8,7 +8,7 @@ function Stop-AppService {
     Requires:
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Stop-AppService
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Stop-AppService')]
     Param ()

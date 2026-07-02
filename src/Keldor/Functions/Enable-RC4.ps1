@@ -11,7 +11,7 @@ function Enable-RC4 {
         #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
         #Requires -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Enable-RC4
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Enable-RC4')]
     Param (

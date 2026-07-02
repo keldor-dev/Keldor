@@ -6,7 +6,7 @@ function Open-HyperVmgmt {
     LASTEDIT: 2022-09-04 12:13:29
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-HyperVmgmt
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-HyperVmgmt')]
     [Alias('hyperv')]

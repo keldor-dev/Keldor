@@ -14,7 +14,7 @@ function Test-DynamicParameterSwitchCheck {
     Last Edit: 2022-09-11 01:41:04
     Other:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Test-DynamicParameterSwitchCheck
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-DynamicParameterSwitchCheck')]
 Param (

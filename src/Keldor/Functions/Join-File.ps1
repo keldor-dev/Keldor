@@ -11,7 +11,7 @@ function Join-File {
         #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
         #Requires -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Join-File
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Join-File')]
     [Alias('Merge-File')]

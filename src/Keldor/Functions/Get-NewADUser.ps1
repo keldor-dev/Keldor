@@ -8,7 +8,7 @@ function Get-NewADUser {
     REQUIRES:
         -Modules ActiveDirectory
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-NewADUser
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-NewADUser')]
     Param (

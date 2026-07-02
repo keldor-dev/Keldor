@@ -8,7 +8,7 @@ function Get-NewADGroup {
     REQUIRES:
         -Modules ActiveDirectory
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-NewADGroup
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-NewADGroup')]
     Param (

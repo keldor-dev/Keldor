@@ -8,7 +8,7 @@ function Get-HWPerformanceScore {
             -RunAsAdministrator
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-HWPerformanceScore
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-HWPerformanceScore')]
     Param (

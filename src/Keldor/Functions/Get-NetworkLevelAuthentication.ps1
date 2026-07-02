@@ -6,7 +6,7 @@ function Get-NetworkLevelAuthentication {
     Last Edit: 2020-04-18 15:28:10
     Keywords: Network, NLA, Network Level Authentication, RDP, Remote Desktop
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-NetworkLevelAuthentication
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-NetworkLevelAuthentication')]
     [Alias('Get-NLA')]

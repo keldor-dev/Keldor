@@ -44,6 +44,8 @@ function Get-FileMetaData {
     .Link
         https://devblogs.microsoft.com/scripting/
     #Requires -Version 2.0
+    .LINK
+    https://docs.keldor.dev/powershell/keldor/Get-FileMetaData
     #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-FileMetaData')]
 Param([string[]]$Path)

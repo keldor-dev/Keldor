@@ -8,7 +8,7 @@ function Get-ProtectedGroup {
     REQUIRES:
         -Modules ActiveDirectory
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-ProtectedGroup
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ProtectedGroup')]
     Param ()

@@ -9,7 +9,7 @@ function Restart-KDC {
         -Modules ActiveDirectory
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Restart-KDC
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Restart-KDC')]
     Param (

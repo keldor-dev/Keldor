@@ -22,7 +22,7 @@ function Find-EmptyGroup {
             ActiveDirectory
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Find-EmptyGroup
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Find-EmptyGroup')]
     Param (

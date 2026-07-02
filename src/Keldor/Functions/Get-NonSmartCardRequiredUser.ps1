@@ -33,7 +33,7 @@ function Get-NonSmartCardRequiredUser {
             -Module ActiveDirectory
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-NonSmartCardRequiredUser
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-NonSmartCardRequiredUser')]
     Param (

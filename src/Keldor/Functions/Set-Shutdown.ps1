@@ -8,7 +8,7 @@ function Set-Shutdown {
     Requires:
         -RunAsAdministrator for remote computers
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Set-Shutdown
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

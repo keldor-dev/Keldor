@@ -6,7 +6,7 @@ function Start-WSToolsGUI {
     Last Edit: 2021-10-30 00:55:48
     Keywords:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Start-WSToolsGUI
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Start-WSToolsGUI')]
     [Alias('wsgui','wstgui','Start-WSToolsTrayApp')]

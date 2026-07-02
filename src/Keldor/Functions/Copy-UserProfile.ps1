@@ -9,7 +9,7 @@ function Copy-UserProfile {
         -Version 3.0
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Copy-UserProfile
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Copy-UserProfile')]
     Param (

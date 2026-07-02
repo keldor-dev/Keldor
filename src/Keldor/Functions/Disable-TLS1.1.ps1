@@ -8,7 +8,7 @@ function Disable-TLS1.1 { #DevSkim: ignore DS169125,DS440000
     Requires:
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Disable-TLS1.1
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Disable-TLS1.1')]
     param(

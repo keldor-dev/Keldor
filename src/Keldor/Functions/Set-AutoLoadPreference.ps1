@@ -8,7 +8,7 @@ function Set-AutoLoadPreference {
     REQUIRES:
         -Version 2.0 only doesn't apply to Version 3.0 or newer
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Set-AutoLoadPreference
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-AutoLoadPreference')]
     Param (

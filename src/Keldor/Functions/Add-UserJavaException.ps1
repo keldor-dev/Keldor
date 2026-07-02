@@ -8,10 +8,10 @@ function Add-UserJavaException {
 
     .PARAMETER URI
         Specifies the URI of the website you want to add to the exception.sites file. Must be in the
-        format https://docs.keldor.dev.
+        format https://docs.keldor.dev/powershell/keldor/Add-UserJavaException.
 
     .EXAMPLE
-        C:\PS>Add-UserJavaException https://docs.keldor.dev
+        C:\PS>Add-UserJavaException https://docs.keldor.dev/powershell/keldor/Add-UserJavaException
         Example of how to use this cmdlet
 
     .INPUTS
@@ -32,7 +32,7 @@ function Add-UserJavaException {
         Last Edit: 2021-12-20 00:15:00
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Add-UserJavaException
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-UserJavaException')]
     param(

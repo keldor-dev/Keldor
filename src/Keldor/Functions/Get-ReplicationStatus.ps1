@@ -6,7 +6,7 @@ function Get-ReplicationStatus {
     LASTEDIT: 08/18/2017 20:48:21
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-ReplicationStatus
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ReplicationStatus')]
     [Alias('replsum')]

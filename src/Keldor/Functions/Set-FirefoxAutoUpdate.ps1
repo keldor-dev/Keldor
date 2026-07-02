@@ -8,7 +8,7 @@ function Set-FirefoxAutoUpdate {
     REQUIRES:
         #Requires -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Set-FirefoxAutoUpdate
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-FirefoxAutoUpdate')]
     Param (

@@ -6,7 +6,7 @@ function Open-ADSIEdit {
     LASTEDIT: 2020-04-19 20:07:02
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-ADSIEdit
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-ADSIEdit')]
     [Alias('adsi')]

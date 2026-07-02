@@ -5,7 +5,7 @@ function Open-SharePoint {
     CREATED: 2021-10-18 22:51:47
     LASTEDIT: 2021-10-18 22:52:18
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-SharePoint
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

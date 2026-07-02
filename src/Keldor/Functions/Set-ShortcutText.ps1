@@ -6,7 +6,7 @@ function Set-ShortcutText {
     Last Edit: 2020-04-18 20:44:39
     Keywords:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Set-ShortcutText
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ShortcutText')]
     Param (

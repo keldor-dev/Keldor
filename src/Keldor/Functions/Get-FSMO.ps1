@@ -7,7 +7,7 @@ function Get-FSMO {
         KEYWORDS:
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-FSMO
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-FSMO')]
     [Alias('fsmo')]

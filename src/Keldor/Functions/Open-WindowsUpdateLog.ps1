@@ -7,7 +7,7 @@ function Open-WindowsUpdateLog {
     KEYWORDS:
     REQUIRES:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-WindowsUpdateLog
 #>
 <#--
 Found on the Configuration Manager Client computer, by default, in %windir%.

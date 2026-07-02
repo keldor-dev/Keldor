@@ -6,7 +6,7 @@ function Open-ADSitesAndServices {
     LASTEDIT: 2022-09-04 12:06:04
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-ADSitesAndServices
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-ADSitesAndServices')]
     Param ()

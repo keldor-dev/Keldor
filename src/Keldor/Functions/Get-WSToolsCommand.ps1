@@ -6,7 +6,7 @@ function Get-WSToolsCommand {
     LASTEDIT: 01/31/2018 23:52:54
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-WSToolsCommand
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-WSToolsCommand')]
     [Alias('WSToolsCommands')]

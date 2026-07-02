@@ -6,7 +6,7 @@ function Import-XML {
     LASTEDIT: 10/25/2017 17:03:54
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Import-XML
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Import-XML')]
     Param (

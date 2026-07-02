@@ -18,7 +18,7 @@ function Disable-RDP {
         REQUIRES: RunAsAdministrator
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Disable-RDP
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Disable-RDP')]
     param ()

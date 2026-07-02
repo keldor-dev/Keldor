@@ -8,7 +8,7 @@ function Get-LockedOutStatus {
     REQUIRES:
         -Modules ActiveDirectory
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-LockedOutStatus
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-LockedOutStatus')]
     Param (

@@ -6,7 +6,7 @@ function Open-vCenter {
     LASTEDIT: 02/13/2018 11:05:06
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-vCenter
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

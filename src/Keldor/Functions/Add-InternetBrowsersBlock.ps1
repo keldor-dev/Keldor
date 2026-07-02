@@ -11,7 +11,7 @@ function Add-InternetBrowsersBlock {
         #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
         #Requires -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Add-InternetBrowsersBlock
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-InternetBrowsersBlock')]
     Param ()

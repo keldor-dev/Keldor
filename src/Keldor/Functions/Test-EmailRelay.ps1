@@ -7,7 +7,7 @@ function Test-EmailRelay {
         KEYWORDS: E-mail, email, relay, smtp
         REMARKS: On secure networks, port 25 has to be open
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Test-EmailRelay
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

@@ -19,7 +19,7 @@ function Import-MOF {
     Requires:
         -Module ActiveDirectory
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Import-MOF
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Import-MOF')]
     [Alias('Import-WMIFilter')]

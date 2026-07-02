@@ -6,7 +6,7 @@ function Open-ADUsersAndComputers {
     LASTEDIT: 2022-09-04 12:07:24
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-ADUsersAndComputers
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-ADUsersAndComputers')]
     [Alias('aduc','dsa')]

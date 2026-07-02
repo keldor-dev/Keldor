@@ -8,7 +8,7 @@ function Open-ConfigurationManager {
     REQUIRES:
         #Requires -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-ConfigurationManager
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-ConfigurationManager')]
     [Alias('configmgr')]

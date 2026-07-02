@@ -6,7 +6,7 @@ function Get-DirectoryStat {
         Last Edit: 2020-08-09 21:35:14
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-DirectoryStat
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-DirectoryStat')]
     param(

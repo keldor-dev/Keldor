@@ -8,7 +8,7 @@ function Initialize-GPUpdate {
     Requires:
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Initialize-GPUpdate
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Initialize-GPUpdate')]
     param(

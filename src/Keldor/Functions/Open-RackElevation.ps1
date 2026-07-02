@@ -6,7 +6,7 @@ function Open-RackElevation {
     Last Edit: 2022-07-07 21:22:25
     Other:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-RackElevation
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

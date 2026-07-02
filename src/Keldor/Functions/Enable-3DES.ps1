@@ -11,7 +11,7 @@ function Enable-3DES {
         #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
         #Requires -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Enable-3DES
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Enable-3DES')]
     Param (

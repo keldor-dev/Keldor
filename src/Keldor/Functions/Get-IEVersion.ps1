@@ -6,7 +6,7 @@ function Get-IEVersion {
         LASTEDIT: 09/21/2017 13:06:15
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-IEVersion
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-IEVersion')]
     Param (

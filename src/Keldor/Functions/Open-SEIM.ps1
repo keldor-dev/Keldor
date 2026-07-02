@@ -5,7 +5,7 @@ function Open-SEIM {
     CREATED: 2021-10-18 23:03:53
     LASTEDIT: 2021-10-18 23:04:54
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-SEIM
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

@@ -6,7 +6,7 @@ function Add-PSObject {
     LASTEDIT: 12/21/2019 23:35:03
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Add-PSObject
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-PSObject')]
     Param (

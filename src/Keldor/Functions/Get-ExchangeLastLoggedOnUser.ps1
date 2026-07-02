@@ -10,7 +10,7 @@ function Get-ExchangeLastLoggedOnUser {
         #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
         #Requires -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-ExchangeLastLoggedOnUser
 #>
  #Get-ADUser -Filter {EmailAddress -like "*"} -properties * | select EmailAddress | Export-Csv .\users.csv -NoTypeInformation
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ExchangeLastLoggedOnUser')]

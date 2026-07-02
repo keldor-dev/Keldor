@@ -8,7 +8,7 @@ function Set-NetworkConnectionsShortcut {
     Requires:
         -RunAsAdministrator if placing in Public Desktop.
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Set-NetworkConnectionsShortcut
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-NetworkConnectionsShortcut')]
     param(

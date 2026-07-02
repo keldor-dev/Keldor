@@ -9,7 +9,7 @@ function Set-SMBv1 {
     REQUIRES:
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Set-SMBv1
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-SMBv1')]
     Param (

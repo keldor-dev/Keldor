@@ -6,7 +6,7 @@ function Get-CommandList {
         Last Edit: 2021-12-16 21:41:15
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-CommandList
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-CommandList')]
     Param (

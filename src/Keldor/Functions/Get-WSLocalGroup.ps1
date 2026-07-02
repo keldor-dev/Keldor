@@ -8,7 +8,7 @@ function Get-WSLocalGroup {
     Requires:
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-WSLocalGroup
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-WSLocalGroup')]
     param(

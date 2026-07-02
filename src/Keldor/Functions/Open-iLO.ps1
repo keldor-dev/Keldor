@@ -5,7 +5,7 @@ function Open-iLO {
     CREATED: 02/02/2018 12:00:33
     LASTEDIT: 2020-04-17 15:36:02
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-iLO
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

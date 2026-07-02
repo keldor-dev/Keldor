@@ -6,7 +6,7 @@ function Get-WMINameSpace {
     LASTEDIT: 09/21/2017 13:05:21
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-WMINameSpace
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-WMINameSpace')]
     Param (

@@ -6,7 +6,7 @@ function Get-UpTime {
     Last Edit: 2020-07-07 15:29:12
     Keywords:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-UpTime
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-UpTime')]
     Param (

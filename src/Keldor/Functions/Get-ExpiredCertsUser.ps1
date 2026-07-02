@@ -6,7 +6,7 @@ function Get-ExpiredCertsUser {
         LASTEDIT: 10/04/2018 21:09:34
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-ExpiredCertsUser
     #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ExpiredCertsUser')]
     Param ()

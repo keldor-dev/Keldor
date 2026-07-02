@@ -6,7 +6,7 @@ function Get-DefaultBrowserPath {
         Last Edit: 2020-08-20 15:09:53
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-DefaultBrowserPath
     #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-DefaultBrowserPath')]
     Param ()

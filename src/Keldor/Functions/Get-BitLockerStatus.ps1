@@ -9,7 +9,7 @@ function Get-BitLockerStatus {
             -RunAsAdministrator
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-BitLockerStatus
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-BitLockerStatus')]
     param(

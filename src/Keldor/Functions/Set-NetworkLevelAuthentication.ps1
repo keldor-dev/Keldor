@@ -19,7 +19,7 @@ function Set-NetworkLevelAuthentication {
     Requires:
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Set-NetworkLevelAuthentication
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-NetworkLevelAuthentication')]
     [Alias('Set-NLA')]

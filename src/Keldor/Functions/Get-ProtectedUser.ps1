@@ -8,7 +8,7 @@ function Get-ProtectedUser {
     REQUIRES:
         -Modules ActiveDirectory
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-ProtectedUser
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ProtectedUser')]
     Param ()

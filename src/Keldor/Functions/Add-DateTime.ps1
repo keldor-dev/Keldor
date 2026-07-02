@@ -11,7 +11,7 @@ function Add-DateTime {
     LASTEDIT: 10/26/2017 09:48:00
     KEYWORDS: Scripting Techniques, Windows PowerShell ISE
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Add-DateTime
 #Requires -Version 2.0
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-DateTime')]

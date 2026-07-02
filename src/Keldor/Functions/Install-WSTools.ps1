@@ -18,7 +18,7 @@ function Install-WSTools {
     Last Edit: 2022-02-19 22:56:29
     Keywords:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Install-WSTools
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSUseSingularNouns",

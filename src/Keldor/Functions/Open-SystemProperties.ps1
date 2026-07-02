@@ -10,7 +10,7 @@ function Open-SystemProperties {
         #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
         #Requires -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-SystemProperties
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-SystemProperties')]
     Param ()

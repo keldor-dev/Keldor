@@ -12,7 +12,7 @@ function Convert-DaysToWorkDay {
     Last Edit: 2021-06-20 17:13:33
     Keywords:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Convert-DaysToWorkDay
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

@@ -22,7 +22,7 @@ function Find-HiddenGALUser {
             ActiveDirectory
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Find-HiddenGALUser
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Find-HiddenGALUser')]
     Param (

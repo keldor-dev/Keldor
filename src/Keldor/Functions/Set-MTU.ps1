@@ -8,7 +8,7 @@ function Set-MTU {
     Requires:
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Set-MTU
 #>
 	[CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-MTU')]
     Param (

@@ -6,7 +6,7 @@ function Get-SerialNumber {
     LASTEDIT: 11/02/2018 12:20:44
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-SerialNumber
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-SerialNumber')]
     [Alias('Get-SN')]

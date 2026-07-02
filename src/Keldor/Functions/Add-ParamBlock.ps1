@@ -6,7 +6,7 @@ function Add-ParamBlock {
     LASTEDIT: 12/20/2019 22:15:51
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Add-ParamBlock
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-ParamBlock')]
     Param ()

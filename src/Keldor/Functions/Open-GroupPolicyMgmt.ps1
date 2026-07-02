@@ -6,7 +6,7 @@ function Open-GroupPolicyMgmt {
     LASTEDIT: 2022-09-04 12:12:07
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-GroupPolicyMgmt
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-GroupPolicyMgmt')]
     [Alias('gpo','gpmc','GroupPolicy')]

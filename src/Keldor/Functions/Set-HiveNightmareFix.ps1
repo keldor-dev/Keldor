@@ -8,7 +8,7 @@ function Set-HiveNightmareFix {
     Requires:
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Set-HiveNightmareFix
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-HiveNightmareFix')]
     Param ()

@@ -37,7 +37,7 @@ function Clear-DirtyShutdown {
         Requires -RunAsAdministrator
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Clear-DirtyShutdown
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Clear-DirtyShutdown')]
     param(

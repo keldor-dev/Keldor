@@ -6,7 +6,7 @@ function Get-FunctionsInModule {
     LASTEDIT: 08/21/2017 13:06:27
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-FunctionsInModule
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-FunctionsInModule')]
     Param (

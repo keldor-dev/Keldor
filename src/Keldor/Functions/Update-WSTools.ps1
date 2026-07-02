@@ -14,7 +14,7 @@ function Update-WSTools {
     KEYWORDS: PowerShell, module, Keldor, personal
     REMARKS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Update-WSTools
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Update-WSTools')]
     Param ()

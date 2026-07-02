@@ -1,4 +1,8 @@
 function Set-WindowState {
+        <#
+        .LINK
+        https://docs.keldor.dev/powershell/keldor/Set-WindowState
+        #>
     # source: https://gist.github.com/jakeballard/11240204
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-WindowState')]
 param(

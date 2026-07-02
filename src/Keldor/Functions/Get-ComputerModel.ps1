@@ -11,7 +11,7 @@ function Get-ComputerModel {
             -RunAsAdministrator
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-ComputerModel
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ComputerModel')]
     [Alias('Get-Model')]

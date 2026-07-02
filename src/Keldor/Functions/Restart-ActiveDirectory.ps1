@@ -9,7 +9,7 @@ function Restart-ActiveDirectory {
         -Modules ActiveDirectory
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Restart-ActiveDirectory
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Restart-ActiveDirectory')]
     Param (

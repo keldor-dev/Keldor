@@ -23,7 +23,7 @@ function Connect-RDP {
         LASTEDIT: 2024-11-27 10:59:28
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Connect-RDP
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Connect-RDP')]
     [alias('rdp')]

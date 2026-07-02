@@ -6,7 +6,7 @@ function Get-UpdateHistory {
         Last Edit: 2023-03-12 22:08:43
         Keywords:
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-UpdateHistory
     #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-UpdateHistory')]
         param(

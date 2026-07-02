@@ -6,7 +6,7 @@ function Start-PowerShell {
     LASTEDIT: 10/24/2017 16:41:21
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Start-PowerShell
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Start-PowerShell')]
     [Alias('Open-PowerShell')]

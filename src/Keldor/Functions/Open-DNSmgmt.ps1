@@ -6,7 +6,7 @@ function Open-DNSmgmt {
     LASTEDIT: 2022-09-04 12:10:54
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-DNSmgmt
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-DNSmgmt')]
     [Alias('dns')]

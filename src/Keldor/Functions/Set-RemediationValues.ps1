@@ -9,7 +9,7 @@ function Set-RemediationValues {
         #Requires -Version 3.0
         #Requires -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Set-RemediationValues
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-RemediationValues')]
     Param (

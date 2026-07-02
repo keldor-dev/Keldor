@@ -6,7 +6,7 @@ function Get-ExpiredCertsComputer {
         LASTEDIT: 10/04/2018 21:08:31
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-ExpiredCertsComputer
     #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ExpiredCertsComputer')]
     Param ()

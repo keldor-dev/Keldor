@@ -7,7 +7,7 @@ function Get-DayOfYear {
         Keywords: Day of year, Julian
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-DayOfYear
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-DayOfYear')]
     [Alias('Get-JulianDay','Get-JulianDate')]

@@ -6,7 +6,7 @@ function Get-Error {
         Last Edit: 2020-04-18 19:08:44
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-Error
     #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

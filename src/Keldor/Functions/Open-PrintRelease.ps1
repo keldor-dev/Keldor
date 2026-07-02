@@ -5,7 +5,7 @@ function Open-PrintRelease {
     CREATED: 2022-03-08 22:02:21
     LASTEDIT: 2022-03-08 22:02:21
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-PrintRelease
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

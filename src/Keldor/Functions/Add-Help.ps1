@@ -13,7 +13,7 @@ function Add-Help {
     REQUIRES:
         #Requires -Version 2.0
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Add-Help
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-Help')]
     Param ()

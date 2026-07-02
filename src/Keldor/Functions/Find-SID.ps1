@@ -20,7 +20,7 @@ function Find-SID {
         KEYWORDS: SID
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Find-SID
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Find-SID')]
     Param (

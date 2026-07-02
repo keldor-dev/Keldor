@@ -8,7 +8,7 @@ function Register-Schema {
     REQUIRES:
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Register-Schema
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Register-Schema')]
     Param ()

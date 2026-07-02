@@ -11,7 +11,7 @@ function Disable-RC4 {
         #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
         #Requires -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Disable-RC4
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Disable-RC4')]
     Param (

@@ -6,7 +6,7 @@ function Get-WSToolsVersion {
     LASTEDIT: 02/14/2018 11:05:37
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-WSToolsVersion
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-WSToolsVersion')]
     [Alias('WSToolsVersion')]

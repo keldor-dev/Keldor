@@ -10,7 +10,7 @@ function Get-ComputerADSite {
         KEYWORDS:
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-ComputerADSite
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ComputerADSite')]
     Param (

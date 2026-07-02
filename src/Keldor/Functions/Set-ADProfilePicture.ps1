@@ -8,7 +8,7 @@ function Set-ADProfilePicture {
     Requires:
         -Module ActiveDirectory
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Set-ADProfilePicture
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ADProfilePicture')]
     Param (

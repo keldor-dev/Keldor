@@ -1,4 +1,8 @@
 function Convert-IPtoINT64 () {
+        <#
+        .LINK
+        https://docs.keldor.dev/powershell/keldor/Convert-IPtoINT64
+        #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Convert-IPtoINT64')]
 param ($IP)
     $octets = $IP.split(".")

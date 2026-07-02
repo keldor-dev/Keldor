@@ -6,7 +6,7 @@ function Get-Drive {
         Last Edit: 2020-04-19 20:29:58
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-Drive
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-Drive')]
     [Alias('drive')]

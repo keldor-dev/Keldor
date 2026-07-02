@@ -6,7 +6,7 @@ function Get-FilePath {
     LASTEDIT: 09/21/2017 13:05:42
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-FilePath
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-FilePath')]
     Param ()

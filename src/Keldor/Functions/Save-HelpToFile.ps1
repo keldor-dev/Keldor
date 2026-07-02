@@ -9,7 +9,7 @@ function Save-HelpToFile {
     Requires:
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Save-HelpToFile
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Save-HelpToFile')]
     param(

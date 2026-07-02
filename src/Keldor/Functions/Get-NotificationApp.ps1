@@ -8,7 +8,7 @@ function Get-NotificationApp {
     Keywords:
     Requires:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-NotificationApp
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-NotificationApp')]
     [Alias('Get-ToastNotifierApp','Get-ToastNotificationApp')]

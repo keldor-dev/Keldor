@@ -6,7 +6,7 @@ function Import-DRAModule {
     LASTEDIT: 2020-08-20 14:42:59
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Import-DRAModule
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Import-DRAModule')]
     Param ()

@@ -6,7 +6,7 @@ function Add-ProgressBar {
     LASTEDIT: 04/23/2018 10:53:40
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Add-ProgressBar
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-ProgressBar')]
     Param ()

@@ -8,7 +8,7 @@ function Get-FeaturesOnDemand {
             Requires -RunAsAdministrator
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-FeaturesOnDemand
     #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-FeaturesOnDemand')]
     Param ()

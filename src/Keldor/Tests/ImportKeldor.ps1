@@ -22,6 +22,20 @@ Describe "Keldor Module" {
         }
     }
 
+    It "Should include matching online help links in comment-based help" {
+        $commands = Get-Command -Module Keldor -CommandType Function
+
+        foreach ($command in $commands) {
+            $functionFile = Get-ChildItem -Path (Join-Path $ModuleRoot 'Functions') -File |
+                Where-Object { $_.BaseName -eq $command.Name } |
+                Select-Object -First 1
+            $functionText = Get-Content -Path $functionFile.FullName -Raw
+            $expectedLink = "https://docs.keldor.dev/powershell/keldor/$($command.Name)"
+
+            $functionText | Should -Match "(?m)^\s*\.LINK\s*`r?`n\s*$([regex]::Escape($expectedLink))"
+        }
+    }
+
     It "Should point updateable help to the docs static help endpoint" {
         $manifest = Import-PowerShellDataFile -Path $ManifestPath
 

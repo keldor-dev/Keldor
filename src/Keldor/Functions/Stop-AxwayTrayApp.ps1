@@ -25,7 +25,7 @@ function Stop-AxwayTrayApp {
         -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Stop-AxwayTrayApp
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Stop-AxwayTrayApp')]
     Param ()

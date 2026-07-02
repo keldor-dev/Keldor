@@ -6,7 +6,7 @@ function Open-SoftwareCenter {
     Last Edit: 2020-09-28 09:36:19
     Keywords:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Open-SoftwareCenter
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-SoftwareCenter')]
     [Alias('SoftwareCenter','SCCM','MECM')]

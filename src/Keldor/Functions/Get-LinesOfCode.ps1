@@ -8,7 +8,7 @@ function Get-LinesOfCode {
         Other: Excludes blank lines
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-LinesOfCode
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-LinesOfCode')]
     param(

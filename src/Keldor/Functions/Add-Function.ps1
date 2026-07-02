@@ -11,7 +11,7 @@ function Add-Function {
         #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
         #Requires -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Add-Function
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-Function')]
     Param (

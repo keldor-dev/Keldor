@@ -9,7 +9,7 @@ function Set-Reboot {
     Requires:
         -RunAsAdministrator for remote computers
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Set-Reboot
 #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

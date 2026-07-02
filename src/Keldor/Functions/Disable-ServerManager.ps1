@@ -18,7 +18,7 @@ function Disable-ServerManager {
         REQUIRES: RunAsAdministrator
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Disable-ServerManager
     #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Disable-ServerManager')]
     param ()

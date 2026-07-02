@@ -8,7 +8,7 @@ function Get-RecentUser {
     REQUIRES:
         #Requires -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-RecentUser
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-RecentUser')]
     Param (

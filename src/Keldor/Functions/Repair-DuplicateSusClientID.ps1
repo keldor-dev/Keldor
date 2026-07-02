@@ -28,7 +28,7 @@ function Repair-DuplicateSusClientID {
     Requires:
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Repair-DuplicateSusClientID
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Repair-DuplicateSusClientID')]
     param(

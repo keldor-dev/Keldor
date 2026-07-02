@@ -13,7 +13,7 @@ function Get-NICInfo {
     LASTEDIT: 09/21/2017 13:06:33
     KEYWORDS:
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Get-NICInfo
 #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-NICInfo')]
     Param (

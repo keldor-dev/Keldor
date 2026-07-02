@@ -8,7 +8,7 @@ function Set-ServerConfig {
     Requires:
         -RunAsAdministrator
 .LINK
-    https://docs.keldor.dev
+    https://docs.keldor.dev/powershell/keldor/Set-ServerConfig
 #>
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ServerConfig')]
     Param ()
