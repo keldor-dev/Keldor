@@ -4,11 +4,32 @@ This guide explains how to build the Keldor PowerShell module locally on macOS, 
 
 ## Prerequisites
 
-Install PowerShell 7:
+Install or update PowerShell 7:
+
+If PowerShell was installed with Homebrew, update it with:
+
+```bash
+brew update
+brew upgrade --cask powershell
+```
+
+If PowerShell is not installed yet via Homebrew:
 
 ```bash
 brew install --cask powershell
 ```
+
+If PowerShell was installed manually (not through Homebrew), update it by downloading the latest macOS `.pkg` from:
+
+https://github.com/PowerShell/PowerShell/
+
+Then run the installer (example):
+
+```bash
+sudo installer -pkg ~/Downloads/powershell-7.6.0-osx-x64.pkg -target /
+```
+
+Replace the file name with the version and architecture you downloaded.
 
 Verify PowerShell is available:
 
