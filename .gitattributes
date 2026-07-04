@@ -1,0 +1,101 @@
+###############################################################################
+# Keldor Standard .gitattributes
+###############################################################################
+
+# Normalize all text files to LF in the repository
+* text=auto eol=lf
+
+###############################################################################
+# PowerShell
+###############################################################################
+
+*.ps1     text eol=lf
+*.psm1    text eol=lf
+*.psd1    text eol=lf
+*.ps1xml  text eol=lf
+*.pssc    text eol=lf
+*.psrc    text eol=lf
+
+###############################################################################
+# Python
+###############################################################################
+
+*.py      text eol=lf
+*.pyi     text eol=lf
+*.pyw     text eol=lf
+*.toml    text eol=lf
+requirements*.txt text eol=lf
+
+###############################################################################
+# .NET
+###############################################################################
+
+*.cs      text eol=lf
+*.csproj  text eol=lf
+*.sln     text eol=lf
+*.props   text eol=lf
+*.targets text eol=lf
+
+###############################################################################
+# Web
+###############################################################################
+
+*.html    text eol=lf
+*.css     text eol=lf
+*.scss    text eol=lf
+*.js      text eol=lf
+*.mjs     text eol=lf
+*.ts      text eol=lf
+*.tsx     text eol=lf
+*.jsx     text eol=lf
+
+###############################################################################
+# Data / Config
+###############################################################################
+
+*.json    text eol=lf
+*.jsonc   text eol=lf
+*.yaml    text eol=lf
+*.yml     text eol=lf
+*.xml     text eol=lf
+*.config  text eol=lf
+*.ini     text eol=lf
+*.env     text eol=lf
+
+###############################################################################
+# Documentation
+###############################################################################
+
+*.md      text eol=lf
+*.txt     text eol=lf
+*.rst     text eol=lf
+
+###############################################################################
+# Shell
+###############################################################################
+
+*.sh      text eol=lf
+*.bash    text eol=lf
+*.zsh     text eol=lf
+
+###############################################################################
+# Binary files
+###############################################################################
+
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.gif     binary
+*.svg     text
+*.ico     binary
+
+*.pdf     binary
+*.zip     binary
+*.7z      binary
+*.gz      binary
+*.tar     binary
+
+*.dll     binary
+*.exe     binary
+*.so      binary
+*.dylib   binary

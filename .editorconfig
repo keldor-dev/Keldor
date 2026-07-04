@@ -1,0 +1,90 @@
+# Keldor Standard .editorconfig
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+tab_width = 4
+max_line_length = 120
+
+# PowerShell
+[*.{ps1,psm1,psd1,ps1xml,pssc,psrc}]
+indent_size = 4
+tab_width = 4
+max_line_length = 120
+
+# Python
+[*.{py,pyi,pyw}]
+indent_size = 4
+tab_width = 4
+max_line_length = 88
+
+# Config / data
+[*.{yml,yaml,json,jsonc,toml}]
+indent_size = 2
+tab_width = 2
+max_line_length = 120
+
+# Documentation
+[*.{md,markdown}]
+trim_trailing_whitespace = false
+max_line_length = off
+
+# Shell scripts
+[*.{sh,bash,zsh}]
+indent_size = 2
+tab_width = 2
+max_line_length = 100
+
+# Web / frontend
+[*.{html,css,scss,js,mjs,cjs,ts,tsx,jsx}]
+indent_size = 2
+tab_width = 2
+max_line_length = 100
+
+# .NET
+[*.{cs,csproj,props,targets,sln}]
+indent_size = 4
+tab_width = 4
+max_line_length = 120
+
+# XML / SVG
+[*.{xml,svg}]
+indent_size = 2
+tab_width = 2
+
+# Docker
+[*.{dockerfile,Dockerfile}]
+indent_size = 4
+tab_width = 4
+
+[Dockerfile]
+indent_size = 4
+tab_width = 4
+
+# Environment files
+[*.env]
+trim_trailing_whitespace = false
+insert_final_newline = true
+
+# CSV / TSV
+[*.{csv,tsv}]
+trim_trailing_whitespace = false
+insert_final_newline = true
+
+# Windows batch files
+[*.{bat,cmd}]
+end_of_line = crlf
+indent_size = 2
+tab_width = 2
+
+# Makefiles require tabs
+[Makefile]
+indent_style = tab
+
+[makefile]
+indent_style = tab
