@@ -2,7 +2,7 @@
 
 This directory captures major architectural decisions for Keldor.
 
-Architecture Decision Records (ADRs) explain why the project is designed the way it is. They are intended to protect deliberate engineering decisions from being accidentally undone later because the original context was lost.
+Architecture Decision Records explain why the project is designed the way it is. They are intended to protect deliberate engineering decisions from being accidentally undone later because the original context was lost.
 
 ## Architecture Decision Records
 
@@ -13,8 +13,14 @@ Architecture Decision Records (ADRs) explain why the project is designed the way
 | [ADR-0003](decisions/ADR-0003-public-private-module-layout.md) | Public and Private Module Layout | Accepted |
 | [ADR-0004](decisions/ADR-0004-powershell-engineering-standard.md) | Formal PowerShell Engineering Standard | Accepted |
 | [ADR-0005](decisions/ADR-0005-backward-compatibility-policy.md) | Backward Compatibility Policy | Accepted |
-| [ADR-0006](decisions/ADR-0006-cross-platform-loading.md) | Cross-Platform Loading Model | Accepted |
-| [ADR-0007](decisions/ADR-0007-build-time-code-generation.md) | Build-Time Code Generation | Proposed |
+| [ADR-0006](decisions/ADR-0006-build-time-code-generation.md) | Build-Time Code Generation | Proposed |
+| [ADR-0007](decisions/ADR-0007-documentation-as-code.md) | Documentation as Code | Accepted |
+
+## Historical Records
+
+| ADR | Title | Status |
+|---|---|---|
+| [ADR-0006](decisions/ADR-0006-cross-platform-loading.md) | Cross-Platform Loading Model | Superseded by ADR-0001 |
 
 ## ADR Status Values
 
