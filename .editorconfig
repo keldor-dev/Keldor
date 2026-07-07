@@ -25,8 +25,8 @@ max_line_length = 88
 
 # Config / data
 [*.{yml,yaml,json,jsonc,toml}]
-indent_size = 2
-tab_width = 2
+indent_size = 4
+tab_width = 4
 max_line_length = 120
 
 # Documentation
@@ -36,14 +36,14 @@ max_line_length = off
 
 # Shell scripts
 [*.{sh,bash,zsh}]
-indent_size = 2
-tab_width = 2
+indent_size = 4
+tab_width = 4
 max_line_length = 100
 
 # Web / frontend
 [*.{html,css,scss,js,mjs,cjs,ts,tsx,jsx}]
-indent_size = 2
-tab_width = 2
+indent_size = 4
+tab_width = 4
 max_line_length = 100
 
 # .NET
@@ -54,8 +54,8 @@ max_line_length = 120
 
 # XML / SVG
 [*.{xml,svg}]
-indent_size = 2
-tab_width = 2
+indent_size = 4
+tab_width = 4
 
 # Docker
 [*.{dockerfile,Dockerfile}]
@@ -65,6 +65,12 @@ tab_width = 4
 [Dockerfile]
 indent_size = 4
 tab_width = 4
+
+# Docker Compose
+[{compose.yml,compose.yaml,docker-compose.yml,docker-compose.yaml}]
+indent_size = 4
+tab_width = 4
+max_line_length = 120
 
 # Environment files
 [*.env]
@@ -79,8 +85,8 @@ insert_final_newline = true
 # Windows batch files
 [*.{bat,cmd}]
 end_of_line = crlf
-indent_size = 2
-tab_width = 2
+indent_size = 4
+tab_width = 4
 
 # Makefiles require tabs
 [Makefile]
