@@ -29,7 +29,7 @@ function Set-ServerConfig {
 
 
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ServerConfig')]
+        [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ServerConfig')]
     Param ()
 [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
@@ -44,42 +44,62 @@ function Set-ServerConfig {
 
         #DHCP
         if ($sc.SCDHCP -eq $true) {
-            $na | Set-NetIPInterface -Dhcp Enabled
+            if ($PSCmdlet.ShouldProcess($ia, "Enable DHCP")) {
+                $na | Set-NetIPInterface -Dhcp Enabled
+            }
         }
         else {
-            $na | Set-NetIPInterface -Dhcp Disabled
+            if ($PSCmdlet.ShouldProcess($ia, "Disable DHCP")) {
+                $na | Set-NetIPInterface -Dhcp Disabled
+            }
         }
 
         #IPv6
         if ($sc.SCIPv6 -eq $true) {
-            Enable-NetAdapterBinding -InterfaceAlias $ia -ComponentID ms_tcpip6
+            if ($PSCmdlet.ShouldProcess($ia, "Enable IPv6 binding")) {
+                Enable-NetAdapterBinding -InterfaceAlias $ia -ComponentID ms_tcpip6
+            }
         }
         else {
-            Disable-NetAdapterBinding -InterfaceAlias $ia -ComponentID ms_tcpip6
+            if ($PSCmdlet.ShouldProcess($ia, "Disable IPv6 binding")) {
+                Disable-NetAdapterBinding -InterfaceAlias $ia -ComponentID ms_tcpip6
+            }
         }
 
         #Link-Layer Topology Discovery Responder
         if ($sc.SCllrspndr -eq $true) {
-            Enable-NetAdapterBinding -InterfaceAlias $ia -ComponentID ms_rspndr
+            if ($PSCmdlet.ShouldProcess($ia, "Enable Link-Layer Topology Discovery Responder")) {
+                Enable-NetAdapterBinding -InterfaceAlias $ia -ComponentID ms_rspndr
+            }
         }
         else {
-            Disable-NetAdapterBinding -InterfaceAlias $ia -ComponentID ms_rspndr
+            if ($PSCmdlet.ShouldProcess($ia, "Disable Link-Layer Topology Discovery Responder")) {
+                Disable-NetAdapterBinding -InterfaceAlias $ia -ComponentID ms_rspndr
+            }
         }
 
         #Link-Layer Topology Discovery Mapper I/O
         if ($sc.SClltdio -eq $true) {
-            Enable-NetAdapterBinding -InterfaceAlias $ia -ComponentID ms_lltdio
+            if ($PSCmdlet.ShouldProcess($ia, "Enable Link-Layer Topology Discovery Mapper I/O")) {
+                Enable-NetAdapterBinding -InterfaceAlias $ia -ComponentID ms_lltdio
+            }
         }
         else {
-            Disable-NetAdapterBinding -InterfaceAlias $ia -ComponentID ms_lltdio
+            if ($PSCmdlet.ShouldProcess($ia, "Disable Link-Layer Topology Discovery Mapper I/O")) {
+                Disable-NetAdapterBinding -InterfaceAlias $ia -ComponentID ms_lltdio
+            }
         }
 
         #Offloading
         if ($sc.SCOffload -eq $true) {
-            Set-NetAdapterAdvancedProperty -Name $ia -DisplayName "*Offloa*" -DisplayValue "Enabled"
+            if ($PSCmdlet.ShouldProcess($ia, "Enable offloading")) {
+                Set-NetAdapterAdvancedProperty -Name $ia -DisplayName "*Offloa*" -DisplayValue "Enabled"
+            }
         }
         else {
-            Set-NetAdapterAdvancedProperty -Name $ia -DisplayName "*Offloa*" -DisplayValue "Disabled"
+            if ($PSCmdlet.ShouldProcess($ia, "Disable offloading")) {
+                Set-NetAdapterAdvancedProperty -Name $ia -DisplayName "*Offloa*" -DisplayValue "Disabled"
+            }
         }
     }#foreach network adapter
 
@@ -87,23 +107,33 @@ function Set-ServerConfig {
     $NICS = Get-WmiObject Win32_NetworkAdapterConfiguration
     $nb = $sc.SCNetBios
     foreach ($NIC in $NICS) {
-        $NIC.settcpipnetbios($nb)
+        if ($PSCmdlet.ShouldProcess($NIC.Description, "Set TCP/IP NetBIOS")) {
+            $NIC.settcpipnetbios($nb)
+        }
     }
 
     #RDP
-    Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -value ($sc.SCRDP)
+    if ($PSCmdlet.ShouldProcess('HKLM:\System\CurrentControlSet\Control\Terminal Server', "Set fDenyTSConnections")) {
+        Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -value ($sc.SCRDP)
+    }
 
     #Server Manager
     if ($sc.SCServerMgr -eq $true) {
-        Get-ScheduledTask -TaskName ServerManager | Enable-ScheduledTask
+        if ($PSCmdlet.ShouldProcess('ServerManager', "Enable scheduled task")) {
+            Get-ScheduledTask -TaskName ServerManager | Enable-ScheduledTask
+        }
     }
     else {
-        Get-ScheduledTask -TaskName ServerManager | Disable-ScheduledTask
+        if ($PSCmdlet.ShouldProcess('ServerManager', "Disable scheduled task")) {
+            Get-ScheduledTask -TaskName ServerManager | Disable-ScheduledTask
+        }
     }
 
     #WINS
     $wdns = $sc.SCWDNS
     $lmh = $sc.SCLMHost
     $nicClass = Get-WmiObject -list Win32_NetworkAdapterConfiguration
-    $nicClass.enablewins($wdns,$lmh)
+    if ($PSCmdlet.ShouldProcess('Win32_NetworkAdapterConfiguration', "Set WINS configuration")) {
+        $nicClass.enablewins($wdns,$lmh)
+    }
 }

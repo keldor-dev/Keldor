@@ -43,7 +43,7 @@ function Set-Shutdown {
         "",
         Justification = "Have tried other methods and they do not work consistently."
     )]
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-Shutdown')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-Shutdown')]
     Param (
         [Parameter(Mandatory=$false)]
         [Alias('Host','Name','Computer','CN')]
@@ -83,13 +83,19 @@ function Set-Shutdown {
     #Move the code above to the specified place if you don't want a rolling shutdown.
 
     foreach ($Comp in $ComputerName) {
-        if ($Abort) {shutdown -a -m \\$Comp}
+        if ($Abort) {
+            if ($PSCmdlet.ShouldProcess($Comp, "Abort shutdown")) {
+                shutdown -a -m \\$Comp
+            }
+        }
         else {
             #
             # Move the code above to here if you don't want a rolling shutdown
             #
             try {
-                shutdown -s -m \\$Comp -t $tt1
+                if ($PSCmdlet.ShouldProcess($Comp, "Schedule shutdown")) {
+                    shutdown -s -m \\$Comp -t $tt1
+                }
             }
             catch {
                 Throw "Could not schedule shutdown on $Comp"

@@ -41,7 +41,7 @@ function Set-ChromeDeveloperTools {
         "",
         Justification = "Developer Tools is the actual name of the setting so keeping it consistent."
     )]
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ChromeDeveloperTools')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ChromeDeveloperTools')]
     [Alias('Set-DeveloperTools')]
     param(
         [Parameter()]
@@ -55,17 +55,23 @@ function Set-ChromeDeveloperTools {
                 Get-ItemPropertyValue -Path HKLM:\SOFTWARE\Policies\Google\Chrome -Name DeveloperToolsDisabled -ErrorAction Stop
 
                 #modify entry
-                Set-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome -Name DeveloperToolsDisabled -Value 1
+                if ($PSCmdlet.ShouldProcess('HKLM:\SOFTWARE\Policies\Google\Chrome\DeveloperToolsDisabled', "Set to 1")) {
+                    Set-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome -Name DeveloperToolsDisabled -Value 1
+                }
             }
             catch {
                 #Create entry
-                New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome -Name DeveloperToolsDisabled -Value 1
+                if ($PSCmdlet.ShouldProcess('HKLM:\SOFTWARE\Policies\Google\Chrome\DeveloperToolsDisabled', "Create with value 1")) {
+                    New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome -Name DeveloperToolsDisabled -Value 1
+                }
             }
         }
         else {
             try {
                 Get-ItemPropertyValue -Path HKLM:\SOFTWARE\Policies\Google\Chrome -Name DeveloperToolsDisabled -ErrorAction Stop
-                Set-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome -Name DeveloperToolsDisabled -Value 0
+                if ($PSCmdlet.ShouldProcess('HKLM:\SOFTWARE\Policies\Google\Chrome\DeveloperToolsDisabled', "Set to 0")) {
+                    Set-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome -Name DeveloperToolsDisabled -Value 0
+                }
             }
             catch {
                 Write-Output "Chrome Developer Tools already enabled."

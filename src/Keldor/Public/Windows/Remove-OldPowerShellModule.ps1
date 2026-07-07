@@ -47,7 +47,7 @@ function Remove-OldPowerShellModule {
         "",
         Justification = "Have tried other methods and they do not work consistently."
     )]
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Remove-OldPowerShellModule')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Remove-OldPowerShellModule')]
     Param (
         [Parameter(
             Mandatory = $false,
@@ -71,7 +71,7 @@ function Remove-OldPowerShellModule {
         $RunspacePool = [runspacefactory]::CreateRunspacePool(1, $MaxThreads, $ISS, $Host)
         $RunspacePool.Open()
         $Code = {
-            [CmdletBinding()]
+            [CmdletBinding(SupportsShouldProcess = $true)]
             Param (
                 [Parameter(
                     Mandatory=$true,
@@ -85,7 +85,9 @@ function Remove-OldPowerShellModule {
             foreach ($o in $ops) {
                 $p = "\\$comp\c$\Program Files\WindowsPowerShell\Modules\" + $o
                 if (Test-Path $p) {
-                    Remove-Item -Path $p -Recurse -Force
+                    if ($PSCmdlet.ShouldProcess($p, "Remove old PowerShell module")) {
+                        Remove-Item -Path $p -Recurse -Force
+                    }
                 }
             }
         }#end code block
@@ -94,15 +96,17 @@ function Remove-OldPowerShellModule {
     Process {
         Write-Progress -Activity "Preloading threads" -Status "Starting Job $($jobs.count)"
         ForEach ($Object in $ComputerName){
-            $PowershellThread = [powershell]::Create().AddScript($Code)
-            $PowershellThread.AddArgument($Object.ToString()) | out-null
-            $PowershellThread.RunspacePool = $RunspacePool
-            $Handle = $PowershellThread.BeginInvoke()
-            $Job = "" | Select-Object Handle, Thread, object
-            $Job.Handle = $Handle
-            $Job.Thread = $PowershellThread
-            $Job.Object = $Object.ToString()
-            $Jobs += $Job
+            if ($PSCmdlet.ShouldProcess($Object.ToString(), "Remove old PowerShell modules")) {
+                $PowershellThread = [powershell]::Create().AddScript($Code)
+                $PowershellThread.AddArgument($Object.ToString()) | out-null
+                $PowershellThread.RunspacePool = $RunspacePool
+                $Handle = $PowershellThread.BeginInvoke()
+                $Job = "" | Select-Object Handle, Thread, object
+                $Job.Handle = $Handle
+                $Job.Thread = $PowershellThread
+                $Job.Object = $Object.ToString()
+                $Jobs += $Job
+            }
         }
     }
     End {

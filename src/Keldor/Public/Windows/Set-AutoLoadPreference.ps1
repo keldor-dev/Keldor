@@ -32,11 +32,13 @@ function Set-AutoLoadPreference {
 
 
 
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-AutoLoadPreference')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-AutoLoadPreference')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]
         [ValidateSet("All","None")]
         $mode = "All"
     )
-    $PSModuleAutoloadingPreference = $mode
+    if ($PSCmdlet.ShouldProcess('PSModuleAutoloadingPreference', "Set to $mode")) {
+        $PSModuleAutoloadingPreference = $mode
+    }
 }
