@@ -6,8 +6,8 @@ function Set-AutoLoadPreference {
 .DESCRIPTION
     Sets Auto Load Preference.
 
-.PARAMETER mode
-    Specifies the mode value.
+.PARAMETER Mode
+    Specifies the Mode value.
 
 .EXAMPLE
     Set-AutoLoadPreference
@@ -24,9 +24,9 @@ function Set-AutoLoadPreference {
     Param (
         [Parameter(Mandatory=$false, Position=0)]
         [ValidateSet("All","None")]
-        $mode = "All"
+        $Mode = "All"
     )
-    if ($PSCmdlet.ShouldProcess('PSModuleAutoloadingPreference', "Set to $mode")) {
-        $PSModuleAutoloadingPreference = $mode
+    if ($PSCmdlet.ShouldProcess('PSModuleAutoloadingPreference', "Set to $Mode")) {
+        $PSModuleAutoloadingPreference = $Mode
     }
 }

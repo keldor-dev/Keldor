@@ -6,8 +6,8 @@ function Get-LockedOutStatus {
 .DESCRIPTION
     Gets Locked Out Status.
 
-.PARAMETER Username
-    Specifies the Username value.
+.PARAMETER UserName
+    Specifies the UserName value.
 
 .EXAMPLE
     Get-LockedOutStatus
@@ -28,8 +28,8 @@ function Get-LockedOutStatus {
             ValueFromPipeline=$true,
             ValueFromPipelineByPropertyName=$true
         )]
-        [Alias('User','SamAccountname')]
-        [string[]]$Username = "$env:USERNAME"
+        [Alias('Username','User','SamAccountName')]
+        [string[]]$UserName = "$env:USERNAME"
     )
     Begin {
         $cktime = Get-Date -Format t
@@ -42,7 +42,7 @@ function Get-LockedOutStatus {
         }
     }
     Process {
-        foreach ($user in $Username) {
+        foreach ($user in $UserName) {
             $usrquery = Get-ADUser $User -properties LockedOut,lockoutTime
             $locked = $usrquery.LockedOut
             $locktime = $usrquery.lockoutTime

@@ -6,11 +6,11 @@ function Get-DirectoryStat {
 .DESCRIPTION
     Gets Directory Stat.
 
-.PARAMETER DirectoryName
+.PARAMETER Path
     Specifies the path to use.
 
 .EXAMPLE
-    Get-DirectoryStat -DirectoryName <value>
+    Get-DirectoryStat -Path <value>
     Runs Get-DirectoryStat.
 
 .OUTPUTS
@@ -30,12 +30,12 @@ function Get-DirectoryStat {
             ValueFromPipeline = $true
         )]
         [ValidateNotNullOrEmpty()]
-        [Alias('Dir','Folder','UNC')]
-        [string[]]$DirectoryName
+        [Alias('DirectoryName','Dir','Folder','UNC')]
+        [string[]]$Path
     )
     Begin {}
     Process {
-        foreach ($Directory in $DirectoryName) {
+        foreach ($Directory in $Path) {
             $stats = [PSCustomObject]@{
                 Directory = $null
                 FileCount = 0

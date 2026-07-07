@@ -11,8 +11,8 @@ function Find-UserProfile {
 .PARAMETER ComputerName
     Specifies the computer name to use.
 
-.PARAMETER Username
-    Specifies the Username value.
+.PARAMETER UserName
+    Specifies the UserName value.
 
 .EXAMPLE
     Find-UserProfile
@@ -32,8 +32,8 @@ function Find-UserProfile {
         [string[]]$ComputerName = "$env:COMPUTERNAME",
 
         [Parameter(Mandatory=$false, Position=1)]
-        [Alias('User','SamAccountname')]
-        [string[]]$Username = "$env:USERNAME"
+        [Alias('Username','User','SamAccountName')]
+        [string[]]$UserName = "$env:USERNAME"
     )
 
     $i = 0
@@ -53,7 +53,7 @@ function Find-UserProfile {
         try {
             New-PSDrive -Name ProfCk -PSProvider FileSystem -root "$compath" -ErrorAction Stop | Out-Null
 
-            foreach ($User in $Username) {
+            foreach ($User in $UserName) {
                 try {
                     $modtime = $null
                     $usrpath = "ProfCk:\Users\$User"

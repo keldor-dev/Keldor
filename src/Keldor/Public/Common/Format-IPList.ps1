@@ -6,11 +6,11 @@ function Format-IPList {
 .DESCRIPTION
     This function takes a list of IP addresses and sorts them in the appropriate order.
 
-.PARAMETER IPs
+.PARAMETER IPAddress
     Used to specify the IP addresses that you wish to sort.
 
 .EXAMPLE
-    Format-IPList -IPs 127.0.0.5, 127.0.0.100, 10.0.1.5, 10.0.1.1, 10.0.1.100
+    Format-IPList -IPAddress 127.0.0.5, 127.0.0.100, 10.0.1.5, 10.0.1.1, 10.0.1.100
     Sorts the given list of IP addresses in the correct order.
 
 .EXAMPLE
@@ -29,12 +29,12 @@ function Format-IPList {
     param(
         [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
         [ValidateNotNullOrEmpty()]
-        [Alias('IPAddresses')]
-        [System.Net.IPAddress[]]$IPs
+        [Alias('IP','IPs','IPv4','Address','IPAddresses')]
+        [System.Net.IPAddress[]]$IPAddress
     )
 
     Process {
-        $IPs | Sort-Object {
+        $IPAddress | Sort-Object {
             $_.GetAddressBytes() -as [System.Collections.IComparer]
         }
     }

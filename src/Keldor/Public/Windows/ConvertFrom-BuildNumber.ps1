@@ -6,7 +6,7 @@ function ConvertFrom-BuildNumber {
 .DESCRIPTION
     Takes a build number for Windows 8/Server 2012 or newer and converts it to a version number and Operatiing System.
 
-.PARAMETER Build
+.PARAMETER BuildNumber
     Specifies the number of the Microsoft Build.
 
 .EXAMPLE
@@ -27,148 +27,149 @@ function ConvertFrom-BuildNumber {
             Mandatory=$true
         )]
         [ValidateNotNullOrEmpty()]
-        [int32[]] $Build
+        [Alias('Build')]
+        [int32[]] $BuildNumber
     )
 
     Process {
-        foreach ($BuildNumber in $Build) {
-            if ($BuildNumber -eq 9200) {
+        foreach ($Build in $BuildNumber) {
+            if ($Build -eq 9200) {
                 [PSCustomObject]@{
                     OS = "Windows 8 or Windows Server 2012"
-                    Build = $BuildNumber
+                    Build = $Build
                     Version ="6.2"
                 }
             }
-            elseif ($BuildNumber -eq 9600) {
+            elseif ($Build -eq 9600) {
                 [PSCustomObject]@{
                     OS = "Windows 8.1 or Windows Server 2012 R2"
-                    Build = $BuildNumber
+                    Build = $Build
                     Version ="6.3"
                 }
             }
-            elseif ($BuildNumber -eq 14393) {
+            elseif ($Build -eq 14393) {
                 [PSCustomObject]@{
                     OS = "Windows 10 or Windows Server 2016"
-                    Build = $BuildNumber
+                    Build = $Build
                     Version ="1607"
                 }
             }
-            elseif ($BuildNumber -eq 15063) {
+            elseif ($Build -eq 15063) {
                 [PSCustomObject]@{
                     OS = "Windows 10"
-                    Build = $BuildNumber
+                    Build = $Build
                     Version ="1703"
                 }
             }
-            elseif ($BuildNumber -eq 16299) {
+            elseif ($Build -eq 16299) {
                 [PSCustomObject]@{
                     OS = "Windows 10"
-                    Build = $BuildNumber
+                    Build = $Build
                     Version ="1709"
                 }
             }
-            elseif ($BuildNumber -eq 17134) {
+            elseif ($Build -eq 17134) {
                 [PSCustomObject]@{
                     OS = "Windows 10"
-                    Build = $BuildNumber
+                    Build = $Build
                     Version ="1803"
                 }
             }
-            elseif ($BuildNumber -eq 17763) {
+            elseif ($Build -eq 17763) {
                 [PSCustomObject]@{
                     OS = "Windows 10 or Windows Server 2019"
-                    Build = $BuildNumber
+                    Build = $Build
                     Version ="1809"
                 }
             }
-            elseif ($BuildNumber -eq 18362) {
+            elseif ($Build -eq 18362) {
                 [PSCustomObject]@{
                     OS = "Windows 10"
-                    Build = $BuildNumber
+                    Build = $Build
                     Version ="1903"
                 }
             }
-            elseif ($BuildNumber -eq 18363) {
+            elseif ($Build -eq 18363) {
                 [PSCustomObject]@{
                     OS = "Windows 10"
-                    Build = $BuildNumber
+                    Build = $Build
                     Version ="1909"
                 }
             }
-            elseif ($BuildNumber -eq 19041) {
+            elseif ($Build -eq 19041) {
                 [PSCustomObject]@{
                     OS = "Windows 10"
-                    Build = $BuildNumber
+                    Build = $Build
                     Version ="2004"
                 }
             }
-            elseif ($BuildNumber -eq 19042) {
+            elseif ($Build -eq 19042) {
                 [PSCustomObject]@{
                     OS = "Windows 10"
-                    Build = $BuildNumber
+                    Build = $Build
                     Version ="20H2 (2009)"
                 }
             }
-            elseif ($BuildNumber -eq 19043) {
+            elseif ($Build -eq 19043) {
                 [PSCustomObject]@{
                     OS = "Windows 10"
-                    Build = $BuildNumber
+                    Build = $Build
                     Version ="21H1 (2103)"
                 }
             }
-            elseif ($BuildNumber -eq 19044) {
+            elseif ($Build -eq 19044) {
                 [PSCustomObject]@{
                     OS = "Windows 10"
-                    Build = $BuildNumber
+                    Build = $Build
                     Version ="21H2 (2109)"
                 }
             }
-            elseif ($BuildNumber -eq 22000) {
+            elseif ($Build -eq 22000) {
                 [PSCustomObject]@{
                     OS = "Windows 11"
-                    Build = $BuildNumber
+                    Build = $Build
                     Version ="21H2 (2109)"
                 }
             }
-            elseif ($BuildNumber -eq 20348) {
+            elseif ($Build -eq 20348) {
                 [PSCustomObject]@{
                     OS = "Windows Server 2022"
-                    Build = $BuildNumber
+                    Build = $Build
                     Version ="21H2 (2109)"
                 }
             }
-            elseif ($BuildNumber -eq 19045) {
+            elseif ($Build -eq 19045) {
                 [PSCustomObject]@{
                     OS = "Windows 10"
-                    Build = $BuildNumber
+                    Build = $Build
                     Version ="22H2 (2209)"
                 }
             }
-            elseif ($BuildNumber -eq 19046) {
+            elseif ($Build -eq 19046) {
                 [PSCustomObject]@{
                     OS = "Windows 10"
-                    Build = $BuildNumber
+                    Build = $Build
                     Version ="23H2 (2309)"
                 }
             }
-            elseif ($BuildNumber -eq 22621) {
+            elseif ($Build -eq 22621) {
                 [PSCustomObject]@{
                     OS = "Windows 11"
-                    Build = $BuildNumber
+                    Build = $Build
                     Version ="22H2 (2209)"
                 }
             }
-            elseif ($BuildNumber -eq 22631) {
+            elseif ($Build -eq 22631) {
                 [PSCustomObject]@{
                     OS = "Windows 11"
-                    Build = $BuildNumber
+                    Build = $Build
                     Version ="23H2 (2309)"
                 }
             }
-            elseif ($BuildNumber -eq 26100) {
+            elseif ($Build -eq 26100) {
                 [PSCustomObject]@{
                     OS = "Windows 11"
-                    Build = $BuildNumber
+                    Build = $Build
                     Version ="24H2 (2409)"
                 }
             }

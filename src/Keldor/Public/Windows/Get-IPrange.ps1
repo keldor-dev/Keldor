@@ -6,7 +6,7 @@ function Get-IPrange {
 .DESCRIPTION
     Lists IPs within a range, subnet, or CIDR block.
 
-.PARAMETER IP
+.PARAMETER IPAddress
     An IP from the subnet mask or CIDR block you want a range for.
 
 .PARAMETER CIDR
@@ -22,7 +22,7 @@ function Get-IPrange {
     The ending IP in a range.
 
 .EXAMPLE
-    Get-IPrange -ip 192.168.0.3 -subnet 255.255.255.192
+    Get-IPrange -IPAddress 192.168.0.3 -subnet 255.255.255.192
     Will show all IPs within the 192.168.0.0 space with a subnet mask of 255.255.255.192 (CIDR 26.)
 
 .EXAMPLE
@@ -42,8 +42,8 @@ function Get-IPrange {
             Mandatory=$false,
             Position=0
         )]
-        [Alias('IPv4','Address','IPv4Address')]
-        [string]$IP,
+        [Alias('IP','IPs','IPv4','Address','IPv4Address')]
+        [string]$IPAddress,
 
         [Parameter(
             Mandatory=$false
@@ -69,18 +69,18 @@ function Get-IPrange {
     )
 
 
-    if ($IP) {$ipaddr = [Net.IPAddress]::Parse($IP)}
+    if ($IPAddress) {$ipaddr = [Net.IPAddress]::Parse($IPAddress)}
     if ($CIDR) {$maskaddr = [Net.IPAddress]::Parse((Convert-INT64toIP -int ([convert]::ToInt64(("1"*$CIDR+"0"*(32-$CIDR)),2)))) }
     if ($Subnet) {$maskaddr = [Net.IPAddress]::Parse($Subnet)}
-    if ($IP) {$networkaddr = new-object net.ipaddress ($maskaddr.address -band $ipaddr.address)}
-    if ($IP) {$broadcastaddr = new-object net.ipaddress (([system.net.ipaddress]::parse("255.255.255.255").address -bxor $maskaddr.address -bor $networkaddr.address))}
+    if ($IPAddress) {$networkaddr = new-object net.ipaddress ($maskaddr.address -band $ipaddr.address)}
+    if ($IPAddress) {$broadcastaddr = new-object net.ipaddress (([system.net.ipaddress]::parse("255.255.255.255").address -bxor $maskaddr.address -bor $networkaddr.address))}
 
-    if ($IP) {
-        $startaddr = Convert-IPtoINT64 -IP $networkaddr.ipaddresstostring
-        $endaddr = Convert-IPtoINT64 -IP $broadcastaddr.ipaddresstostring
+    if ($IPAddress) {
+        $startaddr = Convert-IPtoINT64 -IPAddress $networkaddr.ipaddresstostring
+        $endaddr = Convert-IPtoINT64 -IPAddress $broadcastaddr.ipaddresstostring
     } else {
-        $startaddr = Convert-IPtoINT64 -IP $start
-        $endaddr = Convert-IPtoINT64 -IP $end
+        $startaddr = Convert-IPtoINT64 -IPAddress $start
+        $endaddr = Convert-IPtoINT64 -IPAddress $end
     }
 
     for ($i = $startaddr; $i -le $endaddr; $i++) {

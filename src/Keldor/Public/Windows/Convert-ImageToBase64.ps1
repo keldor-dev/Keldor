@@ -6,11 +6,11 @@ function Convert-ImageToBase64 {
 .DESCRIPTION
     Converts Image To Base64.
 
-.PARAMETER ImagePath
+.PARAMETER Path
     Specifies the path to use.
 
 .EXAMPLE
-    Convert-ImageToBase64 -ImagePath <value>
+    Convert-ImageToBase64 -Path <value>
     Runs Convert-ImageToBase64.
 
 .OUTPUTS
@@ -28,9 +28,10 @@ function Convert-ImageToBase64 {
             Mandatory=$true
         )]
         [ValidateNotNullOrEmpty()]
-        [string]$ImagePath
+        [Alias('ImagePath')]
+        [string]$Path
     )
 
-    $b64 = [convert]::ToBase64String((get-content $ImagePath -encoding byte))
+    $b64 = [convert]::ToBase64String((get-content $Path -encoding byte))
     $b64
 }

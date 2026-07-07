@@ -6,17 +6,17 @@ function Copy-UserProfile {
 .DESCRIPTION
     Copies User Profile.
 
-.PARAMETER User
-    Specifies the User value.
+.PARAMETER UserName
+    Specifies the UserName value.
 
 .PARAMETER ComputerName
     Specifies the computer name to use.
 
-.PARAMETER Destination
-    Specifies the Destination value.
+.PARAMETER DestinationPath
+    Specifies the destination path value.
 
 .EXAMPLE
-    Copy-UserProfile -User <value>
+    Copy-UserProfile -UserName <value>
     Runs Copy-UserProfile.
 
 .OUTPUTS
@@ -34,8 +34,8 @@ function Copy-UserProfile {
             Position=0
         )]
         [ValidateNotNullOrEmpty()]
-        [Alias('Username','SamAccountName')]
-        [string]$User,
+        [Alias('User','Username','SamAccountName')]
+        [string]$UserName,
 
         [Parameter(HelpMessage = "Enter one or more computer names separated by commas.",
             Mandatory=$false,
@@ -49,11 +49,11 @@ function Copy-UserProfile {
         [Parameter(HelpMessage = "Enter destination folder path as UNC unless a local path. Ex: E:\ESI\10-001 or \\COMP\e$\ESI\10-001",
             Mandatory=$false
         )]
-        [Alias('Dest','DestinationFolder','DestFolder')]
-        [string]$Destination = $null
+        [Alias('Destination','Dest','DestinationFolder','DestFolder')]
+        [string]$DestinationPath = $null
     )
     Begin {
-        if ($Destination -eq $null) {
+        if ($DestinationPath -eq $null) {
             Write-Output "The destination folder selection window is open. It may be hidden behind windows."
             Add-Type -AssemblyName System.Windows.Forms
             $FolderBrowser = New-Object System.Windows.Forms.FolderBrowserDialog
@@ -62,13 +62,13 @@ function Copy-UserProfile {
             Set-WindowState MINIMIZE
             [void]$FolderBrowser.ShowDialog()
             Set-WindowState RESTORE
-            $Destination = $FolderBrowser.SelectedPath
+            $DestinationPath = $FolderBrowser.SelectedPath
         }
-        $df = $Destination + "\" + $User
+        $df = $DestinationPath + "\" + $UserName
     }
     Process {
         foreach ($comp in $ComputerName) {
-            robocopy \\$comp\c$\Users\$user $df /mir /mt:3 /xj /r:3 /w:5 /njh /njs
+            robocopy \\$comp\c$\Users\$UserName $df /mir /mt:3 /xj /r:3 /w:5 /njh /njs
         }
     }
     End {}

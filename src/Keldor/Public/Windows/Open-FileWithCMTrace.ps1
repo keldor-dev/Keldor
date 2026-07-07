@@ -6,11 +6,11 @@ function Open-FileWithCMTrace {
 .DESCRIPTION
     Opens File With CM Trace.
 
-.PARAMETER FileName
-    Specifies the File Name value.
+.PARAMETER Path
+    Specifies the path value.
 
 .EXAMPLE
-    Open-FileWithCMTrace -FileName <value>
+    Open-FileWithCMTrace -Path <value>
     Runs Open-FileWithCMTrace.
 
 .OUTPUTS
@@ -27,8 +27,8 @@ function Open-FileWithCMTrace {
             Mandatory=$true
         )]
         [ValidateNotNullOrEmpty()]
-        [Alias('File','Path')]
-        [string[]]$FileName
+        [Alias('FileName','File','Name')]
+        [string[]]$Path
     )
     $Continue = $false
     if (Test-Path "c:\Windows\ccm\CMTrace.exe") {
@@ -49,7 +49,7 @@ function Open-FileWithCMTrace {
     }
 
     if ($Continue) {
-        foreach ($file in $FileName) {
+        foreach ($file in $Path) {
             Start-Process $app -ArgumentList $file
         }
     }

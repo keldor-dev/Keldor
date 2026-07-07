@@ -6,11 +6,11 @@ function Set-ADProfilePicture {
 .DESCRIPTION
     Sets AD Profile Picture.
 
-.PARAMETER Username
-    Specifies the Username value.
+.PARAMETER UserName
+    Specifies the UserName value.
 
 .EXAMPLE
-    Set-ADProfilePicture -Username <value>
+    Set-ADProfilePicture -UserName <value>
     Runs Set-ADProfilePicture.
 
 .OUTPUTS
@@ -23,8 +23,9 @@ function Set-ADProfilePicture {
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ADProfilePicture')]
     Param (
         [Parameter(Mandatory=$true, Position=0)]
-        [Alias('User','SamAccountname')]
-        [string]$Username
+        [ValidateNotNullOrEmpty()]
+        [Alias('Username','User','SamAccountName')]
+        [string]$UserName
     )
 
     if (Get-Module -ListAvailable -Name ActiveDirectory) {
@@ -38,7 +39,7 @@ function Set-ADProfilePicture {
         $ppath = $OpenFileDialog.FileName
 
         $item = Get-Item $ppath
-        if ($item.Length -gt 102400) {Throw "Unable to set $Username's picture. Picture must be less than 100 KB. Also recommend max size of 96 x 96 pixels."}
+        if ($item.Length -gt 102400) {Throw "Unable to set $UserName's picture. Picture must be less than 100 KB. Also recommend max size of 96 x 96 pixels."}
         else {
             Import-Module activedirectory
             $photo1 = [byte[]](Get-Content $ppath -Encoding byte)
