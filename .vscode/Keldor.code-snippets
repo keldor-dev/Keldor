@@ -1,407 +1,482 @@
 {
-  // Keldor workspace snippets.
-  // Prefixes intentionally use keldor-* so they are easy to discover in IntelliSense.
-  "Keldor Date Timestamp": {
-    "prefix": [
-      "keldor-date",
-      "keldor-timestamp"
-    ],
-    "body": [
-      "$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND"
-    ],
-    "description": "Insert a timestamp in YYYY-MM-DD HH:MM:SS format."
-  },
-  "Keldor PowerShell Advanced Function": {
-    "scope": "powershell",
-    "prefix": [
-      "keldor-function",
-      "keldor-advanced-function"
-    ],
-    "body": [
-      "function ${1:Verb-Noun} {",
-      "    <#",
-      "    .SYNOPSIS",
-      "        ${2:Short description.}",
-      "",
-      "    .DESCRIPTION",
-      "        ${3:Longer description of what this function does.}",
-      "",
-      "    .EXAMPLE",
-      "        ${1:Verb-Noun}",
-      "",
-      "        ${4:Example description.}",
-      "    #>",
-      "    [CmdletBinding()]",
-      "    param(",
-      "        ${5:# Parameters go here}",
-      "    )",
-      "",
-      "    begin {",
-      "        ${6:# Initialization logic}",
-      "    }",
-      "",
-      "    process {",
-      "        $0",
-      "    }",
-      "",
-      "    end {",
-      "        ${7:# Cleanup logic}",
-      "    }",
-      "}"
-    ],
-    "description": "Create a Keldor-style advanced PowerShell function."
-  },
-  "Keldor PowerShell ShouldProcess Function": {
-    "scope": "powershell",
-    "prefix": [
-      "keldor-shouldprocess",
-      "keldor-destructive-function"
-    ],
-    "body": [
-      "function ${1:Verb-Noun} {",
-      "    [CmdletBinding(SupportsShouldProcess = \\$true, ConfirmImpact = '${2:Medium}')]",
-      "    param(",
-      "        [Parameter(Mandatory = \\$true)]",
-      "        [ValidateNotNullOrEmpty()]",
-      "        [string]\\$${3:Name}",
-      "    )",
-      "",
-      "    if (\\$PSCmdlet.ShouldProcess(\\$${3:Name}, '${4:Perform action}')) {",
-      "        $0",
-      "    }",
-      "}"
-    ],
-    "description": "Create a PowerShell function with ShouldProcess support."
-  },
-  "Keldor PowerShell Parameter String": {
-    "scope": "powershell",
-    "prefix": [
-      "keldor-param-string",
-      "keldor-param"
-    ],
-    "body": [
-      "[Parameter(${1:Mandatory = \\$true})]",
-      "[ValidateNotNullOrEmpty()]",
-      "[string]\\$${2:Name}"
-    ],
-    "description": "Insert a validated string parameter."
-  },
-  "Keldor PowerShell Parameter Path": {
-    "scope": "powershell",
-    "prefix": "keldor-param-path",
-    "body": [
-      "[Parameter(Position = ${1:0})]",
-      "[ValidateNotNullOrEmpty()]",
-      "[string]\\$${2:Path} = (Get-Location).Path"
-    ],
-    "description": "Insert a common Path parameter."
-  },
-  "Keldor PowerShell Try Catch": {
-    "scope": "powershell",
-    "prefix": [
-      "keldor-try",
-      "keldor-trycatch"
-    ],
-    "body": [
-      "try {",
-      "    $0",
-      "}",
-      "catch {",
-      "    throw \"${1:Operation failed}: \\$($_.Exception.Message)\"",
-      "}"
-    ],
-    "description": "Insert a try/catch block with a terminating error."
-  },
-  "Keldor PowerShell PSCustomObject": {
-    "scope": "powershell",
-    "prefix": [
-      "keldor-object",
-      "keldor-pscustomobject"
-    ],
-    "body": [
-      "[pscustomobject]@{",
-      "    PSTypeName = '${1:Keldor.TypeName}'",
-      "    ${2:Name} = ${3:\\$Value}",
-      "}$0"
-    ],
-    "description": "Insert a PSCustomObject with a PSTypeName."
-  },
-  "Keldor PowerShell Legacy Object": {
-    "scope": "powershell",
-    "prefix": [
-      "keldor-legacy-object",
-      "keldor-ps2-object"
-    ],
-    "body": [
-      "\\$Object = New-Object PSObject",
-      "\\$Object | Add-Member -MemberType NoteProperty -Name PSTypeName -Value '${1:Keldor.TypeName}'",
-      "\\$Object | Add-Member -MemberType NoteProperty -Name ${2:Name} -Value ${3:\\$Value}",
-      "\\$Object$0"
-    ],
-    "description": "Insert a PowerShell 2.0-compatible object pattern."
-  },
-  "Keldor PowerShell Null Or Empty Check": {
-    "scope": "powershell",
-    "prefix": [
-      "keldor-nullcheck",
-      "keldor-isnullorempty"
-    ],
-    "body": [
-      "if ([string]::IsNullOrEmpty(\\$${1:Value})) {",
-      "    ${2:throw 'Value cannot be null or empty.'}",
-      "}$0"
-    ],
-    "description": "Insert a PowerShell 2.0-compatible null or empty string check."
-  },
-  "Keldor PowerShell Module Check": {
-    "scope": "powershell",
-    "prefix": [
-      "keldor-module-check",
-      "keldor-require-module"
-    ],
-    "body": [
-      "if (-not (Get-Module -ListAvailable -Name '${1:ModuleName}')) {",
-      "    throw 'Required module ${1:ModuleName} is not installed.'",
-      "}$0"
-    ],
-    "description": "Insert a required module availability check."
-  },
-  "Keldor PowerShell Admin Check": {
-    "scope": "powershell",
-    "prefix": [
-      "keldor-admin-check",
-      "keldor-admin"
-    ],
-    "body": [
-      "\\$CurrentIdentity = [Security.Principal.WindowsIdentity]::GetCurrent()",
-      "\\$CurrentPrincipal = New-Object Security.Principal.WindowsPrincipal(\\$CurrentIdentity)",
-      "",
-      "if (-not \\$CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {",
-      "    throw 'This command must be run as Administrator.'",
-      "}$0"
-    ],
-    "description": "Insert a Windows Administrator check."
-  },
-  "Keldor PowerShell Domain Check": {
-    "scope": "powershell",
-    "prefix": [
-      "keldor-domain-check",
-      "keldor-domain"
-    ],
-    "body": [
-      "if (\\$env:USERDNSDOMAIN -match '${1:contoso.com}') {",
-      "    $0",
-      "}",
-      "elseif (\\$env:USERDNSDOMAIN -match '${2:example.com}') {",
-      "    ${3:# Alternate domain logic}",
-      "}",
-      "else {",
-      "    ${4:# Default logic}",
-      "}"
-    ],
-    "description": "Insert a USERDNSDOMAIN conditional block."
-  },
-  "Keldor PowerShell Switch": {
-    "scope": "powershell",
-    "prefix": [
-      "keldor-switch",
-      "keldor-switch-block"
-    ],
-    "body": [
-      "switch (${1:\\$Value}) {",
-      "    '${2:Value1}' {",
-      "        ${3:# Logic}",
-      "    }",
-      "    '${4:Value2}' {",
-      "        ${5:# Logic}",
-      "    }",
-      "    default {",
-      "        $0",
-      "    }",
-      "}"
-    ],
-    "description": "Insert a PowerShell switch block."
-  },
-  "Keldor PowerShell Progress": {
-    "scope": "powershell",
-    "prefix": [
-      "keldor-progress",
-      "keldor-progressbar"
-    ],
-    "body": [
-      "\\$Index = 0",
-      "\\$Total = \\$${1:Items}.Count",
-      "",
-      "foreach (\\$${2:Item} in \\$${1:Items}) {",
-      "    \\$Index++",
-      "    \\$PercentComplete = (\\$Index / \\$Total) * 100",
-      "",
-      "    Write-Progress -Activity '${3:Processing items}' -Status \"\\$Index of \\$Total\" -PercentComplete \\$PercentComplete",
-      "",
-      "    $0",
-      "}"
-    ],
-    "description": "Insert a Write-Progress loop pattern."
-  },
-  "Keldor PowerShell Comment Help": {
-    "scope": "powershell",
-    "prefix": [
-      "keldor-help",
-      "keldor-comment-help"
-    ],
-    "body": [
-      "<#",
-      ".SYNOPSIS",
-      "    ${1:Short description.}",
-      "",
-      ".DESCRIPTION",
-      "    ${2:Long description.}",
-      "",
-      ".PARAMETER ${3:ParameterName}",
-      "    ${4:Parameter description.}",
-      "",
-      ".EXAMPLE",
-      "    ${5:Command example}",
-      "",
-      "    ${6:Example description.}",
-      "",
-      ".OUTPUTS",
-      "    ${7:System.Object}",
-      "",
-      ".LINK",
-      "    https://docs.keldor.dev",
-      "#>"
-    ],
-    "description": "Insert a modern PowerShell comment-based help block."
-  },
-  "Keldor Pester Describe": {
-    "scope": "powershell",
-    "prefix": [
-      "keldor-pester-describe",
-      "keldor-describe"
-    ],
-    "body": [
-      "Describe '${1:Feature}' {",
-      "    It '${2:does something}' {",
-      "        $0",
-      "    }",
-      "}"
-    ],
-    "description": "Insert a Pester Describe/It block."
-  },
-  "Keldor Pester BeforeAll Import": {
-    "scope": "powershell",
-    "prefix": [
-      "keldor-pester-import",
-      "keldor-beforeall"
-    ],
-    "body": [
-      "BeforeAll {",
-      "    \\$RepoRoot = Join-Path -Path \\$PSScriptRoot -ChildPath '..'",
-      "    \\$ManifestPath = Join-Path -Path \\$RepoRoot -ChildPath '${1:ModuleName}.psd1'",
-      "",
-      "    Import-Module \\$ManifestPath -Force",
-      "}",
-      "",
-      "$0"
-    ],
-    "description": "Insert a Pester BeforeAll module import block."
-  },
-  "Keldor Markdown Callout Note": {
-    "scope": "markdown",
-    "prefix": [
-      "keldor-note",
-      "keldor-md-note"
-    ],
-    "body": [
-      "> [!NOTE]",
-      "> ${1:Note text.}"
-    ],
-    "description": "Insert a Markdown note callout."
-  },
-  "Keldor Markdown Command Section": {
-    "scope": "markdown",
-    "prefix": [
-      "keldor-md-command",
-      "keldor-command-doc"
-    ],
-    "body": [
-      "## `${1:Command-Name}`",
-      "",
-      "${2:Describe what the command does.}",
-      "",
-      "### Syntax",
-      "",
-      "```powershell",
-      "${1:Command-Name} ${3:-Parameter Value}",
-      "```",
-      "",
-      "### Examples",
-      "",
-      "```powershell",
-      "${1:Command-Name}",
-      "```",
-      "",
-      "### Notes",
-      "",
-      "${4:Additional notes.}"
-    ],
-    "description": "Insert a Markdown command documentation section."
-  },
-  "Keldor Markdown ADR": {
-    "scope": "markdown",
-    "prefix": [
-      "keldor-adr",
-      "keldor-md-adr"
-    ],
-    "body": [
-      "# ADR-${1:0001}: ${2:Decision Title}",
-      "",
-      "## Status",
-      "",
-      "${3:Proposed}",
-      "",
-      "## Context",
-      "",
-      "${4:What problem are we solving?}",
-      "",
-      "## Decision",
-      "",
-      "${5:What did we decide?}",
-      "",
-      "## Consequences",
-      "",
-      "${6:What are the tradeoffs?}"
-    ],
-    "description": "Insert an Architecture Decision Record template."
-  },
-  "Keldor YAML GitHub Action PowerShell": {
-    "scope": "yaml",
-    "prefix": [
-      "keldor-gha-powershell",
-      "keldor-action-pwsh"
-    ],
-    "body": [
-      "name: ${1:PowerShell}",
-      "",
-      "on:",
-      "  push:",
-      "    branches: [ main ]",
-      "  pull_request:",
-      "    branches: [ main ]",
-      "",
-      "jobs:",
-      "  test:",
-      "    name: Test",
-      "    runs-on: ubuntu-latest",
-      "    steps:",
-      "      - name: Checkout",
-      "        uses: actions/checkout@v4",
-      "",
-      "      - name: Test",
-      "        shell: pwsh",
-      "        run: ${2:Invoke-Pester ./Tests -CI}"
-    ],
-    "description": "Insert a basic GitHub Actions PowerShell workflow."
-  }
+    // Keldor workspace snippets.
+    // Prefixes intentionally use keldor-* so they are easy to discover in IntelliSense.
+
+    "Keldor Date Timestamp": {
+        "prefix": [
+            "keldor-date",
+            "keldor-timestamp"
+        ],
+        "body": [
+            "$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND"
+        ],
+        "description": "Insert a timestamp in YYYY-MM-DD HH:MM:SS format."
+    },
+
+    "Keldor PowerShell Advanced Function": {
+        "scope": "powershell",
+        "prefix": [
+            "keldor-function",
+            "keldor-advanced-function"
+        ],
+        "body": [
+            "function ${1:Verb-Noun} {",
+            "    <#",
+            "    .SYNOPSIS",
+            "        ${2:Short action-focused summary.}",
+            "",
+            "    .DESCRIPTION",
+            "        ${3:Longer explanation of what the function does and when to use it.}",
+            "",
+            "    .PARAMETER ${4:Path}",
+            "        ${5:Specifies the path to process.}",
+            "",
+            "    .EXAMPLE",
+            "        ${1:Verb-Noun} -${4:Path} .",
+            "",
+            "        ${6:Runs the command against the current directory.}",
+            "",
+            "    .OUTPUTS",
+            "        ${7:System.Object}",
+            "",
+            "    .LINK",
+            "        https://docs.keldor.dev",
+            "    #>",
+            "    [CmdletBinding()]",
+            "    param(",
+            "        [Parameter(Mandatory = \\$true)]",
+            "        [ValidateNotNullOrEmpty()]",
+            "        [string]\\$${4:Path}",
+            "    )",
+            "",
+            "    process {",
+            "        $0",
+            "    }",
+            "}"
+        ],
+        "description": "Create a Keldor-style advanced PowerShell function using the lean help standard."
+    },
+
+    "Keldor PowerShell ShouldProcess Function": {
+        "scope": "powershell",
+        "prefix": [
+            "keldor-shouldprocess",
+            "keldor-destructive-function"
+        ],
+        "body": [
+            "function ${1:Verb-Noun} {",
+            "    <#",
+            "    .SYNOPSIS",
+            "        ${2:Short action-focused summary.}",
+            "",
+            "    .DESCRIPTION",
+            "        ${3:Longer explanation of the state-changing action.}",
+            "",
+            "    .PARAMETER ${4:Name}",
+            "        ${5:Specifies the target name.}",
+            "",
+            "    .EXAMPLE",
+            "        ${1:Verb-Noun} -${4:Name} '${6:ExampleName}' -WhatIf",
+            "",
+            "        Shows what would happen without making changes.",
+            "",
+            "    .OUTPUTS",
+            "        ${7:System.Object}",
+            "",
+            "    .LINK",
+            "        https://docs.keldor.dev",
+            "    #>",
+            "    [CmdletBinding(SupportsShouldProcess = \\$true, ConfirmImpact = '${8:Medium}')]",
+            "    param(",
+            "        [Parameter(Mandatory = \\$true)]",
+            "        [ValidateNotNullOrEmpty()]",
+            "        [string]\\$${4:Name}",
+            "    )",
+            "",
+            "    process {",
+            "        if (\\$PSCmdlet.ShouldProcess(\\$${4:Name}, '${9:Perform action}')) {",
+            "            $0",
+            "        }",
+            "    }",
+            "}"
+        ],
+        "description": "Create a Keldor-style PowerShell function with ShouldProcess support."
+    },
+
+    "Keldor PowerShell Comment Help": {
+        "scope": "powershell",
+        "prefix": [
+            "keldor-help",
+            "keldor-comment-help"
+        ],
+        "body": [
+            "<#",
+            ".SYNOPSIS",
+            "    ${1:Short action-focused summary.}",
+            "",
+            ".DESCRIPTION",
+            "    ${2:Longer explanation of what this command does and when to use it.}",
+            "",
+            ".PARAMETER ${3:ParameterName}",
+            "    ${4:Parameter description.}",
+            "",
+            ".EXAMPLE",
+            "    ${5:Command-Name -Parameter Value}",
+            "",
+            "    ${6:Example description.}",
+            "",
+            ".OUTPUTS",
+            "    ${7:System.Object}",
+            "",
+            ".LINK",
+            "    https://docs.keldor.dev",
+            "#>"
+        ],
+        "description": "Insert Keldor's lean PowerShell comment-based help block."
+    },
+
+    "Keldor PowerShell Optional Inputs Help": {
+        "scope": "powershell",
+        "prefix": [
+            "keldor-help-inputs",
+            "keldor-inputs"
+        ],
+        "body": [
+            ".INPUTS",
+            "    ${1:System.String}",
+            "",
+            "    ${2:Describe accepted pipeline input.}"
+        ],
+        "description": "Insert an optional .INPUTS help section when pipeline input matters."
+    },
+
+    "Keldor PowerShell Optional Notes Help": {
+        "scope": "powershell",
+        "prefix": [
+            "keldor-help-notes",
+            "keldor-notes"
+        ],
+        "body": [
+            ".NOTES",
+            "    ${1:Compatibility, security, operational caveat, or unusual behavior.}"
+        ],
+        "description": "Insert an optional .NOTES help section for meaningful caveats only."
+    },
+
+    "Keldor PowerShell Parameter String": {
+        "scope": "powershell",
+        "prefix": [
+            "keldor-param-string",
+            "keldor-param"
+        ],
+        "body": [
+            "[Parameter(${1:Mandatory = \\$true})]",
+            "[ValidateNotNullOrEmpty()]",
+            "[string]\\$${2:Name}"
+        ],
+        "description": "Insert a validated string parameter."
+    },
+
+    "Keldor PowerShell Parameter Path": {
+        "scope": "powershell",
+        "prefix": "keldor-param-path",
+        "body": [
+            "[Parameter(Position = ${1:0})]",
+            "[ValidateNotNullOrEmpty()]",
+            "[string]\\$${2:Path} = (Get-Location).Path"
+        ],
+        "description": "Insert a common Path parameter."
+    },
+
+    "Keldor PowerShell Try Catch": {
+        "scope": "powershell",
+        "prefix": [
+            "keldor-try",
+            "keldor-trycatch"
+        ],
+        "body": [
+            "try {",
+            "    $0",
+            "}",
+            "catch {",
+            "    throw \"${1:Operation failed}: \\$($_.Exception.Message)\"",
+            "}"
+        ],
+        "description": "Insert a try/catch block with a terminating error."
+    },
+
+    "Keldor PowerShell PSCustomObject": {
+        "scope": "powershell",
+        "prefix": [
+            "keldor-object",
+            "keldor-pscustomobject"
+        ],
+        "body": [
+            "[pscustomobject]@{",
+            "    PSTypeName = '${1:Keldor.TypeName}'",
+            "    ${2:Name} = ${3:\\$Value}",
+            "}$0"
+        ],
+        "description": "Insert a PSCustomObject with a PSTypeName."
+    },
+
+    "Keldor PowerShell Legacy Object": {
+        "scope": "powershell",
+        "prefix": [
+            "keldor-legacy-object",
+            "keldor-ps2-object"
+        ],
+        "body": [
+            "\\$Object = New-Object PSObject",
+            "\\$Object | Add-Member -MemberType NoteProperty -Name PSTypeName -Value '${1:Keldor.TypeName}'",
+            "\\$Object | Add-Member -MemberType NoteProperty -Name ${2:Name} -Value ${3:\\$Value}",
+            "\\$Object$0"
+        ],
+        "description": "Insert a PowerShell 2.0-compatible object pattern."
+    },
+
+    "Keldor PowerShell Null Or Empty Check": {
+        "scope": "powershell",
+        "prefix": [
+            "keldor-nullcheck",
+            "keldor-isnullorempty"
+        ],
+        "body": [
+            "if ([string]::IsNullOrEmpty(\\$${1:Value})) {",
+            "    ${2:throw 'Value cannot be null or empty.'}",
+            "}$0"
+        ],
+        "description": "Insert a PowerShell 2.0-compatible null or empty string check."
+    },
+
+    "Keldor PowerShell Module Check": {
+        "scope": "powershell",
+        "prefix": [
+            "keldor-module-check",
+            "keldor-require-module"
+        ],
+        "body": [
+            "if (-not (Get-Module -ListAvailable -Name '${1:ModuleName}')) {",
+            "    throw 'Required module ${1:ModuleName} is not installed.'",
+            "}$0"
+        ],
+        "description": "Insert a required module availability check."
+    },
+
+    "Keldor PowerShell Admin Check": {
+        "scope": "powershell",
+        "prefix": [
+            "keldor-admin-check",
+            "keldor-admin"
+        ],
+        "body": [
+            "\\$CurrentIdentity = [Security.Principal.WindowsIdentity]::GetCurrent()",
+            "\\$CurrentPrincipal = New-Object Security.Principal.WindowsPrincipal(\\$CurrentIdentity)",
+            "",
+            "if (-not \\$CurrentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {",
+            "    throw 'This command must be run as Administrator.'",
+            "}$0"
+        ],
+        "description": "Insert a Windows Administrator check."
+    },
+
+    "Keldor PowerShell Domain Check": {
+        "scope": "powershell",
+        "prefix": [
+            "keldor-domain-check",
+            "keldor-domain"
+        ],
+        "body": [
+            "if (\\$env:USERDNSDOMAIN -match '${1:contoso.com}') {",
+            "    $0",
+            "}",
+            "elseif (\\$env:USERDNSDOMAIN -match '${2:example.com}') {",
+            "    ${3:# Alternate domain logic}",
+            "}",
+            "else {",
+            "    ${4:# Default logic}",
+            "}"
+        ],
+        "description": "Insert a USERDNSDOMAIN conditional block."
+    },
+
+    "Keldor PowerShell Switch": {
+        "scope": "powershell",
+        "prefix": [
+            "keldor-switch",
+            "keldor-switch-block"
+        ],
+        "body": [
+            "switch (${1:\\$Value}) {",
+            "    '${2:Value1}' {",
+            "        ${3:# Logic}",
+            "    }",
+            "    '${4:Value2}' {",
+            "        ${5:# Logic}",
+            "    }",
+            "    default {",
+            "        $0",
+            "    }",
+            "}"
+        ],
+        "description": "Insert a PowerShell switch block."
+    },
+
+    "Keldor PowerShell Progress": {
+        "scope": "powershell",
+        "prefix": [
+            "keldor-progress",
+            "keldor-progressbar"
+        ],
+        "body": [
+            "\\$Index = 0",
+            "\\$Total = \\$${1:Items}.Count",
+            "",
+            "foreach (\\$${2:Item} in \\$${1:Items}) {",
+            "    \\$Index++",
+            "    \\$PercentComplete = (\\$Index / \\$Total) * 100",
+            "",
+            "    Write-Progress -Activity '${3:Processing items}' -Status \"\\$Index of \\$Total\" -PercentComplete \\$PercentComplete",
+            "",
+            "    $0",
+            "}"
+        ],
+        "description": "Insert a Write-Progress loop pattern."
+    },
+
+    "Keldor Pester Describe": {
+        "scope": "powershell",
+        "prefix": [
+            "keldor-pester-describe",
+            "keldor-describe"
+        ],
+        "body": [
+            "Describe '${1:Feature}' {",
+            "    It '${2:does something}' {",
+            "        $0",
+            "    }",
+            "}"
+        ],
+        "description": "Insert a Pester Describe/It block."
+    },
+
+    "Keldor Pester BeforeAll Import": {
+        "scope": "powershell",
+        "prefix": [
+            "keldor-pester-import",
+            "keldor-beforeall"
+        ],
+        "body": [
+            "BeforeAll {",
+            "    \\$RepoRoot = Join-Path -Path \\$PSScriptRoot -ChildPath '..'",
+            "    \\$ManifestPath = Join-Path -Path \\$RepoRoot -ChildPath '${1:ModuleName}.psd1'",
+            "",
+            "    Import-Module \\$ManifestPath -Force",
+            "}",
+            "",
+            "$0"
+        ],
+        "description": "Insert a Pester BeforeAll module import block."
+    },
+
+    "Keldor Markdown Callout Note": {
+        "scope": "markdown",
+        "prefix": [
+            "keldor-note",
+            "keldor-md-note"
+        ],
+        "body": [
+            "> [!NOTE]",
+            "> ${1:Note text.}"
+        ],
+        "description": "Insert a Markdown note callout."
+    },
+
+    "Keldor Markdown Command Section": {
+        "scope": "markdown",
+        "prefix": [
+            "keldor-md-command",
+            "keldor-command-doc"
+        ],
+        "body": [
+            "## `${1:Command-Name}`",
+            "",
+            "${2:Describe what the command does.}",
+            "",
+            "### Syntax",
+            "",
+            "```powershell",
+            "${1:Command-Name} ${3:-Parameter Value}",
+            "```",
+            "",
+            "### Examples",
+            "",
+            "```powershell",
+            "${1:Command-Name}",
+            "```",
+            "",
+            "### Notes",
+            "",
+            "${4:Additional notes.}"
+        ],
+        "description": "Insert a Markdown command documentation section."
+    },
+
+    "Keldor Markdown ADR": {
+        "scope": "markdown",
+        "prefix": [
+            "keldor-adr",
+            "keldor-md-adr"
+        ],
+        "body": [
+            "# ADR-${1:0001}: ${2:Decision Title}",
+            "",
+            "## Status",
+            "",
+            "${3:Proposed}",
+            "",
+            "## Context",
+            "",
+            "${4:What problem are we solving?}",
+            "",
+            "## Decision",
+            "",
+            "${5:What did we decide?}",
+            "",
+            "## Consequences",
+            "",
+            "${6:What are the tradeoffs?}"
+        ],
+        "description": "Insert an Architecture Decision Record template."
+    },
+
+    "Keldor YAML GitHub Action PowerShell": {
+        "scope": "yaml",
+        "prefix": [
+            "keldor-gha-powershell",
+            "keldor-action-pwsh"
+        ],
+        "body": [
+            "name: ${1:PowerShell}",
+            "",
+            "on:",
+            "  push:",
+            "    branches: [ main ]",
+            "  pull_request:",
+            "    branches: [ main ]",
+            "",
+            "jobs:",
+            "  test:",
+            "    name: Test",
+            "    runs-on: ubuntu-latest",
+            "    steps:",
+            "      - name: Checkout",
+            "        uses: actions/checkout@v4",
+            "",
+            "      - name: Test",
+            "        shell: pwsh",
+            "        run: ${2:Invoke-Pester ./Tests -CI}"
+        ],
+        "description": "Insert a basic GitHub Actions PowerShell workflow."
+    }
 }
