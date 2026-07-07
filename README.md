@@ -94,6 +94,7 @@ Functions in `Public` are exported. Functions in `Private` are internal helpers 
 - Add macOS-only exported functions to `Public/macOS`
 - Add Linux-only exported functions to `Public/Linux`
 - Add internal helpers to matching `Private/*` folders
+- Follow the [Keldor PowerShell Style Guide](docs/standards/powershell-style-guide.md)
 
 ## Visual Studio Code Snippets
 
@@ -105,8 +106,11 @@ Set-PowerShellJSON
 
 Or manually copy `powershell.json` from the module folder into your user snippets location.
 
+Workspace snippets are also available in `.vscode/Keldor.code-snippets` when this repository is open in VS Code.
+
 ## Documentation
 
+- [PowerShell Style Guide](docs/standards/powershell-style-guide.md)
 - Docs site: https://docs.keldor.dev
 - Repository: https://github.com/keldor-dev/Keldor
 
