@@ -18,6 +18,9 @@ function Open-HomeAssistant {
 .PARAMETER InternetExplorer
     Specifies whether to enable the Internet Explorer option.
 
+.PARAMETER Browser
+    Specifies the browser to use. Valid values are Default, Edge, Chrome, Firefox, Safari, and InternetExplorer.
+
 .EXAMPLE
     Open-HomeAssistant
     Runs Open-HomeAssistant.
@@ -57,18 +60,21 @@ function Open-HomeAssistant {
         [Switch]$Firefox,
 
         [Parameter(Mandatory=$false)]
-        [Switch]$InternetExplorer
+        [Switch]$InternetExplorer,
+
+        [Parameter(Mandatory=$false)]
+        [ValidateSet('Default','Edge','Chrome','Firefox','Safari','InternetExplorer')]
+        [string]$Browser = 'Default'
     )
 
     $config = $Global:KeldorConfig
     $URL = $config.HomeAssistant
 
-    if ($Chrome) {Start-Process "chrome.exe" $URL}
-    elseif ($Edge) {Start-Process Microsoft-Edge:$URL}
-    elseif ($Firefox) {Start-Process "firefox.exe" $URL}
-    elseif ($InternetExplorer) {Start-Process "iexplore.exe" $URL}
-    else {
-        #open in default browser
-        (New-Object -com Shell.Application).Open($URL)
-    }
+    $BrowserName = $Browser
+    if ($Chrome) {$BrowserName = 'Chrome'}
+    elseif ($Edge) {$BrowserName = 'Edge'}
+    elseif ($Firefox) {$BrowserName = 'Firefox'}
+    elseif ($InternetExplorer) {$BrowserName = 'InternetExplorer'}
+
+    Open-KeldorUrl -Uri $URL -Browser $BrowserName
 }
