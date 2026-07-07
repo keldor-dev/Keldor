@@ -34,6 +34,7 @@ function Get-SplunkStatus {
         $info = Get-Service -Name SplunkForwarder -ComputerName $comp
         [PSCustomObject]@{
             ComputerName = $comp
+            Status = ($info.Status)
             SplunkStatus = ($info.Status)
         }#new object
     }
@@ -53,6 +54,7 @@ function Get-SplunkStatus {
                 $info = Get-Service -Name SplunkForwarder -ComputerName $comp
                 [PSCustomObject]@{
                     ComputerName = $comp
+                    Status = ($info.Status)
                     SplunkStatus = ($info.Status)
                 }#new object
             }

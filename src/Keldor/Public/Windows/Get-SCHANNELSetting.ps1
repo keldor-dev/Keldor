@@ -65,8 +65,11 @@ function Get-SCHANNELSetting {
         $fullpath = $obj.PSPath -replace "Microsoft.PowerShell.Core\\Registry::HKEY_LOCAL_MACHINE","HKLM:"
         [PSCustomObject]@{
             Name = $shortpath
+            IsDisabledByDefault = if ($null -ne $obj.DisabledByDefault) {[bool]$obj.DisabledByDefault} else {$null}
+            IsEnabled = if ($null -ne $obj.Enabled) {[bool]$obj.Enabled} else {$null}
             DisabledByDefault = $obj.DisabledByDefault
             Enabled = $obj.Enabled
+            RegistryPath = $fullpath
             FullPath = $fullpath
         }#new object
     }

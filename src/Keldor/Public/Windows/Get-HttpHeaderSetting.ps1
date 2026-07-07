@@ -33,7 +33,9 @@ function Get-HttpHeaderSetting {
         if ($shortpath -eq "Parameters") {
             [PSCustomObject]@{
                 Name = $shortpath
+                IsDisabled = if ($null -ne $obj.Disabled) {[bool]$obj.Disabled} else {$null}
                 Disabled = $obj.Disabled
+                RegistryPath = $fullpath
                 FullPath = $fullpath
             }#new object
         }

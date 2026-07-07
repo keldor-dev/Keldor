@@ -53,8 +53,10 @@ function Get-DaysSinceLastLogon {
 
             [PSCustomObject]@{
                 Name = $obj
+                UserName = $obj
                 DaysSinceLastLogon = $dsll
                 SamAccountName = $sam
+                CheckedAt = $sd
             }#new object
         }
     }

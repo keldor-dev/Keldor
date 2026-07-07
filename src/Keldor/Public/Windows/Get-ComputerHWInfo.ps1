@@ -52,9 +52,9 @@ function Get-ComputerHWInfo {
             Manufacturer = $SM
             Model = $SPN
             ModelVersion = $SV
-            BIOSVendor = $BV
-            BIOSVersion = $Bver
-            BIOSReleaseDate = $BRD
+            BiosVendor = $BV
+            BiosVersion = $Bver
+            BiosReleaseDate = $BRD
         }# new object
     }# foreach computer
 }

@@ -41,6 +41,7 @@ function Get-ComputerADSite {
             else {$st = "NA"}
             [PSCustomObject]@{
                 ComputerName = $comp
+                SiteName = $st
                 Site = $st
             }#new object
         }

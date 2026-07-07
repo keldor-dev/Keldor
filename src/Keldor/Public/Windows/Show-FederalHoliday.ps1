@@ -68,19 +68,19 @@ function Show-FederalHoliday {
 
     if ([string]::IsNullOrWhiteSpace($Name)) {
         if ($AllYears) {
-            $holidays | Select-Object Name,Year,Date,DayOfWeek | Sort-Object Date
+            $holidays | Select-Object Name,Year,Date,@{Name='HolidayDate';Expression={$_.Date}},DayOfWeek | Sort-Object Date
         }
         else {
-            $holidays | Where-Object {$_.Year -eq $Year} | Select-Object Name,Date,DayOfWeek | Sort-Object Date
+            $holidays | Where-Object {$_.Year -eq $Year} | Select-Object Name,Date,@{Name='HolidayDate';Expression={$_.Date}},DayOfWeek | Sort-Object Date
         }
     }#if no name specified
     else {
         foreach ($hol in $Name) {
             if ($AllYears) {
-                $holidays | Where-Object {$_.Name -match $hol} | Select-Object Name,Year,Date,DayOfWeek
+                $holidays | Where-Object {$_.Name -match $hol} | Select-Object Name,Year,Date,@{Name='HolidayDate';Expression={$_.Date}},DayOfWeek
             }#if all years
             else {
-                $holidays | Where-Object {$_.Year -eq $Year -and $_.Name -match $hol} | Select-Object Name,Date,DayOfWeek
+                $holidays | Where-Object {$_.Year -eq $Year -and $_.Name -match $hol} | Select-Object Name,Date,@{Name='HolidayDate';Expression={$_.Date}},DayOfWeek
             }#if specific year
         }#for each name entered
     }#if a name is specified
