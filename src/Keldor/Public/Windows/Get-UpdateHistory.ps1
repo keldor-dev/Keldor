@@ -16,19 +16,9 @@ function Get-UpdateHistory {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2020-05-23 20:44:28
-    Last Edit: 2023-03-12 22:08:43
-    Keywords:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-UpdateHistory
 #>
-
-
-
-
 
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-UpdateHistory')]
         param(

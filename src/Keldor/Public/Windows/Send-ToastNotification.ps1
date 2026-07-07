@@ -39,22 +39,9 @@ function Send-ToastNotification {
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2020-11-08 14:57:29
-    Last Edit: 2021-07-16 23:08:42
-    Requires:
-    -Module ActiveDirectory
-    -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Send-ToastNotification
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Send-ToastNotification')]
     param(

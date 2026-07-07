@@ -19,16 +19,10 @@ function Get-LockedOutLocation {
 .NOTES
     This function is only compatible with an environment where the domain controller with the PDCe role to be running Windows Server 2008 SP2 and up.
     The script is also dependent the ActiveDirectory PowerShell module, which requires the AD Web services to be running on at least one domain controller.
-    Author:Jason Walker
-    Last Modified: 3/20/2013
 
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-LockedOutLocation
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-LockedOutLocation')]
     Param(

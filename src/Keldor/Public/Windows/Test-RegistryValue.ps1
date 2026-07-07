@@ -19,24 +19,9 @@ function Test-RegistryValue {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 02/08/2018 22:32:46
-    LASTEDIT: 02/08/2018 22:32:46
-    KEYWORDS:
-    REQUIRES:
-    #Requires -Version 3.0
-    #Requires -Modules ActiveDirectory
-    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-    #Requires -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Test-RegistryValue
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-RegistryValue')]
     Param (

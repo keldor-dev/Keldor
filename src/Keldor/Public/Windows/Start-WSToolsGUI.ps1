@@ -13,19 +13,9 @@ function Start-WSToolsGUI {
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-10-30 00:55:48
-    Last Edit: 2021-10-30 00:55:48
-    Keywords:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Start-WSToolsGUI
 #>
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Start-WSToolsGUI')]
     [Alias('wsgui','wstgui','Start-WSToolsTrayApp')]

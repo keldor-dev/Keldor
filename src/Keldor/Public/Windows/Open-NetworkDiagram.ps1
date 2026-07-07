@@ -28,23 +28,9 @@ function Open-NetworkDiagram {
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2022-07-07 20:59:35
-    Last Edit: 2022-07-07 20:59:35
-    Other:
-    Requires:
-    -Module ActiveDirectory
-    -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-NetworkDiagram
 #>
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

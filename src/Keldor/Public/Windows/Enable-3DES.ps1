@@ -16,26 +16,9 @@ function Enable-3DES {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 04/23/2018 14:41:22
-    LASTEDIT: 04/23/2018 14:41:22
-    KEYWORDS:
-    REQUIRES:
-    #Requires -Version 3.0
-    #Requires -Modules ActiveDirectory
-    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-    #Requires -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Enable-3DES
 #>
-
-
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Enable-3DES')]
     Param (

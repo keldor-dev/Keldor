@@ -16,21 +16,9 @@ function Initialize-GPUpdate {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-06-16 21:41:53
-    Last Edit: 2021-06-16 21:41:53
-    Keywords:
-    Requires:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Initialize-GPUpdate
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Initialize-GPUpdate')]
     param(

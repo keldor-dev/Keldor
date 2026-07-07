@@ -20,23 +20,9 @@ function Get-SCCMInstallStatus {
 .OUTPUTS
     System.Management.Automation.PSCustomObject
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2023-03-29 23:01:59
-    Last Edit: 2023-03-29 23:01:59
-    Other:
-    Requires:
-    -Module ActiveDirectory
-    -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-SCCMInstallStatus
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-SCCMInstallStatus')]
     [Alias()]

@@ -16,26 +16,9 @@ function Disable-DiffieHellman {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 04/23/2018 16:38:23
-    LASTEDIT: 04/23/2018 16:38:23
-    KEYWORDS:
-    REQUIRES:
-    #Requires -Version 3.0
-    #Requires -Modules ActiveDirectory
-    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-    #Requires -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Disable-DiffieHellman
 #>
-
-
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Disable-DiffieHellman')]
     Param (

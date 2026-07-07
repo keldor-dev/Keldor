@@ -16,18 +16,9 @@ function Get-DirectoryStat {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2020-08-09 10:07:49
-    Last Edit: 2020-08-09 21:35:14
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-DirectoryStat
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-DirectoryStat')]
     param(

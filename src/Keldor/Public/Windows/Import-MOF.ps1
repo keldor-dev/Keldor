@@ -24,21 +24,9 @@ function Import-MOF {
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: 10/27/2017 15:54:18
-    Last Edit: 2020-05-08 20:30:19
-    Keywords:
-    Requires:
-    -Module ActiveDirectory
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Import-MOF
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Import-MOF')]
     [Alias('Import-WMIFilter')]

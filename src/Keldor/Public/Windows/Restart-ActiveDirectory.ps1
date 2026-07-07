@@ -19,22 +19,9 @@ function Restart-ActiveDirectory {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 09/08/2017 16:03:23
-    LASTEDIT: 2022-09-04 12:22:27
-    KEYWORDS:
-    REQUIRES:
-    -Modules ActiveDirectory
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Restart-ActiveDirectory
 #>
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Restart-ActiveDirectory')]
     Param (

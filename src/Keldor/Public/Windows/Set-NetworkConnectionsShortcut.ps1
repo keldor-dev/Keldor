@@ -16,21 +16,9 @@ function Set-NetworkConnectionsShortcut {
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2020-05-08 23:01:21
-    Last Edit: 2021-10-13 20:55:00
-    Keywords:
-    Requires:
-    -RunAsAdministrator if placing in Public Desktop.
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-NetworkConnectionsShortcut
 #>
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-NetworkConnectionsShortcut')]
     param(

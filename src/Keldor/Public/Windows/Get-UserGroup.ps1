@@ -13,19 +13,9 @@ function Get-UserGroup {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2020-11-03 11:14:26
-    Last Edit: 2020-11-03 11:14:26
-    Keywords:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-UserGroup
 #>
-
-
-
-
 
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-UserGroup')]
     Param ()

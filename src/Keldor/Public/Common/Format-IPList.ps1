@@ -20,20 +20,9 @@ function Format-IPList {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 2023-10-11 10:58:24
-    LASTEDIT: 2024-11-27 13:00:00
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Format-IPList
 #>
-
-
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Format-IPList')]
     [Alias('Sort-IPList','Sort-IPs')]

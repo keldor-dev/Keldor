@@ -16,19 +16,9 @@ function Get-SerialNumber {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 11/02/2018 12:11:03
-    LASTEDIT: 11/02/2018 12:20:44
-    KEYWORDS:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-SerialNumber
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-SerialNumber')]
     [Alias('Get-SN')]

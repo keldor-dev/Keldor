@@ -24,18 +24,9 @@ function Get-SCHANNELSetting {
 .OUTPUTS
     System.Management.Automation.PSCustomObject
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2022-09-05 00:24:25
-    Last Edit: 2022-09-05 00:56:53
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-SCHANNELSetting
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-SCHANNELSetting')]
     param(

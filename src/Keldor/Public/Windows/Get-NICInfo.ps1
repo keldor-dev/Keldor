@@ -23,19 +23,9 @@ function Get-NICInfo {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 09/21/2017 13:06:33
-    LASTEDIT: 09/21/2017 13:06:33
-    KEYWORDS:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-NICInfo
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-NICInfo')]
     Param (

@@ -32,21 +32,11 @@ function Clear-Space {
     System.Object
 
 .NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 05/19/2017 20:16:47
-    LASTEDIT: 07/22/2019 14:21:15
-    KEYWORDS: Delete, temp, patches, cache, prefetch, SCCM
     REMARKS: Needs to be ran as a user that has administrator rights
 
 .LINK
     https://docs.keldor.dev/powershell/keldor/Clear-Space
 #>
-
-
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Clear-Space')]
     Param (

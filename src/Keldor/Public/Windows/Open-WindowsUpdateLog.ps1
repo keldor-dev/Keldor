@@ -16,20 +16,9 @@ function Open-WindowsUpdateLog {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 05/03/2016 20:06:39
-    LASTEDIT: 08/07/2018 15:53:00
-    KEYWORDS:
-    REQUIRES:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-WindowsUpdateLog
 #>
-
-
-
-
 
 <#--
 Found on the Configuration Manager Client computer, by default, in %windir%.

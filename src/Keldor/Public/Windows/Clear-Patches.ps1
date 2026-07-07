@@ -43,24 +43,9 @@ function Clear-Patches {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2020-08-18 09:58:51
-    Last Edit: 2020-08-18 09:58:51
-    Keywords: Delete, temp, patches
-    Other: Needs to be ran as a user that has administrator rights
-    Requires:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Clear-Patches
 #>
-
-
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSUseSingularNouns",

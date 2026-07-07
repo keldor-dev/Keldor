@@ -16,21 +16,9 @@ function ConvertFrom-BuildNumber {
 .OUTPUTS
     System.Management.Automation.PSCustomObject
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2023-09-22 12:04:10
-    Last Edit: 2023-09-22 12:21:16
-    Other:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/ConvertFrom-BuildNumber
 #>
-
-
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/ConvertFrom-BuildNumber')]
     [Alias('ConvertFrom-MicrosoftBuildNumber')]

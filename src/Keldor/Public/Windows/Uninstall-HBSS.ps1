@@ -25,24 +25,9 @@ function Uninstall-HBSS {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 09/11/2019 15:37:31
-    LASTEDIT: 09/11/2019 16:20:07
-    KEYWORDS:
-    REQUIRES:
-    #Requires -Version 3.0
-    #Requires -Modules ActiveDirectory
-    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-    #Requires -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Uninstall-HBSS
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Uninstall-HBSS')]
     [Alias('Uninstall-ENS','Uninstall-ESS')]

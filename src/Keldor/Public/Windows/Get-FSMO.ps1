@@ -16,19 +16,9 @@ function Get-FSMO {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: Sometime before 2017-08-07
-    LASTEDIT: 2022-09-01 22:47:51
-    KEYWORDS:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-FSMO
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-FSMO')]
     [Alias('fsmo')]

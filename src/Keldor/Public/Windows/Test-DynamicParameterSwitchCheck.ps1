@@ -19,19 +19,9 @@ function Test-DynamicParameterSwitchCheck {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2022-09-11 01:28:57
-    Last Edit: 2022-09-11 01:41:04
-    Other:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Test-DynamicParameterSwitchCheck
 #>
-
-
-
-
 
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-DynamicParameterSwitchCheck')]
 Param (

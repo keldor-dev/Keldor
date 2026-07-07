@@ -28,21 +28,9 @@ function Get-FileMetaData {
 .OUTPUTS
     System.Object
 
-.NOTES
-    NAME:  Get-FileMetaData
-    AUTHOR: ed wilson, msft
-    Edited By: Skyler Hart
-    Original: 01/24/2014 14:08:24
-    Last Edit: 2021-12-19 18:54:58
-    KEYWORDS: Storage, Files, Metadata
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-FileMetaData
 #>
-
-
-
-
 
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-FileMetaData')]
 Param([string[]]$Path)

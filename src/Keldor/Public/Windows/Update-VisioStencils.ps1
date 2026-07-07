@@ -13,19 +13,9 @@ function Update-VisioStencils {
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-05-18 20:56:13
-    Last Edit: 2021-10-13 20:33:20
-    Keywords: Visio, Stencils
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Update-VisioStencils
 #>
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSUseSingularNouns",

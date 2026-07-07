@@ -13,18 +13,9 @@ function Get-ExpiredCertsComputer {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 10/04/2018 20:46:38
-    LASTEDIT: 10/04/2018 21:08:31
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-ExpiredCertsComputer
 #>
-
-
-
-
 
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ExpiredCertsComputer')]
     Param ()

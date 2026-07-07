@@ -16,21 +16,9 @@ function Get-PrivilegedGroup {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 03/05/2019 14:56:27
-    LASTEDIT: 2022-09-04 00:41:10
-    KEYWORDS:
-    REQUIRES:
-    -Modules ActiveDirectory
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-PrivilegedGroup
 #>
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

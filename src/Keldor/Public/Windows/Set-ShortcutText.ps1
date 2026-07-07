@@ -19,19 +19,9 @@ function Set-ShortcutText {
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2020-04-18 20:44:39
-    Last Edit: 2020-04-18 20:44:39
-    Keywords:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-ShortcutText
 #>
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ShortcutText')]
     Param (

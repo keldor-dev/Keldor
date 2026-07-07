@@ -16,24 +16,9 @@ function Get-USBDevice {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 08/18/2017 02:34:40
-    LASTEDIT: 08/18/2017 21:00:23
-    KEYWORDS:
-    REQUIRES:
-    #Requires -Version 3.0
-    #Requires -Modules ActiveDirectory
-    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-    #Requires -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-USBDevice
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-USBDevice')]
     [Alias('usb')]

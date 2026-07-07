@@ -32,19 +32,11 @@ function Get-OperatingSystem {
     System.Object
 
 .NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 06/06/2015 20:11:37
-    LASTEDIT: 2021-11-26 17:02:59
-    KEYWORDS: Operating System, OS
     REMARKS: For local computer it can be ran as user. For remote computers, it needs to be ran as a user who has administrative rights on the remote computer.
 
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-OperatingSystem
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-OperatingSystem')]
     Param (

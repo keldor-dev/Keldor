@@ -17,24 +17,9 @@ function Stop-AxwayTrayApp {
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-06-16 23:28:20
-    Last Edit: 2021-06-16 23:28:20
-    Keywords:
-    Other:
-    Requires:
-    -Module ActiveDirectory
-    -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Stop-AxwayTrayApp
 #>
-
-
-
-
 
         [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Stop-AxwayTrayApp')]
     Param ()

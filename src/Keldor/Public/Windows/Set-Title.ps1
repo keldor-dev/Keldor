@@ -16,18 +16,9 @@ function Set-Title {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    LASTEDIT: 08/18/2017 20:47:14
-    KEYWORDS:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-Title
 #>
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-Title')]
     [Alias('title')]

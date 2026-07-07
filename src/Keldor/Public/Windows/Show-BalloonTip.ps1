@@ -25,19 +25,9 @@ function Show-BalloonTip {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: Sometime before 2017-08-07
-    LASTEDIT: 08/18/2017 20:47:33
-    KEYWORDS:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Show-BalloonTip
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Show-BalloonTip')]
     [Alias('tip')]

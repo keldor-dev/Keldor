@@ -16,21 +16,9 @@ function Set-RemoteDesktopCert {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-11-18 22:53:02
-    Last Edit: 2021-11-18 22:53:02
-    Keywords:
-    Requires:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-RemoteDesktopCert
 #>
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-RemoteDesktopCert')]
     [Alias('Set-RDPCert')]

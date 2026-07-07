@@ -22,24 +22,9 @@ function Open-FirewallLog {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 09/11/2017 14:50:51
-    LASTEDIT: 09/11/2017 14:50:51
-    KEYWORDS:
-    REQUIRES:
-    #Requires -Version 3.0
-    #Requires -Modules ActiveDirectory
-    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-    #Requires -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-FirewallLog
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-FirewallLog')]
     Param (

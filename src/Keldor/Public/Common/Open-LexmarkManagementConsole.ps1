@@ -28,18 +28,9 @@ function Open-LexmarkManagementConsole {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 2022-03-08 22:02:21
-    LASTEDIT: 2022-03-08 22:02:21
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-LexmarkManagementConsole
 #>
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

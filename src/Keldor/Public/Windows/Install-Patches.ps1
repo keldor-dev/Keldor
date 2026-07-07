@@ -20,21 +20,9 @@ function Install-Patches {
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2017-03-25 08:30:23
-    Last Edit: 2021-08-12 00:36:14
-    Keywords:
-    Requires:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Install-Patches
 #>
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSUseSingularNouns",

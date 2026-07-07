@@ -23,23 +23,9 @@ function Enable-TLS1.0 { #DevSkim: ignore DS169125,DS440000
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-04-22 12:03:16
-    Last Edit: 2021-07-14 23:14:51
-    Keywords:
-    Requires:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Enable-TLS1.0
 #>
-
-
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Enable-TLS1.0')]
     param(

@@ -23,21 +23,9 @@ function Update-BrokenInheritance {
 .OUTPUTS
     System.String
 
-.NOTES
-    Author: Skyler Hart
-    Created: Sometime before 2017-08-07
-    Last Edit: 2022-09-05 23:40:29
-    Other:
-    Requires:
-    -Module ActiveDirectory
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Update-BrokenInheritance
 #>
-
-
-
-
 
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Update-BrokenInheritance')]
 Param (

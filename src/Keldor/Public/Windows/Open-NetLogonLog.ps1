@@ -13,19 +13,9 @@ function Open-NetLogonLog {
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-06-22 17:50:31
-    Last Edit: 2021-06-22 17:50:31
-    Keywords:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-NetLogonLog
 #>
-
-
-
-
 
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-NetLogonLog')]
     Param ()

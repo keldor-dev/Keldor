@@ -22,21 +22,9 @@ function Set-Shutdown {
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-06-10 21:26:41
-    Last Edit: 2021-06-10 21:36:56
-    Keywords:
-    Requires:
-    -RunAsAdministrator for remote computers
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-Shutdown
 #>
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

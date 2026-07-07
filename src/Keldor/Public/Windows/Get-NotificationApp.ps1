@@ -14,20 +14,9 @@ function Get-NotificationApp {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-07-14 23:42:57
-    Last Edit: 2021-07-16 01:57:31
-    Keywords:
-    Requires:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-NotificationApp
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-NotificationApp')]
     [Alias('Get-ToastNotifierApp','Get-ToastNotificationApp')]

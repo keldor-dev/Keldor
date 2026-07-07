@@ -39,19 +39,9 @@ function Get-InstalledProgram {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: Sometime prior to 2017-08
-    Last Edit: 2020-08-19 23:03:32
-    Keywords: Software, Programs, management
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-InstalledProgram
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-InstalledProgram', SupportsShouldProcess=$true)]
     param(

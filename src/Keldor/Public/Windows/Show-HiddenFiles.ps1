@@ -19,24 +19,9 @@ function Show-HiddenFiles {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 02/08/2018 21:40:23
-    LASTEDIT: 02/08/2018 21:40:23
-    KEYWORDS:
-    REQUIRES:
-    #Requires -Version 3.0
-    #Requires -Modules ActiveDirectory
-    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-    #Requires -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Show-HiddenFiles
 #>
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSUseSingularNouns",

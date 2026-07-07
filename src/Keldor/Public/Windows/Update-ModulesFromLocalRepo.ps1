@@ -25,23 +25,9 @@ function Update-ModulesFromLocalRepo {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2022-06-29 21:51:12
-    Last Edit: 2022-06-29 21:51:12
-    Other:
-    Requires:
-    -Module ActiveDirectory
-    -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Update-ModulesFromLocalRepo
 #>
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

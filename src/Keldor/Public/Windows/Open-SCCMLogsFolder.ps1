@@ -16,21 +16,9 @@ function Open-SCCMLogsFolder {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: Sometime before 2017-08-07
-    LASTEDIT: 2020-09-28 09:25:48
-    KEYWORDS:
-    REQUIRES:
-    -RunAsAdministrator on remote computers
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-SCCMLogsFolder
 #>
-
-
-
-
 
 <#--
 CAS.log

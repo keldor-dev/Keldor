@@ -16,19 +16,9 @@ function Sync-HBSSWithServer {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: Sometime before 8/7/2017
-    Last Edit: 2020-04-13 20:37:25
-    Keywords: HBSS
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Sync-HBSSWithServer
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Sync-HBSSWithServer')]
     [Alias('Sync-HBSS','Sync-ENS','Sync-ESS')]

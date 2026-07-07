@@ -20,23 +20,9 @@ function Copy-UpdateHistory {
 .OUTPUTS
     System.String
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2022-07-15 22:54:09
-    Last Edit: 2022-07-15 22:54:09
-    Other:
-    Requires:
-        -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Copy-UpdateHistory
 #>
-
-
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

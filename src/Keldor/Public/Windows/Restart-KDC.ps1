@@ -19,22 +19,9 @@ function Restart-KDC {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 08/18/2017 02:45:00
-    LASTEDIT: 2022-09-04 12:38:21
-    KEYWORDS:
-    REQUIRES:
-    -Modules ActiveDirectory
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Restart-KDC
 #>
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Restart-KDC')]
     Param (

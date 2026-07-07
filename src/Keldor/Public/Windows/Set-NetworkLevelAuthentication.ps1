@@ -27,21 +27,9 @@ function Set-NetworkLevelAuthentication {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2020-04-18 16:01:02
-    Last Edit: 2020-04-18 16:01:02
-    Keywords: Network, NLA, Network Level Authentication, RDP, Remote Desktop
-    Requires:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-NetworkLevelAuthentication
 #>
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-NetworkLevelAuthentication')]
     [Alias('Set-NLA')]

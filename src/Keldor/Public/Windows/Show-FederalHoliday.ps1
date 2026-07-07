@@ -22,19 +22,9 @@ function Show-FederalHoliday {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-06-20 17:20:14
-    Last Edit: 2023-02-01 21:24:05
-    Keywords:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Show-FederalHoliday
 #>
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

@@ -13,21 +13,9 @@ function Get-CertificateInventory {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-11-18 22:44:53
-    Last Edit: 2021-11-18 22:44:53
-    Keywords:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-CertificateInventory
 #>
-
-
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-CertificateInventory')]
     [Alias('Get-CertInv','Get-CertInfo')]

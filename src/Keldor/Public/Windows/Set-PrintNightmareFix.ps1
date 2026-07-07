@@ -19,20 +19,9 @@ function Set-PrintNightmareFix {
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-07-14 20:47:02
-    Last Edit: 2021-10-19 10:39:03
-    Requires:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-PrintNightmareFix
 #>
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-PrintNightmareFix')]
     param(

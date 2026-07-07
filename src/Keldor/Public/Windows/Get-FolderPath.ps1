@@ -13,19 +13,9 @@ function Get-FolderPath {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 09/21/2017 13:05:51
-    LASTEDIT: 09/21/2017 13:05:51
-    KEYWORDS:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-FolderPath
 #>
-
-
-
-
 
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-FolderPath')]
     Param ()

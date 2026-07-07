@@ -16,22 +16,9 @@ function Save-HelpToFile {
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-12-17 23:05:01
-    Last Edit: 2021-12-17 23:05:01
-    Keywords:
-    Other:
-    Requires:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Save-HelpToFile
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Save-HelpToFile')]
     param(

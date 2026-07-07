@@ -22,24 +22,9 @@ function Copy-UserProfile {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 04/06/2020 19:39:42
-    LASTEDIT: 04/06/2020 20:10:59
-    KEYWORDS:
-    REQUIRES:
-    -Version 3.0
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Copy-UserProfile
 #>
-
-
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Copy-UserProfile')]
     Param (

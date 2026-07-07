@@ -13,20 +13,9 @@ function Copy-VSCodeSettingsToProfile {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 2021-11-01 22:14:14
-    LASTEDIT: 2024-11-27 13:00:00
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Copy-VSCodeSettingsToProfile
 #>
-
-
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Copy-VSCodeSettingsToProfile')]
     param ()

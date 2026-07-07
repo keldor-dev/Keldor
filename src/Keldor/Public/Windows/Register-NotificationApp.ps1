@@ -22,21 +22,9 @@ function Register-NotificationApp {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2020-11-03 21:36:05
-    Last Edit: 2020-11-03 21:36:05
-    Keywords:
-    Requires:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Register-NotificationApp
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Register-NotificationApp')]
     param(

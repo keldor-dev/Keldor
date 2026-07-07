@@ -13,21 +13,9 @@ function Copy-PowerShellJSON {
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2020-04-13 22:44:11
-    Last Edit: 2021-10-19 16:59:47
-    Keywords: Keldor, Visual Studio Code, PowerShell, JSON, Preferences, snippets, code blocks
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Copy-PowerShellJSON
 #>
-
-
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Copy-PowerShellJSON')]
     [Alias('Update-PowerShellJSON','Set-PowerShellJSON')]

@@ -13,19 +13,9 @@ function Update-McAfeeSecurity {
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-10-30 03:14:47
-    Last Edit: 2021-10-30 03:14:47
-    Keywords:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Update-McAfeeSecurity
 #>
-
-
-
-
 
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Update-McAfeeSecurity')]
     Param ()

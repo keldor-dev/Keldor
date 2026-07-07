@@ -20,23 +20,9 @@ function Start-SCCMUpdateScan {
 .OUTPUTS
     System.Management.Automation.PSCustomObject
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2023-03-29 21:50:02
-    Last Edit: 2023-03-29 21:50:02
-    Other:
-    Requires:
-    -Module ActiveDirectory
-    -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Start-SCCMUpdateScan
 #>
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Start-SCCMUpdateScan')]
     [Alias()]

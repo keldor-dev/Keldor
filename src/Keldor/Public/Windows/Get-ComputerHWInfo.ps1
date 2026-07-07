@@ -20,21 +20,9 @@ function Get-ComputerHWInfo {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 3/15/2015 08:49:13
-    LASTEDIT: 09/21/2017 13:03:30
-    KEYWORDS: hardware, information, computer
-    REQUIRES:
-        -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-ComputerHWInfo
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ComputerHWInfo')]
     Param (

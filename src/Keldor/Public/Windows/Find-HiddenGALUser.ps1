@@ -16,23 +16,9 @@ function Find-HiddenGALUser {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 2014-01-18 02:50:00
-    LASTEDIT: 2022-09-01 22:30:56
-    KEYWORDS: Hidden Users, User, Exchange, GAL, Global Address List
-    REQUIRES:
-        ActiveDirectory
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Find-HiddenGALUser
 #>
-
-
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Find-HiddenGALUser')]
     Param (

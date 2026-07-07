@@ -16,18 +16,9 @@ function Convert-INT64toIP() {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Convert-INT64toIP
 #>
-
-
-
-
-
-
 
   [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Convert-INT64toIP')]
   param ([int64]$int)

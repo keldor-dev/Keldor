@@ -19,19 +19,9 @@ function Get-ModuleCommandCount {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-10-19 19:50:28
-    Last Edit: 2021-10-19 19:50:28
-    Keywords:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-ModuleCommandCount
 #>
-
-
-
-
 
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ModuleCommandCount')]
         param(

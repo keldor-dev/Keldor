@@ -13,20 +13,9 @@ function Update-WSTools {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 09/21/2017 14:48:46
-    LASTEDIT: 10/17/2019 23:14:22
-    KEYWORDS: PowerShell, module, Keldor, personal
-    REMARKS:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Update-WSTools
 #>
-
-
-
-
 
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Update-WSTools')]
     Param ()

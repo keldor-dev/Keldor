@@ -19,20 +19,9 @@ function Get-CommandList {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-08-06 23:09:24
-    Last Edit: 2021-12-16 21:41:15
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-CommandList
 #>
-
-
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-CommandList')]
     Param (

@@ -28,18 +28,9 @@ function Open-SEIM {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 2021-10-18 23:03:53
-    LASTEDIT: 2021-10-18 23:04:54
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-SEIM
 #>
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

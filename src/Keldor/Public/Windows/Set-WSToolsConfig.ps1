@@ -13,18 +13,9 @@ function Set-WSToolsConfig {
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2020-04-17 15:00:06
-    Last Edit: 2020-04-17 15:00:06
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-WSToolsConfig
 #>
-
-
-
-
 
         [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-WSToolsConfig')]
     Param ()

@@ -19,22 +19,9 @@ function Set-AxwayConfig {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-06-16 22:10:29
-    Last Edit: 2021-06-16 23:22:15
-    Keywords:
-    Other:
-    Requires:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-AxwayConfig
 #>
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-AxwayConfig')]
     [Alias('Import-AxwayConfig')]

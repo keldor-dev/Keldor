@@ -13,19 +13,9 @@ function Open-ADUsersAndComputers {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 08/19/2017 22:28:17
-    LASTEDIT: 2022-09-04 12:07:24
-    KEYWORDS:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-ADUsersAndComputers
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-ADUsersAndComputers')]
     [Alias('aduc','dsa')]

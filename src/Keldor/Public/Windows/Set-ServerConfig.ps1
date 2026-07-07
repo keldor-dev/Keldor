@@ -13,21 +13,9 @@ function Set-ServerConfig {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2020-10-24 20:09:27
-    Last Edit: 2020-10-24 20:09:27
-    Keywords:
-    Requires:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-ServerConfig
 #>
-
-
-
-
 
         [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ServerConfig')]
     Param ()

@@ -13,21 +13,9 @@ function Disable-ServerManager {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 2020-05-08 23:18:39
-    LASTEDIT: 2024-11-27 13:00:00
-    REQUIRES: RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Disable-ServerManager
 #>
-
-
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Disable-ServerManager')]
     param ()

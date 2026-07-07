@@ -20,23 +20,9 @@ function Get-SCCMPendingUpdate {
 .OUTPUTS
     System.Management.Automation.PSCustomObject
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2023-03-29 22:31:19
-    Last Edit: 2023-03-29 22:31:19
-    Other:
-    Requires:
-    -Module ActiveDirectory
-    -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-SCCMPendingUpdate
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-SCCMPendingUpdate')]
     [Alias()]

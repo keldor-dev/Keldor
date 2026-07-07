@@ -20,23 +20,9 @@ function Install-SCCMUpdate {
 .OUTPUTS
     System.Management.Automation.PSCustomObject
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2023-03-29 22:42:28
-    Last Edit: 2023-03-29 22:42:28
-    Other:
-    Requires:
-    -Module ActiveDirectory
-    -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Install-SCCMUpdate
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Install-SCCMUpdate')]
     [Alias()]

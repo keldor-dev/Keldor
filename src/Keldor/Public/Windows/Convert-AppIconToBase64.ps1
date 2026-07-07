@@ -20,26 +20,9 @@ function Convert-AppIconToBase64 {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2020-11-10 18:57:12
-    Last Edit: 2020-11-10 18:57:12
-    Keywords:
-    Other:
-    Requires:
-    -Module ActiveDirectory
-    -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Convert-AppIconToBase64
 #>
-
-
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Convert-AppIconToBase64')]
     param(

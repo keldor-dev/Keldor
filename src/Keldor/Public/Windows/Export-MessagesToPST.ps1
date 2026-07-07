@@ -23,24 +23,9 @@ function Export-MessagesToPST {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 01/19/2014 01:20:00
-    LASTEDIT: 2021-10-13 20:39:47
-    KEYWORDS: Exchange, Mailbox, PST, export, InTh, Insider Threat
-    REQUIRES:
-    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-    #Requires -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Export-MessagesToPST
 #>
-
-
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Export-MessagesToPST')]
     Param (

@@ -16,21 +16,9 @@ function Find-SID {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 2014-01-19 01:45:00
-    LASTEDIT: 08/15/2018 22:47:26
-    KEYWORDS: SID
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Find-SID
 #>
-
-
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Find-SID')]
     Param (

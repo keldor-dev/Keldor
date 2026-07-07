@@ -13,20 +13,9 @@ function Sync-InTune {
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2022-09-25 01:38:28
-    Last Edit: 2022-09-25 01:38:28
-    Other:
-    Requires:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Sync-InTune
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Sync-InTune')]
     [Alias('Sync-MEM')]

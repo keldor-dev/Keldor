@@ -20,21 +20,9 @@ function Set-SMBv1Fix {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 12/18/2018 09:36:43
-    LASTEDIT: 12/18/2018 10:25:19
-    KEYWORDS: fix action, fix, SMB, SMBv1
-    REQUIRES:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-SMBv1Fix
 #>
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-SMBv1Fix')]
     Param (

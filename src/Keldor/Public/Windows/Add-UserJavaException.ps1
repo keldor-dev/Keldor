@@ -16,20 +16,9 @@ function Add-UserJavaException {
 .OUTPUTS
     No output
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2019-03-20 10:40:11
-    Last Edit: 2021-12-20 00:15:00
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Add-UserJavaException
 #>
-
-
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-UserJavaException')]
     param(

@@ -28,20 +28,9 @@ function Open-EITSM {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 10/03/2017 10:52:44
-    LASTEDIT: 2020-04-17 15:47:44
-    KEYWORDS:
-    REQUIRES:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-EITSM
 #>
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

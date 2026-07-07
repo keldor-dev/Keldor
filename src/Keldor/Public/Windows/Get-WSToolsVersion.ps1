@@ -19,19 +19,9 @@ function Get-WSToolsVersion {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 02/09/2018 00:23:25
-    LASTEDIT: 02/14/2018 11:05:37
-    KEYWORDS:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-WSToolsVersion
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-WSToolsVersion')]
     [Alias('WSToolsVersion')]

@@ -13,19 +13,9 @@ function Open-HyperVmgmt {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 08/19/2017 22:32:48
-    LASTEDIT: 2022-09-04 12:13:29
-    KEYWORDS:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-HyperVmgmt
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-HyperVmgmt')]
     [Alias('hyperv')]

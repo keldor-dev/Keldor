@@ -46,19 +46,9 @@ function Start-CommandMultiThreaded {
 .OUTPUTS
     System.Management.Automation.PSCustomObject
 
-.NOTES
-    Author: Skyler Hart
-    Created: Sometime before 2017-08-07
-    Last Edit: 2022-09-05 22:19:49
-    Other:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Start-CommandMultiThreaded
 #>
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Start-CommandMultiThreaded')]
     Param (

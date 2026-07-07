@@ -31,20 +31,9 @@ function Test-MTU {
 .OUTPUTS
     System.Management.Automation.PSCustomObject
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2022-11-22 21:27:58
-    Last Edit: 2022-11-22 23:06:11
-    Other:
-    Requires:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Test-MTU
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-MTU')]
     param(

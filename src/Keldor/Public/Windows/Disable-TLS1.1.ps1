@@ -23,23 +23,9 @@ function Disable-TLS1.1 { #DevSkim: ignore DS169125,DS440000
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-04-22 19:16:08
-    Last Edit: 2021-04-22 19:16:08
-    Keywords:
-    Requires:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Disable-TLS1.1
 #>
-
-
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Disable-TLS1.1')]
     param(

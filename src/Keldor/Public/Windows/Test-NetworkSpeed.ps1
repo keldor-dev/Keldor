@@ -42,18 +42,9 @@ function Test-NetworkSpeed {
 .OUTPUTS
     System.Management.Automation.PSCustomObject
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2022-06-24 18:21:40
-    Last Edit: 2022-06-24 18:21:40
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Test-NetworkSpeed
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-NetworkSpeed')]
     param(

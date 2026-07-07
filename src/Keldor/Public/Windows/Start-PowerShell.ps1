@@ -25,19 +25,9 @@ function Start-PowerShell {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 10/24/2017 14:41:52
-    LASTEDIT: 10/24/2017 16:41:21
-    KEYWORDS:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Start-PowerShell
 #>
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Start-PowerShell')]
     [Alias('Open-PowerShell')]

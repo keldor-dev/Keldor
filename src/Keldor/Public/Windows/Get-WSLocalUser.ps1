@@ -28,21 +28,9 @@ function Get-WSLocalUser {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-02-27 22:05:08
-    Last Edit: 2021-02-28 21:05:57
-    Keywords:
-    Requires:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-WSLocalUser
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-WSLocalUser')]
     param(

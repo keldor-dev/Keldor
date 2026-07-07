@@ -28,18 +28,9 @@ function Open-EAC {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 2021-10-18 22:55:39
-    LASTEDIT: 2021-10-18 22:56:47
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-EAC
 #>
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

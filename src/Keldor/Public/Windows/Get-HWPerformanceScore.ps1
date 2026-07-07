@@ -25,20 +25,9 @@ function Get-HWPerformanceScore {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2022-06-04 22:43:29
-    Last Edit: 2022-06-04 22:43:29
-    Requires:
-        -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-HWPerformanceScore
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-HWPerformanceScore')]
     Param (

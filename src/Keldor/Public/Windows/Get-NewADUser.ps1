@@ -16,21 +16,9 @@ function Get-NewADUser {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 08/18/2017 02:34:40
-    LASTEDIT: 2022-09-01 23:03:53
-    KEYWORDS:
-    REQUIRES:
-    -Modules ActiveDirectory
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-NewADUser
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-NewADUser')]
     Param (

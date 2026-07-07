@@ -25,19 +25,9 @@ function Set-SpeakerVolume {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: Sometime before 2017-08-07
-    LASTEDIT: 08/18/2017 20:47:06
-    KEYWORDS:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-SpeakerVolume
 #>
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-SpeakerVolume')]
     [Alias('Volume')]

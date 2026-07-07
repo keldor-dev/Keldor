@@ -17,21 +17,9 @@ function Set-SMBv1 {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 01/31/2018 09:32:17
-    LASTEDIT: 02/09/2018 00:47:46
-    KEYWORDS:
-    REQUIRES:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-SMBv1
 #>
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-SMBv1')]
     Param (

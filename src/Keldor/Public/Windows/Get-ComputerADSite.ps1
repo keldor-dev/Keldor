@@ -16,19 +16,9 @@ function Get-ComputerADSite {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 02/09/2018 00:11:18
-    LASTEDIT: 02/09/2018 00:11:18
-    KEYWORDS:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-ComputerADSite
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ComputerADSite')]
     Param (

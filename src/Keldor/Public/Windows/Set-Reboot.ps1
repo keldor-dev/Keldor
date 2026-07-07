@@ -23,21 +23,9 @@ function Set-Reboot {
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: Sometime before 2017-08-18
-    Last Edit: 2021-06-10 21:13:11
-    Keywords:
-    Requires:
-    -RunAsAdministrator for remote computers
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-Reboot
 #>
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

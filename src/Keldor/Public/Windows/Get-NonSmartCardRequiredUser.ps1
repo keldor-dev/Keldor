@@ -16,20 +16,9 @@ function Get-NonSmartCardRequiredUser {
 .OUTPUTS
     System.Array
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2023-05-02 17:16:53
-    Last Edit: 2023-05-02 17:16:53
-    Requires:
-        -Module ActiveDirectory
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-NonSmartCardRequiredUser
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-NonSmartCardRequiredUser')]
     Param (

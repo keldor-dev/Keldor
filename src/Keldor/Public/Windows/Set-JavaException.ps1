@@ -31,21 +31,9 @@ function Set-JavaException {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 2021-11-09 22:51:15
-    LASTEDIT: 2021-11-09 23:32:06
-    KEYWORDS:
-    REQUIRES:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-JavaException
 #>
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

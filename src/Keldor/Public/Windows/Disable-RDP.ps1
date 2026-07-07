@@ -13,21 +13,9 @@ function Disable-RDP {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 2021-02-27 11:44:34
-    LASTEDIT: 2024-11-27 13:00:00
-    REQUIRES: RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Disable-RDP
 #>
-
-
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Disable-RDP')]
     param ()

@@ -16,20 +16,9 @@ function Get-Error {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2020-04-18 16:42:46
-    Last Edit: 2020-04-18 19:08:44
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-Error
 #>
-
-
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

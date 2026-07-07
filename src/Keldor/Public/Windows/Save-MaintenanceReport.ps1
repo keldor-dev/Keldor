@@ -16,19 +16,9 @@ function Save-MaintenanceReport {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2020-06-16 14:39:04
-    Last Edit: 2023-03-22 08:26:11
-    Keywords:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Save-MaintenanceReport
 #>
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

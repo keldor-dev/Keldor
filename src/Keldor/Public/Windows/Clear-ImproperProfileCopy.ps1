@@ -23,21 +23,9 @@ function Clear-ImproperProfileCopy {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 06/11/2016 20:37:14
-    LASTEDIT: 2020-04-15 21:54:21
-    KEYWORDS: user, profile, app data, application data, cleanup, clear, improper
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Clear-ImproperProfileCopy
 #>
-
-
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Clear-ImproperProfileCopy')]
     Param (

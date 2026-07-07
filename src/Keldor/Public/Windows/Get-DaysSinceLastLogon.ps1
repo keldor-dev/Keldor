@@ -16,21 +16,9 @@ function Get-DaysSinceLastLogon {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 02/01/2018 10:31:35
-    LASTEDIT: 02/01/2018 10:31:35
-    KEYWORDS:
-    REQUIRES:
-        -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-DaysSinceLastLogon
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-DaysSinceLastLogon')]
     Param (

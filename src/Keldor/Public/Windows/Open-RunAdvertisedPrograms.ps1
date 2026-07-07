@@ -13,23 +13,9 @@ function Open-RunAdvertisedPrograms {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    LASTEDIT: 08/18/2017 21:10:15
-    KEYWORDS:
-    REQUIRES:
-    #Requires -Version 3.0
-    #Requires -Modules ActiveDirectory
-    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-    #Requires -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-RunAdvertisedPrograms
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-RunAdvertisedPrograms')]
     [Alias('rap')]

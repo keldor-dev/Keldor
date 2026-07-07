@@ -19,21 +19,9 @@ function Set-FirefoxAutoUpdate {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 2021-06-20 01:01:26
-    LASTEDIT: 2021-06-20 01:08:02
-    KEYWORDS:
-    REQUIRES:
-    #Requires -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-FirefoxAutoUpdate
 #>
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-FirefoxAutoUpdate')]
     Param (

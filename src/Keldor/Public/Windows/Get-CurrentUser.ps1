@@ -16,20 +16,9 @@ function Get-CurrentUser {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 08/18/2017 20:58:42
-    Last Edit: 2021-01-25 15:35:47
-    Requires:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-CurrentUser
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-CurrentUser')]
     Param (

@@ -28,20 +28,9 @@ function Open-HomeAssistant {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 2022-03-08 21:51:19
-    LASTEDIT: 2022-03-08 21:51:19
-    KEYWORDS:
-    REQUIRES:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-HomeAssistant
 #>
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

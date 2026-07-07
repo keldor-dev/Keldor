@@ -19,22 +19,9 @@ function Restart-DNS {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 09/08/2017 17:23:43
-    LASTEDIT: 2022-09-04 12:35:59
-    KEYWORDS:
-    REQUIRES:
-    -Modules ActiveDirectory
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Restart-DNS
 #>
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Restart-DNS')]
     Param (

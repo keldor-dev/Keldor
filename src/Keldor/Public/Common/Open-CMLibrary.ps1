@@ -28,18 +28,9 @@ function Open-CMLibrary {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 2021-10-18 22:49:11
-    LASTEDIT: 2021-10-18 22:51:31
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-CMLibrary
 #>
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

@@ -31,20 +31,9 @@ function Test-ResponseTime {
 .OUTPUTS
     System.Management.Automation.PSCustomObject
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2023-02-01 22:51:01
-    Last Edit: 2023-02-01 22:51:01
-    Other:
-    Requires:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Test-ResponseTime
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-ResponseTime')]
     param (

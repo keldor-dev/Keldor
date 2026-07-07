@@ -20,21 +20,9 @@ function Set-ChromeDeveloperTools {
 .OUTPUTS
     System.Management.Automation.PSCustomObject
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2022-09-20 19:53:22
-    Last Edit: 2022-09-20 19:53:22
-    Other:
-    Requires:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-ChromeDeveloperTools
 #>
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSUseSingularNouns",

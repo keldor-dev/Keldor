@@ -13,19 +13,9 @@ function Open-DHCPmgmt {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 08/19/2017 22:25:18
-    LASTEDIT: 2022-09-04 12:09:18
-    KEYWORDS:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-DHCPmgmt
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-DHCPmgmt')]
     [Alias('dhcp')]

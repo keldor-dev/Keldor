@@ -20,20 +20,9 @@ function Convert-Uint16ToString {
 .OUTPUTS
     System.String
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2023-02-11 01:02:00
-    Last Edit: 2023-02-11 01:02:00
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Convert-Uint16ToString
 #>
-
-
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Convert-Uint16ToString')]
     param(

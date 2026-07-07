@@ -25,22 +25,9 @@ function Remove-OldPowerShellModule {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-08-31 23:58:29
-    Last Edit: 2021-08-31 23:58:29
-    Keywords:
-    Other:
-    Requires:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Remove-OldPowerShellModule
 #>
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

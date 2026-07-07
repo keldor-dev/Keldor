@@ -57,22 +57,9 @@ function Get-ADComplianceReport {
 .OUTPUTS
     System.Management.Automation.PSCustomObject
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2019-07-02 13:32:53
-    Last Edit: 2023-05-06 21:50:15
-    Requires:
-        -Module ActiveDirectory
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-ADComplianceReport
 #>
-
-
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ADComplianceReport')]
     param(

@@ -13,21 +13,9 @@ function Get-Accelerator {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 12/21/2019 23:28:57
-    LASTEDIT: 12/21/2019 23:28:57
-    KEYWORDS:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-Accelerator
 #>
-
-
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-Accelerator')]
     [Alias('Get-TypeAccelerators','accelerators')]

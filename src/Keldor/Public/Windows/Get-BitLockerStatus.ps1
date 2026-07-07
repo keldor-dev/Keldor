@@ -16,23 +16,9 @@ function Get-BitLockerStatus {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2020-04-22 22:10:27
-    Last Edit: 2020-04-22 22:10:27
-    Keywords: BitLocker, Local, Remote, manage, manage-bde, bde
-    Requires:
-        -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-BitLockerStatus
 #>
-
-
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-BitLockerStatus')]
     param(

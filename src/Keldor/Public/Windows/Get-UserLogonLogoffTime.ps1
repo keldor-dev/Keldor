@@ -19,20 +19,9 @@ function Get-UserLogonLogoffTime {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    LASTEDIT: 08/18/2017 21:00:47
-    KEYWORDS:
-    REQUIRES:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-UserLogonLogoffTime
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-UserLogonLogoffTime')]
     Param (

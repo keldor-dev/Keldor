@@ -13,19 +13,9 @@ function Get-WSToolsCommand {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 01/31/2018 23:52:54
-    LASTEDIT: 01/31/2018 23:52:54
-    KEYWORDS:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-WSToolsCommand
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-WSToolsCommand')]
     [Alias('WSToolsCommands')]

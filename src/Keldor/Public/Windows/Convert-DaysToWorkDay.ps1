@@ -23,21 +23,9 @@ function Convert-DaysToWorkDay {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-03-04 18:54:31
-    Last Edit: 2021-06-20 17:13:33
-    Keywords:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Convert-DaysToWorkDay
 #>
-
-
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

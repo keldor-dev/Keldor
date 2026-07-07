@@ -13,21 +13,9 @@ function Open-ConfigurationManager {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: Sometime before 2017-08-07
-    LASTEDIT: 2020-09-28 09:31:24
-    KEYWORDS:
-    REQUIRES:
-    #Requires -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-ConfigurationManager
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-ConfigurationManager')]
     [Alias('configmgr')]

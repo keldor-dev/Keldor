@@ -28,18 +28,9 @@ function Set-LAPSshortcut {
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2020-05-08 22:34:49
-    Last Edit: 2021-10-13 20:48:50
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-LAPSshortcut
 #>
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-LAPSshortcut')]
     param(

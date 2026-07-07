@@ -29,19 +29,9 @@ function Install-WSTools {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2018-06-13 14:17:09
-    Last Edit: 2022-02-19 22:56:29
-    Keywords:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Install-WSTools
 #>
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSUseSingularNouns",

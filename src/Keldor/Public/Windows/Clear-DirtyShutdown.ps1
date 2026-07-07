@@ -20,21 +20,9 @@ function Clear-DirtyShutdown {
 .OUTPUTS
     No output
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2020-05-08 17:54:09
-    Last Edit: 2021-12-19 23:58:28
-    Requires -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Clear-DirtyShutdown
 #>
-
-
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Clear-DirtyShutdown')]
     param(

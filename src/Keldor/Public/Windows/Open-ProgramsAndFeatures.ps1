@@ -13,23 +13,9 @@ function Open-ProgramsAndFeatures {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    LASTEDIT: 08/18/2017 20:49:23
-    KEYWORDS:
-    REQUIRES:
-    #Requires -Version 3.0
-    #Requires -Modules ActiveDirectory
-    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-    #Requires -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-ProgramsAndFeatures
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-ProgramsAndFeatures')]
     [Alias('programs')]

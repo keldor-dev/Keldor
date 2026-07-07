@@ -22,19 +22,9 @@ function Show-MessageBox {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: Sometime before 2017-08-07
-    LASTEDIT: 08/18/2017 20:47:49
-    KEYWORDS:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Show-MessageBox
 #>
-
-
-
-
 
 #info: https://msdn.microsoft.com/en-us/library/x83z1d9f(v=vs.84).aspx
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Show-MessageBox')]

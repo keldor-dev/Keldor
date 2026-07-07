@@ -19,19 +19,9 @@ function Get-PSVersion {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 02/27/2019 12:35:00
-    LASTEDIT: 02/27/2019 12:35:00
-    KEYWORDS:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-PSVersion
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-PSVersion')]
     [Alias('Get-PowerShellVersion')]

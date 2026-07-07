@@ -16,22 +16,9 @@ function Update-HelpFromFile {
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-12-17 22:54:13
-    Last Edit: 2021-12-17 22:54:13
-    Keywords:
-    Other:
-    Requires:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Update-HelpFromFile
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Update-HelpFromFile')]
     param(

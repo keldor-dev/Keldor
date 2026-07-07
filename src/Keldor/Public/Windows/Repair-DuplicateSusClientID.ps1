@@ -20,21 +20,9 @@ function Repair-DuplicateSusClientID {
 .OUTPUTS
     System.String
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2022-07-15 21:05:27
-    Last Edit: 2022-07-15 21:05:27
-    Other:
-    Requires:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Repair-DuplicateSusClientID
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Repair-DuplicateSusClientID')]
     param(

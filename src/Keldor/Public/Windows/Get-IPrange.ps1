@@ -32,18 +32,9 @@ function Get-IPrange {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: Sometime before 8/7/2017
-    Last Edit: 2020-08-20 09:11:46
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-IPrange
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-IPrange')]
     Param (

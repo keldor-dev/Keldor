@@ -13,18 +13,9 @@ function Get-ExpiredCertsUser {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 10/04/2018 21:08:39
-    LASTEDIT: 10/04/2018 21:09:34
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-ExpiredCertsUser
 #>
-
-
-
-
 
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ExpiredCertsUser')]
     Param ()

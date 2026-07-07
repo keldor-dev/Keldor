@@ -20,24 +20,9 @@ function Get-ModuleList {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-08-11 23:22:30
-    Last Edit: 2021-08-11 23:41:15
-    Keywords:
-    Other:
-    Requires:
-        -Module ActiveDirectory
-        -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-        -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-ModuleList
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ModuleList')]
     param(

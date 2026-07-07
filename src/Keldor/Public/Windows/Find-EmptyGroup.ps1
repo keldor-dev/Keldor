@@ -16,23 +16,9 @@ function Find-EmptyGroup {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 2014-01-18 11:50:00
-    LASTEDIT: 2022-09-01 21:59:13
-    KEYWORDS: Groups, empty groups, group management
-    REQUIRES:
-        ActiveDirectory
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Find-EmptyGroup
 #>
-
-
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Find-EmptyGroup')]
     Param (

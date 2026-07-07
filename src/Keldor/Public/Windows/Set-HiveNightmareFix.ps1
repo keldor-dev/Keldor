@@ -13,21 +13,9 @@ function Set-HiveNightmareFix {
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-10-19 11:25:39
-    Last Edit: 2021-10-19 11:25:39
-    Keywords:
-    Requires:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-HiveNightmareFix
 #>
-
-
-
-
 
         [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-HiveNightmareFix')]
     Param ()

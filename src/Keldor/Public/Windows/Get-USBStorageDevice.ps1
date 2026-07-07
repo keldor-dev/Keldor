@@ -20,19 +20,9 @@ function Get-USBStorageDevice {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: Sometime before 8/7/2017
-    Last Edit: 2021-06-28 22:46:02
-    Keywords:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-USBStorageDevice
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-USBStorageDevice')]
     Param (

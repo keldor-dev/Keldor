@@ -13,18 +13,9 @@ function Get-DefaultBrowserPath {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: Sometime before 2017-08-07
-    Last Edit: 2020-08-20 15:09:53
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-DefaultBrowserPath
 #>
-
-
-
-
 
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-DefaultBrowserPath')]
     Param ()

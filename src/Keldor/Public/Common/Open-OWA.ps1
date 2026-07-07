@@ -28,18 +28,9 @@ function Open-OWA {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 2021-10-18 22:54:07
-    LASTEDIT: 2021-10-18 22:54:48
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-OWA
 #>
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

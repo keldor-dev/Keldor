@@ -22,19 +22,9 @@ function Get-WindowsSetupLog {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 03/18/2019 15:43:03
-    LASTEDIT: 08/28/2019 22:06:44
-    KEYWORDS:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-WindowsSetupLog
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-WindowsSetupLog')]
     [Alias('Get-UpdateStatus','Get-UpdateLog')]

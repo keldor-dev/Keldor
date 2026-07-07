@@ -16,20 +16,9 @@ function Get-LinesOfCode {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-10-19 19:10:36
-    Last Edit: 2021-10-19 19:10:36
-    Keywords:
-    Other: Excludes blank lines
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-LinesOfCode
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-LinesOfCode')]
     param(

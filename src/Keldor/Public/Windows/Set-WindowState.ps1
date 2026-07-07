@@ -19,16 +19,9 @@ function Set-WindowState {
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-WindowState
 #>
-
-
-
-
 
     # source: https://gist.github.com/jakeballard/11240204
         [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-WindowState')]

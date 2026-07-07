@@ -28,21 +28,9 @@ function Get-WSLocalGroup {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2021-02-28 19:52:59
-    Last Edit: 2021-02-28 21:06:49
-    Keywords:
-    Requires:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-WSLocalGroup
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-WSLocalGroup')]
     param(

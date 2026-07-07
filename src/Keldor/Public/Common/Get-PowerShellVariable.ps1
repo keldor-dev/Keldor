@@ -24,22 +24,9 @@ function Get-PowerShellVariable {
 .OUTPUTS
     System.Management.Automation.PSCustomObject
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2022-09-22 23:29:51
-    Last Edit: 2022-09-22 23:29:51
-    Other:
-    Requires:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-PowerShellVariable
 #>
-
-
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-PowerShellVariable')]
     param(

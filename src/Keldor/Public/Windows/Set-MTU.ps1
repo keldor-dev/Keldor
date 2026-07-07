@@ -16,21 +16,9 @@ function Set-MTU {
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2020-05-12 20:56:13
-    Last Edit: 2020-05-12 20:56:13
-    Keywords:
-    Requires:
-    -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-MTU
 #>
-
-
-
-
 
 	[CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-MTU')]
     Param (

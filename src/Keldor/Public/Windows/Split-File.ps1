@@ -22,21 +22,9 @@ function Split-File {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 04/30/2019 13:18:22
-    LASTEDIT: 2021-12-17 21:13:05
-    KEYWORDS:
-    REQUIRES:
-    #Requires -Version 3.0
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Split-File
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Split-File')]
     Param (

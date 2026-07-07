@@ -13,21 +13,9 @@ function Enable-RDP {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 2020-05-08 23:21:17
-    LASTEDIT: 2024-11-27 13:00:00
-    REQUIRES: RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Enable-RDP
 #>
-
-
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Enable-RDP')]
     param ()

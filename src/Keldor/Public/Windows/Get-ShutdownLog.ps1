@@ -22,19 +22,9 @@ function Get-ShutdownLog {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 08/28/2019 22:13:23
-    LASTEDIT: 08/29/2019 00:17:09
-    KEYWORDS:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-ShutdownLog
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ShutdownLog')]
     Param (

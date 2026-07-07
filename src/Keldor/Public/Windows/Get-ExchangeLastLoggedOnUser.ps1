@@ -13,23 +13,9 @@ function Get-ExchangeLastLoggedOnUser {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    LASTEDIT: 08/18/2017 20:58:33
-    KEYWORDS:
-    REQUIRES:
-    #Requires -Version 3.0
-    #Requires -Modules ActiveDirectory
-    #Requires -PSSnapin Microsoft.Exchange.Management.PowerShell.Admin
-    #Requires -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-ExchangeLastLoggedOnUser
 #>
-
-
-
-
 
  #Get-ADUser -Filter {EmailAddress -like "*"} -properties * | select EmailAddress | Export-Csv .\users.csv -NoTypeInformation
         [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ExchangeLastLoggedOnUser')]

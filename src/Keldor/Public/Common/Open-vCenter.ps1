@@ -28,19 +28,9 @@ function Open-vCenter {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 10/18/2017 10:34:22
-    LASTEDIT: 02/13/2018 11:05:06
-    KEYWORDS:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-vCenter
 #>
-
-
-
-
 
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",

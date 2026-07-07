@@ -16,19 +16,9 @@ function Get-FunctionsInModule {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 08/21/2017 13:06:27
-    LASTEDIT: 08/21/2017 13:06:27
-    KEYWORDS:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-FunctionsInModule
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-FunctionsInModule')]
     Param (

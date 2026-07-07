@@ -16,21 +16,9 @@ function Set-ADProfilePicture {
 .OUTPUTS
     None
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2017-08-18 20:47:20
-    Last Edit: 2022-09-04 12:42:30
-    Other:
-    Requires:
-    -Module ActiveDirectory
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-ADProfilePicture
 #>
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ADProfilePicture')]
     Param (

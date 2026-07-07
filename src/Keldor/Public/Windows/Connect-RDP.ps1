@@ -20,20 +20,9 @@ function Connect-RDP {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 2017-08-18 20:48:07
-    LASTEDIT: 2024-11-27 10:59:28
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Connect-RDP
 #>
-
-
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Connect-RDP')]
     [alias('rdp')]

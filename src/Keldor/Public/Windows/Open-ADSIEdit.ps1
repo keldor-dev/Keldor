@@ -13,19 +13,9 @@ function Open-ADSIEdit {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 08/19/2017 22:21:51
-    LASTEDIT: 2020-04-19 20:07:02
-    KEYWORDS:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Open-ADSIEdit
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-ADSIEdit')]
     [Alias('adsi')]

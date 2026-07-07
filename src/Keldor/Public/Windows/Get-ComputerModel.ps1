@@ -16,20 +16,9 @@ function Get-ComputerModel {
 .OUTPUTS
     System.Object
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 2018-06-20 13:05:09
-    LASTEDIT: 2020-08-31 21:40:19
-    REQUIRES:
-        -RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Get-ComputerModel
 #>
-
-
-
-
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ComputerModel')]
     [Alias('Get-Model')]

@@ -13,21 +13,9 @@ function Enable-ServerManager {
 .OUTPUTS
     None
 
-.NOTES
-    AUTHOR: Skyler Hart
-    CREATED: 2021-12-16 21:29:35
-    LASTEDIT: 2024-11-27 13:00:00
-    REQUIRES: RunAsAdministrator
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Enable-ServerManager
 #>
-
-
-
-
-
-
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Enable-ServerManager')]
     param ()

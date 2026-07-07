@@ -13,20 +13,9 @@ function Set-Preferences {
 .OUTPUTS
     System.Object
 
-.NOTES
-    Author: Skyler Hart
-    Created: 2020-04-18 13:00:47
-    Last Edit: 2021-10-12 11:23:19
-    Keywords:
-    Requires:
-
 .LINK
     https://docs.keldor.dev/powershell/keldor/Set-Preferences
 #>
-
-
-
-
 
         [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-Preferences')]
     Param ()
