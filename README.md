@@ -94,7 +94,7 @@ Functions in `Public` are exported. Functions in `Private` are internal helpers 
 - Add macOS-only exported functions to `Public/macOS`
 - Add Linux-only exported functions to `Public/Linux`
 - Add internal helpers to matching `Private/*` folders
-- Follow the [Keldor PowerShell Style Guide](docs/standards/powershell-style-guide.md)
+- Follow the [Keldor PowerShell Engineering Standard](docs/standards/Keldor_PowerShell_Engineering_Standard.md)
 
 ## Visual Studio Code Snippets
 
@@ -110,7 +110,9 @@ Workspace snippets are also available in `.vscode/Keldor.code-snippets` when thi
 
 ## Documentation
 
-- [PowerShell Style Guide](docs/standards/powershell-style-guide.md)
+- [Engineering Standards](docs/standards/README.md)
+- [Keldor General Engineering Standard](docs/standards/Keldor_General_Engineering_Standard.md)
+- [Keldor PowerShell Engineering Standard](docs/standards/Keldor_PowerShell_Engineering_Standard.md)
 - Docs site: https://docs.keldor.dev
 - Repository: https://github.com/keldor-dev/Keldor
 
