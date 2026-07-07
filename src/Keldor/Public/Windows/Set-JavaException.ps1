@@ -52,7 +52,7 @@ function Set-JavaException {
         "",
         Justification = "Have tried other methods and they do not work consistently."
     )]
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-JavaException')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-JavaException')]
     [Alias('Add-JavaException')]
     Param (
         [Parameter(
@@ -86,7 +86,7 @@ function Set-JavaException {
         $RunspacePool = [runspacefactory]::CreateRunspacePool(1, $MaxThreads, $ISS, $Host)
         $RunspacePool.Open()
         $Code = {
-            [CmdletBinding()]
+            [CmdletBinding(SupportsShouldProcess = $true)]
             Param (
                 [Parameter(
                     Mandatory=$true,
@@ -119,11 +119,15 @@ function Set-JavaException {
                         $lib32 = [environment]::ExpandEnvironmentVariables("%PROGRAMFILES(x86)%\Java\$Path\lib")
 
                         if (Test-Path $lib) {
-                            Copy-Item -Path $jes\exception.sites -Destination $lib -Force
+                            if ($PSCmdlet.ShouldProcess($lib, "Copy Java exception sites")) {
+                                Copy-Item -Path $jes\exception.sites -Destination $lib -Force
+                            }
                         }
 
                         if (Test-Path $lib32) {
-                            Copy-Item -Path $jes\exception.sites -Destination $lib32 -Force
+                            if ($PSCmdlet.ShouldProcess($lib32, "Copy Java exception sites")) {
+                                Copy-Item -Path $jes\exception.sites -Destination $lib32 -Force
+                            }
                         }
                     }
                     else {
@@ -133,11 +137,15 @@ function Set-JavaException {
                         $lib32 = [environment]::ExpandEnvironmentVariables("%PROGRAMFILES(x86)%\Java\$Path\lib")
 
                         if (Test-Path $lib) {
-                            Add-Content -Path $lib\exception.sites -Value $URL -Force
+                            if ($PSCmdlet.ShouldProcess($lib, "Add Java exception site")) {
+                                Add-Content -Path $lib\exception.sites -Value $URL -Force
+                            }
                         }
 
                         if (Test-Path $lib32) {
-                            Add-Content -Path $lib32\exception.sites -Value $URL -Force
+                            if ($PSCmdlet.ShouldProcess($lib32, "Add Java exception site")) {
+                                Add-Content -Path $lib32\exception.sites -Value $URL -Force
+                            }
                         }
                     }
                 }
@@ -154,7 +162,9 @@ function Set-JavaException {
                     #$je = Get-Content $jes\exception.sites
 
                     if (Test-Path $lib) {
-                        Robocopy.exe $jes $lib exception.sites
+                        if ($PSCmdlet.ShouldProcess($lib, "Copy Java exception sites")) {
+                            Robocopy.exe $jes $lib exception.sites
+                        }
                         #if (Test-Path $lib\exception.sites) {
                         #    Set-Content -Path $lib\exception.sites -Value $je -Force
                         #}
@@ -164,7 +174,9 @@ function Set-JavaException {
                     }
 
                     if (Test-Path $lib32) {
-                        Robocopy.exe $jes $lib32 exception.sites
+                        if ($PSCmdlet.ShouldProcess($lib32, "Copy Java exception sites")) {
+                            Robocopy.exe $jes $lib32 exception.sites
+                        }
                         #if (Test-Path $lib32\exception.sites) {
                         #    Set-Content -Path $lib32\exception.sites -Value $je -Force
                         #}
@@ -180,11 +192,15 @@ function Set-JavaException {
                     $lib32 = "\\" + $comp + "\c$\Program Files (x86)\Java\" + $Path + "\lib"
 
                     if (Test-Path $lib) {
-                        Add-Content -Path $lib\exception.sites -Value $URL -Force
+                        if ($PSCmdlet.ShouldProcess($lib, "Add Java exception site")) {
+                            Add-Content -Path $lib\exception.sites -Value $URL -Force
+                        }
                     }
 
                     if (Test-Path $lib32) {
-                        Add-Content -Path $lib32\exception.sites -Value $URL -Force
+                        if ($PSCmdlet.ShouldProcess($lib32, "Add Java exception site")) {
+                            Add-Content -Path $lib32\exception.sites -Value $URL -Force
+                        }
                     }
                 }
             }#if remote comp
@@ -194,17 +210,19 @@ function Set-JavaException {
     Process {
         Write-Progress -Activity "Preloading threads" -Status "Starting Job $($jobs.count)"
         ForEach ($Object in $ComputerName){
-            $PowershellThread = [powershell]::Create().AddScript($Code)
-            $PowershellThread.AddArgument($Object.ToString()) | out-null
-            $PowershellThread.AddArgument($URL.ToString()) | out-null
-            $PowershellThread.AddArgument($Share.ToString()) | out-null
-            $PowershellThread.RunspacePool = $RunspacePool
-            $Handle = $PowershellThread.BeginInvoke()
-            $Job = "" | Select-Object Handle, Thread, object
-            $Job.Handle = $Handle
-            $Job.Thread = $PowershellThread
-            $Job.Object = $Object.ToString()
-            $Jobs += $Job
+            if ($PSCmdlet.ShouldProcess($Object.ToString(), "Set Java exception")) {
+                $PowershellThread = [powershell]::Create().AddScript($Code)
+                $PowershellThread.AddArgument($Object.ToString()) | out-null
+                $PowershellThread.AddArgument($URL.ToString()) | out-null
+                $PowershellThread.AddArgument($Share.ToString()) | out-null
+                $PowershellThread.RunspacePool = $RunspacePool
+                $Handle = $PowershellThread.BeginInvoke()
+                $Job = "" | Select-Object Handle, Thread, object
+                $Job.Handle = $Handle
+                $Job.Thread = $PowershellThread
+                $Job.Object = $Object.ToString()
+                $Jobs += $Job
+            }
         }
     }
     End {

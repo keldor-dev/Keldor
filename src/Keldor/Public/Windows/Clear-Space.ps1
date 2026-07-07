@@ -48,7 +48,7 @@ function Clear-Space {
 
 
 
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Clear-Space')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Clear-Space')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]
         [Alias('Host','Name','Computer','CN')]
@@ -61,6 +61,7 @@ function Clear-Space {
     $path = (Get-Location).Path
 
     foreach ($Comp in $ComputerName) {
+        if ($PSCmdlet.ShouldProcess($Comp, "Clear space")) {
         #region PSDrive Method
         $psdpath = "\\$comp\c$"
         if (!($InvokeMethod)) {
@@ -218,6 +219,7 @@ function Clear-Space {
             }
         }# invoke method
         #endregion Invoke Method
+        }
     }# foreach computer
     Set-Location $path
 }

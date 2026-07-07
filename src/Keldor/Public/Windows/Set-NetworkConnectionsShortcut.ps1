@@ -32,7 +32,7 @@ function Set-NetworkConnectionsShortcut {
 
 
 
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-NetworkConnectionsShortcut')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-NetworkConnectionsShortcut')]
     param(
         [Parameter(
             HelpMessage = "Enter either PublicDesktop or UserDesktop. PublicDesktop requires admin rights.",
@@ -58,5 +58,7 @@ function Set-NetworkConnectionsShortcut {
     $Shortcut.IconLocation = "$env:systemroot\system32\netshell.dll,0"
     $Shortcut.Description = "Network Connection Properties"
     $Shortcut.WorkingDirectory = "C:\Windows\System32"
-    $Shortcut.Save()
+    if ($PSCmdlet.ShouldProcess($sp, "Create Network Connections shortcut")) {
+        $Shortcut.Save()
+    }
 }

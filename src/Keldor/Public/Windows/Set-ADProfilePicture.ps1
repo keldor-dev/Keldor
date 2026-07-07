@@ -32,7 +32,7 @@ function Set-ADProfilePicture {
 
 
 
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ADProfilePicture')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ADProfilePicture')]
     Param (
         [Parameter(Mandatory=$true, Position=0)]
         [Alias('User','SamAccountname')]
@@ -54,7 +54,9 @@ function Set-ADProfilePicture {
         else {
             Import-Module activedirectory
             $photo1 = [byte[]](Get-Content $ppath -Encoding byte)
-            Set-ADUser $UserName -Replace @{thumbnailPhoto=$photo1}
+            if ($PSCmdlet.ShouldProcess($UserName, "Set AD profile picture")) {
+                Set-ADUser $UserName -Replace @{thumbnailPhoto=$photo1}
+            }
         }
     }
     else {

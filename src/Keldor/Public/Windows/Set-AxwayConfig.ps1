@@ -36,7 +36,7 @@ function Set-AxwayConfig {
 
 
 
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-AxwayConfig')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-AxwayConfig')]
     [Alias('Import-AxwayConfig')]
     param(
         [Parameter(
@@ -59,7 +59,9 @@ function Set-AxwayConfig {
     if ([string]::IsNullOrWhiteSpace($ComputerName)) {
         $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
         if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-            Start-Process "$env:ProgramFiles\Tumbleweed\Desktop Validator\dvconfig.exe" -ArgumentList "-command write -file $ConfigFile"
+            if ($PSCmdlet.ShouldProcess($ConfigFile, "Import Axway config")) {
+                Start-Process "$env:ProgramFiles\Tumbleweed\Desktop Validator\dvconfig.exe" -ArgumentList "-command write -file $ConfigFile"
+            }
         }
         else {Write-Error "Must be ran as administrator."}
     }
@@ -78,7 +80,9 @@ function Set-AxwayConfig {
                 }#if length
 
                 try {
-                    Invoke-Command -ComputerName $Comp -ScriptBlock {Start-Process "$env:ProgramFiles\Tumbleweed\Desktop Validator\dvconfig.exe" -ArgumentList "-command write -file $ConfigFile"} -ErrorAction Stop #DevSkim: ignore DS104456
+                    if ($PSCmdlet.ShouldProcess($Comp, "Import Axway config")) {
+                        Invoke-Command -ComputerName $Comp -ScriptBlock {Start-Process "$env:ProgramFiles\Tumbleweed\Desktop Validator\dvconfig.exe" -ArgumentList "-command write -file $ConfigFile"} -ErrorAction Stop #DevSkim: ignore DS104456
+                    }
                     #$install = Invoke-WMIMethod -Class Win32_Process -ComputerName $Comp -Name Create -ArgumentList 'cmd /c "c:\Program Files\Tumbleweed\Desktop Validator\dvconfig.exe" -command write -file $ConfigFile' -ErrorAction Stop #DevSkim: ignore DS104456
                     $info = [PSCustomObject]@{
                         ComputerName = $Comp

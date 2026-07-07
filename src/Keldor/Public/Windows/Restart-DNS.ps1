@@ -36,7 +36,7 @@ function Restart-DNS {
 
 
 
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Restart-DNS')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Restart-DNS')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]
         [Alias('Host','Name','Computer','CN','ComputerName')]
@@ -46,7 +46,11 @@ function Restart-DNS {
     if (Get-Module -ListAvailable -Name ActiveDirectory) {
         if (!($All)) {
             Write-Output "Restarting DNS service on $DC"
-            try {Restart-Service -inputobject $(Get-Service -ComputerName $DC -Name DNS) -Force}
+            try {
+                if ($PSCmdlet.ShouldProcess($DC, "Restart DNS service")) {
+                    Restart-Service -inputobject $(Get-Service -ComputerName $DC -Name DNS) -Force
+                }
+            }
             catch {Throw "Unable to connect to $DC or failed to restart service."}
         }#if not all
         elseif ($All) {
@@ -54,7 +58,11 @@ function Restart-DNS {
             foreach ($Srv in $AllDCs) {
                 $SrvName = $Srv.HostName
                 Write-Output "Restarting DNS service on $SrvName"
-                try {Restart-Service -inputobject $(Get-Service -ComputerName $SrvName -Name DNS) -Force}
+                try {
+                    if ($PSCmdlet.ShouldProcess($SrvName, "Restart DNS service")) {
+                        Restart-Service -inputobject $(Get-Service -ComputerName $SrvName -Name DNS) -Force
+                    }
+                }
                 catch {Throw "Unable to connect to $DC or failed to restart service."}
             }#foreach dc
         }#elseif

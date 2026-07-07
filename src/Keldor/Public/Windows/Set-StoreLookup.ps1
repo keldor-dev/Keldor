@@ -38,13 +38,25 @@ function Set-StoreLookup {
 
 
 
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-StoreLookup')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-StoreLookup')]
     Param (
         [Switch]$Yes,
         [Switch]$No
     )
 
-    if ($Yes) {Set-ItemProperty -Path HKCU:\Software\Policies\Microsoft\Windows\Explorer -Name NoUseStoreOpenWith -Type DWord -Value 0 -Force}
-    elseif ($No) {Set-ItemProperty -Path HKCU:\Software\Policies\Microsoft\Windows\Explorer -Name NoUseStoreOpenWith -Type DWord -Value 1 -Force}
-    else {Set-ItemProperty -Path HKCU:\Software\Policies\Microsoft\Windows\Explorer -Name NoUseStoreOpenWith -Type DWord -Value 1 -Force}
+    if ($Yes) {
+        if ($PSCmdlet.ShouldProcess('HKCU:\Software\Policies\Microsoft\Windows\Explorer\NoUseStoreOpenWith', "Set to 0")) {
+            Set-ItemProperty -Path HKCU:\Software\Policies\Microsoft\Windows\Explorer -Name NoUseStoreOpenWith -Type DWord -Value 0 -Force
+        }
+    }
+    elseif ($No) {
+        if ($PSCmdlet.ShouldProcess('HKCU:\Software\Policies\Microsoft\Windows\Explorer\NoUseStoreOpenWith', "Set to 1")) {
+            Set-ItemProperty -Path HKCU:\Software\Policies\Microsoft\Windows\Explorer -Name NoUseStoreOpenWith -Type DWord -Value 1 -Force
+        }
+    }
+    else {
+        if ($PSCmdlet.ShouldProcess('HKCU:\Software\Policies\Microsoft\Windows\Explorer\NoUseStoreOpenWith', "Set to 1")) {
+            Set-ItemProperty -Path HKCU:\Software\Policies\Microsoft\Windows\Explorer -Name NoUseStoreOpenWith -Type DWord -Value 1 -Force
+        }
+    }
 }

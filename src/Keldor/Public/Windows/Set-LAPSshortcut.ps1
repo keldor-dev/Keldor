@@ -41,7 +41,7 @@ function Set-LAPSshortcut {
 
 
 
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-LAPSshortcut')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-LAPSshortcut')]
     param(
         [Parameter(
             HelpMessage = "Enter either PublicDesktop or UserDesktop. PublicDesktop requires admin rights.",
@@ -66,5 +66,7 @@ function Set-LAPSshortcut {
     $Shortcut.IconLocation = "C:\Program Files\LAPS\AdmPwd.UI.exe,0"
     $Shortcut.Description ="LAPS Admin Console"
     $Shortcut.WorkingDirectory ="C:\Program Files\LAPS"
-    $Shortcut.Save()
+    if ($PSCmdlet.ShouldProcess($sp, "Create LAPS shortcut")) {
+        $Shortcut.Save()
+    }
 }

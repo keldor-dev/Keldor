@@ -36,8 +36,14 @@ function Restart-AxwayTrayApp {
 
 
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Restart-AxwayTrayApp')]
+        [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Restart-AxwayTrayApp')]
     Param ()
-Get-Process | Where-Object {$_.Name -match "dvtray"} | Stop-Process -Force | Out-Null
-    & 'C:\Program Files\Tumbleweed\Desktop Validator\DVTrayApp.exe'
+Get-Process | Where-Object {$_.Name -match "dvtray"} | ForEach-Object {
+    if ($PSCmdlet.ShouldProcess($_.Name, "Stop process")) {
+        $_ | Stop-Process -Force | Out-Null
+    }
+}
+    if ($PSCmdlet.ShouldProcess('C:\Program Files\Tumbleweed\Desktop Validator\DVTrayApp.exe', "Start Axway tray app")) {
+        & 'C:\Program Files\Tumbleweed\Desktop Validator\DVTrayApp.exe'
+    }
 }

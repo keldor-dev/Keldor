@@ -26,13 +26,15 @@ function Set-Profile {
 
 
 
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-Profile')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-Profile')]
     [Alias('Edit-Profile','Profile')]
     param()
 
     #If profile already exists, open for editing
     if (Test-Path $profile) {
-        start-process "$env:windir\system32\WindowsPowerShell\v1.0\PowerShell_ISE.exe" $profile
+        if ($PSCmdlet.ShouldProcess($profile, "Open profile")) {
+            start-process "$env:windir\system32\WindowsPowerShell\v1.0\PowerShell_ISE.exe" $profile
+        }
     }
     #If it doesn't exist, create it and put default stuff into it
     else {
@@ -51,8 +53,10 @@ function Set-Profile {
 
 '
 
-        New-Item $profile -ItemType File -Force -Value $filecontent | Out-Null
-        start-sleep 1
-        start-process "$env:windir\system32\WindowsPowerShell\v1.0\PowerShell_ISE.exe" $profile
+        if ($PSCmdlet.ShouldProcess($profile, "Create and open profile")) {
+            New-Item $profile -ItemType File -Force -Value $filecontent | Out-Null
+            start-sleep 1
+            start-process "$env:windir\system32\WindowsPowerShell\v1.0\PowerShell_ISE.exe" $profile
+        }
     }
 }

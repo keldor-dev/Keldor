@@ -60,7 +60,7 @@ function Start-CommandMultiThreaded {
 
 
 
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Start-CommandMultiThreaded')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Start-CommandMultiThreaded')]
     Param (
         [Parameter()]
         [string]$Command,
@@ -102,28 +102,30 @@ function Start-CommandMultiThreaded {
     Process {
         Write-Progress -Activity "Loading threads" -Status "Starting Job $($jobs.count)"
         ForEach ($Object in $Objects){
-            If ([string]::IsNullOrWhiteSpace($Code)) {
-                $PowershellThread = [PowerShell]::Create().AddCommand($Command)
-            }
-            Else {
-                $PowershellThread = [PowerShell]::Create().AddScript($Code)
-            }
+            if ($PSCmdlet.ShouldProcess($Object.ToString(), "Start $Command")) {
+                If ([string]::IsNullOrWhiteSpace($Code)) {
+                    $PowershellThread = [PowerShell]::Create().AddCommand($Command)
+                }
+                Else {
+                    $PowershellThread = [PowerShell]::Create().AddScript($Code)
+                }
 
-            $PowershellThread.AddArgument($Object.ToString()) | Out-Null
-            ForEach ($Key in $AddParameter.Keys) {
-                $PowershellThread.AddParameter($Key, $AddParameter.$key) | Out-Null
+                $PowershellThread.AddArgument($Object.ToString()) | Out-Null
+                ForEach ($Key in $AddParameter.Keys) {
+                    $PowershellThread.AddParameter($Key, $AddParameter.$key) | Out-Null
+                }
+                ForEach ($Switch in $AddSwitch) {
+                    $Switch
+                    $PowershellThread.AddParameter($Switch) | Out-Null
+                }
+                $PowershellThread.RunspacePool = $RunspacePool
+                $Handle = $PowershellThread.BeginInvoke()
+                $Job = "" | Select-Object Handle, Thread, object
+                $Job.Handle = $Handle
+                $Job.Thread = $PowershellThread
+                $Job.Object = $Object.ToString()
+                $Jobs += $Job
             }
-            ForEach ($Switch in $AddSwitch) {
-                $Switch
-                $PowershellThread.AddParameter($Switch) | Out-Null
-            }
-            $PowershellThread.RunspacePool = $RunspacePool
-            $Handle = $PowershellThread.BeginInvoke()
-            $Job = "" | Select-Object Handle, Thread, object
-            $Job.Handle = $Handle
-            $Job.Thread = $PowershellThread
-            $Job.Object = $Object.ToString()
-            $Jobs += $Job
         }
     }
     End {

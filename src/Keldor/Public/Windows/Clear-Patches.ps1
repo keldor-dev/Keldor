@@ -67,7 +67,7 @@ function Clear-Patches {
         "",
         Justification = "Expresses exactly what the function does and is what the folder name is called."
     )]
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Clear-Patches')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Clear-Patches')]
     Param (
         [Parameter(HelpMessage = "Enter one or more computer names separated by commas.",
             Mandatory=$true,
@@ -100,7 +100,7 @@ function Clear-Patches {
 
         if ($Recursive) {
             $Code = {
-                [CmdletBinding()]
+                [CmdletBinding(SupportsShouldProcess = $true)]
                 Param (
                     [Parameter(
                         Mandatory=$true,
@@ -117,7 +117,9 @@ function Clear-Patches {
                     if (Test-Path $patches) {
                         Set-Location $patches -ErrorAction Stop
                         if ((Get-Location).Path -eq $patches) {
-                            Remove-Item * -Recurse -force -ErrorAction SilentlyContinue
+                            if ($PSCmdlet.ShouldProcess($patches, "Clear patches recursively")) {
+                                Remove-Item * -Recurse -force -ErrorAction SilentlyContinue
+                            }
                         }
                         $info = [PSCustomObject]@{
                             ComputerName = $Comp
@@ -144,7 +146,7 @@ function Clear-Patches {
         }#if recursive
         elseif ($Old) {
             $Code = {
-                [CmdletBinding()]
+                [CmdletBinding(SupportsShouldProcess = $true)]
                 Param (
                     [Parameter(
                         Mandatory=$true,
@@ -163,7 +165,9 @@ function Clear-Patches {
                         $op = Get-ChildItem $patches | Where-Object {$_.Attributes -ne "Directory" -and $_.Name -notmatch "Install.ps1" -and $_.LastWriteTime -lt ((Get-Date).AddDays(-28))} | Select-Object FullName -ExpandProperty FullName
 
                         foreach ($p in $op) {
-                            Remove-Item -Path $p -Force -ErrorAction SilentlyContinue
+                            if ($PSCmdlet.ShouldProcess($p, "Remove old patch file")) {
+                                Remove-Item -Path $p -Force -ErrorAction SilentlyContinue
+                            }
                         }
                         $info = [PSCustomObject]@{
                             ComputerName = $Comp
@@ -190,7 +194,7 @@ function Clear-Patches {
         }#elseif Old
         else {
             $Code = {
-                [CmdletBinding()]
+                [CmdletBinding(SupportsShouldProcess = $true)]
                 Param (
                     [Parameter(
                         Mandatory=$true,
@@ -207,8 +211,10 @@ function Clear-Patches {
                     if (Test-Path $patches) {
                         Set-Location $patches -ErrorAction Stop
                         if ((Get-Location).Path -eq $patches) {
-                            Remove-Item .\*.* -force -ErrorAction SilentlyContinue
-                            Remove-Item .\cab\* -Recurse -Force -ErrorAction SilentlyContinue
+                            if ($PSCmdlet.ShouldProcess($patches, "Clear patch files")) {
+                                Remove-Item .\*.* -force -ErrorAction SilentlyContinue
+                                Remove-Item .\cab\* -Recurse -Force -ErrorAction SilentlyContinue
+                            }
                         }
                         $info = [PSCustomObject]@{
                             ComputerName = $Comp
@@ -237,16 +243,18 @@ function Clear-Patches {
     Process {
         Write-Progress -Activity "Preloading threads" -Status "Starting Job $($jobs.count)"
         ForEach ($Object in $ObjectList){
-            $PowershellThread = [powershell]::Create().AddScript($Code)
-            $PowershellThread.AddArgument($Object.ToString()) | out-null
+            if ($PSCmdlet.ShouldProcess($Object.ToString(), "Clear patches")) {
+                $PowershellThread = [powershell]::Create().AddScript($Code)
+                $PowershellThread.AddArgument($Object.ToString()) | out-null
 
-            $PowershellThread.RunspacePool = $RunspacePool
-            $Handle = $PowershellThread.BeginInvoke()
-            $Job = "" | Select-Object Handle, Thread, object
-            $Job.Handle = $Handle
-            $Job.Thread = $PowershellThread
-            $Job.Object = $Object.ToString()
-            $Jobs += $Job
+                $PowershellThread.RunspacePool = $RunspacePool
+                $Handle = $PowershellThread.BeginInvoke()
+                $Job = "" | Select-Object Handle, Thread, object
+                $Job.Handle = $Handle
+                $Job.Thread = $PowershellThread
+                $Job.Object = $Object.ToString()
+                $Jobs += $Job
+            }
         }
     }
     End {

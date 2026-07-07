@@ -31,7 +31,7 @@ function Set-WindowState {
 
 
     # source: https://gist.github.com/jakeballard/11240204
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-WindowState')]
+        [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-WindowState')]
 param(
         [Parameter()]
         [ValidateSet('FORCEMINIMIZE','HIDE','MAXIMIZE','MINIMIZE','RESTORE',
@@ -63,6 +63,8 @@ param(
     public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
 "@ -name "Win32ShowWindowAsync" -namespace Win32Functions -passThru
 
-    $Win32ShowWindowAsync::ShowWindowAsync($MainWindowHandle, $WindowStates[$Style]) | Out-Null
-    Write-Verbose ("Set Window Style '{1} on '{0}'" -f $MainWindowHandle, $Style)
+    if ($PSCmdlet.ShouldProcess($MainWindowHandle, "Set window state to $Style")) {
+        $Win32ShowWindowAsync::ShowWindowAsync($MainWindowHandle, $WindowStates[$Style]) | Out-Null
+        Write-Verbose ("Set Window Style '{1} on '{0}'" -f $MainWindowHandle, $Style)
+    }
 }

@@ -39,7 +39,7 @@ function Clear-ImproperProfileCopy {
 
 
 
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Clear-ImproperProfileCopy')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Clear-ImproperProfileCopy')]
     Param (
         [Parameter(Mandatory=$true, Position=0)]
         [string]$Source,
@@ -49,7 +49,9 @@ function Clear-ImproperProfileCopy {
     )
 
     if (!($Destination)) {
-        New-Item $Destination -ItemType Directory
+        if ($PSCmdlet.ShouldProcess($Destination, "Create directory")) {
+            New-Item $Destination -ItemType Directory
+        }
         $cd = $true
     }
     else {
@@ -63,14 +65,16 @@ function Clear-ImproperProfileCopy {
 
     $i = 0
     do {
-        Move-Item -Path $folder3 -Destination $f2
-        start-sleep 1
-        Remove-Item -Path $folder1 -Recurse -Force
-        Remove-Item -Path $folder2 -Recurse -Force
-        Move-Item -Path $folder4 -Destination $f1
-        start-sleep 1
-        Remove-Item -Path $folder2 -Recurse -Force
-        Remove-Item -Path $folder1 -Recurse -Force
+        if ($PSCmdlet.ShouldProcess($Source, "Clear improper profile copy")) {
+            Move-Item -Path $folder3 -Destination $f2
+            start-sleep 1
+            Remove-Item -Path $folder1 -Recurse -Force
+            Remove-Item -Path $folder2 -Recurse -Force
+            Move-Item -Path $folder4 -Destination $f1
+            start-sleep 1
+            Remove-Item -Path $folder2 -Recurse -Force
+            Remove-Item -Path $folder1 -Recurse -Force
+        }
         Start-Sleep 1
         $i++
         Write-Output "Completed Pass $i"
@@ -78,6 +82,8 @@ function Clear-ImproperProfileCopy {
     until (!(Test-Path $folder3))
 
     if ($cd) {
-        Remove-Item -Path $Destination -Recurse -Force
+        if ($PSCmdlet.ShouldProcess($Destination, "Remove directory")) {
+            Remove-Item -Path $Destination -Recurse -Force
+        }
     }
 }

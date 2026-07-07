@@ -44,7 +44,7 @@ function Set-Reboot {
         "",
         Justification = "Have tried other methods and they do not work consistently."
     )]
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-Reboot')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-Reboot')]
     Param (
         [Parameter(Mandatory=$false)]
         [Alias('Host','Name','Computer','CN')]
@@ -84,11 +84,17 @@ function Set-Reboot {
     #Move the code above to the specified place if you don't want a rolling reboot.
 
     foreach ($Comp in $ComputerName) {
-        if ($Abort) {shutdown -a -m \\$Comp}
+        if ($Abort) {
+            if ($PSCmdlet.ShouldProcess($Comp, "Abort reboot")) {
+                shutdown -a -m \\$Comp
+            }
+        }
         else {
             #Move the code above to here if you don't want a rolling reboot
             try {
-                shutdown -r -m \\$Comp -t $tt1
+                if ($PSCmdlet.ShouldProcess($Comp, "Schedule reboot")) {
+                    shutdown -r -m \\$Comp -t $tt1
+                }
             }
             catch {
                 Throw "Could not schedule rebooot on $Comp"

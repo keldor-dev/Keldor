@@ -36,7 +36,7 @@ function Restart-ActiveDirectory {
 
 
 
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Restart-ActiveDirectory')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Restart-ActiveDirectory')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]
         [Alias('Host','Name','Computer','CN','ComputerName')]
@@ -46,7 +46,11 @@ function Restart-ActiveDirectory {
     if (Get-Module -ListAvailable -Name ActiveDirectory) {
         if (!($All)) {
             Write-Information "Restarting Active Directory service on $DC"
-            try {Restart-Service -inputobject $(Get-Service -ComputerName $DC -Name NTDS -ErrorAction Stop) -Force -ErrorAction Stop}
+            try {
+                if ($PSCmdlet.ShouldProcess($DC, "Restart Active Directory service")) {
+                    Restart-Service -inputobject $(Get-Service -ComputerName $DC -Name NTDS -ErrorAction Stop) -Force -ErrorAction Stop
+                }
+            }
             catch {Throw "Unable to connect to $DC or failed to restart service."}
         }#if not all
         elseif ($All) {
@@ -54,7 +58,11 @@ function Restart-ActiveDirectory {
             foreach ($Srv in $AllDCs) {
                 $SrvName = $Srv.HostName
                 Write-Output "Restarting Active Directory service on $SrvName"
-                try {Restart-Service -inputobject $(Get-Service -ComputerName $SrvName -Name NTDS) -Force}
+                try {
+                    if ($PSCmdlet.ShouldProcess($SrvName, "Restart Active Directory service")) {
+                        Restart-Service -inputobject $(Get-Service -ComputerName $SrvName -Name NTDS) -Force
+                    }
+                }
                 catch {Throw "Unable to connect to $DC or failed to restart service."}
             }#foreach dc
         }#elseif

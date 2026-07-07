@@ -36,7 +36,7 @@ function Clear-DirtyShutdown {
 
 
 
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Clear-DirtyShutdown')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Clear-DirtyShutdown')]
     param(
         [Parameter(
             Mandatory=$false
@@ -58,8 +58,10 @@ function Clear-DirtyShutdown {
 
         $k = "DirtyShutdown"
         $v = 0
-        $BaseKey = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey([Microsoft.Win32.RegistryHive]::LocalMachine, $Comp)
-        $SubKey = $BaseKey.OpenSubKey('SOFTWARE\Microsoft\Windows\CurrentVersion\Reliability',$true)
-        $SubKey.SetValue($k, $v, [Microsoft.Win32.RegistryValueKind]::DWORD)
+        if ($PSCmdlet.ShouldProcess($Comp, "Clear dirty shutdown")) {
+            $BaseKey = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey([Microsoft.Win32.RegistryHive]::LocalMachine, $Comp)
+            $SubKey = $BaseKey.OpenSubKey('SOFTWARE\Microsoft\Windows\CurrentVersion\Reliability',$true)
+            $SubKey.SetValue($k, $v, [Microsoft.Win32.RegistryValueKind]::DWORD)
+        }
     }
 }

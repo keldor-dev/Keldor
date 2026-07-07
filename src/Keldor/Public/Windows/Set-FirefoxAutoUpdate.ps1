@@ -35,7 +35,7 @@ function Set-FirefoxAutoUpdate {
 
 
 
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-FirefoxAutoUpdate')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-FirefoxAutoUpdate')]
     Param (
         [Parameter(
             Mandatory=$false,
@@ -66,10 +66,12 @@ function Set-FirefoxAutoUpdate {
                 Write-Progress -activity "Setting Firefox Auto Update value" -status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length)  * 100)
             }#if length
 
-            ([Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey([Microsoft.Win32.RegistryHive]::LocalMachine, $comp)).CreateSubKey('SOFTWARE\Policies\Mozilla\Firefox')
-            $BaseKey = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey([Microsoft.Win32.RegistryHive]::LocalMachine, $comp)
-            $SubKey = $BaseKey.OpenSubKey('SOFTWARE\Policies\Mozilla\Firefox',$true)
-            $SubKey.SetValue($v1, $d, [Microsoft.Win32.RegistryValueKind]::DWORD)
+            if ($PSCmdlet.ShouldProcess($comp, "Set Firefox auto update")) {
+                ([Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey([Microsoft.Win32.RegistryHive]::LocalMachine, $comp)).CreateSubKey('SOFTWARE\Policies\Mozilla\Firefox')
+                $BaseKey = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey([Microsoft.Win32.RegistryHive]::LocalMachine, $comp)
+                $SubKey = $BaseKey.OpenSubKey('SOFTWARE\Policies\Mozilla\Firefox',$true)
+                $SubKey.SetValue($v1, $d, [Microsoft.Win32.RegistryValueKind]::DWORD)
+            }
         }#foreach computer
     }#if admin
     else {Write-Error "Set-FirefoxAutoUpdate must be ran as administrator"}

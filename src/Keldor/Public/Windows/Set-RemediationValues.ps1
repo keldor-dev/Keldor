@@ -33,7 +33,7 @@ function Set-RemediationValues {
 
 
 
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-RemediationValues')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-RemediationValues')]
     Param (
         [Parameter(
             Mandatory=$false,
@@ -77,6 +77,7 @@ function Set-RemediationValues {
             Write-Progress -activity "Setting remediation values" -status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length)  * 100)
         }#if length
 
+        if ($PSCmdlet.ShouldProcess($comp, "Set remediation values")) {
         #regionInternetExplorer
         ([Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey([Microsoft.Win32.RegistryHive]::LocalMachine, $comp)).CreateSubKey('SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_ALLOW_USER32_EXCEPTION_HANDLER_HARDENING')
         $BaseKey = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey([Microsoft.Win32.RegistryHive]::LocalMachine, $comp)
@@ -383,5 +384,6 @@ function Set-RemediationValues {
 
         # Network Level Authentication
         Set-NLA -ComputerName $comp
+        }
     }#foreach computer
 }

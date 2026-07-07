@@ -33,7 +33,7 @@ function Set-SMBv1 {
 
 
 
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-SMBv1')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-SMBv1')]
     Param (
         [Parameter()]
         [Switch]$On
@@ -44,18 +44,26 @@ function Set-SMBv1 {
 
     if ($On) {
         if ($os -match "2008" -or $os -match "7") {
-            Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" SMB1 -Type DWORD -Value 1 –Force
+            if ($PSCmdlet.ShouldProcess('SMB1', "Enable")) {
+                Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" SMB1 -Type DWORD -Value 1 –Force
+            }
         }
         else {
-            Enable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol
+            if ($PSCmdlet.ShouldProcess('SMB1Protocol', "Enable Windows optional feature")) {
+                Enable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol
+            }
         }
     }
     else {
         if ($os -match "2008" -or $os -match "7") {
-            Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" SMB1 -Type DWORD -Value 0 –Force
+            if ($PSCmdlet.ShouldProcess('SMB1', "Disable")) {
+                Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" SMB1 -Type DWORD -Value 0 –Force
+            }
         }
         else {
-            Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol
+            if ($PSCmdlet.ShouldProcess('SMB1Protocol', "Disable Windows optional feature")) {
+                Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol
+            }
         }
     }
 }

@@ -36,7 +36,9 @@ function Start-AxwayTrayApp {
 
 
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Start-AxwayTrayApp')]
+        [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Start-AxwayTrayApp')]
     Param ()
-& 'C:\Program Files\Tumbleweed\Desktop Validator\DVTrayApp.exe'
+if ($PSCmdlet.ShouldProcess('C:\Program Files\Tumbleweed\Desktop Validator\DVTrayApp.exe', "Start Axway tray app")) {
+    & 'C:\Program Files\Tumbleweed\Desktop Validator\DVTrayApp.exe'
+}
 }

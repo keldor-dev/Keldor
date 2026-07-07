@@ -36,7 +36,7 @@ function Restart-KDC {
 
 
 
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Restart-KDC')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Restart-KDC')]
     Param (
         [Parameter(Mandatory=$false, Position=0)]
         [Alias('Host','Name','Computer','CN','ComputerName')]
@@ -46,7 +46,11 @@ function Restart-KDC {
     if (Get-Module -ListAvailable -Name ActiveDirectory) {
         if (!($All)) {
             Write-Output "Restarting KDC service on $DC"
-            try {Restart-Service -inputobject $(Get-Service -ComputerName $DC -Name kdc) -Force}
+            try {
+                if ($PSCmdlet.ShouldProcess($DC, "Restart KDC service")) {
+                    Restart-Service -inputobject $(Get-Service -ComputerName $DC -Name kdc) -Force
+                }
+            }
             catch {Throw "Unable to connect to $DC or failed to restart service."}
         }#if not all
         elseif ($All) {
@@ -54,7 +58,11 @@ function Restart-KDC {
             foreach ($Srv in $AllDCs) {
                 $SrvName = $Srv.HostName
                 Write-Output "Restarting KDC service on $SrvName"
-                try {Restart-Service -inputobject $(Get-Service -ComputerName $SrvName -Name kdc) -Force}
+                try {
+                    if ($PSCmdlet.ShouldProcess($SrvName, "Restart KDC service")) {
+                        Restart-Service -inputobject $(Get-Service -ComputerName $SrvName -Name kdc) -Force
+                    }
+                }
                 catch {Throw "Unable to connect to $DC or failed to restart service."}
             }#foreach dc
         }#elseif

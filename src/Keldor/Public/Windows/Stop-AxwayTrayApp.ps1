@@ -36,7 +36,11 @@ function Stop-AxwayTrayApp {
 
 
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Stop-AxwayTrayApp')]
+        [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Stop-AxwayTrayApp')]
     Param ()
-Get-Process | Where-Object {$_.Name -match "dvtray"} | Stop-Process -Force
+Get-Process | Where-Object {$_.Name -match "dvtray"} | ForEach-Object {
+    if ($PSCmdlet.ShouldProcess($_.Name, "Stop process")) {
+        $_ | Stop-Process -Force
+    }
+}
 }

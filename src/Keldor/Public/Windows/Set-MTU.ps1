@@ -32,7 +32,7 @@ function Set-MTU {
 
 
 
-	[CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-MTU')]
+	[CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-MTU')]
     Param (
         [Parameter(
             Mandatory=$false,
@@ -40,5 +40,7 @@ function Set-MTU {
         )]
         [int32]$Size = 1500
     )
-    Set-NetIPInterface -AddressFamily IPv4 -NlMtuBytes $Size
+    if ($PSCmdlet.ShouldProcess('IPv4 interfaces', "Set MTU to $Size")) {
+        Set-NetIPInterface -AddressFamily IPv4 -NlMtuBytes $Size
+    }
 }

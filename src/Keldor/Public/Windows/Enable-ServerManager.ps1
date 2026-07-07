@@ -29,12 +29,14 @@ function Enable-ServerManager {
 
 
 
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Enable-ServerManager')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Enable-ServerManager')]
     param ()
 
     $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
     if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-        Get-ScheduledTask -TaskName "ServerManager" | Enable-ScheduledTask
+        if ($PSCmdlet.ShouldProcess('ServerManager', "Enable scheduled task")) {
+            Get-ScheduledTask -TaskName "ServerManager" | Enable-ScheduledTask
+        }
     } else {
         throw "Must be run as administrator."
     }

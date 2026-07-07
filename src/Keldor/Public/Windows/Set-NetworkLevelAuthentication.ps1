@@ -43,7 +43,7 @@ function Set-NetworkLevelAuthentication {
 
 
 
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-NetworkLevelAuthentication')]
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-NetworkLevelAuthentication')]
     [Alias('Set-NLA')]
     param(
         [Parameter(
@@ -64,11 +64,13 @@ function Set-NetworkLevelAuthentication {
             $ErrorActionPreference = "Stop"
             $reg = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey('LocalMachine', $Comp)
             $key = $reg.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\WinStations\\RDP-Tcp",$true)
-            if ($Disable) {
-                $key.SetValue('UserAuthentication', 0, [Microsoft.Win32.RegistryValueKind]::DWORD)
-            }
-            else {
-                $key.SetValue('UserAuthentication', 1, [Microsoft.Win32.RegistryValueKind]::DWORD)
+            if ($PSCmdlet.ShouldProcess($Comp, "Set Network Level Authentication")) {
+                if ($Disable) {
+                    $key.SetValue('UserAuthentication', 0, [Microsoft.Win32.RegistryValueKind]::DWORD)
+                }
+                else {
+                    $key.SetValue('UserAuthentication', 1, [Microsoft.Win32.RegistryValueKind]::DWORD)
+                }
             }
         }
         catch [System.Management.Automation.MethodInvocationException] {
