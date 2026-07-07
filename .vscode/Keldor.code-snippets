@@ -26,7 +26,7 @@
             "        ${2:Short action-focused summary.}",
             "",
             "    .DESCRIPTION",
-            "        ${3:Longer explanation of what the function does and when to use it.}",
+            "        ${3:Longer explanation of what this function does.}",
             "",
             "    .PARAMETER ${4:Path}",
             "        ${5:Specifies the path to process.}",
@@ -76,17 +76,17 @@
             "        ${5:Specifies the target name.}",
             "",
             "    .EXAMPLE",
-            "        ${1:Verb-Noun} -${4:Name} '${6:ExampleName}' -WhatIf",
+            "        ${1:Verb-Noun} -${4:Name} '${6:ExampleName}'",
             "",
-            "        Shows what would happen without making changes.",
+            "        ${7:Runs the command against the specified target.}",
             "",
             "    .OUTPUTS",
-            "        ${7:System.Object}",
+            "        ${8:System.Object}",
             "",
             "    .LINK",
             "        https://docs.keldor.dev",
             "    #>",
-            "    [CmdletBinding(SupportsShouldProcess = \\$true, ConfirmImpact = '${8:Medium}')]",
+            "    [CmdletBinding(SupportsShouldProcess = \\$true, ConfirmImpact = '${9:Medium}')]",
             "    param(",
             "        [Parameter(Mandatory = \\$true)]",
             "        [ValidateNotNullOrEmpty()]",
@@ -94,7 +94,7 @@
             "    )",
             "",
             "    process {",
-            "        if (\\$PSCmdlet.ShouldProcess(\\$${4:Name}, '${9:Perform action}')) {",
+            "        if (\\$PSCmdlet.ShouldProcess(\\$${4:Name}, '${10:Perform action}')) {",
             "            $0",
             "        }",
             "    }",
@@ -115,15 +115,15 @@
             "    ${1:Short action-focused summary.}",
             "",
             ".DESCRIPTION",
-            "    ${2:Longer explanation of what this command does and when to use it.}",
+            "    ${2:Longer explanation of what this function does.}",
             "",
             ".PARAMETER ${3:ParameterName}",
-            "    ${4:Parameter description.}",
+            "    ${4:Describes the parameter.}",
             "",
             ".EXAMPLE",
             "    ${5:Command-Name -Parameter Value}",
             "",
-            "    ${6:Example description.}",
+            "    ${6:Explains what the example does.}",
             "",
             ".OUTPUTS",
             "    ${7:System.Object}",
@@ -132,35 +132,42 @@
             "    https://docs.keldor.dev",
             "#>"
         ],
-        "description": "Insert Keldor's lean PowerShell comment-based help block."
+        "description": "Insert the Keldor lean comment-based help block."
     },
 
-    "Keldor PowerShell Optional Inputs Help": {
-        "scope": "powershell",
-        "prefix": [
-            "keldor-help-inputs",
-            "keldor-inputs"
-        ],
-        "body": [
-            ".INPUTS",
-            "    ${1:System.String}",
-            "",
-            "    ${2:Describe accepted pipeline input.}"
-        ],
-        "description": "Insert an optional .INPUTS help section when pipeline input matters."
-    },
-
-    "Keldor PowerShell Optional Notes Help": {
+    "Keldor PowerShell Comment Help With Notes": {
         "scope": "powershell",
         "prefix": [
             "keldor-help-notes",
-            "keldor-notes"
+            "keldor-comment-help-notes"
         ],
         "body": [
+            "<#",
+            ".SYNOPSIS",
+            "    ${1:Short action-focused summary.}",
+            "",
+            ".DESCRIPTION",
+            "    ${2:Longer explanation of what this function does.}",
+            "",
+            ".PARAMETER ${3:ParameterName}",
+            "    ${4:Describes the parameter.}",
+            "",
+            ".EXAMPLE",
+            "    ${5:Command-Name -Parameter Value}",
+            "",
+            "    ${6:Explains what the example does.}",
+            "",
+            ".OUTPUTS",
+            "    ${7:System.Object}",
+            "",
             ".NOTES",
-            "    ${1:Compatibility, security, operational caveat, or unusual behavior.}"
+            "    ${8:Operational, compatibility, or security caveat.}",
+            "",
+            ".LINK",
+            "    https://docs.keldor.dev",
+            "#>"
         ],
-        "description": "Insert an optional .NOTES help section for meaningful caveats only."
+        "description": "Insert the Keldor comment-based help block with optional NOTES."
     },
 
     "Keldor PowerShell Parameter String": {
@@ -280,26 +287,6 @@
         "description": "Insert a Windows Administrator check."
     },
 
-    "Keldor PowerShell Domain Check": {
-        "scope": "powershell",
-        "prefix": [
-            "keldor-domain-check",
-            "keldor-domain"
-        ],
-        "body": [
-            "if (\\$env:USERDNSDOMAIN -match '${1:contoso.com}') {",
-            "    $0",
-            "}",
-            "elseif (\\$env:USERDNSDOMAIN -match '${2:example.com}') {",
-            "    ${3:# Alternate domain logic}",
-            "}",
-            "else {",
-            "    ${4:# Default logic}",
-            "}"
-        ],
-        "description": "Insert a USERDNSDOMAIN conditional block."
-    },
-
     "Keldor PowerShell Switch": {
         "scope": "powershell",
         "prefix": [
@@ -322,28 +309,6 @@
         "description": "Insert a PowerShell switch block."
     },
 
-    "Keldor PowerShell Progress": {
-        "scope": "powershell",
-        "prefix": [
-            "keldor-progress",
-            "keldor-progressbar"
-        ],
-        "body": [
-            "\\$Index = 0",
-            "\\$Total = \\$${1:Items}.Count",
-            "",
-            "foreach (\\$${2:Item} in \\$${1:Items}) {",
-            "    \\$Index++",
-            "    \\$PercentComplete = (\\$Index / \\$Total) * 100",
-            "",
-            "    Write-Progress -Activity '${3:Processing items}' -Status \"\\$Index of \\$Total\" -PercentComplete \\$PercentComplete",
-            "",
-            "    $0",
-            "}"
-        ],
-        "description": "Insert a Write-Progress loop pattern."
-    },
-
     "Keldor Pester Describe": {
         "scope": "powershell",
         "prefix": [
@@ -360,25 +325,6 @@
         "description": "Insert a Pester Describe/It block."
     },
 
-    "Keldor Pester BeforeAll Import": {
-        "scope": "powershell",
-        "prefix": [
-            "keldor-pester-import",
-            "keldor-beforeall"
-        ],
-        "body": [
-            "BeforeAll {",
-            "    \\$RepoRoot = Join-Path -Path \\$PSScriptRoot -ChildPath '..'",
-            "    \\$ManifestPath = Join-Path -Path \\$RepoRoot -ChildPath '${1:ModuleName}.psd1'",
-            "",
-            "    Import-Module \\$ManifestPath -Force",
-            "}",
-            "",
-            "$0"
-        ],
-        "description": "Insert a Pester BeforeAll module import block."
-    },
-
     "Keldor Markdown Callout Note": {
         "scope": "markdown",
         "prefix": [
@@ -390,36 +336,6 @@
             "> ${1:Note text.}"
         ],
         "description": "Insert a Markdown note callout."
-    },
-
-    "Keldor Markdown Command Section": {
-        "scope": "markdown",
-        "prefix": [
-            "keldor-md-command",
-            "keldor-command-doc"
-        ],
-        "body": [
-            "## `${1:Command-Name}`",
-            "",
-            "${2:Describe what the command does.}",
-            "",
-            "### Syntax",
-            "",
-            "```powershell",
-            "${1:Command-Name} ${3:-Parameter Value}",
-            "```",
-            "",
-            "### Examples",
-            "",
-            "```powershell",
-            "${1:Command-Name}",
-            "```",
-            "",
-            "### Notes",
-            "",
-            "${4:Additional notes.}"
-        ],
-        "description": "Insert a Markdown command documentation section."
     },
 
     "Keldor Markdown ADR": {
