@@ -50,9 +50,9 @@ function Get-KeldorThing {
         Keldor.Thing
 
     .LINK
-        https://docs.keldor.dev
+        https://docs.keldor.dev/powershell/keldor/Get-KeldorThing
     #>
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-KeldorThing')]
     param(
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
@@ -81,6 +81,19 @@ Use these sections by default:
 - `.EXAMPLE`
 - `.OUTPUTS`
 - `.LINK`
+
+The `.LINK` section should point to the function-specific Keldor documentation page:
+
+```powershell
+.LINK
+    https://docs.keldor.dev/powershell/keldor/Get-KeldorThing
+```
+
+The function-specific URL format is:
+
+```text
+https://docs.keldor.dev/powershell/keldor/<FunctionName>
+```
 
 ### Optional
 
@@ -149,10 +162,18 @@ Empty blocks add noise and make functions harder to scan.
 
 Use `[CmdletBinding()]` for public functions.
 
+Public functions should include a `HelpUri` that points to the matching Keldor documentation page:
+
+```powershell
+[CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-KeldorThing')]
+```
+
+The `HelpUri` value should match the `.LINK` URL in the comment-based help block.
+
 Use `SupportsShouldProcess` for destructive or state-changing actions:
 
 ```powershell
-[CmdletBinding(SupportsShouldProcess = $true, ConfirmImpact = 'Medium')]
+[CmdletBinding(SupportsShouldProcess = $true, ConfirmImpact = 'Medium', HelpUri = 'https://docs.keldor.dev/powershell/keldor/Remove-KeldorThing')]
 ```
 
 ## Parameters
