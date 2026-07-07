@@ -29,7 +29,7 @@ function Find-HiddenGALUser {
         [string]$SearchBase
     )
 
-    if (Get-Module -ListAvailable -Name ActiveDirectory) {
+    if (Test-KeldorActiveDirectoryModule -AsBoolean -Quiet) {
         if (!([string]::IsNullOrWhiteSpace($SearchBase))) {
             Get-ADUser -Filter * -Properties givenName,Surname,SamAccountname,EmailAddress,msExchHideFromAddressLists -SearchBase $SearchBase | Where-Object {$_.msExchHideFromAddressLists -eq "TRUE"} |
             Select-Object givenName,Surname,SamAccountname,EmailAddress,msExchHideFromAddressLists

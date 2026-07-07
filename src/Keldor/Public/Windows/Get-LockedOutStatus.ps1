@@ -33,7 +33,7 @@ function Get-LockedOutStatus {
     )
     Begin {
         $cktime = Get-Date -Format t
-        if (Get-Module -ListAvailable -Name ActiveDirectory) {
+        if (Test-KeldorActiveDirectoryModule -AsBoolean -Quiet) {
             #ad module is installed
         }
         else {

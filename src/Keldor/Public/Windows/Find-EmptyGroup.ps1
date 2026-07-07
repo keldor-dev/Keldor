@@ -29,7 +29,7 @@ function Find-EmptyGroup {
       [string]$SearchBase
      )
 
-    if (Get-Module -ListAvailable -Name ActiveDirectory) {
+    if (Test-KeldorActiveDirectoryModule -AsBoolean -Quiet) {
         if (!([string]::IsNullOrWhiteSpace($SearchBase))) {
             Get-ADGroup -Filter * -Properties CN,GroupScope,GroupCategory,ManagedBy,SamAccountName,whenCreated,CanonicalName,Members -SearchBase $SearchBase | Where-Object {-Not $_.Members} |
             Select-Object CN,GroupScope,GroupCategory,ManagedBy,SamAccountName,whenCreated,CanonicalName

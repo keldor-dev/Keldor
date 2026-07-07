@@ -28,7 +28,7 @@ function Set-ADProfilePicture {
         [string]$UserName
     )
 
-    if (Get-Module -ListAvailable -Name ActiveDirectory) {
+    if (Test-KeldorActiveDirectoryModule -Import -AsBoolean -Quiet) {
         [System.Reflection.Assembly]::LoadWithPartialName("System.windows.forms") | Out-Null
         $OpenFileDialog = New-Object System.Windows.Forms.OpenFileDialog
         $OpenFileDialog.initialDirectory = "C:\"
@@ -41,7 +41,6 @@ function Set-ADProfilePicture {
         $item = Get-Item $ppath
         if ($item.Length -gt 102400) {Throw "Unable to set $UserName's picture. Picture must be less than 100 KB. Also recommend max size of 96 x 96 pixels."}
         else {
-            Import-Module activedirectory
             $photo1 = [byte[]](Get-Content $ppath -Encoding byte)
             if ($PSCmdlet.ShouldProcess($UserName, "Set AD profile picture")) {
                 Set-ADUser $UserName -Replace @{thumbnailPhoto=$photo1}

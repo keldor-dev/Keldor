@@ -26,7 +26,7 @@ function Get-NewADGroup {
         [int32]$Days = 1
     )
 
-    if (Get-Module -ListAvailable -Name ActiveDirectory) {
+    if (Test-KeldorActiveDirectoryModule -AsBoolean -Quiet) {
         $When = ((Get-Date).AddDays(-$Days)).Date
         Get-ADGroup -Filter {whenCreated -ge $When} -Properties whenCreated | Select-Object Name,SamAccountName,whenCreated
     }

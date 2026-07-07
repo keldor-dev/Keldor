@@ -17,13 +17,10 @@ function Get-FeaturesOnDemand {
     https://docs.keldor.dev/powershell/keldor/Get-FeaturesOnDemand
 #>
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-FeaturesOnDemand')]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-FeaturesOnDemand')]
     Param ()
-$currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
-    if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {$Role = 'Admin'}
-    else {$Role = 'User'}
 
-    if ($Role -eq "Admin") {
+    if (Test-KeldorAdministrator) {
         $info = (dism /online /get-capabilities | Where-Object {$_ -like "Capability Identity*" -or $_ -like "State*"})
         $idents = ($info | Where-Object {$_ -like "Capa*"}).Split(' : ') | Where-Object {$_ -ne "Capability" -and $_ -ne "Identity" -and $_ -ne $null -and $_ -ne ""}
         $state = $info | Where-Object {$_ -like "State*"}

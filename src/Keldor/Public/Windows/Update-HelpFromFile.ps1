@@ -30,7 +30,6 @@ function Update-HelpFromFile {
     if ([string]::IsNullOrWhiteSpace($Source)) {
         $SourcePath = ($Global:KeldorConfig).HelpFolder
     }
-    $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
-    if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {Update-Help -SourcePath $SourcePath -Module * -Force}
+    if (Test-KeldorAdministrator) {Update-Help -SourcePath $SourcePath -Module * -Force}
     else {Write-Error "Must be ran as administrator."}
 }
