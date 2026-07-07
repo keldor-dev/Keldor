@@ -1,5 +1,5 @@
 function Get-ZuluTime {
-<#
+  <#
 .SYNOPSIS
     Gets Zulu Time.
 
@@ -28,7 +28,7 @@ function Get-ZuluTime {
 
 
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ZuluTime')]
-    Param ()
-(Get-Date).ToUniversalTime()
+  [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ZuluTime')]
+  param ()
+  (Get-Date).ToUniversalTime()
 }

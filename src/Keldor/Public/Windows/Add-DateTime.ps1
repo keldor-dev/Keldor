@@ -1,5 +1,5 @@
 function Add-DateTime {
-<#
+  <#
 .SYNOPSIS
     This function adds the date and time at current insertion point.
 
@@ -29,10 +29,10 @@ function Add-DateTime {
 
 
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-DateTime')]
-    Param ()
-$timeText = @"
+  [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Add-DateTime')]
+  param ()
+  $timeText = @"
 $(Get-Date)
 "@
-    $psise.CurrentFile.Editor.InsertText($timeText)
+  $psise.CurrentFile.Editor.InsertText($timeText)
 }
