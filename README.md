@@ -51,6 +51,8 @@ Use `Get-KeldorSecret` or its `Get-KDSecret` alias to retrieve plaintext secrets
 
 Use `Set-KeldorSecret` or its `Set-KDSecret` alias to write secrets through the same provider model. Writes use one selected provider only; the Environment provider writes process-scoped variables that disappear when the process exits.
 
+Use `Remove-KeldorSecret` or its `Remove-KDSecret` alias to remove a secret from one selected provider. Environment removals affect only the current process and do not remove values configured outside the current PowerShell process.
+
 ### Initial configuration
 
 Run the config command and update values for your environment:

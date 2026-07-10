@@ -77,7 +77,7 @@ else {
 
 $PublicFunctionNames = @($PublicFunctions | Select-Object -ExpandProperty BaseName -Unique)
 $PublicAliasNames = @(
-    Get-Alias -Name 'Get-KDSecret', 'Set-KDSecret' -ErrorAction SilentlyContinue |
+    Get-Alias -Name 'Get-KDSecret', 'Set-KDSecret', 'Remove-KDSecret' -ErrorAction SilentlyContinue |
         Where-Object { $PublicFunctionNames -contains $_.Definition } |
         Select-Object -ExpandProperty Name -Unique
 )
