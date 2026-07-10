@@ -1,5 +1,5 @@
 function Get-ModuleCommandCount {
-<#
+    <#
 .SYNOPSIS
     Gets Module Command Count.
 
@@ -23,19 +23,19 @@ function Get-ModuleCommandCount {
     https://docs.keldor.dev/powershell/keldor/Get-ModuleCommandCount
 #>
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ModuleCommandCount')]
-        param(
-            [Parameter(
-                HelpMessage = "Enter the name of the module. It must be one that is imported.",
-                Mandatory=$true
-            )]
-            [ValidateNotNullOrEmpty()]
-            [Alias('Module')]
-            [string]$Name,
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ModuleCommandCount')]
+    param(
+        [Parameter(
+            HelpMessage = "Enter the name of the module. It must be one that is imported.",
+            Mandatory = $true
+        )]
+        [ValidateNotNullOrEmpty()]
+        [Alias('Module')]
+        [string]$Name,
 
-            [switch]$Functions
-        )
+        [switch]$Functions
+    )
 
-        if ($Functions) {(Get-Command -Module $Name -CommandType Function).Count}
-        else {(Get-Command -Module $Name).Count}
-    }
+    if ($Functions) { (Get-Command -Module $Name -CommandType Function).Count }
+    else { (Get-Command -Module $Name).Count }
+}

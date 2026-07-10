@@ -1,5 +1,5 @@
 function Get-UpdateHistory {
-<#
+    <#
 .SYNOPSIS
     Gets Update History.
 
@@ -20,77 +20,76 @@ function Get-UpdateHistory {
     https://docs.keldor.dev/powershell/keldor/Get-UpdateHistory
 #>
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-UpdateHistory')]
-        param(
-            [Parameter(Mandatory=$false, Position=0)]
-            [Alias('DaysBackToSearch')]
-            [int32]$Days = "7"
-        )
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-UpdateHistory')]
+    param(
+        [Parameter(Mandatory = $false, Position = 0)]
+        [Alias('DaysBackToSearch')]
+        [int32]$Days = "7"
+    )
 
-        $stime = (Get-Date) - (New-TimeSpan -Day $Days)
-        $session = New-Object -ComObject 'Microsoft.Update.Session'
-        $ec = ($session.CreateUpdateSearcher()).GetTotalHistoryCount()
-        $history = ($session.QueryHistory("",0,$ec) | Select-Object ResultCode,Date,Title,Description,ClientApplicationID,Categories,SupportUrl)
-        $ef = $history | Where-Object {$_.Date -gt $stime}
+    $stime = (Get-Date) - (New-TimeSpan -Day $Days)
+    $session = New-Object -ComObject 'Microsoft.Update.Session'
+    $ec = ($session.CreateUpdateSearcher()).GetTotalHistoryCount()
+    $history = ($session.QueryHistory("", 0, $ec) | Select-Object ResultCode, Date, Title, Description, ClientApplicationID, Categories, SupportUrl)
+    $ef = $history | Where-Object { $_.Date -gt $stime }
 
-        $wsusupdates = foreach ($e in $ef | Where-Object {$null -ne ($e.Title) -or ($e.Title) -ne ""}) {
-            switch ($e.ResultCode) {
-                0 {$Result = "Not Started"}
-                1 {$Result = "Restart Required"}
-                2 {$Result = "Succeeded"}
-                3 {$Result = "Succeeded With Errors"}
-                4 {$Result = "Failed"}
-                5 {$Result = "Aborted"}
-                Default {$Result = ($e.ResultCode)}
-            }#switch
+    $wsusupdates = foreach ($e in $ef | Where-Object { $null -ne ($e.Title) -or ($e.Title) -ne "" }) {
+        switch ($e.ResultCode) {
+            0 { $Result = "Not Started" }
+            1 { $Result = "Restart Required" }
+            2 { $Result = "Succeeded" }
+            3 { $Result = "Succeeded With Errors" }
+            4 { $Result = "Failed" }
+            5 { $Result = "Aborted" }
+            default { $Result = ($e.ResultCode) }
+        }#switch
 
-            $Cat = $e.Categories | Select-Object -First 1 -ExpandProperty Name
+        $Cat = $e.Categories | Select-Object -First 1 -ExpandProperty Name
+
+        [PSCustomObject]@{
+            ComputerName        = $env:computername
+            Date                = ($e.Date)
+            Result              = $Result
+            KB                  = (([regex]::match($e.Title, 'KB(\d+)')).Value)
+            Title               = ($e.Title)
+            Category            = $Cat
+            ClientApplicationID = ($e.ClientApplicationID)
+            Description         = ($e.Description)
+            SupportUrl          = ($e.SupportUrl)
+        }
+    }#foreach event in history
+
+    $WSUSkbs = $wsusupdates | Where-Object { $_.Result -eq "Succeeded" } | Select-Object -ExpandProperty KB -Unique
+
+    $setuplogevents = Get-WinEvent -FilterHashtable @{logname = 'setup' } | Where-Object { ($_.Id -eq 2 -or $_.Id -eq 3) -and $_.TimeCreated -gt $stime }
+    $manualupdates = foreach ($update in $setuplogevents) {
+        $updatekb = ($update.Message | Select-String -Pattern 'KB(\d+)' -AllMatches) | Select-Object -ExpandProperty Matches
+
+        if ($updatekb -in $WSUSkbs) {
+            #do nothing
+        } else {
+            if ($update.Id -eq 2) { $status = "Succeeded" }
+            else { $status = "Failed" }
 
             [PSCustomObject]@{
-                ComputerName = $env:computername
-                Date = ($e.Date)
-                Result = $Result
-                KB = (([regex]::match($e.Title,'KB(\d+)')).Value)
-                Title = ($e.Title)
-                Category = $Cat
-                ClientApplicationID = ($e.ClientApplicationID)
-                Description = ($e.Description)
-                SupportUrl = ($e.SupportUrl)
-            }
-        }#foreach event in history
-
-        $WSUSkbs = $wsusupdates | Where-Object {$_.Result -eq "Succeeded"} | Select-Object -ExpandProperty KB -Unique
-
-        $setuplogevents = Get-WinEvent -FilterHashtable @{logname = 'setup'} | Where-Object {($_.Id -eq 2 -or $_.Id -eq 3) -and $_.TimeCreated -gt $stime}
-        $manualupdates = foreach ($update in $setuplogevents) {
-            $updatekb = ($update.Message | Select-String -Pattern 'KB(\d+)' -AllMatches) | Select-Object -ExpandProperty Matches
-
-            if ($updatekb -in $WSUSkbs) {
-                #do nothing
-            }
-            else {
-                if ($update.Id -eq 2) {$status = "Succeeded"}
-                else {$status = "Failed"}
-
-                [PSCustomObject]@{
-                    ComputerName = $env:computername
-                    Date = $update.TimeCreated
-                    Result = $status
-                    KB = $updatekb
-                    Title = $null
-                    Category = $null
-                    ClientApplicationID = "Manual or Remote Script"
-                    Description = $null
-                    SupportUrl = $null
-                }#new object
-            }
+                ComputerName        = $env:computername
+                Date                = $update.TimeCreated
+                Result              = $status
+                KB                  = $updatekb
+                Title               = $null
+                Category            = $null
+                ClientApplicationID = "Manual or Remote Script"
+                Description         = $null
+                SupportUrl          = $null
+            }#new object
         }
+    }
 
-        $allupdates = @()
-        $allupdates += $wsusupdates
-        $allupdates += $manualupdates
+    $allupdates = @()
+    $allupdates += $wsusupdates
+    $allupdates += $manualupdates
 
-        $allupdates | Sort-Object Date -Descending
+    $allupdates | Sort-Object Date -Descending
 
     <#
         This remote piece requires a firewall change in order to get it to work...
@@ -135,4 +134,4 @@ function Get-UpdateHistory {
             }#foreach event in history
         }#foreach comp
     #>
-    }
+}

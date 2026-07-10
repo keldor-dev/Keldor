@@ -1,5 +1,5 @@
 function Clear-ImproperProfileCopy {
-<#
+    <#
 .SYNOPSIS
     Clears Application Data folder that was improperly copied which happens when copy and pasting a profile.
 
@@ -28,11 +28,11 @@ function Clear-ImproperProfileCopy {
 #>
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Clear-ImproperProfileCopy')]
-    Param (
-        [Parameter(Mandatory=$true, Position=0)]
+    param (
+        [Parameter(Mandatory = $true, Position = 0)]
         [string]$Source,
 
-        [Parameter(Mandatory=$true, Position=1)]
+        [Parameter(Mandatory = $true, Position = 1)]
         [string]$Destination
     )
 
@@ -41,8 +41,7 @@ function Clear-ImproperProfileCopy {
             New-Item $Destination -ItemType Directory
         }
         $cd = $true
-    }
-    else {
+    } else {
         $cd = $false
     }
 
@@ -55,11 +54,11 @@ function Clear-ImproperProfileCopy {
     do {
         if ($PSCmdlet.ShouldProcess($Source, "Clear improper profile copy")) {
             Move-Item -Path $folder3 -Destination $f2
-            start-sleep 1
+            Start-Sleep 1
             Remove-Item -Path $folder1 -Recurse -Force
             Remove-Item -Path $folder2 -Recurse -Force
             Move-Item -Path $folder4 -Destination $f1
-            start-sleep 1
+            Start-Sleep 1
             Remove-Item -Path $folder2 -Recurse -Force
             Remove-Item -Path $folder1 -Recurse -Force
         }

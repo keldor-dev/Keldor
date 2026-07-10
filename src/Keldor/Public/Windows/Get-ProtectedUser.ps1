@@ -1,5 +1,5 @@
 function Get-ProtectedUser {
-<#
+    <#
 .SYNOPSIS
     Gets Protected User.
 
@@ -17,13 +17,12 @@ function Get-ProtectedUser {
     https://docs.keldor.dev/powershell/keldor/Get-ProtectedUser
 #>
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ProtectedUser')]
-    Param ()
-if (Get-Module -ListAvailable -Name ActiveDirectory) {
-        $users = (Get-ADUser -filter {admincount -eq "1"}).Name | Sort-Object
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ProtectedUser')]
+    param ()
+    if (Get-Module -ListAvailable -Name ActiveDirectory) {
+        $users = (Get-ADUser -filter { admincount -eq "1" }).Name | Sort-Object
         $users
-    }
-    else {
+    } else {
         Write-Warning "Active Directory module is not installed and is required to run this command."
     }
 }

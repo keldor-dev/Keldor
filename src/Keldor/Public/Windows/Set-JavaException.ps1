@@ -1,5 +1,5 @@
 function Set-JavaException {
-<#
+    <#
 .SYNOPSIS
     Sets Java Exception.
 
@@ -42,17 +42,17 @@ function Set-JavaException {
     )]
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-JavaException')]
     [Alias('Add-JavaException')]
-    Param (
+    param (
         [Parameter(
-            Mandatory=$false
+            Mandatory = $false
         )]
-        [Alias('URI','Address')]
+        [Alias('URI', 'Address')]
         [string]$URL,
 
         [Parameter(
             Mandatory = $false
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = $env:COMPUTERNAME,
 
         [Parameter()]
@@ -67,30 +67,30 @@ function Set-JavaException {
         [switch]$FromShare
     )
 
-    Begin {
-        if ($FromShare) {$Share = "FromShareTrue"}
-        else {$Share = ""}
+    begin {
+        if ($FromShare) { $Share = "FromShareTrue" }
+        else { $Share = "" }
         $ISS = [system.management.automation.runspaces.initialsessionstate]::CreateDefault()
         $RunspacePool = [runspacefactory]::CreateRunspacePool(1, $MaxThreads, $ISS, $Host)
         $RunspacePool.Open()
         $Code = {
             [CmdletBinding(SupportsShouldProcess = $true)]
-            Param (
+            param (
                 [Parameter(
-                    Mandatory=$true,
-                    Position=0
+                    Mandatory = $true,
+                    Position = 0
                 )]
                 [string]$comp,
 
                 [Parameter(
-                    Mandatory=$true,
-                    Position=1
+                    Mandatory = $true,
+                    Position = 1
                 )]
                 [string]$URL,
 
                 [Parameter(
-                    Mandatory=$true,
-                    Position=2
+                    Mandatory = $true,
+                    Position = 2
                 )]
                 [string]$FromShare
             )
@@ -101,8 +101,8 @@ function Set-JavaException {
                     if ($FromShare -eq "FromShareTrue") {
                         Import-Module Keldor
                         $jes = ($Global:KeldorConfig).JException
-                        try {$Path = Get-ChildItem "$env:ProgramFiles\Java" -ErrorAction Stop | Where-Object {$_.Name -like "jre*.*_*"} | Select-Object -ExpandProperty Name}
-                        catch {$Path = Get-ChildItem "${env:ProgramFiles(x86)}\Java" | Where-Object {$_.Name -like "jre*.*_*"} | Select-Object -ExpandProperty Name}
+                        try { $Path = Get-ChildItem "$env:ProgramFiles\Java" -ErrorAction Stop | Where-Object { $_.Name -like "jre*.*_*" } | Select-Object -ExpandProperty Name }
+                        catch { $Path = Get-ChildItem "${env:ProgramFiles(x86)}\Java" | Where-Object { $_.Name -like "jre*.*_*" } | Select-Object -ExpandProperty Name }
                         $lib = [environment]::ExpandEnvironmentVariables("%PROGRAMFILES%\Java\$Path\lib")
                         $lib32 = [environment]::ExpandEnvironmentVariables("%PROGRAMFILES(x86)%\Java\$Path\lib")
 
@@ -117,10 +117,9 @@ function Set-JavaException {
                                 Copy-Item -Path $jes\exception.sites -Destination $lib32 -Force
                             }
                         }
-                    }
-                    else {
-                        try {$Path = Get-ChildItem "$env:ProgramFiles\Java" -ErrorAction Stop | Where-Object {$_.Name -like "jre*.*_*"} | Select-Object -ExpandProperty Name}
-                        catch {$Path = Get-ChildItem "${env:ProgramFiles(x86)}\Java" | Where-Object {$_.Name -like "jre*.*_*"} | Select-Object -ExpandProperty Name}
+                    } else {
+                        try { $Path = Get-ChildItem "$env:ProgramFiles\Java" -ErrorAction Stop | Where-Object { $_.Name -like "jre*.*_*" } | Select-Object -ExpandProperty Name }
+                        catch { $Path = Get-ChildItem "${env:ProgramFiles(x86)}\Java" | Where-Object { $_.Name -like "jre*.*_*" } | Select-Object -ExpandProperty Name }
                         $lib = [environment]::ExpandEnvironmentVariables("%PROGRAMFILES%\Java\$Path\lib")
                         $lib32 = [environment]::ExpandEnvironmentVariables("%PROGRAMFILES(x86)%\Java\$Path\lib")
 
@@ -136,15 +135,14 @@ function Set-JavaException {
                             }
                         }
                     }
-                }
-                else {Write-Error "Must be ran as administrator"}
+                } else { Write-Error "Must be ran as administrator" }
             }#if local comp
             else {
                 if ($FromShare -eq "FromShareTrue") {
                     Import-Module Keldor
                     $jes = ($Global:KeldorConfig).JException
-                    try {$Path = Get-ChildItem "\\$comp\c$\Program Files\Java" -ErrorAction Stop | Where-Object {$_.Name -like "jre*.*_*"} | Select-Object -ExpandProperty Name}
-                    catch {$Path = Get-ChildItem "\\$comp\c$\Program Files (x86)\Java" | Where-Object {$_.Name -like "jre*.*_*"} | Select-Object -ExpandProperty Name}
+                    try { $Path = Get-ChildItem "\\$comp\c$\Program Files\Java" -ErrorAction Stop | Where-Object { $_.Name -like "jre*.*_*" } | Select-Object -ExpandProperty Name }
+                    catch { $Path = Get-ChildItem "\\$comp\c$\Program Files (x86)\Java" | Where-Object { $_.Name -like "jre*.*_*" } | Select-Object -ExpandProperty Name }
                     $lib = "\\" + $comp + "\c$\Program Files\Java\" + $Path + "\lib"
                     $lib32 = "\\" + $comp + "\c$\Program Files (x86)\Java\" + $Path + "\lib"
                     #$je = Get-Content $jes\exception.sites
@@ -172,10 +170,9 @@ function Set-JavaException {
                         #    Add-Content -Path $lib32\exception.sites -Value $je -Force
                         #}
                     }
-                }
-                else {
-                    try {$Path = Get-ChildItem "\\$comp\c$\Program Files\Java" -ErrorAction Stop | Where-Object {$_.Name -like "jre*.*_*"} | Select-Object -ExpandProperty Name}
-                    catch {$Path = Get-ChildItem "\\$comp\c$\Program Files (x86)\Java" | Where-Object {$_.Name -like "jre*.*_*"} | Select-Object -ExpandProperty Name}
+                } else {
+                    try { $Path = Get-ChildItem "\\$comp\c$\Program Files\Java" -ErrorAction Stop | Where-Object { $_.Name -like "jre*.*_*" } | Select-Object -ExpandProperty Name }
+                    catch { $Path = Get-ChildItem "\\$comp\c$\Program Files (x86)\Java" | Where-Object { $_.Name -like "jre*.*_*" } | Select-Object -ExpandProperty Name }
                     $lib = "\\" + $comp + "\c$\Program Files\Java\" + $Path + "\lib"
                     $lib32 = "\\" + $comp + "\c$\Program Files (x86)\Java\" + $Path + "\lib"
 
@@ -195,14 +192,14 @@ function Set-JavaException {
         }#end code block
         $Jobs = @()
     }
-    Process {
+    process {
         Write-Progress -Activity "Preloading threads" -Status "Starting Job $($jobs.count)"
-        ForEach ($Object in $ComputerName){
+        foreach ($Object in $ComputerName) {
             if ($PSCmdlet.ShouldProcess($Object.ToString(), "Set Java exception")) {
                 $PowershellThread = [powershell]::Create().AddScript($Code)
-                $PowershellThread.AddArgument($Object.ToString()) | out-null
-                $PowershellThread.AddArgument($URL.ToString()) | out-null
-                $PowershellThread.AddArgument($Share.ToString()) | out-null
+                $PowershellThread.AddArgument($Object.ToString()) | Out-Null
+                $PowershellThread.AddArgument($URL.ToString()) | Out-Null
+                $PowershellThread.AddArgument($Share.ToString()) | Out-Null
                 $PowershellThread.RunspacePool = $RunspacePool
                 $Handle = $PowershellThread.BeginInvoke()
                 $Job = "" | Select-Object Handle, Thread, object
@@ -213,27 +210,27 @@ function Set-JavaException {
             }
         }
     }
-    End {
+    end {
         $ResultTimer = Get-Date
-        While (@($Jobs | Where-Object {$Null -ne $_.Handle}).count -gt 0)  {
+        while (@($Jobs | Where-Object { $Null -ne $_.Handle }).count -gt 0) {
             $Remaining = "$($($Jobs | Where-Object {$_.Handle.IsCompleted -eq $False}).object)"
-            If ($Remaining.Length -gt 60){
-                $Remaining = $Remaining.Substring(0,60) + "..."
+            if ($Remaining.Length -gt 60) {
+                $Remaining = $Remaining.Substring(0, 60) + "..."
             }
             Write-Progress `
                 -Activity "Waiting for Jobs - $($MaxThreads - $($RunspacePool.GetAvailableRunspaces())) of $MaxThreads threads running" `
-                -PercentComplete (($Jobs.count - $($($Jobs | Where-Object {$_.Handle.IsCompleted -eq $False}).count)) / $Jobs.Count * 100) `
+                -PercentComplete (($Jobs.count - $($($Jobs | Where-Object { $_.Handle.IsCompleted -eq $False }).count)) / $Jobs.Count * 100) `
                 -Status "$(@($($Jobs | Where-Object {$_.Handle.IsCompleted -eq $False})).count) remaining - $remaining"
-            ForEach ($Job in $($Jobs | Where-Object {$_.Handle.IsCompleted -eq $True})){
+            foreach ($Job in $($Jobs | Where-Object { $_.Handle.IsCompleted -eq $True })) {
                 $Job.Thread.EndInvoke($Job.Handle)
                 $Job.Thread.Dispose()
                 $Job.Thread = $Null
                 $Job.Handle = $Null
                 $ResultTimer = Get-Date
             }
-            If (($(Get-Date) - $ResultTimer).totalseconds -gt $MaxResultTime){
+            if (($(Get-Date) - $ResultTimer).totalseconds -gt $MaxResultTime) {
                 Write-Error "Child script appears to be frozen, try increasing MaxResultTime"
-                Exit
+                exit
             }
             Start-Sleep -Milliseconds $SleepTimer
         }

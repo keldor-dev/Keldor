@@ -1,5 +1,5 @@
 function Disable-ServerManager {
-<#
+    <#
 .SYNOPSIS
     Disables the Server Manager from launching automatically on the local computer.
 

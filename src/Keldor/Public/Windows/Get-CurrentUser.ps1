@@ -1,5 +1,5 @@
 function Get-CurrentUser {
-<#
+    <#
 .SYNOPSIS
     Gets Current User.
 
@@ -21,9 +21,9 @@ function Get-CurrentUser {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-CurrentUser')]
-    Param (
-        [Parameter(Mandatory=$true, Position=0)]
-        [Alias('Host','Name','Computer','CN')]
+    param (
+        [Parameter(Mandatory = $true, Position = 0)]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName
     )
 
@@ -31,28 +31,25 @@ function Get-CurrentUser {
     $i = 0
 
     $number = $ComputerName.length
-    $ComputerName | Foreach-object {
-    $Computer = $_
+    $ComputerName | ForEach-Object {
+        $Computer = $_
         if ($number -gt "1") {
             $i++
             $amount = ($i / $number)
             $perc1 = $amount.ToString("P")
-            Write-Progress -activity "Getting current user on computers. Currently checking $comp" -status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length)  * 100)
+            Write-Progress -Activity "Getting current user on computers. Currently checking $comp" -Status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length) * 100)
         }#if length
-    try
-        {
+        try {
             $processinfo = @(Get-WmiObject -class win32_process -ComputerName $Computer -EA "Stop")
-                if ($processinfo) {
-                    $processinfo | Foreach-Object {$_.GetOwner().User} |
-                    Where-Object {$_ -ne "NETWORK SERVICE" -and $_ -ne "LOCAL SERVICE" -and $_ -ne "SYSTEM" -and $_ -ne "DWM-1" -and $_ -ne "UMFD-0" -and $_ -ne "UMFD-1 "} |
+            if ($processinfo) {
+                $processinfo | ForEach-Object { $_.GetOwner().User } |
+                    Where-Object { $_ -ne "NETWORK SERVICE" -and $_ -ne "LOCAL SERVICE" -and $_ -ne "SYSTEM" -and $_ -ne "DWM-1" -and $_ -ne "UMFD-0" -and $_ -ne "UMFD-1 " } |
                     Sort-Object -Unique |
-                    ForEach-Object {[PSCustomObject]@{Computer=$Computer;LoggedOn=$_} } |
-                    Select-Object Computer,LoggedOn
+                    ForEach-Object { [PSCustomObject]@{Computer = $Computer; LoggedOn = $_ } } |
+                    Select-Object Computer, LoggedOn
                 }#If
-        }
-    catch
-        {
-            "Cannot find any processes running on $computer" | Out-Host
-        }
-     }#Forech-object(ComputerName)
-}#Get-CurrentUser
+            } catch {
+                "Cannot find any processes running on $computer" | Out-Host
+            }
+        }#Forech-object(ComputerName)
+    }#Get-CurrentUser

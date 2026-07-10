@@ -1,5 +1,5 @@
 function Get-UpTime {
-<#
+    <#
 .SYNOPSIS
     Gets Up Time.
 
@@ -21,12 +21,12 @@ function Get-UpTime {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-UpTime')]
-    Param (
+    param (
         [Parameter(
-            Mandatory=$false,
-            Position=0
+            Mandatory = $false,
+            Position = 0
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )
 
@@ -35,27 +35,27 @@ function Get-UpTime {
             $wmiq = Get-WmiObject Win32_OperatingSystem -ComputerName $Comp -erroraction stop
             $bootup = [Management.ManagementDateTimeConverter]::ToDateTime($wmiq.LastBootUpTime)
             $ts = New-TimeSpan $bootup
-            $tot = [string]([math]::Round($ts.totalhours,2)) + " h"
+            $tot = [string]([math]::Round($ts.totalhours, 2)) + " h"
             [PSCustomObject]@{
                 ComputerName = $Comp
-                LastBoot = $bootup
-                Total = $tot
-                Days = ($ts.Days)
-                Hours = ($ts.Hours)
-                Minutes = ($ts.Minutes)
-                Seconds = ($ts.Seconds)
+                LastBoot     = $bootup
+                Total        = $tot
+                Days         = ($ts.Days)
+                Hours        = ($ts.Hours)
+                Minutes      = ($ts.Minutes)
+                Seconds      = ($ts.Seconds)
             }#newobject
         }#try
         catch {
             $bootup = "Failed: Could not connect to computer"
             [PSCustomObject]@{
                 ComputerName = $Comp
-                LastBoot = $bootup
-                Total = ""
-                Days = ""
-                Hours = ""
-                Minutes = ""
-                Seconds = ""
+                LastBoot     = $bootup
+                Total        = ""
+                Days         = ""
+                Hours        = ""
+                Minutes      = ""
+                Seconds      = ""
             }#newobject
         }#catch
     }#foreach comp

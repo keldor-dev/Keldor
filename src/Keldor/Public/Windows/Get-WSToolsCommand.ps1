@@ -1,5 +1,5 @@
 function Get-WSToolsCommand {
-<#
+    <#
 .SYNOPSIS
     Gets WS Tools Command.
 
@@ -21,5 +21,5 @@ function Get-WSToolsCommand {
     [Alias('WSToolsCommands')]
     param()
     $commands = (Get-Module Keldor | Select-Object ExportedCommands).ExportedCommands
-    $commands.Values | Select-Object CommandType,Name,Source
+    $commands.Values | Select-Object CommandType, Name, Source
 }

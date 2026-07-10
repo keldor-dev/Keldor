@@ -1,5 +1,5 @@
 function Open-ProgramsAndFeatures {
-<#
+    <#
 .SYNOPSIS
     Opens Programs And Features.
 

@@ -1,5 +1,5 @@
 function Get-ReplicationStatus {
-<#
+    <#
 .SYNOPSIS
     Gets Replication Status.
 

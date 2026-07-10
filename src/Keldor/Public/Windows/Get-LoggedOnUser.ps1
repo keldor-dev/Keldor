@@ -1,5 +1,5 @@
 function Get-LoggedOnUser {
-<#
+    <#
 .SYNOPSIS
     Gets Logged On User.
 
@@ -24,13 +24,13 @@ function Get-LoggedOnUser {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-LoggedOnUser')]
-    Param (
-        [Parameter(Mandatory=$false, Position=0)]
-        [Alias('Host','Name','Computer','CN')]
+    param (
+        [Parameter(Mandatory = $false, Position = 0)]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME",
 
         [Switch]$Lookup
-     )
+    )
 
     foreach ($comp in $ComputerName) {
         if ($Lookup) {
@@ -42,18 +42,18 @@ function Get-LoggedOnUser {
                 $disp = (Get-ADUser $username2 -Properties DisplayName).DisplayName
 
                 [PSCustomObject]@{
-                    Computer = $Comp
-                    Username = $Username
+                    Computer    = $Comp
+                    Username    = $Username
                     DisplayName = $disp
-                } | Select-Object Computer,Username,DisplayName
+                } | Select-Object Computer, Username, DisplayName
             }#try
             catch {
                 $Username = "Comm Error"
                 [PSCustomObject]@{
-                    Computer = $Comp
-                    Username = $Username
+                    Computer    = $Comp
+                    Username    = $Username
                     DisplayName = $null
-                } | Select-Object Computer,Username,DisplayName
+                } | Select-Object Computer, Username, DisplayName
             }#catch
         }#if need to lookup
         else {
@@ -63,14 +63,14 @@ function Get-LoggedOnUser {
                 [PSCustomObject]@{
                     Computer = $Comp
                     Username = $Username
-                } | Select-Object Computer,Username
+                } | Select-Object Computer, Username
             }#try
             catch {
                 $Username = "Comm Error"
                 [PSCustomObject]@{
                     Computer = $Comp
                     Username = $Username
-                } | Select-Object Computer,Username
+                } | Select-Object Computer, Username
             }#catch
         }#else
     }#foreach comp

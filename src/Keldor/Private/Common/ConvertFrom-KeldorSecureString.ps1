@@ -11,8 +11,7 @@ function ConvertFrom-KeldorSecureString {
     try {
         $Bstr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($SecureString)
         [Runtime.InteropServices.Marshal]::PtrToStringBSTR($Bstr)
-    }
-    finally {
+    } finally {
         if ($Bstr -ne [IntPtr]::Zero) {
             [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($Bstr)
         }

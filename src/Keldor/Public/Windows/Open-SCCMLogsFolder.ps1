@@ -1,5 +1,5 @@
 function Open-SCCMLogsFolder {
-<#
+    <#
 .SYNOPSIS
     Opens SCCM Logs Folder.
 
@@ -20,7 +20,7 @@ function Open-SCCMLogsFolder {
     https://docs.keldor.dev/powershell/keldor/Open-SCCMLogsFolder
 #>
 
-<#--
+    <#--
 CAS.log
 Provides information about the process of downloading software updates to the local cache and cache management.
 
@@ -83,28 +83,26 @@ Provides information about the Inventory Tool for Microsoft Updates synchronizat
 This log is only on the client computer configured as the synchronization host for the Inventory Tool for Microsoft Updates.
 --#>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-SCCMLogsFolder')]
-    Param (
-        [Parameter(Mandatory=$false, Position=0)]
-        [Alias('Host','Name','Computer','CN')]
+    param (
+        [Parameter(Mandatory = $false, Position = 0)]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )
 
     foreach ($comp in $ComputerName) {
         if (Test-Path \\$comp\c$\Windows\CCM\Logs) {
             explorer \\$comp\c$\Windows\CCM\Logs
-        }
-        else {
+        } else {
             try {
                 $wmiq = Get-WmiObject win32_operatingsystem -ComputerName $comp -ErrorAction Stop | Select-Object OSArchitecture
                 if ($wmiq -like "*64-bit*") {
                     explorer \\$comp\c$\Windows\SysWOW64\CCM\Logs
-                }
-                else {
+                } else {
                     explorer \\$comp\c$\Windows\System32\CCM\Logs
                 }
             }#try
             catch {
-                Throw "Unable to connect to $comp"
+                throw "Unable to connect to $comp"
             }
         }
     }#foreach computer

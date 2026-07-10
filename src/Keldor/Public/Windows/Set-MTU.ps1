@@ -1,5 +1,5 @@
 function Set-MTU {
-<#
+    <#
 .SYNOPSIS
     Sets MTU.
 
@@ -20,11 +20,11 @@ function Set-MTU {
     https://docs.keldor.dev/powershell/keldor/Set-MTU
 #>
 
-	[CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-MTU')]
-    Param (
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-MTU')]
+    param (
         [Parameter(
-            Mandatory=$false,
-            Position=0
+            Mandatory = $false,
+            Position = 0
         )]
         [int32]$Size = 1500
     )

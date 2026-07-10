@@ -1,5 +1,5 @@
 function Get-ENSStatus {
-<#
+    <#
 .SYNOPSIS
     Gets ENS Status.
 
@@ -21,10 +21,10 @@ function Get-ENSStatus {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ENSStatus')]
-    [Alias('ENS','Get-ENSInfo','ESS','Get-ESSInfo')]
-    Param (
-        [Parameter(Mandatory=$false, Position=0)]
-        [Alias('Host','Name','Computer','CN')]
+    [Alias('ENS', 'Get-ENSInfo', 'ESS', 'Get-ESSInfo')]
+    param (
+        [Parameter(Mandatory = $false, Position = 0)]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )
 
@@ -42,7 +42,7 @@ function Get-ENSStatus {
     #For each computer, check ENS
     foreach ($comp in $ComputerName) {
         #Set variables required per computer
-        Clear-Variable -Name value2,reg,key,key2,datold,daysdatold,daysold,ensversion,epolist,epoinfo,ePOServers,ePOServerList,lasc,lascd,luc,lucd,name -ErrorAction SilentlyContinue | Out-Null
+        Clear-Variable -Name value2, reg, key, key2, datold, daysdatold, daysold, ensversion, epolist, epoinfo, ePOServers, ePOServerList, lasc, lascd, luc, lucd, name -ErrorAction SilentlyContinue | Out-Null
 
         $continue = $false
         $ensinstalled = $false
@@ -52,7 +52,7 @@ function Get-ENSStatus {
             $i++
             $amount = ($i / $number)
             $perc1 = $amount.ToString("P")
-            Write-Progress -activity "Getting ENS status. Currently checking $comp" -status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length)  * 100)
+            Write-Progress -Activity "Getting ENS status. Currently checking $comp" -Status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length) * 100)
         }#progress bar
 
         #Make sure running at least PowerShell v3
@@ -66,8 +66,7 @@ function Get-ENSStatus {
                 try {
                     $key2 = $reg.OpenSubKey($64ens)
                     $ensinstalled = $true
-                }
-                catch {
+                } catch {
                     $ensinstalled = $false
                 }
 
@@ -84,16 +83,14 @@ function Get-ENSStatus {
 
                     $continue = $true
                 }
-            }
-            catch {
+            } catch {
                 try {
                     $reg = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey('LocalMachine', $comp)
                     $key = $reg.OpenSubKey($32ens)
                     $value2 = $key.GetValue('CurrentVersion')
                     $value2 | Out-Null
                     $continue = $true
-                }
-                catch {
+                } catch {
                     $value2 = $null
                     $continue = $false
                 }
@@ -102,14 +99,13 @@ function Get-ENSStatus {
             if ($continue) {
                 $epoinfo = $epolist.Split('|')
                 $epoinfo = $epoinfo.Split(';')
-                $ePOServers = $epoinfo | Where-Object {$_ -match $dn}
+                $ePOServers = $epoinfo | Where-Object { $_ -match $dn }
                 foreach ($ePOServer in $ePOServers) {
                     $name = $null
                     $name = $ePOServer.Substring(0, $ePOServer.IndexOf('.'))
                     if ([string]::IsNullOrWhiteSpace($ePOServerList)) {
                         $ePOServerList = $name
-                    }
-                    else {
+                    } else {
                         $ePOServerList = $ePOServerList + ", " + $name
                     }
                 }
@@ -132,11 +128,11 @@ function Get-ENSStatus {
 
             #Create the object data
             [PSCustomObject]@{
-                ComputerName = $comp
-                FrameworkInstalled = $ensinstalled
-                FrameworkVersion = $ensversion
-                ePOServerList = $ePOServerList
-                LastServerComms = $lascd
+                ComputerName            = $comp
+                FrameworkInstalled      = $ensinstalled
+                FrameworkVersion        = $ensversion
+                ePOServerList           = $ePOServerList
+                LastServerComms         = $lascd
                 LastSecurityUpdateCheck = $lucd
 
             }

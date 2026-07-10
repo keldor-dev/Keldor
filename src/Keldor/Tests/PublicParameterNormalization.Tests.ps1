@@ -4,10 +4,10 @@ Describe "Public parameter normalization" {
 
         function Get-KeldorFunctionParameter {
             param(
-                [Parameter(Mandatory=$true)]
+                [Parameter(Mandatory = $true)]
                 [string]$FunctionName,
 
-                [Parameter(Mandatory=$true)]
+                [Parameter(Mandatory = $true)]
                 [string]$ParameterName
             )
 
@@ -27,7 +27,7 @@ Describe "Public parameter normalization" {
                 {
                     param($node)
                     $node -is [System.Management.Automation.Language.FunctionDefinitionAst] -and
-                        $node.Name -eq $FunctionName
+                    $node.Name -eq $FunctionName
                 },
                 $true
             )
@@ -39,7 +39,7 @@ Describe "Public parameter normalization" {
 
         function Get-KeldorParameterAliases {
             param(
-                [Parameter(Mandatory=$true)]
+                [Parameter(Mandatory = $true)]
                 [System.Management.Automation.Language.ParameterAst]$ParameterAst
             )
 
@@ -49,8 +49,7 @@ Describe "Public parameter normalization" {
                     foreach ($argument in $attribute.PositionalArguments) {
                         if ($argument -is [System.Management.Automation.Language.StringConstantExpressionAst]) {
                             $aliases += $argument.Value
-                        }
-                        else {
+                        } else {
                             $aliases += $argument.Extent.Text.Trim("'`"")
                         }
                     }
@@ -62,7 +61,7 @@ Describe "Public parameter normalization" {
 
         function Test-KeldorParameterHasValidateNotNullOrEmpty {
             param(
-                [Parameter(Mandatory=$true)]
+                [Parameter(Mandatory = $true)]
                 [System.Management.Automation.Language.ParameterAst]$ParameterAst
             )
 
@@ -73,17 +72,17 @@ Describe "Public parameter normalization" {
             @{ Function = 'Set-AutoLoadPreference'; Parameter = 'Mode'; Aliases = @(); ValidateNotNullOrEmpty = $false }
             @{ Function = 'ConvertFrom-BuildNumber'; Parameter = 'BuildNumber'; Aliases = @('Build'); ValidateNotNullOrEmpty = $true }
             @{ Function = 'Convert-ImageToBase64'; Parameter = 'Path'; Aliases = @('ImagePath'); ValidateNotNullOrEmpty = $true }
-            @{ Function = 'Open-FileWithCMTrace'; Parameter = 'Path'; Aliases = @('FileName','File','Name'); ValidateNotNullOrEmpty = $true }
-            @{ Function = 'Get-DirectoryStat'; Parameter = 'Path'; Aliases = @('DirectoryName','Dir','Folder','UNC'); ValidateNotNullOrEmpty = $true }
-            @{ Function = 'Convert-IPtoINT64'; Parameter = 'IPAddress'; Aliases = @('IP','IPs','IPv4','Address'); ValidateNotNullOrEmpty = $false }
-            @{ Function = 'Format-IPList'; Parameter = 'IPAddress'; Aliases = @('IP','IPs','IPv4','Address','IPAddresses'); ValidateNotNullOrEmpty = $true }
-            @{ Function = 'Get-IPrange'; Parameter = 'IPAddress'; Aliases = @('IP','IPs','IPv4','Address','IPv4Address'); ValidateNotNullOrEmpty = $false }
-            @{ Function = 'Find-UserProfile'; Parameter = 'UserName'; Aliases = @('Username','User','SamAccountName'); ValidateNotNullOrEmpty = $false }
-            @{ Function = 'Find-UserProfileWithPSTSearch'; Parameter = 'UserName'; Aliases = @('Username','User','SamAccountName'); ValidateNotNullOrEmpty = $false }
-            @{ Function = 'Get-LockedOutStatus'; Parameter = 'UserName'; Aliases = @('Username','User','SamAccountName'); ValidateNotNullOrEmpty = $false }
-            @{ Function = 'Set-ADProfilePicture'; Parameter = 'UserName'; Aliases = @('Username','User','SamAccountName'); ValidateNotNullOrEmpty = $true }
-            @{ Function = 'Copy-UserProfile'; Parameter = 'UserName'; Aliases = @('User','Username','SamAccountName'); ValidateNotNullOrEmpty = $true }
-            @{ Function = 'Copy-UserProfile'; Parameter = 'DestinationPath'; Aliases = @('Destination','Dest','DestinationFolder','DestFolder'); ValidateNotNullOrEmpty = $false }
+            @{ Function = 'Open-FileWithCMTrace'; Parameter = 'Path'; Aliases = @('FileName', 'File', 'Name'); ValidateNotNullOrEmpty = $true }
+            @{ Function = 'Get-DirectoryStat'; Parameter = 'Path'; Aliases = @('DirectoryName', 'Dir', 'Folder', 'UNC'); ValidateNotNullOrEmpty = $true }
+            @{ Function = 'Convert-IPtoINT64'; Parameter = 'IPAddress'; Aliases = @('IP', 'IPs', 'IPv4', 'Address'); ValidateNotNullOrEmpty = $false }
+            @{ Function = 'Format-IPList'; Parameter = 'IPAddress'; Aliases = @('IP', 'IPs', 'IPv4', 'Address', 'IPAddresses'); ValidateNotNullOrEmpty = $true }
+            @{ Function = 'Get-IPrange'; Parameter = 'IPAddress'; Aliases = @('IP', 'IPs', 'IPv4', 'Address', 'IPv4Address'); ValidateNotNullOrEmpty = $false }
+            @{ Function = 'Find-UserProfile'; Parameter = 'UserName'; Aliases = @('Username', 'User', 'SamAccountName'); ValidateNotNullOrEmpty = $false }
+            @{ Function = 'Find-UserProfileWithPSTSearch'; Parameter = 'UserName'; Aliases = @('Username', 'User', 'SamAccountName'); ValidateNotNullOrEmpty = $false }
+            @{ Function = 'Get-LockedOutStatus'; Parameter = 'UserName'; Aliases = @('Username', 'User', 'SamAccountName'); ValidateNotNullOrEmpty = $false }
+            @{ Function = 'Set-ADProfilePicture'; Parameter = 'UserName'; Aliases = @('Username', 'User', 'SamAccountName'); ValidateNotNullOrEmpty = $true }
+            @{ Function = 'Copy-UserProfile'; Parameter = 'UserName'; Aliases = @('User', 'Username', 'SamAccountName'); ValidateNotNullOrEmpty = $true }
+            @{ Function = 'Copy-UserProfile'; Parameter = 'DestinationPath'; Aliases = @('Destination', 'Dest', 'DestinationFolder', 'DestFolder'); ValidateNotNullOrEmpty = $false }
         )
     }
 

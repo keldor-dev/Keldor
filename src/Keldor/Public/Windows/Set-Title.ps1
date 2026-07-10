@@ -1,5 +1,5 @@
 function Set-Title {
-<#
+    <#
 .SYNOPSIS
     Sets Title.
 
@@ -22,8 +22,8 @@ function Set-Title {
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-Title')]
     [Alias('title')]
-    Param (
-        [Parameter(Mandatory=$true, Position=0)]
+    param (
+        [Parameter(Mandatory = $true, Position = 0)]
         [string]$titleText
     )
     if ($PSCmdlet.ShouldProcess('PowerShell window title', "Set to $titleText")) {

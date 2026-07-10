@@ -1,5 +1,5 @@
 function Remove-KeldorSecret {
-<#
+    <#
 .SYNOPSIS
     Removes a Keldor secret.
 
@@ -52,12 +52,12 @@ function Remove-KeldorSecret {
     param(
         [Parameter(Mandatory = $true, Position = 0, ValueFromPipelineByPropertyName = $true)]
         [ValidateScript({
-            if ([string]::IsNullOrWhiteSpace($_)) {
-                throw "Name cannot be null, empty, or whitespace."
-            }
+                if ([string]::IsNullOrWhiteSpace($_)) {
+                    throw "Name cannot be null, empty, or whitespace."
+                }
 
-            $true
-        })]
+                $true
+            })]
         [string]$Name,
 
         [Parameter(Position = 1)]
@@ -120,8 +120,7 @@ function Remove-KeldorSecret {
         if ([string]::IsNullOrWhiteSpace($Field)) {
             $Target = "secret '$Name' using provider '$SelectedProvider'"
             $Action = 'remove secret'
-        }
-        else {
+        } else {
             $Target = "field '$Field' on secret '$Name' using provider '$SelectedProvider'"
             $Action = 'remove secret field'
         }

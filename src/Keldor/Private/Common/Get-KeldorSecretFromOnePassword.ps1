@@ -16,8 +16,7 @@ function Get-KeldorSecretFromOnePassword {
 
     if ([string]::IsNullOrWhiteSpace($Vault)) {
         $SecretReference = "op://$Name/password"
-    }
-    else {
+    } else {
         $SecretReference = "op://$Vault/$Name/password"
     }
 
@@ -32,8 +31,7 @@ function Get-KeldorSecretFromOnePassword {
         }
 
         return ([string]::Join([Environment]::NewLine, @($SecretValue))).TrimEnd("`r", "`n")
-    }
-    catch {
+    } catch {
         return $null
     }
 }

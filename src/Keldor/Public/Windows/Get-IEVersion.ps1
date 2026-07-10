@@ -1,5 +1,5 @@
 function Get-IEVersion {
-<#
+    <#
 .SYNOPSIS
     Gets IE Version.
 
@@ -21,12 +21,12 @@ function Get-IEVersion {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-IEVersion')]
-    Param (
+    param (
         [Parameter(
-            Mandatory=$false,
-            Position=0
+            Mandatory = $false,
+            Position = 0
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )
 
@@ -40,7 +40,7 @@ function Get-IEVersion {
         $value = $key.GetValue('Version')
         [PSCustomObject]@{
             ComputerName = $comp
-            IEVersion = $value
+            IEVersion    = $value
         }# new object
     }# foreach computer
 }

@@ -27,8 +27,7 @@ function Get-KeldorSecretProviderInfoObject {
                     if ($null -ne $VersionOutput) {
                         $Version = ([string]::Join(' ', @($VersionOutput))).Trim()
                     }
-                }
-                catch {
+                } catch {
                     $Version = $null
                 }
 
@@ -37,16 +36,14 @@ function Get-KeldorSecretProviderInfoObject {
                     if ($Command.CommandType -ne 'Application' -or $LASTEXITCODE -eq 0) {
                         $Authenticated = $true
                     }
-                }
-                catch {
+                } catch {
                     $Authenticated = $false
                 }
 
                 if ($Authenticated) {
                     $Status = 'Ready'
                     $StatusReason = 'The 1Password CLI is installed and authentication was confirmed.'
-                }
-                else {
+                } else {
                     $Status = 'NotAuthenticated'
                     $StatusReason = 'The 1Password CLI is installed, but authentication could not be confirmed.'
                 }
@@ -97,8 +94,7 @@ function Get-KeldorSecretProviderInfoObject {
             if ($Installed -and $MissingCommands.Count -eq 0) {
                 try {
                     $Vaults = @(Get-SecretVault -ErrorAction Stop -WarningAction SilentlyContinue -InformationAction SilentlyContinue -Verbose:$false -Debug:$false)
-                }
-                catch {
+                } catch {
                     $Vaults = @()
                 }
             }
@@ -115,16 +111,13 @@ function Get-KeldorSecretProviderInfoObject {
             if (-not $Installed) {
                 $Status = 'NotInstalled'
                 $StatusReason = 'Microsoft.PowerShell.SecretManagement is not installed.'
-            }
-            elseif ($MissingCommands.Count -gt 0) {
+            } elseif ($MissingCommands.Count -gt 0) {
                 $Status = 'PartiallyAvailable'
                 $StatusReason = 'Microsoft.PowerShell.SecretManagement is installed, but one or more required commands are unavailable.'
-            }
-            elseif (-not $HasVault) {
+            } elseif (-not $HasVault) {
                 $Status = 'NotConfigured'
                 $StatusReason = 'Microsoft.PowerShell.SecretManagement is installed, but no vaults are registered.'
-            }
-            else {
+            } else {
                 $Status = 'Ready'
                 $StatusReason = 'Microsoft.PowerShell.SecretManagement is installed and at least one vault is registered.'
             }

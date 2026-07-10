@@ -1,5 +1,5 @@
 function Open-HomeDrive {
-<#
+    <#
 .SYNOPSIS
     Opens Home Drive.
 
@@ -17,7 +17,7 @@ function Open-HomeDrive {
     https://docs.keldor.dev/powershell/keldor/Open-HomeDrive
 #>
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-HomeDrive')]
-    Param ()
-explorer.exe $env:HOMESHARE
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-HomeDrive')]
+    param ()
+    explorer.exe $env:HOMESHARE
 }

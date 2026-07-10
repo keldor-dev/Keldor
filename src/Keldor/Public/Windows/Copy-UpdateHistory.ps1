@@ -1,5 +1,5 @@
 function Copy-UpdateHistory {
-<#
+    <#
 .SYNOPSIS
     Copies the UpdateHistory.csv report to the UHPath config item path.
 
@@ -32,9 +32,9 @@ function Copy-UpdateHistory {
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Copy-UpdateHistory')]
     param(
         [Parameter(
-            Mandatory=$false
+            Mandatory = $false
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )
 
@@ -47,18 +47,16 @@ function Copy-UpdateHistory {
             $i++
             $amount = ($i / $number)
             $perc1 = $amount.ToString("P")
-            Write-Progress -activity "Copying Update Reports. Current computer: $Comp" -status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length)  * 100)
+            Write-Progress -Activity "Copying Update Reports. Current computer: $Comp" -Status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length) * 100)
         }# if length
 
         if ($Comp -eq $env:COMPUTERNAME) {
             if (Test-Path C:\ProgramData\Keldor\Reports\$Comp`_UpdateHistory.csv) {
                 robocopy C:\ProgramData\Keldor\Reports $uhpath *_UpdateHistory.csv /r:3 /w:5 /njh /njs | Out-Null
-            }
-            else {
+            } else {
                 Write-Error "Report not found. Please use Save-UpdateHistory to create a report."
             }
-        }
-        else {
+        } else {
             robocopy \\$Comp\c$\ProgramData\Keldor\Reports $uhpath *_UpdateHistory.csv /r:3 /w:5 /njh /njs | Out-Null
         }
     }

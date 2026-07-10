@@ -1,5 +1,5 @@
 function Open-AdminTools {
-<#
+    <#
 .SYNOPSIS
     Opens Admin Tools.
 
@@ -18,7 +18,7 @@ function Open-AdminTools {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-AdminTools')]
-    [Alias('tools','admintools','admin')]
+    [Alias('tools', 'admintools', 'admin')]
     param()
     control.exe admintools
 }

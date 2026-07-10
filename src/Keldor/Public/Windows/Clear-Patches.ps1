@@ -1,5 +1,5 @@
 function Clear-Patches {
-<#
+    <#
 .SYNOPSIS
     Clears the C:\Patches folder.
 
@@ -53,13 +53,13 @@ function Clear-Patches {
         Justification = "Expresses exactly what the function does and is what the folder name is called."
     )]
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Clear-Patches')]
-    Param (
+    param (
         [Parameter(HelpMessage = "Enter one or more computer names separated by commas.",
-            Mandatory=$true,
+            Mandatory = $true,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true
         )]
-        [Alias('Host','Name','Computer','CN','ComputerName')]
+        [Alias('Host', 'Name', 'Computer', 'CN', 'ComputerName')]
         [string[]]$ObjectList,
 
         [Parameter()]
@@ -78,7 +78,7 @@ function Clear-Patches {
         $MaxResultTime = 1200
     )
 
-    Begin {
+    begin {
         $ISS = [system.management.automation.runspaces.initialsessionstate]::CreateDefault()
         $RunspacePool = [runspacefactory]::CreateRunspacePool(1, $MaxThreads, $ISS, $Host)
         $RunspacePool.Open()
@@ -86,10 +86,10 @@ function Clear-Patches {
         if ($Recursive) {
             $Code = {
                 [CmdletBinding(SupportsShouldProcess = $true)]
-                Param (
+                param (
                     [Parameter(
-                        Mandatory=$true,
-                        Position=0
+                        Mandatory = $true,
+                        Position = 0
                     )]
                     [string]$comp
                 )
@@ -98,23 +98,22 @@ function Clear-Patches {
                 $dn = $comp + "CS"
                 $patches = $dn + ":\Patches"
                 try {
-                    New-PSDrive -Name $dn -PSProvider FileSystem -root "$psdpath" -ErrorAction Stop | Out-Null
+                    New-PSDrive -Name $dn -PSProvider FileSystem -Root "$psdpath" -ErrorAction Stop | Out-Null
                     if (Test-Path $patches) {
                         Set-Location $patches -ErrorAction Stop
                         if ((Get-Location).Path -eq $patches) {
                             if ($PSCmdlet.ShouldProcess($patches, "Clear patches recursively")) {
-                                Remove-Item * -Recurse -force -ErrorAction SilentlyContinue
+                                Remove-Item * -Recurse -Force -ErrorAction SilentlyContinue
                             }
                         }
                         $info = [PSCustomObject]@{
                             ComputerName = $Comp
-                            Status = "Cleared"
+                            Status       = "Cleared"
                         }#new object
-                    }
-                    else {
+                    } else {
                         $info = [PSCustomObject]@{
                             ComputerName = $Comp
-                            Status = "No patches folder"
+                            Status       = "No patches folder"
                         }#new object
                     }
                     Remove-PSDrive -Name $dn -ErrorAction SilentlyContinue -Force | Out-Null
@@ -122,7 +121,7 @@ function Clear-Patches {
                 catch {
                     $info = [PSCustomObject]@{
                         ComputerName = $Comp
-                        Status = "Unable to clear"
+                        Status       = "Unable to clear"
                     }#new object
                 }#catch
 
@@ -132,10 +131,10 @@ function Clear-Patches {
         elseif ($Old) {
             $Code = {
                 [CmdletBinding(SupportsShouldProcess = $true)]
-                Param (
+                param (
                     [Parameter(
-                        Mandatory=$true,
-                        Position=0
+                        Mandatory = $true,
+                        Position = 0
                     )]
                     [string]$comp
                 )
@@ -144,10 +143,10 @@ function Clear-Patches {
                 $dn = $comp + "CS"
                 $patches = $dn + ":\Patches"
                 try {
-                    New-PSDrive -Name $dn -PSProvider FileSystem -root "$psdpath" -ErrorAction Stop | Out-Null
+                    New-PSDrive -Name $dn -PSProvider FileSystem -Root "$psdpath" -ErrorAction Stop | Out-Null
                     if (Test-Path $patches) {
                         Set-Location $patches -ErrorAction Stop
-                        $op = Get-ChildItem $patches | Where-Object {$_.Attributes -ne "Directory" -and $_.Name -notmatch "Install.ps1" -and $_.LastWriteTime -lt ((Get-Date).AddDays(-28))} | Select-Object FullName -ExpandProperty FullName
+                        $op = Get-ChildItem $patches | Where-Object { $_.Attributes -ne "Directory" -and $_.Name -notmatch "Install.ps1" -and $_.LastWriteTime -lt ((Get-Date).AddDays(-28)) } | Select-Object FullName -ExpandProperty FullName
 
                         foreach ($p in $op) {
                             if ($PSCmdlet.ShouldProcess($p, "Remove old patch file")) {
@@ -156,13 +155,12 @@ function Clear-Patches {
                         }
                         $info = [PSCustomObject]@{
                             ComputerName = $Comp
-                            Status = "Cleared"
+                            Status       = "Cleared"
                         }#new object
-                    }
-                    else {
+                    } else {
                         $info = [PSCustomObject]@{
                             ComputerName = $Comp
-                            Status = "No patches folder"
+                            Status       = "No patches folder"
                         }#new object
                     }
                     Remove-PSDrive -Name $dn -ErrorAction SilentlyContinue -Force | Out-Null
@@ -170,7 +168,7 @@ function Clear-Patches {
                 catch {
                     $info = [PSCustomObject]@{
                         ComputerName = $Comp
-                        Status = "Unable to clear"
+                        Status       = "Unable to clear"
                     }#new object
                 }#catch
 
@@ -180,10 +178,10 @@ function Clear-Patches {
         else {
             $Code = {
                 [CmdletBinding(SupportsShouldProcess = $true)]
-                Param (
+                param (
                     [Parameter(
-                        Mandatory=$true,
-                        Position=0
+                        Mandatory = $true,
+                        Position = 0
                     )]
                     [string]$comp
                 )
@@ -192,24 +190,23 @@ function Clear-Patches {
                 $dn = $comp + "CS"
                 $patches = $dn + ":\Patches"
                 try {
-                    New-PSDrive -Name $dn -PSProvider FileSystem -root "$psdpath" -ErrorAction Stop | Out-Null
+                    New-PSDrive -Name $dn -PSProvider FileSystem -Root "$psdpath" -ErrorAction Stop | Out-Null
                     if (Test-Path $patches) {
                         Set-Location $patches -ErrorAction Stop
                         if ((Get-Location).Path -eq $patches) {
                             if ($PSCmdlet.ShouldProcess($patches, "Clear patch files")) {
-                                Remove-Item .\*.* -force -ErrorAction SilentlyContinue
+                                Remove-Item .\*.* -Force -ErrorAction SilentlyContinue
                                 Remove-Item .\cab\* -Recurse -Force -ErrorAction SilentlyContinue
                             }
                         }
                         $info = [PSCustomObject]@{
                             ComputerName = $Comp
-                            Status = "Cleared"
+                            Status       = "Cleared"
                         }#new object
-                    }
-                    else {
+                    } else {
                         $info = [PSCustomObject]@{
                             ComputerName = $Comp
-                            Status = "No patches folder"
+                            Status       = "No patches folder"
                         }#new object
                     }
                     Remove-PSDrive -Name $dn -ErrorAction SilentlyContinue -Force | Out-Null
@@ -217,7 +214,7 @@ function Clear-Patches {
                 catch {
                     $info = [PSCustomObject]@{
                         ComputerName = $Comp
-                        Status = "Unable to clear"
+                        Status       = "Unable to clear"
                     }#new object
                 }#catch
                 $info
@@ -225,12 +222,12 @@ function Clear-Patches {
         }#else not recursive or old
         $Jobs = @()
     }
-    Process {
+    process {
         Write-Progress -Activity "Preloading threads" -Status "Starting Job $($jobs.count)"
-        ForEach ($Object in $ObjectList){
+        foreach ($Object in $ObjectList) {
             if ($PSCmdlet.ShouldProcess($Object.ToString(), "Clear patches")) {
                 $PowershellThread = [powershell]::Create().AddScript($Code)
-                $PowershellThread.AddArgument($Object.ToString()) | out-null
+                $PowershellThread.AddArgument($Object.ToString()) | Out-Null
 
                 $PowershellThread.RunspacePool = $RunspacePool
                 $Handle = $PowershellThread.BeginInvoke()
@@ -242,28 +239,28 @@ function Clear-Patches {
             }
         }
     }
-    End {
+    end {
         $ResultTimer = Get-Date
-        While (@($Jobs | Where-Object {$null -ne $_.Handle}).count -gt 0)  {
+        while (@($Jobs | Where-Object { $null -ne $_.Handle }).count -gt 0) {
             $Remaining = "$($($Jobs | Where-Object {$_.Handle.IsCompleted -eq $False}).object)"
-            If ($Remaining.Length -gt 60){
-                $Remaining = $Remaining.Substring(0,60) + "..."
+            if ($Remaining.Length -gt 60) {
+                $Remaining = $Remaining.Substring(0, 60) + "..."
             }
             Write-Progress `
                 -Activity "Waiting for Jobs - $($MaxThreads - $($RunspacePool.GetAvailableRunspaces())) of $MaxThreads threads running" `
-                -PercentComplete (($Jobs.count - $($($Jobs | Where-Object {$_.Handle.IsCompleted -eq $False}).count)) / $Jobs.Count * 100) `
+                -PercentComplete (($Jobs.count - $($($Jobs | Where-Object { $_.Handle.IsCompleted -eq $False }).count)) / $Jobs.Count * 100) `
                 -Status "$(@($($Jobs | Where-Object {$_.Handle.IsCompleted -eq $False})).count) remaining - $remaining"
 
-            ForEach ($Job in $($Jobs | Where-Object {$_.Handle.IsCompleted -eq $True})){
+            foreach ($Job in $($Jobs | Where-Object { $_.Handle.IsCompleted -eq $True })) {
                 $Job.Thread.EndInvoke($Job.Handle)
                 $Job.Thread.Dispose()
                 $Job.Thread = $Null
                 $Job.Handle = $Null
                 $ResultTimer = Get-Date
             }
-            If (($(Get-Date) - $ResultTimer).totalseconds -gt $MaxResultTime){
+            if (($(Get-Date) - $ResultTimer).totalseconds -gt $MaxResultTime) {
                 Write-Error "Child script appears to be frozen, try increasing MaxResultTime"
-                Exit
+                exit
             }
             Start-Sleep -Milliseconds $SleepTimer
         }

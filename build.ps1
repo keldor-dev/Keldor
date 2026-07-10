@@ -63,15 +63,12 @@ function Update-KeldorManifestVersion {
     if ($versionParts.Prerelease) {
         if ($content -match "(?m)^\s*#\s*Prerelease\s*=\s*''") {
             $content = $content -replace "(?m)^(\s*)#\s*Prerelease\s*=\s*''", "`$1Prerelease = '$($versionParts.Prerelease)'"
-        }
-        elseif ($content -match "(?m)^\s*Prerelease\s*=") {
+        } elseif ($content -match "(?m)^\s*Prerelease\s*=") {
             $content = $content -replace "(?m)^(\s*Prerelease\s*=\s*)'[^']*'", "`$1'$($versionParts.Prerelease)'"
-        }
-        else {
+        } else {
             $content = $content -replace "(?m)^(\s*ReleaseNotes\s*=\s*@\()", "            Prerelease = '$($versionParts.Prerelease)'`n`$1"
         }
-    }
-    else {
+    } else {
         $content = $content -replace "(?m)^(\s*)Prerelease\s*=\s*'[^']*'", "`$1# Prerelease = ''"
     }
 

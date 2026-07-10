@@ -1,5 +1,5 @@
 function Update-HelpFromFile {
-<#
+    <#
 .SYNOPSIS
     Updates Help From File.
 
@@ -23,13 +23,13 @@ function Update-HelpFromFile {
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Update-HelpFromFile')]
     param(
         [Parameter()]
-        [Alias('Path','Folder','Source')]
+        [Alias('Path', 'Folder', 'Source')]
         [string]$SourcePath
     )
 
     if ([string]::IsNullOrWhiteSpace($Source)) {
         $SourcePath = ($Global:KeldorConfig).HelpFolder
     }
-    if (Test-KeldorAdministrator) {Update-Help -SourcePath $SourcePath -Module * -Force}
-    else {Write-Error "Must be ran as administrator."}
+    if (Test-KeldorAdministrator) { Update-Help -SourcePath $SourcePath -Module * -Force }
+    else { Write-Error "Must be ran as administrator." }
 }

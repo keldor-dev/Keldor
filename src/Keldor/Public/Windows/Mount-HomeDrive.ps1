@@ -1,5 +1,5 @@
 function Mount-HomeDrive {
-<#
+    <#
 .SYNOPSIS
     Mounts Home Drive.
 

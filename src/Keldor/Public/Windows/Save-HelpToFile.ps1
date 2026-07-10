@@ -1,5 +1,5 @@
 function Save-HelpToFile {
-<#
+    <#
 .SYNOPSIS
     Saves Help To File.
 
@@ -23,7 +23,7 @@ function Save-HelpToFile {
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Save-HelpToFile')]
     param(
         [Parameter()]
-        [Alias('Path','Folder','Destination')]
+        [Alias('Path', 'Folder', 'Destination')]
         [string]$DestinationPath
     )
 
@@ -33,8 +33,7 @@ function Save-HelpToFile {
 
     if (Test-Path $DestinationPath) {
         Save-Help -DestinationPath $DestinationPath -Module * -Force
-    }
-    else {
+    } else {
         Write-Error 'Destination folder "$DestinationPath" not found.'
     }
 }

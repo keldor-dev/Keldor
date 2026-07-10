@@ -1,5 +1,5 @@
 function Get-IPrange {
-<#
+    <#
 .SYNOPSIS
     Lists IPs within a range, subnet, or CIDR block.
 
@@ -37,43 +37,43 @@ function Get-IPrange {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-IPrange')]
-    Param (
+    param (
         [Parameter(
-            Mandatory=$false,
-            Position=0
+            Mandatory = $false,
+            Position = 0
         )]
-        [Alias('IP','IPs','IPv4','Address','IPv4Address')]
+        [Alias('IP', 'IPs', 'IPv4', 'Address', 'IPv4Address')]
         [string]$IPAddress,
 
         [Parameter(
-            Mandatory=$false
+            Mandatory = $false
         )]
-        [Alias('Notation','Block')]
+        [Alias('Notation', 'Block')]
         [string]$CIDR,
 
         [Parameter(
-            Mandatory=$false
+            Mandatory = $false
         )]
         [Alias('Mask')]
         [string]$Subnet,
 
         [Parameter(
-            Mandatory=$false
+            Mandatory = $false
         )]
         [string]$Start,
 
         [Parameter(
-            Mandatory=$false
+            Mandatory = $false
         )]
         [string]$End
     )
 
 
-    if ($IPAddress) {$ipaddr = [Net.IPAddress]::Parse($IPAddress)}
-    if ($CIDR) {$maskaddr = [Net.IPAddress]::Parse((Convert-INT64toIP -int ([convert]::ToInt64(("1"*$CIDR+"0"*(32-$CIDR)),2)))) }
-    if ($Subnet) {$maskaddr = [Net.IPAddress]::Parse($Subnet)}
-    if ($IPAddress) {$networkaddr = new-object net.ipaddress ($maskaddr.address -band $ipaddr.address)}
-    if ($IPAddress) {$broadcastaddr = new-object net.ipaddress (([system.net.ipaddress]::parse("255.255.255.255").address -bxor $maskaddr.address -bor $networkaddr.address))}
+    if ($IPAddress) { $ipaddr = [Net.IPAddress]::Parse($IPAddress) }
+    if ($CIDR) { $maskaddr = [Net.IPAddress]::Parse((Convert-INT64toIP -int ([convert]::ToInt64(("1" * $CIDR + "0" * (32 - $CIDR)), 2)))) }
+    if ($Subnet) { $maskaddr = [Net.IPAddress]::Parse($Subnet) }
+    if ($IPAddress) { $networkaddr = New-Object net.ipaddress ($maskaddr.address -band $ipaddr.address) }
+    if ($IPAddress) { $broadcastaddr = New-Object net.ipaddress (([system.net.ipaddress]::parse("255.255.255.255").address -bxor $maskaddr.address -bor $networkaddr.address)) }
 
     if ($IPAddress) {
         $startaddr = Convert-IPtoINT64 -IPAddress $networkaddr.ipaddresstostring

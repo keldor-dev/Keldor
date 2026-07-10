@@ -1,5 +1,5 @@
 function Format-IPList {
-<#
+    <#
 .SYNOPSIS
     Takes a list of IP addresses and sorts them.
 
@@ -25,15 +25,15 @@ function Format-IPList {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Format-IPList')]
-    [Alias('Sort-IPList','Sort-IPs')]
+    [Alias('Sort-IPList', 'Sort-IPs')]
     param(
-        [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
+        [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
         [ValidateNotNullOrEmpty()]
-        [Alias('IP','IPs','IPv4','Address','IPAddresses')]
+        [Alias('IP', 'IPs', 'IPv4', 'Address', 'IPAddresses')]
         [System.Net.IPAddress[]]$IPAddress
     )
 
-    Process {
+    process {
         $IPAddress | Sort-Object {
             $_.GetAddressBytes() -as [System.Collections.IComparer]
         }

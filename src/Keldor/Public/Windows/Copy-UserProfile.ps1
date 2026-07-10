@@ -1,5 +1,5 @@
 function Copy-UserProfile {
-<#
+    <#
 .SYNOPSIS
     Copies User Profile.
 
@@ -27,32 +27,32 @@ function Copy-UserProfile {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Copy-UserProfile')]
-    Param (
+    param (
         [Parameter(
             HelpMessage = 'Enter user name. Ex: "1234567890A" without quotes',
-            Mandatory=$true,
-            Position=0
+            Mandatory = $true,
+            Position = 0
         )]
         [ValidateNotNullOrEmpty()]
-        [Alias('User','Username','SamAccountName')]
+        [Alias('User', 'Username', 'SamAccountName')]
         [string]$UserName,
 
         [Parameter(HelpMessage = "Enter one or more computer names separated by commas.",
-            Mandatory=$false,
-            Position=1,
+            Mandatory = $false,
+            Position = 1,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME",
 
         [Parameter(HelpMessage = "Enter destination folder path as UNC unless a local path. Ex: E:\ESI\10-001 or \\COMP\e$\ESI\10-001",
-            Mandatory=$false
+            Mandatory = $false
         )]
-        [Alias('Destination','Dest','DestinationFolder','DestFolder')]
+        [Alias('Destination', 'Dest', 'DestinationFolder', 'DestFolder')]
         [string]$DestinationPath = $null
     )
-    Begin {
+    begin {
         if ($DestinationPath -eq $null) {
             Write-Output "The destination folder selection window is open. It may be hidden behind windows."
             Add-Type -AssemblyName System.Windows.Forms
@@ -66,10 +66,10 @@ function Copy-UserProfile {
         }
         $df = $DestinationPath + "\" + $UserName
     }
-    Process {
+    process {
         foreach ($comp in $ComputerName) {
             robocopy \\$comp\c$\Users\$UserName $df /mir /mt:3 /xj /r:3 /w:5 /njh /njs
         }
     }
-    End {}
+    end {}
 }

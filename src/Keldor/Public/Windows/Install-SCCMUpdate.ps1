@@ -1,5 +1,5 @@
 function Install-SCCMUpdate {
-<#
+    <#
 .SYNOPSIS
     Short description
 
@@ -29,26 +29,25 @@ function Install-SCCMUpdate {
     param(
         [Parameter(
             #HelpMessage = "Enter one or more computer names separated by commas.",
-            Mandatory=$false#,
+            Mandatory = $false#,
             #Position=0,
             #ValueFromPipeline = $true
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )
 
-    Begin {}
-    Process {
+    begin {}
+    process {
         foreach ($Comp in $ComputerName) {
             if ($Comp -eq $env:COMPUTERNAME) {
                 ([wmiclass]'ROOT\ccm\ClientSDK:CCM_SoftwareUpdatesManager').InstallUpdates([System.Management.ManagementObject[]] (get-wmiobject -query 'SELECT * FROM CCM_SoftwareUpdate' -namespace 'ROOT\ccm\ClientSDK'))
-            }
-            else {
-                Invoke-Command -ComputerName $Comp -ScriptBlock {#DevSkim: ignore DS104456
+            } else {
+                Invoke-Command -ComputerName $Comp -ScriptBlock { #DevSkim: ignore DS104456
                     ([wmiclass]'ROOT\ccm\ClientSDK:CCM_SoftwareUpdatesManager').InstallUpdates([System.Management.ManagementObject[]] (get-wmiobject -query 'SELECT * FROM CCM_SoftwareUpdate' -namespace 'ROOT\ccm\ClientSDK'))
                 }
             }#not local
         }
     }
-    End {}
+    end {}
 }

@@ -34,8 +34,7 @@ function Test-KeldorSecretProviderByDefinition {
                 if ($Command.CommandType -ne 'Application' -or $LASTEXITCODE -eq 0) {
                     $VersionSucceeded = $true
                 }
-            }
-            catch {
+            } catch {
                 $VersionSucceeded = $false
             }
             $Checks += New-KeldorSecretProviderCheckResult -Name 'VersionAvailable' -Success $VersionSucceeded -Status $(if ($VersionSucceeded) { 'Passed' } else { 'Failed' }) -Message $(if ($VersionSucceeded) { 'The 1Password CLI version command succeeded.' } else { 'The 1Password CLI version command failed.' }) -Duration ((Get-Date) - $CheckStart)
@@ -47,8 +46,7 @@ function Test-KeldorSecretProviderByDefinition {
                 if ($Command.CommandType -ne 'Application' -or $LASTEXITCODE -eq 0) {
                     $Authenticated = $true
                 }
-            }
-            catch {
+            } catch {
                 $Authenticated = $false
             }
             $Checks += New-KeldorSecretProviderCheckResult -Name 'Authenticated' -Success $Authenticated -Status $(if ($Authenticated) { 'Passed' } else { 'Failed' }) -Message $(if ($Authenticated) { '1Password authentication was confirmed.' } else { '1Password authentication could not be confirmed.' }) -Duration ((Get-Date) - $CheckStart)
@@ -61,8 +59,7 @@ function Test-KeldorSecretProviderByDefinition {
                     if ($Command.CommandType -ne 'Application' -or $LASTEXITCODE -eq 0) {
                         $VaultAccessible = $true
                     }
-                }
-                catch {
+                } catch {
                     $VaultAccessible = $false
                 }
                 $Checks += New-KeldorSecretProviderCheckResult -Name 'VaultAccessible' -Success $VaultAccessible -Status $(if ($VaultAccessible) { 'Passed' } else { 'Failed' }) -Message $(if ($VaultAccessible) { "The requested 1Password vault is accessible." } else { "The requested 1Password vault could not be confirmed." }) -Duration ((Get-Date) - $CheckStart)
@@ -98,16 +95,14 @@ function Test-KeldorSecretProviderByDefinition {
             if ($ModuleInstalled -and $CommandsAvailable) {
                 try {
                     $Vaults = @(Get-SecretVault -ErrorAction Stop -WarningAction SilentlyContinue -InformationAction SilentlyContinue -Verbose:$false -Debug:$false)
-                }
-                catch {
+                } catch {
                     $Vaults = @()
                 }
             }
 
             if (-not [string]::IsNullOrWhiteSpace($Vault)) {
                 $ApplicableVaults = @($Vaults | Where-Object { $_.Name -eq $Vault })
-            }
-            else {
+            } else {
                 $ApplicableVaults = @($Vaults)
             }
 
@@ -122,8 +117,7 @@ function Test-KeldorSecretProviderByDefinition {
                     $VaultPassed = $false
                     try {
                         $VaultPassed = [bool](Test-SecretVault -Name $RegisteredVault.Name -ErrorAction Stop -WarningAction SilentlyContinue -InformationAction SilentlyContinue -Verbose:$false -Debug:$false)
-                    }
-                    catch {
+                    } catch {
                         $VaultPassed = $false
                     }
 
@@ -133,8 +127,7 @@ function Test-KeldorSecretProviderByDefinition {
 
                     $Checks += New-KeldorSecretProviderCheckResult -Name 'VaultOperational' -Success $VaultPassed -Status $(if ($VaultPassed) { 'Passed' } else { 'Failed' }) -Message $(if ($VaultPassed) { 'A SecretManagement vault passed its provider test.' } else { 'A SecretManagement vault did not pass its provider test.' }) -Duration ((Get-Date) - $CheckStart)
                 }
-            }
-            else {
+            } else {
                 $Checks += New-KeldorSecretProviderCheckResult -Name 'VaultOperational' -Success $false -Status 'Skipped' -Message 'Vault operational testing was skipped because no applicable vault is registered.' -Duration ([timespan]::Zero)
             }
 
@@ -143,14 +136,11 @@ function Test-KeldorSecretProviderByDefinition {
 
             if (-not $ModuleInstalled) {
                 $Status = 'NotInstalled'
-            }
-            elseif (-not $VaultRegistered) {
+            } elseif (-not $VaultRegistered) {
                 $Status = 'NotConfigured'
-            }
-            elseif ($Operational) {
+            } elseif ($Operational) {
                 $Status = 'Passed'
-            }
-            else {
+            } else {
                 $Status = 'Failed'
             }
             $Message = if ($Operational) { 'Provider passed all required checks.' } else { 'Provider did not pass all required checks.' }
@@ -164,8 +154,7 @@ function Test-KeldorSecretProviderByDefinition {
             $ProcessScopeSupported = $true
             try {
                 [Environment]::GetEnvironmentVariable('PATH', [EnvironmentVariableTarget]::Process) | Out-Null
-            }
-            catch {
+            } catch {
                 $ProcessScopeSupported = $false
             }
             $Checks += New-KeldorSecretProviderCheckResult -Name 'ProcessScopeSupported' -Success $ProcessScopeSupported -Status $(if ($ProcessScopeSupported) { 'Passed' } else { 'Failed' }) -Message $(if ($ProcessScopeSupported) { 'Process-scoped environment access is supported.' } else { 'Process-scoped environment access is not supported.' }) -Duration ((Get-Date) - $CheckStart)

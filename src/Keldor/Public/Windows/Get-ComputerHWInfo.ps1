@@ -1,5 +1,5 @@
 function Get-ComputerHWInfo {
-<#
+    <#
 .SYNOPSIS
     Gets hardware information of local or remote computer(s).
 
@@ -25,12 +25,12 @@ function Get-ComputerHWInfo {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ComputerHWInfo')]
-    Param (
+    param (
         [Parameter(
-            Mandatory=$false,
-            Position=0
+            Mandatory = $false,
+            Position = 0
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )
 
@@ -48,12 +48,12 @@ function Get-ComputerHWInfo {
         $SV = $key.GetValue('SystemVersion')
 
         [PSCustomObject]@{
-            ComputerName = $comp
-            Manufacturer = $SM
-            Model = $SPN
-            ModelVersion = $SV
-            BiosVendor = $BV
-            BiosVersion = $Bver
+            ComputerName    = $comp
+            Manufacturer    = $SM
+            Model           = $SPN
+            ModelVersion    = $SV
+            BiosVendor      = $BV
+            BiosVersion     = $Bver
             BiosReleaseDate = $BRD
         }# new object
     }# foreach computer

@@ -1,5 +1,5 @@
 function Get-FSMO {
-<#
+    <#
 .SYNOPSIS
     Gets FSMO.
 
@@ -22,29 +22,27 @@ function Get-FSMO {
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-FSMO')]
     [Alias('fsmo')]
-    Param (
+    param (
         [Parameter()]
         [Switch]$netdom
     )
     if (!$netdom) {
         if (Get-Module -ListAvailable -Name ActiveDirectory) {
-            $RoleHolders = Get-ADDomainController -Filter * | Select-Object Name,OperationMasterRoles
+            $RoleHolders = Get-ADDomainController -Filter * | Select-Object Name, OperationMasterRoles
             $RoleHolderInfo = foreach ($RoleHolder in $RoleHolders) {
                 $Comp = $RoleHolder.Name
                 $Roles = $RoleHolder.OperationMasterRoles
                 $Roles = $Roles -join ", "
                 [PSCustomObject]@{
                     ComputerName = $Comp
-                    Roles = $Roles
+                    Roles        = $Roles
                 }#new object
             }
             $RoleHolderInfo
-        }
-        else {
+        } else {
             netdom /query FSMO
         }
-    }
-    else {
+    } else {
         netdom /query FSMO
     }
 }

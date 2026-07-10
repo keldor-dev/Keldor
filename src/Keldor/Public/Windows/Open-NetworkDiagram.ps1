@@ -1,5 +1,5 @@
 function Open-NetworkDiagram {
-<#
+    <#
 .SYNOPSIS
     Opens Network Diagram.
 
@@ -38,22 +38,22 @@ function Open-NetworkDiagram {
         Justification = "Have tried other methods and they do not work consistently."
     )]
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-NetworkDiagram')]
-    [Alias('NetDiagram','NetworkDiagram')]
-    Param (
-        [Parameter(Mandatory=$false)]
+    [Alias('NetDiagram', 'NetworkDiagram')]
+    param (
+        [Parameter(Mandatory = $false)]
         [Switch]$Chrome,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [Switch]$Edge,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [Switch]$Firefox,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [Switch]$InternetExplorer,
 
-        [Parameter(Mandatory=$false)]
-        [ValidateSet('Default','Edge','Chrome','Firefox','Safari','InternetExplorer')]
+        [Parameter(Mandatory = $false)]
+        [ValidateSet('Default', 'Edge', 'Chrome', 'Firefox', 'Safari', 'InternetExplorer')]
         [string]$Browser = 'Default'
     )
 
@@ -62,10 +62,10 @@ function Open-NetworkDiagram {
 
     if ($dpath -like "http*") {
         $BrowserName = $Browser
-        if ($Chrome) {$BrowserName = 'Chrome'}
-        elseif ($Edge) {$BrowserName = 'Edge'}
-        elseif ($Firefox) {$BrowserName = 'Firefox'}
-        elseif ($InternetExplorer) {$BrowserName = 'InternetExplorer'}
+        if ($Chrome) { $BrowserName = 'Chrome' }
+        elseif ($Edge) { $BrowserName = 'Edge' }
+        elseif ($Firefox) { $BrowserName = 'Firefox' }
+        elseif ($InternetExplorer) { $BrowserName = 'InternetExplorer' }
 
         Open-KeldorUrl -Uri $dpath -Browser $BrowserName
     }#is web address

@@ -1,5 +1,5 @@
 function Set-NetworkConnectionsShortcut {
-<#
+    <#
 .SYNOPSIS
     Sets Network Connections Shortcut.
 
@@ -24,18 +24,17 @@ function Set-NetworkConnectionsShortcut {
     param(
         [Parameter(
             HelpMessage = "Enter either PublicDesktop or UserDesktop. PublicDesktop requires admin rights.",
-            Mandatory=$true,
-            Position=0
+            Mandatory = $true,
+            Position = 0
         )]
-        [ValidateSet('PublicDesktop','UserDesktop')]
+        [ValidateSet('PublicDesktop', 'UserDesktop')]
         [ValidateNotNullOrEmpty()]
         [string]$Path
     )
 
     if ($Path -eq "PublicDesktop") {
         $sp = "C:\Users\Public\Desktop\Network Connections.lnk"
-    }
-    elseif ($Path -eq "UserDesktop") {
+    } elseif ($Path -eq "UserDesktop") {
         $sp = ([System.Environment]::GetFolderPath("Desktop")) + "\Network Connections.lnk"
     }
     $AppLocation = "explorer.exe"

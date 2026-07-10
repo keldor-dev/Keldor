@@ -1,5 +1,5 @@
 function Update-VisioStencils {
-<#
+    <#
 .SYNOPSIS
     Updates Visio Stencils.
 
@@ -28,7 +28,7 @@ function Update-VisioStencils {
         Justification = "Have tried other methods and they do not work consistently."
     )]
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Update-VisioStencils')]
-    [Alias('Copy-VisioStencils','Get-VisioStencils')]
+    [Alias('Copy-VisioStencils', 'Get-VisioStencils')]
     param()
 
     $vspath = ($Global:KeldorConfig).Stencils
@@ -39,8 +39,7 @@ function Update-VisioStencils {
         if ($confirmation -eq 'y') {
             robocopy $vspath $rpath /mir /mt:4 /r:3 /w:15 /njh /njs
         }
-    }
-    else {
+    } else {
         robocopy $vspath $rpath /mir /mt:4 /r:3 /w:15 /njh /njs
     }
 }

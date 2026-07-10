@@ -1,5 +1,5 @@
 function Test-RegistryValue {
-<#
+    <#
 .SYNOPSIS
     Tests Registry Value.
 
@@ -24,19 +24,18 @@ function Test-RegistryValue {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-RegistryValue')]
-    Param (
-        [Parameter(Mandatory=$true, Position=0)]
+    param (
+        [Parameter(Mandatory = $true, Position = 0)]
         [ValidateNotNullOrEmpty()]$Path,
 
-        [Parameter(Mandatory=$true, Position=1)]
+        [Parameter(Mandatory = $true, Position = 1)]
         [ValidateNotNullOrEmpty()]$Value
     )
 
     try {
         Get-ItemPropertyValue -Path $Path -Name $Value -ErrorAction Stop | Out-Null
         return $true
-    }
-    catch {
+    } catch {
         return $false
     }
 }

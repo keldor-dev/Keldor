@@ -1,5 +1,5 @@
 function Import-MOF {
-<#
+    <#
 .SYNOPSIS
     Imports MOF.
 
@@ -30,21 +30,21 @@ function Import-MOF {
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Import-MOF')]
     [Alias('Import-WMIFilter')]
-    Param (
+    param (
         [Parameter(
             HelpMessage = "Enter the path of the .mof file you want to import. Ex: C:\Example\examplewmi.mof",
-            Mandatory=$true,
-            Position=0
+            Mandatory = $true,
+            Position = 0
         )]
-        [Alias('mof','Name','File')]
+        [Alias('mof', 'Name', 'File')]
         [string]$Path
     )
 
     $auth = 'Author = ' + '"' + $env:username + '@' + $env:USERDNSDOMAIN + '"'
     $dom = 'Domain = ' + '"' + $env:USERDNSDOMAIN + '"'
     $content = Get-Content $Path
-    $content2 = $content -replace 'Author = \"(.*)\"',"$auth" -replace "",""
-    $content2 = $content2 -replace 'Domain = \"(.*)\"',"$dom"
+    $content2 = $content -replace 'Author = \"(.*)\"', "$auth" -replace "", ""
+    $content2 = $content2 -replace 'Domain = \"(.*)\"', "$dom"
     $content2 > $Path
     mofcomp -N:root\Policy $Path
 }

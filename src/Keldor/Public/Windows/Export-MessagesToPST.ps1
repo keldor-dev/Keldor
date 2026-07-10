@@ -1,5 +1,5 @@
 function Export-MessagesToPST {
-<#
+    <#
 .SYNOPSIS
     This function exports a users mailbox to a pst.
 
@@ -28,27 +28,27 @@ function Export-MessagesToPST {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Export-MessagesToPST')]
-    Param (
-        [Parameter(Mandatory=$true, Position=0)]
+    param (
+        [Parameter(Mandatory = $true, Position = 0)]
         [string]$TargetUserAlias,
 
-        [Parameter(Mandatory=$false, Position=1)]
+        [Parameter(Mandatory = $false, Position = 1)]
         [string]$ExportPath = ([System.Environment]::GetFolderPath("Desktop"))
     )
 
     $wmiq = Get-WmiObject win32_operatingsystem | Select-Object OSArchitecture
     if ($wmiq -like "*64-bit*") {
         [void][reflection.assembly]::LoadWithPartialName("System.Windows.Forms")
-        $ErrorMsg = [System.Windows.Forms.MessageBox]::Show("Error: OS is 64-bit. Unable to Continue`n`nPrerequisites:`n1) Windows 32-bit OS`n2) Exchange 2007/2010/2013 32-bit Management Tools`n3) 32-bit Microsoft Office Suite with Microsoft Outlook`n4) Windows PowerShell v2 or newer","Error - Cannot Continue");
+        $ErrorMsg = [System.Windows.Forms.MessageBox]::Show("Error: OS is 64-bit. Unable to Continue`n`nPrerequisites:`n1) Windows 32-bit OS`n2) Exchange 2007/2010/2013 32-bit Management Tools`n3) 32-bit Microsoft Office Suite with Microsoft Outlook`n4) Windows PowerShell v2 or newer", "Error - Cannot Continue");
         $ErrorMsg
     }#if wmiq
     else {
-        try {Add-PSSnapin Microsoft.Exchange.Management.PowerShell.Admin -ErrorAction Stop}
-        catch {Throw "Unable to add Microsoft.Exchange.Management.PowerShell.Admin snapin. Process cancelled."}
+        try { Add-PSSnapin Microsoft.Exchange.Management.PowerShell.Admin -ErrorAction Stop }
+        catch { throw "Unable to add Microsoft.Exchange.Management.PowerShell.Admin snapin. Process cancelled." }
 
         Add-MailboxPermission -Identity "$TargetUserAlias" -User "$env:USERNAME" -AccessRights FullAccess -InheritanceType all -Confirm:$false
-        new-item $ExportPath -type Directory -Force
-        $LogDate = get-date -f yyyyMMddhhmm
+        New-Item $ExportPath -type Directory -Force
+        $LogDate = Get-Date -f yyyyMMddhhmm
         $FolderPath = $ExportPath + "\" + $TargetUserAlias + "_mailbox" + $LogDate + ".pst"
         Export-Mailbox -Identity "$TargetUserAlias" -PSTFolderPath $FolderPath -Confirm:$false
         Add-MailboxPermission -Identity "$TargetUserAlias" -User "$env:USERNAME" -Deny -AccessRights FullAccess -InheritanceType all -Confirm:$false

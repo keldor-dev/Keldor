@@ -1,5 +1,5 @@
 function Get-CommandList {
-<#
+    <#
 .SYNOPSIS
     Gets Command List.
 
@@ -24,22 +24,21 @@ function Get-CommandList {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-CommandList')]
-    Param (
+    param (
         [Parameter(
-            Mandatory=$false,
-            Position=0
+            Mandatory = $false,
+            Position = 0
         )]
-        [Alias('Path','Output','OutputPath','Destination')]
+        [Alias('Path', 'Output', 'OutputPath', 'Destination')]
         [string]$ExportPath,
 
         [switch]$All
     )
 
     if ($All) {
-        $commands = Get-Command * | Select-Object HelpUri,ResolvedCommandName,Definition,Name,CommandType,ModuleName,RemotingCapability,Path,FileVersionInfo
-    }
-    else {$commands = Get-Command -All | Select-Object HelpUri,ResolvedCommandName,Definition,Name,CommandType,ModuleName,RemotingCapability,Path,FileVersionInfo}
-    $commands = $commands | Select-Object HelpUri,ResolvedCommandName,Definition,Name,CommandType,ModuleName,RemotingCapability,Path,FileVersionInfo -Unique
+        $commands = Get-Command * | Select-Object HelpUri, ResolvedCommandName, Definition, Name, CommandType, ModuleName, RemotingCapability, Path, FileVersionInfo
+    } else { $commands = Get-Command -All | Select-Object HelpUri, ResolvedCommandName, Definition, Name, CommandType, ModuleName, RemotingCapability, Path, FileVersionInfo }
+    $commands = $commands | Select-Object HelpUri, ResolvedCommandName, Definition, Name, CommandType, ModuleName, RemotingCapability, Path, FileVersionInfo -Unique
     $ModuleRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
     $slist = Import-Csv (Join-Path -Path $ModuleRoot -ChildPath 'CommandListModules.csv')
 
@@ -52,58 +51,55 @@ function Get-CommandList {
             $i++
             $amount = ($i / $number)
             $perc1 = $amount.ToString("P")
-            Write-Progress -activity "Generating information for each command." -status "Command $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $commands.length)  * 100)
+            Write-Progress -Activity "Generating information for each command." -Status "Command $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $commands.length) * 100)
         }# if length
 
         $rn = $c.ResolvedCommandName
         if ($c.CommandType -eq "Alias") {
             if ([string]::IsNullOrWhiteSpace($c.ResolvedCommandName)) {
                 $rn = $c.Definition
-            }
-            else {
+            } else {
                 $rn = $c.ResolvedCommandName
             }
         }
         $mn = $c.ModuleName
-        $sli = $slist | Where-Object {$_.Module -eq $mn}
+        $sli = $slist | Where-Object { $_.Module -eq $mn }
         if ([string]::IsNullOrWhiteSpace($sli)) {
             [PSCustomObject]@{
-                CommandType = ($c.CommandType)
-                Name = ($c.Name)
-                ResolvedName = $rn
-                Path = ($c.Path)
-                Description = ($c.FileVersionInfo.FileDescription)
-                ModuleName = ($c.ModuleName)
+                CommandType        = ($c.CommandType)
+                Name               = ($c.Name)
+                ResolvedName       = $rn
+                Path               = ($c.Path)
+                Description        = ($c.FileVersionInfo.FileDescription)
+                ModuleName         = ($c.ModuleName)
                 UsedByOrganization = $null
                 RemotingCapability = ($c.RemotingCapability)
-                UsedRemotely = $null
-                Purpose = $null
-                Reference = $null
-                HelpUri = ($c.HelpUri)
+                UsedRemotely       = $null
+                Purpose            = $null
+                Reference          = $null
+                HelpUri            = ($c.HelpUri)
             }# new object
-        }
-        else {
+        } else {
             [PSCustomObject]@{
-                CommandType = ($c.CommandType)
-                Name = ($c.Name)
-                ResolvedName = $rn
-                Path = ($c.Path)
-                Description = ($c.FileVersionInfo.FileDescription)
-                ModuleName = ($c.ModuleName)
+                CommandType        = ($c.CommandType)
+                Name               = ($c.Name)
+                ResolvedName       = $rn
+                Path               = ($c.Path)
+                Description        = ($c.FileVersionInfo.FileDescription)
+                ModuleName         = ($c.ModuleName)
                 UsedByOrganization = ($sli.UsedByOrganization)
                 RemotingCapability = ($c.RemotingCapability)
-                UsedRemotely = ($sli.Remote)
-                Purpose = ($sli.Purpose)
-                Reference = ($sli.Reference)
-                HelpUri = ($c.HelpUri)
+                UsedRemotely       = ($sli.Remote)
+                Purpose            = ($sli.Purpose)
+                Reference          = ($sli.Reference)
+                HelpUri            = ($c.HelpUri)
             }# new object
         }
     }
 
     if ([string]::IsNullOrWhiteSpace($ExportPath)) {
-        $info | Select-Object CommandType,Name,ResolvedName,Path,Description,ModuleName,UsedByOrganization,RemotingCapability,UsedRemotely,Purpose,Reference,HelpUri
-    }
-    else {
-        $info | Select-Object CommandType,Name,ResolvedName,Path,Description,ModuleName,UsedByOrganization,RemotingCapability,UsedRemotely,Purpose,Reference,HelpUri | Export-Csv $ExportPath -NoTypeInformation -Force
+        $info | Select-Object CommandType, Name, ResolvedName, Path, Description, ModuleName, UsedByOrganization, RemotingCapability, UsedRemotely, Purpose, Reference, HelpUri
+    } else {
+        $info | Select-Object CommandType, Name, ResolvedName, Path, Description, ModuleName, UsedByOrganization, RemotingCapability, UsedRemotely, Purpose, Reference, HelpUri | Export-Csv $ExportPath -NoTypeInformation -Force
     }
 }

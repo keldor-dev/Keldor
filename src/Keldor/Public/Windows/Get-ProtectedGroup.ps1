@@ -1,5 +1,5 @@
 function Get-ProtectedGroup {
-<#
+    <#
 .SYNOPSIS
     Gets Protected Group.
 
@@ -17,13 +17,12 @@ function Get-ProtectedGroup {
     https://docs.keldor.dev/powershell/keldor/Get-ProtectedGroup
 #>
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ProtectedGroup')]
-    Param ()
-if (Get-Module -ListAvailable -Name ActiveDirectory) {
-        $groups = (Get-ADGroup -filter {admincount -eq "1"}).Name | Sort-Object
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ProtectedGroup')]
+    param ()
+    if (Get-Module -ListAvailable -Name ActiveDirectory) {
+        $groups = (Get-ADGroup -filter { admincount -eq "1" }).Name | Sort-Object
         $groups
-    }
-    else {
+    } else {
         Write-Warning "Active Directory module is not installed and is required to run this command."
     }
 }

@@ -1,5 +1,5 @@
 function Find-SID {
-<#
+    <#
 .SYNOPSIS
     This function finds what Active Directory object the specified SID belongs to.
 
@@ -21,15 +21,15 @@ function Find-SID {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Find-SID')]
-    Param (
+    param (
         [Parameter(
-            Mandatory=$true,
-            Position=0
+            Mandatory = $true,
+            Position = 0
         )]
         [string]$SID
     )
     $objSID = New-Object System.Security.Principal.SecurityIdentifier `
-        ("$SID")
+    ("$SID")
     $obj = $objSID.Translate( [System.Security.Principal.NTAccount])
     $obj.Value
 }

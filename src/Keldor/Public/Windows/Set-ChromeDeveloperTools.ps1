@@ -1,5 +1,5 @@
 function Set-ChromeDeveloperTools {
-<#
+    <#
 .SYNOPSIS
     Will enable or disable Chrome Developer tools.
 
@@ -46,27 +46,23 @@ function Set-ChromeDeveloperTools {
                 if ($PSCmdlet.ShouldProcess('HKLM:\SOFTWARE\Policies\Google\Chrome\DeveloperToolsDisabled', "Set to 1")) {
                     Set-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome -Name DeveloperToolsDisabled -Value 1
                 }
-            }
-            catch {
+            } catch {
                 #Create entry
                 if ($PSCmdlet.ShouldProcess('HKLM:\SOFTWARE\Policies\Google\Chrome\DeveloperToolsDisabled', "Create with value 1")) {
                     New-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome -Name DeveloperToolsDisabled -Value 1
                 }
             }
-        }
-        else {
+        } else {
             try {
                 Get-ItemPropertyValue -Path HKLM:\SOFTWARE\Policies\Google\Chrome -Name DeveloperToolsDisabled -ErrorAction Stop
                 if ($PSCmdlet.ShouldProcess('HKLM:\SOFTWARE\Policies\Google\Chrome\DeveloperToolsDisabled', "Set to 0")) {
                     Set-ItemProperty -Path HKLM:\SOFTWARE\Policies\Google\Chrome -Name DeveloperToolsDisabled -Value 0
                 }
-            }
-            catch {
+            } catch {
                 Write-Output "Chrome Developer Tools already enabled."
             }
         }
-    }
-    else {
+    } else {
         Write-Warning "Function must be ran as administrator."
     }
 }

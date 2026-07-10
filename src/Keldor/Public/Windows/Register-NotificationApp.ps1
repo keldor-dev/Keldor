@@ -1,5 +1,5 @@
 function Register-NotificationApp {
-<#
+    <#
 .SYNOPSIS
     Registers Notification App.
 
@@ -30,20 +30,20 @@ function Register-NotificationApp {
     param(
         [Parameter(
             HelpMessage = "Enter the short name of the application.",
-            Mandatory=$true
+            Mandatory = $true
         )]
         [ValidateNotNullOrEmpty()]
         [string]$AppID,
 
         [Parameter(
             HelpMessage = "Enter the display name of the application.",
-            Mandatory=$true
+            Mandatory = $true
         )]
         [ValidateNotNullOrEmpty()]
         [string]$AppDisplayName,
 
         [Parameter(
-            Mandatory=$false
+            Mandatory = $false
         )]
         [int]$ShowInSettings = 0
     )

@@ -1,5 +1,5 @@
 function Test-Online {
-<#
+    <#
 .SYNOPSIS
     Tests Online.
 
@@ -21,20 +21,20 @@ function Test-Online {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-Online')]
-    Param (
-        [Parameter(Mandatory=$false, Position=0)]
-        [Alias('Host','Name','Computer','CN')]
+    param (
+        [Parameter(Mandatory = $false, Position = 0)]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )
 
     $i = 0
     $number = $ComputerName.length
-    foreach ($comp in $ComputerName){
+    foreach ($comp in $ComputerName) {
         if ($number -gt "1") {
             $i++
             $amount = ($i / $number)
             $perc1 = $amount.ToString("P")
-            Write-Progress -activity "Testing whether computers are online or offline. Currently checking $comp" -status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length)  * 100)
+            Write-Progress -Activity "Testing whether computers are online or offline. Currently checking $comp" -Status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length) * 100)
         }#if length
         try {
             $testcon = Test-Connection -ComputerName $comp -Count 3 -ErrorAction Stop
@@ -50,12 +50,11 @@ function Test-Online {
         }#catch
         catch [System.Management.Automation.InvocationInfo] {
             $status = "Comm error"
-        }
-        catch {
+        } catch {
             $status = "Comm error"
         }
         [PSCustomObject]@{
-            Name = $comp
+            Name   = $comp
             Status = $status
         }#newobject
     }#foreach computer

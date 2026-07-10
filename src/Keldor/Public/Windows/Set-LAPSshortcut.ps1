@@ -1,5 +1,5 @@
 function Set-LAPSshortcut {
-<#
+    <#
 .SYNOPSIS
     Sets LAP Sshortcut.
 
@@ -36,18 +36,17 @@ function Set-LAPSshortcut {
     param(
         [Parameter(
             HelpMessage = "Enter either PublicDesktop or UserDesktop. PublicDesktop requires admin rights.",
-            Mandatory=$true,
-            Position=0
+            Mandatory = $true,
+            Position = 0
         )]
-        [ValidateSet('PublicDesktop','UserDesktop')]
+        [ValidateSet('PublicDesktop', 'UserDesktop')]
         [ValidateNotNullOrEmpty()]
         [string]$Path
     )
 
     if ($Path -eq "PublicDesktop") {
         $sp = "C:\Users\Public\Desktop\LAPS.lnk"
-    }
-    elseif ($Path -eq "UserDesktop") {
+    } elseif ($Path -eq "UserDesktop") {
         $sp = ([System.Environment]::GetFolderPath("Desktop")) + "\LAPS.lnk"
     }
     $AppLocation = "C:\Program Files\LAPS\AdmPwd.UI.exe"
@@ -55,8 +54,8 @@ function Set-LAPSshortcut {
     $Shortcut = $WshShell.CreateShortcut("$sp")
     $Shortcut.TargetPath = $AppLocation
     $Shortcut.IconLocation = "C:\Program Files\LAPS\AdmPwd.UI.exe,0"
-    $Shortcut.Description ="LAPS Admin Console"
-    $Shortcut.WorkingDirectory ="C:\Program Files\LAPS"
+    $Shortcut.Description = "LAPS Admin Console"
+    $Shortcut.WorkingDirectory = "C:\Program Files\LAPS"
     if ($PSCmdlet.ShouldProcess($sp, "Create LAPS shortcut")) {
         $Shortcut.Save()
     }

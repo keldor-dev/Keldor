@@ -1,5 +1,5 @@
 function Set-KeldorSecret {
-<#
+    <#
 .SYNOPSIS
     Sets a Keldor secret.
 
@@ -55,12 +55,12 @@ function Set-KeldorSecret {
     param(
         [Parameter(Mandatory = $true, Position = 0, ValueFromPipelineByPropertyName = $true)]
         [ValidateScript({
-            if ([string]::IsNullOrWhiteSpace($_)) {
-                throw "Name cannot be null, empty, or whitespace."
-            }
+                if ([string]::IsNullOrWhiteSpace($_)) {
+                    throw "Name cannot be null, empty, or whitespace."
+                }
 
-            $true
-        })]
+                $true
+            })]
         [string]$Name,
 
         [Parameter(Mandatory = $true, Position = 1, ValueFromPipelineByPropertyName = $true)]
@@ -106,8 +106,7 @@ function Set-KeldorSecret {
                         $SelectedProvider = $ProviderDefinition.Name
                         break
                     }
-                }
-                elseif ($ProviderDefinition.Name -eq 'Environment') {
+                } elseif ($ProviderDefinition.Name -eq 'Environment') {
                     $SelectedProvider = $ProviderDefinition.Name
                     break
                 }

@@ -1,5 +1,5 @@
 function Open-HyperVmgmt {
-<#
+    <#
 .SYNOPSIS
     Opens Hyper Vmgmt.
 
@@ -23,8 +23,7 @@ function Open-HyperVmgmt {
     try {
         $ErrorActionPreference = "Stop"
         virtmgmt.msc
-    }
-    catch {
+    } catch {
         Write-Output "Hyper-V management tools not installed/enabled."
     }
 }

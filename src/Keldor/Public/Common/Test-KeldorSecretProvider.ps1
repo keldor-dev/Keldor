@@ -1,5 +1,5 @@
 function Test-KeldorSecretProvider {
-<#
+    <#
 .SYNOPSIS
     Tests Keldor secret providers.
 

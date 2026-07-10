@@ -1,5 +1,5 @@
 function Register-ADSIEdit {
-<#
+    <#
 .SYNOPSIS
     Registers ADSI Edit.
 
@@ -18,13 +18,12 @@ function Register-ADSIEdit {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Register-ADSIEdit')]
-    [Alias('Initialize-ADSIEdit','Enable-ADSIEdit')]
+    [Alias('Initialize-ADSIEdit', 'Enable-ADSIEdit')]
     param()
 
     if (Test-Path $env:windir\System32\adsiedit.dll) {
         regsvr32.exe adsiedit.dll
-    }
-    else {
+    } else {
         Write-Warning "adsiedit.dll not found. Please ensure Active Directory tools are installed."
     }
 }

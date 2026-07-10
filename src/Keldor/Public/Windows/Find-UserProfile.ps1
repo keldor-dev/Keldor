@@ -1,7 +1,7 @@
 #Write help
 #Add progress bar
 function Find-UserProfile {
-<#
+    <#
 .SYNOPSIS
     Finds User Profile.
 
@@ -26,87 +26,87 @@ function Find-UserProfile {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Find-UserProfile')]
-    Param (
-        [Parameter(Mandatory=$false, Position=0)]
-        [Alias('Host','Name','Computer','CN')]
+    param (
+        [Parameter(Mandatory = $false, Position = 0)]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME",
 
-        [Parameter(Mandatory=$false, Position=1)]
-        [Alias('Username','User','SamAccountName')]
+        [Parameter(Mandatory = $false, Position = 1)]
+        [Alias('Username', 'User', 'SamAccountName')]
         [string[]]$UserName = "$env:USERNAME"
     )
 
     $i = 0
 
     foreach ($Comp in $ComputerName) {
-            #Progress Bar
-            $length = $ComputerName.length
-            $i++
-            if ($length -gt "1") {
-                $number = $ComputerName.length
-                $amount = ($i / $number)
-                $perc1 = $amount.ToString("P")
-                Write-Progress -activity "Getting profile status on computers" -status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length)  * 100)
-            }#if length
+        #Progress Bar
+        $length = $ComputerName.length
+        $i++
+        if ($length -gt "1") {
+            $number = $ComputerName.length
+            $amount = ($i / $number)
+            $perc1 = $amount.ToString("P")
+            Write-Progress -Activity "Getting profile status on computers" -Status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length) * 100)
+        }#if length
         $compath = "\\" + $Comp + "\c$"
-        if (Test-Connection $Comp -quiet) {
-        try {
-            New-PSDrive -Name ProfCk -PSProvider FileSystem -root "$compath" -ErrorAction Stop | Out-Null
+        if (Test-Connection $Comp -Quiet) {
+            try {
+                New-PSDrive -Name ProfCk -PSProvider FileSystem -Root "$compath" -ErrorAction Stop | Out-Null
 
-            foreach ($User in $UserName) {
-                try {
-                    $modtime = $null
-                    $usrpath = "ProfCk:\Users\$User"
-                    if (Test-Path -Path $usrpath) {
-                        $modtime = Get-Item $usrpath | ForEach-Object {$_.LastWriteTime}
+                foreach ($User in $UserName) {
+                    try {
+                        $modtime = $null
+                        $usrpath = "ProfCk:\Users\$User"
+                        if (Test-Path -Path $usrpath) {
+                            $modtime = Get-Item $usrpath | ForEach-Object { $_.LastWriteTime }
+                            [PSCustomObject]@{
+                                Name         = $Comp
+                                Status       = "Online"
+                                User         = $User
+                                Profile      = "Yes"
+                                ModifiedTime = $modtime
+                            } | Select-Object Name, Status, User, Profile, ModifiedTime
+                        }#if user profile exists on computer
+                        else {
+                            [PSCustomObject]@{
+                                Name         = $Comp
+                                Status       = "Online"
+                                User         = $User
+                                Profile      = "No"
+                                ModifiedTime = $null
+                            } | Select-Object Name, Status, User, Profile, ModifiedTime
+                        }#else no profile
+                    }#try
+                    catch [System.UnauthorizedAccessException] {
                         [PSCustomObject]@{
-                            Name = $Comp
-                            Status = "Online"
-                            User = $User
-                            Profile = "Yes"
-                            ModifiedTime = $modtime
-                        } | Select-Object Name,Status,User,Profile,ModifiedTime
-                    }#if user profile exists on computer
-                    else {
-                        [PSCustomObject]@{
-                            Name = $Comp
-                            Status = "Online"
-                            User = $User
-                            Profile = "No"
+                            Name         = $Comp
+                            Status       = "Access Denied"
+                            User         = $user
+                            Profile      = "Possible"
                             ModifiedTime = $null
-                        } | Select-Object Name,Status,User,Profile,ModifiedTime
-                    }#else no profile
-                }#try
-                Catch [System.UnauthorizedAccessException] {
-                    [PSCustomObject]@{
-                        Name = $Comp
-                        Status = "Access Denied"
-                        User = $user
-                        Profile = "Possible"
-                        ModifiedTime = $null
-                    } | Select-Object Name,Status,User,Profile,ModifiedTime
-                }#catch access denied
-            }#foreach user
-            Remove-PSDrive -Name ProfCk -ErrorAction SilentlyContinue -Force | Out-Null
-        }#try new psdrive
-        Catch {
-            [PSCustomObject]@{
-                Name = $Comp
-                Status = "Comm Error"
-                User = $null
-                Profile = $null
-                ModifiedTime = $null
-            } | Select-Object Name,Status,User,Profile,ModifiedTime
-        }#catch new psdrive
+                        } | Select-Object Name, Status, User, Profile, ModifiedTime
+                    }#catch access denied
+                }#foreach user
+                Remove-PSDrive -Name ProfCk -ErrorAction SilentlyContinue -Force | Out-Null
+            }#try new psdrive
+            catch {
+                [PSCustomObject]@{
+                    Name         = $Comp
+                    Status       = "Comm Error"
+                    User         = $null
+                    Profile      = $null
+                    ModifiedTime = $null
+                } | Select-Object Name, Status, User, Profile, ModifiedTime
+            }#catch new psdrive
         }#if online
         else {
             [PSCustomObject]@{
-                Name = $Comp
-                Status = "Offline"
-                User = $null
-                Profile = $null
+                Name         = $Comp
+                Status       = "Offline"
+                User         = $null
+                Profile      = $null
                 ModifiedTime = $null
-            } | Select-Object Name,Status,User,Profile,ModifiedTime
+            } | Select-Object Name, Status, User, Profile, ModifiedTime
         }
     }#foreach computer
 }

@@ -1,5 +1,5 @@
 function Get-BitLockerStatus {
-<#
+    <#
 .SYNOPSIS
     Gets Bit Locker Status.
 
@@ -23,9 +23,9 @@ function Get-BitLockerStatus {
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-BitLockerStatus')]
     param(
         [Parameter(
-            Mandatory=$false
+            Mandatory = $false
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )
 
@@ -40,7 +40,7 @@ function Get-BitLockerStatus {
             $drives = @()
             $d = $bi | Select-String -Pattern 'Volume '
             $drives += $d | ForEach-Object {
-                $_.ToString().Trim().Substring(0,8) -replace "Volume ",""
+                $_.ToString().Trim().Substring(0, 8) -replace "Volume ", ""
             }# foreach drive
 
             # Get Size
@@ -114,21 +114,21 @@ function Get-BitLockerStatus {
         $num = $drives.Length
         do {
             $overall += [PSCustomObject]@{
-                ComputerName = $Comp
-                Drive = $drives[$i]
-                Size = $size[$i]
+                ComputerName     = $Comp
+                Drive            = $drives[$i]
+                Size             = $size[$i]
                 BitLockerVersion = $ver[$i]
-                Status = $status[$i]
+                Status           = $status[$i]
                 PercentEncrypted = $per[$i]
                 EncryptionMethod = $em[$i]
                 ProtectionStatus = $ps[$i]
-                LockStatus = $ls[$i]
-                ID_Field = $id[$i]
-                KeyProtectors = $key[$i]
+                LockStatus       = $ls[$i]
+                ID_Field         = $id[$i]
+                KeyProtectors    = $key[$i]
             }
             $i++
         }#do
         while ($i -lt $num)
     }# foreach comp
-    $overall | Select-Object ComputerName,Drive,Size,BitLockerVersion,Status,PercentEncrypted,EncryptionMethod,ProtectionStatus,LockStatus,ID_Field,KeyProtectors | Sort-Object ComputerName,Drive
+    $overall | Select-Object ComputerName, Drive, Size, BitLockerVersion, Status, PercentEncrypted, EncryptionMethod, ProtectionStatus, LockStatus, ID_Field, KeyProtectors | Sort-Object ComputerName, Drive
 }

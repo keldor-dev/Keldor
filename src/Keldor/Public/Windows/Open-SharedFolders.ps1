@@ -1,5 +1,5 @@
 function Open-SharedFolders {
-<#
+    <#
 .SYNOPSIS
     Opens Shared Folders.
 
@@ -21,10 +21,10 @@ function Open-SharedFolders {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-SharedFolders')]
-    [Alias('Shares','Get-Shares')]
-    Param (
-        [Parameter(Mandatory=$false, Position=0)]
-        [Alias('Host','Name','Computer','CN')]
+    [Alias('Shares', 'Get-Shares')]
+    param (
+        [Parameter(Mandatory = $false, Position = 0)]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string]$ComputerName = "$env:COMPUTERNAME"
     )
     fsmgmt.msc /computer=\\$ComputerName

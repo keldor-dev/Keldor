@@ -1,5 +1,5 @@
 function Import-DRAModule {
-<#
+    <#
 .SYNOPSIS
     Imports DRA Module.
 
@@ -17,9 +17,9 @@ function Import-DRAModule {
     https://docs.keldor.dev/powershell/keldor/Import-DRAModule
 #>
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Import-DRAModule')]
-    Param ()
-[Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Import-DRAModule')]
+    param ()
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
         "",
         Justification = "Have tried other methods and they do not work consistently."
@@ -30,8 +30,7 @@ function Import-DRAModule {
 
     if (Test-Path $ip) {
         Import-Module $ip
-    }
-    else {
+    } else {
         Write-Output "DRA module not found. Please install it from $if"
     }
 }

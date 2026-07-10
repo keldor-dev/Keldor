@@ -1,5 +1,5 @@
 function Get-HomeDrive {
-<#
+    <#
 .SYNOPSIS
     Gets Home Drive.
 
@@ -17,7 +17,7 @@ function Get-HomeDrive {
     https://docs.keldor.dev/powershell/keldor/Get-HomeDrive
 #>
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-HomeDrive')]
-    Param ()
-$env:HOMESHARE
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-HomeDrive')]
+    param ()
+    $env:HOMESHARE
 }

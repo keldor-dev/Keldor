@@ -1,5 +1,5 @@
 function Get-Accelerator {
-<#
+    <#
 .SYNOPSIS
     Gets Accelerator.
 
@@ -18,7 +18,7 @@ function Get-Accelerator {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-Accelerator')]
-    [Alias('Get-TypeAccelerators','accelerators')]
+    [Alias('Get-TypeAccelerators', 'accelerators')]
     param()
 
     [psobject].Assembly.GetType("System.Management.Automation.TypeAccelerators")::get | Sort-Object Key

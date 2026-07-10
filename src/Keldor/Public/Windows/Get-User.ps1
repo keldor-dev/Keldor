@@ -1,5 +1,5 @@
 function Get-User {
-<#
+    <#
 .SYNOPSIS
     Gets User.
 
@@ -26,16 +26,16 @@ function Get-User {
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-User')]
     param(
         [Parameter(
-            Mandatory=$false,
-            Position=0
+            Mandatory = $false,
+            Position = 0
         )]
         [ValidateNotNullorEmpty()]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME",
 
         [Parameter(
-            Mandatory=$false,
-            Position=1
+            Mandatory = $false,
+            Position = 1
         )]
         [Alias('Username')]
         [string]$User
@@ -45,35 +45,35 @@ function Get-User {
         try {
             #Connect to computer and get information on user/users
             if ($null -ne $User) {
-                $ui = Get-WmiObject -Class Win32_UserAccount -filter "LocalAccount='True'" -ComputerName $comp -ErrorAction Stop | Select-Object Name,Description,Disabled,Lockout,PasswordChangeable,PasswordExpires,PasswordRequired | Where-Object {$_.Name -match $User}
+                $ui = Get-WmiObject -Class Win32_UserAccount -filter "LocalAccount='True'" -ComputerName $comp -ErrorAction Stop | Select-Object Name, Description, Disabled, Lockout, PasswordChangeable, PasswordExpires, PasswordRequired | Where-Object { $_.Name -match $User }
             }#if user not null
             else {
-                $ui = Get-WmiObject -Class Win32_UserAccount -filter "LocalAccount='True'" -ComputerName $comp -ErrorAction Stop | Select-Object Name,Description,Disabled,Lockout,PasswordChangeable,PasswordExpires,PasswordRequired
+                $ui = Get-WmiObject -Class Win32_UserAccount -filter "LocalAccount='True'" -ComputerName $comp -ErrorAction Stop | Select-Object Name, Description, Disabled, Lockout, PasswordChangeable, PasswordExpires, PasswordRequired
             }
 
-            ForEach ($u in $ui) {
+            foreach ($u in $ui) {
                 [PSCustomObject]@{
-                    Computer = $Comp
-                    User = $u.Name
-                    Description = $u.Description
-                    Disabled = $u.Disabled
-                    Locked = $u.Lockout
+                    Computer           = $Comp
+                    User               = $u.Name
+                    Description        = $u.Description
+                    Disabled           = $u.Disabled
+                    Locked             = $u.Lockout
                     PasswordChangeable = $u.PasswordChangeable
-                    PasswordExpires = $u.PasswordExpires
-                    PasswordRequired = $u.PasswordRequired
+                    PasswordExpires    = $u.PasswordExpires
+                    PasswordRequired   = $u.PasswordRequired
                 }
             }#foreach u
         }#try
         catch {
             [PSCustomObject]@{
-                Computer = $Comp
-                User = $null
-                Description = $null
-                Disabled = $null
-                Locked = $null
+                Computer           = $Comp
+                User               = $null
+                Description        = $null
+                Disabled           = $null
+                Locked             = $null
                 PasswordChangeable = $null
-                PasswordExpires = $null
-                PasswordRequired = $null
+                PasswordExpires    = $null
+                PasswordRequired   = $null
             }
         }#catch
     }#foreach comp

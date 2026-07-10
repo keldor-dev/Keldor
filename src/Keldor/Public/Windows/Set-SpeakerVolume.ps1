@@ -1,5 +1,5 @@
 function Set-SpeakerVolume {
-<#
+    <#
 .SYNOPSIS
     Sets Speaker Volume.
 
@@ -31,34 +31,32 @@ function Set-SpeakerVolume {
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-SpeakerVolume')]
     [Alias('Volume')]
-    Param (
+    param (
         [switch]$min,
         [switch]$max,
         [int32]$volume = "10",
         [switch]$mute
     )
 
-    $volume = ($volume/2)
-    $wshShell = new-object -com wscript.shell
+    $volume = ($volume / 2)
+    $wshShell = New-Object -com wscript.shell
 
-    If ($min) {
+    if ($min) {
         if ($PSCmdlet.ShouldProcess('Speaker volume', "Set minimum")) {
-            1..50 | ForEach-Object {$wshShell.SendKeys([char]174)}
+            1..50 | ForEach-Object { $wshShell.SendKeys([char]174) }
         }
-    }
-    ElseIf ($max) {
+    } elseif ($max) {
         if ($PSCmdlet.ShouldProcess('Speaker volume', "Set maximum")) {
-            1..50 | ForEach-Object {$wshShell.SendKeys([char]175)}
+            1..50 | ForEach-Object { $wshShell.SendKeys([char]175) }
         }
-    }
-    elseif ($mute) {
+    } elseif ($mute) {
         if ($PSCmdlet.ShouldProcess('Speaker volume', "Toggle mute")) {
             $wshShell.SendKeys([char]173)
         }
     }#turns sound on or off dependent on what it was before
     elseif ($volume) {
         if ($PSCmdlet.ShouldProcess('Speaker volume', "Set volume")) {
-            1..50 | ForEach-Object {$wshShell.SendKeys([char]174)};1..$Volume | ForEach-Object {$wshShell.SendKeys([char]175)}
+            1..50 | ForEach-Object { $wshShell.SendKeys([char]174) }; 1..$Volume | ForEach-Object { $wshShell.SendKeys([char]175) }
         }
     }
 }

@@ -1,5 +1,5 @@
 function Install-WSTools {
-<#
+    <#
 .SYNOPSIS
     Installs/copies the Keldor PowerShell module to a remote computer.
 
@@ -44,14 +44,14 @@ function Install-WSTools {
         Justification = "Have tried other methods and they do not work consistently."
     )]
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Install-WSTools')]
-    [Alias('Copy-WSTools','Push-WSTools')]
-    Param (
+    [Alias('Copy-WSTools', 'Push-WSTools')]
+    param (
         [Parameter(
             Mandatory = $false,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true
         )]
-        [Alias('Host','Name','Computer','CN','common name')]
+        [Alias('Host', 'Name', 'Computer', 'CN', 'common name')]
         [string[]] $ComputerName = $env:COMPUTERNAME,
 
         [Parameter()]
@@ -63,7 +63,7 @@ function Install-WSTools {
         [Parameter()]
         $MaxResultTime = 1200
     )
-    Begin {
+    begin {
         $config = $Global:KeldorConfig
         $app = $config.UpdatePath
         $appname = "Keldor"
@@ -73,41 +73,40 @@ function Install-WSTools {
         $RunspacePool.Open()
         $Code = {
             [CmdletBinding()]
-            Param (
+            param (
                 [Parameter(
-                    Mandatory=$true,
-                    Position=0
+                    Mandatory = $true,
+                    Position = 0
                 )]
                 [string]$comp,
 
                 [Parameter(
-                    Mandatory=$true,
-                    Position=1
+                    Mandatory = $true,
+                    Position = 1
                 )]
                 [string]$app,
 
                 [Parameter(
-                    Mandatory=$true,
-                    Position=2
+                    Mandatory = $true,
+                    Position = 2
                 )]
                 [string]$appname
             )
             try {
                 robocopy $app "\\$comp\c$\Program Files\WindowsPowerShell\Modules\$appname" /mir /mt:4 /r:3 /w:15 /njh /njs
-            }
-            catch {
+            } catch {
                 #
             }
         }#end code block
         $Jobs = @()
     }
-    Process {
+    process {
         Write-Progress -Activity "Preloading threads" -Status "Starting Job $($jobs.count)"
-        ForEach ($Object in $ComputerName){
+        foreach ($Object in $ComputerName) {
             $PowershellThread = [powershell]::Create().AddScript($Code)
-            $PowershellThread.AddArgument($Object.ToString()) | out-null
-            $PowershellThread.AddArgument($app.ToString()) | out-null
-            $PowershellThread.AddArgument($appname.ToString()) | out-null
+            $PowershellThread.AddArgument($Object.ToString()) | Out-Null
+            $PowershellThread.AddArgument($app.ToString()) | Out-Null
+            $PowershellThread.AddArgument($appname.ToString()) | Out-Null
             $PowershellThread.RunspacePool = $RunspacePool
             $Handle = $PowershellThread.BeginInvoke()
             $Job = "" | Select-Object Handle, Thread, object
@@ -117,27 +116,27 @@ function Install-WSTools {
             $Jobs += $Job
         }
     }
-    End {
+    end {
         $ResultTimer = Get-Date
-        While (@($Jobs | Where-Object {$Null -ne $_.Handle}).count -gt 0)  {
+        while (@($Jobs | Where-Object { $Null -ne $_.Handle }).count -gt 0) {
             $Remaining = "$($($Jobs | Where-Object {$_.Handle.IsCompleted -eq $False}).object)"
-            If ($Remaining.Length -gt 60){
-                $Remaining = $Remaining.Substring(0,60) + "..."
+            if ($Remaining.Length -gt 60) {
+                $Remaining = $Remaining.Substring(0, 60) + "..."
             }
             Write-Progress `
                 -Activity "Copying $appname module to computers. Waiting for Jobs - $($MaxThreads - $($RunspacePool.GetAvailableRunspaces())) of $MaxThreads threads running" `
-                -PercentComplete (($Jobs.count - $($($Jobs | Where-Object {$_.Handle.IsCompleted -eq $False}).count)) / $Jobs.Count * 100) `
+                -PercentComplete (($Jobs.count - $($($Jobs | Where-Object { $_.Handle.IsCompleted -eq $False }).count)) / $Jobs.Count * 100) `
                 -Status "$(@($($Jobs | Where-Object {$_.Handle.IsCompleted -eq $False})).count) remaining - $remaining"
-            ForEach ($Job in $($Jobs | Where-Object {$_.Handle.IsCompleted -eq $True})){
+            foreach ($Job in $($Jobs | Where-Object { $_.Handle.IsCompleted -eq $True })) {
                 $Job.Thread.EndInvoke($Job.Handle)
                 $Job.Thread.Dispose()
                 $Job.Thread = $Null
                 $Job.Handle = $Null
                 $ResultTimer = Get-Date
             }
-            If (($(Get-Date) - $ResultTimer).totalseconds -gt $MaxResultTime){
+            if (($(Get-Date) - $ResultTimer).totalseconds -gt $MaxResultTime) {
                 Write-Error "Child script appears to be frozen, try increasing MaxResultTime"
-                Exit
+                exit
             }
             Start-Sleep -Milliseconds $SleepTimer
         }

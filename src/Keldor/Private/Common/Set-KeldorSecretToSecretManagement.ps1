@@ -73,8 +73,7 @@ function Set-KeldorSecretToSecretManagement {
 
     try {
         Set-Secret @SetSecretParameters | Out-Null
-    }
-    catch {
+    } catch {
         throw "Unable to set secret '$Name' using the SecretManagement provider."
     }
 

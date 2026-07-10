@@ -37,11 +37,9 @@ function Set-KeldorSecretToEnvironment {
     try {
         if ($Secret -is [System.Security.SecureString]) {
             $PlainTextSecret = ConvertFrom-KeldorSecureString -SecureString $Secret
-        }
-        elseif ($Secret -is [string]) {
+        } elseif ($Secret -is [string]) {
             $PlainTextSecret = $Secret
-        }
-        else {
+        } else {
             throw "Secret must be a string or SecureString."
         }
 
@@ -50,8 +48,7 @@ function Set-KeldorSecretToEnvironment {
             $PlainTextSecret,
             [EnvironmentVariableTarget]::Process
         )
-    }
-    finally {
+    } finally {
         $PlainTextSecret = $null
     }
 

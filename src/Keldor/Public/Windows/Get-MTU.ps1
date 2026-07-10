@@ -1,5 +1,5 @@
 function Get-MTU {
-<#
+    <#
 .SYNOPSIS
     Gets MTU.
 
@@ -21,18 +21,18 @@ function Get-MTU {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-MTU')]
-    Param (
+    param (
         [Parameter(
-            Mandatory=$false,
-            Position=0
+            Mandatory = $false,
+            Position = 0
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )
 
     foreach ($comp in $ComputerName) {
-        $netad = (Get-WmiObject Win32_NetworkAdapter -ComputerName $comp -Filter NetConnectionStatus=2  -ErrorAction Stop | Select-Object * | Where-Object {$null -ne $_.MACAddress -or $_.MACAddress -ne ""})
-        $RegBase = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey([Microsoft.Win32.RegistryHive]::LocalMachine,$comp)
+        $netad = (Get-WmiObject Win32_NetworkAdapter -ComputerName $comp -Filter NetConnectionStatus=2  -ErrorAction Stop | Select-Object * | Where-Object { $null -ne $_.MACAddress -or $_.MACAddress -ne "" })
+        $RegBase = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey([Microsoft.Win32.RegistryHive]::LocalMachine, $comp)
         $RegLoc = 'SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces'
 
         $RegKey = $RegBase.OpenSubKey($RegLoc)
@@ -53,24 +53,22 @@ function Get-MTU {
                 $ip = $null
                 if ([string]::IsNullOrWhiteSpace($dhcpaddr)) {
                     $ip = $ipaddr[0]
-                }
-                else {
+                } else {
                     $ip = $dhcpaddr
                 }
 
                 if ([string]::IsNullOrWhiteSpace($ip) -or $ip -like "0*") {
                     #don't report
-                }
-                else {
-                    $adprop = $netad | Where-Object {$_.GUID -eq $int}
+                } else {
+                    $adprop = $netad | Where-Object { $_.GUID -eq $int }
                     [PSCustomObject]@{
                         ComputerName = $comp
-                        Name = ($adprop.Name)
+                        Name         = ($adprop.Name)
                         ConnectionID = ($adprop.NetConnectionID)
-                        MTU = $mtu
-                        Index = ($adprop.DeviceID)
-                        IP = $ip
-                        Domain = $domain
+                        MTU          = $mtu
+                        Index        = ($adprop.DeviceID)
+                        IP           = $ip
+                        Domain       = $domain
                     }#new object
                 }
             }

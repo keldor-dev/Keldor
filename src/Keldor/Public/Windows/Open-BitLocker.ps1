@@ -1,5 +1,5 @@
 function Open-BitLocker {
-<#
+    <#
 .SYNOPSIS
     Opens Bit Locker.
 

@@ -1,5 +1,5 @@
 function Get-ProcessorCapability {
-<#
+    <#
 .SYNOPSIS
     Gets Processor Capability.
 
@@ -21,12 +21,12 @@ function Get-ProcessorCapability {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ProcessorCapability')]
-    Param (
+    param (
         [Parameter(
-            Mandatory=$false,
-            Position=0
+            Mandatory = $false,
+            Position = 0
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )
 
@@ -44,47 +44,43 @@ function Get-ProcessorCapability {
             $intSupportableAddressWidth = $objWmi.DataWidth
 
             switch ($objWmi.Architecture) {
-                0 {$strCpuArchitecture = "x86"}
-                1 {$strCpuArchitecture = "MIPS"}
-                2 {$strCpuArchitecture = "Alpha"}
-                3 {$strCpuArchitecture = "PowerPC"}
-                6 {$strCpuArchitecture = "Itanium"}
-                9 {$strCpuArchitecture = "x64"}
+                0 { $strCpuArchitecture = "x86" }
+                1 { $strCpuArchitecture = "MIPS" }
+                2 { $strCpuArchitecture = "Alpha" }
+                3 { $strCpuArchitecture = "PowerPC" }
+                6 { $strCpuArchitecture = "Itanium" }
+                9 { $strCpuArchitecture = "x64" }
             }
 
-            if ($null -eq $intCurrentAddressWidth) {$curbit = $null}
-            else {$curbit = "$intCurrentAddressWidth-bit"}
+            if ($null -eq $intCurrentAddressWidth) { $curbit = $null }
+            else { $curbit = "$intCurrentAddressWidth-bit" }
 
-            if ($null -eq $intSupportableAddressWidth) {$capof = $null}
-            else {$capof = "$intSupportableAddressWidth-bit"}
-        }
-        catch [System.UnauthorizedAccessException],[System.Management.Automation.MethodInvocationException] {
+            if ($null -eq $intSupportableAddressWidth) { $capof = $null }
+            else { $capof = "$intSupportableAddressWidth-bit" }
+        } catch [System.UnauthorizedAccessException], [System.Management.Automation.MethodInvocationException] {
             $err = $_.Exception.message.Trim()
             if ($err -match "network path") {
                 $strCpuArchitecture = "Could not connect"
                 $curbit = $null
                 $capof = $null
-            }
-            elseif ($err -match "access is not allowed" -or $err -match "Access is denied") {
+            } elseif ($err -match "access is not allowed" -or $err -match "Access is denied") {
                 $strCpuArchitecture = "Insufficient Permissions"
                 $curbit = $null
                 $capof = $null
-            }
-            else {
+            } else {
                 $strCpuArchitecture = "Error - unknown issue"
                 $curbit = $null
                 $capof = $null
             }
-        }
-        catch {
+        } catch {
             $strCpuArchitecture = "Could not connect"
             $curbit = $null
             $capof = $null
         }
         [PSCustomObject]@{
             ComputerName = $comp
-            CurrentBit = $curbit
-            CapableOf = $capof
+            CurrentBit   = $curbit
+            CapableOf    = $capof
             Architecture = $strCpuArchitecture
         }
     }#foreach comp

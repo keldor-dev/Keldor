@@ -1,5 +1,5 @@
 function Get-HWPerformanceScore {
-<#
+    <#
 .SYNOPSIS
     Gets HW Performance Score.
 
@@ -30,13 +30,13 @@ function Get-HWPerformanceScore {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-HWPerformanceScore')]
-    Param (
+    param (
         [Parameter(
             Mandatory = $false,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = $env:COMPUTERNAME,
 
         [Parameter()]
@@ -48,33 +48,32 @@ function Get-HWPerformanceScore {
         [Parameter()]
         $MaxResultTime = 1200
     )
-    Begin {
+    begin {
         $ISS = [system.management.automation.runspaces.initialsessionstate]::CreateDefault()
         $RunspacePool = [runspacefactory]::CreateRunspacePool(1, $MaxThreads, $ISS, $Host)
         $RunspacePool.Open()
         $Code = {
             [CmdletBinding()]
-            Param (
+            param (
                 [Parameter(
-                    Mandatory=$true,
-                    Position=0
+                    Mandatory = $true,
+                    Position = 0
                 )]
                 [string]$comp
             )
             if ($comp -eq $env:COMPUTERNAME) {
                 Get-CimInstance -ClassName Win32_WinSAT -ErrorAction Stop
-            }
-            else {
+            } else {
                 Get-CimInstance -ClassName Win32_WinSAT -ComputerName $comp -ErrorAction Stop
             }
         }# end code block
         $Jobs = @()
     }
-    Process {
+    process {
         Write-Progress -Activity "Preloading threads" -Status "Starting Job $($jobs.count)"
-        ForEach ($Object in $ComputerName){
+        foreach ($Object in $ComputerName) {
             $PowershellThread = [powershell]::Create().AddScript($Code)
-            $PowershellThread.AddArgument($Object.ToString()) | out-null
+            $PowershellThread.AddArgument($Object.ToString()) | Out-Null
             $PowershellThread.RunspacePool = $RunspacePool
             $Handle = $PowershellThread.BeginInvoke()
             $Job = "" | Select-Object Handle, Thread, object
@@ -84,27 +83,27 @@ function Get-HWPerformanceScore {
             $Jobs += $Job
         }
     }
-    End {
+    end {
         $ResultTimer = Get-Date
-        While (@($Jobs | Where-Object {$Null -ne $_.Handle}).count -gt 0)  {
+        while (@($Jobs | Where-Object { $Null -ne $_.Handle }).count -gt 0) {
             $Remaining = "$($($Jobs | Where-Object {$_.Handle.IsCompleted -eq $False}).object)"
-            If ($Remaining.Length -gt 60){
-                $Remaining = $Remaining.Substring(0,60) + "..."
+            if ($Remaining.Length -gt 60) {
+                $Remaining = $Remaining.Substring(0, 60) + "..."
             }
             Write-Progress `
                 -Activity "Getting hardware performance scores. Waiting for Jobs - $($MaxThreads - $($RunspacePool.GetAvailableRunspaces())) of $MaxThreads threads running" `
-                -PercentComplete (($Jobs.count - $($($Jobs | Where-Object {$_.Handle.IsCompleted -eq $False}).count)) / $Jobs.Count * 100) `
+                -PercentComplete (($Jobs.count - $($($Jobs | Where-Object { $_.Handle.IsCompleted -eq $False }).count)) / $Jobs.Count * 100) `
                 -Status "$(@($($Jobs | Where-Object {$_.Handle.IsCompleted -eq $False})).count) remaining - $remaining"
-            ForEach ($Job in $($Jobs | Where-Object {$_.Handle.IsCompleted -eq $True})){
+            foreach ($Job in $($Jobs | Where-Object { $_.Handle.IsCompleted -eq $True })) {
                 $Job.Thread.EndInvoke($Job.Handle)
                 $Job.Thread.Dispose()
                 $Job.Thread = $Null
                 $Job.Handle = $Null
                 $ResultTimer = Get-Date
             }
-            If (($(Get-Date) - $ResultTimer).totalseconds -gt $MaxResultTime){
+            if (($(Get-Date) - $ResultTimer).totalseconds -gt $MaxResultTime) {
                 Write-Error "Child script appears to be frozen, try increasing MaxResultTime"
-                Exit
+                exit
             }
             Start-Sleep -Milliseconds $SleepTimer
         }

@@ -1,5 +1,5 @@
 function Open-GroupPolicyMgmt {
-<#
+    <#
 .SYNOPSIS
     Opens Group Policy Mgmt.
 
@@ -18,13 +18,12 @@ function Open-GroupPolicyMgmt {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-GroupPolicyMgmt')]
-    [Alias('gpo','gpmc','GroupPolicy')]
+    [Alias('gpo', 'gpmc', 'GroupPolicy')]
     param()
     try {
         $ErrorActionPreference = "Stop"
         gpmc.msc
-    }
-    catch {
+    } catch {
         Write-Output "Active Directory snapins are not installed/enabled."
     }
 }

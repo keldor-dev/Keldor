@@ -26,8 +26,7 @@ function Test-KeldorSecretInOnePassword {
         }
 
         return $true
-    }
-    catch {
+    } catch {
         return $false
     }
 }

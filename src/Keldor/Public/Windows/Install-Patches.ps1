@@ -1,5 +1,5 @@
 function Install-Patches {
-<#
+    <#
 .SYNOPSIS
     Will install patches in the local patches folder.
 
@@ -36,12 +36,12 @@ function Install-Patches {
     )]
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Install-Patches')]
     [Alias('Install-Updates')]
-    Param (
+    param (
         [Parameter(
-            Mandatory=$false,
-            Position=0
+            Mandatory = $false,
+            Position = 0
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )
 
@@ -54,8 +54,7 @@ function Install-Patches {
     if ($ComputerName -eq $env:COMPUTERNAME) {
         Copy-Item -Path $fp -Destination $Patches
         & "$Patches\InstallRemote.ps1"
-    }
-    else {
+    } else {
         Invoke-Command -ComputerName $ComputerName -FilePath $fp -ErrorAction Stop  #DevSkim: ignore DS104456
     }
 }#install patches

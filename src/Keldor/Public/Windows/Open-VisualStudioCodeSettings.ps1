@@ -1,5 +1,5 @@
 function Open-VisualStudioCodeSettings {
-<#
+    <#
 .SYNOPSIS
     Opens Visual Studio Code Settings.
 
@@ -29,8 +29,7 @@ function Open-VisualStudioCodeSettings {
     $vssettings = "$env:APPDATA\Code\User\settings.json"
     if ($host.Name -match "Visual Studio Code") {
         code $vssettings
-    }
-    else {
+    } else {
         powershell_ise $vssettings
     }
 }

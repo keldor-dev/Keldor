@@ -1,5 +1,5 @@
 function Start-WSToolsGUI {
-<#
+    <#
 .SYNOPSIS
     Starts WS Tools GUI.
 
@@ -18,7 +18,7 @@ function Start-WSToolsGUI {
 #>
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Start-WSToolsGUI')]
-    [Alias('wsgui','wstgui','Start-WSToolsTrayApp')]
+    [Alias('wsgui', 'wstgui', 'Start-WSToolsTrayApp')]
     param()
     $ModuleRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
     $TrayAppPath = Join-Path -Path $ModuleRoot -ChildPath 'WSTools_SystemTrayApp.ps1'

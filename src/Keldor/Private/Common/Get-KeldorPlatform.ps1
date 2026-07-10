@@ -21,8 +21,7 @@ function Get-KeldorPlatform {
         if ($osDescription -match 'Windows') { return 'Windows' }
         if ($osDescription -match 'Darwin|macOS|Mac OS') { return 'macOS' }
         if ($osDescription -match 'Linux') { return 'Linux' }
-    }
-    catch {
+    } catch {
         return 'Unknown'
     }
 

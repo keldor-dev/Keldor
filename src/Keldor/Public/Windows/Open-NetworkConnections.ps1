@@ -1,5 +1,5 @@
 function Open-NetworkConnections {
-<#
+    <#
 .SYNOPSIS
     Opens Network Connections.
 
@@ -18,7 +18,7 @@ function Open-NetworkConnections {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-NetworkConnections')]
-    [Alias('network','connections')]
+    [Alias('network', 'connections')]
     param()
     control.exe ncpa.cpl
 }

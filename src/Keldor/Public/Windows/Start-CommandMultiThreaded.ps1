@@ -1,5 +1,5 @@
 function Start-CommandMultiThreaded {
-<#
+    <#
 .SYNOPSIS
     Takes a single command and multithreads it.
 
@@ -51,7 +51,7 @@ function Start-CommandMultiThreaded {
 #>
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Start-CommandMultiThreaded')]
-    Param (
+    param (
         [Parameter()]
         [string]$Command,
 
@@ -77,34 +77,32 @@ function Start-CommandMultiThreaded {
         [Array]$AddSwitch
     )
 
-    Begin {
+    begin {
         $ISS = [System.Management.Automation.Runspaces.InitialSessionState]::CreateDefault()
         $RunspacePool = [RunspaceFactory]::CreateRunspacePool(1, $MaxThreads, $ISS, $Host)
         $RunspacePool.Open()
-        If ($(Get-Command | Select-Object Name) -match $Command) {
+        if ($(Get-Command | Select-Object Name) -match $Command) {
             $Code = $Null
-        }
-        Else {
+        } else {
             $Code = [ScriptBlock]::Create($(Get-Content $Command))
         }
         $Jobs = @()
     }
-    Process {
+    process {
         Write-Progress -Activity "Loading threads" -Status "Starting Job $($jobs.count)"
-        ForEach ($Object in $Objects){
+        foreach ($Object in $Objects) {
             if ($PSCmdlet.ShouldProcess($Object.ToString(), "Start $Command")) {
-                If ([string]::IsNullOrWhiteSpace($Code)) {
+                if ([string]::IsNullOrWhiteSpace($Code)) {
                     $PowershellThread = [PowerShell]::Create().AddCommand($Command)
-                }
-                Else {
+                } else {
                     $PowershellThread = [PowerShell]::Create().AddScript($Code)
                 }
 
                 $PowershellThread.AddArgument($Object.ToString()) | Out-Null
-                ForEach ($Key in $AddParameter.Keys) {
+                foreach ($Key in $AddParameter.Keys) {
                     $PowershellThread.AddParameter($Key, $AddParameter.$key) | Out-Null
                 }
-                ForEach ($Switch in $AddSwitch) {
+                foreach ($Switch in $AddSwitch) {
                     $Switch
                     $PowershellThread.AddParameter($Switch) | Out-Null
                 }
@@ -118,26 +116,26 @@ function Start-CommandMultiThreaded {
             }
         }
     }
-    End {
+    end {
         $ResultTimer = Get-Date
-        While (@($Jobs | Where-Object {$null -ne $_.Handle}).count -gt 0)  {
+        while (@($Jobs | Where-Object { $null -ne $_.Handle }).count -gt 0) {
             $Remaining = "$($($Jobs | Where-Object {$_.Handle.IsCompleted -eq $False}).object)"
-            If ($Remaining.Length -gt 60) {
-                $Remaining = $Remaining.Substring(0,60) + "..."
+            if ($Remaining.Length -gt 60) {
+                $Remaining = $Remaining.Substring(0, 60) + "..."
             }
             Write-Progress -Activity "Waiting for Jobs To Finish - $($MaxThreads - $($RunspacePool.GetAvailableRunspaces())) of $MaxThreads threads running" `
-                -PercentComplete (($Jobs.count - $($($Jobs | Where-Object {$_.Handle.IsCompleted -eq $False}).count)) / $Jobs.Count * 100) `
+                -PercentComplete (($Jobs.count - $($($Jobs | Where-Object { $_.Handle.IsCompleted -eq $False }).count)) / $Jobs.Count * 100) `
                 -Status "$(@($($Jobs | Where-Object {$_.Handle.IsCompleted -eq $False})).count) remaining - $remaining"
-            ForEach ($Job in $($Jobs | Where-Object {$_.Handle.IsCompleted -eq $True})) {
+            foreach ($Job in $($Jobs | Where-Object { $_.Handle.IsCompleted -eq $True })) {
                 $Job.Thread.EndInvoke($Job.Handle)
                 $Job.Thread.Dispose()
                 $Job.Thread = $Null
                 $Job.Handle = $Null
                 $ResultTimer = Get-Date
             }
-            If (($(Get-Date) - $ResultTimer).totalseconds -gt $MaxTime) {
+            if (($(Get-Date) - $ResultTimer).totalseconds -gt $MaxTime) {
                 Write-Error "Script appears to be frozen, try increasing MaxResultTime"
-                Exit
+                exit
             }
             Start-Sleep -Milliseconds $SleepTimer
         }

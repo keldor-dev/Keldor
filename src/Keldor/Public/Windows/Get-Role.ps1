@@ -1,5 +1,5 @@
 function Get-Role {
-<#
+    <#
 .SYNOPSIS
     Gets Role.
 
@@ -17,10 +17,10 @@ function Get-Role {
     https://docs.keldor.dev/powershell/keldor/Get-Role
 #>
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-Role')]
-    Param ()
-$currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
-    if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {$Role = "Admin"}
-    else {$Role = "Non-Admin"}
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-Role')]
+    param ()
+    $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+    if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) { $Role = "Admin" }
+    else { $Role = "Non-Admin" }
     $Role
 }

@@ -1,5 +1,5 @@
 function Open-DNSmgmt {
-<#
+    <#
 .SYNOPSIS
     Opens DN Smgmt.
 
@@ -23,8 +23,7 @@ function Open-DNSmgmt {
     try {
         $ErrorActionPreference = "Stop"
         dnsmgmt.msc
-    }
-    catch {
+    } catch {
         Write-Output "Active Directory snapins are not installed/enabled."
     }
 }

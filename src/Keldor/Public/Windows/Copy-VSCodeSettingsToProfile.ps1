@@ -1,5 +1,5 @@
 function Copy-VSCodeSettingsToProfile {
-<#
+    <#
 .SYNOPSIS
     Copies Visual Studio Code settings to the user's profile.
 

@@ -1,5 +1,5 @@
 function Open-ADUsersAndComputers {
-<#
+    <#
 .SYNOPSIS
     Opens AD Users And Computers.
 
@@ -18,13 +18,12 @@ function Open-ADUsersAndComputers {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-ADUsersAndComputers')]
-    [Alias('aduc','dsa')]
+    [Alias('aduc', 'dsa')]
     param()
     try {
         $ErrorActionPreference = "Stop"
         dsa.msc
-    }
-    catch {
+    } catch {
         Write-Output "Active Directory snapins are not installed/enabled."
     }
 }

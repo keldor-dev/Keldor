@@ -1,5 +1,5 @@
 function Get-ExpiredCertsComputer {
-<#
+    <#
 .SYNOPSIS
     Gets Expired Certs Computer.
 
@@ -17,9 +17,9 @@ function Get-ExpiredCertsComputer {
     https://docs.keldor.dev/powershell/keldor/Get-ExpiredCertsComputer
 #>
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ExpiredCertsComputer')]
-    Param ()
-$cd = Get-Date
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ExpiredCertsComputer')]
+    param ()
+    $cd = Get-Date
     $certs = Get-ChildItem -Path Cert:\LocalMachine -Recurse | Select-Object *
 
     $excerts = $null
@@ -27,7 +27,7 @@ $cd = Get-Date
 
     foreach ($cer in $certs) {
         if ($null -ne $cer.NotAfter -and $cer.NotAfter -lt $cd) {
-            $excerts += ($cer | Where-Object {$_.PSParentPath -notlike "*Root"} | Select-Object FriendlyName,SubjectName,NotBefore,NotAfter,SerialNumber,EnhancedKeyUsageList,DnsNameList,Issuer,Thumbprint,PSParentPath)
+            $excerts += ($cer | Where-Object { $_.PSParentPath -notlike "*Root" } | Select-Object FriendlyName, SubjectName, NotBefore, NotAfter, SerialNumber, EnhancedKeyUsageList, DnsNameList, Issuer, Thumbprint, PSParentPath)
         }
     }
 }

@@ -1,5 +1,5 @@
 function Get-USBStorageDevice {
-<#
+    <#
 .SYNOPSIS
     Shows USB storage devices that have connected to a computer.
 
@@ -25,32 +25,32 @@ function Get-USBStorageDevice {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-USBStorageDevice')]
-    Param (
+    param (
         [Parameter(
-            Mandatory=$false,
-            Position=0,
+            Mandatory = $false,
+            Position = 0,
             ValueFromPipelineByPropertyName = $true,
             ValueFromPipeline = $true
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )
 
-    Begin {
+    begin {
         $dns = $env:USERDNSDOMAIN
         $ErrorActionPreference = "Stop"
         $Hive = "LocalMachine"
         $Key = "SYSTEM\CurrentControlSet\Enum\USBSTOR"
         $ComputerCount = 0
     }
-    Process {
+    process {
         foreach ($Comp in $ComputerName) {
-            $Description,$DeviceID,$DT,$mac,$Manu,$Name,$sn = $null
+            $Description, $DeviceID, $DT, $mac, $Manu, $Name, $sn = $null
             $USBSTORSubKeys1 = @()
             $ChildSubKeys = @()
             $ChildSubKeys1 = @()
             $ComputerCount++
-            Write-Progress -Activity "Getting USB Storage Devices" -Status "Getting USB storage devices from $Comp" -PercentComplete (($ComputerCount/($ComputerName.Count)*100))
+            Write-Progress -Activity "Getting USB Storage Devices" -Status "Getting USB storage devices from $Comp" -PercentComplete (($ComputerCount / ($ComputerName.Count) * 100))
 
             <#
             ==================================
@@ -58,11 +58,10 @@ function Get-USBStorageDevice {
             ==================================
             #>
             try {
-                $Reg = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey($Hive,$Comp)
+                $Reg = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey($Hive, $Comp)
                 $USBSTORKey = $Reg.OpenSubKey($Key)
-                $USBSTORSubKeys1  = $USBSTORKey.GetSubKeyNames()
-            }
-            catch {
+                $USBSTORSubKeys1 = $USBSTORKey.GetSubKeyNames()
+            } catch {
                 $USBSTORSubKeys1 = $null
             }
 
@@ -81,7 +80,7 @@ function Get-USBStorageDevice {
                     $ChildSubKey1 = ($Child.Split(" "))[0]
                     $SplitChildSubKey1 - $ChildSubKey1.Split("\")
 
-                    0..4 | ForEach-Object {[String]$BabySubKey += ($SplitChildSubkey1[$_]) + "\"}
+                    0..4 | ForEach-Object { [String]$BabySubKey += ($SplitChildSubkey1[$_]) + "\" }
 
                     $ChildSubKeys1 += $BabySubKey + ($Child.Split(" ")[-1])
                     $ChildSubKeys1 += $ChildSubKey1
@@ -98,10 +97,10 @@ function Get-USBStorageDevice {
 
                 if ($USBDevice) {
                     $USBDevices += [PSCustomObject]@{
-                        USBDevice = $USBDevice
-                        Computer  = $Comp
+                        USBDevice    = $USBDevice
+                        Computer     = $Comp
                         SerialNumber = ($ChildSubkey1.Split("\")[-1]).Split("&")[0]
-                        Status = "Not connected"
+                        Status       = "Not connected"
                     }#new object
                 }#if usbdevice
                 $USBKey.Close()
@@ -117,15 +116,15 @@ function Get-USBStorageDevice {
             try {
                 $usbinfo = $null
                 $mac = $null
-                $usbinfo = (Get-WmiObject -Class Win32_PnPEntity -Namespace "root\CIMV2" -ComputerName $Comp -ErrorAction Stop | Where-Object {$_.DeviceID -like "USBSTOR*" -and $_.DeviceID -notlike "*USBSTOR\CDROM&*"} | Select-Object Description,DeviceID,Manufacturer,Name)
-                $mac = (Get-WmiObject Win32_NetworkAdapterConfiguration -ComputerName $Comp -ErrorAction SilentlyContinue | Where-Object {$null -ne $_.DNSDomain} | Where-Object {$_.DNSDomainSuffixSearchOrder -match $dns}).MACAddress | Where-Object {$_ -ne $null}
+                $usbinfo = (Get-WmiObject -Class Win32_PnPEntity -Namespace "root\CIMV2" -ComputerName $Comp -ErrorAction Stop | Where-Object { $_.DeviceID -like "USBSTOR*" -and $_.DeviceID -notlike "*USBSTOR\CDROM&*" } | Select-Object Description, DeviceID, Manufacturer, Name)
+                $mac = (Get-WmiObject Win32_NetworkAdapterConfiguration -ComputerName $Comp -ErrorAction SilentlyContinue | Where-Object { $null -ne $_.DNSDomain } | Where-Object { $_.DNSDomainSuffixSearchOrder -match $dns }).MACAddress | Where-Object { $_ -ne $null }
 
                 if ($mac.count -gt 1) {
                     $mac = $mac.ToString()
                 }
 
                 foreach ($usbinfo2 in $usbinfo) {
-                    Clear-Variable Description,DeviceId,Manu,Name,sn -ErrorAction SilentlyContinue | Out-Null
+                    Clear-Variable Description, DeviceId, Manu, Name, sn -ErrorAction SilentlyContinue | Out-Null
 
                     #Create the object data
                     $Description = $usbinfo2.Description
@@ -134,52 +133,52 @@ function Get-USBStorageDevice {
                     $Name = $usbinfo2.Name
                     $sn = $DeviceId
                     if ($sn -like "*&0" -or $sn -like "*&1") {
-                        $sn = $sn.subString(0,$sn.length-2)
+                        $sn = $sn.subString(0, $sn.length - 2)
                         #for string and non string values: $text -replace ".{x}$"
                     }
-                    $sn = $sn -creplace '(?s)^.*\\',''
-                    $sn = $sn -creplace '(?s)^.*&&',''
+                    $sn = $sn -creplace '(?s)^.*\\', ''
+                    $sn = $sn -creplace '(?s)^.*&&', ''
                     #remove everything up to the first \: -creplace '^[^\\]*\\', ''
                     #remove everything to the last \: -creplace '(?s)^.*\\', ''
-                    $sn = $sn -replace "____",""
+                    $sn = $sn -replace "____", ""
 
-                    if ($Description -match "Flash" -or $Name -match "Flash" -or $Name -match " FD ") {$DT = "Flash Drive"}
-                    else {$DT = "External Hard Drive"}
+                    if ($Description -match "Flash" -or $Name -match "Flash" -or $Name -match " FD ") { $DT = "Flash Drive" }
+                    else { $DT = "External Hard Drive" }
 
                     $info += [PSCustomObject]@{
-                        Computer = $comp
-                        DeviceType = $DT
+                        Computer        = $comp
+                        DeviceType      = $DT
                         "Instance Path" = $DeviceID
-                        "Display Name" = $Name
-                        "MAC Address" = $mac
+                        "Display Name"  = $Name
+                        "MAC Address"   = $mac
                         "Serial Number" = $sn
-                        Status = "Connected"
+                        Status          = "Connected"
                     }
                 }#foreach storage device on the computer
                 if ($null -eq $usbinfo) {
                     $DeviceID = "NO USB STORAGE DEVICE FOUND"
                     $info += [PSCustomObject]@{
-                        Computer = $comp
-                        DeviceType = $null
+                        Computer        = $comp
+                        DeviceType      = $null
                         "Instance Path" = $DeviceID
-                        "Display Name" = $null
-                        "MAC Address" = $null
+                        "Display Name"  = $null
+                        "MAC Address"   = $null
                         "Serial Number" = $null
-                        Status = $null
+                        Status          = $null
                     }
                 }
             }#try
             catch {
-                $Description,$DeviceID,$DT,$mac,$Manu,$Name,$sn = $null
+                $Description, $DeviceID, $DT, $mac, $Manu, $Name, $sn = $null
                 $DeviceID = "Unable to connect"
                 $info += [PSCustomObject]@{
-                    Computer = $comp
-                    DeviceType = $null
+                    Computer        = $comp
+                    DeviceType      = $null
                     "Instance Path" = $DeviceID
-                    "Display Name" = $null
-                    "MAC Address" = $null
+                    "Display Name"  = $null
+                    "MAC Address"   = $null
                     "Serial Number" = $null
-                    Status = $null
+                    Status          = $null
                 }
             }#catch
 
@@ -190,7 +189,7 @@ function Get-USBStorageDevice {
             #>
 
             foreach ($USB in $USBDevices) {
-                $name,$sn,$Status = $null
+                $name, $sn, $Status = $null
 
                 $name = $USB.USBDevice
                 $sn = $USB.SerialNumber
@@ -199,11 +198,11 @@ function Get-USBStorageDevice {
                 $IP = $null
                 $mac = $null
 
-                if ($name -match "Flash" -or $name -match " FD ") {$DT = "Flash Drive"}
-                else {$DT = "External Hard Drive"}
+                if ($name -match "Flash" -or $name -match " FD ") { $DT = "Flash Drive" }
+                else { $DT = "External Hard Drive" }
 
                 foreach ($device in $info) {
-                    $dsn,$IP,$mac = $null
+                    $dsn, $IP, $mac = $null
                     $dsn = $device."Serial Number"
                     if ($dsn -eq $sn) {
                         $DT = $device.DeviceType
@@ -214,19 +213,19 @@ function Get-USBStorageDevice {
                 }
 
                 [PSCustomObject]@{
-                    ComputerName = $Comp
-                    DeviceType = $DT
+                    ComputerName    = $Comp
+                    DeviceType      = $DT
                     "Instance Path" = $IP
-                    "Display Name" = $name
-                    "MAC Address" = $mac
+                    "Display Name"  = $name
+                    "MAC Address"   = $mac
                     "Serial Number" = $sn
-                    Status = $Status
-                } | Select-Object ComputerName,DeviceType,"Display Name","Instance Path","Serial Number","MAC Address",Status
+                    Status          = $Status
+                } | Select-Object ComputerName, DeviceType, "Display Name", "Instance Path", "Serial Number", "MAC Address", Status
 
             }#foreach usb device
         }#foreach comp
     }#process
-    End {
+    end {
         #
     }
 }

@@ -1,5 +1,5 @@
 function Show-FederalHoliday {
-<#
+    <#
 .SYNOPSIS
     Shows Federal Holiday.
 
@@ -34,13 +34,13 @@ function Show-FederalHoliday {
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Show-FederalHoliday')]
     [Alias('Get-FederalHoliday')]
     param(
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [string[]]$Name,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [int32]$Year,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [switch]$AllYears
     )
 
@@ -54,13 +54,11 @@ function Show-FederalHoliday {
     if ([string]::IsNullOrWhiteSpace($Year) -or $Year -eq 0) {
         Write-Verbose "Year is null, empty, or set to 0. Setting year to $cyear"
         $Year = $cyear
-    }
-    else {
+    } else {
         Write-Verbose "Year is populated."
         if ($Year -ge $fyear -and $Year -le $lyear) {
             #do nothing
-        }
-        else {
+        } else {
             $obj = "Year $Year is not between $fyear and $lyear."
             Write-Error "Year entered is not valid. See details below for valid years." -TargetObject $obj -ErrorAction Stop
         }
@@ -68,19 +66,18 @@ function Show-FederalHoliday {
 
     if ([string]::IsNullOrWhiteSpace($Name)) {
         if ($AllYears) {
-            $holidays | Select-Object Name,Year,Date,@{Name='HolidayDate';Expression={$_.Date}},DayOfWeek | Sort-Object Date
-        }
-        else {
-            $holidays | Where-Object {$_.Year -eq $Year} | Select-Object Name,Date,@{Name='HolidayDate';Expression={$_.Date}},DayOfWeek | Sort-Object Date
+            $holidays | Select-Object Name, Year, Date, @{Name = 'HolidayDate'; Expression = { $_.Date } }, DayOfWeek | Sort-Object Date
+        } else {
+            $holidays | Where-Object { $_.Year -eq $Year } | Select-Object Name, Date, @{Name = 'HolidayDate'; Expression = { $_.Date } }, DayOfWeek | Sort-Object Date
         }
     }#if no name specified
     else {
         foreach ($hol in $Name) {
             if ($AllYears) {
-                $holidays | Where-Object {$_.Name -match $hol} | Select-Object Name,Year,Date,@{Name='HolidayDate';Expression={$_.Date}},DayOfWeek
+                $holidays | Where-Object { $_.Name -match $hol } | Select-Object Name, Year, Date, @{Name = 'HolidayDate'; Expression = { $_.Date } }, DayOfWeek
             }#if all years
             else {
-                $holidays | Where-Object {$_.Year -eq $Year -and $_.Name -match $hol} | Select-Object Name,Date,@{Name='HolidayDate';Expression={$_.Date}},DayOfWeek
+                $holidays | Where-Object { $_.Year -eq $Year -and $_.Name -match $hol } | Select-Object Name, Date, @{Name = 'HolidayDate'; Expression = { $_.Date } }, DayOfWeek
             }#if specific year
         }#for each name entered
     }#if a name is specified

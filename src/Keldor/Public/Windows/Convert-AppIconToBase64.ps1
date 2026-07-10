@@ -1,5 +1,5 @@
 function Convert-AppIconToBase64 {
-<#
+    <#
 .SYNOPSIS
     Short description
 
@@ -28,7 +28,7 @@ function Convert-AppIconToBase64 {
     param(
         [Parameter(
             HelpMessage = "Enter the path of the file to extract the icon from. Ex: C:\Temp\app.exe",
-            Mandatory=$true
+            Mandatory = $true
         )]
         [ValidateNotNullOrEmpty()]
         [string]$Path

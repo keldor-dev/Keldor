@@ -1,5 +1,5 @@
 function Get-ExpiredCertsUser {
-<#
+    <#
 .SYNOPSIS
     Gets Expired Certs User.
 
@@ -17,9 +17,9 @@ function Get-ExpiredCertsUser {
     https://docs.keldor.dev/powershell/keldor/Get-ExpiredCertsUser
 #>
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ExpiredCertsUser')]
-    Param ()
-$cd = Get-Date
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ExpiredCertsUser')]
+    param ()
+    $cd = Get-Date
     $certs = Get-ChildItem -Path Cert:\CurrentUser -Recurse | Select-Object *
 
     $excerts = $null
@@ -27,7 +27,7 @@ $cd = Get-Date
 
     foreach ($cer in $certs) {
         if ($null -ne $cer.NotAfter -and $cer.NotAfter -lt $cd) {
-            $excerts += ($cer | Where-Object {$_.PSParentPath -notlike "*Root"} | Select-Object FriendlyName,SubjectName,NotBefore,NotAfter,SerialNumber,EnhancedKeyUsageList,DnsNameList,Issuer,Thumbprint,PSParentPath)
+            $excerts += ($cer | Where-Object { $_.PSParentPath -notlike "*Root" } | Select-Object FriendlyName, SubjectName, NotBefore, NotAfter, SerialNumber, EnhancedKeyUsageList, DnsNameList, Issuer, Thumbprint, PSParentPath)
         }
     }
 }

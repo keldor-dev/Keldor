@@ -1,5 +1,5 @@
 function Open-FileWithCMTrace {
-<#
+    <#
 .SYNOPSIS
     Opens File With CM Trace.
 
@@ -24,26 +24,23 @@ function Open-FileWithCMTrace {
     [Alias('Open-Log')]
     param(
         [Parameter(
-            Mandatory=$true
+            Mandatory = $true
         )]
         [ValidateNotNullOrEmpty()]
-        [Alias('FileName','File','Name')]
+        [Alias('FileName', 'File', 'Name')]
         [string[]]$Path
     )
     $Continue = $false
     if (Test-Path "c:\Windows\ccm\CMTrace.exe") {
         $app = "c:\Windows\ccm\CMTrace.exe"
         $Continue = $true
-    }
-    elseif (Test-Path "C:\ProgramData\OSI\CMTrace.exe") {
+    } elseif (Test-Path "C:\ProgramData\OSI\CMTrace.exe") {
         $app = "C:\ProgramData\OSI\CMTrace.exe"
         $Continue = $true
-    }
-    elseif (Test-Path "J:\Patches\CMTrace.exe") {
+    } elseif (Test-Path "J:\Patches\CMTrace.exe") {
         $app = "J:\Patches\CMTrace.exe"
         $Continue = $true
-    }
-    else {
+    } else {
         Write-Error "Cannot find CMTrace.exe"
         $Continue = $false
     }

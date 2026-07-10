@@ -1,5 +1,5 @@
 function Repair-DuplicateSusClientID {
-<#
+    <#
 .SYNOPSIS
     Removes SusClientID registry key on the local or remote computer.
 
@@ -27,9 +27,9 @@ function Repair-DuplicateSusClientID {
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Repair-DuplicateSusClientID')]
     param(
         [Parameter(
-            Mandatory=$false
+            Mandatory = $false
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )
 
@@ -52,9 +52,8 @@ function Repair-DuplicateSusClientID {
         Start-Sleep -Seconds 10
         Write-Output "$(Get-Date) - ${ComputerName}: Starting detection"
         (New-Object -ComObject Microsoft.Update.AutoUpdate).DetectNow()
-    }
-    else{
-        Invoke-Command -ComputerName $ComputerName -ScriptBlock {#DevSkim: ignore DS104456
+    } else {
+        Invoke-Command -ComputerName $ComputerName -ScriptBlock { #DevSkim: ignore DS104456
             $comp = $env:COMPUTERNAME
             Write-Output "$(Get-Date) - ${comp}: Stoppping Services"
             Get-Service -Name BITS | Stop-Service

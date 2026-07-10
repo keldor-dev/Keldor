@@ -1,5 +1,5 @@
 function Get-PrivilegedGroup {
-<#
+    <#
 .SYNOPSIS
     Gets Privileged Group.
 
@@ -26,7 +26,7 @@ function Get-PrivilegedGroup {
         Justification = "Have tried other methods and they do not work consistently."
     )]
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-PrivilegedGroup')]
-    Param (
+    param (
         [Parameter()]
         [Switch]$GetParentGroups
     )
@@ -52,19 +52,18 @@ function Get-PrivilegedGroup {
                 $holdinglist = @()
                 foreach ($group in $groups) {
                     Write-Verbose "Checking $group"
-                    [array]$new_groups = Get-ADPrincipalGroupMembership $group | ForEach-Object {$_.distinguishedName}
+                    [array]$new_groups = Get-ADPrincipalGroupMembership $group | ForEach-Object { $_.distinguishedName }
                     if ($new_groups.Length -ge 1) {
                         $NewGroupsAdded = $true
                         foreach ($new in $new_groups) {
                             $holdinglist += $new
                         }
-                    }
-                    else {
+                    } else {
                         $holdinglist += $group
                     }
                 }
                 [array]$groups = $holdinglist
-                $ParentGroups += $groups | Where-Object {$_ -like "CN=*"} | Sort-Object | Select-Object -Unique
+                $ParentGroups += $groups | Where-Object { $_ -like "CN=*" } | Sort-Object | Select-Object -Unique
                 if ($NewGroupsAdded) {
                     Write-Verbose "Starting re-check"
                 }
@@ -84,7 +83,7 @@ function Get-PrivilegedGroup {
 
         Write-Verbose "Getting sub groups"
         $subgroups = foreach ($group in $PrivGroupsCoded) {
-            Get-ADGroupMember $group | Select-Object * | Where-Object {$_.objectClass -eq "group"} | Select-Object -ExpandProperty Name
+            Get-ADGroupMember $group | Select-Object * | Where-Object { $_.objectClass -eq "group" } | Select-Object -ExpandProperty Name
         }
         $subgroups = $subgroups | Sort-Object | Select-Object -Unique
         $PrivSubGroups = @()
@@ -97,14 +96,13 @@ function Get-PrivilegedGroup {
             $holdinglist = @()
             foreach ($group in $subgroups) {
                 Write-Verbose "Checking subgroup $group"
-                [array]$new_groups = Get-ADGroupMember $group | Where-Object {$_.objectClass -eq "group"} | Select-Object -ExpandProperty Name
+                [array]$new_groups = Get-ADGroupMember $group | Where-Object { $_.objectClass -eq "group" } | Select-Object -ExpandProperty Name
                 if ($new_groups.Length -ge 1) {
                     $NewGroupsAdded = $true
                     foreach ($new in $new_groups) {
                         $holdinglist += $new
                     }
-                }
-                else {
+                } else {
                     $holdinglist += $group
                 }
             }
@@ -129,9 +127,8 @@ function Get-PrivilegedGroup {
         $AllGroups = @()
         $AllGroups += $PrivGroupsCoded
         $AllGroups += $PrivGroupsSub
-        $AllGroups | Select-Object Name,Why,GroupScope,GroupCategory,DistinguishedName -Unique
-    }
-    else {
+        $AllGroups | Select-Object Name, Why, GroupScope, GroupCategory, DistinguishedName -Unique
+    } else {
         Write-Warning "Active Directory module is not installed and is required to run this command."
     }
 }

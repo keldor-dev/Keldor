@@ -1,5 +1,5 @@
 function Set-ShortcutText {
-<#
+    <#
 .SYNOPSIS
     Sets Shortcut Text.
 
@@ -24,24 +24,22 @@ function Set-ShortcutText {
 #>
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ShortcutText')]
-    Param (
+    param (
         [Switch]$Yes,
         [Switch]$No
     )
 
     if ($Yes) {
         if ($PSCmdlet.ShouldProcess('HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Link', "Set shortcut text on")) {
-            Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer -Name Link -Value ([byte[]](00,00,00,00)) -Force
+            Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer -Name Link -Value ([byte[]](00, 00, 00, 00)) -Force
         }
-    }
-    elseif ($No) {
+    } elseif ($No) {
         if ($PSCmdlet.ShouldProcess('HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Link', "Set shortcut text off")) {
-            Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer -Name Link -Value ([byte[]](17,00,00,00)) -Force
+            Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer -Name Link -Value ([byte[]](17, 00, 00, 00)) -Force
         }
-    }
-    else {
+    } else {
         if ($PSCmdlet.ShouldProcess('HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\NoUseStoreOpenWith', "Set NoUseStoreOpenWith")) {
-            Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer -Name NoUseStoreOpenWith -Value ([byte[]](00,00,00,00)) -Force
+            Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer -Name NoUseStoreOpenWith -Value ([byte[]](00, 00, 00, 00)) -Force
         }
     }
 }

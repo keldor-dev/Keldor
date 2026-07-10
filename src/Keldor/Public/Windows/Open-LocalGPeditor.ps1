@@ -1,5 +1,5 @@
 function Open-LocalGPeditor {
-<#
+    <#
 .SYNOPSIS
     Opens Local G Peditor.
 
@@ -18,7 +18,7 @@ function Open-LocalGPeditor {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-LocalGPeditor')]
-    [Alias('Open-LocalPolicyEditor','LocalPolicy')]
+    [Alias('Open-LocalPolicyEditor', 'LocalPolicy')]
     param()
     gpedit.msc
 }

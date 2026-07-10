@@ -1,5 +1,5 @@
 function Set-ADProfilePicture {
-<#
+    <#
 .SYNOPSIS
     Sets AD Profile Picture.
 
@@ -21,10 +21,10 @@ function Set-ADProfilePicture {
 #>
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ADProfilePicture')]
-    Param (
-        [Parameter(Mandatory=$true, Position=0)]
+    param (
+        [Parameter(Mandatory = $true, Position = 0)]
         [ValidateNotNullOrEmpty()]
-        [Alias('Username','User','SamAccountName')]
+        [Alias('Username', 'User', 'SamAccountName')]
         [string]$UserName
     )
 
@@ -39,15 +39,14 @@ function Set-ADProfilePicture {
         $ppath = $OpenFileDialog.FileName
 
         $item = Get-Item $ppath
-        if ($item.Length -gt 102400) {Throw "Unable to set $UserName's picture. Picture must be less than 100 KB. Also recommend max size of 96 x 96 pixels."}
+        if ($item.Length -gt 102400) { throw "Unable to set $UserName's picture. Picture must be less than 100 KB. Also recommend max size of 96 x 96 pixels." }
         else {
             $photo1 = [byte[]](Get-Content $ppath -Encoding byte)
             if ($PSCmdlet.ShouldProcess($UserName, "Set AD profile picture")) {
-                Set-ADUser $UserName -Replace @{thumbnailPhoto=$photo1}
+                Set-ADUser $UserName -Replace @{thumbnailPhoto = $photo1 }
             }
         }
-    }
-    else {
+    } else {
         Write-Warning "Active Directory module is not installed and is required to run this command."
     }
 }

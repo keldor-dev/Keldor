@@ -1,5 +1,5 @@
 function Get-FunctionsInModule {
-<#
+    <#
 .SYNOPSIS
     Gets Functions In Module.
 
@@ -21,8 +21,8 @@ function Get-FunctionsInModule {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-FunctionsInModule')]
-    Param (
-        [Parameter(Mandatory=$true, Position=0)]
+    param (
+        [Parameter(Mandatory = $true, Position = 0)]
         [string]$Module
     )
 

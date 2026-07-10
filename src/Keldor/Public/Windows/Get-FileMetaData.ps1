@@ -1,5 +1,5 @@
 function Get-FileMetaData {
-<#
+    <#
 .SYNOPSIS
     This function gets file metadata and returns it as a custom PS Object.
 
@@ -32,15 +32,14 @@ function Get-FileMetaData {
     https://docs.keldor.dev/powershell/keldor/Get-FileMetaData
 #>
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-FileMetaData')]
-Param([string[]]$Path)
-    foreach($sFolder in $Path) {
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-FileMetaData')]
+    param([string[]]$Path)
+    foreach ($sFolder in $Path) {
         $ItemInfo = Get-Item $sFolder | Select-Object *
         if ($ItemInfo.Mode -like "d-*") {
             $ItemType = "Directory"
             $FolderPath = $sFolder
-        }
-        else {
+        } else {
             $ItemType = "File"
             $FolderPath = $ItemInfo.DirectoryName
             $FileName = $ItemInfo.Name
@@ -50,20 +49,19 @@ Param([string[]]$Path)
         $objFolder = $objShell.namespace($FolderPath)
         $Metadata = foreach ($File in $objFolder.items()) {
             $FileMetaData = New-Object PSCustomObject
-            for ($a ; $a  -le 266; $a++) {
-                if($objFolder.getDetailsOf($File, $a)) {
-                    $hash += @{$($objFolder.getDetailsOf($objFolder.items, $a)) = $($objFolder.getDetailsOf($File, $a))}
+            for ($a ; $a -le 266; $a++) {
+                if ($objFolder.getDetailsOf($File, $a)) {
+                    $hash += @{$($objFolder.getDetailsOf($objFolder.items, $a)) = $($objFolder.getDetailsOf($File, $a)) }
                     $FileMetaData | Add-Member $hash
                     $hash.clear()
                 } #end if
             } #end for
-            $a=0
+            $a = 0
             $FileMetaData
         } #end foreach $file
         if ($ItemType -eq "File") {
-            $Metadata | Where-Object {$_.FileName -eq $FileName}
-        }
-        else {
+            $Metadata | Where-Object { $_.FileName -eq $FileName }
+        } else {
             $Metadata
         }
     } #end foreach $sfolder

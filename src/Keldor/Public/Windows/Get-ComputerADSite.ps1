@@ -1,5 +1,5 @@
 function Get-ComputerADSite {
-<#
+    <#
 .SYNOPSIS
     Gets Computer AD Site.
 
@@ -21,32 +21,32 @@ function Get-ComputerADSite {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ComputerADSite')]
-    Param (
+    param (
         [Parameter(
-            Mandatory=$false,
-            Position=0,
+            Mandatory = $false,
+            Position = 0,
             ValueFromPipeline = $true
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )
 
-    Begin {
+    begin {
         $info = @()
     }
-    Process {
+    process {
         $info = foreach ($comp in $ComputerName) {
             $site = nltest /server:$comp /dsgetsite 2>$null
-            if($LASTEXITCODE -eq 0){$st = $site[0]}
-            else {$st = "NA"}
+            if ($LASTEXITCODE -eq 0) { $st = $site[0] }
+            else { $st = "NA" }
             [PSCustomObject]@{
                 ComputerName = $comp
-                SiteName = $st
-                Site = $st
+                SiteName     = $st
+                Site         = $st
             }#new object
         }
     }
-    End {
+    end {
         $info
     }
 }

@@ -1,5 +1,5 @@
 function Open-DiskManagement {
-<#
+    <#
 .SYNOPSIS
     Opens Disk Management.
 
@@ -21,9 +21,9 @@ function Open-DiskManagement {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-DiskManagement')]
-    Param (
-        [Parameter(Mandatory=$false, Position=0)]
-        [Alias('Host','Name','Computer','CN')]
+    param (
+        [Parameter(Mandatory = $false, Position = 0)]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string]$ComputerName = "$env:COMPUTERNAME"
     )
     diskmgmt.msc /computer:\\$ComputerName

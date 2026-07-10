@@ -1,5 +1,5 @@
 function Set-FeatureSettingsOverride {
-<#
+    <#
 .SYNOPSIS
     Sets Feature Settings Override.
 
@@ -21,12 +21,12 @@ function Set-FeatureSettingsOverride {
 #>
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-FeatureSettingsOverride')]
-    Param (
+    param (
         [Parameter(
-            Mandatory=$false,
-            Position=0
+            Mandatory = $false,
+            Position = 0
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )
 
@@ -34,11 +34,11 @@ function Set-FeatureSettingsOverride {
     $infos = @()
     $infos += @{
         Value = 'FeatureSettingsOverride'
-        Data = 72
+        Data  = 72
     }
     $infos += @{
         Value = 'FeatureSettingsOverrideMask'
-        Data = 3
+        Data  = 3
     }
 
 
@@ -55,7 +55,7 @@ function Set-FeatureSettingsOverride {
             $i++
             $amount = ($i / $number)
             $perc1 = $amount.ToString("P")
-            Write-Progress -activity "Setting remediation values" -status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length)  * 100)
+            Write-Progress -Activity "Setting remediation values" -Status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length) * 100)
         }#if length
 
         foreach ($RE in $RES) {
@@ -64,7 +64,7 @@ function Set-FeatureSettingsOverride {
             if ($PSCmdlet.ShouldProcess($comp, "Set $ValueName")) {
                 ([Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey([Microsoft.Win32.RegistryHive]::LocalMachine, $comp)).CreateSubKey('SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management')
                 $BaseKey = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey([Microsoft.Win32.RegistryHive]::LocalMachine, $comp)
-                $SubKey = $BaseKey.OpenSubKey('SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management',$true)
+                $SubKey = $BaseKey.OpenSubKey('SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management', $true)
                 $SubKey.SetValue($ValueName, $ValueData, [Microsoft.Win32.RegistryValueKind]::DWORD)
             }
         }

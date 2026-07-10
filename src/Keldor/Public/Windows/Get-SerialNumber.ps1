@@ -1,5 +1,5 @@
 function Get-SerialNumber {
-<#
+    <#
 .SYNOPSIS
     Gets Serial Number.
 
@@ -22,12 +22,12 @@ function Get-SerialNumber {
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-SerialNumber')]
     [Alias('Get-SN')]
-    Param (
+    param (
         [Parameter(HelpMessage = "Enter one or more computer names separated by commas.",
-            Mandatory=$false,
-            Position=0
+            Mandatory = $false,
+            Position = 0
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )
 
@@ -39,7 +39,7 @@ function Get-SerialNumber {
             $i++
             $amount = ($i / $number)
             $perc1 = $amount.ToString("P")
-            Write-Progress -activity "Getting Serial NUmber of computers" -status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length)  * 100)
+            Write-Progress -Activity "Getting Serial NUmber of computers" -Status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length) * 100)
         }#if length
         try {
             $sn = (Get-WmiObject win32_bios -ComputerName $comp | Select-Object SerialNumber).SerialNumber
@@ -47,8 +47,7 @@ function Get-SerialNumber {
                 ComputerName = $comp
                 SerialNumber = $sn
             }#new object
-        }
-        catch {
+        } catch {
             [PSCustomObject]@{
                 ComputerName = $comp
                 SerialNumber = "NA"

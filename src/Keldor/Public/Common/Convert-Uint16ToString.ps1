@@ -1,5 +1,5 @@
 function Convert-Uint16ToString {
-<#
+    <#
 .SYNOPSIS
     Converts uin16 arrays to a readable string.
 
@@ -30,7 +30,7 @@ function Convert-Uint16ToString {
         [uint16[]]$Members
     )
 
-    Process {
+    process {
         -join [char[]] ($Members)
     }
 }

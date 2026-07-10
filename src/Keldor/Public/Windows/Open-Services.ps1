@@ -1,5 +1,5 @@
 function Open-Services {
-<#
+    <#
 .SYNOPSIS
     Opens Services.
 
@@ -22,9 +22,9 @@ function Open-Services {
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-Services')]
     [Alias('services')]
-    Param (
-        [Parameter(Mandatory=$false, Position=0)]
-        [Alias('Host','Name','Computer','CN')]
+    param (
+        [Parameter(Mandatory = $false, Position = 0)]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string]$ComputerName = "$env:COMPUTERNAME"
     )
     services.msc /computer=\\$ComputerName

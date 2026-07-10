@@ -45,8 +45,7 @@ function Remove-KeldorSecretFromSecretManagement {
 
     try {
         Remove-Secret @RemoveSecretParameters | Out-Null
-    }
-    catch {
+    } catch {
         throw "Unable to remove secret '$Name' using the SecretManagement provider."
     }
 

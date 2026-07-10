@@ -1,5 +1,5 @@
 function Import-XML {
-<#
+    <#
 .SYNOPSIS
     Imports XML.
 
@@ -21,8 +21,8 @@ function Import-XML {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Import-XML')]
-    Param (
-        [Parameter(Mandatory=$true, Position=0)]
+    param (
+        [Parameter(Mandatory = $true, Position = 0)]
         [string]$Path
     )
 

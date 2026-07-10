@@ -1,5 +1,5 @@
 function Get-UserLogonLogoffTime {
-<#
+    <#
 .SYNOPSIS
     Gets User Logon Logoff Time.
 
@@ -24,13 +24,13 @@ function Get-UserLogonLogoffTime {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-UserLogonLogoffTime')]
-    Param (
-        [Parameter(Mandatory=$false, Position=0)]
-        [Alias('Host','Name','Computer','CN')]
+    param (
+        [Parameter(Mandatory = $false, Position = 0)]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME",
 
-        [Parameter(Mandatory=$false, Position=1)]
-        [Alias('Date','Time')]
+        [Parameter(Mandatory = $false, Position = 1)]
+        [Alias('Date', 'Time')]
         [string]$DaysBackToSearch = "1"
     )
 
@@ -39,7 +39,7 @@ function Get-UserLogonLogoffTime {
     #$DaysBackToSearch = "1"
 
     #Event ID(s) to search for
-    [int32[]]$ID = @(4624,4634)
+    [int32[]]$ID = @(4624, 4634)
 
     #Strings to search for
     $filecontent = "TaskDisplayName
@@ -63,7 +63,7 @@ Process Name:"
             $i++
             $amount = ($i / $number)
             $perc1 = $amount.ToString("P")
-            Write-Progress -activity "Getting recent users on computers. Currently checking $comp" -status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length)  * 100)
+            Write-Progress -Activity "Getting recent users on computers. Currently checking $comp" -Status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length) * 100)
         }#if length
 
 
@@ -79,15 +79,15 @@ Process Name:"
 
 
         #Gather events
-        $winevent = Get-WinEvent -ComputerName $Comp -FilterHashTable @{Logname='security'; ID= $ID; StartTime=$stime}
+        $winevent = Get-WinEvent -ComputerName $Comp -FilterHashTable @{Logname = 'security'; ID = $ID; StartTime = $stime }
 
 
         foreach ($event in $winevent) {
-            ($event | Select-Object TaskDisplayName,TimeCreated,MachineName,Message | Format-List * | findstr /G:"$env:TEMP\searchlist.lst") -replace "  ","" `
-            -replace "TimeCreated : ","" -replace "MachineName : ","" -replace "Security ID:","" -replace "Account Name:","" `
-            -replace "Account Domain:","" -replace "Logon ID:","" -replace "Logon Type:","" -replace "Security ID:","" `
-            -replace "Account Name:","" -replace "Account Domain:","" -replace "Logon ID:","" -replace "Logon GUID:","" `
-            -replace "Process Name:","" -replace "$dnsdomain","" -join "," -replace "TaskDisplayName : ","" | Out-File "$env:Temp\events.csv" -Append utf8
+            ($event | Select-Object TaskDisplayName, TimeCreated, MachineName, Message | Format-List * | findstr /G:"$env:TEMP\searchlist.lst") -replace "  ", "" `
+                -replace "TimeCreated : ", "" -replace "MachineName : ", "" -replace "Security ID:", "" -replace "Account Name:", "" `
+                -replace "Account Domain:", "" -replace "Logon ID:", "" -replace "Logon Type:", "" -replace "Security ID:", "" `
+                -replace "Account Name:", "" -replace "Account Domain:", "" -replace "Logon ID:", "" -replace "Logon GUID:", "" `
+                -replace "Process Name:", "" -replace "$dnsdomain", "" -join "," -replace "TaskDisplayName : ", "" | Out-File "$env:Temp\events.csv" -Append utf8
         }#foreach event in winevent
 
 
@@ -98,30 +98,30 @@ Process Name:"
         $notcomp2 = "*$*"
 
         #Filter by type of logon, username, and domain
-        $events | Where-Object {$_.LogonType1 -eq "2" -or $_.LogonType1 -eq "3" -or $_.LogonType1 -eq "7" -or $_.LogonType1 -eq "10" -or $_.LogonType1 -eq "11" `
-            -and ($_.Domain1 -eq "$env:USERDOMAIN" -or $null -eq $_.Domain1) -and $_.Username1 -ne "$notcomp" -and $_.Username1 -notlike "$notcomp2"} |
-            Select-Object Computer1,When1,Task,LogonType1,AccountName,Username1,ProcessName1 | ForEach-Object {
+        $events | Where-Object { $_.LogonType1 -eq "2" -or $_.LogonType1 -eq "3" -or $_.LogonType1 -eq "7" -or $_.LogonType1 -eq "10" -or $_.LogonType1 -eq "11" `
+                -and ($_.Domain1 -eq "$env:USERDOMAIN" -or $null -eq $_.Domain1) -and $_.Username1 -ne "$notcomp" -and $_.Username1 -notlike "$notcomp2" } |
+            Select-Object Computer1, When1, Task, LogonType1, AccountName, Username1, ProcessName1 | ForEach-Object {
                 $usrnm = $null
-                if ($null -ne $_.Username1 -and $_.Username1 -ne "$notcomp" -and $_.Username1 -ne "$notcomp2") {$usrnm = $_.Username1}
-                if ($null -eq $_.Username1  -and $_.AccountName -ne "$notcomp" -and $_.AccountName -ne "$notcomp2") {$usrnm = $_.AccountName}
+                if ($null -ne $_.Username1 -and $_.Username1 -ne "$notcomp" -and $_.Username1 -ne "$notcomp2") { $usrnm = $_.Username1 }
+                if ($null -eq $_.Username1 -and $_.AccountName -ne "$notcomp" -and $_.AccountName -ne "$notcomp2") { $usrnm = $_.AccountName }
                 #if ($_.AccountName -ne "$notcomp" -or $_.AccountName -ne "$notcomp2") {$User = $_.AccountName}
-                if ($_.LogonType1 -eq 2) {$type2 = "Local"}#if 2
-                if ($_.LogonType1 -eq 3) {$type2 = "Remote"}#if 3
-                if ($_.LogonType1 -eq 7) {$type2 = "UnlockScreen"}#if 7
-                if ($_.LogonType1 -eq 11) {$type2 = "CachedLocal"}#if 11
+                if ($_.LogonType1 -eq 2) { $type2 = "Local" }#if 2
+                if ($_.LogonType1 -eq 3) { $type2 = "Remote" }#if 3
+                if ($_.LogonType1 -eq 7) { $type2 = "UnlockScreen" }#if 7
+                if ($_.LogonType1 -eq 11) { $type2 = "CachedLocal" }#if 11
                 [PSCustomObject]@{
-                    When = $_.When1
-                    Computer = $_.Computer1
-                    Task = $_.Task
-                    Type = $type2
-                    User = $usrnm
+                    When        = $_.When1
+                    Computer    = $_.Computer1
+                    Task        = $_.Task
+                    Type        = $type2
+                    User        = $usrnm
                     ProcessName = $_.ProcessName1
-                } | Select-Object Computer,When,Task,Type,User,ProcessName
-            } | Select-Object Computer,When,Task,Type,User | Export-Csv "$env:Temp\events2.csv" -Force -NoTypeInformation
+                } | Select-Object Computer, When, Task, Type, User, ProcessName
+            } | Select-Object Computer, When, Task, Type, User | Export-Csv "$env:Temp\events2.csv" -Force -NoTypeInformation
 
 
         $events2 = Import-Csv "$env:Temp\events2.csv"
-        ($events2) | Select-Object Computer,When,Task,Type,User
+        ($events2) | Select-Object Computer, When, Task, Type, User
 
 
         Remove-Item "$env:TEMP\searchlist.lst" -Force

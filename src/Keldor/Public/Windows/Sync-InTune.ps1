@@ -1,5 +1,5 @@
 function Sync-InTune {
-<#
+    <#
 .SYNOPSIS
     Will sync device with InTune/MEM.
 
@@ -23,8 +23,7 @@ function Sync-InTune {
 
     try {
         Get-ScheduledTask -TaskName PushLaunch -ErrorAction Stop | Start-ScheduledTask
-    }
-    catch {
+    } catch {
         Write-Warning "Device is not InTune/Microsoft Endpoint Manager (MEM) managed."
     }
 }

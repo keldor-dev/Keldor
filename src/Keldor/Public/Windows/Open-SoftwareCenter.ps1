@@ -1,5 +1,5 @@
 function Open-SoftwareCenter {
-<#
+    <#
 .SYNOPSIS
     Opens Software Center.
 
@@ -21,12 +21,12 @@ function Open-SoftwareCenter {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-SoftwareCenter')]
-    [Alias('SoftwareCenter','SCCM','MECM')]
+    [Alias('SoftwareCenter', 'SCCM', 'MECM')]
     param(
         [Parameter(
-            Mandatory=$false
+            Mandatory = $false
         )]
-        [ValidateSet('AvailableSoftware','Updates','OSD','InstallationStatus','Compliance','Options')]
+        [ValidateSet('AvailableSoftware', 'Updates', 'OSD', 'InstallationStatus', 'Compliance', 'Options')]
         [ValidateNotNullOrEmpty()]
         [Alias('Tab')]
         [string]$Page = "AvailableSoftware"

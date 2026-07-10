@@ -1,5 +1,5 @@
 function Get-InstalledProgram {
-<#
+    <#
 .SYNOPSIS
     Displays installed programs on a computer.
 
@@ -43,31 +43,31 @@ function Get-InstalledProgram {
     https://docs.keldor.dev/powershell/keldor/Get-InstalledProgram
 #>
 
-    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-InstalledProgram', SupportsShouldProcess=$true)]
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-InstalledProgram', SupportsShouldProcess = $true)]
     param(
-        [Parameter(ValueFromPipeline=$true,
-            ValueFromPipelineByPropertyName=$true,
-            Position=0)]
-        [Alias('Host','Name','DNSHostName','Computer')]
+        [Parameter(ValueFromPipeline = $true,
+            ValueFromPipelineByPropertyName = $true,
+            Position = 0)]
+        [Alias('Host', 'Name', 'DNSHostName', 'Computer')]
         [string[]]$ComputerName = $env:COMPUTERNAME,
 
-        [Parameter(Position=1)]
+        [Parameter(Position = 1)]
         [string[]]$Property
     )
 
-    Begin {
+    begin {
         $RegistryLocation = 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\',
-                            'SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\'
+        'SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\'
         $HashProperty = @{}
-        $SelectProperty = @('ComputerName','Installed','ProgramName','Version','Uninstall','Comment')
+        $SelectProperty = @('ComputerName', 'Installed', 'ProgramName', 'Version', 'Uninstall', 'Comment')
         if ($Property) {
             $SelectProperty += $Property
         }
     }#begin
 
-    Process {
+    process {
         foreach ($Computer in $ComputerName) {
-            $RegBase = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey([Microsoft.Win32.RegistryHive]::LocalMachine,$Computer)
+            $RegBase = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey([Microsoft.Win32.RegistryHive]::LocalMachine, $Computer)
             $installed = @()
             foreach ($CurrentReg in $RegistryLocation) {
                 if ($RegBase) {
@@ -86,21 +86,21 @@ function Get-InstalledProgram {
                             $HashProperty.Uninstall = ($UninstallString = ($RegBase.OpenSubKey("$CurrentReg$_")).GetValue('UninstallString'))
                             $HashProperty.Comment = ($Comments = ($RegBase.OpenSubKey("$CurrentReg$_")).GetValue('Comments'))
                             if ($DisplayName -and ($DisplayName -notmatch "Update for" -and $DisplayName -notmatch " Security Update for" -and $DisplayName -notmatch "Hotfix for" -and $DisplayName -notlike "Windows Setup Remediations*" `
-                                -and $DisplayName -notlike "Outils de v*" -and $DisplayName -notlike "Intel(R) Processor*" -and $DisplayName -notlike "Intel(R) Chipset*" -and $DisplayName -notlike "herramientas de corr*" `
-                                -and $DisplayName -notlike "Dell Touchpa*" -and $DisplayName -notmatch "Crystal Reports" -and $DisplayName -notmatch "Catalyst Control" -and $DisplayName -notlike "AMD *" -and $DisplayName -notlike "Microsoft * MUI*" `
-                                -and $DisplayName -notlike "Microsoft Visual C* Redist*" -and $DisplayName -notlike "Vulkan Run Time Libraries*" -and $DisplayName -notlike "Microsoft Visual C* Minimum*" -and $DisplayName -notlike "Microsoft Visual C* Additional*")) {
+                                        -and $DisplayName -notlike "Outils de v*" -and $DisplayName -notlike "Intel(R) Processor*" -and $DisplayName -notlike "Intel(R) Chipset*" -and $DisplayName -notlike "herramientas de corr*" `
+                                        -and $DisplayName -notlike "Dell Touchpa*" -and $DisplayName -notmatch "Crystal Reports" -and $DisplayName -notmatch "Catalyst Control" -and $DisplayName -notlike "AMD *" -and $DisplayName -notlike "Microsoft * MUI*" `
+                                        -and $DisplayName -notlike "Microsoft Visual C* Redist*" -and $DisplayName -notlike "Vulkan Run Time Libraries*" -and $DisplayName -notlike "Microsoft Visual C* Minimum*" -and $DisplayName -notlike "Microsoft Visual C* Additional*")) {
                                 $installed += [PSCustomObject]$HashProperty |
-                                Select-Object -Property $SelectProperty
-                            }
-                            $DisplayVersion | Out-Null
-                            $InstallDate | Out-Null
-                            $UninstallString | Out-Null
-                            $Comments | Out-Null
-                        }#foreach object
-                    }#if currentregkey
-                }#if regbase
-            }#foreach registry entry in registry location
-            $installed | Select-Object $SelectProperty | Sort-Object ProgramName
-        }#foreach computer
-    }#process
-}
+                                    Select-Object -Property $SelectProperty
+                                }
+                                $DisplayVersion | Out-Null
+                                $InstallDate | Out-Null
+                                $UninstallString | Out-Null
+                                $Comments | Out-Null
+                            }#foreach object
+                        }#if currentregkey
+                    }#if regbase
+                }#foreach registry entry in registry location
+                $installed | Select-Object $SelectProperty | Sort-Object ProgramName
+            }#foreach computer
+        }#process
+    }

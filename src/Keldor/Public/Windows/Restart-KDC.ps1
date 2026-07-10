@@ -1,5 +1,5 @@
 function Restart-KDC {
-<#
+    <#
 .SYNOPSIS
     Restarts KDC.
 
@@ -24,9 +24,9 @@ function Restart-KDC {
 #>
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Restart-KDC')]
-    Param (
-        [Parameter(Mandatory=$false, Position=0)]
-        [Alias('Host','Name','Computer','CN','ComputerName')]
+    param (
+        [Parameter(Mandatory = $false, Position = 0)]
+        [Alias('Host', 'Name', 'Computer', 'CN', 'ComputerName')]
         [string]$DC = "$env:COMPUTERNAME",
         [Switch]$All
     )
@@ -37,11 +37,10 @@ function Restart-KDC {
                 if ($PSCmdlet.ShouldProcess($DC, "Restart KDC service")) {
                     Restart-Service -inputobject $(Get-Service -ComputerName $DC -Name kdc) -Force
                 }
-            }
-            catch {Throw "Unable to connect to $DC or failed to restart service."}
+            } catch { throw "Unable to connect to $DC or failed to restart service." }
         }#if not all
         elseif ($All) {
-            $AllDCs = (Get-ADForest).Domains | ForEach-Object {Get-ADDomainController -Filter * -Server $_}
+            $AllDCs = (Get-ADForest).Domains | ForEach-Object { Get-ADDomainController -Filter * -Server $_ }
             foreach ($Srv in $AllDCs) {
                 $SrvName = $Srv.HostName
                 Write-Output "Restarting KDC service on $SrvName"
@@ -49,12 +48,10 @@ function Restart-KDC {
                     if ($PSCmdlet.ShouldProcess($SrvName, "Restart KDC service")) {
                         Restart-Service -inputobject $(Get-Service -ComputerName $SrvName -Name kdc) -Force
                     }
-                }
-                catch {Throw "Unable to connect to $DC or failed to restart service."}
+                } catch { throw "Unable to connect to $DC or failed to restart service." }
             }#foreach dc
         }#elseif
-    }
-    else {
+    } else {
         Write-Warning "Active Directory module is not installed and is required to run this command."
     }
 }

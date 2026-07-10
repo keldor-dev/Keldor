@@ -7,7 +7,7 @@ function Open-KeldorUrl {
         [string]$Uri,
 
         [Parameter(Mandatory = $false, Position = 1)]
-        [ValidateSet('Default','Edge','Chrome','Firefox','Safari','InternetExplorer')]
+        [ValidateSet('Default', 'Edge', 'Chrome', 'Firefox', 'Safari', 'InternetExplorer')]
         [string]$Browser = 'Default'
     )
 
@@ -25,10 +25,10 @@ function Open-KeldorUrl {
 
     if ($Platform -eq 'macOS') {
         $ApplicationNames = @{
-            Edge = 'Microsoft Edge'
-            Chrome = 'Google Chrome'
-            Firefox = 'Firefox'
-            Safari = 'Safari'
+            Edge             = 'Microsoft Edge'
+            Chrome           = 'Google Chrome'
+            Firefox          = 'Firefox'
+            Safari           = 'Safari'
             InternetExplorer = 'Internet Explorer'
         }
 
@@ -40,18 +40,17 @@ function Open-KeldorUrl {
         try {
             Start-Process -FilePath 'open' -ArgumentList @('-a', $ApplicationName, $Uri) -ErrorAction Stop
             return
-        }
-        catch {
+        } catch {
             throw "Browser '$SelectedBrowser' was not found or could not be started on macOS."
         }
     }
 
     if ($Platform -eq 'Linux') {
         $LinuxBrowserCommands = @{
-            Edge = @('microsoft-edge','microsoft-edge-stable','msedge')
-            Chrome = @('google-chrome','google-chrome-stable','chromium','chromium-browser')
-            Firefox = @('firefox')
-            Safari = @()
+            Edge             = @('microsoft-edge', 'microsoft-edge-stable', 'msedge')
+            Chrome           = @('google-chrome', 'google-chrome-stable', 'chromium', 'chromium-browser')
+            Firefox          = @('firefox')
+            Safari           = @()
             InternetExplorer = @()
         }
 
@@ -75,10 +74,10 @@ function Open-KeldorUrl {
     }
 
     $WindowsBrowserCommands = @{
-        Edge = @('msedge.exe')
-        Chrome = @('chrome.exe')
-        Firefox = @('firefox.exe')
-        Safari = @('safari.exe')
+        Edge             = @('msedge.exe')
+        Chrome           = @('chrome.exe')
+        Firefox          = @('firefox.exe')
+        Safari           = @('safari.exe')
         InternetExplorer = @('iexplore.exe')
     }
 
@@ -89,16 +88,14 @@ function Open-KeldorUrl {
             if ([string]::IsNullOrWhiteSpace($FilePath)) {
                 $FilePath = $CommandName
             }
-        }
-        else {
+        } else {
             $FilePath = $CommandName
         }
 
         try {
             Start-Process -FilePath $FilePath -ArgumentList $Uri -ErrorAction Stop
             return
-        }
-        catch {
+        } catch {
             $FilePath = $null
         }
     }
@@ -107,8 +104,7 @@ function Open-KeldorUrl {
         try {
             Start-Process -FilePath "microsoft-edge:$Uri" -ErrorAction Stop
             return
-        }
-        catch {
+        } catch {
             throw "Browser '$SelectedBrowser' was not found on Windows."
         }
     }

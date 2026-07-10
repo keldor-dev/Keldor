@@ -1,5 +1,5 @@
 function Get-LinesOfCode {
-<#
+    <#
 .SYNOPSIS
     Gets Lines Of Code.
 
@@ -24,11 +24,11 @@ function Get-LinesOfCode {
     param(
         [Parameter(
             HelpMessage = "Enter the path of the folder you want to count lines of PowerShell and JSON code for",
-            Mandatory=$true
+            Mandatory = $true
         )]
         [ValidateNotNullOrEmpty()]
         [string]$Path
     )
 
-    (Get-ChildItem -Path $Path -Recurse | Where-Object {$_.extension -in '.ps1','.psm1','.psd1','.json'} | select-string "^\s*$" -notMatch).Count
+    (Get-ChildItem -Path $Path -Recurse | Where-Object { $_.extension -in '.ps1', '.psm1', '.psd1', '.json' } | Select-String "^\s*$" -NotMatch).Count
 }

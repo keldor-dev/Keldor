@@ -1,5 +1,5 @@
 function Get-WSToolsConfig {
-<#
+    <#
 .SYNOPSIS
     Gets WS Tools Config.
 
@@ -23,7 +23,7 @@ function Get-WSToolsConfig {
         Justification = "Have tried other methods and they do not work consistently."
     )]
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-WSToolsConfig')]
-    [Alias('Import-WSToolsConfig','WSToolsConfig')]
+    [Alias('Import-WSToolsConfig', 'WSToolsConfig')]
     param()
     $Global:KeldorConfig
 }

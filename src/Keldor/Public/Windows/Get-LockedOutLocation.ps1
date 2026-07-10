@@ -1,5 +1,5 @@
 function Get-LockedOutLocation {
-<#
+    <#
 .SYNOPSIS
     This function will locate the computer that processed a failed user logon attempt which caused the user account to become locked out.
 
@@ -25,71 +25,68 @@ function Get-LockedOutLocation {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-LockedOutLocation')]
-    Param(
-      [Parameter(Mandatory=$True)]
+    param(
+        [Parameter(Mandatory = $True)]
         [String]$Identity
     )
 
-    Begin {
+    begin {
         $DCCounter = 0
         $LockedOutStats = @()
-        Try {
+        try {
             Import-Module ActiveDirectory -ErrorAction Stop
-        }
-        Catch {
-           Write-Warning $_
-           Break
+        } catch {
+            Write-Warning $_
+            break
         }
     }# end begin
-    Process {
+    process {
         # Get all domain controllers in domain
         $DomainControllers = Get-ADDomainController -Filter *
-        $PDCEmulator = ($DomainControllers | Where-Object {$_.OperationMasterRoles -contains "PDCEmulator"})
+        $PDCEmulator = ($DomainControllers | Where-Object { $_.OperationMasterRoles -contains "PDCEmulator" })
 
         Write-Verbose "Finding the domain controllers in the domain"
-        $LockedOutStats = Foreach ($DC in $DomainControllers) {
+        $LockedOutStats = foreach ($DC in $DomainControllers) {
             $DCCounter++
-            Write-Progress -Activity "Contacting DCs for lockout info" -Status "Querying $($DC.Hostname)" -PercentComplete (($DCCounter/$DomainControllers.Count) * 100)
-            Try {
-                $UserInfo = Get-ADUser -Identity $Identity  -Server $DC.Hostname -Properties AccountLockoutTime,LastBadPasswordAttempt,BadPwdCount,LockedOut -ErrorAction Stop
-            }
-            Catch {
+            Write-Progress -Activity "Contacting DCs for lockout info" -Status "Querying $($DC.Hostname)" -PercentComplete (($DCCounter / $DomainControllers.Count) * 100)
+            try {
+                $UserInfo = Get-ADUser -Identity $Identity  -Server $DC.Hostname -Properties AccountLockoutTime, LastBadPasswordAttempt, BadPwdCount, LockedOut -ErrorAction Stop
+            } catch {
                 Write-Warning $_
-                Continue
+                continue
             }
-            If($UserInfo.LastBadPasswordAttempt) {
+            if ($UserInfo.LastBadPasswordAttempt) {
                 [PSCustomObject]@{
-                        Name                   = $UserInfo.SamAccountName
-                        SID                    = $UserInfo.SID.Value
-                        LockedOut              = $UserInfo.LockedOut
-                        BadPwdCount            = $UserInfo.BadPwdCount
-                        BadPasswordTime        = $UserInfo.BadPasswordTime
-                        DomainController       = $DC.Hostname
-                        AccountLockoutTime     = $UserInfo.AccountLockoutTime
-                        LastBadPasswordAttempt = ($UserInfo.LastBadPasswordAttempt).ToLocalTime()
-                    }
+                    Name                   = $UserInfo.SamAccountName
+                    SID                    = $UserInfo.SID.Value
+                    LockedOut              = $UserInfo.LockedOut
+                    BadPwdCount            = $UserInfo.BadPwdCount
+                    BadPasswordTime        = $UserInfo.BadPasswordTime
+                    DomainController       = $DC.Hostname
+                    AccountLockoutTime     = $UserInfo.AccountLockoutTime
+                    LastBadPasswordAttempt = ($UserInfo.LastBadPasswordAttempt).ToLocalTime()
+                }
             }# end if
         }# end foreach DCs
-        $LockedOutStats | Format-Table -Property Name,LockedOut,DomainController,BadPwdCount,AccountLockoutTime,LastBadPasswordAttempt -AutoSize
+        $LockedOutStats | Format-Table -Property Name, LockedOut, DomainController, BadPwdCount, AccountLockoutTime, LastBadPasswordAttempt -AutoSize
 
         # Get User Info
-        Try {
-           Write-Verbose "Querying event log on $($PDCEmulator.HostName)"
-            $LockedOutEvents = Get-WinEvent -ComputerName $PDCEmulator.HostName -FilterHashtable @{LogName='Security';Id=4740} -ErrorAction Stop | Sort-Object -Property TimeCreated -Descending
-        }
-        Catch {
-           Write-Warning $_
-            Continue
+        try {
+            Write-Verbose "Querying event log on $($PDCEmulator.HostName)"
+            $LockedOutEvents = Get-WinEvent -ComputerName $PDCEmulator.HostName -FilterHashtable @{LogName = 'Security'; Id = 4740 } -ErrorAction Stop | Sort-Object -Property TimeCreated -Descending
+        } catch {
+            Write-Warning $_
+            continue
         }# end catch
-        Foreach($Event in $LockedOutEvents) {
-            If($Event | Where-Object {$_.Properties[2].value -match $UserInfo.SID.Value}) {
+        foreach ($Event in $LockedOutEvents) {
+            if ($Event | Where-Object { $_.Properties[2].value -match $UserInfo.SID.Value }) {
                 $Event | Select-Object -Property @(
-                    @{Label = 'User';               Expression = {$_.Properties[0].Value}}
-                    @{Label = 'DomainController';   Expression = {$_.MachineName}}
-                    @{Label = 'EventId';            Expression = {$_.Id}}
-                    @{Label = 'LockedOutTimeStamp'; Expression = {$_.TimeCreated}}
-                    @{Label = 'Message';            Expression = {$_.Message -split "`r" | Select-Object -First 1}}
-                    @{Label = 'LockedOutLocation';  Expression = {$_.Properties[1].Value}}
+                    @{Label = 'User'; Expression = { $_.Properties[0].Value } }
+                    @{Label = 'DomainController'; Expression = { $_.MachineName } }
+                    @{Label = 'EventId'; Expression = { $_.Id } }
+                    @{Label = 'LockedOutTimeStamp'; Expression = { $_.TimeCreated } }
+                    @{Label = 'Message'; Expression = { $_.Message -split "`r" | Select-Object -First 1 } }
+                    @{Label = 'LockedOutLocation'; Expression = { $_.Properties[1].Value } }
                 )
             }# end ifevent
         }# end foreach lockedout event

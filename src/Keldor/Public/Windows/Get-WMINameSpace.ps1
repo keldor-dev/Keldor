@@ -1,5 +1,5 @@
 function Get-WMINameSpace {
-<#
+    <#
 .SYNOPSIS
     Gets WMI Name Space.
 
@@ -24,12 +24,12 @@ function Get-WMINameSpace {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-WMINameSpace')]
-    Param (
+    param (
         [Parameter(
-            Mandatory=$false,
-            Position=0
+            Mandatory = $false,
+            Position = 0
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string]$ComputerName = "$env:COMPUTERNAME",
 
         [string]$Namespace = "root"

@@ -1,5 +1,5 @@
 function Test-NetworkSpeed {
-<#
+    <#
 .SYNOPSIS
     Test network file transfer speeds, upload and download.
 
@@ -49,22 +49,22 @@ function Test-NetworkSpeed {
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-NetworkSpeed')]
     param(
         [Parameter(
-            Mandatory=$false
+            Mandatory = $false
         )]
         [string]$LocalPath,
 
         [Parameter(
-            Mandatory=$false
+            Mandatory = $false
         )]
         [string]$RemotePath,
 
         [Parameter(
-            Mandatory=$false
+            Mandatory = $false
         )]
         [int64]$FileSize
     )
 
-    Begin {
+    begin {
         Write-Verbose "$(Get-Date): Start Network Speed Test"
         $config = $Global:KeldorConfig
         $filename = (Get-Date -Format yyyyMMddHHmmssms) + "_testfile"
@@ -77,8 +77,7 @@ function Test-NetworkSpeed {
         if ([string]::IsNullOrWhiteSpace($LocalPath)) {
             $LocalPath = $config.NSLocal
             $LocalFile = $LocalPath + "\" + $filename + "_upload.dat"
-        }
-        else {
+        } else {
             $LocalFile = $LocalPath + "\" + $filename + "_upload.dat"
         }
         Write-Verbose "$(Get-Date): LocalPath is: $LocalPath"
@@ -87,8 +86,7 @@ function Test-NetworkSpeed {
         if ([string]::IsNullOrWhiteSpace($RemotePath)) {
             $RemotePath = $config.NSRemote
             $RemoteFile = $RemotePath + "\" + $filename + "_download.dat"
-        }
-        else {
+        } else {
             $RemoteFile = $RemotePath + "\" + $filename + "_download.dat"
         }
 
@@ -100,13 +98,12 @@ function Test-NetworkSpeed {
 
         try {
             Write-Verbose "$(Get-Date): Create local file"
-            $writelocalfile = new-object System.IO.FileStream $LocalFile, Create, ReadWrite
+            $writelocalfile = New-Object System.IO.FileStream $LocalFile, Create, ReadWrite
             $writelocalfile.SetLength($FileSize)
             $writelocalfile.Close()
 
             $UpSize = Get-Item $LocalFile | Measure-Object -Property Length -Sum | Select-Object -ExpandProperty Sum
-        }
-        catch {
+        } catch {
             Write-Warning "Unable to create local file at $LocalFile"
             Write-Warning "Error: $($Error[0])"
             break
@@ -114,27 +111,25 @@ function Test-NetworkSpeed {
 
         try {
             Write-Verbose "$(Get-Date): Create remote file"
-            $writeremotefile = new-object System.IO.FileStream $RemoteFile, Create, ReadWrite
+            $writeremotefile = New-Object System.IO.FileStream $RemoteFile, Create, ReadWrite
             $writeremotefile.SetLength($FileSize)
             $writeremotefile.Close()
 
             $DownSize = Get-Item $RemoteFile | Measure-Object -Property Length -Sum | Select-Object -ExpandProperty Sum
-        }
-        catch {
+        } catch {
             Write-Warning "Unable to create remote file at $RemoteFile"
             Write-Warning "Error: $($Error[0])"
             break
         }
     }
-    Process {
+    process {
         Write-Verbose "$(Get-Date): Beginning Upload Test"
         try {
             $UploadTest = Measure-Command {
                 Copy-Item $LocalFile $RemotePath -ErrorAction Stop
             }
             $UStatus = "Complete"
-        }
-        catch {
+        } catch {
             Write-Warning "Error during upload test: $($Error[0])"
             $UStatus = "Error"
             $UpMbps = 0
@@ -149,8 +144,7 @@ function Test-NetworkSpeed {
                 Copy-Item $RemoteFile $LocalPath -ErrorAction Stop
             }
             $DStatus = "Complete"
-        }
-        catch {
+        } catch {
             Write-Warning "Error during download test: $($Error[0])"
             $DStatus = "Error"
             $DownMbps = 0
@@ -166,22 +160,22 @@ function Test-NetworkSpeed {
         Remove-Item $RemoteUpFile -Force -ErrorAction SilentlyContinue
 
         Write-Verbose "$(Get-Date): Calculating speeds"
-        $UpMbps = [Math]::Round((($UpSize * 8) / $UploadSeconds) / 1048576,2)
-        $UpMB = [Math]::Round((($UpSize) / $UploadSeconds) / 1024 / 1024,2)
-        $DownMbps = [Math]::Round((($DownSize * 8) / $DownloadSeconds) / 1048576,2)
-        $DownMB = [Math]::Round((($DownSize) / $DownloadSeconds) / 1024 / 1024,2)
+        $UpMbps = [Math]::Round((($UpSize * 8) / $UploadSeconds) / 1048576, 2)
+        $UpMB = [Math]::Round((($UpSize) / $UploadSeconds) / 1024 / 1024, 2)
+        $DownMbps = [Math]::Round((($DownSize * 8) / $DownloadSeconds) / 1048576, 2)
+        $DownMB = [Math]::Round((($DownSize) / $DownloadSeconds) / 1024 / 1024, 2)
 
         Write-Verbose "$(Get-Date): Generating results"
         [PSCustomObject]@{
-            FileSizeMB = ([Math]::Round($UpSize/1024/1024,2))
-            DownloadStatus = $DStatus
+            FileSizeMB      = ([Math]::Round($UpSize / 1024 / 1024, 2))
+            DownloadStatus  = $DStatus
             DownloadSeconds = $DownloadSeconds
-            DownMbps = $DownMbps
+            DownMbps        = $DownMbps
             DownMBperSecond = $DownMB
-            UploadStatus = $UStatus
-            UploadSeconds = $UploadSeconds
-            UpMbps = $UpMbps
-            UpMBperSecond = $UpMB
+            UploadStatus    = $UStatus
+            UploadSeconds   = $UploadSeconds
+            UpMbps          = $UpMbps
+            UpMBperSecond   = $UpMB
         }#new object
     }
 }

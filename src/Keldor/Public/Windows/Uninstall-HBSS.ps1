@@ -1,5 +1,5 @@
 function Uninstall-HBSS {
-<#
+    <#
 .SYNOPSIS
     Uninstalls HBSS.
 
@@ -30,15 +30,15 @@ function Uninstall-HBSS {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Uninstall-HBSS')]
-    [Alias('Uninstall-ENS','Uninstall-ESS')]
-    Param (
+    [Alias('Uninstall-ENS', 'Uninstall-ESS')]
+    param (
         [Parameter(
             HelpMessage = "Enter one or more computer names separated by commas.",
-            Mandatory=$false,
+            Mandatory = $false,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true
         )]
-        [Alias('Host','Name','Computer','CN','ComputerName')]
+        [Alias('Host', 'Name', 'Computer', 'CN', 'ComputerName')]
         [string[]]$ObjectList,
 
         [Parameter()]
@@ -51,7 +51,7 @@ function Uninstall-HBSS {
         $MaxResultTime = 1200
     )
 
-    Begin {
+    begin {
         if ([string]::IsNullOrWhiteSpace($ObjectList)) {
             $ObjectList = $env:COMPUTERNAME
         }
@@ -60,10 +60,10 @@ function Uninstall-HBSS {
         $RunspacePool.Open()
         $Code = {
             [CmdletBinding()]
-            Param (
+            param (
                 [Parameter(
-                    Mandatory=$true,
-                    Position=0
+                    Mandatory = $true,
+                    Position = 0
                 )]
                 [string]$comp
             )
@@ -73,25 +73,25 @@ function Uninstall-HBSS {
                 Get-WmiObject -Class Win32_Product -Filter "Name like 'McAfee Agent%'" -ComputerName $Comp -ErrorAction SilentlyContinue | Remove-WmiObject -ErrorAction SilentlyContinue
                 [PSCustomObject]@{
                     ComputerName = $comp
-                    Program = "McAfee ENS (HBSS) Agent"
-                    Status = "Removal Initialized"
+                    Program      = "McAfee ENS (HBSS) Agent"
+                    Status       = "Removal Initialized"
                 }#new object
             }#try
             catch {
                 [PSCustomObject]@{
                     ComputerName = $comp
-                    Program = "McAfee ENS (HBSS) Agent"
-                    Status = "Failed"
+                    Program      = "McAfee ENS (HBSS) Agent"
+                    Status       = "Failed"
                 }#new object
             }#catch
         }#end code block
         $Jobs = @()
     }
-    Process {
+    process {
         Write-Progress -Activity "Preloading threads" -Status "Starting Job $($jobs.count)"
-        ForEach ($Object in $ObjectList){
+        foreach ($Object in $ObjectList) {
             $PowershellThread = [powershell]::Create().AddScript($Code)
-            $PowershellThread.AddArgument($Object.ToString()) | out-null
+            $PowershellThread.AddArgument($Object.ToString()) | Out-Null
             $PowershellThread.RunspacePool = $RunspacePool
             $Handle = $PowershellThread.BeginInvoke()
             $Job = "" | Select-Object Handle, Thread, object
@@ -101,27 +101,27 @@ function Uninstall-HBSS {
             $Jobs += $Job
         }
     }
-    End {
+    end {
         $ResultTimer = Get-Date
-        While (@($Jobs | Where-Object {$null -ne $_.Handle}).count -gt 0)  {
+        while (@($Jobs | Where-Object { $null -ne $_.Handle }).count -gt 0) {
             $Remaining = "$($($Jobs | Where-Object {$_.Handle.IsCompleted -eq $False}).object)"
-            If ($Remaining.Length -gt 60){
-                $Remaining = $Remaining.Substring(0,60) + "..."
+            if ($Remaining.Length -gt 60) {
+                $Remaining = $Remaining.Substring(0, 60) + "..."
             }
             Write-Progress `
                 -Activity "Waiting for Jobs - $($MaxThreads - $($RunspacePool.GetAvailableRunspaces())) of $MaxThreads threads running" `
-                -PercentComplete (($Jobs.count - $($($Jobs | Where-Object {$_.Handle.IsCompleted -eq $False}).count)) / $Jobs.Count * 100) `
+                -PercentComplete (($Jobs.count - $($($Jobs | Where-Object { $_.Handle.IsCompleted -eq $False }).count)) / $Jobs.Count * 100) `
                 -Status "$(@($($Jobs | Where-Object {$_.Handle.IsCompleted -eq $False})).count) remaining - $remaining"
-            ForEach ($Job in $($Jobs | Where-Object {$_.Handle.IsCompleted -eq $True})){
+            foreach ($Job in $($Jobs | Where-Object { $_.Handle.IsCompleted -eq $True })) {
                 $Job.Thread.EndInvoke($Job.Handle)
                 $Job.Thread.Dispose()
                 $Job.Thread = $Null
                 $Job.Handle = $Null
                 $ResultTimer = Get-Date
             }
-            If (($(Get-Date) - $ResultTimer).totalseconds -gt $MaxResultTime){
+            if (($(Get-Date) - $ResultTimer).totalseconds -gt $MaxResultTime) {
                 Write-Error "Child script appears to be frozen, try increasing MaxResultTime"
-                Exit
+                exit
             }
             Start-Sleep -Milliseconds $SleepTimer
         }

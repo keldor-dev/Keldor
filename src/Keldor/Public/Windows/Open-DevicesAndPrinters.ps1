@@ -1,5 +1,5 @@
 function Open-DevicesAndPrinters {
-<#
+    <#
 .SYNOPSIS
     Opens Devices And Printers.
 
@@ -17,7 +17,7 @@ function Open-DevicesAndPrinters {
     https://docs.keldor.dev/powershell/keldor/Open-DevicesAndPrinters
 #>
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-DevicesAndPrinters')]
-    Param ()
-control.exe printers
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-DevicesAndPrinters')]
+    param ()
+    control.exe printers
 }

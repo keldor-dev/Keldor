@@ -120,7 +120,7 @@ Describe "Test-KeldorSecretProvider" {
 
             $result.Success | Should -BeFalse
             $result.Status | Should -Be 'NotInstalled'
-            ($result.Checks | Where-Object Name -eq 'ExecutablePresent').Success | Should -BeFalse
+            ($result.Checks | Where-Object Name -EQ 'ExecutablePresent').Success | Should -BeFalse
         }
     }
 
@@ -141,8 +141,8 @@ Describe "Test-KeldorSecretProvider" {
 
             $result.Success | Should -BeFalse
             $result.Status | Should -Be 'NotAuthenticated'
-            ($result.Checks | Where-Object Name -eq 'VersionAvailable').Success | Should -BeFalse
-            ($result.Checks | Where-Object Name -eq 'Authenticated').Success | Should -BeFalse
+            ($result.Checks | Where-Object Name -EQ 'VersionAvailable').Success | Should -BeFalse
+            ($result.Checks | Where-Object Name -EQ 'Authenticated').Success | Should -BeFalse
             ($result | Out-String) | Should -Not -Match 'user@example.test|session-token|vault-id|forbidden-secret-value'
         }
     }
@@ -163,9 +163,9 @@ Describe "Test-KeldorSecretProvider" {
             $result = Test-KeldorSecretProvider -Name OnePassword -Vault DevOps -Detailed
 
             $result.Success | Should -BeTrue
-            ($result.Checks | Where-Object Name -eq 'VersionAvailable').Success | Should -BeTrue
-            ($result.Checks | Where-Object Name -eq 'Authenticated').Success | Should -BeTrue
-            ($result.Checks | Where-Object Name -eq 'VaultAccessible').Success | Should -BeTrue
+            ($result.Checks | Where-Object Name -EQ 'VersionAvailable').Success | Should -BeTrue
+            ($result.Checks | Where-Object Name -EQ 'Authenticated').Success | Should -BeTrue
+            ($result.Checks | Where-Object Name -EQ 'VaultAccessible').Success | Should -BeTrue
         }
     }
 
@@ -185,7 +185,7 @@ Describe "Test-KeldorSecretProvider" {
             $result = Test-KeldorSecretProvider -Name OnePassword -Vault DevOps -Detailed
 
             $result.Success | Should -BeFalse
-            ($result.Checks | Where-Object Name -eq 'VaultAccessible').Success | Should -BeFalse
+            ($result.Checks | Where-Object Name -EQ 'VaultAccessible').Success | Should -BeFalse
             ($result | Out-String) | Should -Not -Match 'vault-id'
         }
     }
@@ -201,7 +201,7 @@ Describe "Test-KeldorSecretProvider" {
 
             $result.Success | Should -BeFalse
             $result.Status | Should -Be 'NotInstalled'
-            ($result.Checks | Where-Object Name -eq 'ModuleInstalled').Success | Should -BeFalse
+            ($result.Checks | Where-Object Name -EQ 'ModuleInstalled').Success | Should -BeFalse
         }
     }
 
@@ -215,7 +215,7 @@ Describe "Test-KeldorSecretProvider" {
             $result = Test-KeldorSecretProvider -Name SecretManagement -Detailed
 
             $result.Success | Should -BeFalse
-            ($result.Checks | Where-Object Name -eq 'CommandsAvailable').Success | Should -BeFalse
+            ($result.Checks | Where-Object Name -EQ 'CommandsAvailable').Success | Should -BeFalse
         }
     }
 
@@ -233,7 +233,7 @@ Describe "Test-KeldorSecretProvider" {
 
             $result.Success | Should -BeFalse
             $result.Status | Should -Be 'NotConfigured'
-            ($result.Checks | Where-Object Name -eq 'VaultRegistered').Success | Should -BeFalse
+            ($result.Checks | Where-Object Name -EQ 'VaultRegistered').Success | Should -BeFalse
         }
     }
 
@@ -250,7 +250,7 @@ Describe "Test-KeldorSecretProvider" {
             $result = Test-KeldorSecretProvider -Name SecretManagement -Vault DevOps -Detailed
 
             $result.Success | Should -BeFalse
-            ($result.Checks | Where-Object Name -eq 'VaultRegistered').Success | Should -BeFalse
+            ($result.Checks | Where-Object Name -EQ 'VaultRegistered').Success | Should -BeFalse
         }
     }
 
@@ -278,7 +278,7 @@ Describe "Test-KeldorSecretProvider" {
             $result = Test-KeldorSecretProvider -Name SecretManagement -Detailed
 
             $result.Success | Should -BeFalse
-            ($result.Checks | Where-Object Name -eq 'VaultOperational').Count | Should -Be 2
+            ($result.Checks | Where-Object Name -EQ 'VaultOperational').Count | Should -Be 2
             Assert-MockCalled Get-Secret -Times 0
             Assert-MockCalled Set-Secret -Times 0
             Assert-MockCalled Remove-Secret -Times 0
@@ -300,7 +300,7 @@ Describe "Test-KeldorSecretProvider" {
 
             $result.Success | Should -BeTrue
             $result.Vault | Should -Be 'DevOps'
-            ($result.Checks | Where-Object Name -eq 'ProviderOperational').Success | Should -BeTrue
+            ($result.Checks | Where-Object Name -EQ 'ProviderOperational').Success | Should -BeTrue
         }
     }
 }

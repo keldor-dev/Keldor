@@ -1,5 +1,5 @@
 function Get-ShutdownLog {
-<#
+    <#
 .SYNOPSIS
     Gets Shutdown Log.
 
@@ -27,24 +27,24 @@ function Get-ShutdownLog {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ShutdownLog')]
-    Param (
+    param (
         [Parameter(HelpMessage = "Enter one or more computer names separated by commas.",
-            Mandatory=$false,
-            Position=0
+            Mandatory = $false,
+            Position = 0
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME",
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [Alias('Days')]
         [int32]$DaysBackToSearch = 30,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [int32]$MostRecent = 10
     )
 
     #Event ID(s) to search for
-    [int32[]]$ID = @(1074,6005,6006,6008)
+    [int32[]]$ID = @(1074, 6005, 6006, 6008)
 
     #Setting initial values
     $i = 0
@@ -58,10 +58,10 @@ function Get-ShutdownLog {
             $i++
             $amount = ($i / $number)
             $perc1 = $amount.ToString("P")
-            Write-Progress -activity "Getting Setup log for computers. Currently checking $comp" -status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length)  * 100)
+            Write-Progress -Activity "Getting Setup log for computers. Currently checking $comp" -Status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length) * 100)
         }#if length
 
-        $winevents = Get-WinEvent -ComputerName $Comp -FilterHashTable @{Logname='system'; ID= $ID; StartTime=$stime} -ErrorAction Stop | Select-Object ProviderName,Message,Id,TimeCreated
+        $winevents = Get-WinEvent -ComputerName $Comp -FilterHashTable @{Logname = 'system'; ID = $ID; StartTime = $stime } -ErrorAction Stop | Select-Object ProviderName, Message, Id, TimeCreated
         foreach ($winevent in $winevents) {
             $st = $null
             switch ($winevent.Id) {
@@ -87,31 +87,28 @@ function Get-ShutdownLog {
                 $user = $null
                 $program = $null
                 $reason = $null
-            }
-            else {
-                $program = $mess.Substring(0, $mess.IndexOf('(')) -replace "The process ",""
+            } else {
+                $program = $mess.Substring(0, $mess.IndexOf('(')) -replace "The process ", ""
                 $program = $program.trim()
                 $us1 = $mess.Split('')
                 $us2 = $null
-                $us2 = $us1 | Where-Object {$_ -Like "$env:userdomain\*"}
+                $us2 = $us1 | Where-Object { $_ -like "$env:userdomain\*" }
                 $us3 = $null
-                $us3 = $us1 | Where-Object {$_ -Like "AUTHORITY\*"}
+                $us3 = $us1 | Where-Object { $_ -like "AUTHORITY\*" }
                 if ($null -ne $us2) {
                     $user = $us2
-                }
-                else {
+                } else {
                     $user = "NT " + $us3
                 }
                 $tx1 = ($mess.Substring(0, $mess.IndexOf(': '))).length + 2
                 $tx2 = $mess.Substring($tx1)
-                $reason = ($tx2 -split '["\n\r"|"\r\n"|\n|\r]' | Where-Object {$_ -notlike "Reason code*" -and $_ -notlike "Shutdown Type*" -and $_ -notlike "Comment*"})[0]
+                $reason = ($tx2 -split '["\n\r"|"\r\n"|\n|\r]' | Where-Object { $_ -notlike "Reason code*" -and $_ -notlike "Shutdown Type*" -and $_ -notlike "Comment*" })[0]
 
-                $re = $mess.Substring(65,40)
+                $re = $mess.Substring(65, 40)
                 if ($re -match "restart") {
                     $st = "Reboot initiated"
                     $type = "Restart"
-                }
-                else {
+                } else {
                     $st = "Shutdown"
                     $type = "Shutdown initiated"
                 }
@@ -119,12 +116,12 @@ function Get-ShutdownLog {
 
             [PSCustomObject]@{
                 ComputerName = $comp
-                Time = $time
-                Status = $st
-                Type = $type
-                Program = $program
-                User = $user
-                Reason = $reason
+                Time         = $time
+                Status       = $st
+                Type         = $type
+                Program      = $program
+                User         = $user
+                Reason       = $reason
             }#new object
         }#foreach event found
     }#foreach computer

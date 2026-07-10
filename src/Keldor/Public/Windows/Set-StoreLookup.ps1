@@ -1,5 +1,5 @@
 function Set-StoreLookup {
-<#
+    <#
 .SYNOPSIS
     Sets Store Lookup.
 
@@ -24,7 +24,7 @@ function Set-StoreLookup {
 #>
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-StoreLookup')]
-    Param (
+    param (
         [Switch]$Yes,
         [Switch]$No
     )
@@ -33,13 +33,11 @@ function Set-StoreLookup {
         if ($PSCmdlet.ShouldProcess('HKCU:\Software\Policies\Microsoft\Windows\Explorer\NoUseStoreOpenWith', "Set to 0")) {
             Set-ItemProperty -Path HKCU:\Software\Policies\Microsoft\Windows\Explorer -Name NoUseStoreOpenWith -Type DWord -Value 0 -Force
         }
-    }
-    elseif ($No) {
+    } elseif ($No) {
         if ($PSCmdlet.ShouldProcess('HKCU:\Software\Policies\Microsoft\Windows\Explorer\NoUseStoreOpenWith', "Set to 1")) {
             Set-ItemProperty -Path HKCU:\Software\Policies\Microsoft\Windows\Explorer -Name NoUseStoreOpenWith -Type DWord -Value 1 -Force
         }
-    }
-    else {
+    } else {
         if ($PSCmdlet.ShouldProcess('HKCU:\Software\Policies\Microsoft\Windows\Explorer\NoUseStoreOpenWith', "Set to 1")) {
             Set-ItemProperty -Path HKCU:\Software\Policies\Microsoft\Windows\Explorer -Name NoUseStoreOpenWith -Type DWord -Value 1 -Force
         }

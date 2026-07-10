@@ -1,5 +1,5 @@
 function Start-SCCMUpdateScan {
-<#
+    <#
 .SYNOPSIS
     Short description
 
@@ -29,37 +29,36 @@ function Start-SCCMUpdateScan {
     param(
         [Parameter(
             #HelpMessage = "Enter one or more computer names separated by commas.",
-            Mandatory=$false#,
+            Mandatory = $false#,
             #Position=0,
             #ValueFromPipeline = $true
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )
 
-    Process {
+    process {
         foreach ($Comp in $ComputerName) {
             if ($Comp -eq $env:COMPUTERNAME) {
                 Get-WmiObject -Query "SELECT * FROM CCM_UpdateStatus" -Namespace "root\ccm\SoftwareUpdates\UpdatesStore" | ForEach-Object {
-                    if($_.ScanTime -gt $ScanTime) { $ScanTime = $_.ScanTime }
+                    if ($_.ScanTime -gt $ScanTime) { $ScanTime = $_.ScanTime }
                 }; $LastScan = ([System.Management.ManagementDateTimeConverter]::ToDateTime($ScanTime)); $LastScan;
-		            if(((get-date) - $LastScan).minutes -ge 10 -and $PSCmdlet.ShouldProcess($Comp, "Start SCCM update scan")) {
-			            [void]([wmiclass]'ROOT\ccm:SMS_Client').TriggerSchedule('{00000000-0000-0000-0000-000000000113}');
-			            ([wmiclass]'ROOT\ccm:SMS_Client').TriggerSchedule('{00000000-0000-0000-0000-000000000108}'); "Update scan and evaluation"
-		            }
-            }
-            else {
-	                if ($PSCmdlet.ShouldProcess($Comp, "Start SCCM update scan")) {
-	                    Invoke-Command -ComputerName $Comp -ScriptBlock {#DevSkim: ignore DS104456
-	                        Get-WmiObject -Query "SELECT * FROM CCM_UpdateStatus" -Namespace "root\ccm\SoftwareUpdates\UpdatesStore" | ForEach-Object {
-	                            if($_.ScanTime -gt $ScanTime) { $ScanTime = $_.ScanTime }
-	                        }; $LastScan = ([System.Management.ManagementDateTimeConverter]::ToDateTime($ScanTime)); $LastScan;
-	                        if(((get-date) - $LastScan).minutes -ge 10) {
-	                            [void]([wmiclass]'ROOT\ccm:SMS_Client').TriggerSchedule('{00000000-0000-0000-0000-000000000113}');
-	                            ([wmiclass]'ROOT\ccm:SMS_Client').TriggerSchedule('{00000000-0000-0000-0000-000000000108}'); "Update scan and evaluation"
-	                        }
-	                    }
-	                }
+                if (((Get-Date) - $LastScan).minutes -ge 10 -and $PSCmdlet.ShouldProcess($Comp, "Start SCCM update scan")) {
+                    [void]([wmiclass]'ROOT\ccm:SMS_Client').TriggerSchedule('{00000000-0000-0000-0000-000000000113}');
+                    ([wmiclass]'ROOT\ccm:SMS_Client').TriggerSchedule('{00000000-0000-0000-0000-000000000108}'); "Update scan and evaluation"
+                }
+            } else {
+                if ($PSCmdlet.ShouldProcess($Comp, "Start SCCM update scan")) {
+                    Invoke-Command -ComputerName $Comp -ScriptBlock { #DevSkim: ignore DS104456
+                        Get-WmiObject -Query "SELECT * FROM CCM_UpdateStatus" -Namespace "root\ccm\SoftwareUpdates\UpdatesStore" | ForEach-Object {
+                            if ($_.ScanTime -gt $ScanTime) { $ScanTime = $_.ScanTime }
+                        }; $LastScan = ([System.Management.ManagementDateTimeConverter]::ToDateTime($ScanTime)); $LastScan;
+                        if (((Get-Date) - $LastScan).minutes -ge 10) {
+                            [void]([wmiclass]'ROOT\ccm:SMS_Client').TriggerSchedule('{00000000-0000-0000-0000-000000000113}');
+                            ([wmiclass]'ROOT\ccm:SMS_Client').TriggerSchedule('{00000000-0000-0000-0000-000000000108}'); "Update scan and evaluation"
+                        }
+                    }
+                }
             }#not local
         }#foreach comp
     }

@@ -1,5 +1,5 @@
 function Test-KeldorAdministrator {
-<#
+    <#
 .SYNOPSIS
     Tests whether the current process is running as administrator.
 
@@ -26,8 +26,7 @@ function Test-KeldorAdministrator {
         $currentPrincipal = New-Object Security.Principal.WindowsPrincipal($currentIdentity)
 
         return $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
-    }
-    catch {
+    } catch {
         return $false
     }
 }

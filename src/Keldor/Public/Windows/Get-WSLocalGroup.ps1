@@ -1,5 +1,5 @@
 function Get-WSLocalGroup {
-<#
+    <#
 .SYNOPSIS
     Gets WS Local Group.
 
@@ -35,10 +35,10 @@ function Get-WSLocalGroup {
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-WSLocalGroup')]
     param(
         [Parameter(
-            Mandatory=$false,
-            Position=0
+            Mandatory = $false,
+            Position = 0
         )]
-        [Alias('Host','Computer','CN')]
+        [Alias('Host', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME",
 
         [Parameter()]
@@ -54,7 +54,7 @@ function Get-WSLocalGroup {
         [string]$Output = $null
 
     )
-    Begin {
+    begin {
         $config = $Global:KeldorConfig
         $ScriptWD = $config.ScriptWD
 
@@ -63,16 +63,16 @@ function Get-WSLocalGroup {
         $RunspacePool.Open()
         $Code = {
             [CmdletBinding()]
-            Param (
+            param (
                 [Parameter(
-                    Mandatory=$true,
-                    Position=0
+                    Mandatory = $true,
+                    Position = 0
                 )]
                 [string]$comp,
 
                 [Parameter(
-                    Mandatory=$true,
-                    Position=1
+                    Mandatory = $true,
+                    Position = 1
                 )]
                 [string]$Output
             )
@@ -80,63 +80,61 @@ function Get-WSLocalGroup {
             $info = @()
             try {
                 $Role = (Get-WmiObject -ComputerName $comp -Class Win32_ComputerSystem -Property DomainRole -ErrorAction Stop).DomainRole
-            }
-            catch {
+            } catch {
                 $info = [PSCustomObject]@{
                     ComputerName = $comp
-                    DatePulled = $Null
-                    Description = $Null
-                    Group = $Null
-                    Members = $Null
-                    Status = "Comm Error"
+                    DatePulled   = $Null
+                    Description  = $Null
+                    Group        = $Null
+                    Members      = $Null
+                    Status       = "Comm Error"
                 }#new object
             }
 
             if ($Role -match "4|5") {
                 $info = [PSCustomObject]@{
                     ComputerName = $comp
-                    DatePulled = $Null
-                    Description = $Null
-                    Group = $Null
-                    Members = $Null
-                    Status = "Domain Controller - no local groups"
+                    DatePulled   = $Null
+                    Description  = $Null
+                    Group        = $Null
+                    Members      = $Null
+                    Status       = "Domain Controller - no local groups"
                 }#new object
             }#if DC
             elseif ($Role -match "0|1|2|3") {
                 $td = Get-Date
-                $GI = ([ADSI]"WinNT://$comp").Children | Where-Object {$_.SchemaClassName -eq 'Group'}
+                $GI = ([ADSI]"WinNT://$comp").Children | Where-Object { $_.SchemaClassName -eq 'Group' }
                 foreach ($group in $GI) {
-                    $members = ($group.Invoke('Members') | ForEach-Object {$_.GetType().InvokeMember("Name", 'GetProperty', $null, $_, $null)}) -join ", "
+                    $members = ($group.Invoke('Members') | ForEach-Object { $_.GetType().InvokeMember("Name", 'GetProperty', $null, $_, $null) }) -join ", "
                     $info += [PSCustomObject]@{
                         ComputerName = $comp
-                        DatePulled = $td
-                        Description = $group.Description[0]
-                        Group = $group.Name[0]
-                        Members = $members
-                        Status = "Connected"
+                        DatePulled   = $td
+                        Description  = $group.Description[0]
+                        Group        = $group.Name[0]
+                        Members      = $members
+                        Status       = "Connected"
                     }#new object
                 }#foreach group on computer
             }#not DC
 
             if (Test-Path $Output) {
-                $info | Select-Object ComputerName,Status,Group,Description,Members,DatePulled | Export-Csv $Output -NoTypeInformation -Append
-            }
-            else {
-                $info | Select-Object ComputerName,Status,Group,Description,Members,DatePulled | Export-Csv $Output -NoTypeInformation
+                $info | Select-Object ComputerName, Status, Group, Description, Members, DatePulled | Export-Csv $Output -NoTypeInformation -Append
+            } else {
+                $info | Select-Object ComputerName, Status, Group, Description, Members, DatePulled | Export-Csv $Output -NoTypeInformation
             }
         }#end code block
         $Jobs = @()
     }
-    Process {
+    process {
         if ([string]::IsNullOrWhiteSpace($Output)) {
-            if (!(Test-Path $ScriptWD)) {mkdir $ScriptWD}
+            if (!(Test-Path $ScriptWD)) { mkdir $ScriptWD }
             $Output = $ScriptWD + "\WS_LocalGroup.csv"
         }
         Write-Progress -Activity "Preloading threads" -Status "Starting Job $($jobs.count)"
-        ForEach ($Object in $ComputerName){
+        foreach ($Object in $ComputerName) {
             $PowershellThread = [powershell]::Create().AddScript($Code)
-            $PowershellThread.AddArgument($Object.ToString()) | out-null
-            $PowershellThread.AddArgument($Output.ToString()) | out-null
+            $PowershellThread.AddArgument($Object.ToString()) | Out-Null
+            $PowershellThread.AddArgument($Output.ToString()) | Out-Null
             $PowershellThread.RunspacePool = $RunspacePool
             $Handle = $PowershellThread.BeginInvoke()
             $Job = "" | Select-Object Handle, Thread, object
@@ -146,27 +144,27 @@ function Get-WSLocalGroup {
             $Jobs += $Job
         }
     }
-    End {
+    end {
         $ResultTimer = Get-Date
-        While (@($Jobs | Where-Object {$Null -ne $_.Handle}).count -gt 0)  {
+        while (@($Jobs | Where-Object { $Null -ne $_.Handle }).count -gt 0) {
             $Remaining = "$($($Jobs | Where-Object {$_.Handle.IsCompleted -eq $False}).object)"
-            If ($Remaining.Length -gt 60){
-                $Remaining = $Remaining.Substring(0,60) + "..."
+            if ($Remaining.Length -gt 60) {
+                $Remaining = $Remaining.Substring(0, 60) + "..."
             }
             Write-Progress `
                 -Activity "Waiting for Jobs - $($MaxThreads - $($RunspacePool.GetAvailableRunspaces())) of $MaxThreads threads running" `
-                -PercentComplete (($Jobs.count - $($($Jobs | Where-Object {$_.Handle.IsCompleted -eq $False}).count)) / $Jobs.Count * 100) `
+                -PercentComplete (($Jobs.count - $($($Jobs | Where-Object { $_.Handle.IsCompleted -eq $False }).count)) / $Jobs.Count * 100) `
                 -Status "$(@($($Jobs | Where-Object {$_.Handle.IsCompleted -eq $False})).count) remaining - $remaining"
-            ForEach ($Job in $($Jobs | Where-Object {$_.Handle.IsCompleted -eq $True})){
+            foreach ($Job in $($Jobs | Where-Object { $_.Handle.IsCompleted -eq $True })) {
                 $Job.Thread.EndInvoke($Job.Handle)
                 $Job.Thread.Dispose()
                 $Job.Thread = $Null
                 $Job.Handle = $Null
                 $ResultTimer = Get-Date
             }
-            If (($(Get-Date) - $ResultTimer).totalseconds -gt $MaxResultTime){
+            if (($(Get-Date) - $ResultTimer).totalseconds -gt $MaxResultTime) {
                 Write-Error "Child script appears to be frozen, try increasing MaxResultTime"
-                Exit
+                exit
             }
             Start-Sleep -Milliseconds $SleepTimer
         }

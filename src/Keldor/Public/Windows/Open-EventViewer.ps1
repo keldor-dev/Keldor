@@ -1,5 +1,5 @@
 function Open-EventViewer {
-<#
+    <#
 .SYNOPSIS
     Opens Event Viewer.
 
@@ -22,9 +22,9 @@ function Open-EventViewer {
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-EventViewer')]
     [Alias('events')]
-    Param (
-        [Parameter(Mandatory=$false, Position=0)]
-        [Alias('Host','Name','Computer','CN')]
+    param (
+        [Parameter(Mandatory = $false, Position = 0)]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )
     eventvwr.msc /computer:\\$ComputerName

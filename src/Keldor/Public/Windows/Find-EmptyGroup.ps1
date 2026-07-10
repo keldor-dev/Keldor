@@ -1,5 +1,5 @@
 function Find-EmptyGroup {
-<#
+    <#
 .SYNOPSIS
     This function will show empty groups.
 
@@ -21,26 +21,24 @@ function Find-EmptyGroup {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Find-EmptyGroup')]
-    Param (
+    param (
         [Parameter(
-            Mandatory=$false,
-            Position=0
+            Mandatory = $false,
+            Position = 0
         )]
-      [string]$SearchBase
-     )
+        [string]$SearchBase
+    )
 
     if (Test-KeldorActiveDirectoryModule -AsBoolean -Quiet) {
         if (!([string]::IsNullOrWhiteSpace($SearchBase))) {
-            Get-ADGroup -Filter * -Properties CN,GroupScope,GroupCategory,ManagedBy,SamAccountName,whenCreated,CanonicalName,Members -SearchBase $SearchBase | Where-Object {-Not $_.Members} |
-            Select-Object CN,GroupScope,GroupCategory,ManagedBy,SamAccountName,whenCreated,CanonicalName
-        }
-        else {
+            Get-ADGroup -Filter * -Properties CN, GroupScope, GroupCategory, ManagedBy, SamAccountName, whenCreated, CanonicalName, Members -SearchBase $SearchBase | Where-Object { -not $_.Members } |
+                Select-Object CN, GroupScope, GroupCategory, ManagedBy, SamAccountName, whenCreated, CanonicalName
+        } else {
             $sb = Get-ADDomain | Select-Object -ExpandProperty DistinguishedName
-            Get-ADGroup -Filter * -Properties CN,GroupScope,GroupCategory,ManagedBy,SamAccountName,whenCreated,CanonicalName,Members -SearchBase $sb | Where-Object {-Not $_.Members} |
-            Select-Object CN,GroupScope,GroupCategory,ManagedBy,SamAccountName,whenCreated,CanonicalName
+            Get-ADGroup -Filter * -Properties CN, GroupScope, GroupCategory, ManagedBy, SamAccountName, whenCreated, CanonicalName, Members -SearchBase $sb | Where-Object { -not $_.Members } |
+                Select-Object CN, GroupScope, GroupCategory, ManagedBy, SamAccountName, whenCreated, CanonicalName
         }
-    }
-    else {
+    } else {
         Write-Warning "Active Directory module is not installed and is required to run Find-EmptyGroup."
     }
 }

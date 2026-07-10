@@ -63,8 +63,8 @@ Verify module availability:
 
 ```powershell
 Get-Module -ListAvailable PSReadLine, Pester, PSScriptAnalyzer, PlatyPS |
-	Select-Object Name, Version, Path |
-	Sort-Object Name
+    Select-Object Name, Version, Path |
+    Sort-Object Name
 ```
 
 From PowerShell, confirm the platform:

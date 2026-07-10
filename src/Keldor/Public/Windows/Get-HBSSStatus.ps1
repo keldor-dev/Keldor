@@ -2,7 +2,7 @@
 # Get-HBSSStatus (Get-Content .\computers.txt) | Format-Table -AutoSize
 # Get-HBSSStatus (Get-Content .\computers.txt) | Export-Csv .\hbssstatus.csv -NoTypeInformation
 function Get-HBSSStatus {
-<#
+    <#
 .SYNOPSIS
     Gets HBSS Status.
 
@@ -24,9 +24,9 @@ function Get-HBSSStatus {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-HBSSStatus')]
-    Param (
-        [Parameter(Mandatory=$false, Position=0)]
-        [Alias('Host','Name','Computer','CN')]
+    param (
+        [Parameter(Mandatory = $false, Position = 0)]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )
 
@@ -53,14 +53,14 @@ function Get-HBSSStatus {
     #For each computer, check HBSS
     foreach ($comp in $ComputerName) {
         #Set variables required per computer
-        Clear-Variable value2,reg,reg2,reg3,key,key2,key3,datdateval,DATVersionval,DATVersion,engversionval,hotfixverval,versval,hipsverval,frameworkverval,outdated,engoutdated,hfoutdated,avoutdated,fwoutdated,ePOServers | Out-Null
+        Clear-Variable value2, reg, reg2, reg3, key, key2, key3, datdateval, DATVersionval, DATVersion, engversionval, hotfixverval, versval, hipsverval, frameworkverval, outdated, engoutdated, hfoutdated, avoutdated, fwoutdated, ePOServers | Out-Null
 
         #Progress Bar... Computers checked
         if ($number -gt "1") {
             $i++
             $amount = ($i / $number)
             $perc1 = $amount.ToString("P")
-            Write-Progress -activity "Getting HBSS status. Currently checking $comp" -status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length)  * 100)
+            Write-Progress -Activity "Getting HBSS status. Currently checking $comp" -Status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length) * 100)
         }#progress bar
 
         #Make sure running at least PowerShell v3
@@ -70,10 +70,9 @@ function Get-HBSSStatus {
                 $reg = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey('LocalMachine', $comp)
                 $key = $reg.OpenSubKey($64keyname)
                 $value2 = $key.GetValue('CurrentVersion')
-            }
-            catch {$value2 = $null}
+            } catch { $value2 = $null }
 
-#region 64-bit tasks
+            #region 64-bit tasks
             if ($null -ne $value2) {
                 #Get HBSS values (not ENS)
                 try {
@@ -90,8 +89,7 @@ function Get-HBSSStatus {
                         $reg3 = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey('LocalMachine', $comp)
                         $key3 = $reg3.OpenSubkey($64hipskey)
                         $hipsverval = $key3.GetValue('Version')
-                    }
-                    catch {
+                    } catch {
                         $hipsverval = "Not Installed"
                     }
 
@@ -102,13 +100,11 @@ function Get-HBSSStatus {
                         $frameworkverval = $key4.GetValue('Version')
                         $type = "HBSS"
                         $type | Out-Null
-                    }
-                    catch {
+                    } catch {
                         $frameworkverval = "Not Installed"
                         $type = $null
                     }
-                }
-                catch {
+                } catch {
                     $datdateval = $null
                     $DATVersionval = $null
                     $engversionval = $null
@@ -118,10 +114,10 @@ function Get-HBSSStatus {
                 }
                 #Get ENS values
             }#if 64-bit
-#endregion 64bit tasks
+            #endregion 64bit tasks
 
 
-#region 32-bit tasks
+            #region 32-bit tasks
             if ($null -eq $value2) {
                 #See if HBSS has been installed
                 #if (Test-Path "$psdpath\Program Files\Common Files\McAfee\Engine\OldEngine\config.dat") {$hbssstatus = "Yes"}
@@ -137,8 +133,7 @@ function Get-HBSSStatus {
                     $engversionval = $key2.GetValue('EngineVersion')
                     $hotfixverval = $key2.GetValue('HotFixVersions')
                     $versval = $key2.GetValue('Version')
-                }
-                catch {
+                } catch {
                     $datdateval = $null
                     $DATVersionval = $null
                     $engversionval = $null
@@ -152,8 +147,7 @@ function Get-HBSSStatus {
                     $reg3 = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey('LocalMachine', $comp)
                     $key3 = $reg3.OpenSubkey($32hipskey)
                     $hipsverval = $key3.GetValue('Version')
-                }
-                catch {
+                } catch {
                     $hipsverval = "Not Installed"
                 }
 
@@ -163,58 +157,57 @@ function Get-HBSSStatus {
                     $reg4 = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey('LocalMachine', $comp)
                     $key4 = $reg4.OpenSubkey($32epokey)
                     $frameworkverval = $key4.GetValue('Version')
-                }
-                catch {
+                } catch {
                     $frameworkverval = "Not Installed"
                 }
 
             }
-#endregion 32bit tasks
+            #endregion 32bit tasks
 
             #Perform check to see if DAT is out of date
-            if ($null -eq $datdateval) {$datdateval = "20000101"}
-            $today = get-date -f yyyyMMdd
+            if ($null -eq $datdateval) { $datdateval = "20000101" }
+            $today = Get-Date -f yyyyMMdd
             $daysold = $today - $datdateval
-            if ($daysold -gt $datdaysold) {$outdated = "Yes"}
-            else {$outdated = "No"}
+            if ($daysold -gt $datdaysold) { $outdated = "Yes" }
+            else { $outdated = "No" }
 
             #Perform check to see if Engine is out of date
-            if ($engversionval -notlike $EngineVersion) {$engoutdated = "Yes"}
-            else {$engoutdated = "No"}
+            if ($engversionval -notlike $EngineVersion) { $engoutdated = "Yes" }
+            else { $engoutdated = "No" }
 
             #Peform check to see if patches are needed
-            if ($hotfixverval -ne $PatchesInstalled) {$hfoutdated = "Yes"}
-            else {$hfoutdated = "No"}
+            if ($hotfixverval -ne $PatchesInstalled) { $hfoutdated = "Yes" }
+            else { $hfoutdated = "No" }
 
             #Perform check to see if Antivirus version 8.8
-            if ($versval -notlike $AntiVirusVersion) {$avoutdated = "Yes"}
-            else {$avoutdated = "No"}
+            if ($versval -notlike $AntiVirusVersion) { $avoutdated = "Yes" }
+            else { $avoutdated = "No" }
 
             #Perform check to see if HBSS Framework is up-to-date
-            if ($frameworkverval -eq $HBSSFrameworkVersion) {$fwoutdated = "No"}
-            else {$fwoutdated = "Yes"}
+            if ($frameworkverval -eq $HBSSFrameworkVersion) { $fwoutdated = "No" }
+            else { $fwoutdated = "Yes" }
 
             #Take the extra 0's off the end of the DAT version
-            if ($null -eq $DatVersionval) {$DatVersionval = "0000.0000"}
-            $DATVersion = $DATVersionval.substring(0,4)
+            if ($null -eq $DatVersionval) { $DatVersionval = "0000.0000" }
+            $DATVersion = $DATVersionval.substring(0, 4)
 
             #Create the object data
             [PSCustomObject]@{
-                Computer = "$comp"
-                DatDate = "$datdateval"
-                DatVersion = "$DATVersion"
-                DATOutdated = "$outdated"
-                EngineVersion = "$engversionval"
-                EngineOutdated = "$engoutdated"
+                Computer         = "$comp"
+                DatDate          = "$datdateval"
+                DatVersion       = "$DATVersion"
+                DATOutdated      = "$outdated"
+                EngineVersion    = "$engversionval"
+                EngineOutdated   = "$engoutdated"
                 PatchesInstalled = "$hotfixverval"
-                PatchesNeeded = "$hfoutdated"
-                McAfeeVersion = "$versval"
-                McAfeeOutdated = "$avoutdated"
-                HIPSVersion = "$hipsverval"
-                HBSS_Framework = "$frameworkverval"
-                HBSSOutdated = "$fwoutdated"
+                PatchesNeeded    = "$hfoutdated"
+                McAfeeVersion    = "$versval"
+                McAfeeOutdated   = "$avoutdated"
+                HIPSVersion      = "$hipsverval"
+                HBSS_Framework   = "$frameworkverval"
+                HBSSOutdated     = "$fwoutdated"
 
-            } | Select-Object Computer,DatDate,DatVersion,DATOutdated,EngineVersion,EngineOutdated,PatchesInstalled,PatchesNeeded,McAfeeVersion,McAfeeOutdated,HIPSVersion,HBSS_Framework,HBSSOutdated
+            } | Select-Object Computer, DatDate, DatVersion, DATOutdated, EngineVersion, EngineOutdated, PatchesInstalled, PatchesNeeded, McAfeeVersion, McAfeeOutdated, HIPSVersion, HBSS_Framework, HBSSOutdated
         }#if host version gt 2
         else {
             Write-Output "  PowerShell must be at least version 3. Current version:  $version  `n  Click OK to continue.  "

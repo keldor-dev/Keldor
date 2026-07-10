@@ -1,6 +1,6 @@
 #Look up "root\WMI" or "root\CCM" using Get-ComputerWMINamespaces
 function Get-WMIClass {
-<#
+    <#
 .SYNOPSIS
     Gets WMI Class.
 
@@ -22,12 +22,12 @@ function Get-WMIClass {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-WMIClass')]
-    Param (
+    param (
         [Parameter(
-            Mandatory=$false,
-            Position=0
+            Mandatory = $false,
+            Position = 0
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string]$ComputerName = "$env:COMPUTERNAME"
     )
 

@@ -1,5 +1,5 @@
 function Get-LockedOutStatus {
-<#
+    <#
 .SYNOPSIS
     Gets Locked Out Status.
 
@@ -21,48 +21,47 @@ function Get-LockedOutStatus {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-LockedOutStatus')]
-    Param (
+    param (
         [Parameter(
-            Mandatory=$false,
-            Position=0,
-            ValueFromPipeline=$true,
-            ValueFromPipelineByPropertyName=$true
+            Mandatory = $false,
+            Position = 0,
+            ValueFromPipeline = $true,
+            ValueFromPipelineByPropertyName = $true
         )]
-        [Alias('Username','User','SamAccountName')]
+        [Alias('Username', 'User', 'SamAccountName')]
         [string[]]$UserName = "$env:USERNAME"
     )
-    Begin {
+    begin {
         $cktime = Get-Date -Format t
         if (Test-KeldorActiveDirectoryModule -AsBoolean -Quiet) {
             #ad module is installed
-        }
-        else {
+        } else {
             Write-Warning "Active Directory module is not installed and is required to run this command."
             break
         }
     }
-    Process {
+    process {
         foreach ($user in $UserName) {
-            $usrquery = Get-ADUser $User -properties LockedOut,lockoutTime
+            $usrquery = Get-ADUser $User -properties LockedOut, lockoutTime
             $locked = $usrquery.LockedOut
             $locktime = $usrquery.lockoutTime
             if ($locked -eq $true) {
                 [PSCustomObject]@{
-                    User = $user
-                    Status = "Locked"
-                    Date = $locktime
+                    User      = $user
+                    Status    = "Locked"
+                    Date      = $locktime
                     CheckTime = $cktime
                 }
             }#if
             else {
                 [PSCustomObject]@{
-                    User = $user
-                    Status = "Not Locked"
-                    Date = "--"
+                    User      = $user
+                    Status    = "Not Locked"
+                    Date      = "--"
                     CheckTime = $cktime
                 }
             }#else
         }#foreach
     }
-    End {}
+    end {}
 }

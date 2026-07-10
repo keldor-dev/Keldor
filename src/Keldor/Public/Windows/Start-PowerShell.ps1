@@ -1,5 +1,5 @@
 function Start-PowerShell {
-<#
+    <#
 .SYNOPSIS
     Starts Power Shell.
 
@@ -31,62 +31,53 @@ function Start-PowerShell {
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Start-PowerShell')]
     [Alias('Open-PowerShell')]
-    Param (
-        [Parameter(Mandatory=$false)]
+    param (
+        [Parameter(Mandatory = $false)]
         [switch]$Console,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [switch]$ISE,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [switch]$VSC,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [switch]$RunAs
     )
 
 
-    if ($true -notin $Console,$ISE,$VSC) {
+    if ($true -notin $Console, $ISE, $VSC) {
         if ($Host.Name -eq 'ConsoleHost') {
             if ($RunAs) {
-                if ($PSCmdlet.ShouldProcess('PowerShell ISE', "Start elevated")) {Start-Process "$env:windir\system32\WindowsPowerShell\v1.0\PowerShell_ISE.exe" -Verb RunAs}
+                if ($PSCmdlet.ShouldProcess('PowerShell ISE', "Start elevated")) { Start-Process "$env:windir\system32\WindowsPowerShell\v1.0\PowerShell_ISE.exe" -Verb RunAs }
+            } else {
+                if ($PSCmdlet.ShouldProcess('PowerShell ISE', "Start")) { Start-Process "$env:windir\system32\WindowsPowerShell\v1.0\PowerShell_ISE.exe" }
             }
-            else {
-                if ($PSCmdlet.ShouldProcess('PowerShell ISE', "Start")) {Start-Process "$env:windir\system32\WindowsPowerShell\v1.0\PowerShell_ISE.exe"}
-            }
-        }
-        else {
+        } else {
             if ($RunAs) {
-                if ($PSCmdlet.ShouldProcess('powershell.exe', "Start elevated")) {Start-Process powershell.exe -Verb RunAs}
-            }
-            else {
-                if ($PSCmdlet.ShouldProcess('powershell.exe', "Start")) {Start-Process powershell.exe}
+                if ($PSCmdlet.ShouldProcess('powershell.exe', "Start elevated")) { Start-Process powershell.exe -Verb RunAs }
+            } else {
+                if ($PSCmdlet.ShouldProcess('powershell.exe', "Start")) { Start-Process powershell.exe }
             }
         }
-    }
-    else {
+    } else {
         if ($Console) {
             if ($RunAs) {
-                if ($PSCmdlet.ShouldProcess('powershell.exe', "Start elevated")) {Start-Process powershell.exe -Verb RunAs}
+                if ($PSCmdlet.ShouldProcess('powershell.exe', "Start elevated")) { Start-Process powershell.exe -Verb RunAs }
+            } else {
+                if ($PSCmdlet.ShouldProcess('powershell.exe', "Start")) { Start-Process powershell.exe }
             }
-            else {
-                if ($PSCmdlet.ShouldProcess('powershell.exe', "Start")) {Start-Process powershell.exe}
-            }
-        }
-        elseif ($ISE) {
+        } elseif ($ISE) {
             if ($RunAs) {
-                if ($PSCmdlet.ShouldProcess('PowerShell ISE', "Start")) {Start-Process "$env:windir\system32\WindowsPowerShell\v1.0\PowerShell_ISE.exe"}
+                if ($PSCmdlet.ShouldProcess('PowerShell ISE', "Start")) { Start-Process "$env:windir\system32\WindowsPowerShell\v1.0\PowerShell_ISE.exe" }
+            } else {
+                if ($PSCmdlet.ShouldProcess('PowerShell ISE', "Start")) { Start-Process "$env:windir\system32\WindowsPowerShell\v1.0\PowerShell_ISE.exe" }
             }
-            else {
-                if ($PSCmdlet.ShouldProcess('PowerShell ISE', "Start")) {Start-Process "$env:windir\system32\WindowsPowerShell\v1.0\PowerShell_ISE.exe"}
-            }
-        }
-        elseif ($VSC) {
+        } elseif ($VSC) {
             if ($RunAs) {
-                if ($PSCmdlet.ShouldProcess('Visual Studio Code', "Start")) {Start-Process "$env:programfiles\Microsoft VS Code\Code.exe"}
-            }
-            else {
-                if ($PSCmdlet.ShouldProcess('Visual Studio Code', "Start")) {Start-Process "$env:programfiles\Microsoft VS Code\Code.exe"}
+                if ($PSCmdlet.ShouldProcess('Visual Studio Code', "Start")) { Start-Process "$env:programfiles\Microsoft VS Code\Code.exe" }
+            } else {
+                if ($PSCmdlet.ShouldProcess('Visual Studio Code', "Start")) { Start-Process "$env:programfiles\Microsoft VS Code\Code.exe" }
             }
         }
     }

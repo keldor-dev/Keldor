@@ -1,5 +1,5 @@
 function Set-ExplorerPreference {
-<#
+    <#
 .SYNOPSIS
     Sets Explorer Preference.
 
@@ -24,7 +24,7 @@ function Set-ExplorerPreference {
 #>
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ExplorerPreference')]
-    Param (
+    param (
         [Switch]$ThisPC,
         [Switch]$QuickAccess
     )
@@ -33,13 +33,11 @@ function Set-ExplorerPreference {
         if ($PSCmdlet.ShouldProcess('HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\LaunchTo', "Set to 1")) {
             Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name LaunchTo -Type DWord -Value 1 -Force
         }
-    }
-    elseif ($QuickAccess) {
+    } elseif ($QuickAccess) {
         if ($PSCmdlet.ShouldProcess('HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\LaunchTo', "Set to 2")) {
             Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name LaunchTo -Type DWord -Value 2 -Force
         }
-    }
-    else {
+    } else {
         if ($PSCmdlet.ShouldProcess('HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\LaunchTo', "Set to 1")) {
             Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name LaunchTo -Type DWord -Value 1 -Force
         }

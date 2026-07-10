@@ -27,8 +27,7 @@ function Get-KeldorSecretFromSecretManagement {
 
         if ([string]::IsNullOrWhiteSpace($Vault)) {
             $SecretValue = Get-Secret @GetSecretParameters
-        }
-        else {
+        } else {
             $GetSecretParameters['Vault'] = $Vault
             $SecretValue = Get-Secret @GetSecretParameters
         }
@@ -38,8 +37,7 @@ function Get-KeldorSecretFromSecretManagement {
         }
 
         return [string]$SecretValue
-    }
-    catch {
+    } catch {
         return $null
     }
 }

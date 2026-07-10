@@ -1,5 +1,5 @@
 function Test-EmailRelay {
-<#
+    <#
 .SYNOPSIS
     Tests Email Relay.
 
@@ -29,12 +29,12 @@ function Test-EmailRelay {
         Justification = "Have tried other methods and they do not work consistently."
     )]
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-EmailRelay')]
-    [Alias('Test-SMTPRelay','Test-MailRelay')]
-    Param (
+    [Alias('Test-SMTPRelay', 'Test-MailRelay')]
+    param (
         [Parameter(
-            Mandatory=$true,
-            Position=0,
-            HelpMessage="Enter e-mail address of recipient")]
+            Mandatory = $true,
+            Position = 0,
+            HelpMessage = "Enter e-mail address of recipient")]
         [string]$Recipient
     )
 
@@ -46,5 +46,5 @@ function Test-EmailRelay {
     $date = Get-Date
     $subject = "Test from $env:COMPUTERNAME $date"
 
-    send-mailmessage -To $Recipient -From $from -Subject $subject -Body "Testing relay of SMTP messages.`nFrom: $from `nTo: $Recipient `n`nPlease delete this message." -smtpserver $smtpserver -Port $port
+    Send-MailMessage -To $Recipient -From $from -Subject $subject -Body "Testing relay of SMTP messages.`nFrom: $from `nTo: $Recipient `n`nPlease delete this message." -SmtpServer $smtpserver -Port $port
 }

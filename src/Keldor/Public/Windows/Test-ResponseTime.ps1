@@ -1,5 +1,5 @@
 function Test-ResponseTime {
-<#
+    <#
 .SYNOPSIS
     Finds the response time of a remote computer.
 
@@ -38,7 +38,7 @@ function Test-ResponseTime {
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-ResponseTime')]
     param (
         [Parameter()]
-        [Alias('Host','Name','Computer','ComputerName','TestAddress')]
+        [Alias('Host', 'Name', 'Computer', 'ComputerName', 'TestAddress')]
         [string[]] $RemoteAddress,
 
         [int32] $ThrottleLimit = 5
@@ -46,7 +46,7 @@ function Test-ResponseTime {
 
     if ([string]::IsNullOrWhiteSpace($RemoteAddress)) {
         Write-Verbose "Test Address not specified. Setting to logon server."
-        $RemoteAddress = ($env:LOGONSERVER).Replace('\\','') + "." + $env:USERDNSDOMAIN
+        $RemoteAddress = ($env:LOGONSERVER).Replace('\\', '') + "." + $env:USERDNSDOMAIN
     }
     Write-Verbose "RemoteAddress: $RemoteAddress"
 
@@ -57,26 +57,25 @@ function Test-ResponseTime {
     $testaddresses = $responses | Select-Object -ExpandProperty Address -Unique
 
     if (($testaddresses.Count) -le 1) {
-        $j = $responses | Where-Object {$_.Address -eq $testaddresses[0]}
+        $j = $responses | Where-Object { $_.Address -eq $testaddresses[0] }
         $measuredinfo = $responses.ResponseTime | Measure-Object -Average -Maximum -Minimum
         [PSCustomObject]@{
             ComputerName = ($responses[0].PSComputerName)
-            TestAddress = ($responses[0].Address)
+            TestAddress  = ($responses[0].Address)
             ResponseTime = ($measuredinfo | Select-Object -ExpandProperty Average)
-            Minimum = ($measuredinfo | Select-Object -ExpandProperty Minimum)
-            Maximum = ($measuredinfo | Select-Object -ExpandProperty Maximum)
+            Minimum      = ($measuredinfo | Select-Object -ExpandProperty Minimum)
+            Maximum      = ($measuredinfo | Select-Object -ExpandProperty Maximum)
         }#new object
-    }
-    else {
+    } else {
         for ($i = 0; $i -lt $testaddresses.Length; $i++) {
-            $j = $responses | Where-Object {$_.Address -eq $testaddresses[$i]}
+            $j = $responses | Where-Object { $_.Address -eq $testaddresses[$i] }
             $measuredinfo = $j.ResponseTime | Measure-Object -Average -Maximum -Minimum
             [PSCustomObject]@{
                 ComputerName = ($j[0].PSComputerName)
-                TestAddress = $testaddresses[$i]
+                TestAddress  = $testaddresses[$i]
                 ResponseTime = ($measuredinfo | Select-Object -ExpandProperty Average)
-                Minimum = ($measuredinfo | Select-Object -ExpandProperty Minimum)
-                Maximum = ($measuredinfo | Select-Object -ExpandProperty Maximum)
+                Minimum      = ($measuredinfo | Select-Object -ExpandProperty Minimum)
+                Maximum      = ($measuredinfo | Select-Object -ExpandProperty Maximum)
             }#new object
         }
     }

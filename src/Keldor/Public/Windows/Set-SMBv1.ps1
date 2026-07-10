@@ -1,6 +1,6 @@
 #need to finish https://support.microsoft.com/en-us/help/2696547/how-to-detect-enable-and-disable-smbv1-smbv2-and-smbv3-in-windows-and
 function Set-SMBv1 {
-<#
+    <#
 .SYNOPSIS
     Sets SM Bv1.
 
@@ -22,7 +22,7 @@ function Set-SMBv1 {
 #>
 
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-SMBv1')]
-    Param (
+    param (
         [Parameter()]
         [Switch]$On
     )
@@ -35,20 +35,17 @@ function Set-SMBv1 {
             if ($PSCmdlet.ShouldProcess('SMB1', "Enable")) {
                 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" SMB1 -Type DWORD -Value 1 –Force
             }
-        }
-        else {
+        } else {
             if ($PSCmdlet.ShouldProcess('SMB1Protocol', "Enable Windows optional feature")) {
                 Enable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol
             }
         }
-    }
-    else {
+    } else {
         if ($os -match "2008" -or $os -match "7") {
             if ($PSCmdlet.ShouldProcess('SMB1', "Disable")) {
                 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" SMB1 -Type DWORD -Value 0 –Force
             }
-        }
-        else {
+        } else {
             if ($PSCmdlet.ShouldProcess('SMB1Protocol', "Disable Windows optional feature")) {
                 Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol
             }

@@ -1,5 +1,5 @@
 function Get-KeldorSecretProvider {
-<#
+    <#
 .SYNOPSIS
     Gets Keldor secret providers.
 

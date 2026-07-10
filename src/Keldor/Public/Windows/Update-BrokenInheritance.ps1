@@ -1,5 +1,5 @@
 function Update-BrokenInheritance {
-<#
+    <#
 .SYNOPSIS
     Finds and fixes users with broken inheritance.
 
@@ -27,58 +27,55 @@ function Update-BrokenInheritance {
     https://docs.keldor.dev/powershell/keldor/Update-BrokenInheritance
 #>
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Update-BrokenInheritance')]
-Param (
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Update-BrokenInheritance')]
+    param (
         [Parameter(
-            HelpMessage="Enter the distinguishedName of the OU that you want to search",
-            Mandatory=$false
+            HelpMessage = "Enter the distinguishedName of the OU that you want to search",
+            Mandatory = $false
         )]
-    	[string]$SearchBase = (Get-ADDomain).DistinguishedName,
+        [string]$SearchBase = (Get-ADDomain).DistinguishedName,
 
         [Parameter(
-            HelpMessage="Enter User ID (sAMAccountName or distinguishedName)",
-            Mandatory=$false
+            HelpMessage = "Enter User ID (sAMAccountName or distinguishedName)",
+            Mandatory = $false
         )]
-		[string]$Identity
-	)
+        [string]$Identity
+    )
 
     if (Get-Module -ListAvailable -Name ActiveDirectory) {
         #Start Directory Searcher
-        If (!($Identity)) {
-	        $DirectorySearcher = New-Object System.DirectoryServices.DirectorySearcher([ADSI]"LDAP://$SearchBase","(&(objectcategory=user)(objectclass=user))")
-    	}
-        Else {
+        if (!($Identity)) {
+            $DirectorySearcher = New-Object System.DirectoryServices.DirectorySearcher([ADSI]"LDAP://$SearchBase", "(&(objectcategory=user)(objectclass=user))")
+        } else {
             Write-Output "Searching for User $($Identity)"
-    	    If ($Identity -like "CN=*") {
+            if ($Identity -like "CN=*") {
                 $DirectorySearcher = New-Object System.DirectoryServices.DirectorySearcher([ADSI]"LDAP://$Identity")
-	        }
-            Else {
-                $DirectorySearcher = New-Object System.DirectoryServices.DirectorySearcher([ADSI]"LDAP://$SearchBase","(&(objectcategory=user)(objectclass=user)(samaccountname=$($Identity)))")
-	        }
+            } else {
+                $DirectorySearcher = New-Object System.DirectoryServices.DirectorySearcher([ADSI]"LDAP://$SearchBase", "(&(objectcategory=user)(objectclass=user)(samaccountname=$($Identity)))")
+            }
         }
 
         #Find All Matching Users
         $Users = $DirectorySearcher.FindAll()
 
-        Foreach ($obj in $users) {
+        foreach ($obj in $users) {
             #Set 'objBefore' to the current object so we can track any changes
             $objBefore = $obj.GetDirectoryEntry()
 
             #Check to see if user has Inheritance Disabled; $True is inheritance disabled, $False is inheritance enabled
-            If ($objBefore.psBase.ObjectSecurity.AreAccessRulesProtected -eq $True) {
+            if ($objBefore.psBase.ObjectSecurity.AreAccessRulesProtected -eq $True) {
                 Write-Output "User: $($objBefore.sAMAccountName) Inheritance is disabled: $($objBefore.psBase.ObjectSecurity.AreAccessRulesProtected) ; adminSDHolder: $($objBefore.Properties.AdminCount)"
                 $objBeforeACL = $($objBefore.psBase.ObjectSecurity.AreAccessRulesProtected)
 
                 #Fix inheritance
                 Write-Output "Updating $($objBefore.sAMAccountName)."
-                $objBefore.psbase.ObjectSecurity.SetAccessRuleProtection($false,$true)
+                $objBefore.psbase.ObjectSecurity.SetAccessRuleProtection($false, $true)
                 $objBefore.psbase.CommitChanges()
 
                 #Set 'objAfter' so we can see the updated change
                 $objAfter = $obj.GetDirectoryEntry()
                 $objAfterACL = $($objAfter.psBase.ObjectSecurity.AreAccessRulesProtected)
-            }
-            Else {
+            } else {
                 #User has inheritance enabled, so do nothing
             }
         }

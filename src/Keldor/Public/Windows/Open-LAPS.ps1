@@ -1,5 +1,5 @@
 function Open-LAPS {
-<#
+    <#
 .SYNOPSIS
     Opens LAPS.
 
@@ -22,17 +22,14 @@ function Open-LAPS {
     param()
     try {
         Start-Process 'C:\Program Files\LAPS\AdmPwd.UI' -ErrorAction Stop
-    }
-    catch [System.InvalidOperationException] {
+    } catch [System.InvalidOperationException] {
         $err = $_.Exception.message.Trim()
         if ($err -match "cannot find the file") {
             Write-Error "LAPS admin console not installed"
-        }
-        else {
+        } else {
             Write-Error "Unknown error"
         }
-    }
-    catch {
+    } catch {
         Get-Error -HowMany 1
     }
 }

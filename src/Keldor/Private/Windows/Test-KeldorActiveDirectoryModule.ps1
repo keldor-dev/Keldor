@@ -1,5 +1,5 @@
 function Test-KeldorActiveDirectoryModule {
-<#
+    <#
 .SYNOPSIS
     Tests whether the ActiveDirectory module is available.
 
@@ -50,12 +50,10 @@ function Test-KeldorActiveDirectoryModule {
 
         if ($available) {
             $message = 'ActiveDirectory module is available.'
-        }
-        else {
+        } else {
             $message = 'ActiveDirectory module is not installed or is not available in PSModulePath.'
         }
-    }
-    catch {
+    } catch {
         $available = $false
         $imported = $false
         $message = "ActiveDirectory module could not be imported. $($_.Exception.Message)"
@@ -70,9 +68,9 @@ function Test-KeldorActiveDirectoryModule {
     }
 
     [PSCustomObject]@{
-        Name = 'ActiveDirectory'
+        Name      = 'ActiveDirectory'
         Available = $available
-        Imported = $imported
-        Message = $message
+        Imported  = $imported
+        Message   = $message
     }
 }

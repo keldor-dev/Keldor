@@ -1,5 +1,5 @@
 function Convert-ImageToBase64 {
-<#
+    <#
 .SYNOPSIS
     Converts Image To Base64.
 
@@ -25,13 +25,13 @@ function Convert-ImageToBase64 {
     param(
         [Parameter(
             HelpMessage = "Enter the path of the image you want to convert. Ex: D:\temp\image.jpg",
-            Mandatory=$true
+            Mandatory = $true
         )]
         [ValidateNotNullOrEmpty()]
         [Alias('ImagePath')]
         [string]$Path
     )
 
-    $b64 = [convert]::ToBase64String((get-content $Path -encoding byte))
+    $b64 = [convert]::ToBase64String((Get-Content $Path -Encoding byte))
     $b64
 }

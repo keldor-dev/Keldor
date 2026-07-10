@@ -34,7 +34,7 @@ function Get-KeldorComputerThing {
                 PSTypeName   = 'Keldor.Computer.Thing'
                 ComputerName = $Computer
                 Status       = 'Unknown'
-                Timestamp    = Get-Date
+                CheckedAt    = Get-Date
             }
         }
     }

@@ -1,5 +1,5 @@
 function Open-ADDomainsAndTrusts {
-<#
+    <#
 .SYNOPSIS
     Opens AD Domains And Trusts.
 
@@ -23,8 +23,7 @@ function Open-ADDomainsAndTrusts {
     try {
         $ErrorActionPreference = "Stop"
         domain.msc
-    }
-    catch {
+    } catch {
         Write-Output "Active Directory snapins are not installed/enabled."
     }
 }

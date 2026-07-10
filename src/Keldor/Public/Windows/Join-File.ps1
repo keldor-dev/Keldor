@@ -1,5 +1,5 @@
 function Join-File {
-<#
+    <#
 .SYNOPSIS
     Joins File.
 
@@ -25,55 +25,54 @@ function Join-File {
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Join-File')]
     [Alias('Merge-File')]
-    Param (
+    param (
         [Parameter(HelpMessage = "Enter the path of the folder with the part files you want to join.",
-            Mandatory=$true,
-            Position=0
+            Mandatory = $true,
+            Position = 0
         )]
-        [Alias('Source','InputLocation','SourceFolder')]
+        [Alias('Source', 'InputLocation', 'SourceFolder')]
         [string]$Path,
 
         [Parameter(HelpMessage = "Enter the path where you want the joined file placed.",
-            Mandatory=$false,
-            Position=1
+            Mandatory = $false,
+            Position = 1
         )]
-        [Alias('OutputLocation','Output','DestinationPath','Destination')]
+        [Alias('OutputLocation', 'Output', 'DestinationPath', 'Destination')]
         [string]$DestinationFolder
     )
 
     $og = (Get-Location).Path
-    $objs = Get-ChildItem $Path | Where-Object {$_.Name -like "*_Part*"}
+    $objs = Get-ChildItem $Path | Where-Object { $_.Name -like "*_Part*" }
 
     $myobjs = foreach ($obj in $objs) {
         $ext = $obj.Extension
         $name = $obj.Name
-        $num = $name -replace "[\s\S]*.*(_Part)","" -replace $ext,""
+        $num = $name -replace "[\s\S]*.*(_Part)", "" -replace $ext, ""
         $fn = $obj.FullName
         $dp = $obj.Directory.FullName
 
         [PSCustomObject]@{
-            FullName = $fn
-            Name = $name
+            FullName  = $fn
+            Name      = $name
             Extension = $ext
-            Num = [int]$num
+            Num       = [int]$num
             Directory = $dp
         }#new object
     }
 
-    $sobj = $myobjs | Sort-Object Num | Select-Object FullName,Name,Extension,Directory
+    $sobj = $myobjs | Sort-Object Num | Select-Object FullName, Name, Extension, Directory
 
     $fo = $sobj[0]
     $fon = $fo.Name
-    $fon = $fon -replace "_Part01",""
+    $fon = $fon -replace "_Part01", ""
     $fd = $fo.Directory
     if ($DestinationFolder -eq "") {
         $fop = $fd + "\" + $fon
         Set-Location $fd
-    }
-    else {
+    } else {
         $fop = $DestinationFolder + "\" + $fon
         if (!(Test-Path $DestinationFolder)) {
-         New-Item -Path $DestinationFolder -ItemType Directory
+            New-Item -Path $DestinationFolder -ItemType Directory
         }
         Set-Location $DestinationFolder
     }
@@ -91,8 +90,7 @@ function Join-File {
 
             $ReadObj.Close()
         }
-    }
-    else {
+    } else {
         [Byte[]]$Buffer = New-Object Byte[] 100MB
 
         $sobj.FullName | ForEach-Object {

@@ -1,5 +1,5 @@
 function Connect-RDP {
-<#
+    <#
 .SYNOPSIS
     Establishes a Remote Desktop Protocol (RDP) connection to a specified computer.
 
@@ -26,16 +26,15 @@ function Connect-RDP {
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Connect-RDP')]
     [alias('rdp')]
-    Param (
-        [Parameter(Mandatory=$false, Position=0)]
-        [Alias('Host','Name','Computer','CN')]
+    param (
+        [Parameter(Mandatory = $false, Position = 0)]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string]$ComputerName
     )
 
     if (!([string]::IsNullOrWhiteSpace($ComputerName))) {
         mstsc /v:$ComputerName /admin
-    }
-    else {
+    } else {
         mstsc
     }
 }

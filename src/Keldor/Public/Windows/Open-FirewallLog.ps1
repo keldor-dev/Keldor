@@ -1,5 +1,5 @@
 function Open-FirewallLog {
-<#
+    <#
 .SYNOPSIS
     Opens Firewall Log.
 
@@ -27,7 +27,7 @@ function Open-FirewallLog {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-FirewallLog')]
-    Param (
+    param (
         [Parameter()]
         [Switch]$Domain,
 
@@ -38,7 +38,7 @@ function Open-FirewallLog {
         [Switch]$Public
     )
 
-    if ($Private -eq $true) {notepad %systemroot%\system32\logfiles\firewall\domainfirewall.log}
-    elseif ($Public -eq $true) {notepad %systemroot%\system32\logfiles\firewall\privatefirewall.log}
-    elseif ($Domain -eq $true -or ($Private -eq $false -and $Public -eq $false)) {notepad %systemroot%\system32\logfiles\firewall\publicfirewall.log}
+    if ($Private -eq $true) { notepad %systemroot%\system32\logfiles\firewall\domainfirewall.log }
+    elseif ($Public -eq $true) { notepad %systemroot%\system32\logfiles\firewall\privatefirewall.log }
+    elseif ($Domain -eq $true -or ($Private -eq $false -and $Public -eq $false)) { notepad %systemroot%\system32\logfiles\firewall\publicfirewall.log }
 }

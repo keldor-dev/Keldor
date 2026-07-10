@@ -1,5 +1,5 @@
 function Register-Schema {
-<#
+    <#
 .SYNOPSIS
     Registers Schema.
 
@@ -17,12 +17,11 @@ function Register-Schema {
     https://docs.keldor.dev/powershell/keldor/Register-Schema
 #>
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Register-Schema')]
-    Param ()
-if (Test-Path $env:windir\System32\schmmgmt.dll) {
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Register-Schema')]
+    param ()
+    if (Test-Path $env:windir\System32\schmmgmt.dll) {
         regsvr32.exe schmmgmt.dll
-    }
-    else {
+    } else {
         Write-Warning "schmmgmt.dll not found. Please ensure Active Directory tools are installed."
     }
 }

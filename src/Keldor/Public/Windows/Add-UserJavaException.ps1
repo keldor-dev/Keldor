@@ -1,5 +1,5 @@
 function Add-UserJavaException {
-<#
+    <#
 .SYNOPSIS
     Adds Java exception.
 
@@ -24,10 +24,10 @@ function Add-UserJavaException {
     param(
         [Parameter(
             HelpMessage = "Enter the address of the website.",
-            Mandatory=$true
+            Mandatory = $true
         )]
         [ValidateNotNullOrEmpty()]
-        [Alias('Site','URL','Address','Website')]
+        [Alias('Site', 'URL', 'Address', 'Website')]
         [string]$URI
     )
     Add-Content -Path "$env:USERPROFILE\AppData\LocalLow\Sun\Java\Deployment\security\exception.sites" -Value "$URI"

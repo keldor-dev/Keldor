@@ -1,5 +1,5 @@
 function Open-DHCPmgmt {
-<#
+    <#
 .SYNOPSIS
     Opens DHC Pmgmt.
 
@@ -23,8 +23,7 @@ function Open-DHCPmgmt {
     try {
         $ErrorActionPreference = "Stop"
         dhcpmgmt.msc
-    }
-    catch {
+    } catch {
         Write-Output "Active Directory snapins are not installed/enabled."
     }
 }

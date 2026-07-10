@@ -182,8 +182,7 @@ Describe "Get-KeldorSecret" {
 
             try {
                 Get-KeldorSecret -Name PrivateToken -Provider Auto
-            }
-            catch {
+            } catch {
                 $_.Exception.Message | Should -Not -Match 'super-secret-value'
                 $_.Exception.Message | Should -Be "Unable to retrieve secret 'PrivateToken' using any configured provider."
             }

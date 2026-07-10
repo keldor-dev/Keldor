@@ -1,5 +1,5 @@
 function Get-Error {
-<#
+    <#
 .SYNOPSIS
     Gets Error.
 
@@ -27,10 +27,10 @@ function Get-Error {
     )]
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-Error')]
     [Alias('Error')]
-    Param (
+    param (
         [Parameter(
-            Mandatory=$false,
-            Position=0
+            Mandatory = $false,
+            Position = 0
         )]
         [int32]$HowMany
     )
@@ -53,10 +53,10 @@ function Get-Error {
         $mes = $log.Exception.message.Trim()
         [PSCustomObject]@{
             Exception = "[$exc]"
-            Message = $mes
-            Script = $scriptn
-            Command = $command
-            Line = $line
+            Message   = $mes
+            Script    = $scriptn
+            Command   = $command
+            Line      = $line
             Character = $char
         }
     }

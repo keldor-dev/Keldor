@@ -1,5 +1,5 @@
 function Get-NonSmartCardRequiredUser {
-<#
+    <#
 .SYNOPSIS
     Displays users in domain with SmartCardRequired attribute set to false.
 
@@ -21,25 +21,24 @@ function Get-NonSmartCardRequiredUser {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-NonSmartCardRequiredUser')]
-    Param (
+    param (
         [AllowEmptyString()]
         [Alias('User')]
         [string]$Name
     )
 
-    Begin {
+    begin {
         $ErrorActionPreference = "Stop"
         if ($null -eq (Get-Module -ListAvailable ActiveDir*).Path) {
             throw "Active Directory module not found. Active Directory module is required to run this function."
         }
     }
-    Process {
-        $users = Get-ADUser -Filter {SmartCardLogonRequired -eq $false} -Properties SmartCardLogonRequired,DisplayName,CanonicalName
+    process {
+        $users = Get-ADUser -Filter { SmartCardLogonRequired -eq $false } -Properties SmartCardLogonRequired, DisplayName, CanonicalName
     }
-    End {
+    end {
         if ($Name) {
-            $users | Where-Object {$_ -match $Name}
-        }
-        else {$users}
+            $users | Where-Object { $_ -match $Name }
+        } else { $users }
     }
 }

@@ -1,5 +1,5 @@
 function Open-EAC {
-<#
+    <#
 .SYNOPSIS
     Opens EAC.
 
@@ -38,22 +38,22 @@ function Open-EAC {
         Justification = "Have tried other methods and they do not work consistently."
     )]
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-EAC')]
-    [Alias('Open-ECP','EAC','ECP')]
-    Param (
-        [Parameter(Mandatory=$false)]
+    [Alias('Open-ECP', 'EAC', 'ECP')]
+    param (
+        [Parameter(Mandatory = $false)]
         [Switch]$Chrome,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [Switch]$Edge,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [Switch]$Firefox,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [Switch]$InternetExplorer,
 
-        [Parameter(Mandatory=$false)]
-        [ValidateSet('Default','Edge','Chrome','Firefox','Safari','InternetExplorer')]
+        [Parameter(Mandatory = $false)]
+        [ValidateSet('Default', 'Edge', 'Chrome', 'Firefox', 'Safari', 'InternetExplorer')]
         [string]$Browser = 'Default'
     )
 
@@ -61,10 +61,10 @@ function Open-EAC {
     $URL = $config.EAC
 
     $BrowserName = $Browser
-    if ($Chrome) {$BrowserName = 'Chrome'}
-    elseif ($Edge) {$BrowserName = 'Edge'}
-    elseif ($Firefox) {$BrowserName = 'Firefox'}
-    elseif ($InternetExplorer) {$BrowserName = 'InternetExplorer'}
+    if ($Chrome) { $BrowserName = 'Chrome' }
+    elseif ($Edge) { $BrowserName = 'Edge' }
+    elseif ($Firefox) { $BrowserName = 'Firefox' }
+    elseif ($InternetExplorer) { $BrowserName = 'InternetExplorer' }
 
     Open-KeldorUrl -Uri $URL -Browser $BrowserName
 }

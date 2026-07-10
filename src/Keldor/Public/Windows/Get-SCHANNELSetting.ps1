@@ -1,5 +1,5 @@
 function Get-SCHANNELSetting {
-<#
+    <#
 .SYNOPSIS
     Gets the SCHANNEL settings on the current machine.
 
@@ -31,7 +31,7 @@ function Get-SCHANNELSetting {
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-SCHANNELSetting')]
     param(
         [Parameter(
-            Mandatory=$false
+            Mandatory = $false
         )]
         [Alias('Path')]
         [string]$Name
@@ -39,43 +39,43 @@ function Get-SCHANNELSetting {
 
     $schannel = @()
     if (Test-Path HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers) {
-        $schannel += Get-ChildItem HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers -Recurse | ForEach-Object {Get-ItemProperty Registry::$_}
+        $schannel += Get-ChildItem HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers -Recurse | ForEach-Object { Get-ItemProperty Registry::$_ }
     }
 
     if (Test-Path HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\CipherSuites) {
-        $schannel += Get-ChildItem HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\CipherSuites -Recurse | ForEach-Object {Get-ItemProperty Registry::$_}
+        $schannel += Get-ChildItem HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\CipherSuites -Recurse | ForEach-Object { Get-ItemProperty Registry::$_ }
     }
 
     if (Test-Path HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Hashes) {
-        $schannel += Get-ChildItem HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Hashes -Recurse | ForEach-Object {Get-ItemProperty Registry::$_}
+        $schannel += Get-ChildItem HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Hashes -Recurse | ForEach-Object { Get-ItemProperty Registry::$_ }
     }
 
     if (Test-Path HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\KeyExchangeAlgorithms) {
-        $schannel += Get-ChildItem HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\KeyExchangeAlgorithms -Recurse | ForEach-Object {Get-ItemProperty Registry::$_}
+        $schannel += Get-ChildItem HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\KeyExchangeAlgorithms -Recurse | ForEach-Object { Get-ItemProperty Registry::$_ }
     }
 
     if (Test-Path HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols) {
-        $schannel += Get-ChildItem HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols -Recurse | ForEach-Object {Get-ItemProperty Registry::$_}
+        $schannel += Get-ChildItem HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols -Recurse | ForEach-Object { Get-ItemProperty Registry::$_ }
     }
 
-    $schannel = $schannel | Select-Object PSPath,DisabledByDefault,Enabled
+    $schannel = $schannel | Select-Object PSPath, DisabledByDefault, Enabled
 
     $formattedschannel = foreach ($obj in $schannel) {
-        $shortpath = $obj.PSPath -replace "Microsoft.PowerShell.Core\\Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\",""
-        $fullpath = $obj.PSPath -replace "Microsoft.PowerShell.Core\\Registry::HKEY_LOCAL_MACHINE","HKLM:"
+        $shortpath = $obj.PSPath -replace "Microsoft.PowerShell.Core\\Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\", ""
+        $fullpath = $obj.PSPath -replace "Microsoft.PowerShell.Core\\Registry::HKEY_LOCAL_MACHINE", "HKLM:"
         [PSCustomObject]@{
-            Name = $shortpath
-            IsDisabledByDefault = if ($null -ne $obj.DisabledByDefault) {[bool]$obj.DisabledByDefault} else {$null}
-            IsEnabled = if ($null -ne $obj.Enabled) {[bool]$obj.Enabled} else {$null}
-            DisabledByDefault = $obj.DisabledByDefault
-            Enabled = $obj.Enabled
-            RegistryPath = $fullpath
-            FullPath = $fullpath
+            Name                = $shortpath
+            IsDisabledByDefault = if ($null -ne $obj.DisabledByDefault) { [bool]$obj.DisabledByDefault } else { $null }
+            IsEnabled           = if ($null -ne $obj.Enabled) { [bool]$obj.Enabled } else { $null }
+            DisabledByDefault   = $obj.DisabledByDefault
+            Enabled             = $obj.Enabled
+            RegistryPath        = $fullpath
+            FullPath            = $fullpath
         }#new object
     }
 
     if (!([string]::IsNullOrWhiteSpace($Name))) {
-        $formattedschannel = $formattedschannel | Where-Object {$_.Name -match $Name}
+        $formattedschannel = $formattedschannel | Where-Object { $_.Name -match $Name }
     }
     $formattedschannel
 }

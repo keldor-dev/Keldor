@@ -35,8 +35,7 @@ function Remove-KeldorSecretFromOnePassword {
         if ($OnePasswordCommand.CommandType -eq 'Application' -and $LASTEXITCODE -ne 0) {
             throw "Unable to remove secret '$Name' using the OnePassword provider."
         }
-    }
-    catch {
+    } catch {
         throw "Unable to remove secret '$Name' using the OnePassword provider."
     }
 

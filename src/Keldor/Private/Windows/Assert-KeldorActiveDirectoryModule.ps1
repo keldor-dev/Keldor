@@ -1,5 +1,5 @@
 function Assert-KeldorActiveDirectoryModule {
-<#
+    <#
 .SYNOPSIS
     Requires the ActiveDirectory module.
 

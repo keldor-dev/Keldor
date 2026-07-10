@@ -7,17 +7,13 @@ Describe "Keldor Module" {
 
         $script:Platform = if ((Get-Variable -Name IsWindows -ErrorAction SilentlyContinue) -and $IsWindows) {
             'Windows'
-        }
-        elseif ((Get-Variable -Name IsMacOS -ErrorAction SilentlyContinue) -and $IsMacOS) {
+        } elseif ((Get-Variable -Name IsMacOS -ErrorAction SilentlyContinue) -and $IsMacOS) {
             'macOS'
-        }
-        elseif ((Get-Variable -Name IsLinux -ErrorAction SilentlyContinue) -and $IsLinux) {
+        } elseif ((Get-Variable -Name IsLinux -ErrorAction SilentlyContinue) -and $IsLinux) {
             'Linux'
-        }
-        elseif ($PSVersionTable.PSEdition -eq 'Desktop') {
+        } elseif ($PSVersionTable.PSEdition -eq 'Desktop') {
             'Windows'
-        }
-        else {
+        } else {
             'Unknown'
         }
     }
@@ -38,8 +34,7 @@ Describe "Keldor Module" {
 
         if ($script:Platform -eq 'Windows') {
             $commandNames | Should -Contain "Get-WSToolsVersion"
-        }
-        else {
+        } else {
             $commandNames | Should -Not -Contain "Get-WSToolsVersion"
         }
     }

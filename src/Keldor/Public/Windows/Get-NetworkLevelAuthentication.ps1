@@ -1,5 +1,5 @@
 function Get-NetworkLevelAuthentication {
-<#
+    <#
 .SYNOPSIS
     Gets Network Level Authentication.
 
@@ -24,9 +24,9 @@ function Get-NetworkLevelAuthentication {
     [Alias('Get-NLA')]
     param(
         [Parameter(
-            Mandatory=$false
+            Mandatory = $false
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )
 
@@ -38,29 +38,25 @@ function Get-NetworkLevelAuthentication {
             [Bool]$ua = $key.GetValue('UserAuthentication')
 
             [PSCustomObject]@{
-                ComputerName = $Comp
+                ComputerName       = $Comp
                 UserAuthentication = $ua
             }#new object
-        }
-        catch [System.Management.Automation.MethodInvocationException] {
+        } catch [System.Management.Automation.MethodInvocationException] {
             $err = $_.Exception.message.Trim()
             if ($err -match "network path") {
                 $ua = "Could not connect"
-            }
-            elseif ($err -match "access is not allowed") {
+            } elseif ($err -match "access is not allowed") {
                 $ua = "Insufficient permissions"
-            }
-            else {
+            } else {
                 $ua = "Unknown error"
             }
             [PSCustomObject]@{
-                ComputerName = $Comp
+                ComputerName       = $Comp
                 UserAuthentication = $ua
             }#new object
-        }
-        catch {
+        } catch {
             [PSCustomObject]@{
-                ComputerName = $Comp
+                ComputerName       = $Comp
                 UserAuthentication = "Unknown error"
             }#new object
         }

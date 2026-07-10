@@ -1,5 +1,5 @@
 function Open-CertificatesUser {
-<#
+    <#
 .SYNOPSIS
     Opens Certificates User.
 
@@ -17,7 +17,7 @@ function Open-CertificatesUser {
     https://docs.keldor.dev/powershell/keldor/Open-CertificatesUser
 #>
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-CertificatesUser')]
-    Param ()
-certmgr.msc
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-CertificatesUser')]
+    param ()
+    certmgr.msc
 }

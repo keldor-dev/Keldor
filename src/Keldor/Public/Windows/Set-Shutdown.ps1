@@ -1,5 +1,5 @@
 function Set-Shutdown {
-<#
+    <#
 .SYNOPSIS
     Sets Shutdown.
 
@@ -32,20 +32,20 @@ function Set-Shutdown {
         Justification = "Have tried other methods and they do not work consistently."
     )]
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-Shutdown')]
-    Param (
-        [Parameter(Mandatory=$false)]
-        [Alias('Host','Name','Computer','CN')]
+    param (
+        [Parameter(Mandatory = $false)]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME",
 
-        [Parameter(Mandatory=$false)]
-        [ValidateLength(4,4)]
+        [Parameter(Mandatory = $false)]
+        [ValidateLength(4, 4)]
         [string]$Time = (($Global:KeldorConfig).ShutdownTime),
 
         [Parameter()]
         [switch]$Abort
     )
 
-    $hr = $Time.Substring(0,2)
+    $hr = $Time.Substring(0, 2)
     $mm = $Time.Substring(2)
     $d = 0
 
@@ -55,8 +55,7 @@ function Set-Shutdown {
     $info = Get-Date
     if (($info.Hour) -gt $hr) {
         $d = 1
-    }
-    elseif (($info.Hour) -eq $hr) {
+    } elseif (($info.Hour) -eq $hr) {
         if (($info.Minute) -ge $mm) {
             $d = 1
         }
@@ -64,8 +63,7 @@ function Set-Shutdown {
 
     if ($d -eq 0) {
         $tt1 = ([decimal]::round(((Get-Date).Date.AddHours($hr).AddMinutes($mm) - (Get-Date)).TotalSeconds))
-    }
-    else {
+    } else {
         $tt1 = ([decimal]::round(((Get-Date).AddDays($d).Date.AddHours($hr).AddMinutes($mm) - (Get-Date)).TotalSeconds))
     }
     #Move the code above to the specified place if you don't want a rolling shutdown.
@@ -75,8 +73,7 @@ function Set-Shutdown {
             if ($PSCmdlet.ShouldProcess($Comp, "Abort shutdown")) {
                 shutdown -a -m \\$Comp
             }
-        }
-        else {
+        } else {
             #
             # Move the code above to here if you don't want a rolling shutdown
             #
@@ -84,9 +81,8 @@ function Set-Shutdown {
                 if ($PSCmdlet.ShouldProcess($Comp, "Schedule shutdown")) {
                     shutdown -s -m \\$Comp -t $tt1
                 }
-            }
-            catch {
-                Throw "Could not schedule shutdown on $Comp"
+            } catch {
+                throw "Could not schedule shutdown on $Comp"
             }
         }#else
     }

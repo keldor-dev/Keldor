@@ -1,5 +1,5 @@
 function Set-ServerConfig {
-<#
+    <#
 .SYNOPSIS
     Sets Server Config.
 
@@ -17,9 +17,9 @@ function Set-ServerConfig {
     https://docs.keldor.dev/powershell/keldor/Set-ServerConfig
 #>
 
-        [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ServerConfig')]
-    Param ()
-[Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-ServerConfig')]
+    param ()
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         "PSAvoidGlobalVars",
         "",
         Justification = "Have tried other methods and they do not work consistently."
@@ -35,8 +35,7 @@ function Set-ServerConfig {
             if ($PSCmdlet.ShouldProcess($ia, "Enable DHCP")) {
                 $na | Set-NetIPInterface -Dhcp Enabled
             }
-        }
-        else {
+        } else {
             if ($PSCmdlet.ShouldProcess($ia, "Disable DHCP")) {
                 $na | Set-NetIPInterface -Dhcp Disabled
             }
@@ -47,8 +46,7 @@ function Set-ServerConfig {
             if ($PSCmdlet.ShouldProcess($ia, "Enable IPv6 binding")) {
                 Enable-NetAdapterBinding -InterfaceAlias $ia -ComponentID ms_tcpip6
             }
-        }
-        else {
+        } else {
             if ($PSCmdlet.ShouldProcess($ia, "Disable IPv6 binding")) {
                 Disable-NetAdapterBinding -InterfaceAlias $ia -ComponentID ms_tcpip6
             }
@@ -59,8 +57,7 @@ function Set-ServerConfig {
             if ($PSCmdlet.ShouldProcess($ia, "Enable Link-Layer Topology Discovery Responder")) {
                 Enable-NetAdapterBinding -InterfaceAlias $ia -ComponentID ms_rspndr
             }
-        }
-        else {
+        } else {
             if ($PSCmdlet.ShouldProcess($ia, "Disable Link-Layer Topology Discovery Responder")) {
                 Disable-NetAdapterBinding -InterfaceAlias $ia -ComponentID ms_rspndr
             }
@@ -71,8 +68,7 @@ function Set-ServerConfig {
             if ($PSCmdlet.ShouldProcess($ia, "Enable Link-Layer Topology Discovery Mapper I/O")) {
                 Enable-NetAdapterBinding -InterfaceAlias $ia -ComponentID ms_lltdio
             }
-        }
-        else {
+        } else {
             if ($PSCmdlet.ShouldProcess($ia, "Disable Link-Layer Topology Discovery Mapper I/O")) {
                 Disable-NetAdapterBinding -InterfaceAlias $ia -ComponentID ms_lltdio
             }
@@ -83,8 +79,7 @@ function Set-ServerConfig {
             if ($PSCmdlet.ShouldProcess($ia, "Enable offloading")) {
                 Set-NetAdapterAdvancedProperty -Name $ia -DisplayName "*Offloa*" -DisplayValue "Enabled"
             }
-        }
-        else {
+        } else {
             if ($PSCmdlet.ShouldProcess($ia, "Disable offloading")) {
                 Set-NetAdapterAdvancedProperty -Name $ia -DisplayName "*Offloa*" -DisplayValue "Disabled"
             }
@@ -102,7 +97,7 @@ function Set-ServerConfig {
 
     #RDP
     if ($PSCmdlet.ShouldProcess('HKLM:\System\CurrentControlSet\Control\Terminal Server', "Set fDenyTSConnections")) {
-        Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -value ($sc.SCRDP)
+        Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name "fDenyTSConnections" -Value ($sc.SCRDP)
     }
 
     #Server Manager
@@ -110,8 +105,7 @@ function Set-ServerConfig {
         if ($PSCmdlet.ShouldProcess('ServerManager', "Enable scheduled task")) {
             Get-ScheduledTask -TaskName ServerManager | Enable-ScheduledTask
         }
-    }
-    else {
+    } else {
         if ($PSCmdlet.ShouldProcess('ServerManager', "Disable scheduled task")) {
             Get-ScheduledTask -TaskName ServerManager | Disable-ScheduledTask
         }
@@ -122,6 +116,6 @@ function Set-ServerConfig {
     $lmh = $sc.SCLMHost
     $nicClass = Get-WmiObject -list Win32_NetworkAdapterConfiguration
     if ($PSCmdlet.ShouldProcess('Win32_NetworkAdapterConfiguration', "Set WINS configuration")) {
-        $nicClass.enablewins($wdns,$lmh)
+        $nicClass.enablewins($wdns, $lmh)
     }
 }

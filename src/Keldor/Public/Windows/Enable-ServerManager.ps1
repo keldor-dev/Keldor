@@ -1,5 +1,5 @@
 function Enable-ServerManager {
-<#
+    <#
 .SYNOPSIS
     Enables the Server Manager to launch automatically on the local computer.
 

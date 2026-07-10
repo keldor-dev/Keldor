@@ -1,5 +1,5 @@
 function Set-RemoteDesktopCert {
-<#
+    <#
 .SYNOPSIS
     Sets Remote Desktop Cert.
 
@@ -25,7 +25,7 @@ function Set-RemoteDesktopCert {
     param(
         [Parameter(
             HelpMessage = "Enter the thumbprint of the certificate.",
-            Mandatory=$true
+            Mandatory = $true
         )]
         [Alias('Cert')]
         [string]$Thumbprint
@@ -35,8 +35,7 @@ function Set-RemoteDesktopCert {
     if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
         $tsgs = Get-WmiObject -Class Win32_TSGeneralSetting -Namespace root\cimV2\terminalservices -Filter "TerminalName='RDP-tcp'"
         if ($PSCmdlet.ShouldProcess('RDP-tcp', "Set Remote Desktop certificate")) {
-            Set-WmiInstance -Path $tsgs.__path -argument @{SSLCertificateSHA1Hash="$Thumbprint"} #DevSkim: ignore DS126858
+            Set-WmiInstance -Path $tsgs.__path -argument @{SSLCertificateSHA1Hash = "$Thumbprint" } #DevSkim: ignore DS126858
         }
-    }
-    else {Write-Error "Must be ran as administrator."}
+    } else { Write-Error "Must be ran as administrator." }
 }

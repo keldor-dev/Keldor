@@ -1,5 +1,5 @@
 function Get-UserGroup {
-<#
+    <#
 .SYNOPSIS
     Gets User Group.
 
@@ -17,9 +17,9 @@ function Get-UserGroup {
     https://docs.keldor.dev/powershell/keldor/Get-UserGroup
 #>
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-UserGroup')]
-    Param ()
-$id = [Security.Principal.WindowsIdentity]::GetCurrent()
-    $groups = $id.Groups | foreach-object {$_.Translate([Security.Principal.NTAccount])}
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-UserGroup')]
+    param ()
+    $id = [Security.Principal.WindowsIdentity]::GetCurrent()
+    $groups = $id.Groups | ForEach-Object { $_.Translate([Security.Principal.NTAccount]) }
     $groups | Select-Object Value -ExpandProperty Value
 }

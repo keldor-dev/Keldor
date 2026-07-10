@@ -1,5 +1,5 @@
 function Open-CMTrace {
-<#
+    <#
 .SYNOPSIS
     Opens CM Trace.
 
@@ -21,12 +21,12 @@ function Open-CMTrace {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-CMTrace')]
-    [Alias('Open-CCMTrace','CMTrace','CCMTrace')]
+    [Alias('Open-CCMTrace', 'CMTrace', 'CCMTrace')]
     param(
         [Parameter(
-            Mandatory=$false
+            Mandatory = $false
         )]
-        [Alias('File','FileName','Name','Source')]
+        [Alias('File', 'FileName', 'Name', 'Source')]
         [string]$Path
     )
 
@@ -34,11 +34,10 @@ function Open-CMTrace {
     $ncm = ($Global:KeldorConfig).CMTrace
 
     if ([string]::IsNullOrWhiteSpace($Path)) {
-        if (Test-Path $lcm) {Start-Process $lcm}
-        else {Start-Process $ncm}
-    }
-    else {
-        if (Test-Path $lcm) {Start-Process $lcm -ArgumentList $Path}
-        else {Start-Process $ncm -ArgumentList $Path}
+        if (Test-Path $lcm) { Start-Process $lcm }
+        else { Start-Process $ncm }
+    } else {
+        if (Test-Path $lcm) { Start-Process $lcm -ArgumentList $Path }
+        else { Start-Process $ncm -ArgumentList $Path }
     }
 }

@@ -2,10 +2,10 @@
 
 | Property | Value |
 |---|---|
-| Version | 1.0 |
+| Version | 1.1 |
 | Status | Stable |
 | Applies To | All Keldor PowerShell projects |
-| Last Updated | 2026-07-07 |
+| Last Updated | 2026-07-10 |
 
 ## Purpose
 
@@ -65,6 +65,172 @@ Supported where practical:
 - Windows PowerShell 2.0
 
 PowerShell 2.0 compatibility is a compatibility goal, not a veto over secure or maintainable design.
+
+## Formatting
+
+PowerShell source uses four spaces for each indentation level. Tabs are not permitted.
+
+Keldor uses One True Brace Style (OTBS): opening braces remain on the same line as the associated statement, and
+`else`, `elseif`, `catch`, and `finally` remain on the same line as the preceding closing brace.
+
+### Functions and Lifecycle Blocks
+
+```powershell
+function Get-KeldorThing {
+    [CmdletBinding()]
+    param()
+
+    begin {
+        $Items = @()
+    }
+
+    process {
+        $Items += Get-KeldorItem
+    }
+
+    end {
+        $Items
+    }
+
+    clean {
+        Remove-Variable -Name Items -ErrorAction SilentlyContinue
+    }
+}
+```
+
+Use `clean` only in code whose declared compatibility target supports it.
+
+### Control Flow and Loops
+
+```powershell
+if ($Condition) {
+    Invoke-Something
+} elseif ($OtherCondition) {
+    Invoke-OtherThing
+} else {
+    Invoke-DefaultThing
+}
+
+switch ($Status) {
+    'Ready' {
+        Start-KeldorThing
+    }
+    default {
+        Write-Warning 'The Keldor thing is not ready.'
+    }
+}
+
+foreach ($Item in $Items) {
+    Write-Output $Item
+}
+```
+
+### Error Handling
+
+```powershell
+try {
+    Invoke-Something -ErrorAction Stop
+} catch {
+    Write-Error -ErrorRecord $_
+} finally {
+    Remove-Variable -Name TemporaryValue -ErrorAction SilentlyContinue
+}
+```
+
+### Scriptblocks and Classes
+
+```powershell
+$ActiveItems = $Items | Where-Object {
+    $_.IsEnabled
+}
+
+class KeldorThing {
+    [string]$Name
+
+    KeldorThing([string]$Name) {
+        $this.Name = $Name
+    }
+}
+```
+
+Classes are appropriate only when the module's compatibility target supports them.
+
+### Spacing
+
+Use one space around assignment and binary operators and after commas. Apply the same spacing to attribute arguments,
+hashtable entries, and named arguments where PowerShell syntax permits it.
+
+```powershell
+[Parameter(Mandatory = $true, Position = 0)]
+[Alias('Host', 'Computer')]
+[string]$ComputerName
+
+$Parameters = @{
+    Path        = $Path
+    ErrorAction = 'Stop'
+}
+```
+
+### Line Wrapping
+
+The target maximum line length is 120 characters. Prefer syntax-aware wrapping over backticks.
+
+Use splatting when a command has several parameters or becomes difficult to read:
+
+```powershell
+$Parameters = @{
+    Path        = $Path
+    Filter      = '*.ps1'
+    Recurse     = $true
+    ErrorAction = 'Stop'
+}
+
+Get-ChildItem @Parameters
+```
+
+For pipelines, place the pipe at the end of the preceding line and use one stage per continuation line:
+
+```powershell
+Get-ChildItem -Path $Path -Recurse |
+    Where-Object { $_.Extension -eq '.ps1' } |
+    Sort-Object -Property FullName
+```
+
+Wrap attributes using their parenthesized form:
+
+```powershell
+function Get-KeldorConfiguration {
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        'PSAvoidGlobalVars',
+        '',
+        Justification = 'Required for compatibility with the module configuration loader.'
+    )]
+    [CmdletBinding()]
+    param()
+}
+```
+
+Wrap compound Boolean expressions with one logical condition per line:
+
+```powershell
+if (
+    $null -ne $CommandInfo -and
+    $CommandInfo.Parameters.ContainsKey('PredictionSource') -and
+    $PSCmdlet.ShouldProcess($Target, $Operation)
+) {
+    Invoke-Something
+}
+```
+
+Short continuations may be indented by four spaces when splatting would add unnecessary complexity. Avoid backticks
+unless no safer readable alternative exists.
+
+Do not split strings in ways that change their value. Use here-strings for intentionally multiline content, format
+expressions where appropriate, or intermediate variables when they improve clarity. Preserve external-command argument
+ordering and quoting; wrapping must not change native argument-passing behavior.
+
+URLs, `HelpUri` values, `.LINK` values, hashes, identifiers, and other indivisible literals may exceed 120 characters
+when wrapping would harm correctness, usability, or copy-and-paste behavior.
 
 ## PowerShell Version Matrix
 
@@ -260,10 +426,13 @@ https://docs.keldor.dev/powershell/keldor/<FunctionName>
 Example:
 
 ```powershell
-[CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-KeldorThing')]
+function Get-KeldorThing {
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-KeldorThing')]
+    param()
+}
 ```
 
-## Begin, Process, and End Blocks
+## Begin, Process, End, and Clean Blocks
 
 Do not create empty lifecycle blocks.
 
@@ -272,6 +441,9 @@ Use `process` for most functions.
 Use `begin` only for initialization.
 
 Use `end` only for cleanup, aggregation, or final output.
+
+Use `clean` only for cleanup that must run when a pipeline is stopped early, and only when the compatibility target
+supports the `clean` block.
 
 Avoid:
 
@@ -285,13 +457,44 @@ end {}
 
 Use `[CmdletBinding()]` for public functions.
 
-Use `SupportsShouldProcess` for destructive or state-changing actions:
+Use `SupportsShouldProcess` when a command makes a meaningful external or persistent state change. This includes
+creating or registering resources, modifying configuration, installing software, copying or restoring data, joining
+systems, mounting resources, repairing or updating systems, restarting or stopping services, and synchronization that
+changes either side. The decision is based on behavior, not the cmdlet verb; read-only `Import`, `Save`, or `Copy`
+commands do not need `ShouldProcess` merely because of their names.
 
 ```powershell
-[CmdletBinding(SupportsShouldProcess = $true, ConfirmImpact = 'Medium', HelpUri = 'https://docs.keldor.dev/powershell/keldor/Remove-KeldorThing')]
+function Remove-KeldorThing {
+    [CmdletBinding(
+        SupportsShouldProcess = $true,
+        ConfirmImpact = 'Medium',
+        HelpUri = 'https://docs.keldor.dev/powershell/keldor/Remove-KeldorThing'
+    )]
+    param()
+}
 ```
 
 Read-only commands should not implement `ShouldProcess`.
+
+Use `ConfirmImpact = 'Low'` for routine reversible changes, `Medium` for meaningful changes that deserve user
+awareness, and `High` for destructive or difficult-to-reverse operations. Reserve `High` for operations where the
+default confirmation prompt is warranted.
+
+Call `ShouldProcess` immediately before the state change. Use a concise target that identifies the affected resource
+and an action phrase that describes the operation:
+
+```powershell
+if ($PSCmdlet.ShouldProcess($Path, 'Remove Keldor thing')) {
+    Remove-Item -Path $Path -Force
+}
+```
+
+Under `-WhatIf`, the state-changing operation must not run. Under `-Confirm`, each meaningful operation should provide
+an understandable prompt. Avoid prompts for discovery, validation, and other read-only work.
+
+When calling a nested command that supports `ShouldProcess`, prevent duplicate prompts by guarding the operation in the
+outer command and using `-Confirm:$false` for the nested call. Forward `-WhatIf` only when the outer command intentionally
+delegates the decision instead of making its own `ShouldProcess` call.
 
 ## Parameter Design
 
@@ -372,8 +575,8 @@ Use this order when practical:
 2. Classification: `Type`, `Category`, `Source`
 3. Configuration: paths, settings, options
 4. Measurements: counts, sizes, durations
-5. State: `Status`, `Enabled`, `IsRunning`, `IsInstalled`
-6. Diagnostics: `Timestamp`, `Error`, `Warning`, `Message`
+5. State: `Status`, `IsEnabled`, `IsRunning`, `IsInstalled`
+6. Diagnostics: event-specific timestamps, `Error`, `Warning`, `Message`
 
 Example:
 
@@ -387,9 +590,19 @@ Example:
     MacAddress   = $MacAddress
     Status       = $Status
     IsUp         = $IsUp
-    Timestamp    = Get-Date
+    CheckedAt    = Get-Date
 }
 ```
+
+Boolean output properties should read naturally as Boolean values: `IsEnabled`, `IsAvailable`, `IsInstalled`,
+`HasChanges`, or `CanRestart`. Existing public properties must be preserved when renaming would break consumers. Add the
+canonical property alongside the legacy property, test both, document the compatibility property, and remove it only in
+a planned major-version migration.
+
+Timestamp properties must identify the recorded event. Prefer names such as `CreatedAt`, `UpdatedAt`, `CheckedAt`,
+`DiscoveredAt`, `InstalledAt`, `StartedAt`, `CompletedAt`, and `LastSeenAt`; avoid `Timestamp`, `Date`, and `Time`.
+Return `[datetime]` values by default or `[datetimeoffset]` when timezone and transport semantics matter. Do not format a
+timestamp as a string unless the public output contract explicitly requires a string.
 
 For PowerShell 2.0-compatible code, use:
 
@@ -517,6 +730,17 @@ PowerShell repositories should include:
 - `LICENSE`
 - `PSScriptAnalyzerSettings.psd1`
 - `.github/workflows/`
+
+Run the checked-in formatter configuration with:
+
+```powershell
+Get-ChildItem -Path ./src -Recurse -File -Include *.ps1, *.psm1, *.psd1 |
+    ForEach-Object {
+        $Content = Get-Content -LiteralPath $_.FullName -Raw
+        $Formatted = Invoke-Formatter -ScriptDefinition $Content -Settings ./PSScriptAnalyzerSettings.psd1
+        Set-Content -LiteralPath $_.FullName -Value $Formatted -NoNewline
+    }
+```
 
 ## Deprecation Policy
 

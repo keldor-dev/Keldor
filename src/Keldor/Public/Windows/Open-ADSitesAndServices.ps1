@@ -1,5 +1,5 @@
 function Open-ADSitesAndServices {
-<#
+    <#
 .SYNOPSIS
     Opens AD Sites And Services.
 
@@ -17,13 +17,12 @@ function Open-ADSitesAndServices {
     https://docs.keldor.dev/powershell/keldor/Open-ADSitesAndServices
 #>
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-ADSitesAndServices')]
-    Param ()
-try {
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-ADSitesAndServices')]
+    param ()
+    try {
         $ErrorActionPreference = "Stop"
         dssite.msc
-    }
-    catch {
+    } catch {
         Write-Output "Active Directory snapins are not installed/enabled."
     }
 }

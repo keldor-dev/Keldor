@@ -1,5 +1,5 @@
 function Set-WindowState {
-<#
+    <#
 .SYNOPSIS
     Sets Window State.
 
@@ -24,16 +24,16 @@ function Set-WindowState {
 #>
 
     # source: https://gist.github.com/jakeballard/11240204
-        [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-WindowState')]
-param(
+    [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-WindowState')]
+    param(
         [Parameter()]
-        [ValidateSet('FORCEMINIMIZE','HIDE','MAXIMIZE','MINIMIZE','RESTORE',
-                    'SHOW','SHOWDEFAULT','SHOWMAXIMIZED','SHOWMINIMIZED',
-                    'SHOWMINNOACTIVE','SHOWNA','SHOWNOACTIVATE','SHOWNORMAL')]
+        [ValidateSet('FORCEMINIMIZE', 'HIDE', 'MAXIMIZE', 'MINIMIZE', 'RESTORE',
+            'SHOW', 'SHOWDEFAULT', 'SHOWMAXIMIZED', 'SHOWMINIMIZED',
+            'SHOWMINNOACTIVE', 'SHOWNA', 'SHOWNOACTIVATE', 'SHOWNORMAL')]
         $Style = 'SHOW',
 
         [Parameter()]
-        $MainWindowHandle = (Get-Process -id $pid).MainWindowHandle
+        $MainWindowHandle = (Get-Process -Id $pid).MainWindowHandle
     )
     $WindowStates = @{
         'FORCEMINIMIZE'   = 11
@@ -51,10 +51,10 @@ param(
         'SHOWNORMAL'      = 1
     }
 
-    $Win32ShowWindowAsync = Add-Type -memberDefinition @"
+    $Win32ShowWindowAsync = Add-Type -MemberDefinition @"
     [DllImport("user32.dll")]
     public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
-"@ -name "Win32ShowWindowAsync" -namespace Win32Functions -passThru
+"@ -Name "Win32ShowWindowAsync" -Namespace Win32Functions -PassThru
 
     if ($PSCmdlet.ShouldProcess($MainWindowHandle, "Set window state to $Style")) {
         $Win32ShowWindowAsync::ShowWindowAsync($MainWindowHandle, $WindowStates[$Style]) | Out-Null

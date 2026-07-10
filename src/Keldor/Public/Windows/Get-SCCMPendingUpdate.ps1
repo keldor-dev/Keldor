@@ -1,5 +1,5 @@
 function Get-SCCMPendingUpdate {
-<#
+    <#
 .SYNOPSIS
     Short description
 
@@ -29,32 +29,31 @@ function Get-SCCMPendingUpdate {
     param(
         [Parameter(
             #HelpMessage = "Enter one or more computer names separated by commas.",
-            Mandatory=$false#,
+            Mandatory = $false#,
             #Position=0,
             #ValueFromPipeline = $true
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )
 
-    Process {
+    process {
         foreach ($Comp in $ComputerName) {
             if ($Comp -eq $env:COMPUTERNAME) {
                 $Updates = (Get-WmiObject -Query "SELECT * FROM CCM_SoftwareUpdate" -namespace "ROOT\ccm\ClientSDK")
                 foreach ($Update in $Updates) {
                     [PSCustomObject]@{
                         ComputerName = $Update.PSComputerName
-                        Update = $Update.Name
+                        Update       = $Update.Name
                     }#new object
                 }
-            }
-            else {
-                Invoke-Command -ComputerName $Comp -ScriptBlock {#DevSkim: ignore DS104456
+            } else {
+                Invoke-Command -ComputerName $Comp -ScriptBlock { #DevSkim: ignore DS104456
                     $Updates = (Get-WmiObject -Query "SELECT * FROM CCM_SoftwareUpdate" -namespace "ROOT\ccm\ClientSDK")
                     foreach ($Update in $Updates) {
                         [PSCustomObject]@{
                             ComputerName = $Update.PSComputerName
-                            Update = $Update.Name
+                            Update       = $Update.Name
                         }#new object
                     }
                 }

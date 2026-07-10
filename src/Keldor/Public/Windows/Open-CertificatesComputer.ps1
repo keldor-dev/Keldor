@@ -1,5 +1,5 @@
 function Open-CertificatesComputer {
-<#
+    <#
 .SYNOPSIS
     Opens Certificates Computer.
 
@@ -17,7 +17,7 @@ function Open-CertificatesComputer {
     https://docs.keldor.dev/powershell/keldor/Open-CertificatesComputer
 #>
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-CertificatesComputer')]
-    Param ()
-certlm.msc
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-CertificatesComputer')]
+    param ()
+    certlm.msc
 }

@@ -1,5 +1,5 @@
 function Get-HttpHeaderSetting {
-<#
+    <#
 .SYNOPSIS
     Gets the Http Header setting on the current machine.
 
@@ -22,21 +22,21 @@ function Get-HttpHeaderSetting {
 
     $schannel = @()
     if (Test-Path HKLM:\SYSTEM\CurrentControlSet\Services\HTTP) {
-        $schannel += Get-ChildItem HKLM:\SYSTEM\CurrentControlSet\Services\HTTP -Recurse | ForEach-Object {Get-ItemProperty Registry::$_}
+        $schannel += Get-ChildItem HKLM:\SYSTEM\CurrentControlSet\Services\HTTP -Recurse | ForEach-Object { Get-ItemProperty Registry::$_ }
     }
 
-    $schannel = $schannel | Select-Object PSPath,Disabled
+    $schannel = $schannel | Select-Object PSPath, Disabled
 
     $formattedschannel = foreach ($obj in $schannel) {
-        $shortpath = $obj.PSPath -replace "Microsoft.PowerShell.Core\\Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\HTTP\\",""
-        $fullpath = $obj.PSPath -replace "Microsoft.PowerShell.Core\\Registry::HKEY_LOCAL_MACHINE","HKLM:"
+        $shortpath = $obj.PSPath -replace "Microsoft.PowerShell.Core\\Registry::HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\HTTP\\", ""
+        $fullpath = $obj.PSPath -replace "Microsoft.PowerShell.Core\\Registry::HKEY_LOCAL_MACHINE", "HKLM:"
         if ($shortpath -eq "Parameters") {
             [PSCustomObject]@{
-                Name = $shortpath
-                IsDisabled = if ($null -ne $obj.Disabled) {[bool]$obj.Disabled} else {$null}
-                Disabled = $obj.Disabled
+                Name         = $shortpath
+                IsDisabled   = if ($null -ne $obj.Disabled) { [bool]$obj.Disabled } else { $null }
+                Disabled     = $obj.Disabled
                 RegistryPath = $fullpath
-                FullPath = $fullpath
+                FullPath     = $fullpath
             }#new object
         }
     }

@@ -1,5 +1,5 @@
 function Enable-RDP {
-<#
+    <#
 .SYNOPSIS
     Enables Remote Desktop Protocol (RDP) on the local computer.
 

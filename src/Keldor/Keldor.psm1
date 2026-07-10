@@ -2,7 +2,7 @@
 
 function Get-KeldorScriptFiles {
     param(
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string]$RelativePath
     )
 
@@ -11,7 +11,7 @@ function Get-KeldorScriptFiles {
         return @()
     }
 
-    @(Get-ChildItem -Path $path -Recurse -ErrorAction SilentlyContinue | Where-Object {!$_.PSIsContainer -and $_.Extension -ieq '.ps1'})
+    @(Get-ChildItem -Path $path -Recurse -ErrorAction SilentlyContinue | Where-Object { !$_.PSIsContainer -and $_.Extension -ieq '.ps1' })
 }
 
 $PublicFunctions = @()
@@ -26,11 +26,11 @@ $PlatformFolders = @{
         @{ Path = 'Private/Windows'; Public = $false }
         @{ Path = 'Public/Windows'; Public = $true }
     )
-    macOS = @(
+    macOS   = @(
         @{ Path = 'Private/macOS'; Public = $false }
         @{ Path = 'Public/macOS'; Public = $true }
     )
-    Linux = @(
+    Linux   = @(
         @{ Path = 'Private/Linux'; Public = $false }
         @{ Path = 'Public/Linux'; Public = $true }
     )
@@ -41,8 +41,7 @@ foreach ($folder in $CommonFolders) {
     foreach ($file in $files) {
         try {
             . $file.FullName
-        }
-        catch {
+        } catch {
             Write-Error -Message "Failed to import script file $($file.FullName): $_"
         }
     }
@@ -60,8 +59,7 @@ if ($PlatformFolders.ContainsKey($KeldorPlatform)) {
         foreach ($file in $files) {
             try {
                 . $file.FullName
-            }
-            catch {
+            } catch {
                 Write-Error -Message "Failed to import script file $($file.FullName): $_"
             }
         }
@@ -70,8 +68,7 @@ if ($PlatformFolders.ContainsKey($KeldorPlatform)) {
             $PublicFunctions += $files
         }
     }
-}
-else {
+} else {
     Write-Warning "Keldor could not determine the current platform. Only common functions were loaded."
 }
 

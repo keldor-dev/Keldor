@@ -1,5 +1,5 @@
 function Get-WSLocalUser {
-<#
+    <#
 .SYNOPSIS
     Gets WS Local User.
 
@@ -35,10 +35,10 @@ function Get-WSLocalUser {
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-WSLocalUser')]
     param(
         [Parameter(
-            Mandatory=$false,
-            Position=0
+            Mandatory = $false,
+            Position = 0
         )]
-        [Alias('Host','Computer','CN')]
+        [Alias('Host', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME",
 
         [Parameter()]
@@ -54,7 +54,7 @@ function Get-WSLocalUser {
         [string]$Output = $null
 
     )
-    Begin {
+    begin {
         $config = $Global:KeldorConfig
         $ScriptWD = $config.ScriptWD
 
@@ -63,16 +63,16 @@ function Get-WSLocalUser {
         $RunspacePool.Open()
         $Code = {
             [CmdletBinding()]
-            Param (
+            param (
                 [Parameter(
-                    Mandatory=$true,
-                    Position=0
+                    Mandatory = $true,
+                    Position = 0
                 )]
                 [string]$comp,
 
                 [Parameter(
-                    Mandatory=$true,
-                    Position=1
+                    Mandatory = $true,
+                    Position = 1
                 )]
                 [string]$Output
             )
@@ -80,102 +80,100 @@ function Get-WSLocalUser {
             $info = @()
             try {
                 $Role = (Get-WmiObject -ComputerName $comp -Class Win32_ComputerSystem -Property DomainRole -ErrorAction Stop).DomainRole
-            }
-            catch {
+            } catch {
                 $info = [PSCustomObject]@{
-                    ComputerName = $comp
-                    DatePulled = $Null
-                    Description = $Null
-                    Disabled = $Null
-                    LastLogin = $Null
-                    Locked = $Null
-                    PasswordExpired = $Null
-                    PasswordLastSet = $Null
-                    PasswordLastSetDays = $Null
+                    ComputerName         = $comp
+                    DatePulled           = $Null
+                    Description          = $Null
+                    Disabled             = $Null
+                    LastLogin            = $Null
+                    Locked               = $Null
+                    PasswordExpired      = $Null
+                    PasswordLastSet      = $Null
+                    PasswordLastSetDays  = $Null
                     PasswordNeverExpires = $Null
                     PasswordNotChangable = $Null
-                    PasswordNotRequired = $Null
-                    Status = "Comm Error"
-                    User = $Null
+                    PasswordNotRequired  = $Null
+                    Status               = "Comm Error"
+                    User                 = $Null
                 }#new object
             }
 
             if ($Role -match "4|5") {
                 $info = [PSCustomObject]@{
-                    ComputerName = $comp
-                    DatePulled = $Null
-                    Description = $Null
-                    Disabled = $Null
-                    LastLogin = $Null
-                    Locked = $Null
-                    PasswordExpired = $Null
-                    PasswordLastSet = $Null
-                    PasswordLastSetDays = $Null
+                    ComputerName         = $comp
+                    DatePulled           = $Null
+                    Description          = $Null
+                    Disabled             = $Null
+                    LastLogin            = $Null
+                    Locked               = $Null
+                    PasswordExpired      = $Null
+                    PasswordLastSet      = $Null
+                    PasswordLastSetDays  = $Null
                     PasswordNeverExpires = $Null
                     PasswordNotChangable = $Null
-                    PasswordNotRequired = $Null
-                    Status = "Domain Controller - no local users"
-                    User = $Null
+                    PasswordNotRequired  = $Null
+                    Status               = "Domain Controller - no local users"
+                    User                 = $Null
                 }#new object
             }#if DC
             elseif ($Role -match "0|1|2|3") {
-                $UI = ([ADSI]"WinNT://$comp").Children | Where-Object {$_.SchemaClassName -eq 'User'}
+                $UI = ([ADSI]"WinNT://$comp").Children | Where-Object { $_.SchemaClassName -eq 'User' }
                 $td = Get-Date
                 $info = foreach ($user in $UI) {
                     $uflags = $user.UserFlags[0]
                     $flags = New-Object System.Collections.ArrayList
                     switch ($uflags) {
-                        ($uflags -BOR 0x0002) {[void]$flags.Add('Disabled')}
-                        ($uflags -BOR 0x0010) {[void]$flags.Add('Locked')}
-                        ($uflags -BOR 0x0020) {[void]$flags.Add('PwdNotReq')}
-                        ($uflags -BOR 0x0040) {[void]$flags.Add('PwdNotChangable')}
-                        ($uflags -BOR 0x10000) {[void]$flags.Add('NeverExp')}
-                        ($uflags -BOR 0x800000) {[void]$flags.Add('PwdExp')}
+                        ($uflags -bor 0x0002) { [void]$flags.Add('Disabled') }
+                        ($uflags -bor 0x0010) { [void]$flags.Add('Locked') }
+                        ($uflags -bor 0x0020) { [void]$flags.Add('PwdNotReq') }
+                        ($uflags -bor 0x0040) { [void]$flags.Add('PwdNotChangable') }
+                        ($uflags -bor 0x10000) { [void]$flags.Add('NeverExp') }
+                        ($uflags -bor 0x800000) { [void]$flags.Add('PwdExp') }
                     }
                     $List = $flags -join ', '
                     [int32]$pa = 0
                     $pa = $user.PasswordAge[0]
-                    $pls = ((Get-Date).AddSeconds(-($pa)))
+                    $pls = ((Get-Date).AddSeconds( - ($pa)))
                     $plsd = (New-TimeSpan -Start $pls -End (Get-Date)).Days
 
                     [PSCustomObject]@{
-                        ComputerName = $comp
-                        DatePulled  = $td
-                        Description = $user.Description[0]
-                        Disabled = if ($List -match "Disabled") {$true} else {$false}
-                        LastLogin = (($user.LastLogin[0]).DateTime)
-                        Locked = if ($List -match "Locked") {$true} else {$false}
-                        PasswordExpired = if ($List -match "PwdExp") {$true} else {$false}
-                        PasswordLastSet = $pls
-                        PasswordLastSetDays = $plsd
-                        PasswordNeverExpires = if ($List -match "NeverExp") {$true} else {$false}
-                        PasswordNotChangable = if ($List -match "PwdNotChangable") {$true} else {$false}
-                        PasswordNotRequired = if ($List -match "PwdNotReq") {$true} else {$false}
-                        Status = "Connected"
-                        User = $user.Name[0]
+                        ComputerName         = $comp
+                        DatePulled           = $td
+                        Description          = $user.Description[0]
+                        Disabled             = if ($List -match "Disabled") { $true } else { $false }
+                        LastLogin            = (($user.LastLogin[0]).DateTime)
+                        Locked               = if ($List -match "Locked") { $true } else { $false }
+                        PasswordExpired      = if ($List -match "PwdExp") { $true } else { $false }
+                        PasswordLastSet      = $pls
+                        PasswordLastSetDays  = $plsd
+                        PasswordNeverExpires = if ($List -match "NeverExp") { $true } else { $false }
+                        PasswordNotChangable = if ($List -match "PwdNotChangable") { $true } else { $false }
+                        PasswordNotRequired  = if ($List -match "PwdNotReq") { $true } else { $false }
+                        Status               = "Connected"
+                        User                 = $user.Name[0]
                     }#new object
                 }#foreach user on computer
             }#not DC
 
             if (Test-Path $Output) {
-                $info | Select-Object ComputerName,Status,User,Description,Disabled,LastLogin,Locked,PasswordExpired,PasswordLastSet,PasswordLastSetDays,PasswordNeverExpires,PasswordNotChangable,PasswordNotRequired,DatePulled | Export-Csv $Output -NoTypeInformation -Append
-            }
-            else {
-                $info | Select-Object ComputerName,Status,User,Description,Disabled,LastLogin,Locked,PasswordExpired,PasswordLastSet,PasswordLastSetDays,PasswordNeverExpires,PasswordNotChangable,PasswordNotRequired,DatePulled | Export-Csv $Output -NoTypeInformation
+                $info | Select-Object ComputerName, Status, User, Description, Disabled, LastLogin, Locked, PasswordExpired, PasswordLastSet, PasswordLastSetDays, PasswordNeverExpires, PasswordNotChangable, PasswordNotRequired, DatePulled | Export-Csv $Output -NoTypeInformation -Append
+            } else {
+                $info | Select-Object ComputerName, Status, User, Description, Disabled, LastLogin, Locked, PasswordExpired, PasswordLastSet, PasswordLastSetDays, PasswordNeverExpires, PasswordNotChangable, PasswordNotRequired, DatePulled | Export-Csv $Output -NoTypeInformation
             }
         }#end code block
         $Jobs = @()
     }
-    Process {
+    process {
         if ([string]::IsNullOrWhiteSpace($Output)) {
-            if (!(Test-Path $ScriptWD)) {mkdir $ScriptWD}
+            if (!(Test-Path $ScriptWD)) { mkdir $ScriptWD }
             $Output = $ScriptWD + "\WS_LocalUser.csv"
         }
         Write-Progress -Activity "Preloading threads" -Status "Starting Job $($jobs.count)"
-        ForEach ($Object in $ComputerName){
+        foreach ($Object in $ComputerName) {
             $PowershellThread = [powershell]::Create().AddScript($Code)
-            $PowershellThread.AddArgument($Object.ToString()) | out-null
-            $PowershellThread.AddArgument($Output.ToString()) | out-null
+            $PowershellThread.AddArgument($Object.ToString()) | Out-Null
+            $PowershellThread.AddArgument($Output.ToString()) | Out-Null
             $PowershellThread.RunspacePool = $RunspacePool
             $Handle = $PowershellThread.BeginInvoke()
             $Job = "" | Select-Object Handle, Thread, object
@@ -185,27 +183,27 @@ function Get-WSLocalUser {
             $Jobs += $Job
         }
     }
-    End {
+    end {
         $ResultTimer = Get-Date
-        While (@($Jobs | Where-Object {$Null -ne $_.Handle}).count -gt 0)  {
+        while (@($Jobs | Where-Object { $Null -ne $_.Handle }).count -gt 0) {
             $Remaining = "$($($Jobs | Where-Object {$_.Handle.IsCompleted -eq $False}).object)"
-            If ($Remaining.Length -gt 60){
-                $Remaining = $Remaining.Substring(0,60) + "..."
+            if ($Remaining.Length -gt 60) {
+                $Remaining = $Remaining.Substring(0, 60) + "..."
             }
             Write-Progress `
                 -Activity "Waiting for Jobs - $($MaxThreads - $($RunspacePool.GetAvailableRunspaces())) of $MaxThreads threads running" `
-                -PercentComplete (($Jobs.count - $($($Jobs | Where-Object {$_.Handle.IsCompleted -eq $False}).count)) / $Jobs.Count * 100) `
+                -PercentComplete (($Jobs.count - $($($Jobs | Where-Object { $_.Handle.IsCompleted -eq $False }).count)) / $Jobs.Count * 100) `
                 -Status "$(@($($Jobs | Where-Object {$_.Handle.IsCompleted -eq $False})).count) remaining - $remaining"
-            ForEach ($Job in $($Jobs | Where-Object {$_.Handle.IsCompleted -eq $True})){
+            foreach ($Job in $($Jobs | Where-Object { $_.Handle.IsCompleted -eq $True })) {
                 $Job.Thread.EndInvoke($Job.Handle)
                 $Job.Thread.Dispose()
                 $Job.Thread = $Null
                 $Job.Handle = $Null
                 $ResultTimer = Get-Date
             }
-            If (($(Get-Date) - $ResultTimer).totalseconds -gt $MaxResultTime){
+            if (($(Get-Date) - $ResultTimer).totalseconds -gt $MaxResultTime) {
                 Write-Error "Child script appears to be frozen, try increasing MaxResultTime"
-                Exit
+                exit
             }
             Start-Sleep -Milliseconds $SleepTimer
         }

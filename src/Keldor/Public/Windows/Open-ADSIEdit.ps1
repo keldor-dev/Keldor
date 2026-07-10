@@ -1,5 +1,5 @@
 function Open-ADSIEdit {
-<#
+    <#
 .SYNOPSIS
     Opens ADSI Edit.
 
@@ -23,14 +23,12 @@ function Open-ADSIEdit {
     try {
         $ErrorActionPreference = "Stop"
         adsiedit.msc
-    }
-    catch {
+    } catch {
         try {
             Register-ADSIEdit
             Start-Sleep 1
             adsiedit.msc
-        }
-        catch {
+        } catch {
             Write-Output "Active Directory snapins are not installed/enabled."
         }
     }

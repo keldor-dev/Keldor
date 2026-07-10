@@ -1,5 +1,5 @@
 function Open-DeviceManager {
-<#
+    <#
 .SYNOPSIS
     Opens Device Manager.
 
@@ -21,9 +21,9 @@ function Open-DeviceManager {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-DeviceManager')]
-    Param (
-        [Parameter(Mandatory=$false, Position=0)]
-        [Alias('Host','Name','Computer','CN')]
+    param (
+        [Parameter(Mandatory = $false, Position = 0)]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string]$ComputerName = "$env:COMPUTERNAME"
     )
     devmgmt.msc /computer:\\$ComputerName

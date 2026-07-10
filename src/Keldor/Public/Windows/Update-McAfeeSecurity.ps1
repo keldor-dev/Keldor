@@ -1,5 +1,5 @@
 function Update-McAfeeSecurity {
-<#
+    <#
 .SYNOPSIS
     Updates Mc Afee Security.
 
@@ -17,13 +17,12 @@ function Update-McAfeeSecurity {
     https://docs.keldor.dev/powershell/keldor/Update-McAfeeSecurity
 #>
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Update-McAfeeSecurity')]
-    Param ()
-$fpath = "${env:ProgramFiles(x86)}\McAfee\Endpoint Security\Threat Prevention\amcfg.exe"
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Update-McAfeeSecurity')]
+    param ()
+    $fpath = "${env:ProgramFiles(x86)}\McAfee\Endpoint Security\Threat Prevention\amcfg.exe"
     if (Test-Path $fpath) {
         Start-Process $fpath -ArgumentList "/update"
-    }
-    else {
+    } else {
         Write-Error "McAfee Endpoint Security Threat Protection not installed"
     }
 }

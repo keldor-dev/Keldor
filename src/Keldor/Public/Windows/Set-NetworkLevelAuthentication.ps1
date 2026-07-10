@@ -1,5 +1,5 @@
 function Set-NetworkLevelAuthentication {
-<#
+    <#
 .SYNOPSIS
     Sets Network Level Authentication.
 
@@ -35,14 +35,14 @@ function Set-NetworkLevelAuthentication {
     [Alias('Set-NLA')]
     param(
         [Parameter(
-            Mandatory=$false,
-            Position=0
+            Mandatory = $false,
+            Position = 0
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME",
 
         [Parameter(
-            Mandatory=$false
+            Mandatory = $false
         )]
         [Switch]$Disable
     )
@@ -51,29 +51,25 @@ function Set-NetworkLevelAuthentication {
         try {
             $ErrorActionPreference = "Stop"
             $reg = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey('LocalMachine', $Comp)
-            $key = $reg.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\WinStations\\RDP-Tcp",$true)
+            $key = $reg.OpenSubKey("SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\WinStations\\RDP-Tcp", $true)
             if ($PSCmdlet.ShouldProcess($Comp, "Set Network Level Authentication")) {
                 if ($Disable) {
                     $key.SetValue('UserAuthentication', 0, [Microsoft.Win32.RegistryValueKind]::DWORD)
-                }
-                else {
+                } else {
                     $key.SetValue('UserAuthentication', 1, [Microsoft.Win32.RegistryValueKind]::DWORD)
                 }
             }
-        }
-        catch [System.Management.Automation.MethodInvocationException] {
+        } catch [System.Management.Automation.MethodInvocationException] {
             $err = $_.Exception.message.Trim()
             if ($err -match "network path") {
                 $ua = "Could not connect"
-            }
-            elseif ($err -match "access is not allowed") {
+            } elseif ($err -match "access is not allowed") {
                 $ua = "Insufficient permissions"
-            }
-            else {
+            } else {
                 $ua = "Unknown error"
             }
             [PSCustomObject]@{
-                ComputerName = $Comp
+                ComputerName       = $Comp
                 UserAuthentication = $ua
             }#new object
         }

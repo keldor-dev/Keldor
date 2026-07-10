@@ -1,5 +1,5 @@
 function Open-HIPSLog {
-<#
+    <#
 .SYNOPSIS
     Opens HIPS Log.
 
@@ -17,7 +17,7 @@ function Open-HIPSLog {
     https://docs.keldor.dev/powershell/keldor/Open-HIPSLog
 #>
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-HIPSLog')]
-    Param ()
-explorer "$env:ProgramData\McAfee\Host Intrusion Prevention"
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-HIPSLog')]
+    param ()
+    explorer "$env:ProgramData\McAfee\Host Intrusion Prevention"
 }

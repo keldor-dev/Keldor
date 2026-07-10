@@ -4,7 +4,7 @@ Describe "Public output contracts" {
 
         function Get-KeldorPublicFunctionText {
             param(
-                [Parameter(Mandatory=$true)]
+                [Parameter(Mandatory = $true)]
                 [string]$FunctionName
             )
 
@@ -17,10 +17,10 @@ Describe "Public output contracts" {
 
         function Assert-KeldorTextContains {
             param(
-                [Parameter(Mandatory=$true)]
+                [Parameter(Mandatory = $true)]
                 [string]$Text,
 
-                [Parameter(Mandatory=$true)]
+                [Parameter(Mandatory = $true)]
                 [string[]]$Patterns
             )
 
@@ -72,9 +72,9 @@ Describe "Public output contracts" {
         )
 
         Assert-KeldorTextContains -Text (Get-KeldorPublicFunctionText -FunctionName 'Show-FederalHoliday') -Patterns @(
-            "Name='HolidayDate'",
-            'Select-Object Name,Year,Date',
-            'Select-Object Name,Date'
+            "Name\s*=\s*'HolidayDate'",
+            'Select-Object Name,\s*Year,\s*Date',
+            'Select-Object Name,\s*Date'
         )
     }
 

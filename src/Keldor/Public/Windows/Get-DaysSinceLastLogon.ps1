@@ -1,5 +1,5 @@
 function Get-DaysSinceLastLogon {
-<#
+    <#
 .SYNOPSIS
     Gets Days Since Last Logon.
 
@@ -21,22 +21,22 @@ function Get-DaysSinceLastLogon {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-DaysSinceLastLogon')]
-    Param (
+    param (
         [Parameter(
-            Mandatory=$false,
-            Position=0,
+            Mandatory = $false,
+            Position = 0,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true
         )]
-        [Alias('User','SamAccountName','Computer','ComputerName','Username')]
+        [Alias('User', 'SamAccountName', 'Computer', 'ComputerName', 'Username')]
         [string[]]$Name = "$env:USERNAME"
     )
-    Begin {
+    begin {
         $sd = Get-Date
     }
-    Process {
+    process {
         foreach ($obj in $Name) {
-            try {$record = Get-ADUser $obj -Properties LastLogonDate}
+            try { $record = Get-ADUser $obj -Properties LastLogonDate }
             catch {
                 $nobj = $obj + "$"
                 $record = Get-ADComputer $nobj -Properties LastLogonDate
@@ -45,20 +45,19 @@ function Get-DaysSinceLastLogon {
             $LLD = $record.LastLogonDate
             $sam = $record.SamAccountName
             try {
-                $dsll = [math]::Round((-(New-TimeSpan -Start $sd -End $LLD)).TotalDays)
-            }
-            catch {
+                $dsll = [math]::Round(( - (New-TimeSpan -Start $sd -End $LLD)).TotalDays)
+            } catch {
                 $dsll = "NA"
             }
 
             [PSCustomObject]@{
-                Name = $obj
-                UserName = $obj
+                Name               = $obj
+                UserName           = $obj
                 DaysSinceLastLogon = $dsll
-                SamAccountName = $sam
-                CheckedAt = $sd
+                SamAccountName     = $sam
+                CheckedAt          = $sd
             }#new object
         }
     }
-    End {}
+    end {}
 }

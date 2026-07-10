@@ -1,5 +1,5 @@
 function Test-MTU {
-<#
+    <#
 .SYNOPSIS
     Finds the MTU size for packets to a remote computer.
 
@@ -37,56 +37,54 @@ function Test-MTU {
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-MTU')]
     param(
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [Alias('Host', 'Name', 'Computer', 'ComputerName', 'TestAddress')]
         [string[]]$RemoteAddress,
 
         #Set BufferSizeMax to the largest MTU you want to test (1500 normally or up to 9000 if using Jumbo Frames)
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [int]$BufferSizeMax = 1500
     )
 
     if ([string]::IsNullOrWhiteSpace($RemoteAddress)) {
         Write-Verbose "Test Address not specified. Setting to logon server."
-        $RemoteAddress = ($env:LOGONSERVER).Replace('\\','') + "." + $env:USERDNSDOMAIN
+        $RemoteAddress = ($env:LOGONSERVER).Replace('\\', '') + "." + $env:USERDNSDOMAIN
     }
     Write-Verbose "RemoteAddress: $TestAddress"
     Write-Verbose "BufferSizeMax: $BufferSizeMax"
 
     foreach ($TestAddress in $RemoteAddress) {
-        $LastMinBuffer=$BufferSizeMin
-        $LastMaxBuffer=$BufferSizeMax
-        $MaxFound=$false
+        $LastMinBuffer = $BufferSizeMin
+        $LastMaxBuffer = $BufferSizeMax
+        $MaxFound = $false
         $GoodMTU = @()
         $BadMTU = @()
 
         #Calculate first MTU test, halfway between zero and BufferSizeMax
         [int]$BufferSize = ($BufferSizeMax - 0) / 2
-        while ($MaxFound -eq $false){
-            try{
+        while ($MaxFound -eq $false) {
+            try {
                 $Response = ping $TestAddress -n 1 -f -l $BufferSize
                 #if MTU is too big, ping will return: Packet needs to be fragmented but DF set.
-                if ($Response -like "*fragmented*") {throw}
+                if ($Response -like "*fragmented*") { throw }
                 if ($LastMinBuffer -eq $BufferSize) {
                     #test values have converged onto the highest working MTU, stop here and report value
                     $MaxFound = $true
                     break
-                }
-                else {
+                } else {
                     #it worked at this size, make buffer bigger
                     Write-Verbose "Found good MTU: $BufferSize"
                     $GoodMTU += $BufferSize
                     $LastMinBuffer = $BufferSize
                     $BufferSize = $BufferSize + (($LastMaxBuffer - $LastMinBuffer) / 2)
                 }
-            }
-            catch {
+            } catch {
                 #it didn't work at this size, make buffer smaller
                 Write-Verbose "Found bad MTU: $BufferSize"
                 $BadMTU += $BufferSize
                 $LastMaxBuffer = $BufferSize
                 #if we're getting close, just subtract 1
-                if(($LastMaxBuffer - $LastMinBuffer) -le 3){
+                if (($LastMaxBuffer - $LastMinBuffer) -le 3) {
                     $BufferSize = $BufferSize - 1
                 } else {
                     $BufferSize = $LastMinBuffer + (($LastMaxBuffer - $LastMinBuffer) / 2)
@@ -99,15 +97,15 @@ function Test-MTU {
         Write-Verbose "Recommended MTU: $BufferSize"
 
         if ($BufferSize -le 1472) {
-            $BufferSize = $BufferSize+28
+            $BufferSize = $BufferSize + 28
         }
 
         [PSCustomObject]@{
-            ComputerName = $env:COMPUTERNAME
-            GoodMTUs = $GoodMTU -join ","
-            BadMTUs = $BadMTU -join ","
+            ComputerName  = $env:COMPUTERNAME
+            GoodMTUs      = $GoodMTU -join ","
+            BadMTUs       = $BadMTU -join ","
             MTUwithBuffer = $BufferSize
-            TestAddress = $TestAddress
+            TestAddress   = $TestAddress
         }#new object
     }
 }

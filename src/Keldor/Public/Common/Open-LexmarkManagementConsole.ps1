@@ -1,5 +1,5 @@
 function Open-LexmarkManagementConsole {
-<#
+    <#
 .SYNOPSIS
     Opens Lexmark Management Console.
 
@@ -39,21 +39,21 @@ function Open-LexmarkManagementConsole {
     )]
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-LexmarkManagementConsole')]
     [Alias('lmc')]
-    Param (
-        [Parameter(Mandatory=$false)]
+    param (
+        [Parameter(Mandatory = $false)]
         [Switch]$Chrome,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [Switch]$Edge,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [Switch]$Firefox,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [Switch]$InternetExplorer,
 
-        [Parameter(Mandatory=$false)]
-        [ValidateSet('Default','Edge','Chrome','Firefox','Safari','InternetExplorer')]
+        [Parameter(Mandatory = $false)]
+        [ValidateSet('Default', 'Edge', 'Chrome', 'Firefox', 'Safari', 'InternetExplorer')]
         [string]$Browser = 'Default'
     )
 
@@ -61,10 +61,10 @@ function Open-LexmarkManagementConsole {
     $URL = $config.LMC
 
     $BrowserName = $Browser
-    if ($Chrome) {$BrowserName = 'Chrome'}
-    elseif ($Edge) {$BrowserName = 'Edge'}
-    elseif ($Firefox) {$BrowserName = 'Firefox'}
-    elseif ($InternetExplorer) {$BrowserName = 'InternetExplorer'}
+    if ($Chrome) { $BrowserName = 'Chrome' }
+    elseif ($Edge) { $BrowserName = 'Edge' }
+    elseif ($Firefox) { $BrowserName = 'Firefox' }
+    elseif ($InternetExplorer) { $BrowserName = 'InternetExplorer' }
 
     Open-KeldorUrl -Uri $URL -Browser $BrowserName
 }

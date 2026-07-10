@@ -1,5 +1,5 @@
 function Show-BalloonTip {
-<#
+    <#
 .SYNOPSIS
     Shows Balloon Tip.
 
@@ -31,23 +31,23 @@ function Show-BalloonTip {
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Show-BalloonTip')]
     [Alias('tip')]
-    Param (
-        [Parameter(Mandatory=$true)]
+    param (
+        [Parameter(Mandatory = $true)]
         [string]$Text,
 
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string]$Title,
 
-        [Parameter(Mandatory=$false)]
-        [ValidateSet('Info','Error','Warning')]
+        [Parameter(Mandatory = $false)]
+        [ValidateSet('Info', 'Error', 'Warning')]
         [string]$Icon = 'Info',
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [int32]$Timeout = 30000
     )
 
     Add-Type -AssemblyName System.Windows.Forms
-    If ($null -eq $PopUp)  {$PopUp = New-Object System.Windows.Forms.NotifyIcon}
+    if ($null -eq $PopUp) { $PopUp = New-Object System.Windows.Forms.NotifyIcon }
     $Path = Get-Process -Id $PID | Select-Object -ExpandProperty Path
     $PopUp.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($Path)
     $PopUp.BalloonTipIcon = $Icon

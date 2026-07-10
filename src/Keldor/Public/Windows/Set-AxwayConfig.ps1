@@ -1,5 +1,5 @@
 function Set-AxwayConfig {
-<#
+    <#
 .SYNOPSIS
     Sets Axway Config.
 
@@ -28,16 +28,16 @@ function Set-AxwayConfig {
     param(
         [Parameter(
             #HelpMessage = "Enter one or more computer names separated by commas.",
-            Mandatory=$false,
-            Position=0
+            Mandatory = $false,
+            Position = 0
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName,
 
         [Parameter(
             HelpMessage = "Enter the path for the configuration file to import.",
-            Mandatory=$true,
-            Position=1
+            Mandatory = $true,
+            Position = 1
         )]
         [ValidateNotNullOrEmpty()]
         [string]$ConfigFile
@@ -49,10 +49,8 @@ function Set-AxwayConfig {
             if ($PSCmdlet.ShouldProcess($ConfigFile, "Import Axway config")) {
                 Start-Process "$env:ProgramFiles\Tumbleweed\Desktop Validator\dvconfig.exe" -ArgumentList "-command write -file $ConfigFile"
             }
-        }
-        else {Write-Error "Must be ran as administrator."}
-    }
-    else {
+        } else { Write-Error "Must be ran as administrator." }
+    } else {
         $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
         if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
             $i = 0
@@ -63,28 +61,27 @@ function Set-AxwayConfig {
                     $i++
                     $amount = ($i / $number)
                     $perc1 = $amount.ToString("P")
-                    Write-Progress -activity "Setting Axway config" -status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length)  * 100)
+                    Write-Progress -Activity "Setting Axway config" -Status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length) * 100)
                 }#if length
 
                 try {
                     if ($PSCmdlet.ShouldProcess($Comp, "Import Axway config")) {
-                        Invoke-Command -ComputerName $Comp -ScriptBlock {Start-Process "$env:ProgramFiles\Tumbleweed\Desktop Validator\dvconfig.exe" -ArgumentList "-command write -file $ConfigFile"} -ErrorAction Stop #DevSkim: ignore DS104456
+                        Invoke-Command -ComputerName $Comp -ScriptBlock { Start-Process "$env:ProgramFiles\Tumbleweed\Desktop Validator\dvconfig.exe" -ArgumentList "-command write -file $ConfigFile" } -ErrorAction Stop #DevSkim: ignore DS104456
                     }
                     #$install = Invoke-WMIMethod -Class Win32_Process -ComputerName $Comp -Name Create -ArgumentList 'cmd /c "c:\Program Files\Tumbleweed\Desktop Validator\dvconfig.exe" -command write -file $ConfigFile' -ErrorAction Stop #DevSkim: ignore DS104456
                     $info = [PSCustomObject]@{
                         ComputerName = $Comp
-                        Status = "Axway config imported"
+                        Status       = "Axway config imported"
                     }#new object
-                }
-                catch {
+                } catch {
                     $info = [PSCustomObject]@{
                         ComputerName = $Comp
-                        Status = "Unable to import Axway config"
+                        Status       = "Unable to import Axway config"
                     }#new object
                 }
                 $info
             }#foreach computer
         }#if admin
-        else {Write-Error "Must be ran as admin when running against remote computers"}#not admin
+        else { Write-Error "Must be ran as admin when running against remote computers" }#not admin
     }#else not local
 }

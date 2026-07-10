@@ -1,5 +1,5 @@
 function Test-DynamicParameterSwitchCheck {
-<#
+    <#
 .SYNOPSIS
     Non-functional. For reference.
 
@@ -23,22 +23,22 @@ function Test-DynamicParameterSwitchCheck {
     https://docs.keldor.dev/powershell/keldor/Test-DynamicParameterSwitchCheck
 #>
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-DynamicParameterSwitchCheck')]
-Param (
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Test-DynamicParameterSwitchCheck')]
+    param (
         [Parameter(Mandatory = $false)]
-        [Alias('EDIPI','DisplayName')]
+        [Alias('EDIPI', 'DisplayName')]
         [string[]]$UserName,
 
         [Parameter(Mandatory = $false)]
         [switch]$Enable
 
     )
-    DynamicParam {
+    dynamicparam {
         if (![string]::IsNullOrWhiteSpace($Username) -and $Enable -eq $true) {
             #Parameter
             $parameterAttribute = [System.Management.Automation.ParameterAttribute]@{
                 ParameterSetName = "AddingMembers"
-                Mandatory = $false
+                Mandatory        = $false
             }
 
             $attributeCollection = [System.Collections.ObjectModel.Collection[System.Attribute]]::new()
@@ -54,7 +54,7 @@ Param (
             #Parameter2
             $parameterAttribute2 = [System.Management.Automation.ParameterAttribute]@{
                 ParameterSetName = "ModifyingMembers"
-                Mandatory = $false
+                Mandatory        = $false
             }
 
             $attributeCollection2 = [System.Collections.ObjectModel.Collection[System.Attribute]]::new()
@@ -68,7 +68,7 @@ Param (
             return $paramDictionary
         }
     }#dynamic
-    Process {
+    process {
         $PSBoundParameters['Add'].IsPresent
     }
 }

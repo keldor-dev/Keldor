@@ -1,6 +1,6 @@
 #needs Get-NotificationApp
 function Send-ToastNotification {
-<#
+    <#
 .SYNOPSIS
     Short description
 
@@ -47,58 +47,58 @@ function Send-ToastNotification {
     param(
         [Parameter(
             HelpMessage = "Enter the message to send.",
-            Mandatory=$true,
-            Position=0
+            Mandatory = $true,
+            Position = 0
         )]
         [ValidateNotNullOrEmpty()]
         [string]$Message,
 
         [Parameter(
             HelpMessage = "Enter the name of the sender.",
-            Mandatory=$false,
-            Position=1
+            Mandatory = $false,
+            Position = 1
         )]
         [string]$Sender = " ",
 
         [Parameter(
-            Mandatory=$false,
-            Position=2
+            Mandatory = $false,
+            Position = 2
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName,
 
         [Parameter(
-            Mandatory=$false
+            Mandatory = $false
         )]
         [string]$Title,
 
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [ValidateSet('ms-winsoundevent:Notification.Default',
-        'ms-winsoundevent:Notification.IM',
-        'ms-winsoundevent:Notification.Mail',
-        'ms-winsoundevent:Notification.Reminder',
-        'ms-winsoundevent:Notification.SMS',
-        'ms-winsoundevent:Notification.Looping.Alarm',
-        'ms-winsoundevent:Notification.Looping.Alarm2',
-        'ms-winsoundevent:Notification.Looping.Alarm3',
-        'ms-winsoundevent:Notification.Looping.Alarm4',
-        'ms-winsoundevent:Notification.Looping.Alarm5',
-        'ms-winsoundevent:Notification.Looping.Alarm6',
-        'ms-winsoundevent:Notification.Looping.Alarm7',
-        'ms-winsoundevent:Notification.Looping.Alarm8',
-        'ms-winsoundevent:Notification.Looping.Alarm9',
-        'ms-winsoundevent:Notification.Looping.Alarm10',
-        'ms-winsoundevent:Notification.Looping.Call',
-        'ms-winsoundevent:Notification.Looping.Call2',
-        'ms-winsoundevent:Notification.Looping.Call3',
-        'ms-winsoundevent:Notification.Looping.Call4',
-        'ms-winsoundevent:Notification.Looping.Call5',
-        'ms-winsoundevent:Notification.Looping.Call6',
-        'ms-winsoundevent:Notification.Looping.Call7',
-        'ms-winsoundevent:Notification.Looping.Call8',
-        'ms-winsoundevent:Notification.Looping.Call9',
-        'ms-winsoundevent:Notification.Looping.Call10',
-        'Silent')]
+            'ms-winsoundevent:Notification.IM',
+            'ms-winsoundevent:Notification.Mail',
+            'ms-winsoundevent:Notification.Reminder',
+            'ms-winsoundevent:Notification.SMS',
+            'ms-winsoundevent:Notification.Looping.Alarm',
+            'ms-winsoundevent:Notification.Looping.Alarm2',
+            'ms-winsoundevent:Notification.Looping.Alarm3',
+            'ms-winsoundevent:Notification.Looping.Alarm4',
+            'ms-winsoundevent:Notification.Looping.Alarm5',
+            'ms-winsoundevent:Notification.Looping.Alarm6',
+            'ms-winsoundevent:Notification.Looping.Alarm7',
+            'ms-winsoundevent:Notification.Looping.Alarm8',
+            'ms-winsoundevent:Notification.Looping.Alarm9',
+            'ms-winsoundevent:Notification.Looping.Alarm10',
+            'ms-winsoundevent:Notification.Looping.Call',
+            'ms-winsoundevent:Notification.Looping.Call2',
+            'ms-winsoundevent:Notification.Looping.Call3',
+            'ms-winsoundevent:Notification.Looping.Call4',
+            'ms-winsoundevent:Notification.Looping.Call5',
+            'ms-winsoundevent:Notification.Looping.Call6',
+            'ms-winsoundevent:Notification.Looping.Call7',
+            'ms-winsoundevent:Notification.Looping.Call8',
+            'ms-winsoundevent:Notification.Looping.Call9',
+            'ms-winsoundevent:Notification.Looping.Call10',
+            'Silent')]
         [string]$AudioSource = 'ms-winsoundevent:Notification.Looping.Alarm3',
 
         [Parameter()]
@@ -107,7 +107,7 @@ function Send-ToastNotification {
         [Parameter()]
         [switch]$RequireDismiss #overrides ShortDuration
     )
-    DynamicParam {
+    dynamicparam {
         # Set the dynamic parameters' name. You probably want to change this.
         $ParameterName = 'Notifier'
 
@@ -137,20 +137,18 @@ function Send-ToastNotification {
         $RuntimeParameterDictionary.Add($ParameterName, $RuntimeParameter)
         return $RuntimeParameterDictionary
     }
-    Begin {
+    begin {
         $Notifier = $PsBoundParameters[$ParameterName]
-        if ([string]::IsNullOrWhiteSpace($Notifier)) {$Notifier = "Windows.SystemToast.NfpAppAcquire"}
+        if ([string]::IsNullOrWhiteSpace($Notifier)) { $Notifier = "Windows.SystemToast.NfpAppAcquire" }
         if ([string]::IsNullOrWhiteSpace($Title)) {
             $ttext = $null
-        }
-        else {
+        } else {
             $ttext = "<text>$Title</text>"
         }
 
         if ($AudioSource -eq 'Silent') {
             $atext = '<audio silent="true"/>'
-        }
-        else {
+        } else {
             $atext = '<audio src="' + $AudioSource + '"/>'
         }
         if ($RequireDismiss) {
@@ -160,10 +158,9 @@ function Send-ToastNotification {
             <action arguments="dismiss" content="Dismiss" activationType="system"/>
         </actions>
 "@
-        }
-        else {
-            if ($ShortDuration) {$dur = "short"}
-            else {$dur = "long"}
+        } else {
+            if ($ShortDuration) { $dur = "short" }
+            else { $dur = "long" }
             $scenario = '<toast duration="' + $dur + '">'
             $actions = $null
         }
@@ -187,10 +184,10 @@ function Send-ToastNotification {
 "@
 
         [scriptblock]$ToastScript = {
-            Param($ToastTemplate)
+            param($ToastTemplate)
             #Load required assemblies
-            [void][Windows.UI.Notifications.ToastNotification,Windows.UI.Notifications,ContentType=WindowsRuntime]
-            [void][Windows.Data.Xml.Dom.XmlDocument,Windows.Data.Xml.Dom,ContentType=WindowsRuntime]
+            [void][Windows.UI.Notifications.ToastNotification, Windows.UI.Notifications, ContentType = WindowsRuntime]
+            [void][Windows.Data.Xml.Dom.XmlDocument, Windows.Data.Xml.Dom, ContentType = WindowsRuntime]
 
             #Format XML
             $FinalXML = [Windows.Data.Xml.Dom.XmlDocument]::new()
@@ -203,13 +200,12 @@ function Send-ToastNotification {
             [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier($Notifier).show($Toast)
         }
     }
-    Process {
+    process {
         if (![string]::IsNullOrEmpty($ComputerName)) {
             Invoke-Command -ComputerName $ComputerName -ScriptBlock $ToastScript -ArgumentList $ToastTemplate #DevSkim: ignore DS104456
-        }
-        else {Invoke-Command -ScriptBlock $ToastScript -ArgumentList $ToastTemplate} #DevSkim: ignore DS104456
+        } else { Invoke-Command -ScriptBlock $ToastScript -ArgumentList $ToastTemplate } #DevSkim: ignore DS104456
     }
-    End {
+    end {
         #done
     }
 }

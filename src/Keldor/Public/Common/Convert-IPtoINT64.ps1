@@ -1,5 +1,5 @@
 function Convert-IPtoINT64 () {
-  <#
+    <#
 .SYNOPSIS
     Converts IP to INT64.
 
@@ -20,11 +20,11 @@ function Convert-IPtoINT64 () {
     https://docs.keldor.dev/powershell/keldor/Convert-IPtoINT64
 #>
 
-  [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Convert-IPtoINT64')]
-  param (
-    [Alias('IP','IPs','IPv4','Address')]
-    $IPAddress
-  )
-  $octets = $IPAddress.split(".")
-  return [int64]([int64]$octets[0] * 16777216 + [int64]$octets[1] * 65536 + [int64]$octets[2] * 256 + [int64]$octets[3])
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Convert-IPtoINT64')]
+    param (
+        [Alias('IP', 'IPs', 'IPv4', 'Address')]
+        $IPAddress
+    )
+    $octets = $IPAddress.split(".")
+    return [int64]([int64]$octets[0] * 16777216 + [int64]$octets[1] * 65536 + [int64]$octets[2] * 256 + [int64]$octets[3])
 }

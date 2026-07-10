@@ -1,5 +1,5 @@
 function Get-KeldorSecret {
-<#
+    <#
 .SYNOPSIS
     Gets a Keldor secret.
 
@@ -87,8 +87,7 @@ function Get-KeldorSecret {
                 if ($null -ne $SecretValue) {
                     return [string]$SecretValue
                 }
-            }
-            catch {
+            } catch {
                 continue
             }
         }

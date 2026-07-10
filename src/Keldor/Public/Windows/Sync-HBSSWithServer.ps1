@@ -1,5 +1,5 @@
 function Sync-HBSSWithServer {
-<#
+    <#
 .SYNOPSIS
     Synchronizes HBSS With Server.
 
@@ -21,10 +21,10 @@ function Sync-HBSSWithServer {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Sync-HBSSWithServer')]
-    [Alias('Sync-HBSS','Sync-ENS','Sync-ESS')]
-    Param (
-        [Parameter(Mandatory=$false, Position=0)]
-        [Alias('Host','Name','Computer','CN')]
+    [Alias('Sync-HBSS', 'Sync-ENS', 'Sync-ESS')]
+    param (
+        [Parameter(Mandatory = $false, Position = 0)]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )
 
@@ -70,7 +70,7 @@ function Sync-HBSSWithServer {
             }#else 32bit
         }#try 32or64 bit
         catch {
-            Throw "Unable to connect to $Comp"
+            throw "Unable to connect to $Comp"
         }#catch 32or64 bit
     }#foreach comp
 }

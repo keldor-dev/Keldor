@@ -1,5 +1,5 @@
 function Open-SystemProperties {
-<#
+    <#
 .SYNOPSIS
     Opens System Properties.
 
@@ -17,7 +17,7 @@ function Open-SystemProperties {
     https://docs.keldor.dev/powershell/keldor/Open-SystemProperties
 #>
 
-        [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-SystemProperties')]
-    Param ()
-control.exe sysdm.cpl
+    [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Open-SystemProperties')]
+    param ()
+    control.exe sysdm.cpl
 }

@@ -1,5 +1,5 @@
 function Split-File {
-<#
+    <#
 .SYNOPSIS
     Splits File.
 
@@ -27,31 +27,31 @@ function Split-File {
 #>
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Split-File')]
-    Param (
+    param (
         [Parameter(HelpMessage = "Enter the path of the file you want to split.",
-            Mandatory=$true,
-            Position=0
+            Mandatory = $true,
+            Position = 0
         )]
-        [Alias('Source','InputLocation','SourceFile')]
+        [Alias('Source', 'InputLocation', 'SourceFile')]
         [string]$Path,
 
         [Parameter(HelpMessage = "Enter the path of where you want the part files placed.",
-            Mandatory=$false,
-            Position=1
+            Mandatory = $false,
+            Position = 1
         )]
-        [Alias('OutputLocation','Output','DestinationPath','Destination')]
+        [Alias('OutputLocation', 'Output', 'DestinationPath', 'Destination')]
         [string]$DestinationFolder,
 
         [Parameter(HelpMessage = "Enter the size you want the part files to be. Can be bytes or you can specify a size. Ex: 100MB",
-            Mandatory=$false,
-            Position=2
+            Mandatory = $false,
+            Position = 2
         )]
-        [Alias('Size','Newsize')]
+        [Alias('Size', 'Newsize')]
         [int]$PartFileSize = 10MB
     )
 
     $FilePath = [IO.Path]::GetDirectoryName($Path)
-    if (([string]::IsNullOrWhiteSpace($DestinationFolder)) -and $FilePath -ne "") {$FilePath = $FilePath + "\"}
+    if (([string]::IsNullOrWhiteSpace($DestinationFolder)) -and $FilePath -ne "") { $FilePath = $FilePath + "\" }
     elseif ($null -ne $DestinationFolder -and $DestinationFolder -ne "") {
         $FilePath = $DestinationFolder + "\"
     }
@@ -64,13 +64,13 @@ function Split-File {
     }
 
     $ReadObj = New-Object System.IO.BinaryReader([System.IO.File]::Open($Path, [System.IO.FileMode]::Open, [System.IO.FileAccess]::Read))
-	[Byte[]]$Buffer = New-Object Byte[] $PartFileSize
-	[int]$BytesRead = 0
+    [Byte[]]$Buffer = New-Object Byte[] $PartFileSize
+    [int]$BytesRead = 0
 
     $N = 1
     Write-Output "Saving part files to $FilePath"
     while (($BytesRead = $ReadObj.Read($Buffer, 0, $Buffer.Length)) -gt 0) {
-        $NewName = "{0}{1}{2}{3,2:00}{4}" -f ($FilePath,$FileName,$Part,$N,$Extension)
+        $NewName = "{0}{1}{2}{3,2:00}{4}" -f ($FilePath, $FileName, $Part, $N, $Extension)
         $WriteObj = New-Object System.IO.BinaryWriter([System.IO.File]::Create($NewName))
         $WriteObj.Write($Buffer, 0, $BytesRead)
         $WriteObj.Close()

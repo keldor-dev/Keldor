@@ -163,10 +163,10 @@ Unknown
 Use `Message` for human-readable details:
 
 ```powershell
-[PSCustomObject]@{
+[pscustomobject]@{
     ComputerName = 'SERVER01'
-    Status = 'Failed'
-    Message = 'The remote registry service is unavailable.'
+    Status       = 'Failed'
+    Message      = 'The remote registry service is unavailable.'
 }
 ```
 
@@ -186,8 +186,8 @@ Example:
 
 ```powershell
 param(
-    [Parameter(Mandatory=$true)]
-    [Alias('User','Username','SamAccountName')]
+    [Parameter(Mandatory = $true)]
+    [Alias('User', 'Username', 'SamAccountName')]
     [string]$UserName
 )
 ```
@@ -209,10 +209,10 @@ When normalizing output:
 Example additive migration:
 
 ```powershell
-[PSCustomObject]@{
-    Computer = $ComputerName       # legacy
+[pscustomobject]@{
+    Computer     = $ComputerName   # legacy
     ComputerName = $ComputerName   # canonical
-    Status = 'Online'
+    Status       = 'Online'
 }
 ```
 

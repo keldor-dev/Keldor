@@ -1,5 +1,5 @@
 function Get-PowerShellVariable {
-<#
+    <#
 .SYNOPSIS
     Will show env: and PowerShell variable active in session.
 
@@ -30,7 +30,7 @@ function Get-PowerShellVariable {
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-PowerShellVariable')]
     param(
-        [Parameter(Mandatory=$false)]
+        [Parameter(Mandatory = $false)]
         [string[]]$Name
     )
 
@@ -39,11 +39,10 @@ function Get-PowerShellVariable {
 
     if (!([string]::IsNullOrWhiteSpace($Name))) {
         $filtered = foreach ($obj in $Name) {
-            $variables | Where-Object {$_.Name -match $obj} | Select-Object VariableType,Name,Value
+            $variables | Where-Object { $_.Name -match $obj } | Select-Object VariableType, Name, Value
         }
-    }
-    else {
-        $filtered = $variables | Select-Object VariableType,Name,Value
+    } else {
+        $filtered = $variables | Select-Object VariableType, Name, Value
     }
 
     $filtered | Select-Object | Sort-Object Name

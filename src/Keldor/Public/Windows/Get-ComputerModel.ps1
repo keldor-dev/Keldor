@@ -1,5 +1,5 @@
 function Get-ComputerModel {
-<#
+    <#
 .SYNOPSIS
     Gets Computer Model.
 
@@ -22,36 +22,36 @@ function Get-ComputerModel {
 
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-ComputerModel')]
     [Alias('Get-Model')]
-    Param (
+    param (
         [Parameter(
-            Mandatory=$false,
-            Position=0,
+            Mandatory = $false,
+            Position = 0,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true
         )]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )
-    Process {
+    process {
         foreach ($comp in $ComputerName) {
             try {
                 $csi = Get-WmiObject -Class Win32_ComputerSystem -ComputerName $comp -ErrorAction Stop
 
                 switch ($csi.DomainRole) {
-                    0 {$dr = "Standalone Workstation"}
-                    1 {$dr = "Member Workstation"}
-                    2 {$dr = "Standalone Server"}
-                    3 {$dr = "Member Server"}
-                    4 {$dr = "Domain Controller"}
-                    5 {$dr = "Primary Domain Controller"}
+                    0 { $dr = "Standalone Workstation" }
+                    1 { $dr = "Member Workstation" }
+                    2 { $dr = "Standalone Server" }
+                    3 { $dr = "Member Server" }
+                    4 { $dr = "Domain Controller" }
+                    5 { $dr = "Primary Domain Controller" }
                 }
 
-                if ($csi.Model -contains "Virtual") {$PorV = "Virtual"}
-                else {$PorV = "Physical"}
+                if ($csi.Model -contains "Virtual") { $PorV = "Virtual" }
+                else { $PorV = "Physical" }
 
                 switch ($csi.PCSystemType) {
-                    2 {$type = "Laptop/Tablet"}
-                    default {$type = "Desktop"}
+                    2 { $type = "Laptop/Tablet" }
+                    default { $type = "Desktop" }
                 }
 
                 $manu = $csi.Manufacturer
@@ -59,22 +59,21 @@ function Get-ComputerModel {
 
                 [PSCustomObject]@{
                     ComputerName = $comp
-                    DomainRole = $dr
+                    DomainRole   = $dr
                     Manufacturer = $manu
-                    Model = $model
-                    PorV = $PorV
-                    Type = $type
+                    Model        = $model
+                    PorV         = $PorV
+                    Type         = $type
                 }
-            }
-            catch {
+            } catch {
                 $na = "NA"
                 [PSCustomObject]@{
                     ComputerName = $comp
-                    DomainRole = "Unable to connect"
+                    DomainRole   = "Unable to connect"
                     Manufacturer = $na
-                    Model = $na
-                    PorV = $na
-                    Type = $na
+                    Model        = $na
+                    PorV         = $na
+                    Type         = $na
                 }
             }
         }

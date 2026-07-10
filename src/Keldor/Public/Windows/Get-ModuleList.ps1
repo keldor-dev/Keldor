@@ -1,5 +1,5 @@
 function Get-ModuleList {
-<#
+    <#
 .SYNOPSIS
     Short description
 
@@ -39,15 +39,13 @@ function Get-ModuleList {
             $mn = $m.Name
             if ($cm -match $mn) {
                 #do nothing
-            }
-            else {
+            } else {
                 $nil += $mn
             }
         }
 
         $nil
-    }
-    else {
+    } else {
         $modules | Select-Object * | Sort-Object Name
     }
 }

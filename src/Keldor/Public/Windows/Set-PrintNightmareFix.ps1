@@ -1,5 +1,5 @@
 function Set-PrintNightmareFix {
-<#
+    <#
 .SYNOPSIS
     Sets Print Nightmare Fix.
 
@@ -26,11 +26,11 @@ function Set-PrintNightmareFix {
     [CmdletBinding(SupportsShouldProcess = $true, HelpUri = 'https://docs.keldor.dev/powershell/keldor/Set-PrintNightmareFix')]
     param(
         [Parameter(
-            Mandatory=$false,
-            Position=0
+            Mandatory = $false,
+            Position = 0
         )]
         [ValidateNotNullOrEmpty()]
-        [Alias('Host','Name','Computer','CN')]
+        [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME",
 
         [switch]$DisableSpooler
@@ -48,15 +48,15 @@ function Set-PrintNightmareFix {
             if ($PSCmdlet.ShouldProcess($Comp, "Set PrintNightmare registry values")) {
                 ([Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey([Microsoft.Win32.RegistryHive]::LocalMachine, $comp)).CreateSubKey('SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint')
                 $BaseKey = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey([Microsoft.Win32.RegistryHive]::LocalMachine, $comp)
-                $SubKey = $BaseKey.OpenSubKey('SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint',$true)
+                $SubKey = $BaseKey.OpenSubKey('SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint', $true)
                 $SubKey.SetValue($v1, $d0, [Microsoft.Win32.RegistryValueKind]::DWORD)
 
                 $BaseKey = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey([Microsoft.Win32.RegistryHive]::LocalMachine, $comp)
-                $SubKey = $BaseKey.OpenSubKey('SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint',$true)
+                $SubKey = $BaseKey.OpenSubKey('SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint', $true)
                 $SubKey.SetValue($v2, $d0, [Microsoft.Win32.RegistryValueKind]::DWORD)
 
                 $BaseKey = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey([Microsoft.Win32.RegistryHive]::LocalMachine, $comp)
-                $SubKey = $BaseKey.OpenSubKey('SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint',$true)
+                $SubKey = $BaseKey.OpenSubKey('SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint', $true)
                 $SubKey.SetValue($v3, $d1, [Microsoft.Win32.RegistryValueKind]::DWORD)
             }
 
@@ -69,6 +69,5 @@ function Set-PrintNightmareFix {
                 }
             }
         }#foreach computer
-    }
-    else {Write-Error "Must be ran as administrator"}
+    } else { Write-Error "Must be ran as administrator" }
 }
