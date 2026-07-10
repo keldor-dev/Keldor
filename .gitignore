@@ -13,3 +13,6 @@ Thumbs.db
 
 # PowerShell module analysis caches
 *.cache
+
+# Build output
+out/

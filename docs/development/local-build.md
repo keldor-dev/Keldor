@@ -29,6 +29,22 @@ Import-Module .\Keldor.psd1 -Force
 Get-Command -Module Keldor
 ```
 
+## Build
+
+From the repository root, create a local build:
+
+```powershell
+./build.ps1 -Task Build
+```
+
+Release packages require an explicit semantic version:
+
+```powershell
+./build.ps1 -Task Release -Version '0.1.0'
+```
+
+See the [Versioning Policy](versioning-policy.md) for release version selection.
+
 ## Documentation
 
 Online documentation is maintained separately in the `keldor-dev/docs` repository which links to:

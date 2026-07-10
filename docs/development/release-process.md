@@ -12,7 +12,7 @@ Every release should follow a predictable process to ensure module quality and d
 - Verify online help.
 - Verify HelpUri values.
 - Generate updateable help packages.
-- Update module version.
+- Select the next version using the [Versioning Policy](versioning-policy.md).
 - Update release notes.
 - Publish documentation.
 - Publish to the PowerShell Gallery.
@@ -28,17 +28,23 @@ Before every release:
 
 ## Versioning
 
-Keldor follows Semantic Versioning.
+Keldor follows Semantic Versioning as described in the [Versioning Policy](versioning-policy.md). The authoritative development version is `ModuleVersion` in `src/Keldor/Keldor.psd1`. Release packages are prepared with an explicit version:
 
-- Major
-- Minor
-- Patch
+```powershell
+./build.ps1 -Task Release -Version '0.1.0'
+```
+
+Development builds do not permanently rewrite the source manifest:
+
+```powershell
+./build.ps1 -Task Build
+```
 
 ## GitHub
 
 Create:
 
-- Release tag
+- Release tag in `vMAJOR.MINOR.PATCH` format
 - GitHub Release
 - Release notes
 
@@ -47,6 +53,10 @@ Create:
 Publish only after documentation has been successfully deployed.
 
 Documentation should always be available before users update the module.
+
+```powershell
+./build.ps1 -Task Publish -Version '0.1.0' -Repository PSGallery
+```
 
 ## Post Release
 

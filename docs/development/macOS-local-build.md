@@ -117,22 +117,16 @@ Windows-only and Linux-only functions should not load.
 From the repository root:
 
 ```powershell
-pwsh
+./build.ps1 -Task Build
 ```
 
-Create a local build output folder:
+The built module is written to `out/Keldor`. Release packages require an explicit semantic version:
 
 ```powershell
-$RepoRoot = Get-Location
-$SourceModule = Join-Path $RepoRoot 'src/Keldor'
-$BuildRoot = Join-Path $RepoRoot 'out'
-$BuildModule = Join-Path $BuildRoot 'Keldor'
-
-Remove-Item $BuildModule -Recurse -Force -ErrorAction SilentlyContinue
-New-Item -Path $BuildRoot -ItemType Directory -Force | Out-Null
-
-Copy-Item -Path $SourceModule -Destination $BuildModule -Recurse -Force
+./build.ps1 -Task Release -Version '0.1.0'
 ```
+
+See the [Versioning Policy](versioning-policy.md) for release version selection.
 
 ## Import the Local Build
 

@@ -125,6 +125,7 @@ Workspace snippets are also available in `.vscode/Keldor.code-snippets` when thi
 - [Engineering Standards](docs/standards/README.md)
 - [Keldor General Engineering Standard](docs/standards/Keldor_General_Engineering_Standard.md)
 - [Keldor PowerShell Engineering Standard](docs/standards/Keldor_PowerShell_Engineering_Standard.md)
+- [Versioning Policy](docs/development/versioning-policy.md)
 - Docs site: https://docs.keldor.dev
 - Repository: https://github.com/keldor-dev/Keldor
 

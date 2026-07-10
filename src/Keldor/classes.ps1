@@ -31,7 +31,7 @@ class Keldor {
     $manifestPath = Join-Path -Path $PSScriptRoot -ChildPath 'Keldor.psd1'
     if (!(Test-Path -Path $manifestPath)) {
       $root = Split-Path -Parent $PSScriptRoot
-      $versionPath = Join-Path -Path $root -ChildPath '2024.12.1'
+      $versionPath = Join-Path -Path $root -ChildPath '0.1.0'
       $manifestPath = Join-Path -Path $versionPath -ChildPath 'Keldor.psd1'
     }
 
@@ -46,7 +46,7 @@ class Keldor {
   }
 
   [void] SaveUserConfig () {
-    $ModuleConfig = "$PSScriptRoot\2024.12.1\Config.ps1"
+    $ModuleConfig = "$PSScriptRoot\0.1.0\Config.ps1"
 
     $items = $Global:KeldorConfig | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name
 

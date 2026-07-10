@@ -3,7 +3,7 @@
     RootModule        = 'Keldor.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '2024.12.1'
+    ModuleVersion     = '0.1.0'
 
     # Author of this module
     Author            = 'Skyler Hart'
@@ -100,7 +100,7 @@
 
             # ReleaseNotes of this module
             ReleaseNotes               = @(
-                "Updated for release on 2024-12-05"
+                "Reset Keldor package versioning to Semantic Versioning starting at 0.1.0."
             )
 
             # Prerelease string of this module

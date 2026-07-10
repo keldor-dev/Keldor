@@ -11,6 +11,15 @@ Known issues:
 
 ######################
 #                    #
+#     Unreleased     #
+#                    #
+######################
+Changed:
+1. Reset Keldor package versioning from the historical calendar-style scheme to Semantic Versioning beginning at 0.1.0.
+2. Added explicit build, release, and publish commands that keep CI/build identifiers separate from the public package version.
+
+######################
+#                    #
 #      2024.12       #
 #                    #
 ######################
