@@ -6,7 +6,7 @@
 [![DevSkim](https://github.com/keldor-dev/Keldor/actions/workflows/devskim.yml/badge.svg)](https://github.com/keldor-dev/Keldor/actions/workflows/devskim.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/keldor-dev/Keldor/blob/master/LICENSE)
 
-![Keldor Logo](https://github.com/keldor-dev/Keldor/blob/6562686bdf7e852ba74f9805ef1439a7b1096386/src/Keldor/Resources/keldor-logo.png)
+![Keldor Logo](src/Keldor/Resources/keldor-logo.png)
 
 Keldor is a PowerShell automation toolkit for systems administration, help desk operations, and enterprise engineering workflows.
 

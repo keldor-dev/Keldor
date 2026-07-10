@@ -18,7 +18,7 @@
   Copyright         = 'Copyright (c) 2011-2026 Skyler Hart'
 
   # Description of the functionality provided by this module
-  Description       = 'Provides ability to perform a lot of tasks in an automated manner, Insider Threat detection, remediations, and enhancements to PowerShell. Also provides numerous shortcuts.'
+  Description       = 'A platform-aware PowerShell automation toolkit for systems administration, identity, security, infrastructure operations, remediation, and enterprise engineering workflows.'
 
   # Minimum version of the Windows PowerShell engine required by this module
   PowerShellVersion = '3.0'
@@ -86,8 +86,21 @@
     PSData = @{
 
       # Tags applied to this module. These help with module discovery in online galleries.
-      Tags                       = 'PSEdition_Desktop', 'Windows', 'Automation', 'ActiveDirectory', 'Security',
-      'Logging', 'Network', 'Reporting', 'Monitoring', 'Configuration', 'GroupPolicy'
+      Tags                       = @(
+        'PowerShell'
+        'Automation'
+        'Windows'
+        'Linux'
+        'macOS'
+        'CrossPlatform'
+        'ActiveDirectory'
+        'Security'
+        'Infrastructure'
+        'SystemsAdministration'
+        'Configuration'
+        'Monitoring'
+        'Reporting'
+      )
 
       # A URL to the license for this module.
       LicenseUri                 = 'https://github.com/keldor-dev/Keldor/blob/master/LICENSE'
@@ -96,7 +109,7 @@
       ProjectUri                 = 'https://github.com/keldor-dev/Keldor'
 
       # A URL to an icon representing this module.
-      IconUri                    = 'https://github.com/keldor-dev/Keldor/blob/27d2d499b800176518f0ef9c550f2eeed86af42e/src/Keldor/Resources/Keldor.png'
+      IconUri                    = 'https://raw.githubusercontent.com/keldor-dev/Keldor/master/src/Keldor/Resources/Keldor.png'
 
       # ReleaseNotes of this module
       ReleaseNotes               = @(
@@ -110,7 +123,7 @@
       RequireLicenseAcceptance   = $false
 
       # External dependent modules of this module
-      ExternalModuleDependencies = @('ActiveDirectory') #only for limited functions
+      ExternalModuleDependencies = @('') #Active Directory only for limited functions
     } # End of PSData hashtable
 
   } # End of PrivateData hashtable
