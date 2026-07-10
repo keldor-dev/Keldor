@@ -96,7 +96,7 @@
       ProjectUri                 = 'https://github.com/keldor-dev/Keldor'
 
       # A URL to an icon representing this module.
-      IconUri                    = 'https://raw.githubusercontent.com/keldor-dev/Keldor/master/Keldor_PowerShell_Module.png'
+      IconUri                    = 'https://github.com/keldor-dev/Keldor/blob/27d2d499b800176518f0ef9c550f2eeed86af42e/src/Keldor/Resources/Keldor.png'
 
       # ReleaseNotes of this module
       ReleaseNotes               = @(
