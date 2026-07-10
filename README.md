@@ -55,6 +55,8 @@ Use `Remove-KeldorSecret` or its `Remove-KDSecret` alias to remove a secret from
 
 Use `Get-KeldorSecretProvider` or its `Get-KDSecretProvider` alias to inspect the secret providers known to Keldor, their auto-selection priority, and non-sensitive availability details.
 
+Use `Test-KeldorSecretProvider` or its `Test-KDSecretProvider` alias to run safe, read-only operational checks against one or more providers without retrieving, creating, modifying, or removing secrets.
+
 ### Initial configuration
 
 Run the config command and update values for your environment:

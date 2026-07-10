@@ -51,25 +51,7 @@ function Get-KeldorSecretProvider {
     )
 
     process {
-        $Definitions = @(Get-KeldorSecretProviderDefinition | Sort-Object -Property Priority)
-
-        if ($Name) {
-            $SelectedDefinitions = @()
-            foreach ($ProviderName in $Name) {
-                if ($ProviderName -eq 'Auto') {
-                    throw "Auto is provider selection behavior, not a secret provider."
-                }
-
-                $Matches = @($Definitions | Where-Object { $_.Name -ieq $ProviderName })
-                if ($Matches.Count -eq 0) {
-                    throw "Secret provider '$ProviderName' was not found."
-                }
-
-                $SelectedDefinitions += $Matches
-            }
-
-            $Definitions = @($SelectedDefinitions | Sort-Object -Property Priority -Unique)
-        }
+        $Definitions = @(Resolve-KeldorSecretProviderDefinition -Name $Name)
 
         foreach ($Definition in $Definitions) {
             $ProviderInfo = Get-KeldorSecretProviderInfoObject -Definition $Definition -Detailed:$Detailed

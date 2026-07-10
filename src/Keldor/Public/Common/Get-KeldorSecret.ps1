@@ -39,6 +39,11 @@ function Get-KeldorSecret {
     https://docs.keldor.dev/powershell/keldor/Get-KeldorSecret
 #>
 
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        'PSReviewUnusedParameter',
+        'AsPlainText',
+        Justification = 'Reserved for future compatibility because all current providers return plaintext strings.'
+    )]
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-KeldorSecret')]
     [OutputType([string])]
     [Alias('Get-KDSecret')]
