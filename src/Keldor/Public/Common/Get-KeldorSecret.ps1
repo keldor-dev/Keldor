@@ -61,7 +61,7 @@ function Get-KeldorSecret {
 
     process {
         $ProviderOrder = switch ($Provider) {
-            'Auto' { @('OnePassword', 'SecretManagement', 'Environment') }
+            'Auto' { @(Get-KeldorSecretProviderOrder) }
             default { @($Provider) }
         }
 

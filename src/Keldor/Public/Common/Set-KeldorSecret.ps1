@@ -93,14 +93,24 @@ function Set-KeldorSecret {
 
         $SelectedProvider = $Provider
         if ($Provider -eq 'Auto') {
-            $SecretManagementModule = Get-Module -ListAvailable -Name 'Microsoft.PowerShell.SecretManagement' -ErrorAction SilentlyContinue
-            $SecretManagementCommand = Get-Command -Name 'Set-Secret' -ErrorAction SilentlyContinue
+            foreach ($ProviderDefinition in Get-KeldorSecretProviderDefinition | Sort-Object -Property Priority) {
+                if (-not $ProviderDefinition.CanWrite) {
+                    continue
+                }
 
-            if ($null -ne $SecretManagementModule -and $null -ne $SecretManagementCommand) {
-                $SelectedProvider = 'SecretManagement'
-            }
-            else {
-                $SelectedProvider = 'Environment'
+                if ($ProviderDefinition.Name -eq 'SecretManagement') {
+                    $SecretManagementModule = Get-Module -ListAvailable -Name 'Microsoft.PowerShell.SecretManagement' -ErrorAction SilentlyContinue
+                    $SecretManagementCommand = Get-Command -Name 'Set-Secret' -ErrorAction SilentlyContinue
+
+                    if ($null -ne $SecretManagementModule -and $null -ne $SecretManagementCommand) {
+                        $SelectedProvider = $ProviderDefinition.Name
+                        break
+                    }
+                }
+                elseif ($ProviderDefinition.Name -eq 'Environment') {
+                    $SelectedProvider = $ProviderDefinition.Name
+                    break
+                }
             }
         }
 

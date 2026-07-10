@@ -53,6 +53,8 @@ Use `Set-KeldorSecret` or its `Set-KDSecret` alias to write secrets through the 
 
 Use `Remove-KeldorSecret` or its `Remove-KDSecret` alias to remove a secret from one selected provider. Environment removals affect only the current process and do not remove values configured outside the current PowerShell process.
 
+Use `Get-KeldorSecretProvider` or its `Get-KDSecretProvider` alias to inspect the secret providers known to Keldor, their auto-selection priority, and non-sensitive availability details.
+
 ### Initial configuration
 
 Run the config command and update values for your environment:

@@ -84,16 +84,22 @@ function Remove-KeldorSecret {
         if ($Provider -eq 'Auto') {
             $ProviderMatches = @()
 
-            if (Test-KeldorSecretInOnePassword -Name $Name -Vault $Vault) {
-                $ProviderMatches += 'OnePassword'
-            }
+            foreach ($ProviderName in Get-KeldorSecretProviderOrder) {
+                $ProviderExists = switch ($ProviderName) {
+                    'OnePassword' {
+                        Test-KeldorSecretInOnePassword -Name $Name -Vault $Vault
+                    }
+                    'SecretManagement' {
+                        Test-KeldorSecretInSecretManagement -Name $Name -Vault $Vault
+                    }
+                    'Environment' {
+                        Test-KeldorSecretInEnvironment -Name $Name
+                    }
+                }
 
-            if (Test-KeldorSecretInSecretManagement -Name $Name -Vault $Vault) {
-                $ProviderMatches += 'SecretManagement'
-            }
-
-            if (Test-KeldorSecretInEnvironment -Name $Name) {
-                $ProviderMatches += 'Environment'
+                if ($ProviderExists) {
+                    $ProviderMatches += $ProviderName
+                }
             }
 
             if ($ProviderMatches.Count -gt 1) {
