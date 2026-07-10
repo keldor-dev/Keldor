@@ -76,4 +76,9 @@ else {
 }
 
 $PublicFunctionNames = @($PublicFunctions | Select-Object -ExpandProperty BaseName -Unique)
-Export-ModuleMember -Function $PublicFunctionNames
+$PublicAliasNames = @(
+    Get-Alias -Name 'Get-KDSecret' -ErrorAction SilentlyContinue |
+        Where-Object { $PublicFunctionNames -contains $_.Definition } |
+        Select-Object -ExpandProperty Name -Unique
+)
+Export-ModuleMember -Function $PublicFunctionNames -Alias $PublicAliasNames

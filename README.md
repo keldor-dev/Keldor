@@ -45,6 +45,10 @@ Install-Module Keldor -Scope CurrentUser
 
 ## Configuration
 
+### Secret retrieval
+
+Use `Get-KeldorSecret` or its `Get-KDSecret` alias to retrieve plaintext secrets through Keldor's provider abstraction. The default `Auto` provider tries OnePassword CLI, Microsoft.PowerShell.SecretManagement, and `KELDOR_SECRET_<NAME>` environment variables in that order.
+
 ### Initial configuration
 
 Run the config command and update values for your environment:
