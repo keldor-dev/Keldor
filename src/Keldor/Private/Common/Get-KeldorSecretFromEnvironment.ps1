@@ -6,7 +6,7 @@ function Get-KeldorSecretFromEnvironment {
         [string]$Name
     )
 
-    $EnvironmentName = 'KELDOR_SECRET_{0}' -f ($Name.ToUpperInvariant() -replace '[\s-]', '_')
+    $EnvironmentName = Get-KeldorSecretEnvironmentName -Name $Name
     $SecretValue = [Environment]::GetEnvironmentVariable($EnvironmentName)
 
     if ([string]::IsNullOrEmpty($SecretValue)) {

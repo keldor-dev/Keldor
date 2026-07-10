@@ -49,6 +49,8 @@ Install-Module Keldor -Scope CurrentUser
 
 Use `Get-KeldorSecret` or its `Get-KDSecret` alias to retrieve plaintext secrets through Keldor's provider abstraction. The default `Auto` provider tries OnePassword CLI, Microsoft.PowerShell.SecretManagement, and `KELDOR_SECRET_<NAME>` environment variables in that order.
 
+Use `Set-KeldorSecret` or its `Set-KDSecret` alias to write secrets through the same provider model. Writes use one selected provider only; the Environment provider writes process-scoped variables that disappear when the process exits.
+
 ### Initial configuration
 
 Run the config command and update values for your environment:
