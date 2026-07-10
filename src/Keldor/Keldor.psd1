@@ -3,7 +3,7 @@
   RootModule        = 'Keldor.psm1'
 
   # Version number of this module.
-  ModuleVersion     = '2024.12.1'
+  ModuleVersion     = '0.1.0'
 
   # Author of this module
   Author            = 'Skyler Hart'
@@ -93,14 +93,14 @@
       LicenseUri                 = 'https://github.com/keldor-dev/Keldor/blob/master/LICENSE'
 
       # A URL to the main website for this project.
-      ProjectUri                 = 'https://docs.keldor.dev'
+      ProjectUri                 = 'https://github.com/keldor-dev/Keldor'
 
       # A URL to an icon representing this module.
       IconUri                    = 'https://raw.githubusercontent.com/keldor-dev/Keldor/master/Keldor_PowerShell_Module.png'
 
       # ReleaseNotes of this module
       ReleaseNotes               = @(
-        "Updated for release on 2024-12-05"
+        'Initial public release of Keldor PowerShell Module.'
       )
 
       # Prerelease string of this module
@@ -116,7 +116,7 @@
   } # End of PrivateData hashtable
 
   # HelpInfo URI of this module
-  HelpInfoURI       = 'https://docs.keldor.dev/powershell-help/keldor/'
+  HelpInfoURI       = 'https://docs.keldor.dev/powershell/keldor/'
 
   # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
   # DefaultCommandPrefix = ''
