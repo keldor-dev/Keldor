@@ -2,9 +2,24 @@
 
 ## Overview
 
-Keldor is designed to load only the functions applicable to the operating system on which it is imported.
+Keldor loads only the commands applicable to the operating system on which the module is imported while maintaining a
+consistent public API across supported platforms.
 
-This minimizes unnecessary dependencies, reduces startup overhead, and allows the project to support Windows, macOS, and Linux without maintaining separate modules.
+This approach minimizes unnecessary dependencies, reduces startup overhead, and allows Keldor to support Windows,
+macOS, and Linux without maintaining separate modules.
+
+## Supported Platforms
+
+Keldor supports:
+
+- Windows PowerShell 3.0 through 5.1
+- PowerShell 7+
+- Windows
+- macOS
+- Linux
+
+Individual foundation commands may use legacy-compatible detection techniques where practical, but this does not expand
+the supported PowerShell versions of the complete Keldor module.
 
 ## Folder Structure
 
@@ -22,49 +37,140 @@ Private/
     Linux/
 ```
 
-## Loading Process
+Common commands are available on every supported platform. Platform-specific commands are loaded only when their folder
+matches the current platform.
+
+## Foundation Cmdlets
+
+Foundation cmdlets provide core functionality used throughout Keldor. They are intentionally lightweight, stable, and
+safe for other public and private commands to call.
+
+A foundation cmdlet should be:
+
+- public when consumers and downstream modules benefit from the same behavior
+- minimally dependent on other commands
+- safe to call during module initialization when required
+- compatible with every platform supported by its documented contract
+- thoroughly tested
+- performance-conscious because it may be called frequently
+- governed by a stable public API
+
+`Get-KeldorPlatform` is a foundation cmdlet. It is intentionally public so scripts, third-party modules, and downstream
+Keldor modules can use the same platform-detection logic that Keldor uses internally.
+
+Foundation cmdlets are architectural building blocks. Changes to their names, output contracts, or behavior require
+careful compatibility review.
+
+## Platform Detection
+
+`Get-KeldorPlatform` is the canonical source of operating-system platform detection for Keldor.
+
+Its return values are contractually fixed as:
+
+- `Windows`
+- `macOS`
+- `Linux`
+- `Unknown`
+
+The spelling and capitalization of these values are part of the public API. In particular, Apple platforms must be
+reported as `macOS`, not `MacOS`, `Mac OS`, `OSX`, or `Darwin`.
+
+The command identifies the operating-system family only. It does not identify the distribution, edition, version, build,
+or processor architecture.
+
+Consumers must include a default path for `Unknown` rather than assuming platform detection always succeeds.
+
+## Module Loading Process
 
 During module import:
 
 1. Load all private and public Common functions.
 2. Determine the current operating system with `Get-KeldorPlatform`.
-3. Load only the matching platform-specific functions.
+3. Load only the matching platform-specific private and public functions.
 4. Export only public functions that were loaded.
 
-## Platform Detection
+The complete Common layer must load before Keldor calls `Get-KeldorPlatform`. This guarantees that the foundation cmdlet
+is available before platform-specific commands are selected.
 
-`Get-KeldorPlatform` is a foundational public command and the canonical source of platform detection for the module. Its
-case-sensitive return values are contractually fixed as `Windows`, `macOS`, `Linux`, and `Unknown`. Platform-specific
-branching must compare against those exact values.
+Common commands may call `Get-KeldorPlatform` when they execute, but function definitions must not invoke
+platform-dependent behavior while they are being loaded.
 
-New commands must call `Get-KeldorPlatform` rather than directly checking `$IsWindows`, `$IsMacOS`, `$IsLinux`,
-`RuntimeInformation`, WMI, `uname`, or another platform-detection mechanism. Existing commands must not add new direct
-checks. Duplicate platform-detection logic is technical debt because centralizing detection allows compatibility fixes
-to be made in one place.
+The loading process must avoid circular dependencies between foundation commands, Common commands, and
+platform-specific commands.
 
-The loader imports the complete Common layer before calling `Get-KeldorPlatform`, ensuring that the foundation command
-is available before platform-specific public or private commands are loaded. Common commands may call it when they run,
-but must not invoke platform-dependent behavior while their function definitions are being loaded.
+## Developer Guidelines
 
-The module supports:
+New Keldor commands must use `Get-KeldorPlatform` for platform-specific branching.
 
-- Windows PowerShell 3.0 through 5.1
-- PowerShell 7+
+Do not introduce new direct platform-detection checks using:
 
-The `Get-KeldorPlatform` implementation also remains compatible with Windows PowerShell 2.0 so it can safely use legacy
-.NET and WMI fallbacks when embedded or tested independently. Older Windows PowerShell versions do not expose the modern
-automatic platform variables or `RuntimeInformation` APIs.
+- `$IsWindows`
+- `$IsMacOS`
+- `$IsLinux`
+- `RuntimeInformation`
+- WMI or CIM operating-system queries
+- `uname`
+- `sw_vers`
+- similar operating-system detection mechanisms
+
+Use the canonical result instead:
+
+```powershell
+switch (Get-KeldorPlatform) {
+    'Windows' {
+        # Windows-specific behavior
+    }
+
+    'macOS' {
+        # macOS-specific behavior
+    }
+
+    'Linux' {
+        # Linux-specific behavior
+    }
+
+    default {
+        # Unsupported or undetected platform
+    }
+}
+```
+
+Existing commands must not add new direct platform checks. Duplicate or near-duplicate platform-detection logic is
+technical debt because it prevents compatibility fixes from being made in one place.
+
+When existing duplicate detection logic is encountered, migrate it to `Get-KeldorPlatform` when the change is low-risk
+and does not alter the command's documented behavior.
+
+## API Stability
+
+Because `Get-KeldorPlatform` is a foundation cmdlet, its output contract is considered stable.
+
+The following changes are potentially breaking and require compatibility review:
+
+- renaming the command
+- changing an existing return value
+- changing the capitalization of a return value
+- replacing the string output with an enum or custom object
+- removing support for a documented platform
+- changing module-loading order in a way that makes the command unavailable to dependent commands
+
+Additional platforms may be supported in the future. Consumers should compare against documented values and retain a
+default branch for values they do not recognize.
 
 ## Benefits
 
-- Smaller command surface
-- Better startup performance
-- Easier maintenance
+- Centralized platform detection
+- Consistent behavior for internal and external consumers
+- Smaller command surface on each platform
+- Reduced startup overhead
+- Easier compatibility maintenance
 - Cleaner separation of platform-specific code
 - Improved cross-platform support
 
 ## Future Improvements
 
-- Plugin architecture
-- Optional feature packs
-- Lazy-loading of large command groups
+- Identify additional foundation cmdlets
+- Add architecture validation for duplicate platform-detection logic
+- Evaluate optional feature packs
+- Evaluate lazy-loading of large command groups
+- Evaluate a plugin architecture
