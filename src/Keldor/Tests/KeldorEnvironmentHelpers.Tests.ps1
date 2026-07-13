@@ -1,7 +1,7 @@
 Describe "Keldor environment helpers" {
     BeforeAll {
         $ModuleRoot = Split-Path -Parent $PSScriptRoot
-        . (Join-Path $ModuleRoot 'Private/Common/Get-KeldorPlatform.ps1')
+        . (Join-Path $ModuleRoot 'Public/Common/Get-KeldorPlatform.ps1')
         . (Join-Path $ModuleRoot 'Private/Common/Test-KeldorAdministrator.ps1')
         . (Join-Path $ModuleRoot 'Private/Windows/Test-KeldorActiveDirectoryModule.ps1')
         . (Join-Path $ModuleRoot 'Private/Windows/Assert-KeldorActiveDirectoryModule.ps1')

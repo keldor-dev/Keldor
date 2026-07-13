@@ -5,17 +5,7 @@ Describe "Keldor Module" {
 
         Import-Module $ManifestPath -Force
 
-        $script:Platform = if ((Get-Variable -Name IsWindows -ErrorAction SilentlyContinue) -and $IsWindows) {
-            'Windows'
-        } elseif ((Get-Variable -Name IsMacOS -ErrorAction SilentlyContinue) -and $IsMacOS) {
-            'macOS'
-        } elseif ((Get-Variable -Name IsLinux -ErrorAction SilentlyContinue) -and $IsLinux) {
-            'Linux'
-        } elseif ($PSVersionTable.PSEdition -eq 'Desktop') {
-            'Windows'
-        } else {
-            'Unknown'
-        }
+        $script:Platform = Get-KeldorPlatform
     }
 
     It "Should import the module" {

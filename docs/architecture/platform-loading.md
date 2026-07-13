@@ -26,19 +26,34 @@ Private/
 
 During module import:
 
-1. Determine the current operating system.
-2. Load all Common functions.
+1. Load all private and public Common functions.
+2. Determine the current operating system with `Get-KeldorPlatform`.
 3. Load only the matching platform-specific functions.
 4. Export only public functions that were loaded.
 
 ## Platform Detection
 
-Keldor supports:
+`Get-KeldorPlatform` is a foundational public command and the canonical source of platform detection for the module. Its
+case-sensitive return values are contractually fixed as `Windows`, `macOS`, `Linux`, and `Unknown`. Platform-specific
+branching must compare against those exact values.
 
-- Windows PowerShell 5.1
+New commands must call `Get-KeldorPlatform` rather than directly checking `$IsWindows`, `$IsMacOS`, `$IsLinux`,
+`RuntimeInformation`, WMI, `uname`, or another platform-detection mechanism. Existing commands must not add new direct
+checks. Duplicate platform-detection logic is technical debt because centralizing detection allows compatibility fixes
+to be made in one place.
+
+The loader imports the complete Common layer before calling `Get-KeldorPlatform`, ensuring that the foundation command
+is available before platform-specific public or private commands are loaded. Common commands may call it when they run,
+but must not invoke platform-dependent behavior while their function definitions are being loaded.
+
+The module supports:
+
+- Windows PowerShell 3.0 through 5.1
 - PowerShell 7+
 
-Older versions of PowerShell do not expose `$IsWindows`, `$IsMacOS`, or `$IsLinux`, so Keldor uses a compatibility helper to determine the platform.
+The `Get-KeldorPlatform` implementation also remains compatible with Windows PowerShell 2.0 so it can safely use legacy
+.NET and WMI fallbacks when embedded or tested independently. Older Windows PowerShell versions do not expose the modern
+automatic platform variables or `RuntimeInformation` APIs.
 
 ## Benefits
 
