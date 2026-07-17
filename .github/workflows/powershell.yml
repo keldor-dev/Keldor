@@ -213,3 +213,56 @@ jobs:
           if ((Get-KeldorPlatform) -ne 'Linux') {
               throw 'Red Hat UBI did not resolve to the Linux platform.'
           }
+
+  alpine-323-import:
+    name: PowerShell 7.6 import (Alpine 3.23)
+    runs-on: ubuntu-latest
+    container: alpine:3.23
+    steps:
+      - name: Install PowerShell and prerequisites
+        shell: sh
+        run: |
+          set -eu
+          apk add --no-cache \
+              ca-certificates \
+              curl \
+              git \
+              icu-libs \
+              krb5-libs \
+              less \
+              libgcc \
+              libintl \
+              libssl3 \
+              libstdc++ \
+              ncurses-terminfo-base \
+              tar \
+              tzdata \
+              userspace-rcu \
+              zlib
+          apk -X https://dl-cdn.alpinelinux.org/alpine/edge/main add --no-cache \
+              lttng-ust \
+              openssh-client
+          curl -fsSL \
+              https://github.com/PowerShell/PowerShell/releases/download/v7.6.0/powershell-7.6.0-linux-musl-x64.tar.gz \
+              -o /tmp/powershell.tar.gz
+          mkdir -p /opt/microsoft/powershell/7
+          tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7
+          chmod +x /opt/microsoft/powershell/7/pwsh
+          ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
+          rm /tmp/powershell.tar.gz
+
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Validate Alpine import
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          if ($PSVersionTable.PSVersion.Major -ne 7 -or $PSVersionTable.PSVersion.Minor -ne 6) {
+              throw "Expected PowerShell 7.6; detected $($PSVersionTable.PSVersion)."
+          }
+          Test-ModuleManifest ./src/Keldor/Keldor.psd1 | Out-Null
+          Import-Module ./src/Keldor/Keldor.psd1 -Force -ErrorAction Stop
+          if ((Get-KeldorPlatform) -ne 'Linux') {
+              throw 'Alpine did not resolve to the Linux platform.'
+          }
