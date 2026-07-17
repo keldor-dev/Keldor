@@ -41,7 +41,7 @@ uptime totals are numeric, and Boolean properties remain Boolean or `$null`.
 
 | Platform | Sources |
 |---|---|
-| Windows | CIM, WMI fallback, Windows product registry, and .NET runtime APIs |
+| Windows | CIM, Windows product registry, and .NET runtime APIs |
 | Linux | `/etc/os-release`, `/usr/lib/os-release`, `/proc`, `/sys/class/dmi/id`, and `uname` |
 | macOS | `sw_vers`, `uname`, `sysctl`, .NET monotonic uptime, and narrow `system_profiler SPHardwareDataType` output |
 

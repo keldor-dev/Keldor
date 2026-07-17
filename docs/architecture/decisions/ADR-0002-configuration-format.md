@@ -11,12 +11,8 @@
 
 Keldor requires a configuration mechanism that works consistently across a broad range of PowerShell versions and operating environments.
 
-The project has the following compatibility goals:
-
-- PowerShell 7+
-- Windows PowerShell 5.1
-- Windows PowerShell 2.0 where practical
-- Windows, macOS, and Linux where possible
+The project supports Windows PowerShell 5.1 and Microsoft-supported PowerShell 7 release lines beginning with 7.4 on
+Windows, macOS, and Linux where the command contract applies.
 
 Keldor has historically been used in enterprise, government, and Department of Defense environments, including systems hardened according to DISA STIGs and other security baselines.
 
@@ -24,12 +20,8 @@ During development and production use, several alternative configuration formats
 
 Examples include:
 
-- JSON
-  - Requires `ConvertFrom-Json`, which is unavailable in Windows PowerShell 2.0.
-  - Requires additional parsing and type conversion.
-- PSD1
-  - Requires `Import-PowerShellDataFile`, introduced in later PowerShell versions.
-  - May encounter restrictions in older or highly locked-down environments.
+- JSON requires additional parsing and type conversion and cannot express every native configuration value.
+- PSD1 data files intentionally restrict executable expressions and cannot represent every historical Keldor setting.
 - CSV
   - Suitable only for simple tabular data.
   - Cannot naturally represent nested configuration, arrays, or complex PowerShell types.
@@ -46,11 +38,10 @@ Configuration files should remain declarative whenever practical and should avoi
 
 ## Rationale
 
-### Maximum Compatibility
+### Supported-Runtime Compatibility
 
-A PowerShell script executes natively across every supported PowerShell version, including Windows PowerShell 2.0.
-
-No additional parsing cmdlets are required.
+A PowerShell script executes natively across the Windows PowerShell 5.1 and supported PowerShell 7 baseline. No
+additional parsing cmdlets are required.
 
 ### Native PowerShell Types
 
@@ -108,7 +99,7 @@ The same configuration model functions consistently across Windows, macOS, and L
 
 ### JSON
 
-Rejected due to PowerShell 2.0 compatibility and additional parsing requirements.
+Rejected due to additional parsing, conversion, and native-type limitations.
 
 ### PSD1
 

@@ -2,8 +2,8 @@
 
 ## Requirements
 
-- PowerShell 7.x (recommended)
-- Windows PowerShell 5.1 (supported)
+- PowerShell 7.6 LTS (preferred for build, formatting, documentation, and primary tests)
+- Windows PowerShell 5.1 on a supported Windows version (production compatibility testing)
 - Git
 
 Optional:
@@ -61,11 +61,11 @@ Verify imports on:
 
 where possible.
 
-## Optional Validation
+## Validation Strategy
 
-If available:
+Run the full Pester and PSScriptAnalyzer validation under PowerShell 7.6. Run manifest validation, actual module import,
+shared-file parsing, and compatible smoke tests under Windows PowerShell 5.1. The test harness may use different Pester
+versions on the two runtimes; Windows PowerShell 5.1 coverage must not be silently skipped.
 
-- Run Pester
-- Run PSScriptAnalyzer
-
-These tools are optional and are not required for development.
+PowerShell 7.4 and 7.5 are compatibility lines only while they remain in Keldor's documented matrix. See the
+[compatibility policy](../compatibility.md).

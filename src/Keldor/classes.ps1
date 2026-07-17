@@ -6,9 +6,8 @@
     This file serves as the central location for Keldor-specific object
     definitions and shared type metadata.
 
-    Historically, it was designed to provide a lightweight object model
-    that could be used across the Keldor module while maintaining
-    compatibility with Windows PowerShell 2.0.
+    It provides a lightweight object model that can be used across the
+    Keldor module on the supported PowerShell baseline.
 
     The long-term architectural vision includes providing standardized
     inventory and CMDB-style objects that can be shared between commands,

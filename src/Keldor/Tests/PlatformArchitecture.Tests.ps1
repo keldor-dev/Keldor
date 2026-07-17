@@ -1,7 +1,7 @@
 Describe 'Platform detection architecture' {
     BeforeAll {
         $script:ModuleRoot = Split-Path -Parent $PSScriptRoot
-        $script:CanonicalPath = Join-Path $script:ModuleRoot 'Public/Common/Get-KeldorPlatform.ps1'
+        $script:BootstrapPath = Join-Path $script:ModuleRoot 'Private/Common/Get-KeldorBootstrapPlatform.ps1'
     }
 
     It 'has exactly one Get-KeldorPlatform implementation in module source' {
@@ -26,10 +26,10 @@ Describe 'Platform detection architecture' {
         @($definitions).Count | Should -Be 1
     }
 
-    It 'keeps direct platform checks inside Get-KeldorPlatform' {
+    It 'keeps direct platform checks inside the loader-safe bootstrap helper' {
         $violations = foreach ($directory in 'Public', 'Private') {
             foreach ($file in Get-ChildItem -Path (Join-Path $script:ModuleRoot $directory) -Filter '*.ps1' -File -Recurse) {
-                if ($file.FullName -eq $script:CanonicalPath) {
+                if ($file.FullName -eq $script:BootstrapPath) {
                     continue
                 }
 

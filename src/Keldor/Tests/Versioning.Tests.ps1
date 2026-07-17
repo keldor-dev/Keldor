@@ -42,4 +42,18 @@ Describe "Keldor versioning" {
         $builtManifest.PrivateData.PSData.Prerelease | Should -Be 'preview.1'
         $sourceManifest.Version.ToString() | Should -Be '0.1.0'
     }
+
+    It 'writes explicit function exports into packaged manifests' {
+        Invoke-KeldorBuild -Task Build
+
+        $builtManifestPath = Join-Path $script:RepoRoot 'out/Keldor/Keldor.psd1'
+        $builtManifest = Import-PowerShellDataFile -Path $builtManifestPath
+        $expectedFunctions = Get-ChildItem (Join-Path $script:ModuleRoot 'Public') -Filter '*.ps1' -File -Recurse |
+            Select-Object -ExpandProperty BaseName |
+            Sort-Object -Unique
+
+        $builtManifest.FunctionsToExport | Should -Not -Contain '*'
+        Compare-Object $expectedFunctions ($builtManifest.FunctionsToExport | Sort-Object -Unique) |
+            Should -BeNullOrEmpty
+    }
 }

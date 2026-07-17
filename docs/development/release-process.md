@@ -12,6 +12,7 @@ Every release should follow a predictable process to ensure module quality and d
 - Verify online help.
 - Verify HelpUri values.
 - Generate updateable help packages.
+- Complete the [PowerShell lifecycle review](powershell-lifecycle-policy.md) and update the compatibility matrix.
 - Select the next version using the [Versioning Policy](versioning-policy.md).
 - Update release notes.
 - Publish documentation.
@@ -39,6 +40,9 @@ Development builds do not permanently rewrite the source manifest:
 ```powershell
 ./build.ps1 -Task Build
 ```
+
+Dropping older PowerShell runtimes is a breaking change. The source manifest remains at its development version until
+release preparation selects the next major version; this refactor does not invent or publish that version.
 
 ## GitHub
 

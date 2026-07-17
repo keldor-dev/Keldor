@@ -227,21 +227,6 @@
         "description": "Insert a PSCustomObject with a PSTypeName."
     },
 
-    "Keldor PowerShell Legacy Object": {
-        "scope": "powershell",
-        "prefix": [
-            "keldor-legacy-object",
-            "keldor-ps2-object"
-        ],
-        "body": [
-            "\\$Object = New-Object PSObject",
-            "\\$Object | Add-Member -MemberType NoteProperty -Name PSTypeName -Value '${1:Keldor.TypeName}'",
-            "\\$Object | Add-Member -MemberType NoteProperty -Name ${2:Name} -Value ${3:\\$Value}",
-            "\\$Object$0"
-        ],
-        "description": "Insert a PowerShell 2.0-compatible object pattern."
-    },
-
     "Keldor PowerShell Null Or Empty Check": {
         "scope": "powershell",
         "prefix": [
@@ -253,7 +238,7 @@
             "    ${2:throw 'Value cannot be null or empty.'}",
             "}$0"
         ],
-        "description": "Insert a PowerShell 2.0-compatible null or empty string check."
+        "description": "Insert a supported-baseline null or empty string check."
     },
 
     "Keldor PowerShell Module Check": {

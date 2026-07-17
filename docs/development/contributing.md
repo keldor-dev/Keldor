@@ -6,6 +6,10 @@ Thank you for contributing to Keldor.
 
 Keldor aims to provide a modern, cross-platform PowerShell toolkit with a consistent user experience.
 
+Shared production code must parse and run on Windows PowerShell 5.1 and supported PowerShell 7 release lines beginning
+with 7.4. Use PowerShell 7.6 LTS for primary development and CI. Do not introduce PowerShell 7-only parser syntax into
+files loaded by Windows PowerShell 5.1.
+
 ## Coding Standards
 
 - One public function per file.
@@ -79,6 +83,7 @@ Please ensure:
 - Documentation is updated.
 - New public commands include online help.
 - Breaking changes are documented.
+- The PowerShell lifecycle matrix is reviewed when the change affects runtime compatibility.
 
 ## Documentation
 

@@ -1,3 +1,5 @@
+#Requires -Version 7.4
+
 [CmdletBinding()]
 param(
     [ValidateSet('Validate', 'Build', 'Release', 'Publish')]
@@ -117,6 +119,38 @@ function Copy-KeldorModule {
     Copy-Item -Path $SourceModulePath -Destination $DestinationModulePath -Recurse -Force
 }
 
+function Update-KeldorManifestExports {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [string]$SourceModulePath,
+
+        [Parameter(Mandatory)]
+        [string]$ManifestPath
+    )
+
+    $publicPath = Join-Path -Path $SourceModulePath -ChildPath 'Public'
+    $functionNames = @(
+        Get-ChildItem -LiteralPath $publicPath -Filter '*.ps1' -File -Recurse -ErrorAction Stop |
+            Select-Object -ExpandProperty BaseName |
+            Sort-Object -Unique
+    )
+    $exportLines = @($functionNames | ForEach-Object { "        '$_'" })
+    $replacement = "    FunctionsToExport = @(`n" + ($exportLines -join "`n") + "`n    )"
+    $content = Get-Content -LiteralPath $ManifestPath -Raw
+    $updatedContent = [regex]::Replace(
+        $content,
+        "(?m)^\s*FunctionsToExport\s*=\s*'\*'\s*$",
+        $replacement
+    )
+
+    if ($updatedContent -eq $content) {
+        throw "Could not replace the development FunctionsToExport wildcard in '$ManifestPath'."
+    }
+
+    Set-Content -LiteralPath $ManifestPath -Value $updatedContent -NoNewline -Encoding utf8
+}
+
 function Assert-KeldorPublishVersion {
     [CmdletBinding()]
     param(
@@ -175,6 +209,7 @@ function Invoke-KeldorBuild {
         'Build' {
             Test-KeldorManifestVersion -ManifestPath $sourceManifest | Out-Null
             Copy-KeldorModule -SourceModulePath $sourceModule -DestinationModulePath $buildModule
+            Update-KeldorManifestExports -SourceModulePath $sourceModule -ManifestPath $buildManifest
             Test-KeldorManifestVersion -ManifestPath $buildManifest | Out-Null
             Write-Host "Built Keldor module at '$buildModule'."
         }
@@ -187,6 +222,7 @@ function Invoke-KeldorBuild {
             $versionParts = Split-KeldorSemanticVersion -Version $Version
             Test-KeldorManifestVersion -ManifestPath $sourceManifest | Out-Null
             Copy-KeldorModule -SourceModulePath $sourceModule -DestinationModulePath $buildModule
+            Update-KeldorManifestExports -SourceModulePath $sourceModule -ManifestPath $buildManifest
             Update-KeldorManifestVersion -ManifestPath $buildManifest -Version $Version
             Test-KeldorManifestVersion -ManifestPath $buildManifest -ExpectedVersion $versionParts.ModuleVersion | Out-Null
             Write-Host "Prepared Keldor release package version '$Version' at '$buildModule'."

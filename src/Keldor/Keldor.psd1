@@ -1,30 +1,33 @@
 @{
     # Script module or binary module file associated with this manifest.
-    RootModule        = 'Keldor.psm1'
+    RootModule           = 'Keldor.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.1.0'
+    ModuleVersion        = '0.1.0'
 
     # Author of this module
-    Author            = 'Skyler Hart'
+    Author               = 'Skyler Hart'
 
     # Company or vendor of this module
-    CompanyName       = 'Skyler Hart'
+    CompanyName          = 'Skyler Hart'
 
     # ID used to uniquely identify this module
-    GUID              = '9ec00217-7f1f-4a5f-b61b-d59843a8a18f'
+    GUID                 = '9ec00217-7f1f-4a5f-b61b-d59843a8a18f'
 
     # Copyright statement for this module
-    Copyright         = 'Copyright (c) 2011-2026 Skyler Hart'
+    Copyright            = 'Copyright (c) 2011-2026 Skyler Hart'
 
     # Description of the functionality provided by this module
-    Description       = 'A platform-aware PowerShell automation toolkit for systems administration, identity, security, infrastructure operations, remediation, and enterprise engineering workflows.'
+    Description          = 'A platform-aware PowerShell automation toolkit for systems administration, identity, security, infrastructure operations, remediation, and enterprise engineering workflows.'
 
-    # Minimum version of the Windows PowerShell engine required by this module
-    PowerShellVersion = '3.0'
+    # Numeric minimum only. Keldor.psm1 enforces the edition-aware support policy.
+    PowerShellVersion    = '5.1'
 
-    # Supported PSEditions
-    # CompatiblePSEditions = @('Desktop') #only importable on PowerShell 5.1 or later if this is used.
+    # Supported PowerShell editions
+    CompatiblePSEditions = @(
+        'Desktop'
+        'Core'
+    )
 
     # Name of the Windows PowerShell host required by this module
     # PowerShellHostName = ''
@@ -48,7 +51,7 @@
     # RequiredAssemblies = @()
 
     # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-    ScriptsToProcess  = @('.\config.ps1', '.\classes.ps1')
+    ScriptsToProcess     = @()
 
     # Type files (.ps1xml) to be loaded when importing this module
     # TypesToProcess = @()
@@ -60,16 +63,23 @@
     # NestedModules = @('')
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-    FunctionsToExport = '*'
+    # Source discovery uses a wildcard for development. build.ps1 writes explicit names into release artifacts.
+    FunctionsToExport    = '*'
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-    CmdletsToExport   = '*'
+    CmdletsToExport      = @()
 
     # Variables to export from this module
-    VariablesToExport = '*'
+    VariablesToExport    = @()
 
     # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-    AliasesToExport   = '*'
+    AliasesToExport      = @(
+        'Get-KDSecret'
+        'Get-KDSecretProvider'
+        'Remove-KDSecret'
+        'Set-KDSecret'
+        'Test-KDSecretProvider'
+    )
 
     # DSC resources to export from this module
     # DscResourcesToExport = @()
@@ -81,7 +91,7 @@
     # FileList = @()
 
     # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
-    PrivateData       = @{
+    PrivateData          = @{
 
         PSData = @{
 
@@ -123,13 +133,13 @@
             RequireLicenseAcceptance   = $false
 
             # External dependent modules of this module
-            ExternalModuleDependencies = @('') #Active Directory only for limited functions
+            ExternalModuleDependencies = @()
         } # End of PSData hashtable
 
     } # End of PrivateData hashtable
 
     # HelpInfo URI of this module
-    HelpInfoURI       = 'https://docs.keldor.dev/powershell/keldor/'
+    HelpInfoURI          = 'https://docs.keldor.dev/powershell/keldor/'
 
     # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
     # DefaultCommandPrefix = ''

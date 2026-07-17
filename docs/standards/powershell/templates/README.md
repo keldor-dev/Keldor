@@ -15,12 +15,10 @@ These templates represent the canonical implementation patterns for the Keldor P
 | `Module.psm1` | Standard module loader pattern. |
 | `Module.psd1` | Standard module manifest pattern. |
 | `Pester.Tests.ps1` | Standard Pester test scaffold. |
-| `Class.ps1` | Optional class template for PowerShell 5.1+ / 7+ code. |
-| `Enum.ps1` | Optional enum template for PowerShell 5.1+ / 7+ code. |
-
-PowerShell 2.0-compatible modules should avoid classes and enums.
+| `Class.ps1` | Optional class template for the supported PowerShell baseline. |
+| `Enum.ps1` | Optional enum template for the supported PowerShell baseline. |
 
 Use the fleet templates only when the
 [fleet and infrastructure contract](../../Keldor_Input_Output_Standard.md#fleet-and-infrastructure-contract) applies.
-They target the module manifest's PowerShell 3.0 minimum. Simple commands should continue to use the general templates
-without irrelevant connection or fleet parameters.
+They use syntax valid in Windows PowerShell 5.1 and supported PowerShell 7 releases. Simple commands should continue to
+use the general templates without irrelevant connection or fleet parameters.

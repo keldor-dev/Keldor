@@ -22,7 +22,8 @@ Keldor is a PowerShell automation toolkit for systems administration, help desk 
 
 ### Prerequisites
 
-1. PowerShell 5.1+ (PowerShell 7+ supported for many functions)
+1. Windows PowerShell 5.1 on a Microsoft-supported Windows version, or a Microsoft-supported PowerShell 7 release
+   beginning with PowerShell 7.4
 2. Optional modules/features based on function usage:
    - ActiveDirectory module
    - NetIQ DRA PowerShell REST Extensions
@@ -80,7 +81,18 @@ Keldor loads functions based on the OS importing the module:
 - `macOS` functions load only on macOS
 - `Linux` functions load only on Linux
 
-If platform detection fails, Keldor safely loads only common functions and warns instead of failing module import.
+If platform detection returns `Unknown`, Keldor loads the Common command layer only. Unsupported PowerShell editions
+and versions fail module import before configuration or command loading.
+
+## PowerShell Compatibility
+
+Keldor supports Windows PowerShell 5.1 on Windows versions that remain supported by Microsoft. Keldor also supports
+Microsoft-supported PowerShell 7 release lines beginning with PowerShell 7.4. Retired PowerShell releases are not
+supported. PowerShell 7.6 LTS is the preferred development, automation, and CI runtime.
+
+The current tested Core lines are PowerShell 7.4, 7.5, and 7.6. This list is lifecycle-bound, not permanent. See the
+[compatibility policy](docs/compatibility.md) and
+[lifecycle review policy](docs/development/powershell-lifecycle-policy.md).
 
 ### Module folder structure
 
@@ -143,6 +155,8 @@ Workspace snippets are also available in `.vscode/Keldor.code-snippets` when thi
 - [Keldor General Engineering Standard](docs/standards/Keldor_General_Engineering_Standard.md)
 - [Keldor PowerShell Engineering Standard](docs/standards/Keldor_PowerShell_Engineering_Standard.md)
 - [Versioning Policy](docs/development/versioning-policy.md)
+- [PowerShell Compatibility](docs/compatibility.md)
+- [PowerShell Lifecycle Review](docs/development/powershell-lifecycle-policy.md)
 - [Cross-Platform System Information](docs/architecture/system-information.md)
 - Docs site: https://docs.keldor.dev
 - Repository: https://github.com/keldor-dev/Keldor

@@ -199,9 +199,6 @@ $Global:KeldorConfig = [PSCustomObject]@{
     VLC                           = "\\servername\apps\Tools\VLC"
     VMwareTools                   = "\\servername\apps\Patches\VMware_Tools"
     Wireshark                     = "\\servername\apps\Tools\Wireshark"
-    WMF3                          = "\\servername\apps\Microsoft\Windows Management Framework 3.0"
-    WMF4                          = "\\servername\apps\Microsoft\Windows Management Framework 4.0"
-    WMF5                          = "\\servername\apps\Microsoft\Windows Management Framework 5.1"
     Zoom                          = "\\servername\apps\Approved\Zoom"
 
     #Install file locations that use the PowerShell App Deployment Toolkit from https://psappdeploytoolkit.com/

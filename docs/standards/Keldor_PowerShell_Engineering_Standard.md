@@ -33,9 +33,11 @@ Validate inputs, avoid unsafe dynamic execution, do not hardcode secrets, and mi
 
 New commands should support Windows, macOS, and Linux unless the command is inherently platform-specific.
 
-### Backward Compatibility Where Practical
+### Supported Runtime Compatibility
 
-PowerShell 7+ is preferred. Windows PowerShell 5.1 should be supported where practical. PowerShell 2.0 compatibility may be preserved only when it does not weaken security, correctness, readability, or maintainability.
+Windows PowerShell 5.1 and Microsoft-supported PowerShell 7 release lines beginning with 7.4 are supported. PowerShell
+7.6 LTS is preferred for development, automation, and CI. Shared production code must retain the Windows PowerShell 5.1
+parser baseline.
 
 ### Discoverable
 
@@ -55,16 +57,13 @@ Commands should work well in the pipeline and return objects suitable for filter
 
 ## Compatibility Targets
 
-Preferred runtime:
+Supported production runtimes:
 
-- PowerShell 7+
+- Windows PowerShell 5.1 on Microsoft-supported Windows versions.
+- Microsoft-supported PowerShell 7 release lines beginning with 7.4.
 
-Supported where practical:
-
-- Windows PowerShell 5.1
-- Windows PowerShell 2.0
-
-PowerShell 2.0 compatibility is a compatibility goal, not a veto over secure or maintainable design.
+PowerShell 7.6 LTS is the preferred development, automation, formatting, documentation, and CI runtime. Retired
+PowerShell releases are not compatibility targets.
 
 ## Formatting
 
@@ -234,19 +233,18 @@ when wrapping would harm correctness, usability, or copy-and-paste behavior.
 
 ## PowerShell Version Matrix
 
-| Feature | PowerShell 2.0 | Windows PowerShell 5.1 | PowerShell 7+ | Guidance |
-|---|:---:|:---:|:---:|---|
-| Advanced functions | Yes | Yes | Yes | Use for public commands. |
-| Classes | No | Yes | Yes | Avoid in broadly compatible code. |
-| Enums | No | Yes | Yes | Avoid when PS2 compatibility matters. |
-| `[pscustomobject]` | Limited | Yes | Yes | Prefer for modern code; use `New-Object PSObject` for PS2-compatible code. |
-| CIM cmdlets | No | Yes | Yes | Prefer CIM when PS2 compatibility is not required. |
-| WMI cmdlets | Yes | Yes | Windows compatibility varies | Use for legacy Windows compatibility; treat as legacy. |
-| `ForEach-Object -Parallel` | No | No | Yes | Avoid in shared module code unless explicitly PS7-only. |
-| Ternary operator | No | No | Yes | Avoid in shared code. |
-| Null-coalescing operators | No | No | Yes | Avoid in shared code. |
-| `using namespace` | No | Yes | Yes | Avoid in broadly compatible module code. |
-| `$IsWindows`, `$IsLinux`, `$IsMacOS` | No | No | Yes | Use compatibility helpers when targeting Windows PowerShell. |
+| Feature | Windows PowerShell 5.1 | Supported PowerShell 7 | Guidance |
+|---|:---:|:---:|---|
+| Advanced functions | Yes | Yes | Use for public commands. |
+| Classes | Yes | Yes | Use only when they improve a stable design. |
+| Enums | Yes | Yes | Use only when they improve a stable design. |
+| `[pscustomobject]` and `[ordered]` | Yes | Yes | Prefer for structured output. |
+| CIM cmdlets | Yes | Platform-dependent | Prefer for Windows management when behaviorally safe. |
+| WMI cmdlets | Yes | Windows compatibility varies | Retain only for remote, vendor-provider, or tested fallback needs. |
+| `ForEach-Object -Parallel` | No | Yes | Do not use in shared module code. |
+| Ternary and null-coalescing operators | No | Yes | Do not use in shared module code. |
+| `using namespace` | Yes | Yes | Use cautiously because module class discovery has parse-time behavior. |
+| `$IsWindows`, `$IsLinux`, `$IsMacOS` | No | Yes | Use the Keldor platform helper outside its bootstrap implementation. |
 
 ## Naming Conventions
 
@@ -620,14 +618,8 @@ Timestamp properties must identify the recorded event. Prefer names such as `Cre
 Return `[datetime]` values by default or `[datetimeoffset]` when timezone and transport semantics matter. Do not format a
 timestamp as a string unless the public output contract explicitly requires a string.
 
-For PowerShell 2.0-compatible code, use:
-
-```powershell
-$Object = New-Object PSObject
-$Object | Add-Member -MemberType NoteProperty -Name PSTypeName -Value 'Keldor.TypeName'
-$Object | Add-Member -MemberType NoteProperty -Name ComputerName -Value $ComputerName
-$Object
-```
+Use `[pscustomobject]` and `[ordered]` for new structured output. Preserve older object construction only when a tested
+public contract requires incremental migration.
 
 ## Error Handling
 

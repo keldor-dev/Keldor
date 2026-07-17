@@ -67,4 +67,27 @@ Public documentation lives in the separate `keldor-dev/docs` repository.
 - Small focused functions
 - Cross-platform where practical
 - Public API stability
-- Backward compatibility whenever possible
+- Windows PowerShell 5.1 parser compatibility in shared production files
+- Supported PowerShell 7 release lines beginning with PowerShell 7.4
+
+## Deterministic Loading Order
+
+The source loader uses this dependency order:
+
+1. Runtime validation.
+2. Module configuration and shared classes.
+3. Foundational private helpers and Common private functions.
+4. Current-platform private functions.
+5. Common public functions, including `Get-KeldorPlatform`.
+6. Current-platform public functions.
+7. Aliases and exports.
+
+Files are discovered only as direct `*.ps1` children of the intended folder, filtered for temporary/hidden names, and
+sorted by full path before dot-sourcing. Required load failures terminate import and name the responsible file.
+
+## Remaining Global Configuration State
+
+`config.ps1` and `classes.ps1` retain the historical `$Global:KeldorConfig` and `$Global:Keldor` contracts because many
+public commands and the tray application consume them. The root loader does not introduce additional global state.
+Replacing these variables requires a separate configuration-contract migration with consumer tests; the
+[runtime migration audit](../development/powershell-runtime-migration-audit.md) records that follow-up.

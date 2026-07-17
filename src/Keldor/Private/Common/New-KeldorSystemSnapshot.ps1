@@ -93,7 +93,7 @@ function New-KeldorSystemSnapshot {
             Source                 = $null
         }
         PowerShellVersion = $PSVersionTable.PSVersion
-        PowerShellEdition = if ($PSVersionTable.PSEdition) { $PSVersionTable.PSEdition } else { 'Desktop' }
+        PowerShellEdition = $PSVersionTable.PSEdition
         DotNetVersion     = [Environment]::Version
         AzureResourceId   = $null
         AzureArcStatus    = $null

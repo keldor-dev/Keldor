@@ -41,48 +41,12 @@ Describe 'Get-KeldorPlatform' {
         Get-KeldorPlatform | Should -Be $expected
     }
 
-    It 'recognizes supported RuntimeInformation descriptions' -TestCases @(
-        @{ Description = 'Microsoft Windows 10.0.19045'; Expected = 'Windows' }
-        @{ Description = 'Linux 6.8.0'; Expected = 'Linux' }
-        @{ Description = 'Darwin 25.0.0'; Expected = 'macOS' }
-        @{ Description = 'macOS 15.0'; Expected = 'macOS' }
-        @{ Description = 'Mac OS X 10.15'; Expected = 'macOS' }
-    ) {
-        param($Description, $Expected)
-
-        InModuleScope Keldor -Parameters @{ Description = $Description; Expected = $Expected } {
-            Get-KeldorRuntimeInformationPlatform -OSDescription $Description | Should -Be $Expected
-        }
-    }
-
-    It 'uses RuntimeInformation after automatic platform variables' -Skip:($PSVersionTable.PSEdition -eq 'Desktop') {
+    It 'delegates to the loader-safe bootstrap detector' {
         InModuleScope Keldor {
-            Mock Get-Variable { $null } -ParameterFilter { $Name -in @('IsWindows', 'IsMacOS', 'IsLinux') }
-            Mock Get-KeldorRuntimeInformationPlatform { 'Linux' }
-            Mock Get-KeldorLegacyWindowsPlatform { throw 'Legacy detection should not run.' }
+            Mock Get-KeldorBootstrapPlatform { 'Unknown' }
 
-            Get-KeldorPlatform | Should -Be 'Linux'
-        }
-    }
-
-    It 'uses the legacy Windows fallback when RuntimeInformation is unavailable' -Skip:($PSVersionTable.PSEdition -eq 'Desktop') {
-        InModuleScope Keldor {
-            Mock Get-Variable { $null } -ParameterFilter { $Name -in @('IsWindows', 'IsMacOS', 'IsLinux') }
-            Mock Get-KeldorRuntimeInformationPlatform { $null }
-            Mock Get-KeldorLegacyWindowsPlatform { 'Windows' }
-
-            Get-KeldorPlatform | Should -Be 'Windows'
-        }
-    }
-
-    It 'returns Unknown when runtime and legacy detection fail' -Skip:($PSVersionTable.PSEdition -eq 'Desktop') {
-        InModuleScope Keldor {
-            Mock Get-Variable { $null } -ParameterFilter { $Name -in @('IsWindows', 'IsMacOS', 'IsLinux') }
-            Mock Get-KeldorRuntimeInformationPlatform { throw 'RuntimeInformation unavailable.' }
-            Mock Get-KeldorLegacyWindowsPlatform { $null }
-
-            { Get-KeldorPlatform } | Should -Not -Throw
             Get-KeldorPlatform | Should -Be 'Unknown'
+            Should -Invoke Get-KeldorBootstrapPlatform -Times 1
         }
     }
 

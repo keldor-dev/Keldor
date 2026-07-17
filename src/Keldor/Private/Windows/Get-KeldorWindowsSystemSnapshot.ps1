@@ -3,7 +3,7 @@ function Get-KeldorWindowsSystemSnapshot {
     param()
 
     $snapshot = New-KeldorSystemSnapshot -ComputerName ([Environment]::MachineName) -Platform 'Windows'
-    $source = if (Get-Command -Name Get-CimInstance -ErrorAction SilentlyContinue) { 'CIM' } else { 'WMI' }
+    $source = 'CIM'
 
     $operatingSystem = Get-KeldorWindowsManagementObject -ClassName Win32_OperatingSystem
     $computerSystem = Get-KeldorWindowsManagementObject -ClassName Win32_ComputerSystem

@@ -1,81 +1,120 @@
-#Requires -Version 3
+#Requires -Version 5.1
 
-function Get-KeldorScriptFiles {
+$script:KeldorModuleRoot = $PSScriptRoot
+
+function New-KeldorLoadException {
+    [CmdletBinding()]
     param(
         [Parameter(Mandatory = $true)]
-        [string]$RelativePath
+        [System.IO.FileInfo]$File,
+
+        [Parameter(Mandatory = $true)]
+        [System.Exception]$InnerException
     )
 
-    $path = Join-Path -Path $PSScriptRoot -ChildPath $RelativePath
-    if (!(Test-Path -Path $path)) {
+    $message = "Keldor failed to load required script file '$($File.FullName)'."
+    New-Object System.InvalidOperationException $message, $InnerException
+}
+
+function Get-KeldorScriptFile {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
+        [string]$RelativePath,
+
+        [string[]]$ExcludeBaseName = @()
+    )
+
+    $path = Join-Path -Path $script:KeldorModuleRoot -ChildPath $RelativePath
+    if (-not (Test-Path -LiteralPath $path -PathType Container)) {
         return @()
     }
 
-    @(Get-ChildItem -Path $path -Recurse -ErrorAction SilentlyContinue | Where-Object { !$_.PSIsContainer -and $_.Extension -ieq '.ps1' })
+    @(
+        Get-ChildItem -LiteralPath $path -Filter '*.ps1' -File -ErrorAction Stop |
+            Where-Object {
+                $_.Name -notmatch '^[.~]' -and
+                $ExcludeBaseName -notcontains $_.BaseName
+            } |
+            Sort-Object -Property FullName
+    )
 }
 
-$PublicFunctions = @()
-
-$CommonFolders = @(
-    @{ Path = 'Private/Common'; Public = $false }
-    @{ Path = 'Public/Common'; Public = $true }
+$runtimeCheckPath = Join-Path -Path $script:KeldorModuleRoot -ChildPath (
+    'Private/Common/Test-KeldorPowerShellRuntime.ps1'
+)
+$bootstrapPlatformPath = Join-Path -Path $script:KeldorModuleRoot -ChildPath (
+    'Private/Common/Get-KeldorBootstrapPlatform.ps1'
 )
 
-$PlatformFolders = @{
-    Windows = @(
-        @{ Path = 'Private/Windows'; Public = $false }
-        @{ Path = 'Public/Windows'; Public = $true }
-    )
-    macOS   = @(
-        @{ Path = 'Private/macOS'; Public = $false }
-        @{ Path = 'Public/macOS'; Public = $true }
-    )
-    Linux   = @(
-        @{ Path = 'Private/Linux'; Public = $false }
-        @{ Path = 'Public/Linux'; Public = $true }
-    )
+$runtimeCheckFile = Get-Item -LiteralPath $runtimeCheckPath -ErrorAction Stop
+try {
+    . $runtimeCheckFile.FullName
+} catch {
+    throw (New-KeldorLoadException -File $runtimeCheckFile -InnerException $_.Exception)
+}
+Test-KeldorPowerShellRuntime -Version $PSVersionTable.PSVersion -Edition $PSVersionTable.PSEdition | Out-Null
+
+foreach ($relativePath in @('config.ps1', 'classes.ps1')) {
+    $filePath = Join-Path -Path $script:KeldorModuleRoot -ChildPath $relativePath
+    $file = Get-Item -LiteralPath $filePath -ErrorAction Stop
+    try {
+        . $file.FullName
+    } catch {
+        throw (New-KeldorLoadException -File $file -InnerException $_.Exception)
+    }
 }
 
-foreach ($folder in $CommonFolders) {
-    $files = Get-KeldorScriptFiles -RelativePath $folder.Path
-    foreach ($file in $files) {
+$bootstrapPlatformFile = Get-Item -LiteralPath $bootstrapPlatformPath -ErrorAction Stop
+try {
+    . $bootstrapPlatformFile.FullName
+} catch {
+    throw (New-KeldorLoadException -File $bootstrapPlatformFile -InnerException $_.Exception)
+}
+$script:KeldorPlatform = Get-KeldorBootstrapPlatform
+
+$publicFunctionNames = @()
+$bootstrapPrivateNames = @(
+    'Get-KeldorBootstrapPlatform'
+    'Test-KeldorPowerShellRuntime'
+)
+$loadGroups = @(
+    [pscustomobject]@{
+        Path    = 'Private/Common'
+        Public  = $false
+        Exclude = $bootstrapPrivateNames
+    },
+    [pscustomobject]@{ Path = "Private/$script:KeldorPlatform"; Public = $false; Exclude = @() },
+    [pscustomobject]@{ Path = 'Public/Common'; Public = $true; Exclude = @() },
+    [pscustomobject]@{ Path = "Public/$script:KeldorPlatform"; Public = $true; Exclude = @() }
+)
+
+foreach ($loadGroup in $loadGroups) {
+    foreach ($file in Get-KeldorScriptFile -RelativePath $loadGroup.Path -ExcludeBaseName $loadGroup.Exclude) {
         try {
             . $file.FullName
         } catch {
-            Write-Error -Message "Failed to import script file $($file.FullName): $_"
+            throw (New-KeldorLoadException -File $file -InnerException $_.Exception)
         }
-    }
-
-    if ($folder.Public) {
-        $PublicFunctions += $files
+        if ($loadGroup.Public) {
+            $publicFunctionNames += $file.BaseName
+        }
     }
 }
 
-$KeldorPlatform = Get-KeldorPlatform
-
-if ($PlatformFolders.ContainsKey($KeldorPlatform)) {
-    foreach ($folder in $PlatformFolders[$KeldorPlatform]) {
-        $files = Get-KeldorScriptFiles -RelativePath $folder.Path
-        foreach ($file in $files) {
-            try {
-                . $file.FullName
-            } catch {
-                Write-Error -Message "Failed to import script file $($file.FullName): $_"
-            }
-        }
-
-        if ($folder.Public) {
-            $PublicFunctions += $files
-        }
-    }
-} else {
-    Write-Warning "Keldor could not determine the current platform. Only common functions were loaded."
-}
-
-$PublicFunctionNames = @($PublicFunctions | Select-Object -ExpandProperty BaseName -Unique)
-$PublicAliasNames = @(
-    Get-Alias -Name 'Get-KDSecret', 'Set-KDSecret', 'Remove-KDSecret', 'Get-KDSecretProvider', 'Test-KDSecretProvider' -ErrorAction SilentlyContinue |
-        Where-Object { $PublicFunctionNames -contains $_.Definition } |
+$publicFunctionNames = @($publicFunctionNames | Sort-Object -Unique)
+$knownPublicAliasNames = @(
+    'Get-KDSecret'
+    'Set-KDSecret'
+    'Remove-KDSecret'
+    'Get-KDSecretProvider'
+    'Test-KDSecretProvider'
+)
+$publicAliasNames = @(
+    Get-Alias -Name $knownPublicAliasNames -ErrorAction SilentlyContinue |
+        Where-Object { $publicFunctionNames -contains $_.Definition } |
         Select-Object -ExpandProperty Name -Unique
 )
-Export-ModuleMember -Function $PublicFunctionNames -Alias $PublicAliasNames
+
+Export-ModuleMember -Function $publicFunctionNames -Alias $publicAliasNames

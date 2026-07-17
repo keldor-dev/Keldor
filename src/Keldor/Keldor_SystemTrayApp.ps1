@@ -1,3 +1,5 @@
+#Requires -Version 5.1
+
 Import-Module Keldor
 $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
 

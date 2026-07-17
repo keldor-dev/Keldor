@@ -12,14 +12,14 @@ macOS, and Linux without maintaining separate modules.
 
 Keldor supports:
 
-- Windows PowerShell 3.0 through 5.1
-- PowerShell 7+
+- Windows PowerShell 5.1 on Microsoft-supported Windows versions
+- Microsoft-supported PowerShell 7 release lines beginning with PowerShell 7.4
 - Windows
 - macOS
 - Linux
 
-Individual foundation commands may use legacy-compatible detection techniques where practical, but this does not expand
-the supported PowerShell versions of the complete Keldor module.
+PowerShell 7.6 LTS is the preferred development and CI runtime. The currently tested Core lines are 7.4, 7.5, and 7.6;
+support for 7.4 and 7.5 ends when the Keldor baseline is raised in response to Microsoft's lifecycle.
 
 ## Folder Structure
 
@@ -81,17 +81,22 @@ or processor architecture.
 
 Consumers must include a default path for `Unknown` rather than assuming platform detection always succeeds.
 
+An `Unknown` operating-system result loads only Common commands. An unknown PowerShell edition is different: the runtime
+guard rejects it with `Keldor.UnsupportedPowerShellRuntime` before normal initialization.
+
 ## Module Loading Process
 
 During module import:
 
-1. Load all private and public Common functions.
-2. Determine the current operating system with `Get-KeldorPlatform`.
-3. Load only the matching platform-specific private and public functions.
-4. Export only public functions that were loaded.
+1. Load and run the authoritative runtime guard.
+2. Load configuration and shared classes.
+3. Load the private bootstrap platform detector.
+4. Load Common private functions, then current-platform private functions.
+5. Load Common public functions, then current-platform public functions.
+6. Export only public functions and approved aliases that were actually loaded.
 
-The complete Common layer must load before Keldor calls `Get-KeldorPlatform`. This guarantees that the foundation cmdlet
-is available before platform-specific commands are selected.
+The loader uses `Get-KeldorBootstrapPlatform`, a minimal private helper, to avoid calling an exported command before the
+public layer exists. `Get-KeldorPlatform` delegates to the same helper and remains the canonical public API.
 
 Common commands may call `Get-KeldorPlatform` when they execute, but function definitions must not invoke
 platform-dependent behavior while they are being loaded.

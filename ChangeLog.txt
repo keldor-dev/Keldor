@@ -21,6 +21,13 @@ Changed:
    kernel, uptime, and hardware contracts.
 4. Deprecated Get-ComputerModel, Get-SerialNumber, Get-UpTime, and Test-Online in favor of canonical inventory and ICMP
    commands while retaining thin compatibility wrappers.
+5. Breaking change planned for the next major release: raised the supported runtime policy to Windows PowerShell 5.1
+   on supported Windows versions and Microsoft-supported PowerShell 7 lines beginning with 7.4. PowerShell 7.6 LTS is
+   the preferred development and CI runtime.
+6. Replaced legacy platform and loader fallbacks with an edition-aware runtime guard, deterministic platform loading,
+   fail-fast required-file handling, and build-generated explicit release exports.
+7. Added the compatibility matrix, runtime migration audit, lifecycle review policy, negative runtime tests, and
+   multi-platform CI strategy. The source manifest version remains unchanged until major-release preparation.
 
 ######################
 #                    #

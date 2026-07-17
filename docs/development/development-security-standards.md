@@ -106,17 +106,14 @@ Dependencies should:
 
 Projects should support:
 
-Preferred
+Supported
 
-- PowerShell 7+
+- Windows PowerShell 5.1 on Microsoft-supported Windows versions.
+- Microsoft-supported PowerShell 7 release lines beginning with PowerShell 7.4.
 
-Where practical
+Preferred for development, automation, and CI
 
-- Windows PowerShell 5.1
-
-Legacy compatibility
-
-- Windows PowerShell 2.0 when doing so does not significantly increase complexity or reduce maintainability.
+- PowerShell 7.6 LTS.
 
 Backward compatibility should never prevent important security improvements.
 

@@ -76,7 +76,8 @@ Rejected because Keldor needs standards for security, compatibility, testing, do
 
 ### External Style Guide
 
-Rejected because Keldor has unique requirements around PowerShell 2.0, STIG-hardened systems, platform-aware loading, and DoD-adjacent environments.
+Rejected because Keldor has unique requirements around Windows PowerShell 5.1, supported PowerShell 7 lifecycle lines,
+STIG-hardened systems, platform-aware loading, and DoD-adjacent environments.
 
 ## Future Considerations
 

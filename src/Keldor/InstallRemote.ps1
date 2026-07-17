@@ -1,3 +1,5 @@
+#Requires -Version 5.1
+
 $PatchFolderPath = "C:\Patches"
 
 function Get-InstalledProgram {

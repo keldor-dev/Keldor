@@ -6,6 +6,7 @@
         'PSUseConsistentIndentation'
         'PSUseConsistentWhitespace'
         'PSUseCorrectCasing'
+        'PSUseCompatibleSyntax'
     )
 
     Rules        = @{
@@ -50,6 +51,11 @@
 
         PSUseCorrectCasing         = @{
             Enable = $true
+        }
+
+        PSUseCompatibleSyntax      = @{
+            Enable         = $true
+            TargetVersions = @('5.1')
         }
     }
 }
