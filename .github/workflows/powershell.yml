@@ -18,7 +18,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Validate manifest, parser baseline, import, and platform exports
         shell: powershell
@@ -63,9 +63,19 @@ jobs:
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
+    env:
+      KELDOR_BUILD_MODULE_PATH: ${{ github.workspace }}/.build/Keldor.Build.PowerShell
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+
+      - name: Checkout Keldor.Build.PowerShell
+        uses: actions/checkout@v5
+        with:
+          repository: keldor-dev/Keldor.Build.PowerShell
+          ref: 740677aa5eb8eec4b99273e50725144aa0258726
+          path: .build/Keldor.Build.PowerShell
+          persist-credentials: false
 
       - name: Require PowerShell 7.6 LTS
         shell: pwsh
@@ -78,14 +88,13 @@ jobs:
         shell: pwsh
         run: |
           Set-PSRepository PSGallery -InstallationPolicy Trusted
-          Install-Module Keldor.Build.PowerShell -RequiredVersion 0.2.0 -Scope CurrentUser -Force
           Install-Module Pester -RequiredVersion 5.8.0 -Scope CurrentUser -Force -SkipPublisherCheck
           Install-Module PSScriptAnalyzer -RequiredVersion 1.25.0 -Scope CurrentUser -Force
 
       - name: Build and test
         shell: pwsh
         run: |
-          ./build.ps1 -Task Build
+          ./build.ps1 -Task Build -BuildModulePath $env:KELDOR_BUILD_MODULE_PATH
           Invoke-Pester ./src/Keldor/Tests -CI
 
       - name: Analyze shared and loader code
@@ -101,12 +110,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: ['7.4', '7.5', '7.6']
+        version: ['7.4', '7.5']
     runs-on: ubuntu-latest
     container: mcr.microsoft.com/powershell:${{ matrix.version }}-ubuntu-22.04
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Validate supported Core line
         shell: pwsh
