@@ -13,8 +13,9 @@ function Test-RegistryValue {
     Specifies the Value value.
 
 .EXAMPLE
-    Test-RegistryValue -Path <value> -Value <value>
-    Runs Test-RegistryValue.
+    Test-RegistryValue -Path 'HKLM:\SOFTWARE\Keldor' -Value 'Enabled'
+
+    Tests whether the Enabled value exists under the Keldor registry key.
 
 .OUTPUTS
     System.Object

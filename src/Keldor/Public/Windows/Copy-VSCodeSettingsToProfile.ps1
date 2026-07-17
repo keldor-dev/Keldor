@@ -8,6 +8,7 @@ function Copy-VSCodeSettingsToProfile {
 
 .EXAMPLE
     Copy-VSCodeSettingsToProfile
+
     Copies the VSCode settings from the configured repository path to the user's profile settings.
 
 .OUTPUTS

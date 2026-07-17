@@ -2,10 +2,11 @@
 function Send-ToastNotification {
     <#
 .SYNOPSIS
-    Short description
+    Sends a Windows toast notification.
 
 .DESCRIPTION
-    Long description
+    Builds and displays a Windows toast notification locally or through PowerShell remoting. The notification can
+    include sender and title text, a supported sound, and duration or dismissal behavior.
 
 .PARAMETER Message
     Specifies the Message value.
@@ -29,12 +30,14 @@ function Send-ToastNotification {
     Specifies whether to enable the Require Dismiss option.
 
 .EXAMPLE
-    Send-ToastNotification
-    Example of how to use this cmdlet
+    Send-ToastNotification -Message 'Maintenance begins in 15 minutes.' -Title 'Maintenance'
+
+    Displays a local toast notification with a title and message.
 
 .EXAMPLE
-    Send-ToastNotification -PARAMETER
-    Another example of how to use this cmdlet but with a parameter or switch.
+    Send-ToastNotification -Message 'Restart required.' -ComputerName 'SERVER01' -RequireDismiss
+
+    Sends a dismissible notification to SERVER01 through PowerShell remoting.
 
 .OUTPUTS
     None

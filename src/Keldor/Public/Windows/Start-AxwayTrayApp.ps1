@@ -1,18 +1,15 @@
 function Start-AxwayTrayApp {
     <#
 .SYNOPSIS
-    Short description
+    Starts the Axway Desktop Validator tray application.
 
 .DESCRIPTION
-    Long description
+    Starts the Axway Desktop Validator tray application from its standard installation path.
 
 .EXAMPLE
     Start-AxwayTrayApp
-    Example of how to use this cmdlet
 
-.EXAMPLE
-    Start-AxwayTrayApp -PARAMETER
-    Another example of how to use this cmdlet but with a parameter or switch.
+    Starts the Axway tray application after confirmation.
 
 .OUTPUTS
     None

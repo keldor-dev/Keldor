@@ -1,24 +1,21 @@
 function Convert-AppIconToBase64 {
     <#
 .SYNOPSIS
-    Short description
+    Converts an application's associated icon to Base64.
 
 .DESCRIPTION
-    Long description
+    Extracts the icon associated with a Windows application file and returns its bytes as a Base64 string.
 
 .PARAMETER Path
     Specifies a path to one or more locations.
 
 .EXAMPLE
-    Convert-AppIconToBase64
-    Example of how to use this cmdlet
+    Convert-AppIconToBase64 -Path 'C:\Program Files\Example\Example.exe'
 
-.EXAMPLE
-    Convert-AppIconToBase64 -PARAMETER
-    Another example of how to use this cmdlet but with a parameter or switch.
+    Converts the application's associated icon to Base64.
 
 .OUTPUTS
-    System.Object
+    System.String
 
 .LINK
     https://docs.keldor.dev/powershell/keldor/Convert-AppIconToBase64

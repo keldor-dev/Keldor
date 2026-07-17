@@ -1,21 +1,23 @@
 function Install-SCCMUpdate {
     <#
 .SYNOPSIS
-    Short description
+    Installs pending Configuration Manager software updates.
 
 .DESCRIPTION
-    Long description
+    Uses the Configuration Manager client SDK to install all pending software updates on local or remote computers.
 
 .PARAMETER ComputerName
     Specifies the name of one or more computers.
 
 .EXAMPLE
     Install-SCCMUpdate
-    Example of how to use this cmdlet
+
+    Installs pending updates on the local Configuration Manager client.
 
 .EXAMPLE
-    Install-SCCMUpdate -PARAMETER
-    Another example of how to use this cmdlet but with a parameter or switch.
+    Install-SCCMUpdate -ComputerName 'SERVER01'
+
+    Installs pending updates on SERVER01 through PowerShell remoting.
 
 .OUTPUTS
     System.Management.Automation.PSCustomObject

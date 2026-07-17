@@ -28,19 +28,23 @@ function Start-CommandMultiThreaded {
     Allows specifying additional switches to add to the command you run. Need to format in a single string or an array of strings. Ex: "TotalCount" or @("TotalCount","All")
 
 .EXAMPLE
-    Start-CommandMultiThreaded Clear-Space (gc c:\Scripts\comps.txt)
+    Start-CommandMultiThreaded Clear-Space (Get-Content C:\Scripts\comps.txt)
+
     Will run the Clear-Space command against nine of the computers in the comps.txt file at a time. This is because the -MaxThreads parameter isn't set so it runs at the default of 9 objects at a time.
 
 .EXAMPLE
-    gc c:\Scripts\comps.txt | Start-CommandMultiThreaded Clear-Space
+    Get-Content C:\Scripts\comps.txt | Start-CommandMultiThreaded Clear-Space
+
     Will run the Clear-Space command against nine of the computers in the comps.txt file at a time. This is because the -MaxThreads parameter isn't set so it runs at the default of 9 objects at a time.
 
 .EXAMPLE
-    Start-CommandMultiThreaded -Command Get-Service -Objects (gc c:\Scripts\comps.txt) -AddParameter @{"Name" = "wuauserv"} -AddSwitch @('RequiredServices','DependentServices')
+    Start-CommandMultiThreaded -Command Get-Service -Objects (Get-Content C:\Scripts\comps.txt) -AddParameter @{Name = 'wuauserv'} -AddSwitch @('RequiredServices', 'DependentServices')
+
     Will get the service "wuauserv" and it's dependent/required services from the computers listed in comps.txt.
 
 .EXAMPLE
-    Start-CommandMultiThreaded -Command Set-AxwayConfig -Objects COMP1,COMP2 -AddParameter @{"ConfigFile" = "C:\PKI\MyOrgsAxwayConfig.txt"}
+    Start-CommandMultiThreaded -Command Set-AxwayConfig -Objects COMP1, COMP2 -AddParameter @{ConfigFile = 'C:\PKI\MyOrgsAxwayConfig.txt'}
+
     Will set the Axway config file on both the computer COMP1 and COMP2 at the same time using C:\PKI\MyOrgsAxwayConfig.txt on those computers as the file to import.
 
 .OUTPUTS

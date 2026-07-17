@@ -8,6 +8,7 @@ function Copy-PowerShellJSON {
 
 .EXAMPLE
     Copy-PowerShellJSON
+
     Copies the powershell.json file from the Keldor module resources folder to the current user's Visual Studio Code snippets directory.
 
 .OUTPUTS

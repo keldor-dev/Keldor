@@ -1,21 +1,19 @@
 function Get-SCCMInstallStatus {
     <#
 .SYNOPSIS
-    Short description
+    Gets Configuration Manager software-update installation status.
 
 .DESCRIPTION
-    Long description
+    Queries Configuration Manager client update evaluation states on remote Windows computers and returns a
+    summarized status for each responding computer.
 
 .PARAMETER ComputerName
     Specifies the name of one or more computers.
 
 .EXAMPLE
-    Get-SCCMInstallStatus
-    Example of how to use this cmdlet
+    Get-SCCMInstallStatus -ComputerName 'SERVER01', 'SERVER02'
 
-.EXAMPLE
-    Get-SCCMInstallStatus -PARAMETER
-    Another example of how to use this cmdlet but with a parameter or switch.
+    Gets summarized update installation status from two computers.
 
 .OUTPUTS
     System.Management.Automation.PSCustomObject
@@ -34,7 +32,6 @@ function Get-SCCMInstallStatus {
             #ValueFromPipeline = $true
         )]
         [ValidateNotNullOrEmpty()]
-        [ValidateSet('Info', 'Error', 'Warning', 'One', 'Two', 'Three')]
         [Alias('Host', 'Name', 'Computer', 'CN')]
         [string[]]$ComputerName = "$env:COMPUTERNAME"
     )

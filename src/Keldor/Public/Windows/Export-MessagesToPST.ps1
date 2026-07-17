@@ -14,10 +14,12 @@ function Export-MessagesToPST {
 
 .EXAMPLE
     Export-MessagesToPST -TargetUserAlias joe.snuffy
+
     Exports joe.snuffy's mailbox to C:\Users\Desktop\joe.snuffy_mailboxyyyyMMddhhmm.pst where yyyyMMddhhmm is the date and time the mailbox was exported.
 
 .EXAMPLE
     Export-MessagesToPST -TargetUserAlias joe.snuffy -ExportPath "c:\test"
+
     Exports joe.snuffy's mailbox to C:\test\joe.snuffy_mailboxyyyyMMddhhmm.pst where yyyyMMddhhmm is the date and time the mailbox was exported.
 
 .OUTPUTS

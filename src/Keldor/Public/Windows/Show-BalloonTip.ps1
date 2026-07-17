@@ -19,8 +19,9 @@ function Show-BalloonTip {
     Specifies the Timeout value.
 
 .EXAMPLE
-    Show-BalloonTip -Text <value> -Title <value>
-    Runs Show-BalloonTip.
+    Show-BalloonTip -Text 'Maintenance is complete.' -Title 'Keldor'
+
+    Displays an informational balloon tip for 30 seconds.
 
 .OUTPUTS
     System.Object

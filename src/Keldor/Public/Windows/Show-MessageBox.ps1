@@ -16,8 +16,9 @@ function Show-MessageBox {
     Specifies the Timeout value.
 
 .EXAMPLE
-    Show-MessageBox -Text <value> -Title <value>
-    Runs Show-MessageBox.
+    Show-MessageBox -Text 'Maintenance is complete.' -Title 'Keldor' -Timeout 15
+
+    Displays an informational message box for up to 15 seconds.
 
 .OUTPUTS
     None

@@ -1,18 +1,15 @@
 function Restart-AxwayTrayApp {
     <#
 .SYNOPSIS
-    Short description
+    Restarts the Axway Desktop Validator tray application.
 
 .DESCRIPTION
-    Long description
+    Stops running dvtray processes and starts the Axway Desktop Validator tray application from its standard path.
 
 .EXAMPLE
     Restart-AxwayTrayApp
-    Example of how to use this cmdlet
 
-.EXAMPLE
-    Restart-AxwayTrayApp -PARAMETER
-    Another example of how to use this cmdlet but with a parameter or switch.
+    Restarts the Axway tray application after confirmation.
 
 .OUTPUTS
     None

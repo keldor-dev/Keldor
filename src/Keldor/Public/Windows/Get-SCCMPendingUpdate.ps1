@@ -1,21 +1,24 @@
 function Get-SCCMPendingUpdate {
     <#
 .SYNOPSIS
-    Short description
+    Gets pending Configuration Manager software updates.
 
 .DESCRIPTION
-    Long description
+    Queries the Configuration Manager client SDK on local or remote Windows computers and returns each pending
+    software update.
 
 .PARAMETER ComputerName
     Specifies the name of one or more computers.
 
 .EXAMPLE
     Get-SCCMPendingUpdate
-    Example of how to use this cmdlet
+
+    Gets pending updates from the local Configuration Manager client.
 
 .EXAMPLE
-    Get-SCCMPendingUpdate -PARAMETER
-    Another example of how to use this cmdlet but with a parameter or switch.
+    Get-SCCMPendingUpdate -ComputerName 'SERVER01'
+
+    Gets pending updates from SERVER01 through PowerShell remoting.
 
 .OUTPUTS
     System.Management.Automation.PSCustomObject

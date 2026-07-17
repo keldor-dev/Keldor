@@ -1,21 +1,24 @@
 function Start-SCCMUpdateScan {
     <#
 .SYNOPSIS
-    Short description
+    Starts a Configuration Manager software-update scan.
 
 .DESCRIPTION
-    Long description
+    Reads the last Configuration Manager update scan time and triggers the update scan and evaluation schedules
+    when the last scan was at least ten minutes ago.
 
 .PARAMETER ComputerName
     Specifies the name of one or more computers.
 
 .EXAMPLE
     Start-SCCMUpdateScan
-    Example of how to use this cmdlet
+
+    Starts an update scan on the local Configuration Manager client when eligible.
 
 .EXAMPLE
-    Start-SCCMUpdateScan -PARAMETER
-    Another example of how to use this cmdlet but with a parameter or switch.
+    Start-SCCMUpdateScan -ComputerName 'SERVER01'
+
+    Starts an eligible update scan on SERVER01 through PowerShell remoting.
 
 .OUTPUTS
     System.Management.Automation.PSCustomObject

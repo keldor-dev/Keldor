@@ -1,18 +1,15 @@
 function Stop-AxwayTrayApp {
     <#
 .SYNOPSIS
-    Short description
+    Stops the Axway Desktop Validator tray application.
 
 .DESCRIPTION
-    Long description
+    Finds dvtray processes and stops each process after confirmation.
 
 .EXAMPLE
     Stop-AxwayTrayApp
-    Example of how to use this cmdlet
 
-.EXAMPLE
-    Stop-AxwayTrayApp -PARAMETER
-    Another example of how to use this cmdlet but with a parameter or switch.
+    Stops running Axway tray processes after confirmation.
 
 .OUTPUTS
     None

@@ -1,21 +1,24 @@
 function Get-ModuleList {
     <#
 .SYNOPSIS
-    Short description
+    Gets locally available PowerShell modules.
 
 .DESCRIPTION
-    Long description
+    Returns detailed information for locally available PowerShell modules. Use NotInCommandListModules to return
+    only module names that are absent from Keldor's command-list configuration.
 
 .PARAMETER NotInCommandListModules
     Specifies whether to enable the Not In Command List Modules option.
 
 .EXAMPLE
     Get-ModuleList
-    Example of how to use this cmdlet
+
+    Gets detailed information for all locally available modules.
 
 .EXAMPLE
-    Get-ModuleList -PARAMETER
-    Another example of how to use this cmdlet but with a parameter or switch.
+    Get-ModuleList -NotInCommandListModules
+
+    Gets module names that are not listed in Keldor's CommandListModules.csv file.
 
 .OUTPUTS
     System.Object

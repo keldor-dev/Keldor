@@ -16,8 +16,9 @@ function Register-NotificationApp {
     Specifies the Show In Settings value.
 
 .EXAMPLE
-    Register-NotificationApp -AppID <value> -AppDisplayName <value>
-    Runs Register-NotificationApp.
+    Register-NotificationApp -AppID 'Keldor.Notifications' -AppDisplayName 'Keldor'
+
+    Registers Keldor as a Windows notification application.
 
 .OUTPUTS
     System.Object
