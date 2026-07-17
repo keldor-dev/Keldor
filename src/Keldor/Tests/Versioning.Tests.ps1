@@ -16,7 +16,7 @@ Describe "Keldor versioning" {
             )
 
             $BuildParameters = @{
-                Task = $Task
+                Task        = $Task
                 ErrorAction = 'Stop'
             }
 
