@@ -196,8 +196,20 @@ jobs:
   red-hat-ubi9-import:
     name: PowerShell 7.6 import (Red Hat UBI 9)
     runs-on: ubuntu-latest
-    container: mcr.microsoft.com/powershell:7.6-ubi-9
+    container: registry.access.redhat.com/ubi9/ubi:latest
     steps:
+      - name: Install PowerShell and prerequisites
+        shell: sh
+        run: |
+          set -eu
+          dnf install -y ca-certificates git
+          curl -fsSL \
+              https://github.com/PowerShell/PowerShell/releases/download/v7.6.0/powershell-7.6.0-1.rh.x86_64.rpm \
+              -o /tmp/powershell.rpm
+          dnf install -y /tmp/powershell.rpm
+          rm /tmp/powershell.rpm
+          dnf clean all
+
       - name: Checkout code
         uses: actions/checkout@v5
 
