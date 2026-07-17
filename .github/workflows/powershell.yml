@@ -87,9 +87,37 @@ jobs:
       - name: Install development test modules
         shell: pwsh
         run: |
+          $ErrorActionPreference = 'Stop'
           Set-PSRepository PSGallery -InstallationPolicy Trusted
           Install-Module Pester -RequiredVersion 5.8.0 -Scope CurrentUser -Force -SkipPublisherCheck
           Install-Module PSScriptAnalyzer -RequiredVersion 1.25.0 -Scope CurrentUser -Force
+          Install-Module Microsoft.PowerShell.SecretManagement -RequiredVersion 1.1.2 -Scope CurrentUser -Force
+
+      - name: Create test-only 1Password CLI shim
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $shimRoot = Join-Path $env:RUNNER_TEMP 'keldor-test-shims'
+          New-Item -Path $shimRoot -ItemType Directory -Force | Out-Null
+
+          if ($IsWindows) {
+              $opPath = Join-Path $shimRoot 'op.cmd'
+              @(
+                  '@echo off'
+                  'echo Test-only 1Password CLI shim invoked without a Pester mock. 1>&2'
+                  'exit /b 1'
+              ) | Set-Content -Path $opPath -Encoding ascii
+          } else {
+              $opPath = Join-Path $shimRoot 'op'
+              @(
+                  '#!/usr/bin/env sh'
+                  'echo "Test-only 1Password CLI shim invoked without a Pester mock." >&2'
+                  'exit 1'
+              ) | Set-Content -Path $opPath -Encoding utf8NoBOM
+              & chmod +x $opPath
+          }
+
+          Add-Content -Path $env:GITHUB_PATH -Value $shimRoot
 
       - name: Build and test
         shell: pwsh
