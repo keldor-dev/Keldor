@@ -161,3 +161,63 @@ jobs:
           if (-not (Get-Command Get-KeldorPlatform -Module Keldor)) {
               throw 'Keldor did not export its platform foundation command.'
           }
+
+  debian-13-import:
+    name: PowerShell 7.6 import (Debian 13)
+    runs-on: ubuntu-latest
+    container: debian:13-slim
+    steps:
+      - name: Install PowerShell and prerequisites
+        shell: sh
+        run: |
+          set -eu
+          apt-get update
+          apt-get install -y --no-install-recommends ca-certificates curl git
+          curl -fsSLO https://github.com/PowerShell/PowerShell/releases/download/v7.6.0/powershell_7.6.0-1.deb_amd64.deb
+          dpkg -i powershell_7.6.0-1.deb_amd64.deb || apt-get install -f -y
+          rm powershell_7.6.0-1.deb_amd64.deb
+
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Validate Debian import
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          if ($PSVersionTable.PSVersion.Major -ne 7 -or $PSVersionTable.PSVersion.Minor -ne 6) {
+              throw "Expected PowerShell 7.6; detected $($PSVersionTable.PSVersion)."
+          }
+          Test-ModuleManifest ./src/Keldor/Keldor.psd1 | Out-Null
+          Import-Module ./src/Keldor/Keldor.psd1 -Force -ErrorAction Stop
+          if ((Get-KeldorPlatform) -ne 'Linux') {
+              throw 'Debian did not resolve to the Linux platform.'
+          }
+
+  red-hat-ubi9-import:
+    name: PowerShell 7.6 import (Red Hat UBI 9)
+    runs-on: ubuntu-latest
+    container: registry.access.redhat.com/ubi9/ubi:latest
+    steps:
+      - name: Install PowerShell and prerequisites
+        shell: sh
+        run: |
+          set -eu
+          dnf install -y ca-certificates curl git
+          dnf install -y https://github.com/PowerShell/PowerShell/releases/download/v7.6.0/powershell-7.6.0-1.rh.x86_64.rpm
+          dnf clean all
+
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Validate Red Hat UBI import
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          if ($PSVersionTable.PSVersion.Major -ne 7 -or $PSVersionTable.PSVersion.Minor -ne 6) {
+              throw "Expected PowerShell 7.6; detected $($PSVersionTable.PSVersion)."
+          }
+          Test-ModuleManifest ./src/Keldor/Keldor.psd1 | Out-Null
+          Import-Module ./src/Keldor/Keldor.psd1 -Force -ErrorAction Stop
+          if ((Get-KeldorPlatform) -ne 'Linux') {
+              throw 'Red Hat UBI did not resolve to the Linux platform.'
+          }
