@@ -15,6 +15,7 @@ Architecture Decision Records explain why the project is designed the way it is.
 | [ADR-0005](decisions/ADR-0005-backward-compatibility-policy.md) | Backward Compatibility Policy | Accepted |
 | [ADR-0006](decisions/ADR-0006-build-time-code-generation.md) | Build-Time Code Generation | Proposed |
 | [ADR-0007](decisions/ADR-0007-documentation-as-code.md) | Documentation as Code | Accepted |
+| [ADR-0008](decisions/ADR-0008-fleet-command-and-pipeline-contract.md) | Fleet Command and Pipeline Contract | Accepted |
 
 ## Historical Records
 

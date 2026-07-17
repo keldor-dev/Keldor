@@ -8,7 +8,7 @@ This directory contains the canonical engineering standards for the Keldor ecosy
 |---|---|
 | [Keldor General Engineering Standard](Keldor_General_Engineering_Standard.md) | Language-agnostic engineering, repository, security, documentation, testing, and release expectations. |
 | [Keldor PowerShell Engineering Standard](Keldor_PowerShell_Engineering_Standard.md) | PowerShell-specific design, style, compatibility, documentation, testing, and maintainability rules. |
-| [Keldor Input & Output Standard](Keldor_Input_Output_Standard.md) | Canonical public function parameter names, output property names, compatibility rules, and migration guidance. |
+| [Keldor Input & Output Standard](Keldor_Input_Output_Standard.md) | Canonical parameters, fleet pipeline and output contracts, compatibility rules, and migration guidance. |
 
 ## Standard Hierarchy
 

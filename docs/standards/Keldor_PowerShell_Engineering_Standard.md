@@ -2,10 +2,10 @@
 
 | Property | Value |
 |---|---|
-| Version | 1.1 |
+| Version | 1.2 |
 | Status | Stable |
 | Applies To | All Keldor PowerShell projects |
-| Last Updated | 2026-07-10 |
+| Last Updated | 2026-07-16 |
 
 ## Purpose
 
@@ -531,20 +531,26 @@ Mandatory=$true
 
 | Canonical Parameter | Standard Aliases | Notes |
 |---|---|---|
-| `ComputerName` | `Host`, `Name`, `Computer`, `CN` | Use for remote/system-targeting Windows functions. |
+| `ComputerName` | `HostName`, `DnsHostName`, `Name` | Reduce aliases when they conflict with command semantics. Preserve established legacy aliases for compatibility. |
 | `Credential` | `Cred` | Use only when credentials are accepted. |
 | `InputObject` | `Input` | Use for pipeline-friendly object input. |
 | `Path` | None by default | Add `LiteralPath` separately when literal behavior is needed. |
 
 ### ComputerName Pattern
 
-For Windows remote/admin functions, prefer:
+For new fleet and remote functions, follow the canonical pattern in the
+[Input & Output Standard](Keldor_Input_Output_Standard.md#canonical-target-parameters). Existing local-default commands
+may retain an optional parameter and legacy aliases when changing them would be breaking.
 
 ```powershell
-[Parameter(Position = 0, ValueFromPipelineByPropertyName = $true)]
-[Alias('Host', 'Name', 'Computer', 'CN')]
+[Parameter(
+    Mandatory = $true,
+    ValueFromPipeline = $true,
+    ValueFromPipelineByPropertyName = $true
+)]
+[Alias('HostName', 'DnsHostName', 'Name')]
 [ValidateNotNullOrEmpty()]
-[string[]]$ComputerName = $env:COMPUTERNAME
+[string[]]$ComputerName
 ```
 
 ## Pipeline Design
@@ -557,6 +563,11 @@ Use `ValueFromPipelineByPropertyName` when matching common property names such a
 
 Pipeline-aware functions should generally use a `process` block.
 
+Fleet and infrastructure commands are governed by the
+[Fleet and Infrastructure Contract](Keldor_Input_Output_Standard.md#fleet-and-infrastructure-contract), including
+canonical target parameters, parameter sets, concurrency, timeout and retry semantics, normalized result types,
+per-target failure behavior, and compatibility requirements.
+
 ## Object and Output Design
 
 Commands should return objects, not formatted text.
@@ -566,6 +577,11 @@ Use PascalCase property names.
 Use consistent property names across commands.
 
 Prefer `ComputerName` over mixing `Computer`, `Comp`, and `Host` in output objects.
+
+Defined public fleet contracts must use an intentional property order and stable Keldor `PSTypeName`. Keep native
+values as native types and put units in property names rather than display strings. See the
+[Input & Output Standard](Keldor_Input_Output_Standard.md#canonical-output-property-naming-rules) for the normative
+rules and result contracts.
 
 ### Object Property Order
 

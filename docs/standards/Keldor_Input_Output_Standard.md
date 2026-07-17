@@ -2,10 +2,10 @@
 
 | Property | Value |
 |---|---|
-| Version | 1.0 |
-| Status | Proposed |
+| Version | 2.0 |
+| Status | Stable |
 | Applies To | Keldor public functions and user-facing command output |
-| Last Updated | 2026-07-07 |
+| Last Updated | 2026-07-16 |
 
 ## Purpose
 
@@ -27,8 +27,129 @@ This standard does not require:
 
 - Immediate breaking changes to existing functions.
 - Immediate output object reshaping.
-- Immediate `PSTypeName` adoption.
+- Immediate `PSTypeName` adoption for legacy object contracts.
 - Rewriting unrelated command logic.
+
+## Fleet and Infrastructure Contract
+
+Fleet-oriented and infrastructure-oriented commands must accept pipeline-friendly inputs and emit normalized,
+structured objects with stable property names and native PowerShell/.NET types.
+
+This rule applies to server inventory, remote execution, system health, service management, storage and filesystem
+health, network diagnostics, patch and package status, Azure resources, Azure Arc-enabled servers, virtualization,
+Nutanix and other infrastructure integrations, certificate and TLS inspection, fleet reporting, configuration
+compliance, CMDB discovery or reconciliation, and monitoring or remediation workflows. It is also recommended whenever
+pipeline composition and structured output provide meaningful value.
+
+The contract is required for new commands in this scope. Existing commands follow the compatibility and migration rules
+in this document and the [fleet migration audit](../development/fleet-command-migration-audit.md).
+
+## Pipeline Input
+
+Public commands that logically operate on one or more objects must support pipeline input when practical and
+semantically appropriate. Use `ValueFromPipeline = $true`, `ValueFromPipelineByPropertyName = $true`, or both. Do not
+add pipeline binding when it would be ambiguous or unsafe.
+
+Pipeline-aware commands must use the lifecycle blocks that their behavior needs:
+
+- Use `begin` for one-time initialization.
+- Use `process` for each incoming item or target.
+- Use `end` only for aggregation, finalization, or cleanup.
+- Do not collect all input in memory unless aggregation is part of the command contract.
+
+### Canonical Target Parameters
+
+`ComputerName` is the canonical public parameter for a DNS name, FQDN, NetBIOS name, or IP address that identifies a
+remote system. Do not expose separate `ComputerName` and `HostName` parameters for the same identity.
+
+```powershell
+[Parameter(
+    Mandatory = $true,
+    ValueFromPipeline = $true,
+    ValueFromPipelineByPropertyName = $true
+)]
+[Alias('HostName', 'DnsHostName', 'Name')]
+[ValidateNotNullOrEmpty()]
+[string[]]
+$ComputerName
+```
+
+Aliases may be reduced when they conflict with command semantics. Existing aliases remain compatibility-sensitive.
+
+Use `InputObject` for a documented rich-object contract, not as an unstructured dumping ground:
+
+```powershell
+[Parameter(Mandatory = $true, ValueFromPipeline = $true)]
+[ValidateNotNull()]
+[object[]]
+$InputObject
+```
+
+Help must identify the properties or types accepted through `InputObject`. Prefer a more specific parameter or type
+when the accepted value has a well-defined domain name.
+
+Use `PSSession` when an existing session can be reused. Commands that accept both `ComputerName` and `PSSession` must
+use meaningful, separate parameter sets and must not reconnect when a valid session is supplied.
+
+## Remote and Fleet Parameters
+
+Use these names when the capability is implemented and meaningful; do not add unused fleet parameters:
+
+```text
+ComputerName
+InputObject
+PSSession
+Credential
+KeyFilePath
+Port
+Transport
+ThrottleLimit
+ConnectionTimeout
+OperationTimeout
+RetryCount
+RetryDelay
+SessionOption
+```
+
+- `Credential` must be `[pscredential]`. Plaintext password parameters are prohibited. Credential contents must never
+  appear in output, logs, verbose messages, or errors.
+- `KeyFilePath` identifies an SSH private key. Validate syntax without eagerly reading or resolving the path when that
+  would break remoting. Never emit key contents.
+- `Transport` must use explicit validated values when multiple transports are supported. A typical set is `Auto`,
+  `WSMan`, `SSH`, and `Local`. Help must state the `Auto` selection order and its security implications.
+- `ThrottleLimit` must be positive, conservatively bounded by default, and documented as caller-tunable for network,
+  endpoint, and policy constraints. Unlimited concurrency must not be the default.
+- `ConnectionTimeout`, `OperationTimeout`, and `RetryDelay` use seconds. Include the unit in help.
+- `RetryCount` is the number of additional attempts after the initial attempt. Do not retry authentication,
+  authorization, invalid-parameter, or other clearly non-transient failures unless explicitly documented. Prefer
+  bounded backoff for transient failures.
+
+## Parameter Sets
+
+Each parameter set must represent a meaningful execution path. Do not create sets that differ only cosmetically.
+
+```powershell
+[CmdletBinding(DefaultParameterSetName = 'ComputerName')]
+param(
+    [Parameter(
+        Mandatory = $true,
+        ParameterSetName = 'ComputerName',
+        ValueFromPipeline = $true,
+        ValueFromPipelineByPropertyName = $true
+    )]
+    [Alias('HostName', 'DnsHostName')]
+    [ValidateNotNullOrEmpty()]
+    [string[]]$ComputerName,
+
+    [Parameter(
+        Mandatory = $true,
+        ParameterSetName = 'Session',
+        ValueFromPipeline = $true
+    )]
+    [ValidateNotNull()]
+    [System.Management.Automation.Runspaces.PSSession[]]$PSSession
+)
+```
 
 ## Canonical Parameter Naming Rules
 
@@ -64,6 +185,39 @@ Prefer established PowerShell conventions where they exist. Use the same canonic
 ## Canonical Output Property Naming Rules
 
 Structured output must use stable, descriptive PascalCase property names.
+
+Fleet commands must return objects as their primary success output. `Write-Host`, `Format-Table`, `Format-List`, and
+`Out-String` are presentation-boundary tools and must not produce a reusable command's primary result. Use explicit,
+ordered `[pscustomobject]` definitions. Property order is a public usability characteristic and must be intentional.
+
+```powershell
+$result = [pscustomobject][ordered]@{
+    ComputerName = $resolvedComputerName
+    IsSuccessful = $true
+    Status       = 'Healthy'
+    CheckedAt    = [datetimeoffset]::UtcNow
+}
+
+$result.PSObject.TypeNames.Insert(0, 'Keldor.SystemHealthResult')
+$result
+```
+
+Defined public fleet contracts require a stable type name. Use `Keldor.<Entity>`, `Keldor.<Entity>Result`, or
+`Keldor.<Provider>.<Entity>`, for example `Keldor.SystemInfo`, `Keldor.RemoteCommandResult`, `Keldor.Azure.Server`,
+`Keldor.Linux.Package`, or `Keldor.CertificateStatus`. Do not introduce a .NET class only to attach a type name, and do
+not change an established public type name without a compatibility plan.
+
+Recommended property order is:
+
+1. Primary identity.
+2. Parent or scope identity.
+3. Platform or provider.
+4. Primary result or state.
+5. Detailed measurements.
+6. Error details.
+7. Timing and provenance.
+
+Do not alphabetize properties when it makes the object harder to understand.
 
 Use the same property name for the same concept across all object families. Do not use short aliases, abbreviations, or source-system field names as canonical properties unless they are industry standard.
 
@@ -105,9 +259,15 @@ Boolean properties must read naturally as true or false.
 
 Use:
 
+- `IsSuccessful`
+- `IsHealthy`
+- `IsAvailable`
+- `IsConnected`
+- `IsCompliant`
 - `IsEnabled`
 - `IsInstalled`
-- `IsOnline`
+- `HasChanges`
+- `CanRestart`
 - `IsExpired`
 - `HasErrors`
 
@@ -131,6 +291,8 @@ Use:
 - `Modified` for last modification time.
 - `CollectedAt` for the time Keldor collected or generated the object.
 - `CheckedAt` for the time Keldor performed a check or test.
+- `StartedAt` and `CompletedAt` for operation boundaries.
+- `DiscoveredAt`, `UpdatedAt`, and `LastSeenAt` for the named lifecycle event.
 
 Avoid vague names:
 
@@ -140,6 +302,96 @@ Avoid vague names:
 - `Timestamp`
 
 Use `DateTime` values when practical. If the source system returns a string or filetime value and converting it would change behavior, preserve the legacy property and add a canonical converted property in a separate, tested change.
+
+Prefer `[datetimeoffset]` when timezone and transport semantics matter. Use `[timespan]` for `Duration`, or a numeric
+type for explicitly named values such as `DurationMilliseconds`.
+
+## Native Types and Units
+
+Public output contracts must preserve native values:
+
+| Value | Preferred type |
+|---|---|
+| Boolean | `[bool]` |
+| Count or byte quantity | Integer type |
+| Percentage or measurement | Numeric type |
+| Duration | `[timespan]` |
+| Date/time | `[datetime]` or `[datetimeoffset]` |
+| Version | `[version]` when semantically valid |
+| IP address | `[System.Net.IPAddress]` when practical |
+| URI | `[uri]` when practical |
+
+Do not return display strings such as `15 GB`, `72%`, or `300 ms`. Use numeric properties with explicit names such as
+`FreeSpaceBytes`, `FreeSpaceGB`, `FreeSpacePercent`, or `LatencyMilliseconds`. Output values must be invariant and
+culture-neutral; localization belongs at the presentation boundary.
+
+## Normalized Result Contracts
+
+### Remote Command Result
+
+`Keldor.RemoteCommandResult` uses this stable property order and meaning:
+
+```text
+ComputerName
+IsSuccessful
+Output
+ErrorCategory
+ErrorCode
+ErrorMessage
+StartedAt
+CompletedAt
+Duration
+Transport
+AttemptCount
+```
+
+`Output` may hold one or more native PowerShell objects and must not be stringified merely for serialization.
+`AttemptCount` is the total number of attempts actually made. One failed target must not suppress successful target
+results unless the caller explicitly requests terminating behavior.
+
+### Health and Compliance Result
+
+`Keldor.SystemHealthResult` and domain-specific health types should use this shape when the properties apply:
+
+```text
+ComputerName
+CheckName
+IsHealthy
+Status
+Severity
+Message
+CurrentValue
+ExpectedValue
+ErrorCategory
+ErrorCode
+ErrorMessage
+CheckedAt
+```
+
+Allowed severity values are `Informational`, `Warning`, `Critical`, and `Unknown`. Allowed health status values are
+`Passed`, `Failed`, `Skipped`, and `Unknown`. A skipped or unavailable check must not report `IsHealthy = $true`.
+When compatibility permits, use `IsHealthy = $null` and `Status = 'Unknown'` for an indeterminate result.
+
+## Streams and Per-Target Failure
+
+- The success stream contains only objects in the documented public contract. Capture or suppress incidental command
+  and method output.
+- The verbose stream describes non-sensitive target selection, transport selection, retries, provider choice,
+  pagination, and progress details.
+- The warning stream reports recoverable concerns, but never replaces a structured per-target failure result.
+- Use non-terminating errors for individual target failures when other targets can continue. Honor `-ErrorAction`.
+- Use terminating errors for invalid command-wide configuration, invalid authentication configuration, unsupported
+  parameter combinations, missing dependencies that prevent all execution, and corrupted internal state.
+- Never emit an error and then report the same operation as successful. Never expose credentials, tokens, secrets,
+  connection strings, key material, or stack traces as normal output.
+
+## Fleet State Changes and ShouldProcess
+
+Pipeline support does not change the repository's
+[`SupportsShouldProcess` rules](Keldor_PowerShell_Engineering_Standard.md#cmdletbinding). A fleet command that changes
+external or persistent state must set `SupportsShouldProcess = $true` and call `$PSCmdlet.ShouldProcess()` for each
+target or discrete change. Read-only inventory, discovery, inspection, and health commands must not add
+`SupportsShouldProcess`.
 
 ## Result/Status Naming Rules
 
@@ -253,14 +505,19 @@ Legacy output properties may be removed only in a documented major-version migra
 | `Installed` | `IsInstalled` | Boolean reads naturally. |
 | `Errors` | `HasErrors` | Boolean reads naturally. |
 
-## Migration Policy
+## Public API Compatibility
 
 Keldor migration work must be incremental and low risk.
 
+- New fleet commands must comply with this standard.
+- Existing commands without an established contract should move toward it through small, tested changes.
+- Existing commands with known consumers require compatibility review before changing parameter names, aliases,
+  parameter sets, type names, property names, property types, state values, or stream behavior.
 - Preserve old parameters as aliases.
 - Preserve legacy output properties when removal would break users.
 - Normalize one object family per PR.
-- Do not introduce `PSTypeName` yet.
+- Add a stable `PSTypeName` only when the object shape already represents a defined contract and compatibility is
+  demonstrated.
 - Do not mix parameter normalization, output reshaping, formatting changes, and unrelated logic modernization in the same PR.
 - Add or update Pester tests for parameter aliases and output contracts where practical.
 - Prefer additive changes first, then documented deprecation, then major-version removal if needed.
@@ -272,7 +529,7 @@ Keldor migration work must be incremental and low risk.
 3. Add canonical output properties while preserving legacy properties.
 4. Update help and examples to use canonical names.
 5. Add formatting or type data only after output contracts stabilize.
-6. Consider `PSTypeName` adoption in a future standard and migration plan.
+6. Add the documented Keldor `PSTypeName` after the object family is stable and compatibility is demonstrated.
 
 ## Initial Implementation Roadmap
 
@@ -317,8 +574,7 @@ Defer wide or mixed-domain outputs until tests are strong:
 - Active Directory compliance reports.
 - Local user and group inventory.
 
-### Phase 5: Future Type System Work
+### Phase 5: Type Name Adoption
 
-Do not introduce `PSTypeName` yet.
-
-After canonical parameter and output names are stable, create a separate Keldor PSTypeName taxonomy standard and migrate one object family at a time.
+After a canonical object family is stable, assign its documented Keldor type name one family at a time. Preserve
+established type names and use a compatibility plan for any unavoidable change.

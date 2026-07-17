@@ -65,6 +65,8 @@ Avoid unnecessary abbreviations.
 - Use full descriptive names.
 - Prefer common PowerShell parameter names.
 - Support pipeline input where appropriate.
+- Use `ComputerName` as the canonical remote-system identity and follow the
+  [fleet input contract](../standards/Keldor_Input_Output_Standard.md#canonical-target-parameters) when applicable.
 
 ## Files
 
