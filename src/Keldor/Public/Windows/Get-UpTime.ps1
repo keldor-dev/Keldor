@@ -1,62 +1,70 @@
 function Get-UpTime {
     <#
-.SYNOPSIS
-    Gets Up Time.
+    .SYNOPSIS
+        Gets uptime using the historical Keldor output shape.
 
-.DESCRIPTION
-    Gets Up Time.
+    .DESCRIPTION
+        Deprecated compatibility wrapper for Get-KeldorUptime. The wrapper contains no independent uptime discovery
+        and projects normalized results into the historical properties.
 
-.PARAMETER ComputerName
-    Specifies the computer name to use.
+    .PARAMETER ComputerName
+        Specifies one or more computers. Omit this parameter for the local computer.
 
-.EXAMPLE
-    Get-UpTime
-    Runs Get-UpTime.
+    .EXAMPLE
+        Get-UpTime
 
-.OUTPUTS
-    System.Object
+        Gets local uptime using the historical output shape.
 
-.LINK
-    https://docs.keldor.dev/powershell/keldor/Get-UpTime
-#>
+    .OUTPUTS
+        System.Management.Automation.PSCustomObject
 
+    .NOTES
+        Use Get-KeldorUptime for new automation. Removal is targeted for Keldor 1.0.0.
+
+    .LINK
+        https://docs.keldor.dev/powershell/keldor/Get-UpTime
+    #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-UpTime')]
-    param (
-        [Parameter(
-            Mandatory = $false,
-            Position = 0
-        )]
+    [OutputType([pscustomobject])]
+    param(
+        [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true)]
         [Alias('Host', 'Name', 'Computer', 'CN')]
-        [string[]]$ComputerName = "$env:COMPUTERNAME"
+        [string[]]$ComputerName
     )
 
-    foreach ($Comp in $ComputerName) {
-        try {
-            $wmiq = Get-WmiObject Win32_OperatingSystem -ComputerName $Comp -erroraction stop
-            $bootup = [Management.ManagementDateTimeConverter]::ToDateTime($wmiq.LastBootUpTime)
-            $ts = New-TimeSpan $bootup
-            $tot = [string]([math]::Round($ts.totalhours, 2)) + " h"
-            [PSCustomObject]@{
-                ComputerName = $Comp
-                LastBoot     = $bootup
-                Total        = $tot
-                Days         = ($ts.Days)
-                Hours        = ($ts.Hours)
-                Minutes      = ($ts.Minutes)
-                Seconds      = ($ts.Seconds)
-            }#newobject
-        }#try
-        catch {
-            $bootup = "Failed: Could not connect to computer"
-            [PSCustomObject]@{
-                ComputerName = $Comp
-                LastBoot     = $bootup
-                Total        = ""
-                Days         = ""
-                Hours        = ""
-                Minutes      = ""
-                Seconds      = ""
-            }#newobject
-        }#catch
-    }#foreach comp
+    begin {
+        Write-Verbose 'Get-UpTime is deprecated; use Get-KeldorUptime.'
+    }
+
+    process {
+        $results = if ($PSBoundParameters.ContainsKey('ComputerName')) {
+            Get-KeldorUptime -ComputerName $ComputerName
+        } else {
+            Get-KeldorUptime
+        }
+
+        foreach ($result in $results) {
+            if ($result.IsSuccessful) {
+                [pscustomobject][ordered]@{
+                    ComputerName = $result.ComputerName
+                    LastBoot     = $result.LastBootTime
+                    Total        = ([math]::Round($result.TotalHours, 2)).ToString() + ' h'
+                    Days         = $result.Uptime.Days
+                    Hours        = $result.Uptime.Hours
+                    Minutes      = $result.Uptime.Minutes
+                    Seconds      = $result.Uptime.Seconds
+                }
+            } else {
+                [pscustomobject][ordered]@{
+                    ComputerName = $result.ComputerName
+                    LastBoot     = 'Failed: Could not connect to computer'
+                    Total        = ''
+                    Days         = ''
+                    Hours        = ''
+                    Minutes      = ''
+                    Seconds      = ''
+                }
+            }
+        }
+    }
 }

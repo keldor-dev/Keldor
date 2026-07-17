@@ -17,6 +17,10 @@ Known issues:
 Changed:
 1. Reset Keldor package versioning from the historical calendar-style scheme to Semantic Versioning beginning at 0.1.0.
 2. Added explicit build, release, and publish commands that keep CI/build identifiers separate from the public package version.
+3. Added the cross-platform Get-KeldorSystemInfo command family with normalized operating-system, Linux distribution,
+   kernel, uptime, and hardware contracts.
+4. Deprecated Get-ComputerModel, Get-SerialNumber, Get-UpTime, and Test-Online in favor of canonical inventory and ICMP
+   commands while retaining thin compatibility wrappers.
 
 ######################
 #                    #

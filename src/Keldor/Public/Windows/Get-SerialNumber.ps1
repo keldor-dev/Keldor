@@ -1,57 +1,54 @@
 function Get-SerialNumber {
     <#
-.SYNOPSIS
-    Gets Serial Number.
+    .SYNOPSIS
+        Gets serial numbers using the historical Keldor output shape.
 
-.DESCRIPTION
-    Gets Serial Number.
+    .DESCRIPTION
+        Deprecated compatibility wrapper for Get-KeldorHardwareInfo. The wrapper projects the normalized hardware
+        result and contains no independent serial-number discovery.
 
-.PARAMETER ComputerName
-    Specifies the computer name to use.
+    .PARAMETER ComputerName
+        Specifies one or more computers. Omit this parameter for the local computer.
 
-.EXAMPLE
-    Get-SerialNumber
-    Runs Get-SerialNumber.
+    .EXAMPLE
+        Get-SerialNumber
 
-.OUTPUTS
-    System.Object
+        Gets the local serial number using the historical output shape.
 
-.LINK
-    https://docs.keldor.dev/powershell/keldor/Get-SerialNumber
-#>
+    .OUTPUTS
+        System.Management.Automation.PSCustomObject
 
+    .NOTES
+        Use Get-KeldorHardwareInfo for new automation. Removal is targeted for Keldor 1.0.0.
+
+    .LINK
+        https://docs.keldor.dev/powershell/keldor/Get-SerialNumber
+    #>
     [CmdletBinding(HelpUri = 'https://docs.keldor.dev/powershell/keldor/Get-SerialNumber')]
+    [OutputType([pscustomobject])]
     [Alias('Get-SN')]
-    param (
-        [Parameter(HelpMessage = "Enter one or more computer names separated by commas.",
-            Mandatory = $false,
-            Position = 0
-        )]
+    param(
+        [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true)]
         [Alias('Host', 'Name', 'Computer', 'CN')]
-        [string[]]$ComputerName = "$env:COMPUTERNAME"
+        [string[]]$ComputerName
     )
 
-    $i = 0
-    $number = $ComputerName.length
-    foreach ($comp in $ComputerName) {
-        #Progress Bar
-        if ($number -gt "1") {
-            $i++
-            $amount = ($i / $number)
-            $perc1 = $amount.ToString("P")
-            Write-Progress -Activity "Getting Serial NUmber of computers" -Status "Computer $i of $number. Percent complete:  $perc1" -PercentComplete (($i / $ComputerName.length) * 100)
-        }#if length
-        try {
-            $sn = (Get-WmiObject win32_bios -ComputerName $comp | Select-Object SerialNumber).SerialNumber
-            [PSCustomObject]@{
-                ComputerName = $comp
-                SerialNumber = $sn
-            }#new object
-        } catch {
-            [PSCustomObject]@{
-                ComputerName = $comp
-                SerialNumber = "NA"
-            }#new object
+    begin {
+        Write-Verbose 'Get-SerialNumber is deprecated; use Get-KeldorHardwareInfo.'
+    }
+
+    process {
+        $results = if ($PSBoundParameters.ContainsKey('ComputerName')) {
+            Get-KeldorHardwareInfo -ComputerName $ComputerName
+        } else {
+            Get-KeldorHardwareInfo
+        }
+
+        foreach ($result in $results) {
+            [pscustomobject][ordered]@{
+                ComputerName = $result.ComputerName
+                SerialNumber = if ($result.IsSuccessful -and $result.SerialNumber) { $result.SerialNumber } else { 'NA' }
+            }
         }
     }
 }

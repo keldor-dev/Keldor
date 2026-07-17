@@ -55,8 +55,9 @@ A foundation cmdlet should be:
 - performance-conscious because it may be called frequently
 - governed by a stable public API
 
-`Get-KeldorPlatform` is a foundation cmdlet. It is intentionally public so scripts, third-party modules, and downstream
-Keldor modules can use the same platform-detection logic that Keldor uses internally.
+`Get-KeldorPlatform` and the cross-platform
+[system-information family](system-information.md) are foundation cmdlets. They are intentionally public so scripts,
+third-party modules, and downstream Keldor modules can use the same normalized platform and inventory contracts.
 
 Foundation cmdlets are architectural building blocks. Changes to their names, output contracts, or behavior require
 careful compatibility review.

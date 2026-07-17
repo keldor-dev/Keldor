@@ -4,6 +4,11 @@ This directory captures major architectural decisions for Keldor.
 
 Architecture Decision Records explain why the project is designed the way it is. They are intended to protect deliberate engineering decisions from being accidentally undone later because the original context was lost.
 
+Architecture guides:
+
+- [Platform-aware module loading](platform-loading.md)
+- [Cross-platform system information](system-information.md)
+
 ## Architecture Decision Records
 
 | ADR | Title | Status |

@@ -14,7 +14,7 @@ Keldor follows Microsoft's PowerShell design guidelines wherever practical. Comm
 Examples:
 
 ```powershell
-Get-ComputerModel
+Get-KeldorHardwareInfo
 Get-BIOSInformation
 Set-RegistryValue
 Test-IsAdministrator
@@ -78,7 +78,7 @@ Example:
 
 ```text
 Public/Common/
-    Get-ComputerModel.ps1
+    Get-KeldorHardwareInfo.ps1
 
 Private/Common/
     Get-KeldorPlatform.ps1

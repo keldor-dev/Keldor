@@ -99,6 +99,23 @@ Private/
 
 Functions in `Public` are exported. Functions in `Private` are internal helpers and are not exported.
 
+## Cross-Platform System Information
+
+Use `Get-KeldorSystemInfo` for a normalized local inventory object, or use its focused feeder commands independently:
+
+```powershell
+Get-KeldorSystemInfo
+Get-KeldorOperatingSystem
+Get-KeldorLinuxDistribution
+Get-KeldorKernel
+Get-KeldorUptime
+Get-KeldorHardwareInfo
+```
+
+The commands return structured objects with native dates, durations, numbers, and stable Keldor type names. They also
+support configured PowerShell-remoting targets and reusable `PSSession` objects. See the
+[system-information architecture](docs/architecture/system-information.md) for contracts and remote limitations.
+
 ## Adding Functions
 
 - Add cross-platform exported functions to `Public/Common`
@@ -126,6 +143,7 @@ Workspace snippets are also available in `.vscode/Keldor.code-snippets` when thi
 - [Keldor General Engineering Standard](docs/standards/Keldor_General_Engineering_Standard.md)
 - [Keldor PowerShell Engineering Standard](docs/standards/Keldor_PowerShell_Engineering_Standard.md)
 - [Versioning Policy](docs/development/versioning-policy.md)
+- [Cross-Platform System Information](docs/architecture/system-information.md)
 - Docs site: https://docs.keldor.dev
 - Repository: https://github.com/keldor-dev/Keldor
 
