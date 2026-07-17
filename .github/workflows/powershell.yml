@@ -78,8 +78,9 @@ jobs:
         shell: pwsh
         run: |
           Set-PSRepository PSGallery -InstallationPolicy Trusted
-          Install-Module Pester -MinimumVersion 5.7 -Scope CurrentUser -Force -SkipPublisherCheck
-          Install-Module PSScriptAnalyzer -MinimumVersion 1.24 -Scope CurrentUser -Force
+          Install-Module Keldor.Build.PowerShell -RequiredVersion 0.2.0 -Scope CurrentUser -Force
+          Install-Module Pester -RequiredVersion 5.8.0 -Scope CurrentUser -Force -SkipPublisherCheck
+          Install-Module PSScriptAnalyzer -RequiredVersion 1.25.0 -Scope CurrentUser -Force
 
       - name: Build and test
         shell: pwsh

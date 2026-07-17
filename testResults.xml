@@ -1,0 +1,617 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="215" errors="0" failures="37" not-run="0" inconclusive="0" ignored="0" skipped="2" invalid="0" date="2026-07-17" time="12:56:34">
+  <environment clr-version="9.0.6" platform="Darwin" machine-name="Skylers-MacBook-Pro.local" cwd="/Users/skyler/VS_Code/Keldor/Keldor" user="skyler" user-domain="" nunit-version="2.5.8.0" os-version="25.5.0" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="8.7233" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/BuildIntegration.Tests.ps1" executed="True" result="Success" success="True" time="0.8443" asserts="0" description="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/BuildIntegration.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Keldor build integration" executed="True" result="Success" success="True" time="0.6577" asserts="0" description="Keldor build integration">
+            <results>
+              <test-case description="keeps the repository entry point as a build-module consumer" name="Keldor build integration.keeps the repository entry point as a build-module consumer" time="0.05" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="uses a valid repository build configuration" name="Keldor build integration.uses a valid repository build configuration" time="0.0892" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="builds an importable package without tests or build dependencies" name="Keldor build integration.builds an importable package without tests or build dependencies" time="0.4978" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/Copy-PowerShellJSON.Tests.ps1" executed="True" result="Failure" success="False" time="0.1588" asserts="0" description="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/Copy-PowerShellJSON.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Copy-PowerShellJSON" executed="True" result="Failure" success="False" time="0.1476" asserts="0" description="Copy-PowerShellJSON">
+            <results>
+              <test-case description="copies snippets to the Windows VS Code snippets folder" name="Copy-PowerShellJSON.copies snippets to the Windows VS Code snippets folder" time="0.0577" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="copies snippets to the macOS VS Code snippets folder" name="Copy-PowerShellJSON.copies snippets to the macOS VS Code snippets folder" time="0.0065" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="copies snippets to the Linux VS Code snippets folder" name="Copy-PowerShellJSON.copies snippets to the Linux VS Code snippets folder" time="0.0058" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="creates the snippets directory when it is missing" name="Copy-PowerShellJSON.creates the snippets directory when it is missing" time="0.0055" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="throws when the snippet source file is missing" name="Copy-PowerShellJSON.throws when the snippet source file is missing" time="0.0097" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/FleetCommandContracts.Tests.ps1" executed="True" result="Success" success="True" time="0.6782" asserts="0" description="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/FleetCommandContracts.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Fleet command contract guardrails" executed="True" result="Success" success="True" time="0.6626" asserts="0" description="Fleet command contract guardrails">
+            <results>
+              <test-case description="keeps every dedicated fleet template parseable" name="Fleet command contract guardrails.keeps every dedicated fleet template parseable" time="0.0165" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="uses canonical pipeline binding in the ComputerName templates" name="Fleet command contract guardrails.uses canonical pipeline binding in the ComputerName templates" time="0.0284" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="documents a rich InputObject pipeline contract" name="Fleet command contract guardrails.documents a rich InputObject pipeline contract" time="0.0075" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="uses meaningful ComputerName and Session parameter sets" name="Fleet command contract guardrails.uses meaningful ComputerName and Session parameter sets" time="0.0136" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="returns stable structured health results and preserves mixed-target success" name="Fleet command contract guardrails.returns stable structured health results and preserves mixed-target success" time="0.0475" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="preserves native objects in the remote Output property" name="Fleet command contract guardrails.preserves native objects in the remote Output property" time="0.0206" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="uses per-target ShouldProcess in the state-changing fleet template" name="Fleet command contract guardrails.uses per-target ShouldProcess in the state-changing fleet template" time="0.0117" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="does not use formatting commands in dedicated fleet templates" name="Fleet command contract guardrails.does not use formatting commands in dedicated fleet templates" time="0.0226" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="does not expose plaintext password parameters in dedicated fleet templates" name="Fleet command contract guardrails.does not expose plaintext password parameters in dedicated fleet templates" time="0.0086" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="uses approved Boolean and timestamp names in normalized template results" name="Fleet command contract guardrails.uses approved Boolean and timestamp names in normalized template results" time="0.0183" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="prevents new formatting commands in public implementations" name="Fleet command contract guardrails.prevents new formatting commands in public implementations" time="0.4576" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/Get-KeldorPlatform.Tests.ps1" executed="True" result="Failure" success="False" time="0.117" asserts="0" description="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/Get-KeldorPlatform.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-KeldorPlatform" executed="True" result="Failure" success="False" time="0.1005" asserts="0" description="Get-KeldorPlatform">
+            <results>
+              <test-case description="is exported as a function without an alias" name="Get-KeldorPlatform.is exported as a function without an alias" time="0.0133" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="declares string output" name="Get-KeldorPlatform.declares string output" time="0.0119" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="returns only a contract value" name="Get-KeldorPlatform.returns only a contract value" time="0.0028" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="detects the current platform" name="Get-KeldorPlatform.detects the current platform" time="0.0022" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="delegates to the loader-safe bootstrap detector" name="Get-KeldorPlatform.delegates to the loader-safe bootstrap detector" time="0.0098" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="provides complete public help" name="Get-KeldorPlatform.provides complete public help" time="0.0207" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/Get-KeldorSecret.Tests.ps1" executed="True" result="Failure" success="False" time="0.1665" asserts="0" description="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/Get-KeldorSecret.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-KeldorSecret" executed="True" result="Failure" success="False" time="0.1503" asserts="0" description="Get-KeldorSecret">
+            <results>
+              <test-case description="exports the primary command and alias" name="Get-KeldorSecret.exports the primary command and alias" time="0.0144" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="documents the alias in comment-based help" name="Get-KeldorSecret.documents the alias in comment-based help" time="0.0191" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="gets a secret from OnePassword when Auto finds it first" name="Get-KeldorSecret.gets a secret from OnePassword when Auto finds it first" time="0.0128" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="uses Auto provider fallback order" name="Get-KeldorSecret.uses Auto provider fallback order" time="0.0045" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="uses only the explicitly selected provider" name="Get-KeldorSecret.uses only the explicitly selected provider" time="0.004" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="passes Vault to providers that support vaults" name="Get-KeldorSecret.passes Vault to providers that support vaults" time="0.0096" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="allows the alias to invoke the same implementation as the primary cmdlet" name="Get-KeldorSecret.allows the alias to invoke the same implementation as the primary cmdlet" time="0.0043" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="returns environment secrets using normalized environment variable names" name="Get-KeldorSecret.returns environment secrets using normalized environment variable names" time="0.0047" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="returns null from OnePassword when the CLI is missing" name="Get-KeldorSecret.returns null from OnePassword when the CLI is missing" time="0.0074" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="trims trailing newlines from OnePassword values" name="Get-KeldorSecret.trims trailing newlines from OnePassword values" time="0.0041" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="returns null from SecretManagement when the module is missing" name="Get-KeldorSecret.returns null from SecretManagement when the module is missing" time="0.0038" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="gets a secret from SecretManagement with a vault" name="Get-KeldorSecret.gets a secret from SecretManagement with a vault" time="0.0044" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="throws one sanitized exception when all providers fail" name="Get-KeldorSecret.throws one sanitized exception when all providers fail" time="0.0043" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="does not leak provider error details in the final exception" name="Get-KeldorSecret.does not leak provider error details in the final exception" time="0.0102" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/Get-KeldorSecretProvider.Tests.ps1" executed="True" result="Failure" success="False" time="0.1297" asserts="0" description="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/Get-KeldorSecretProvider.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Get-KeldorSecretProvider" executed="True" result="Failure" success="False" time="0.1183" asserts="0" description="Get-KeldorSecretProvider">
+            <results>
+              <test-case description="exports the primary command and alias" name="Get-KeldorSecretProvider.exports the primary command and alias" time="0.0102" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="documents the alias in comment-based help" name="Get-KeldorSecretProvider.documents the alias in comment-based help" time="0.012" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="returns known providers in Get-KeldorSecret Auto priority order without Auto as a provider" name="Get-KeldorSecretProvider.returns known providers in Get-KeldorSecret Auto priority order without Auto as a provider" time="0.0101" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="uses the shared provider order in Get-KeldorSecret Auto selection" name="Get-KeldorSecretProvider.uses the shared provider order in Get-KeldorSecret Auto selection" time="0.0041" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="filters providers by case-insensitive name" name="Get-KeldorSecretProvider.filters providers by case-insensitive name" time="0.0036" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="accepts provider names from the pipeline" name="Get-KeldorSecretProvider.accepts provider names from the pipeline" time="0.0043" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="rejects Auto because it is not a provider" name="Get-KeldorSecretProvider.rejects Auto because it is not a provider" time="0.0045" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="throws for unknown provider names" name="Get-KeldorSecretProvider.throws for unknown provider names" time="0.004" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="returns only available providers when AvailableOnly is specified" name="Get-KeldorSecretProvider.returns only available providers when AvailableOnly is specified" time="0.0067" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="reports detailed Environment provider metadata without enumerating variables" name="Get-KeldorSecretProvider.reports detailed Environment provider metadata without enumerating variables" time="0.0042" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="reports OnePassword installed but unauthenticated separately" name="Get-KeldorSecretProvider.reports OnePassword installed but unauthenticated separately" time="0.0035" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="reports SecretManagement availability from module, command, and vault state without reading secrets" name="Get-KeldorSecretProvider.reports SecretManagement availability from module, command, and vault state without reading secrets" time="0.0035" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="keeps detailed-only properties out of default provider output" name="Get-KeldorSecretProvider.keeps detailed-only properties out of default provider output" time="0.0044" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/Invoke-KeldorCommand.Tests.ps1" executed="True" result="Failure" success="False" time="1.8997" asserts="0" description="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/Invoke-KeldorCommand.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Invoke-KeldorCommand public contract" executed="True" result="Failure" success="False" time="0.246" asserts="0" description="Invoke-KeldorCommand public contract">
+            <results>
+              <test-case description="exports the command without adding an alias" name="Invoke-KeldorCommand public contract.exports the command without adding an alias" time="0.0101" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="has the eight stable and mutually exclusive parameter sets" name="Invoke-KeldorCommand public contract.has the eight stable and mutually exclusive parameter sets" time="0.015" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="provides complete help and the canonical link" name="Invoke-KeldorCommand public contract.provides complete help and the canonical link" time="0.0248" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="runs local script blocks in-process and forwards arguments" name="Invoke-KeldorCommand public contract.runs local script blocks in-process and forwards arguments" time="0.0366" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="returns the stable structured result properties and native types" name="Invoke-KeldorCommand public contract.returns the stable structured result properties and native types" time="0.0211" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="returns raw local output without result envelopes" name="Invoke-KeldorCommand public contract.returns raw local output without result envelopes" time="0.0041" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="captures local command errors inside structured results" name="Invoke-KeldorCommand public contract.captures local command errors inside structured results" time="0.0172" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="invokes a validated installed local Keldor command with object parameters" name="Invoke-KeldorCommand public contract.invokes a validated installed local Keldor command with object parameters" time="0.0066" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="normalizes a missing installed Keldor command" name="Invoke-KeldorCommand public contract.normalizes a missing installed Keldor command" time="0.0062" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="preserves exact duplicate WSMan target order and one correlation id" name="Invoke-KeldorCommand public contract.preserves exact duplicate WSMan target order and one correlation id" time="0.0039" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="forwards WSMan connection parameters to the private engine" name="Invoke-KeldorCommand public contract.forwards WSMan connection parameters to the private engine" time="0.0042" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="forwards supported SSH parameters on PowerShell Core" name="Invoke-KeldorCommand public contract.forwards supported SSH parameters on PowerShell Core" time="0.0038" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>RuntimeException: Multiple script or manifest modules named 'Keldor' are currently loaded. Make sure to remove any extra copies of the module from your session before testing.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="contains no session disposal or unsafe execution behavior" name="Invoke-KeldorCommand public contract.contains no session disposal or unsafe execution behavior" time="0.0161" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="parses every orchestration production file" name="Invoke-KeldorCommand public contract.parses every orchestration production file" time="0.0122" asserts="0" success="True" result="Success" executed="True" />
+              <test-suite type="ParameterizedTest" name="Invoke-KeldorCommand public contract.rejects malicious command names" executed="True" result="Success" success="True" time="0.0412" asserts="0" description="rejects malicious command names">
+                <results>
+                  <test-case description="rejects malicious command names" name="Invoke-KeldorCommand public contract.rejects malicious command names()" time="0.0097" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects malicious command names" name="Invoke-KeldorCommand public contract.rejects malicious command names()" time="0.0074" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects malicious command names" name="Invoke-KeldorCommand public contract.rejects malicious command names()" time="0.009" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects malicious command names" name="Invoke-KeldorCommand public contract.rejects malicious command names()" time="0.0059" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects malicious command names" name="Invoke-KeldorCommand public contract.rejects malicious command names()" time="0.0092" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="ParameterizedTest" name="Invoke-KeldorCommand public contract.rejects empty, whitespace-bearing, and control-character remote targets" executed="True" result="Success" success="True" time="0.0193" asserts="0" description="rejects empty, whitespace-bearing, and control-character remote targets">
+                <results>
+                  <test-case description="rejects empty, whitespace-bearing, and control-character remote targets" name="Invoke-KeldorCommand public contract.rejects empty, whitespace-bearing, and control-character remote targets()" time="0.0104" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects empty, whitespace-bearing, and control-character remote targets" name="Invoke-KeldorCommand public contract.rejects empty, whitespace-bearing, and control-character remote targets()" time="0.0035" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects empty, whitespace-bearing, and control-character remote targets" name="Invoke-KeldorCommand public contract.rejects empty, whitespace-bearing, and control-character remote targets()" time="0.0053" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Invoke-KeldorCommand private execution policy" executed="True" result="Success" success="True" time="1.6828" asserts="0" description="Invoke-KeldorCommand private execution policy">
+            <results>
+              <test-case description="builds installed-command logic that imports and validates the Keldor module" name="Invoke-KeldorCommand private execution policy.builds installed-command logic that imports and validates the Keldor module" time="0.004" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="retries only a connection failure and records the attempt count" name="Invoke-KeldorCommand private execution policy.retries only a connection failure and records the attempt count" time="0.3443" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="does not retry remote command logic failures" name="Invoke-KeldorCommand private execution policy.does not retry remote command logic failures" time="0.0201" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="times out a remote invocation job and cleans it up" name="Invoke-KeldorCommand private execution policy.times out a remote invocation job and cleans it up" time="1.0653" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Invoke-KeldorCommand opt-in integration" executed="True" result="Ignored" success="True" time="1.6905" asserts="0" description="Invoke-KeldorCommand opt-in integration">
+            <results>
+              <test-case description="executes against an explicitly configured WSMan fixture" name="Invoke-KeldorCommand opt-in integration.executes against an explicitly configured WSMan fixture" time="0.0024" asserts="0" success="False" result="Ignored" executed="False" />
+              <test-case description="executes against an explicitly configured SSH fixture" name="Invoke-KeldorCommand opt-in integration.executes against an explicitly configured SSH fixture" time="0.0013" asserts="0" success="False" result="Ignored" executed="False" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/KeldorEnvironmentHelpers.Tests.ps1" executed="True" result="Success" success="True" time="0.2229" asserts="0" description="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/KeldorEnvironmentHelpers.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Keldor environment helpers" executed="True" result="Success" success="True" time="0.1975" asserts="0" description="Keldor environment helpers">
+            <results>
+              <test-suite type="TestFixture" name="Keldor environment helpers.Test-KeldorAdministrator" executed="True" result="Success" success="True" time="0.0265" asserts="0" description="Keldor environment helpers.Test-KeldorAdministrator">
+                <results>
+                  <test-case description="returns false on non-Windows platforms" name="Keldor environment helpers.Test-KeldorAdministrator.returns false on non-Windows platforms" time="0.0131" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Keldor environment helpers.Test-KeldorActiveDirectoryModule" executed="True" result="Success" success="True" time="0.1606" asserts="0" description="Keldor environment helpers.Test-KeldorActiveDirectoryModule">
+                <results>
+                  <test-case description="returns a structured unavailable status when the module is absent" name="Keldor environment helpers.Test-KeldorActiveDirectoryModule.returns a structured unavailable status when the module is absent" time="0.0391" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="returns true when the module is available in Boolean mode" name="Keldor environment helpers.Test-KeldorActiveDirectoryModule.returns true when the module is available in Boolean mode" time="0.0163" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="imports the module when requested" name="Keldor environment helpers.Test-KeldorActiveDirectoryModule.imports the module when requested" time="0.0761" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="Keldor environment helpers.Assert-KeldorActiveDirectoryModule" executed="True" result="Success" success="True" time="0.1897" asserts="0" description="Keldor environment helpers.Assert-KeldorActiveDirectoryModule">
+                <results>
+                  <test-case description="throws when the module is unavailable" name="Keldor environment helpers.Assert-KeldorActiveDirectoryModule.throws when the module is unavailable" time="0.0265" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/ModuleLoading.Tests.ps1" executed="True" result="Success" success="True" time="0.7305" asserts="0" description="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/ModuleLoading.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Keldor module loading" executed="True" result="Success" success="True" time="0.7165" asserts="0" description="Keldor module loading">
+            <results>
+              <test-case description="imports without success-stream output and supports removal and re-import" name="Keldor module loading.imports without success-stream output and supports removal and re-import" time="0.1058" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="imports from a module path containing spaces" name="Keldor module loading.imports from a module path containing spaces" time="0.2975" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="does not depend on the current directory" name="Keldor module loading.does not depend on the current directory" time="0.0792" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="loads Common and only the current platform public folder" name="Keldor module loading.loads Common and only the current platform public folder" time="0.0583" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="loads the runtime guard before configuration and all discovered commands" name="Keldor module loading.loads the runtime guard before configuration and all discovered commands" time="0.0137" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="keeps import offline and avoids process-wide policy changes in the root loader" name="Keldor module loading.keeps import offline and avoids process-wide policy changes in the root loader" time="0.0081" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="preserves the original exception on a required-file load failure" name="Keldor module loading.preserves the original exception on a required-file load failure" time="0.0549" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/Open-KeldorUrl.Tests.ps1" executed="True" result="Success" success="True" time="0.1601" asserts="0" description="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/Open-KeldorUrl.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Open-KeldorUrl" executed="True" result="Success" success="True" time="0.1505" asserts="0" description="Open-KeldorUrl">
+            <results>
+              <test-case description="opens the URI with the default browser when Browser is not specified" name="Open-KeldorUrl.opens the URI with the default browser when Browser is not specified" time="0.0217" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="opens a resolved named browser on Windows" name="Open-KeldorUrl.opens a resolved named browser on Windows" time="0.0386" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="uses open -a for named browsers on macOS" name="Open-KeldorUrl.uses open -a for named browsers on macOS" time="0.0184" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="fails clearly when a named browser is unavailable on Linux" name="Open-KeldorUrl.fails clearly when a named browser is unavailable on Linux" time="0.0242" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/PlatformArchitecture.Tests.ps1" executed="True" result="Success" success="True" time="1.2226" asserts="0" description="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/PlatformArchitecture.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Platform detection architecture" executed="True" result="Success" success="True" time="1.2139" asserts="0" description="Platform detection architecture">
+            <results>
+              <test-case description="has exactly one Get-KeldorPlatform implementation in module source" name="Platform detection architecture.has exactly one Get-KeldorPlatform implementation in module source" time="0.7062" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="keeps direct platform checks inside the loader-safe bootstrap helper" name="Platform detection architecture.keeps direct platform checks inside the loader-safe bootstrap helper" time="0.5048" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/PublicOutputContracts.Tests.ps1" executed="True" result="Success" success="True" time="0.1127" asserts="0" description="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/PublicOutputContracts.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Public output contracts" executed="True" result="Success" success="True" time="0.1034" asserts="0" description="Public output contracts">
+            <results>
+              <test-case description="keeps canonical and legacy build number properties" name="Public output contracts.keeps canonical and legacy build number properties" time="0.0123" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="defines canonical low-risk inventory output properties" name="Public output contracts.defines canonical low-risk inventory output properties" time="0.0329" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="defines canonical account and holiday output properties while preserving legacy fields" name="Public output contracts.defines canonical account and holiday output properties while preserving legacy fields" time="0.0252" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="defines canonical service and registry output properties while preserving legacy fields" name="Public output contracts.defines canonical service and registry output properties while preserving legacy fields" time="0.0299" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/PublicParameterNormalization.Tests.ps1" executed="True" result="Success" success="True" time="0.2591" asserts="0" description="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/PublicParameterNormalization.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Public parameter normalization" executed="True" result="Success" success="True" time="0.2511" asserts="0" description="Public parameter normalization">
+            <results>
+              <test-case description="uses canonical parameter names and preserves compatibility aliases" name="Public parameter normalization.uses canonical parameter names and preserves compatibility aliases" time="0.1535" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="keeps safe mandatory parameter validation" name="Public parameter normalization.keeps safe mandatory parameter validation" time="0.0939" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/Remove-KeldorSecret.Tests.ps1" executed="True" result="Success" success="True" time="0.4544" asserts="0" description="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/Remove-KeldorSecret.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Remove-KeldorSecret" executed="True" result="Success" success="True" time="0.4379" asserts="0" description="Remove-KeldorSecret">
+            <results>
+              <test-case description="exports the primary command and alias" name="Remove-KeldorSecret.exports the primary command and alias" time="0.0114" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="documents the alias in comment-based help" name="Remove-KeldorSecret.documents the alias in comment-based help" time="0.0138" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="removes a process-scoped environment secret and returns no output by default" name="Remove-KeldorSecret.removes a process-scoped environment secret and returns no output by default" time="0.0131" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="returns a non-sensitive result object with PassThru" name="Remove-KeldorSecret.returns a non-sensitive result object with PassThru" time="0.0204" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="throws a not-found error for a missing environment secret" name="Remove-KeldorSecret.throws a not-found error for a missing environment secret" time="0.0099" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="rejects Field for the Environment provider" name="Remove-KeldorSecret.rejects Field for the Environment provider" time="0.0048" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="uses Auto when exactly one provider contains the secret" name="Remove-KeldorSecret.uses Auto when exactly one provider contains the secret" time="0.0551" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="fails Auto provider selection when the secret exists in more than one provider" name="Remove-KeldorSecret.fails Auto provider selection when the secret exists in more than one provider" time="0.0289" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="fails Auto provider selection when the secret is not found" name="Remove-KeldorSecret.fails Auto provider selection when the secret is not found" time="0.0217" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="uses only the explicitly selected provider" name="Remove-KeldorSecret.uses only the explicitly selected provider" time="0.0299" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="does not call providers when WhatIf is used" name="Remove-KeldorSecret.does not call providers when WhatIf is used" time="0.0113" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="removes a SecretManagement secret with a vault" name="Remove-KeldorSecret.removes a SecretManagement secret with a vault" time="0.0739" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="rejects Field for the SecretManagement provider" name="Remove-KeldorSecret.rejects Field for the SecretManagement provider" time="0.0051" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="does not leak provider error details from SecretManagement removal failures" name="Remove-KeldorSecret.does not leak provider error details from SecretManagement removal failures" time="0.0308" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="fails clearly for unsupported OnePassword field removal" name="Remove-KeldorSecret.fails clearly for unsupported OnePassword field removal" time="0.0154" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="passes discrete arguments to OnePassword item delete" name="Remove-KeldorSecret.passes discrete arguments to OnePassword item delete" time="0.033" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="returns a field-level result object when a provider reports field removal" name="Remove-KeldorSecret.returns a field-level result object when a provider reports field removal" time="0.0135" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/RuntimeCompatibility.Tests.ps1" executed="True" result="Success" success="True" time="0.15" asserts="0" description="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/RuntimeCompatibility.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Keldor PowerShell runtime compatibility" executed="True" result="Success" success="True" time="0.1383" asserts="0" description="Keldor PowerShell runtime compatibility">
+            <results>
+              <test-case description="reports the detected runtime, both minimums, retirement policy, and compatibility URL" name="Keldor PowerShell runtime compatibility.reports the detected runtime, both minimums, retirement policy, and compatibility URL" time="0.008" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="declares the numeric minimum and both supported editions in the manifest" name="Keldor PowerShell runtime compatibility.declares the numeric minimum and both supported editions in the manifest" time="0.0065" asserts="0" success="True" result="Success" executed="True" />
+              <test-suite type="ParameterizedTest" name="Keldor PowerShell runtime compatibility.rejects unsupported runtime combinations" executed="True" result="Success" success="True" time="0.054" asserts="0" description="rejects unsupported runtime combinations">
+                <results>
+                  <test-case description="rejects unsupported runtime combinations" name="Keldor PowerShell runtime compatibility.rejects unsupported runtime combinations(&quot;2.0&quot;,&quot;Desktop&quot;)" time="0.006" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects unsupported runtime combinations" name="Keldor PowerShell runtime compatibility.rejects unsupported runtime combinations(&quot;3.0&quot;,&quot;Desktop&quot;)" time="0.0055" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects unsupported runtime combinations" name="Keldor PowerShell runtime compatibility.rejects unsupported runtime combinations(&quot;4.0&quot;,&quot;Desktop&quot;)" time="0.0036" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects unsupported runtime combinations" name="Keldor PowerShell runtime compatibility.rejects unsupported runtime combinations(&quot;5.0&quot;,&quot;Desktop&quot;)" time="0.0043" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects unsupported runtime combinations" name="Keldor PowerShell runtime compatibility.rejects unsupported runtime combinations(&quot;6.2&quot;,&quot;Core&quot;)" time="0.0039" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects unsupported runtime combinations" name="Keldor PowerShell runtime compatibility.rejects unsupported runtime combinations(&quot;7.0&quot;,&quot;Core&quot;)" time="0.0038" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects unsupported runtime combinations" name="Keldor PowerShell runtime compatibility.rejects unsupported runtime combinations(&quot;7.1&quot;,&quot;Core&quot;)" time="0.0054" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects unsupported runtime combinations" name="Keldor PowerShell runtime compatibility.rejects unsupported runtime combinations(&quot;7.2&quot;,&quot;Core&quot;)" time="0.0039" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects unsupported runtime combinations" name="Keldor PowerShell runtime compatibility.rejects unsupported runtime combinations(&quot;7.3&quot;,&quot;Core&quot;)" time="0.0036" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects unsupported runtime combinations" name="Keldor PowerShell runtime compatibility.rejects unsupported runtime combinations(&quot;7.6&quot;,&quot;Unknown&quot;)" time="0.0037" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects unsupported runtime combinations" name="Keldor PowerShell runtime compatibility.rejects unsupported runtime combinations(&quot;not-a-version&quot;,&quot;Desktop&quot;)" time="0.0035" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects unsupported runtime combinations" name="Keldor PowerShell runtime compatibility.rejects unsupported runtime combinations(null,&quot;&quot;)" time="0.0067" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="ParameterizedTest" name="Keldor PowerShell runtime compatibility.accepts supported runtime combinations" executed="True" result="Success" success="True" time="0.0234" asserts="0" description="accepts supported runtime combinations">
+                <results>
+                  <test-case description="accepts supported runtime combinations" name="Keldor PowerShell runtime compatibility.accepts supported runtime combinations(&quot;5.1&quot;,&quot;Desktop&quot;)" time="0.0109" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="accepts supported runtime combinations" name="Keldor PowerShell runtime compatibility.accepts supported runtime combinations(&quot;5.1.22621.2506&quot;,&quot;Desktop&quot;)" time="0.0027" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="accepts supported runtime combinations" name="Keldor PowerShell runtime compatibility.accepts supported runtime combinations(&quot;7.4.0&quot;,&quot;Core&quot;)" time="0.0025" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="accepts supported runtime combinations" name="Keldor PowerShell runtime compatibility.accepts supported runtime combinations(&quot;7.4.14&quot;,&quot;Core&quot;)" time="0.0025" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="accepts supported runtime combinations" name="Keldor PowerShell runtime compatibility.accepts supported runtime combinations(&quot;7.5.5&quot;,&quot;Core&quot;)" time="0.0024" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="accepts supported runtime combinations" name="Keldor PowerShell runtime compatibility.accepts supported runtime combinations(&quot;7.6.0&quot;,&quot;Core&quot;)" time="0.0024" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/Set-KeldorSecret.Tests.ps1" executed="True" result="Success" success="True" time="0.3755" asserts="0" description="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/Set-KeldorSecret.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Set-KeldorSecret" executed="True" result="Success" success="True" time="0.3637" asserts="0" description="Set-KeldorSecret">
+            <results>
+              <test-case description="exports the primary command and alias" name="Set-KeldorSecret.exports the primary command and alias" time="0.0122" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="documents the alias in comment-based help" name="Set-KeldorSecret.documents the alias in comment-based help" time="0.0178" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="sets a process-scoped environment secret and returns no output by default" name="Set-KeldorSecret.sets a process-scoped environment secret and returns no output by default" time="0.0192" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="returns a non-sensitive result object with PassThru" name="Set-KeldorSecret.returns a non-sensitive result object with PassThru" time="0.0106" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="does not overwrite an existing environment secret without Force" name="Set-KeldorSecret.does not overwrite an existing environment secret without Force" time="0.0095" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="overwrites an existing environment secret with Force" name="Set-KeldorSecret.overwrites an existing environment secret with Force" time="0.0042" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="converts SecureString only at the environment write boundary" name="Set-KeldorSecret.converts SecureString only at the environment write boundary" time="0.0199" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="rejects Field for the Environment provider" name="Set-KeldorSecret.rejects Field for the Environment provider" time="0.0051" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="uses SecretManagement when Auto can safely write through it" name="Set-KeldorSecret.uses SecretManagement when Auto can safely write through it" time="0.0496" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="uses Environment when Auto cannot use SecretManagement" name="Set-KeldorSecret.uses Environment when Auto cannot use SecretManagement" time="0.0179" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="does not fall back after a selected provider write failure" name="Set-KeldorSecret.does not fall back after a selected provider write failure" time="0.0403" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="does not call providers when WhatIf is used" name="Set-KeldorSecret.does not call providers when WhatIf is used" time="0.0073" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="passes SecureString through to SecretManagement without plaintext conversion" name="Set-KeldorSecret.passes SecureString through to SecretManagement without plaintext conversion" time="0.0309" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="requires Force before replacing an existing SecretManagement secret" name="Set-KeldorSecret.requires Force before replacing an existing SecretManagement secret" time="0.0293" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="writes an existing SecretManagement secret when Force is supplied" name="Set-KeldorSecret.writes an existing SecretManagement secret when Force is supplied" time="0.0316" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="fails clearly for OnePassword writes instead of using command-line secret arguments" name="Set-KeldorSecret.fails clearly for OnePassword writes instead of using command-line secret arguments" time="0.0109" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="rejects unsupported secret input types" name="Set-KeldorSecret.rejects unsupported secret input types" time="0.0039" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/SystemInformation.Tests.ps1" executed="True" result="Success" success="True" time="0.64" asserts="0" description="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/SystemInformation.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Keldor system information commands" executed="True" result="Success" success="True" time="0.4095" asserts="0" description="Keldor system information commands">
+            <results>
+              <test-case description="exports every system information command" name="Keldor system information commands.exports every system information command" time="0.0402" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="uses consistent Local, ComputerName, and PSSession parameter sets" name="Keldor system information commands.uses consistent Local, ComputerName, and PSSession parameter sets" time="0.0699" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="provides complete help and canonical links" name="Keldor system information commands.provides complete help and canonical links" time="0.0607" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="keeps public implementations read-only and free of presentation commands" name="Keldor system information commands.keeps public implementations read-only and free of presentation commands" time="0.0215" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="preserves stable operating-system property order" name="Keldor system information commands.preserves stable operating-system property order" time="0.0039" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="normalizes Darwin as a macOS kernel fixture" name="Keldor system information commands.normalizes Darwin as a macOS kernel fixture" time="0.0058" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="preserves native uptime types and numeric totals" name="Keldor system information commands.preserves native uptime types and numeric totals" time="0.0178" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="allows missing DMI and serial information without failing hardware inventory" name="Keldor system information commands.allows missing DMI and serial information without failing hardware inventory" time="0.0049" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="builds aggregate inventory from one shared snapshot" name="Keldor system information commands.builds aggregate inventory from one shared snapshot" time="0.0249" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="returns partial inventory when optional data is missing" name="Keldor system information commands.returns partial inventory when optional data is missing" time="0.0108" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="returns a stable failure object when target identification fails" name="Keldor system information commands.returns a stable failure object when target identification fails" time="0.0039" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="keeps successful pipeline results when another target fails" name="Keldor system information commands.keeps successful pipeline results when another target fails" time="0.0189" asserts="0" success="True" result="Success" executed="True" />
+              <test-suite type="ParameterizedTest" name="Keldor system information commands.normalizes hardware fixtures and native memory types" executed="True" result="Success" success="True" time="0.0488" asserts="0" description="normalizes hardware fixtures and native memory types">
+                <results>
+                  <test-case description="normalizes hardware fixtures and native memory types" name="Keldor system information commands.normalizes hardware fixtures and native memory types(&quot;Windows&quot;,null,&quot;PowerEdge&quot;,&quot;Dell Inc.&quot;)" time="0.0177" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="normalizes hardware fixtures and native memory types" name="Keldor system information commands.normalizes hardware fixtures and native memory types(&quot;Windows&quot;,&quot;Hyper-V&quot;,&quot;Virtual Machine&quot;,&quot;Microsoft Corporation&quot;)" time="0.0048" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="normalizes hardware fixtures and native memory types" name="Keldor system information commands.normalizes hardware fixtures and native memory types(&quot;Windows&quot;,&quot;VMware&quot;,&quot;VMware Virtual Platform&quot;,&quot;VMware, Inc.&quot;)" time="0.0087" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="normalizes hardware fixtures and native memory types" name="Keldor system information commands.normalizes hardware fixtures and native memory types(&quot;Windows&quot;,&quot;Nutanix AHV&quot;,&quot;AHV&quot;,&quot;Nutanix&quot;)" time="0.004" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="normalizes hardware fixtures and native memory types" name="Keldor system information commands.normalizes hardware fixtures and native memory types(&quot;Linux&quot;,&quot;KVM&quot;,&quot;Standard PC (KVM)&quot;,&quot;QEMU&quot;)" time="0.0038" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="normalizes hardware fixtures and native memory types" name="Keldor system information commands.normalizes hardware fixtures and native memory types(&quot;macOS&quot;,null,&quot;Mac15,9&quot;,&quot;Apple Inc.&quot;)" time="0.0058" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="normalizes hardware fixtures and native memory types" name="Keldor system information commands.normalizes hardware fixtures and native memory types(&quot;macOS&quot;,&quot;Apple Virtualization&quot;,&quot;VirtualMac2,1&quot;,&quot;Apple Inc.&quot;)" time="0.004" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="ParameterizedTest" name="Keldor system information commands.preserves Apple Silicon and Intel Mac processor fixtures" executed="True" result="Success" success="True" time="0.0072" asserts="0" description="preserves Apple Silicon and Intel Mac processor fixtures">
+                <results>
+                  <test-case description="preserves Apple Silicon and Intel Mac processor fixtures" name="Keldor system information commands.preserves Apple Silicon and Intel Mac processor fixtures(&quot;arm64&quot;,&quot;Apple M3 Max&quot;,&quot;Apple Inc.&quot;)" time="0.0042" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="preserves Apple Silicon and Intel Mac processor fixtures" name="Keldor system information commands.preserves Apple Silicon and Intel Mac processor fixtures(&quot;x86_64&quot;,&quot;Intel(R) Core(TM) i7&quot;,&quot;Intel&quot;)" time="0.0031" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="ParameterizedTest" name="Keldor system information commands.normalizes Windows, Linux, and macOS operating-system fixtures" executed="True" result="Success" success="True" time="0.0244" asserts="0" description="normalizes Windows, Linux, and macOS operating-system fixtures">
+                <results>
+                  <test-case description="normalizes Windows, Linux, and macOS operating-system fixtures" name="Keldor system information commands.normalizes Windows, Linux, and macOS operating-system fixtures(&quot;Windows&quot;,10.0.20348,&quot;Windows Server&quot;)" time="0.0144" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="normalizes Windows, Linux, and macOS operating-system fixtures" name="Keldor system information commands.normalizes Windows, Linux, and macOS operating-system fixtures(&quot;Linux&quot;,24.4,&quot;Example Linux&quot;)" time="0.0037" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="normalizes Windows, Linux, and macOS operating-system fixtures" name="Keldor system information commands.normalizes Windows, Linux, and macOS operating-system fixtures(&quot;macOS&quot;,15.5,&quot;macOS&quot;)" time="0.0063" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Linux os-release parser" executed="True" result="Success" success="True" time="0.4487" asserts="0" description="Linux os-release parser">
+            <results>
+              <test-case description="parses quoted, unquoted, empty, escaped, duplicate, and structured ID_LIKE values as data" name="Linux os-release parser.parses quoted, unquoted, empty, escaped, duplicate, and structured ID_LIKE values as data" time="0.0141" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="prefers the first existing os-release path and falls back to the second" name="Linux os-release parser.prefers the first existing os-release path and falls back to the second" time="0.0122" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="does not execute malicious-looking os-release content" name="Linux os-release parser.does not execute malicious-looking os-release content" time="0.0082" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Legacy system information compatibility wrappers" executed="True" result="Success" success="True" time="0.544" asserts="0" description="Legacy system information compatibility wrappers">
+            <results>
+              <test-case description="delegates Get-UpTime to Get-KeldorUptime and preserves historical properties" name="Legacy system information compatibility wrappers.delegates Get-UpTime to Get-KeldorUptime and preserves historical properties" time="0.0274" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="delegates Get-SerialNumber and Get-ComputerModel to Get-KeldorHardwareInfo" name="Legacy system information compatibility wrappers.delegates Get-SerialNumber and Get-ComputerModel to Get-KeldorHardwareInfo" time="0.0146" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="delegates Test-Online ICMP behavior to Test-ResponseTime" name="Legacy system information compatibility wrappers.delegates Test-Online ICMP behavior to Test-ResponseTime" time="0.0212" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="contains no duplicate legacy discovery implementation" name="Legacy system information compatibility wrappers.contains no duplicate legacy discovery implementation" time="0.0043" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/Test-KeldorSecretProvider.Tests.ps1" executed="True" result="Success" success="True" time="0.3776" asserts="0" description="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/Test-KeldorSecretProvider.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Test-KeldorSecretProvider" executed="True" result="Success" success="True" time="0.3674" asserts="0" description="Test-KeldorSecretProvider">
+            <results>
+              <test-case description="exports the primary command and alias" name="Test-KeldorSecretProvider.exports the primary command and alias" time="0.0084" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="documents the alias in comment-based help" name="Test-KeldorSecretProvider.documents the alias in comment-based help" time="0.0122" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="tests all providers when Name is omitted" name="Test-KeldorSecretProvider.tests all providers when Name is omitted" time="0.0391" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="tests one provider by case-insensitive name" name="Test-KeldorSecretProvider.tests one provider by case-insensitive name" time="0.0047" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="tests multiple providers" name="Test-KeldorSecretProvider.tests multiple providers" time="0.0104" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="accepts provider names from the pipeline" name="Test-KeldorSecretProvider.accepts provider names from the pipeline" time="0.0075" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="throws for unknown providers and Auto" name="Test-KeldorSecretProvider.throws for unknown providers and Auto" time="0.0056" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="rejects Vault for providers that do not support vaults" name="Test-KeldorSecretProvider.rejects Vault for providers that do not support vaults" time="0.0061" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="rejects Detailed and Quiet together" name="Test-KeldorSecretProvider.rejects Detailed and Quiet together" time="0.0028" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="returns Boolean output with Quiet" name="Test-KeldorSecretProvider.returns Boolean output with Quiet" time="0.0086" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="includes detailed child checks without sensitive values" name="Test-KeldorSecretProvider.includes detailed child checks without sensitive values" time="0.0089" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="reports OnePassword executable missing as a failed object" name="Test-KeldorSecretProvider.reports OnePassword executable missing as a failed object" time="0.0082" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="reports OnePassword version failure and unauthenticated state without raw output" name="Test-KeldorSecretProvider.reports OnePassword version failure and unauthenticated state without raw output" time="0.021" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="reports OnePassword authenticated and vault accessible" name="Test-KeldorSecretProvider.reports OnePassword authenticated and vault accessible" time="0.0192" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="reports OnePassword vault unavailable" name="Test-KeldorSecretProvider.reports OnePassword vault unavailable" time="0.0184" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="reports SecretManagement missing module without terminating" name="Test-KeldorSecretProvider.reports SecretManagement missing module without terminating" time="0.0161" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="reports SecretManagement missing commands" name="Test-KeldorSecretProvider.reports SecretManagement missing commands" time="0.0162" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="reports SecretManagement no vaults registered" name="Test-KeldorSecretProvider.reports SecretManagement no vaults registered" time="0.0268" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="reports requested SecretManagement vault missing" name="Test-KeldorSecretProvider.reports requested SecretManagement vault missing" time="0.0204" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="reports SecretManagement vault test success and failure without secret operations" name="Test-KeldorSecretProvider.reports SecretManagement vault test success and failure without secret operations" time="0.0459" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="reports SecretManagement requested vault success" name="Test-KeldorSecretProvider.reports SecretManagement requested vault success" time="0.024" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/Versioning.Tests.ps1" executed="True" result="Failure" success="False" time="0.0238" asserts="0" description="/Users/skyler/VS_Code/Keldor/Keldor/src/Keldor/Tests/Versioning.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Keldor versioning" executed="True" result="Failure" success="False" time="0.0167" asserts="0" description="Keldor versioning">
+            <results>
+              <test-case description="uses 0.1.0 as the authoritative source manifest version" name="Keldor versioning.uses 0.1.0 as the authoritative source manifest version" time="0" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="validates semantic versions and prerelease versions" name="Keldor versioning.validates semantic versions and prerelease versions" time="0" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="normal builds leave the source manifest unchanged" name="Keldor versioning.normal builds leave the source manifest unchanged" time="0" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="injects release versions into the packaged manifest only" name="Keldor versioning.injects release versions into the packaged manifest only" time="0" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+              <test-case description="writes explicit function exports into packaged manifests" name="Keldor versioning.writes explicit function exports into packaged manifests" time="0" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>This test should run but it did not. Most likely a setup in some parent block failed.</message>
+                  <stack-trace />
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

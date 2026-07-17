@@ -5,8 +5,15 @@
 - PowerShell 7.6 LTS (preferred for build, formatting, documentation, and primary tests)
 - Windows PowerShell 5.1 on a supported Windows version (production compatibility testing)
 - Git
+- Keldor.Build.PowerShell 0.2.0
 
-Optional:
+Install the pinned build dependency separately from the Keldor runtime module:
+
+```powershell
+Install-Module Keldor.Build.PowerShell -RequiredVersion 0.2.0 -Scope CurrentUser
+```
+
+Optional test tools:
 
 - Pester
 - PSScriptAnalyzer
@@ -44,6 +51,20 @@ Release packages require an explicit semantic version:
 ```
 
 See the [Versioning Policy](versioning-policy.md) for release version selection.
+
+Reusable staging, manifest export, version, and publish behavior lives in `Keldor.Build.PowerShell`. `build.ps1` only
+imports version 0.2.0 and passes `build.config.psd1` to `Invoke-KeldorPowerShellBuild`.
+
+### Test unpublished build-module changes
+
+Clone the build module anywhere and pass its directory explicitly:
+
+```powershell
+./build.ps1 -Task Build -BuildModulePath ../Keldor.Build.PowerShell
+```
+
+The local manifest must report version 0.2.0. This explicit parameter is intended only for coordinated development;
+CI and production publishing do not use it. The repositories do not need a special relative layout.
 
 ## Documentation
 

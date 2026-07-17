@@ -47,6 +47,17 @@ uncertain modernization work in the [fleet migration audit](fleet-command-migrat
 
 ## Formatting and Analysis
 
+Install the pinned reusable build tooling and use the repository entry point before submitting changes:
+
+```powershell
+Install-Module Keldor.Build.PowerShell -RequiredVersion 0.2.0 -Scope CurrentUser
+./build.ps1 -Task Validate
+./build.ps1 -Task Build
+```
+
+Build implementation changes belong in `Keldor.Build.PowerShell`; Keldor-specific paths and metadata belong in
+`build.config.psd1`. Do not add build tooling to `src/Keldor/Keldor.psd1` as a runtime dependency.
+
 Install PSScriptAnalyzer and use the repository configuration:
 
 ```powershell

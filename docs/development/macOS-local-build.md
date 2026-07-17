@@ -114,6 +114,12 @@ Windows-only and Linux-only functions should not load.
 
 ## Build the Module Locally
 
+Install the exact build dependency first:
+
+```powershell
+Install-Module Keldor.Build.PowerShell -RequiredVersion 0.2.0 -Scope CurrentUser
+```
+
 From the repository root:
 
 ```powershell
@@ -124,6 +130,12 @@ The built module is written to `out/Keldor`. Release packages require an explici
 
 ```powershell
 ./build.ps1 -Task Release -Version '0.1.0'
+```
+
+To test an unpublished local checkout of the build module, pass it explicitly:
+
+```powershell
+./build.ps1 -Task Build -BuildModulePath ../Keldor.Build.PowerShell
 ```
 
 See the [Versioning Policy](versioning-policy.md) for release version selection.

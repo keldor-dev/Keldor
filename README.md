@@ -154,6 +154,20 @@ install Keldor remotely. See the
 - Add internal helpers to matching `Private/*` folders
 - Follow the [Keldor PowerShell Engineering Standard](docs/standards/Keldor_PowerShell_Engineering_Standard.md)
 
+## Build Tooling
+
+Reusable build implementation is maintained in `Keldor.Build.PowerShell`. This repository keeps only
+`build.config.psd1` and a thin `build.ps1` entry point. Install the pinned build dependency, then build from the
+repository root:
+
+```powershell
+Install-Module Keldor.Build.PowerShell -RequiredVersion 0.2.0 -Scope CurrentUser
+./build.ps1 -Task Build
+```
+
+The build dependency is not a runtime dependency and is excluded from the published Keldor package. See
+[Local Development](docs/development/local-build.md) for the explicit unpublished-module override.
+
 ## Visual Studio Code Snippets
 
 To load Keldor PowerShell snippets, run:

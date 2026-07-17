@@ -6,6 +6,10 @@ Keldor follows a feature-oriented layout with a clear separation between public 
 
 ## Repository Structure
 
+At the repository root, `build.ps1` is a thin consumer of `Keldor.Build.PowerShell` and `build.config.psd1` contains
+only Keldor-specific relative paths and metadata. Reusable staging, versioning, packaging, and publishing code is not
+owned by this repository.
+
 ```text
 Keldor/
 │
