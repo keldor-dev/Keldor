@@ -22,6 +22,9 @@ names, array target parameters without pipeline binding, incidental output, and 
 
 Baseline observations:
 
+- `Invoke-KeldorCommand` is the canonical orchestration contract for new remote work. Existing inventory commands are
+  intentionally deferred for a focused, non-recursive migration that preserves their local snapshot collectors.
+
 - 85 public files reference `ComputerName`; 76 declare it as a string array.
 - Only 14 `ComputerName` files contain either pipeline-binding attribute, and each still needs command-level review to
   confirm that the binding applies to the target parameter.

@@ -75,8 +75,10 @@ SSH, firewall, TrustedHosts, or authentication settings. `ComputerName` uses the
 remoting transport. Use an existing SSH-backed `PSSession` for Linux or macOS when appropriate.
 
 Connection failures return a structured failure result for that target and do not suppress successful results from
-other targets. Parallel fleet orchestration and a general transport abstraction remain future responsibilities of the
-planned `Invoke-KeldorCommand` command family.
+other targets. `Invoke-KeldorCommand` now provides the canonical orchestration contract for new remote work. These
+commands retain their existing snapshot remoting path initially to avoid output changes or recursion. A future focused
+migration can delegate transport and session handling to the approved orchestration engine while retaining the current
+local snapshot collectors.
 
 ## Examples
 

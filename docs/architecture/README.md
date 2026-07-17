@@ -8,6 +8,7 @@ Architecture guides:
 
 - [Platform-aware module loading](platform-loading.md)
 - [Cross-platform system information](system-information.md)
+- [Remote command orchestration](remote-command-orchestration.md)
 - [PowerShell compatibility](../compatibility.md)
 - [PowerShell lifecycle review](../development/powershell-lifecycle-policy.md)
 

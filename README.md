@@ -128,6 +128,23 @@ The commands return structured objects with native dates, durations, numbers, an
 support configured PowerShell-remoting targets and reusable `PSSession` objects. See the
 [system-information architecture](docs/architecture/system-information.md) for contracts and remote limitations.
 
+## Remote Command Orchestration
+
+Use `Invoke-KeldorCommand` as Keldor's canonical local and remote execution entry point:
+
+```powershell
+Invoke-KeldorCommand -Local -ScriptBlock { Get-KeldorSystemInfo }
+
+'server01', 'server02' |
+    Invoke-KeldorCommand -ScriptBlock { Get-KeldorSystemInfo }
+```
+
+It supports local execution, caller-owned `PSSession` reuse, WSMan through `ComputerName`, and PowerShell remoting over
+SSH through `HostName` on supported PowerShell 7 runtimes. Structured per-target results are the default; `RawOutput`
+is opt-in. Keldor does not enable remoting, configure SSH or firewalls, modify TrustedHosts, persist credentials, or
+install Keldor remotely. See the
+[remote command orchestration architecture](docs/architecture/remote-command-orchestration.md).
+
 ## Adding Functions
 
 - Add cross-platform exported functions to `Public/Common`
@@ -158,6 +175,7 @@ Workspace snippets are also available in `.vscode/Keldor.code-snippets` when thi
 - [PowerShell Compatibility](docs/compatibility.md)
 - [PowerShell Lifecycle Review](docs/development/powershell-lifecycle-policy.md)
 - [Cross-Platform System Information](docs/architecture/system-information.md)
+- [Remote Command Orchestration](docs/architecture/remote-command-orchestration.md)
 - Docs site: https://docs.keldor.dev
 - Repository: https://github.com/keldor-dev/Keldor
 
