@@ -77,11 +77,9 @@ Prepare a release package with an explicit version:
 ./build.ps1 -Task Release -Version '0.1.0'
 ```
 
-Publish only after release preparation and documentation validation:
-
-```powershell
-./build.ps1 -Task Publish -Version '0.1.0' -Repository PSGallery
-```
+After release preparation and documentation validation, follow the canonical
+[Keldor publishing runbook](https://github.com/keldor-dev/Keldor.Build.PowerShell/blob/main/docs/publishing/keldor-release.md).
+It promotes the same staged artifact through SHRepo and then the PowerShell Gallery.
 
 Do not use CI run numbers, dates, years, months, or commit counts as public package version components. CI identifiers may be used for build records, but the Git tag, GitHub release, module manifest, changelog, and package version must agree on the public SemVer version.
 
@@ -101,4 +99,4 @@ v0.1.0
 - Confirm `out/Keldor/Keldor.psd1` contains the selected version.
 - Confirm the tag name is `v<version>`.
 - Confirm the GitHub release, module manifest, changelog, and package version agree.
-- Publish with `./build.ps1 -Task Publish -Version '<version>' -Repository PSGallery`.
+- Publish the staged artifact through SHRepo and the PowerShell Gallery by following the canonical publishing runbook.

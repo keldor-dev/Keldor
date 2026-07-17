@@ -19,7 +19,7 @@ local development override.
 - Update release notes.
 - Publish documentation.
 - Confirm Keldor.Build.PowerShell 0.2.0 is published and installable.
-- Publish to the PowerShell Gallery.
+- Promote the validated artifact through SHFamily ProGet and then the PowerShell Gallery.
 
 ## Documentation
 
@@ -55,19 +55,18 @@ Create:
 - GitHub Release
 - Release notes
 
-## PowerShell Gallery
+## Package publishing
 
-Publish only after documentation has been successfully deployed.
+Publish only after documentation has been successfully deployed. Documentation should always be available before
+users update the module.
 
-Documentation should always be available before users update the module.
+The canonical [Keldor publishing runbook](https://github.com/keldor-dev/Keldor.Build.PowerShell/blob/main/docs/publishing/keldor-release.md)
+defines the complete promotion path through SHFamily ProGet and the PowerShell Gallery. It retrieves both API keys at
+runtime with the 1Password CLI and publishes the unchanged, validated `out/Keldor` artifact. Do not put a key in
+`build.config.psd1`, source control, logs, or persistent environment variables.
 
-```powershell
-./build.ps1 -Task Publish -Version '0.1.0' -Repository PSGallery
-```
-
-The API key must come from the release environment or CI secret context; it does not belong in
-`build.config.psd1`. The build module prepares `out/Keldor`, verifies the target version, and publishes only after
-`ShouldProcess` approval.
+`./build.ps1 -Task Publish` exists as a rebuild-and-publish shortcut, but it is not the supported promotion path
+because it replaces the previously validated release artifact.
 
 ## Cross-Repository Order
 

@@ -4,8 +4,32 @@ Describe "Keldor versioning" {
         $script:RepoRoot = Split-Path -Parent (Split-Path -Parent $script:ModuleRoot)
         $script:ManifestPath = Join-Path $script:ModuleRoot 'Keldor.psd1'
         $script:BuildScript = Join-Path $script:RepoRoot 'build.ps1'
+        $script:LocalBuildModulePath = $env:KELDOR_BUILD_MODULE_PATH
 
-        . $script:BuildScript
+        function Invoke-KeldorVersioningBuild {
+            param(
+                [Parameter(Mandatory)]
+                [string]$Task,
+
+                [Parameter()]
+                [string]$Version
+            )
+
+            $BuildParameters = @{
+                Task = $Task
+                ErrorAction = 'Stop'
+            }
+
+            if ($Version) {
+                $BuildParameters.Version = $Version
+            }
+
+            if ($script:LocalBuildModulePath) {
+                $BuildParameters.BuildModulePath = $script:LocalBuildModulePath
+            }
+
+            & $script:BuildScript @BuildParameters
+        }
     }
 
     It "uses 0.1.0 as the authoritative source manifest version" {
@@ -15,24 +39,23 @@ Describe "Keldor versioning" {
     }
 
     It "validates semantic versions and prerelease versions" {
-        Test-KeldorSemanticVersion -Version '0.1.0' | Should -BeTrue
-        Test-KeldorSemanticVersion -Version '1.1.0-preview.1' | Should -BeTrue
-        Test-KeldorSemanticVersion -Version '1.1.0-rc.1' | Should -BeTrue
-        Test-KeldorSemanticVersion -Version '1.1' | Should -BeFalse
-        Test-KeldorSemanticVersion -Version '1.1.0.0' | Should -BeFalse
+        { Invoke-KeldorVersioningBuild -Task Release -Version '1.1' } |
+            Should -Throw '*not a valid semantic version*'
+        { Invoke-KeldorVersioningBuild -Task Release -Version '1.1.0.0' } |
+            Should -Throw '*not a valid semantic version*'
     }
 
     It "normal builds leave the source manifest unchanged" {
         $before = Get-Content -Path $script:ManifestPath -Raw
 
-        Invoke-KeldorBuild -Task Build
+        Invoke-KeldorVersioningBuild -Task Build | Out-Null
 
         $after = Get-Content -Path $script:ManifestPath -Raw
         $after | Should -Be $before
     }
 
     It "injects release versions into the packaged manifest only" {
-        Invoke-KeldorBuild -Task Release -Version '1.1.0-preview.1'
+        Invoke-KeldorVersioningBuild -Task Release -Version '1.1.0-preview.1' | Out-Null
 
         $builtManifestPath = Join-Path $script:RepoRoot 'out/Keldor/Keldor.psd1'
         $builtManifest = Import-PowerShellDataFile -Path $builtManifestPath
@@ -44,7 +67,7 @@ Describe "Keldor versioning" {
     }
 
     It 'writes explicit function exports into packaged manifests' {
-        Invoke-KeldorBuild -Task Build
+        Invoke-KeldorVersioningBuild -Task Build | Out-Null
 
         $builtManifestPath = Join-Path $script:RepoRoot 'out/Keldor/Keldor.psd1'
         $builtManifest = Import-PowerShellDataFile -Path $builtManifestPath

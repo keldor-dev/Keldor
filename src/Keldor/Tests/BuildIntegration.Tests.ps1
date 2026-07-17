@@ -16,6 +16,10 @@ BeforeAll {
 }
 
 Describe 'Keldor build integration' {
+    AfterEach {
+        Get-Module -Name Keldor | Remove-Module -Force -ErrorAction SilentlyContinue
+    }
+
     It 'keeps the repository entry point as a build-module consumer' {
         $BuildScriptContent = Get-Content -LiteralPath $BuildScript -Raw
 

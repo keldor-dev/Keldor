@@ -186,6 +186,8 @@ Workspace snippets are also available in `.vscode/Keldor.code-snippets` when thi
 - [Keldor General Engineering Standard](docs/standards/Keldor_General_Engineering_Standard.md)
 - [Keldor PowerShell Engineering Standard](docs/standards/Keldor_PowerShell_Engineering_Standard.md)
 - [Versioning Policy](docs/development/versioning-policy.md)
+- [Release Process](docs/development/release-process.md)
+- [Canonical Publishing Runbook](https://github.com/keldor-dev/Keldor.Build.PowerShell/blob/main/docs/publishing/keldor-release.md)
 - [PowerShell Compatibility](docs/compatibility.md)
 - [PowerShell Lifecycle Review](docs/development/powershell-lifecycle-policy.md)
 - [Cross-Platform System Information](docs/architecture/system-information.md)
