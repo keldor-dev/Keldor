@@ -6,7 +6,7 @@ Describe 'Keldor PowerShell runtime compatibility' {
         Import-Module $script:ManifestPath -Force
     }
 
-    It 'accepts supported runtime combinations' -TestCases @(
+    It 'accepts fully supported runtime combinations' -TestCases @(
         @{ Edition = 'Desktop'; Version = '5.1' }
         @{ Edition = 'Desktop'; Version = '5.1.22621.2506' }
         @{ Edition = 'Core'; Version = '7.4.0' }
@@ -17,7 +17,32 @@ Describe 'Keldor PowerShell runtime compatibility' {
         param($Edition, $Version)
 
         InModuleScope Keldor -Parameters @{ Edition = $Edition; Version = $Version } {
-            Test-KeldorPowerShellRuntime -Edition $Edition -Version $Version | Should -BeTrue
+            $warning = @()
+            Test-KeldorPowerShellRuntime -Edition $Edition -Version $Version -WarningVariable warning |
+                Should -BeTrue
+            $warning | Should -BeNullOrEmpty
+        }
+    }
+
+    It 'accepts PowerShell 7.2 and 7.3 with a best-effort warning' -TestCases @(
+        @{ Version = '7.2.0' }
+        @{ Version = '7.2.24' }
+        @{ Version = '7.3.0' }
+        @{ Version = '7.3.9' }
+    ) {
+        param($Version)
+
+        InModuleScope Keldor -Parameters @{ Version = $Version } {
+            $warning = @()
+            Test-KeldorPowerShellRuntime -Edition Core -Version $Version -WarningVariable warning |
+                Should -BeTrue
+
+            $warning.Count | Should -Be 1
+            $warning[0].Message | Should -Match "PowerShell $([regex]::Escape($Version))"
+            $warning[0].Message | Should -Match 'best-effort basis'
+            $warning[0].Message | Should -Match 'enterprise and government environments'
+            $warning[0].Message | Should -Match 'PowerShell 7.6 LTS'
+            $warning[0].Message | Should -Match 'https://docs.keldor.dev/powershell/keldor/compatibility'
         }
     }
 
@@ -29,8 +54,6 @@ Describe 'Keldor PowerShell runtime compatibility' {
         @{ Edition = 'Core'; Version = '6.2' }
         @{ Edition = 'Core'; Version = '7.0' }
         @{ Edition = 'Core'; Version = '7.1' }
-        @{ Edition = 'Core'; Version = '7.2' }
-        @{ Edition = 'Core'; Version = '7.3' }
         @{ Edition = 'Unknown'; Version = '7.6' }
         @{ Edition = 'Desktop'; Version = 'not-a-version' }
         @{ Edition = ''; Version = $null }
@@ -44,20 +67,21 @@ Describe 'Keldor PowerShell runtime compatibility' {
         }
     }
 
-    It 'reports the detected runtime, both minimums, retirement policy, and compatibility URL' {
+    It 'reports the detected runtime, support tiers, recommendation, and compatibility URL for rejected runtimes' {
         InModuleScope Keldor {
             $errorRecord = $null
             try {
-                Test-KeldorPowerShellRuntime -Edition Core -Version 7.3
+                Test-KeldorPowerShellRuntime -Edition Core -Version 7.1
             } catch {
                 $errorRecord = $_
             }
 
             $errorRecord.FullyQualifiedErrorId | Should -BeLike 'Keldor.UnsupportedPowerShellRuntime,*'
-            $errorRecord.Exception.Message | Should -Match "edition 'Core' version '7.3'"
+            $errorRecord.Exception.Message | Should -Match "edition 'Core' version '7.1'"
             $errorRecord.Exception.Message | Should -Match 'Windows PowerShell 5.1'
-            $errorRecord.Exception.Message | Should -Match 'PowerShell 7.4'
-            $errorRecord.Exception.Message | Should -Match 'Obsolete PowerShell releases are intentionally unsupported'
+            $errorRecord.Exception.Message | Should -Match 'PowerShell 7.2 or later'
+            $errorRecord.Exception.Message | Should -Match 'best-effort compatibility'
+            $errorRecord.Exception.Message | Should -Match 'PowerShell 7.6 LTS'
             $errorRecord.Exception.Message | Should -Match 'https://docs.keldor.dev/powershell/keldor/compatibility'
         }
     }
