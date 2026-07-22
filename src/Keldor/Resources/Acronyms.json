@@ -385,32 +385,20 @@
   },
   {
     "Acronym": "ANDI",
-    "Meaning": "Accessible Name andr Description Inspector",
+    "Meaning": "Accessible Name and Description Inspector",
     "Category": "General",
-    "Notes": ""
-  },
-  {
-    "Acronym": "ANSIR",
-    "Meaning": "Automated Nationwide System for Immigration Review",
-    "Category": "EOIR and Immigration",
     "Notes": ""
   },
   {
     "Acronym": "AO",
     "Meaning": "Authorizing Official",
-    "Category": "General",
+    "Category": "Government",
     "Notes": ""
   },
   {
     "Acronym": "AOA",
     "Meaning": "Analysis of Alternatives",
     "Category": "General",
-    "Notes": ""
-  },
-  {
-    "Acronym": "AOC",
-    "Meaning": "Asylum Only Case",
-    "Category": "EOIR and Immigration",
     "Notes": ""
   },
   {
