@@ -128,6 +128,12 @@ The commands return structured objects with native dates, durations, numbers, an
 support configured PowerShell-remoting targets and reusable `PSSession` objects. See the
 [system-information architecture](docs/architecture/system-information.md) for contracts and remote limitations.
 
+## Acronym Catalog
+
+Search, retrieve, count, and export the bundled acronym catalog with `Find-KeldorAcronym`, `Get-KeldorAcronym`, and
+`Export-KeldorAcronym`. Supplemental JSON catalogs can be included without collapsing alternate meanings. See the
+[acronym command guide](docs/acronyms.md).
+
 ## Remote Command Orchestration
 
 Use `Invoke-KeldorCommand` as Keldor's canonical local and remote execution entry point:
@@ -192,6 +198,7 @@ Workspace snippets are also available in `.vscode/Keldor.code-snippets` when thi
 - [PowerShell Lifecycle Review](docs/development/powershell-lifecycle-policy.md)
 - [Cross-Platform System Information](docs/architecture/system-information.md)
 - [Remote Command Orchestration](docs/architecture/remote-command-orchestration.md)
+- [Acronym Commands](docs/acronyms.md)
 - Docs site: https://docs.keldor.dev
 - Repository: https://github.com/keldor-dev/Keldor
 

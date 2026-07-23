@@ -105,6 +105,9 @@ foreach ($loadGroup in $loadGroups) {
 
 $publicFunctionNames = @($publicFunctionNames | Sort-Object -Unique)
 $knownPublicAliasNames = @(
+    'Export-KDAcronym'
+    'Find-KDAcronym'
+    'Get-KDAcronym'
     'Get-KDSecret'
     'Set-KDSecret'
     'Remove-KDSecret'
