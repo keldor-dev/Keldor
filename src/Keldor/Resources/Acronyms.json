@@ -1,7 +1,7 @@
 [
   {
     "Acronym": "2FA",
-    "Meaning": "Two-factor Authentication",
+    "Meaning": "Two-Factor Authentication",
     "Category": "Identity and Access Management",
     "Notes": ""
   },
@@ -60,6 +60,12 @@
     "Notes": ""
   },
   {
+    "Acronym": "ABAC",
+    "Meaning": "Attribute-Based Access Control",
+    "Category": "Identity and Access Management",
+    "Notes": ""
+  },
+  {
     "Acronym": "ACA",
     "Meaning": "Affordable Care Act",
     "Category": "Government",
@@ -79,8 +85,8 @@
   },
   {
     "Acronym": "ACE",
-    "Meaning": "access control entry",
-    "Category": "Information Technology",
+    "Meaning": "Access Control Entry",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
@@ -92,7 +98,7 @@
   {
     "Acronym": "ACL",
     "Meaning": "Access Control List",
-    "Category": "General",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
@@ -111,6 +117,12 @@
     "Acronym": "ACQ",
     "Meaning": "Acquisition",
     "Category": "Business and Program Management",
+    "Notes": ""
+  },
+  {
+    "Acronym": "ACR",
+    "Meaning": "Azure Container Registry",
+    "Category": "Cloud",
     "Notes": ""
   },
   {
@@ -164,7 +176,7 @@
   {
     "Acronym": "AD",
     "Meaning": "Active Directory",
-    "Category": "Information Technology",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
@@ -182,7 +194,7 @@
   {
     "Acronym": "ADAC",
     "Meaning": "Active Directory Administrative Center",
-    "Category": "Information Technology",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
@@ -252,6 +264,18 @@
     "Notes": ""
   },
   {
+    "Acronym": "ADML",
+    "Meaning": "Administrative Template Language File",
+    "Category": "Infrastructure",
+    "Notes": "Language-specific resource file associated with an ADMX administrative template."
+  },
+  {
+    "Acronym": "ADMX",
+    "Meaning": "Administrative Template XML File",
+    "Category": "Infrastructure",
+    "Notes": "Language-neutral XML administrative template used by Group Policy."
+  },
+  {
     "Acronym": "ADO",
     "Meaning": "ActiveX Data Object",
     "Category": "General",
@@ -314,7 +338,7 @@
   {
     "Acronym": "AES",
     "Meaning": "Advanced Encryption Standard",
-    "Category": "Information Technology",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
@@ -361,7 +385,7 @@
   },
   {
     "Acronym": "AFS",
-    "Meaning": "Nutanix Acropolis file System",
+    "Meaning": "Nutanix Acropolis File System",
     "Category": "Infrastructure",
     "Notes": ""
   },
@@ -373,13 +397,13 @@
   },
   {
     "Acronym": "AFW",
-    "Meaning": "Azure FireWall",
+    "Meaning": "Azure Firewall",
     "Category": "Cloud",
     "Notes": ""
   },
   {
     "Acronym": "AFWP",
-    "Meaning": "Azure FireWall Policy",
+    "Meaning": "Azure Firewall Policy",
     "Category": "Cloud",
     "Notes": ""
   },
@@ -409,7 +433,7 @@
   },
   {
     "Acronym": "AGI",
-    "Meaning": "adjusted gross income",
+    "Meaning": "Adjusted Gross Income",
     "Category": "General",
     "Notes": ""
   },
@@ -427,7 +451,7 @@
   },
   {
     "Acronym": "AHV",
-    "Meaning": "Nutanix Acropolis HyperVisor",
+    "Meaning": "Nutanix Acropolis Hypervisor",
     "Category": "Infrastructure",
     "Notes": ""
   },
@@ -452,7 +476,7 @@
   {
     "Acronym": "AILA",
     "Meaning": "American Immigration Lawyers Association",
-    "Category": "General",
+    "Category": "EOIR and Immigration",
     "Notes": ""
   },
   {
@@ -470,12 +494,6 @@
   {
     "Acronym": "AIS",
     "Meaning": "Azure AI Services",
-    "Category": "Cloud",
-    "Notes": ""
-  },
-  {
-    "Acronym": "AKS",
-    "Meaning": "Azure AKS cluster",
     "Category": "Cloud",
     "Notes": ""
   },
@@ -536,7 +554,7 @@
   {
     "Acronym": "AMQP",
     "Meaning": "Advanced Message Queuing Protocol",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -614,7 +632,7 @@
   {
     "Acronym": "API",
     "Meaning": "Application Programming Interface",
-    "Category": "Development",
+    "Category": "Development and DevOps",
     "Notes": "A defined interface used by software components to communicate."
   },
   {
@@ -704,7 +722,7 @@
   {
     "Acronym": "ARP",
     "Meaning": "Address Resolution Protocol",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -794,7 +812,7 @@
   {
     "Acronym": "ASR",
     "Meaning": "Attack Surface Reduction",
-    "Category": "Information Technology",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
@@ -889,8 +907,8 @@
   },
   {
     "Acronym": "AV",
-    "Meaning": "AntiVirus",
-    "Category": "General",
+    "Meaning": "Antivirus",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
@@ -926,7 +944,7 @@
   {
     "Acronym": "AVMA",
     "Meaning": "Automatic Virtual Machine Activation",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -944,7 +962,7 @@
   {
     "Acronym": "AWS",
     "Meaning": "Amazon Web Services",
-    "Category": "Information Technology",
+    "Category": "Cloud",
     "Notes": ""
   },
   {
@@ -992,7 +1010,7 @@
   {
     "Acronym": "BAA",
     "Meaning": "Business Associate Agreement",
-    "Category": "General",
+    "Category": "Business and Program Management",
     "Notes": ""
   },
   {
@@ -1010,7 +1028,7 @@
   {
     "Acronym": "BAS",
     "Meaning": "BlackBerry Administration Server",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -1052,7 +1070,7 @@
   {
     "Acronym": "BCL",
     "Meaning": "Busy Channel Lock",
-    "Category": "HAM Radio",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -1112,13 +1130,13 @@
   {
     "Acronym": "BES",
     "Meaning": "BlackBerry Enterprise Server",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "BFA",
     "Meaning": "Brute Force Attack",
-    "Category": "General",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
@@ -1130,7 +1148,7 @@
   {
     "Acronym": "BGP",
     "Meaning": "Border Gateway Protocol",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -1166,7 +1184,7 @@
   {
     "Acronym": "BIAM",
     "Meaning": "Bureau of Indian Affairs Manual",
-    "Category": "General",
+    "Category": "Government",
     "Notes": ""
   },
   {
@@ -1238,7 +1256,7 @@
   {
     "Acronym": "BOP",
     "Meaning": "Bureau of Prisons",
-    "Category": "General",
+    "Category": "Government",
     "Notes": ""
   },
   {
@@ -1267,9 +1285,9 @@
   },
   {
     "Acronym": "BPA",
-    "Meaning": "Azure BluePrint Assignment (planned for deprecation)",
+    "Meaning": "Azure Blueprint Assignment",
     "Category": "Cloud",
-    "Notes": ""
+    "Notes": "Azure Blueprints was deprecated by Microsoft."
   },
   {
     "Acronym": "BPA",
@@ -1280,7 +1298,7 @@
   {
     "Acronym": "BPA",
     "Meaning": "Blanket Purchase Agreement",
-    "Category": "General",
+    "Category": "Business and Program Management",
     "Notes": ""
   },
   {
@@ -1316,7 +1334,7 @@
   {
     "Acronym": "BYOD",
     "Meaning": "Bring Your Own Device",
-    "Category": "General",
+    "Category": "Information Technology",
     "Notes": ""
   },
   {
@@ -1381,7 +1399,7 @@
   },
   {
     "Acronym": "CAB",
-    "Meaning": "change advisory board",
+    "Meaning": "Change Advisory Board",
     "Category": "Information Technology",
     "Notes": ""
   },
@@ -1442,7 +1460,7 @@
   {
     "Acronym": "CAS",
     "Meaning": "Client Access Server",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": "Such as the Microsoft Exchange Client Access Server role that provides email services."
   },
   {
@@ -1454,7 +1472,7 @@
   {
     "Acronym": "CAS",
     "Meaning": "Continuity Assurance Section",
-    "Category": "General",
+    "Category": "Business and Program Management",
     "Notes": ""
   },
   {
@@ -1478,25 +1496,19 @@
   {
     "Acronym": "CAU",
     "Meaning": "Cluster-Aware Updating",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "CAW",
     "Meaning": "Certificate Authority Workstation",
-    "Category": "Information Technology",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
     "Acronym": "CB",
     "Meaning": "Cloud Broker",
     "Category": "Cloud",
-    "Notes": ""
-  },
-  {
-    "Acronym": "CBA",
-    "Meaning": "Certificate Based Authentication",
-    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
@@ -1508,19 +1520,19 @@
   {
     "Acronym": "CBA",
     "Meaning": "Collective Bargaining Agreement",
-    "Category": "General",
+    "Category": "Business and Program Management",
     "Notes": ""
   },
   {
     "Acronym": "CBA",
     "Meaning": "Cost-Benefit Analysis",
-    "Category": "General",
+    "Category": "Business and Program Management",
     "Notes": ""
   },
   {
     "Acronym": "CBC",
-    "Meaning": "cipher-block chaining",
-    "Category": "Information Technology",
+    "Meaning": "Cipher Block Chaining",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
@@ -1718,7 +1730,7 @@
   {
     "Acronym": "CEIP",
     "Meaning": "Customer Experience Improvement Program",
-    "Category": "Information Technology",
+    "Category": "Business and Program Management",
     "Notes": ""
   },
   {
@@ -1760,7 +1772,7 @@
   {
     "Acronym": "CFML",
     "Meaning": "ColdFusion Markup Language",
-    "Category": "General",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
@@ -1789,7 +1801,7 @@
   },
   {
     "Acronym": "CFW",
-    "Meaning": "Cloud FireWall",
+    "Meaning": "Cloud Firewall",
     "Category": "Cloud",
     "Notes": ""
   },
@@ -1808,7 +1820,7 @@
   {
     "Acronym": "CHAP",
     "Meaning": "Challenge-Handshake Authentication Protocol",
-    "Category": "Information Technology",
+    "Category": "Identity and Access Management",
     "Notes": "Verifies user identity through a secure, three-way cryptographic handshake."
   },
   {
@@ -1862,7 +1874,7 @@
   {
     "Acronym": "CI",
     "Meaning": "Continuous Integration",
-    "Category": "Information Technology",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
@@ -1874,7 +1886,7 @@
   {
     "Acronym": "CI/CD",
     "Meaning": "Continuous Integration/Continuous Deployment",
-    "Category": "General",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
@@ -1940,7 +1952,7 @@
   {
     "Acronym": "CIS",
     "Meaning": "Center for Internet Security",
-    "Category": "General",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
@@ -2018,7 +2030,7 @@
   {
     "Acronym": "CLR",
     "Meaning": "Common Language Runtime",
-    "Category": "Information Technology",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
@@ -2041,7 +2053,7 @@
   },
   {
     "Acronym": "CMDB",
-    "Meaning": "Configuration Management DataBase",
+    "Meaning": "Configuration Management Database",
     "Category": "Development and DevOps",
     "Notes": ""
   },
@@ -2173,8 +2185,8 @@
   },
   {
     "Acronym": "COOP",
-    "Meaning": "Continuity of OPerations",
-    "Category": "General",
+    "Meaning": "Continuity of Operations",
+    "Category": "Business and Program Management",
     "Notes": ""
   },
   {
@@ -2258,7 +2270,7 @@
   {
     "Acronym": "COTP",
     "Meaning": "Connection-Oriented Transport Protocol",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -2288,7 +2300,7 @@
   {
     "Acronym": "CP-XP",
     "Meaning": "CommPower XML Portal",
-    "Category": "Information Technology",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
@@ -2402,7 +2414,7 @@
   {
     "Acronym": "CredSSP",
     "Meaning": "Credential Security Support Provider",
-    "Category": "Information Technology",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
@@ -2410,6 +2422,12 @@
     "Meaning": "Customer Review Group",
     "Category": "General",
     "Notes": ""
+  },
+  {
+    "Acronym": "CRI",
+    "Meaning": "Container Runtime Interface",
+    "Category": "Development and DevOps",
+    "Notes": "Kubernetes interface between the kubelet and a container runtime."
   },
   {
     "Acronym": "CRL",
@@ -2438,7 +2456,7 @@
   {
     "Acronym": "CS",
     "Meaning": "Certificate Services",
-    "Category": "Information Technology",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
@@ -2480,7 +2498,7 @@
   {
     "Acronym": "CSA",
     "Meaning": "Cloud Solution Architect",
-    "Category": "Information Technology",
+    "Category": "Cloud",
     "Notes": ""
   },
   {
@@ -2702,7 +2720,7 @@
   {
     "Acronym": "CVA",
     "Meaning": "Cisco Connected Virtual Appliance",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -2756,7 +2774,7 @@
   {
     "Acronym": "D/A",
     "Meaning": "Department/Agency",
-    "Category": "General",
+    "Category": "Government",
     "Notes": ""
   },
   {
@@ -2774,13 +2792,13 @@
   {
     "Acronym": "DAC",
     "Meaning": "Discretionary Access Control",
-    "Category": "Information Technology",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
     "Acronym": "DACL",
     "Meaning": "Discretionary Access Control List",
-    "Category": "Information Technology",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
@@ -2834,7 +2852,7 @@
   {
     "Acronym": "DAS",
     "Meaning": "Direct Attached Storage",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -2863,7 +2881,7 @@
   },
   {
     "Acronym": "DBA",
-    "Meaning": "DataBase Administrator",
+    "Meaning": "Database Administrator",
     "Category": "Development and DevOps",
     "Notes": ""
   },
@@ -2888,7 +2906,7 @@
   {
     "Acronym": "DCB",
     "Meaning": "Data Center Bridging",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -2900,7 +2918,7 @@
   {
     "Acronym": "DCE",
     "Meaning": "Data Center East",
-    "Category": "General",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -2919,7 +2937,7 @@
     "Acronym": "DCIN",
     "Meaning": "Defense Cooperative International Network",
     "Category": "Government",
-    "Notes": "Found in OneDrive/Documents/Resume/Hart_GDIT20140717.docx. Explicit definition."
+    "Notes": ""
   },
   {
     "Acronym": "DCIO",
@@ -2936,7 +2954,7 @@
   {
     "Acronym": "DCMI",
     "Meaning": "Data Center Management Interface",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -2966,7 +2984,7 @@
   {
     "Acronym": "DCW",
     "Meaning": "Data Center West",
-    "Category": "General",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -3019,7 +3037,7 @@
   },
   {
     "Acronym": "DEDB",
-    "Meaning": "Azure Data Explorer cluster DataBase",
+    "Meaning": "Azure Data Explorer Cluster Database",
     "Category": "Cloud",
     "Notes": ""
   },
@@ -3044,7 +3062,7 @@
   {
     "Acronym": "DEP",
     "Meaning": "Data Execution Prevention",
-    "Category": "Information Technology",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
@@ -3062,7 +3080,7 @@
   {
     "Acronym": "DES",
     "Meaning": "Data Encryption Standard",
-    "Category": "Information Technology",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
@@ -3080,7 +3098,7 @@
   {
     "Acronym": "DFS",
     "Meaning": "Distributed File System",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -3206,7 +3224,7 @@
   {
     "Acronym": "DMA",
     "Meaning": "Direct Memory Access",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -3279,12 +3297,6 @@
     "Acronym": "DNA",
     "Meaning": "Digital Network Architecture",
     "Category": "Networking",
-    "Notes": ""
-  },
-  {
-    "Acronym": "DNS",
-    "Meaning": "Domain Name Service",
-    "Category": "Information Technology",
     "Notes": ""
   },
   {
@@ -3416,7 +3428,7 @@
   {
     "Acronym": "DPAPI",
     "Meaning": "Data Protection Application Programming Interface",
-    "Category": "Information Technology",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
@@ -3482,7 +3494,7 @@
   {
     "Acronym": "DRS",
     "Meaning": "Database Replication Service",
-    "Category": "Information Technology",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
@@ -3506,7 +3518,7 @@
   {
     "Acronym": "DS",
     "Meaning": "Domain Services",
-    "Category": "Information Technology",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
@@ -3572,7 +3584,7 @@
   {
     "Acronym": "DSRM",
     "Meaning": "Directory Services Restore Mode",
-    "Category": "Information Technology",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
@@ -3584,7 +3596,7 @@
   {
     "Acronym": "DTD",
     "Meaning": "Data Transfer Device",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -3668,7 +3680,7 @@
   {
     "Acronym": "EA",
     "Meaning": "Enterprise Agreement",
-    "Category": "General",
+    "Category": "Business and Program Management",
     "Notes": ""
   },
   {
@@ -3704,7 +3716,7 @@
   {
     "Acronym": "EAP",
     "Meaning": "Extensible Authentication Protocol",
-    "Category": "Information Technology",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
@@ -3782,7 +3794,7 @@
   {
     "Acronym": "ECPA",
     "Meaning": "Electronic Communications Privacy Act",
-    "Category": "General",
+    "Category": "Government",
     "Notes": ""
   },
   {
@@ -3854,13 +3866,13 @@
   {
     "Acronym": "EFS",
     "Meaning": "Elastic File System",
-    "Category": "General",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "EFS",
     "Meaning": "Encrypting File System",
-    "Category": "Information Technology",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
@@ -3896,25 +3908,25 @@
   {
     "Acronym": "EKU",
     "Meaning": "Enhanced Key Usage",
-    "Category": "Information Technology",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
     "Acronym": "EKU",
     "Meaning": "Extended Key Usage",
-    "Category": "Information Technology",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
     "Acronym": "ELAM",
     "Meaning": "Early Launch Antimalware",
-    "Category": "Information Technology",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
     "Acronym": "ELB",
     "Meaning": "Elastic Load Balancers",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -3962,7 +3974,7 @@
   {
     "Acronym": "EMET",
     "Meaning": "Enhanced Mitigation Experience Toolkit",
-    "Category": "Information Technology",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
@@ -4015,7 +4027,7 @@
   },
   {
     "Acronym": "EOIRDB",
-    "Meaning": "The database holding the data for CASE application.",
+    "Meaning": "Database for the CASE Application",
     "Category": "EOIR and Immigration",
     "Notes": ""
   },
@@ -4082,7 +4094,7 @@
   {
     "Acronym": "EPR",
     "Meaning": "Enterprise Printer Refresh",
-    "Category": "General",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -4135,8 +4147,8 @@
   },
   {
     "Acronym": "eRSA",
-    "Meaning": "electronic (soft) RSA token",
-    "Category": "General",
+    "Meaning": "Electronic (Soft) RSA Token",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
@@ -4172,7 +4184,7 @@
   {
     "Acronym": "ESE",
     "Meaning": "Extensible Storage Engine",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -4244,13 +4256,13 @@
   {
     "Acronym": "ETW",
     "Meaning": "Event Tracing for Windows",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "EULA",
     "Meaning": "End-User License Agreement",
-    "Category": "General",
+    "Category": "Business and Program Management",
     "Notes": ""
   },
   {
@@ -4279,7 +4291,7 @@
   },
   {
     "Acronym": "EvHNS",
-    "Meaning": "Azure Event Hubs NameSpace",
+    "Meaning": "Azure Event Hubs Namespace",
     "Category": "Cloud",
     "Notes": ""
   },
@@ -4346,7 +4358,7 @@
   {
     "Acronym": "FAST",
     "Meaning": "Forensic Analyst’s Software Tool",
-    "Category": "Information Technology",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
@@ -4376,19 +4388,19 @@
   {
     "Acronym": "FCD",
     "Meaning": "Federal Continuity Directive",
-    "Category": "General",
+    "Category": "Government",
     "Notes": ""
   },
   {
     "Acronym": "FCE",
     "Meaning": "Forensic Competency Evaluation",
-    "Category": "General",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
     "Acronym": "FCI",
     "Meaning": "Failover Cluster Instance",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -4418,7 +4430,7 @@
   {
     "Acronym": "FDE",
     "Meaning": "Full Disk Encryption",
-    "Category": "Information Technology",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
@@ -4442,7 +4454,7 @@
   {
     "Acronym": "FERV",
     "Meaning": "Forensic Evidence Results Vault",
-    "Category": "General",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
@@ -4454,7 +4466,7 @@
   {
     "Acronym": "FIDO",
     "Meaning": "Fast IDentity Online",
-    "Category": "Information Technology",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
@@ -4620,15 +4632,21 @@
     "Notes": ""
   },
   {
+    "Acronym": "FSMO",
+    "Meaning": "Flexible Single Master Operations",
+    "Category": "Identity and Access Management",
+    "Notes": "Active Directory operations master roles."
+  },
+  {
     "Acronym": "FSO",
     "Meaning": "File System Object",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "FSRM",
     "Meaning": "File Server Resource Manager",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -4658,7 +4676,7 @@
   {
     "Acronym": "FTP",
     "Meaning": "File Transfer Protocol",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -4700,7 +4718,7 @@
   {
     "Acronym": "GAC",
     "Meaning": "Global Assembly Cache",
-    "Category": "Information Technology",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
@@ -4748,7 +4766,7 @@
   {
     "Acronym": "GBS",
     "Meaning": "Global Business Support",
-    "Category": "General",
+    "Category": "Business and Program Management",
     "Notes": ""
   },
   {
@@ -4800,15 +4818,21 @@
     "Notes": ""
   },
   {
+    "Acronym": "GHAS",
+    "Meaning": "GitHub Advanced Security",
+    "Category": "Cybersecurity",
+    "Notes": ""
+  },
+  {
     "Acronym": "GIA",
     "Meaning": "Global Internet Address",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
     "Acronym": "GINA",
     "Meaning": "Graphical Identification and Authentication",
-    "Category": "Information Technology",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
@@ -4820,13 +4844,13 @@
   {
     "Acronym": "GMRS",
     "Meaning": "General Mobile Radio Service",
-    "Category": "HAM Radio",
+    "Category": "Networking",
     "Notes": ""
   },
   {
     "Acronym": "gMSA",
-    "Meaning": "group Managed Service Account",
-    "Category": "General",
+    "Meaning": "Group Managed Service Account",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
@@ -4898,7 +4922,7 @@
   {
     "Acronym": "GRS",
     "Meaning": "Geo-Redundant Storage",
-    "Category": "Information Technology",
+    "Category": "Cloud",
     "Notes": ""
   },
   {
@@ -5006,7 +5030,7 @@
   {
     "Acronym": "HAVM",
     "Meaning": "Highly Available Virtual Machine",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -5024,19 +5048,19 @@
   {
     "Acronym": "HCK",
     "Meaning": "Hardware Certification Kit",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "HCS",
     "Meaning": "Hybrid Cloud Solution",
-    "Category": "Information Technology",
+    "Category": "Cloud",
     "Notes": ""
   },
   {
     "Acronym": "HCS",
     "Meaning": "Hybrid Cloud Storage",
-    "Category": "Information Technology",
+    "Category": "Cloud",
     "Notes": ""
   },
   {
@@ -5054,7 +5078,7 @@
   {
     "Acronym": "HDFS",
     "Meaning": "Hadoop Distributed File System",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -5114,13 +5138,13 @@
   {
     "Acronym": "HIPAA",
     "Meaning": "Health Insurance Portability and Accountability Act",
-    "Category": "General",
+    "Category": "Government",
     "Notes": ""
   },
   {
     "Acronym": "HIPS",
     "Meaning": "Host Intrusion Prevention System",
-    "Category": "Information Technology",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
@@ -5156,7 +5180,7 @@
   {
     "Acronym": "HNV",
     "Meaning": "Hyper-V Network Virtualization",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -5258,19 +5282,19 @@
   {
     "Acronym": "HTML",
     "Meaning": "HyperText Markup Language",
-    "Category": "General",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
     "Acronym": "HTTP",
     "Meaning": "HyperText Transfer Protocol",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
     "Acronym": "HTTPS",
     "Meaning": "HyperText Transfer Protocol Secure",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -5305,8 +5329,8 @@
   },
   {
     "Acronym": "HW",
-    "Meaning": "HardWare",
-    "Category": "General",
+    "Meaning": "Hardware",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -5366,7 +5390,7 @@
   {
     "Acronym": "IAS",
     "Meaning": "Internet Authentication Services",
-    "Category": "Information Technology",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
@@ -5414,7 +5438,7 @@
   {
     "Acronym": "ICAP",
     "Meaning": "Internet Content Adaptation Protocol",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -5450,7 +5474,7 @@
   {
     "Acronym": "ICMP",
     "Meaning": "Internet Control Message Protocol",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -5534,13 +5558,13 @@
   {
     "Acronym": "IDS",
     "Meaning": "Intrusion Detection System",
-    "Category": "General",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
     "Acronym": "IEAK",
     "Meaning": "Internet Explorer Administration Kit",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -5594,7 +5618,7 @@
   {
     "Acronym": "IIS",
     "Meaning": "Internet Information Services",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -5690,7 +5714,7 @@
   {
     "Acronym": "iOS",
     "Meaning": "Apple iPhone Operating System",
-    "Category": "General",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -5708,7 +5732,7 @@
   {
     "Acronym": "IoT",
     "Meaning": "Internet of Things",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -5738,7 +5762,7 @@
   {
     "Acronym": "IPAM",
     "Meaning": "IP Address Management",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -5750,19 +5774,13 @@
   {
     "Acronym": "IPMI",
     "Meaning": "Intelligent Platform Management Interface",
-    "Category": "Information Technology",
-    "Notes": ""
-  },
-  {
-    "Acronym": "IPMI",
-    "Meaning": "Intelligent Platform Management Interface (IPMI)IPPre - Azure public IP address PREfix (IPPRE)",
-    "Category": "Cloud",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "IPS",
     "Meaning": "Intrusion Prevention System",
-    "Category": "General",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
@@ -5816,7 +5834,7 @@
   {
     "Acronym": "IRDP",
     "Meaning": "Internet Router Discovery Protocol",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -5888,7 +5906,7 @@
   {
     "Acronym": "ISATAP",
     "Meaning": "Intra-Site Automatic Tunnel Addressing Protocol",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -5906,7 +5924,7 @@
   {
     "Acronym": "iSCSI",
     "Meaning": "Internet Small Computer System Interface",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -5924,7 +5942,7 @@
   {
     "Acronym": "ISE",
     "Meaning": "Integrated Scripting Environment",
-    "Category": "Information Technology",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
@@ -5996,7 +6014,7 @@
   {
     "Acronym": "ITGG",
     "Meaning": "IT Governance Guide",
-    "Category": "General",
+    "Category": "Business and Program Management",
     "Notes": ""
   },
   {
@@ -6031,14 +6049,8 @@
   },
   {
     "Acronym": "ITSM",
-    "Meaning": "Information Technology Service Management",
-    "Category": "Business and Program Management",
-    "Notes": ""
-  },
-  {
-    "Acronym": "ITSM",
     "Meaning": "IT Service Management",
-    "Category": "Information Technology",
+    "Category": "Business and Program Management",
     "Notes": ""
   },
   {
@@ -6050,7 +6062,7 @@
   {
     "Acronym": "IXE",
     "Meaning": "Internet Exchange Engine",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -6128,8 +6140,14 @@
   {
     "Acronym": "JDK",
     "Meaning": "Java Development Kit",
-    "Category": "Information Technology",
+    "Category": "Development and DevOps",
     "Notes": ""
+  },
+  {
+    "Acronym": "JEA",
+    "Meaning": "Just Enough Administration",
+    "Category": "Identity and Access Management",
+    "Notes": "PowerShell delegated-administration security technology."
   },
   {
     "Acronym": "JEFS",
@@ -6164,7 +6182,7 @@
   {
     "Acronym": "JRE",
     "Meaning": "Java Runtime Environment",
-    "Category": "Information Technology",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
@@ -6380,7 +6398,7 @@
   {
     "Acronym": "LACP",
     "Meaning": "Link Aggregation Control Protocol",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -6458,13 +6476,13 @@
   {
     "Acronym": "LDAP",
     "Meaning": "Lightweight Directory Access Protocol",
-    "Category": "General",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
     "Acronym": "LDSA",
     "Meaning": "Local Directory Service Agent",
-    "Category": "Information Technology",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
@@ -6524,7 +6542,7 @@
   {
     "Acronym": "LIA",
     "Meaning": "Local Internet Address",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -6536,7 +6554,7 @@
   {
     "Acronym": "LIS",
     "Meaning": "Linux Integration Services",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -6554,7 +6572,7 @@
   {
     "Acronym": "LLDP",
     "Meaning": "Link Layer Discovery Protocol",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -6572,7 +6590,7 @@
   {
     "Acronym": "LM",
     "Meaning": "LAN Manager",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -6632,7 +6650,7 @@
   {
     "Acronym": "LPD",
     "Meaning": "Line Printer Daemon",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -6662,7 +6680,7 @@
   {
     "Acronym": "LRS",
     "Meaning": "Locally Redundant Storage",
-    "Category": "Information Technology",
+    "Category": "Cloud",
     "Notes": ""
   },
   {
@@ -6770,13 +6788,13 @@
   {
     "Acronym": "MAC",
     "Meaning": "Mandatory Access Control",
-    "Category": "Information Technology",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
     "Acronym": "MAC",
     "Meaning": "Media Access Control",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -6800,7 +6818,7 @@
   {
     "Acronym": "MAML",
     "Meaning": "Microsoft Assistance Markup Language",
-    "Category": "Information Technology",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
@@ -6812,13 +6830,13 @@
   {
     "Acronym": "MAP",
     "Meaning": "Microsoft Assessment and Planning",
-    "Category": "Information Technology",
+    "Category": "Business and Program Management",
     "Notes": ""
   },
   {
     "Acronym": "MAPI",
     "Meaning": "Messaging Application Programming Interface",
-    "Category": "Information Technology",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
@@ -6835,7 +6853,7 @@
   },
   {
     "Acronym": "MariaDB",
-    "Meaning": "Azure MariaDB DataBase",
+    "Meaning": "Azure Database for MariaDB",
     "Category": "Cloud",
     "Notes": ""
   },
@@ -6937,8 +6955,8 @@
   },
   {
     "Acronym": "MECM",
-    "Meaning": "stands for Microsoft Endpoint Configuration Manager",
-    "Category": "General",
+    "Meaning": "Microsoft Endpoint Configuration Manager",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -6973,7 +6991,7 @@
   },
   {
     "Acronym": "MFA",
-    "Meaning": "Multi-Factor Authentication",
+    "Meaning": "Multifactor Authentication",
     "Category": "Identity and Access Management",
     "Notes": ""
   },
@@ -6986,13 +7004,13 @@
   {
     "Acronym": "MFD",
     "Meaning": "Multi-Functional Device",
-    "Category": "General",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "MFP",
     "Meaning": "Multi-Functional Printer",
-    "Category": "General",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -7022,7 +7040,7 @@
   {
     "Acronym": "MID",
     "Meaning": "Mobile Internet Device",
-    "Category": "General",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -7040,7 +7058,7 @@
   {
     "Acronym": "MIME",
     "Meaning": "Multipurpose Internet Mail Extensions",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -7100,7 +7118,7 @@
   {
     "Acronym": "MOA",
     "Meaning": "Memorandum of Agreement",
-    "Category": "General",
+    "Category": "Business and Program Management",
     "Notes": ""
   },
   {
@@ -7130,7 +7148,7 @@
   {
     "Acronym": "MOSS",
     "Meaning": "Microsoft Office SharePoint Server",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -7196,7 +7214,7 @@
   {
     "Acronym": "MSA",
     "Meaning": "Master Service Agreement",
-    "Category": "General",
+    "Category": "Business and Program Management",
     "Notes": ""
   },
   {
@@ -7250,7 +7268,7 @@
   {
     "Acronym": "MTP",
     "Meaning": "Media Transfer Protocol",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -7334,7 +7352,7 @@
   {
     "Acronym": "NAP",
     "Meaning": "Network Access Protection",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -7370,7 +7388,7 @@
   {
     "Acronym": "NCC",
     "Meaning": "National Continuity Coordinator",
-    "Category": "General",
+    "Category": "Government",
     "Notes": ""
   },
   {
@@ -7406,7 +7424,7 @@
   {
     "Acronym": "NDIS",
     "Meaning": "Network Device Interface Specification",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -7418,7 +7436,7 @@
   {
     "Acronym": "NETBIOS",
     "Meaning": "Network Basic Input/Output System",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -7448,7 +7466,7 @@
   {
     "Acronym": "NFS",
     "Meaning": "Network File System",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -7502,7 +7520,7 @@
   {
     "Acronym": "NLA",
     "Meaning": "Network Level Authentication",
-    "Category": "Information Technology",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
@@ -7514,7 +7532,7 @@
   {
     "Acronym": "NLB",
     "Meaning": "Network Load Balancing",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -7536,9 +7554,9 @@
     "Notes": ""
   },
   {
-    "Acronym": "No Fear",
-    "Meaning": "Notification and Federal Employee Antidiscrimination and Retaliation Act of 2002 Act",
-    "Category": "General",
+    "Acronym": "NO FEAR Act",
+    "Meaning": "Notification and Federal Employee Antidiscrimination and Retaliation Act of 2002",
+    "Category": "Government",
     "Notes": ""
   },
   {
@@ -7580,7 +7598,7 @@
   {
     "Acronym": "NPS",
     "Meaning": "Network Policy Server",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -7663,8 +7681,20 @@
   },
   {
     "Acronym": "NtfNS",
-    "Meaning": "Azure Notification hubs NameSpace",
+    "Meaning": "Azure Notification Hubs Namespace",
     "Category": "Cloud",
+    "Notes": ""
+  },
+  {
+    "Acronym": "NTLM",
+    "Meaning": "NT LAN Manager",
+    "Category": "Identity and Access Management",
+    "Notes": "Windows challenge-response authentication protocol."
+  },
+  {
+    "Acronym": "NTP",
+    "Meaning": "Network Time Protocol",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -7676,13 +7706,13 @@
   {
     "Acronym": "NUMA",
     "Meaning": "Non-Uniform Memory Access",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "NUMA",
     "Meaning": "Non-Uniform Memory Architecture",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -7706,7 +7736,7 @@
   {
     "Acronym": "NVGRE",
     "Meaning": "Network Virtualization for Generic Routing Encapsulation",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -7714,6 +7744,12 @@
     "Meaning": "Nutanix VM",
     "Category": "Infrastructure",
     "Notes": ""
+  },
+  {
+    "Acronym": "NVMe",
+    "Meaning": "NVM Express",
+    "Category": "Infrastructure",
+    "Notes": "Storage interface and command-set specification."
   },
   {
     "Acronym": "NW",
@@ -7742,7 +7778,7 @@
   {
     "Acronym": "NYC",
     "Meaning": "New York City Federal Plaza",
-    "Category": "General",
+    "Category": "Government",
     "Notes": ""
   },
   {
@@ -7850,7 +7886,7 @@
   {
     "Acronym": "OBBBA",
     "Meaning": "One Big Beautiful Bill Act",
-    "Category": "General",
+    "Category": "Government",
     "Notes": ""
   },
   {
@@ -7869,6 +7905,12 @@
     "Acronym": "OCC",
     "Meaning": "Office of the Chief Counsel",
     "Category": "General",
+    "Notes": ""
+  },
+  {
+    "Acronym": "OCI",
+    "Meaning": "Open Container Initiative",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
@@ -7915,7 +7957,7 @@
   },
   {
     "Acronym": "ODBC",
-    "Meaning": "Open DataBase Connectivity",
+    "Meaning": "Open Database Connectivity",
     "Category": "Development and DevOps",
     "Notes": ""
   },
@@ -8005,20 +8047,20 @@
   },
   {
     "Acronym": "OJP",
-    "Meaning": "Bureau of Justice Statistics",
-    "Category": "General",
+    "Meaning": "Office of Justice Programs",
+    "Category": "Government",
     "Notes": ""
   },
   {
     "Acronym": "OKN",
     "Meaning": "Open Knowledge Network",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
     "Acronym": "OLA",
     "Meaning": "Operational Level Agreement",
-    "Category": "General",
+    "Category": "Business and Program Management",
     "Notes": ""
   },
   {
@@ -8053,9 +8095,9 @@
   },
   {
     "Acronym": "OMP",
-    "Meaning": "Office of Management Programs (OMP)OP - Office of Policy (OP)",
-    "Category": "Business and Program Management",
-    "Notes": ""
+    "Meaning": "Office of Management Programs",
+    "Category": "EOIR and Immigration",
+    "Notes": "EOIR office."
   },
   {
     "Acronym": "OMS",
@@ -8084,7 +8126,7 @@
   {
     "Acronym": "OOP",
     "Meaning": "Object-Oriented Programming",
-    "Category": "Information Technology",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
@@ -8186,7 +8228,7 @@
   {
     "Acronym": "OS",
     "Meaning": "Operating System",
-    "Category": "General",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -8200,6 +8242,12 @@
     "Meaning": "U.S. Office of Special Counsel",
     "Category": "General",
     "Notes": ""
+  },
+  {
+    "Acronym": "OSCAL",
+    "Meaning": "Open Security Controls Assessment Language",
+    "Category": "Cybersecurity",
+    "Notes": "NIST-led machine-readable security and compliance framework."
   },
   {
     "Acronym": "OSD",
@@ -8216,7 +8264,7 @@
   {
     "Acronym": "OSD",
     "Meaning": "Operating System Deployment",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -8408,7 +8456,7 @@
   {
     "Acronym": "PAT",
     "Meaning": "Port Address Translation",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -8522,7 +8570,7 @@
   {
     "Acronym": "PED",
     "Meaning": "Portable Electronic Device",
-    "Category": "General",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -8533,7 +8581,7 @@
   },
   {
     "Acronym": "PEP",
-    "Meaning": "Azure Private EndPoint",
+    "Meaning": "Azure Private Endpoint",
     "Category": "Cloud",
     "Notes": ""
   },
@@ -8582,7 +8630,7 @@
   {
     "Acronym": "PFT",
     "Meaning": "Prime Federal Tenant",
-    "Category": "General",
+    "Category": "Government",
     "Notes": ""
   },
   {
@@ -8665,14 +8713,14 @@
   },
   {
     "Acronym": "PIM",
-    "Meaning": "Process IMprovement plan",
+    "Meaning": "Process Improvement Plan",
     "Category": "Business and Program Management",
     "Notes": ""
   },
   {
     "Acronym": "PIM",
     "Meaning": "Project Insertion Manager",
-    "Category": "Information Technology",
+    "Category": "Business and Program Management",
     "Notes": ""
   },
   {
@@ -8701,15 +8749,9 @@
   },
   {
     "Acronym": "PIPE",
-    "Meaning": "SAFeÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â® PI Planning Event",
+    "Meaning": "Program Increment Planning Event",
     "Category": "Business and Program Management",
-    "Notes": ""
-  },
-  {
-    "Acronym": "PIPE",
-    "Meaning": "SAFeÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â® Program Increment Planning Event",
-    "Category": "Business and Program Management",
-    "Notes": ""
+    "Notes": "Historical SAFe terminology."
   },
   {
     "Acronym": "PIR",
@@ -8732,7 +8774,7 @@
   {
     "Acronym": "PITC",
     "Meaning": "Pocatello Data Center",
-    "Category": "General",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -8744,7 +8786,7 @@
   {
     "Acronym": "PKCS#7",
     "Meaning": "Public Key Cryptography Standard 7",
-    "Category": "General",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
@@ -8762,7 +8804,7 @@
   {
     "Acronym": "PLA",
     "Meaning": "Privacy Level Agreement",
-    "Category": "General",
+    "Category": "Business and Program Management",
     "Notes": ""
   },
   {
@@ -8864,7 +8906,7 @@
   {
     "Acronym": "POP3",
     "Meaning": "Post Office Protocol 3",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -9019,7 +9061,7 @@
   },
   {
     "Acronym": "PSQL",
-    "Meaning": "Azure PostgreSQL database",
+    "Meaning": "Azure Database for PostgreSQL",
     "Category": "Cloud",
     "Notes": ""
   },
@@ -9098,13 +9140,13 @@
   {
     "Acronym": "PVA",
     "Meaning": "Cisco Private Virtual Appliance",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
     "Acronym": "Pview",
     "Meaning": "Microsoft Purview instance",
-    "Category": "General",
+    "Category": "Cloud",
     "Notes": ""
   },
   {
@@ -9206,19 +9248,19 @@
   {
     "Acronym": "R-CTCSS",
     "Meaning": "Receiving CTCSS",
-    "Category": "HAM Radio",
+    "Category": "Networking",
     "Notes": ""
   },
   {
     "Acronym": "R-DCS",
     "Meaning": "Receiving DCS",
-    "Category": "HAM Radio",
+    "Category": "Networking",
     "Notes": ""
   },
   {
     "Acronym": "R-TONE",
     "Meaning": "Repeater Tone",
-    "Category": "HAM Radio",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -9248,7 +9290,7 @@
   {
     "Acronym": "RA-GRS",
     "Meaning": "Read-Access Geo-Redundant Storage",
-    "Category": "Information Technology",
+    "Category": "Cloud",
     "Notes": ""
   },
   {
@@ -9284,13 +9326,13 @@
   {
     "Acronym": "RAM",
     "Meaning": "Random Access Memory",
-    "Category": "General",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "RAP",
     "Meaning": "Remote Administration Protocol",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -9302,19 +9344,19 @@
   {
     "Acronym": "RAS",
     "Meaning": "Remote Access Server",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "RBAC",
     "Meaning": "Role-Based Access Control",
-    "Category": "General",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
     "Acronym": "RBDR",
     "Meaning": "Remote Business Data Removal",
-    "Category": "Information Technology",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
@@ -9368,25 +9410,25 @@
   {
     "Acronym": "RDC",
     "Meaning": "Rockville MD Data Center",
-    "Category": "General",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "RDID",
     "Meaning": "Routing Domain ID",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
     "Acronym": "RDMA",
     "Meaning": "Remote Direct Memory Access",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "RDP",
     "Meaning": "Remote Desktop Protocol",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -9410,7 +9452,7 @@
   {
     "Acronym": "ReFS",
     "Meaning": "Resilient File System",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -9452,7 +9494,7 @@
   {
     "Acronym": "RF",
     "Meaning": "Radio Frequency",
-    "Category": "HAM Radio",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -9482,7 +9524,7 @@
   {
     "Acronym": "RFPA",
     "Meaning": "Right to Financial Privacy Act",
-    "Category": "General",
+    "Category": "Government",
     "Notes": ""
   },
   {
@@ -9500,7 +9542,7 @@
   {
     "Acronym": "RHEL",
     "Meaning": "Red Hat Enterprise Linux",
-    "Category": "Operating System",
+    "Category": "Infrastructure",
     "Notes": "Commercial enterprise Linux distribution developed by Red Hat."
   },
   {
@@ -9524,7 +9566,7 @@
   {
     "Acronym": "RIP",
     "Meaning": "Routing Information Protocol",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -9614,7 +9656,7 @@
   {
     "Acronym": "RoCE",
     "Meaning": "RDMA over Converged Ethernet",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -9668,7 +9710,7 @@
   {
     "Acronym": "RRAS",
     "Meaning": "Routing and Remote Access Service",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -9691,14 +9733,14 @@
   },
   {
     "Acronym": "RSA",
-    "Meaning": "RivestÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ShamirÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“Adleman",
-    "Category": "General",
+    "Meaning": "Rivest-Shamir-Adleman",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
     "Acronym": "RSAT",
     "Meaning": "Remote Server Administration Tools",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -9841,21 +9883,21 @@
   },
   {
     "Acronym": "SaaS",
-    "Meaning": "cloud Software as a Service",
+    "Meaning": "Software as a Service",
     "Category": "Cloud",
     "Notes": ""
   },
   {
     "Acronym": "SACL",
     "Meaning": "System Access Control List",
-    "Category": "Information Technology",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
-    "Acronym": "SAFeÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â®",
-    "Meaning": "Scaled Agile FrameworkÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â®",
-    "Category": "General",
-    "Notes": ""
+    "Acronym": "SAFe",
+    "Meaning": "Scaled Agile Framework",
+    "Category": "Business and Program Management",
+    "Notes": "Officially styled SAFe."
   },
   {
     "Acronym": "SAI",
@@ -9906,6 +9948,12 @@
     "Notes": ""
   },
   {
+    "Acronym": "SAR",
+    "Meaning": "Security Assessment Report",
+    "Category": "Cybersecurity",
+    "Notes": "Assessment report used in FedRAMP and federal authorization processes."
+  },
+  {
     "Acronym": "SAS",
     "Meaning": "Secure Attention Sequence",
     "Category": "Information Technology",
@@ -9914,7 +9962,7 @@
   {
     "Acronym": "SAS",
     "Meaning": "Serial Attached SCSI",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -9949,12 +9997,6 @@
   },
   {
     "Acronym": "SATA",
-    "Meaning": "Serial Advanced Technology Attachment",
-    "Category": "General",
-    "Notes": ""
-  },
-  {
-    "Acronym": "SATA",
     "Meaning": "Serial ATA",
     "Category": "Information Technology",
     "Notes": ""
@@ -9973,8 +10015,8 @@
   },
   {
     "Acronym": "SBC",
-    "Meaning": "video Session Border Control",
-    "Category": "General",
+    "Meaning": "Session Border Controller",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -9985,7 +10027,7 @@
   },
   {
     "Acronym": "SBNS",
-    "Meaning": "Azure Service Bus NameSpace",
+    "Meaning": "Azure Service Bus Namespace",
     "Category": "Cloud",
     "Notes": ""
   },
@@ -10004,7 +10046,7 @@
   {
     "Acronym": "SBS",
     "Meaning": "Small Business Server",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -10052,7 +10094,7 @@
   {
     "Acronym": "SCA",
     "Meaning": "Stored Communications Act",
-    "Category": "General",
+    "Category": "Government",
     "Notes": ""
   },
   {
@@ -10064,7 +10106,7 @@
   {
     "Acronym": "SCCM",
     "Meaning": "Microsoft System Center Configuration Manager",
-    "Category": "General",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -10076,7 +10118,7 @@
   {
     "Acronym": "SCEP",
     "Meaning": "Microsoft System Center Endpoint Protection",
-    "Category": "General",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
@@ -10112,7 +10154,7 @@
   {
     "Acronym": "SCOM",
     "Meaning": "System Center Operations Manager",
-    "Category": "General",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -10124,7 +10166,7 @@
   {
     "Acronym": "SCP",
     "Meaning": "Secure Control Protocol",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -10148,7 +10190,7 @@
   {
     "Acronym": "SCVMM",
     "Meaning": "System Center Virtual Machine Manager",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -10214,7 +10256,7 @@
   {
     "Acronym": "SDN",
     "Meaning": "Software Defined Network",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -10232,7 +10274,7 @@
   {
     "Acronym": "SDS",
     "Meaning": "Software-Defined Storage",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -10292,7 +10334,7 @@
   {
     "Acronym": "SES",
     "Meaning": "SCSI Enclosure Services",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -10368,10 +10410,10 @@
     "Notes": ""
   },
   {
-    "Acronym": "SIEM",
-    "Meaning": "Security Incident Event Management",
-    "Category": "Cybersecurity",
-    "Notes": ""
+    "Acronym": "SID",
+    "Meaning": "Security Identifier",
+    "Category": "Identity and Access Management",
+    "Notes": "Windows identifier for a security principal."
   },
   {
     "Acronym": "SIEM",
@@ -10394,7 +10436,7 @@
   {
     "Acronym": "SIP",
     "Meaning": "Session Initiation Protocol",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -10424,13 +10466,13 @@
   {
     "Acronym": "SLA",
     "Meaning": "Service Level Agreement",
-    "Category": "General",
+    "Category": "Business and Program Management",
     "Notes": ""
   },
   {
     "Acronym": "SLAT",
     "Meaning": "Second Level Address Translation",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -10454,13 +10496,13 @@
   {
     "Acronym": "SLO",
     "Meaning": "Service Level Objective",
-    "Category": "General",
+    "Category": "Business and Program Management",
     "Notes": ""
   },
   {
     "Acronym": "SLP",
     "Meaning": "Server Locator Point",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -10484,7 +10526,7 @@
   {
     "Acronym": "SMA",
     "Meaning": "Service Management Automation",
-    "Category": "Information Technology",
+    "Category": "Business and Program Management",
     "Notes": ""
   },
   {
@@ -10502,13 +10544,13 @@
   {
     "Acronym": "SMASH",
     "Meaning": "System Management Architecture for Server Hardware",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "SMB",
     "Meaning": "Server Message Block",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -10520,7 +10562,7 @@
   {
     "Acronym": "SMI-S",
     "Meaning": "Storage Management Initiative—Specification",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -10532,19 +10574,19 @@
   {
     "Acronym": "SMS",
     "Meaning": "Systems Management Server",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "sMSA",
-    "Meaning": "standalone Managed Service Account",
-    "Category": "General",
+    "Meaning": "Standalone Managed Service Account",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
     "Acronym": "SMTP",
     "Meaning": "Simple Mail Transfer Protocol",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -10586,7 +10628,7 @@
   {
     "Acronym": "SNI",
     "Meaning": "Server Name Indication",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -10634,7 +10676,7 @@
   {
     "Acronym": "SOD",
     "Meaning": "South Dakota Department of Corrections",
-    "Category": "General",
+    "Category": "Government",
     "Notes": ""
   },
   {
@@ -10669,8 +10711,8 @@
   },
   {
     "Acronym": "SOW",
-    "Meaning": "Statement of WORK",
-    "Category": "General",
+    "Meaning": "Statement of Work",
+    "Category": "Business and Program Management",
     "Notes": ""
   },
   {
@@ -10831,7 +10873,7 @@
   },
   {
     "Acronym": "SQLStrDB",
-    "Meaning": "Azure SQL Server Stretch DataBase",
+    "Meaning": "Azure SQL Server Stretch Database",
     "Category": "Cloud",
     "Notes": ""
   },
@@ -10844,7 +10886,7 @@
   {
     "Acronym": "SR-IOV",
     "Meaning": "Single-Root I/O Virtualization",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -10892,7 +10934,7 @@
   {
     "Acronym": "SSB",
     "Meaning": "SQL Service Broker",
-    "Category": "Information Technology",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
@@ -10916,7 +10958,7 @@
   {
     "Acronym": "SSCM",
     "Meaning": "System Setting Configuration Manager",
-    "Category": "General",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -10940,7 +10982,7 @@
   {
     "Acronym": "SSDT",
     "Meaning": "SQL Server Data Tools",
-    "Category": "Information Technology",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
@@ -11000,7 +11042,7 @@
   {
     "Acronym": "SSIS",
     "Meaning": "SQL Server Integration Services",
-    "Category": "Information Technology",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
@@ -11018,7 +11060,7 @@
   {
     "Acronym": "SSMS",
     "Meaning": "SQL Server Management Studio",
-    "Category": "Information Technology",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
@@ -11066,7 +11108,7 @@
   {
     "Acronym": "SSRF",
     "Meaning": "Server-Side Request Forgery",
-    "Category": "General",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
@@ -11090,7 +11132,7 @@
   {
     "Acronym": "SSTP",
     "Meaning": "Secure Sockets Tunneling Protocol",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -11132,7 +11174,7 @@
   {
     "Acronym": "STE",
     "Meaning": "Side tone elimination",
-    "Category": "HAM Radio",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -11276,13 +11318,13 @@
   {
     "Acronym": "T-CTCSS",
     "Meaning": "Transmitting CTCSS",
-    "Category": "HAM Radio",
+    "Category": "Networking",
     "Notes": ""
   },
   {
     "Acronym": "T-DCS",
     "Meaning": "Transmitting DCS",
-    "Category": "HAM Radio",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -11330,12 +11372,12 @@
   {
     "Acronym": "TAPI",
     "Meaning": "Telephony Application Programming Interfaces",
-    "Category": "Information Technology",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
     "Acronym": "TAR",
-    "Meaning": "Tape ARchive",
+    "Meaning": "Tape Archive",
     "Category": "General",
     "Notes": ""
   },
@@ -11402,7 +11444,7 @@
   {
     "Acronym": "TDE",
     "Meaning": "Transparent Data Encryption",
-    "Category": "Information Technology",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
@@ -11414,13 +11456,13 @@
   {
     "Acronym": "TFS",
     "Meaning": "Team Foundation Server",
-    "Category": "Information Technology",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
     "Acronym": "TIC",
     "Meaning": "Trusted Internet Connection",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -11461,8 +11503,8 @@
   },
   {
     "Acronym": "TMOS",
-    "Meaning": "F5 Traffic Management Operation SystemÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â®",
-    "Category": "Business and Program Management",
+    "Meaning": "F5 Traffic Management Operating System",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -11492,7 +11534,7 @@
   {
     "Acronym": "TOT",
     "Meaning": "Timeout Timer",
-    "Category": "HAM Radio",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -11624,13 +11666,13 @@
   {
     "Acronym": "TVPA",
     "Meaning": "Trafficking Victims Protection Act",
-    "Category": "General",
+    "Category": "Government",
     "Notes": ""
   },
   {
     "Acronym": "TWLP",
     "Meaning": "Tunnel with Local Proxy",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -11653,8 +11695,8 @@
   },
   {
     "Acronym": "UAH",
-    "Meaning": "UnAuthorized Hardware",
-    "Category": "General",
+    "Meaning": "Unauthorized Hardware",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
@@ -11714,7 +11756,7 @@
   {
     "Acronym": "UE-V",
     "Meaning": "User Experience Virtualization",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -11790,12 +11832,6 @@
     "Notes": ""
   },
   {
-    "Acronym": "URI",
-    "Meaning": "Universal Resource Identifier",
-    "Category": "General",
-    "Notes": ""
-  },
-  {
     "Acronym": "URL",
     "Meaning": "Uniform Resource Locator",
     "Category": "General",
@@ -11804,7 +11840,7 @@
   {
     "Acronym": "US-CERT",
     "Meaning": "United States Computer Emergency Readiness Team",
-    "Category": "General",
+    "Category": "Government",
     "Notes": ""
   },
   {
@@ -11870,13 +11906,13 @@
   {
     "Acronym": "VAMT",
     "Meaning": "Volume Activation Management Tool",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "VAWA",
     "Meaning": "Violence Against Women Act",
-    "Category": "General",
+    "Category": "Government",
     "Notes": ""
   },
   {
@@ -11900,7 +11936,7 @@
   {
     "Acronym": "VCS",
     "Meaning": "Version Control System",
-    "Category": "General",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
@@ -11954,7 +11990,7 @@
   {
     "Acronym": "VDS",
     "Meaning": "Virtual Directory Service",
-    "Category": "General",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
@@ -11972,19 +12008,13 @@
   {
     "Acronym": "VEnv",
     "Meaning": "Virtual ENVironment",
-    "Category": "General",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
     "Acronym": "VERA",
     "Meaning": "Voluntary Early Retirement Authority",
     "Category": "General",
-    "Notes": ""
-  },
-  {
-    "Acronym": "VERA",
-    "Meaning": "Voluntary Early Retirement Authorization",
-    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
@@ -12010,6 +12040,12 @@
     "Meaning": "Virtual Hard Disk",
     "Category": "Infrastructure",
     "Notes": ""
+  },
+  {
+    "Acronym": "VHDX",
+    "Meaning": "Virtual Hard Disk v2",
+    "Category": "Infrastructure",
+    "Notes": "Microsoft virtual hard disk file format introduced with Windows Server 2012."
   },
   {
     "Acronym": "VHub",
@@ -12056,7 +12092,7 @@
   {
     "Acronym": "VLL",
     "Meaning": "Virtual Law Library",
-    "Category": "General",
+    "Category": "EOIR and Immigration",
     "Notes": ""
   },
   {
@@ -12074,19 +12110,19 @@
   {
     "Acronym": "VMC",
     "Meaning": "Virtual Machine Connect",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "VML",
     "Meaning": "Vector Markup Language",
-    "Category": "Information Technology",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
     "Acronym": "VMM",
     "Meaning": "Virtual Machine Manager",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -12098,7 +12134,7 @@
   {
     "Acronym": "VMQ",
     "Meaning": "Virtual Machine Queue",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -12152,7 +12188,7 @@
   {
     "Acronym": "VPD",
     "Meaning": "Virtual Product Data",
-    "Category": "General",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -12205,14 +12241,14 @@
   },
   {
     "Acronym": "VSC",
-    "Meaning": "virtual smart card",
-    "Category": "Information Technology",
+    "Meaning": "Virtual Smart Card",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
     "Acronym": "VSE",
     "Meaning": "Virtual Service Edge",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -12254,13 +12290,13 @@
   {
     "Acronym": "vTPM",
     "Meaning": "Virtual Trusted Platform Module",
-    "Category": "General",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "VTY",
     "Meaning": "Virtual TeleType",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -12278,13 +12314,13 @@
   {
     "Acronym": "VXLAN",
     "Meaning": "Virtual Extensible LAN",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
     "Acronym": "WAAD",
     "Meaning": "Windows Azure Active Directory",
-    "Category": "Information Technology",
+    "Category": "Cloud",
     "Notes": ""
   },
   {
@@ -12296,7 +12332,7 @@
   {
     "Acronym": "WAD",
     "Meaning": "Windows Azure Diagnostics",
-    "Category": "Information Technology",
+    "Category": "Cloud",
     "Notes": ""
   },
   {
@@ -12326,13 +12362,13 @@
   {
     "Acronym": "WAIK",
     "Meaning": "Windows Automated Installation Kit",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "WAMS",
     "Meaning": "Azure Mobile Services",
-    "Category": "Information Technology",
+    "Category": "Cloud",
     "Notes": ""
   },
   {
@@ -12350,13 +12386,13 @@
   {
     "Acronym": "WAP",
     "Meaning": "Windows Azure Pack",
-    "Category": "Information Technology",
+    "Category": "Cloud",
     "Notes": ""
   },
   {
     "Acronym": "WAP",
     "Meaning": "Wireless Access Point",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -12380,25 +12416,25 @@
   {
     "Acronym": "WBS",
     "Meaning": "Work Breakdown Structure",
-    "Category": "General",
+    "Category": "Business and Program Management",
     "Notes": ""
   },
   {
     "Acronym": "WCF",
     "Meaning": "Windows Communication Foundation",
-    "Category": "Information Technology",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
     "Acronym": "WCN",
     "Meaning": "Windows Connect Now",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
     "Acronym": "WCSRSS",
     "Meaning": "Microsoft Windows Client/Server Runtime Subsystem",
-    "Category": "Information Technology",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
@@ -12410,31 +12446,31 @@
   {
     "Acronym": "WDDM",
     "Meaning": "Windows Display Driver Model",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "WDI",
     "Meaning": "Wireless Driver Interface",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
     "Acronym": "WDS",
     "Meaning": "Windows Deployment Services",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "WFP",
     "Meaning": "Windows Filtering Platform",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
     "Acronym": "WHEA",
     "Meaning": "Windows Hardware Error Architecture",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -12458,19 +12494,19 @@
   {
     "Acronym": "WID",
     "Meaning": "Windows Internal Database",
-    "Category": "Information Technology",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
     "Acronym": "WinRM",
     "Meaning": "Windows Remote Management",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "WINS",
     "Meaning": "Windows Internet Name Service",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -12494,7 +12530,7 @@
   {
     "Acronym": "WLAN",
     "Meaning": "Wireless LAN",
-    "Category": "Information Technology",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -12512,13 +12548,13 @@
   {
     "Acronym": "WMI",
     "Meaning": "Windows Management Instrumentation",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "WOTS",
     "Meaning": "Windows Online Troubleshooting Service",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -12530,13 +12566,13 @@
   {
     "Acronym": "WPD",
     "Meaning": "Windows Portable Device",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "WPF",
     "Meaning": "Windows Presentation Foundation",
-    "Category": "Information Technology",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
@@ -12548,7 +12584,7 @@
   {
     "Acronym": "WPT",
     "Meaning": "Windows Performance Toolkit",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -12560,7 +12596,7 @@
   {
     "Acronym": "WRP",
     "Meaning": "Windows Resource Protection",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -12572,7 +12608,7 @@
   {
     "Acronym": "WSG",
     "Meaning": "Windows Server Gateway",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -12580,6 +12616,12 @@
     "Meaning": "Aurora Immigration Court",
     "Category": "EOIR and Immigration",
     "Notes": ""
+  },
+  {
+    "Acronym": "WSMan",
+    "Meaning": "Web Services for Management",
+    "Category": "Infrastructure",
+    "Notes": "PowerShell provider name for WS-Management configuration."
   },
   {
     "Acronym": "WSR",
@@ -12590,25 +12632,25 @@
   {
     "Acronym": "WSS",
     "Meaning": "Windows SharePoint Services",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "WSSC",
     "Meaning": "Windows Server System Center",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "WSUS",
     "Meaning": "Windows Server Update Services",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
     "Acronym": "WUA",
     "Meaning": "Windows Update Agent",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -12620,7 +12662,7 @@
   {
     "Acronym": "WWF",
     "Meaning": "Windows Workflow Foundation",
-    "Category": "Information Technology",
+    "Category": "Infrastructure",
     "Notes": ""
   },
   {
@@ -12662,18 +12704,18 @@
   {
     "Acronym": "XSS",
     "Meaning": "Cross-Site Scripting",
-    "Category": "General",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
     "Acronym": "YAGNI",
-    "Meaning": "You AinÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢t Gonna Need It",
-    "Category": "General",
+    "Meaning": "You Ain't Gonna Need It",
+    "Category": "Development and DevOps",
     "Notes": ""
   },
   {
     "Acronym": "YAML",
-    "Meaning": "YAML AinÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢t Markup Language",
+    "Meaning": "YAML Ain't Markup Language",
     "Category": "Development and DevOps",
     "Notes": ""
   },
@@ -12692,20 +12734,14 @@
   {
     "Acronym": "ZAD",
     "Meaning": "Zscaler Active Defense",
-    "Category": "General",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {
     "Acronym": "ZCC",
-    "Meaning": "Zscaler Client Connect",
-    "Category": "General",
-    "Notes": ""
-  },
-  {
-    "Acronym": "ZCC",
-    "Meaning": "Zscaler Client Connector [ZAPP]",
-    "Category": "General",
-    "Notes": ""
+    "Meaning": "Zscaler Client Connector",
+    "Category": "Cybersecurity",
+    "Notes": "Formerly branded Zscaler App (Z App)."
   },
   {
     "Acronym": "ZCIEM",
@@ -12740,7 +12776,7 @@
   {
     "Acronym": "ZIA",
     "Meaning": "Zscaler Internet Access",
-    "Category": "General",
+    "Category": "Networking",
     "Notes": ""
   },
   {
@@ -12758,7 +12794,13 @@
   {
     "Acronym": "ZRS",
     "Meaning": "Zone Redundant Storage",
-    "Category": "Information Technology",
+    "Category": "Cloud",
+    "Notes": ""
+  },
+  {
+    "Acronym": "ZTA",
+    "Meaning": "Zero Trust Architecture",
+    "Category": "Cybersecurity",
     "Notes": ""
   },
   {

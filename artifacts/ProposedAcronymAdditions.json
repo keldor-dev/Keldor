@@ -1,0 +1,128 @@
+[
+  {
+    "Acronym": "ABAC",
+    "Meaning": "Attribute-Based Access Control",
+    "Category": "Identity and Access Management",
+    "Notes": ""
+  },
+  {
+    "Acronym": "ACR",
+    "Meaning": "Azure Container Registry",
+    "Category": "Cloud",
+    "Notes": ""
+  },
+  {
+    "Acronym": "ADML",
+    "Meaning": "Administrative Template Language File",
+    "Category": "Infrastructure",
+    "Notes": "Language-specific resource file associated with an ADMX administrative template."
+  },
+  {
+    "Acronym": "ADMX",
+    "Meaning": "Administrative Template XML File",
+    "Category": "Infrastructure",
+    "Notes": "Language-neutral XML administrative template used by Group Policy."
+  },
+  {
+    "Acronym": "CRI",
+    "Meaning": "Container Runtime Interface",
+    "Category": "Development and DevOps",
+    "Notes": "Kubernetes interface between the kubelet and a container runtime."
+  },
+  {
+    "Acronym": "FSMO",
+    "Meaning": "Flexible Single Master Operations",
+    "Category": "Identity and Access Management",
+    "Notes": "Active Directory operations master roles."
+  },
+  {
+    "Acronym": "GHA",
+    "Meaning": "GitHub Actions",
+    "Category": "Development and DevOps",
+    "Notes": "Common shorthand; GitHub documentation does not consistently present GHA as an official abbreviation."
+  },
+  {
+    "Acronym": "GHAS",
+    "Meaning": "GitHub Advanced Security",
+    "Category": "Cybersecurity",
+    "Notes": ""
+  },
+  {
+    "Acronym": "JEA",
+    "Meaning": "Just Enough Administration",
+    "Category": "Identity and Access Management",
+    "Notes": "PowerShell delegated-administration security technology."
+  },
+  {
+    "Acronym": "M365",
+    "Meaning": "Microsoft 365",
+    "Category": "Cloud",
+    "Notes": "Common product shorthand rather than a formally expanded acronym."
+  },
+  {
+    "Acronym": "NTP",
+    "Meaning": "Network Time Protocol",
+    "Category": "Networking",
+    "Notes": ""
+  },
+  {
+    "Acronym": "NTLM",
+    "Meaning": "NT LAN Manager",
+    "Category": "Identity and Access Management",
+    "Notes": "Windows challenge-response authentication protocol."
+  },
+  {
+    "Acronym": "NVMe",
+    "Meaning": "NVM Express",
+    "Category": "Infrastructure",
+    "Notes": "Storage interface and command-set specification."
+  },
+  {
+    "Acronym": "OCI",
+    "Meaning": "Open Container Initiative",
+    "Category": "Development and DevOps",
+    "Notes": ""
+  },
+  {
+    "Acronym": "OSCAL",
+    "Meaning": "Open Security Controls Assessment Language",
+    "Category": "Cybersecurity",
+    "Notes": "NIST-led machine-readable security and compliance framework."
+  },
+  {
+    "Acronym": "PSSA",
+    "Meaning": "PSScriptAnalyzer",
+    "Category": "Development and DevOps",
+    "Notes": "Common community shorthand; not consistently used as the product's official abbreviation."
+  },
+  {
+    "Acronym": "SAR",
+    "Meaning": "Security Assessment Report",
+    "Category": "Cybersecurity",
+    "Notes": "Assessment report used in FedRAMP and federal authorization processes."
+  },
+  {
+    "Acronym": "SID",
+    "Meaning": "Security Identifier",
+    "Category": "Identity and Access Management",
+    "Notes": "Windows identifier for a security principal."
+  },
+  {
+    "Acronym": "VHDX",
+    "Meaning": "Virtual Hard Disk v2",
+    "Category": "Infrastructure",
+    "Notes": "Microsoft virtual hard disk file format introduced with Windows Server 2012."
+  },
+  {
+    "Acronym": "WSMan",
+    "Meaning": "Web Services for Management",
+    "Category": "Infrastructure",
+    "Notes": "PowerShell provider name for WS-Management configuration."
+  },
+  {
+    "Acronym": "ZTA",
+    "Meaning": "Zero Trust Architecture",
+    "Category": "Cybersecurity",
+    "Notes": ""
+  }
+]
