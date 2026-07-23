@@ -8,13 +8,13 @@
   {
     "Acronym": "A",
     "Meaning": "Availability",
-    "Category": "General",
+    "Category": "Cloud",
     "Notes": ""
   },
   {
-    "Acronym": "A-NUMBER",
-    "Meaning": "Alien Number",
-    "Category": "EOIR and Immigration",
+    "Acronym": "AA",
+    "Meaning": "Authentication and Authorization",
+    "Category": "Identity and Access Management",
     "Notes": ""
   },
   {
@@ -175,6 +175,12 @@
   },
   {
     "Acronym": "ADLS",
+    "Meaning": "Air Force Distributed Learning System",
+    "Category": "Government",
+    "Notes": ""
+  },
+  {
+    "Acronym": "ADLS",
     "Meaning": "Azure Data Lake Storage",
     "Category": "Cloud",
     "Notes": ""
@@ -225,6 +231,12 @@
     "Acronym": "AFD",
     "Meaning": "Azure Front Door",
     "Category": "Cloud",
+    "Notes": ""
+  },
+  {
+    "Acronym": "AFDW",
+    "Meaning": "Air Force District of Washington",
+    "Category": "Government",
     "Notes": ""
   },
   {
@@ -349,6 +361,12 @@
   },
   {
     "Acronym": "AMD",
+    "Meaning": "Advanced Micro Devices",
+    "Category": "Information Technology",
+    "Notes": ""
+  },
+  {
+    "Acronym": "AMD",
     "Meaning": "Application Modernization and Development",
     "Category": "Development and DevOps",
     "Notes": ""
@@ -451,6 +469,12 @@
   },
   {
     "Acronym": "App",
+    "Meaning": "Application",
+    "Category": "Information Technology",
+    "Notes": ""
+  },
+  {
+    "Acronym": "App",
     "Meaning": "Azure Web App",
     "Category": "Cloud",
     "Notes": ""
@@ -517,6 +541,12 @@
   },
   {
     "Acronym": "ASA",
+    "Meaning": "Adaptive Security Appliance",
+    "Category": "Infrastructure",
+    "Notes": "Devices such as a Cisco ASA firewall that provide network security services."
+  },
+  {
+    "Acronym": "ASA",
     "Meaning": "Azure Stream Analytics",
     "Category": "Cloud",
     "Notes": ""
@@ -553,6 +583,12 @@
   },
   {
     "Acronym": "ASR",
+    "Meaning": "Aggregation Service Router",
+    "Category": "Infrastructure",
+    "Notes": "Such as the Cisco ASR 1000 series router that provides network routing services."
+  },
+  {
+    "Acronym": "ASR",
     "Meaning": "Azure Site Recovery",
     "Category": "Cloud",
     "Notes": ""
@@ -582,27 +618,15 @@
     "Notes": ""
   },
   {
-    "Acronym": "ATD",
-    "Meaning": "Alternatives to Detention",
-    "Category": "EOIR and Immigration",
-    "Notes": ""
-  },
-  {
-    "Acronym": "ATL",
-    "Meaning": "Atlanta",
-    "Category": "General",
-    "Notes": ""
-  },
-  {
     "Acronym": "ATO",
     "Meaning": "Authority To Operate",
-    "Category": "General",
+    "Category": "Government",
     "Notes": ""
   },
   {
     "Acronym": "ATO",
     "Meaning": "Authorization to Operate",
-    "Category": "Identity and Access Management",
+    "Category": "Government",
     "Notes": ""
   },
   {
@@ -626,7 +650,7 @@
   {
     "Acronym": "AUSA",
     "Meaning": "Assistant United States Attorney",
-    "Category": "General",
+    "Category": "Government",
     "Notes": ""
   },
   {
@@ -644,6 +668,12 @@
   {
     "Acronym": "AV",
     "Meaning": "AntiVirus",
+    "Category": "General",
+    "Notes": ""
+  },
+  {
+    "Acronym": "AV",
+    "Meaning": "Audio Video",
     "Category": "General",
     "Notes": ""
   },
