@@ -2,10 +2,10 @@
 
 | Property | Value |
 |---|---|
-| Version | 1.2 |
+| Version | 1.3 |
 | Status | Stable |
 | Applies To | All Keldor PowerShell projects |
-| Last Updated | 2026-07-16 |
+| Last Updated | 2026-11-14 |
 
 ## Purpose
 
@@ -333,6 +333,94 @@ $SupportsRemoting
 ```
 
 Avoid vague boolean names such as `$Admin` or `$Installed`.
+
+## Function Architecture and Readability
+
+Prioritize code clarity over abstraction for abstraction's sake. Write for the next developer who must understand and
+maintain the function. These requirements apply to new work and scoped refactoring; existing functions do not need a
+rewrite solely to satisfy these design objectives.
+
+### One-File Comprehension Principle
+
+Keep a public function's primary operational logic in its own source file whenever practical. A developer who
+understands PowerShell but is unfamiliar with this repository should be able to identify the operation, systems,
+services or APIs, native commands, processing steps, input validation, error handling, returned values, and custom
+function dependencies and their purpose by reading that file. Avoid requiring several other custom files to understand
+a straightforward operation. This is a design objective, not a prohibition against dependencies.
+
+Use descriptive names, explicit steps, logical organization, straightforward control flow, limited hidden dependencies,
+clear error handling, predictable structured output, and comments explaining intent. Do not sacrifice clarity for brevity.
+
+### Indirection and Private Helpers
+
+Avoid pass-through wrappers, parameter-renaming functions, single-purpose forwarding functions, and delegation layers
+that add no meaningful behavior. Do not extract a helper merely because code could theoretically be reused or to remove
+a few simple repeated lines.
+
+Private helpers are appropriate for demonstrated reuse across functions, substantial complexity or algorithms, shared
+security or validation, consistent output construction, platform boundaries, resource lifecycle management, or genuinely
+shared behavior. Generally inline single-use helpers unless isolation substantially improves readability, testability,
+safety, or maintainability.
+
+Wrappers and delegation are permitted for backward compatibility, public API stability, meaningful orchestration,
+platform abstraction, security boundaries, or substantial reusable functionality. Explain the architectural reason where
+it is not obvious. Alternative command aliases may be appropriate only for an identical command contract; they must not
+conceal incompatible behavior. This does not permit using aliases instead of full command names in implementation code.
+
+### Specific Operations and Legitimate Orchestration
+
+A public operational function should own its specific behavior. Avoid routing unrelated operations through a generic
+dispatcher that hides the native query or state change. For example, a chain such as
+`Get-EOIRADReplicationHealth` → `Invoke-EOIRADHealthCheck` → `Invoke-EOIRADServiceOperation` obscures a simple replication
+query. Prefer keeping the operation-specific implementation in the public file.
+
+A dispatcher is acceptable for a genuine extensibility mechanism, shared execution framework, or necessary operational
+contract. Document that contract and why dispatch is necessary.
+
+Orchestration functions may coordinate meaningful independent operations, including enterprise AD health assessments,
+multi-system inventory, combined diagnostics, deployment, build/release, and cross-platform workflows. Keep useful
+checks independently callable where practical. Do not copy entire implementations into an orchestrator to avoid calls.
+
+### Custom Function Call Depth
+
+Count custom-function delegation along a call path starting at the public entry point: the entry point itself is zero,
+its custom callee is one layer, and that callee's custom callee is two. Count custom calls across modules as well as
+private helpers; do not count native PowerShell cmdlets, external commands, or external APIs. Independent sibling calls
+in an orchestrator do not add depth to each other.
+
+| Custom delegation layers | Review guideline |
+|---|---|
+| 0–1 | Preferred for ordinary operational functions. |
+| 2 | Acceptable when each layer has a distinct responsibility. |
+| 3 or more | Flag for architectural review and explain the value of the layers. |
+
+These are guidelines, not hard limits. Meaningful complex workflows may require deeper chains. Do not reject a workflow
+solely because of depth or introduce an automatic depth-based rejection gate.
+
+### Reuse, Dependencies, and Maintainability
+
+Evaluate extraction by the amount and complexity of repeated logic, likelihood of shared changes, inconsistency risk,
+number of consumers, readability, testing, and maintenance needs. A few simple duplicated lines may be clearer than a
+new abstraction. Consolidate substantial duplicated business logic, security-sensitive behavior, and shared contracts
+where consistency is essential. Do not add a dependency solely to eliminate minor duplication.
+
+For substantial custom dependencies, explain the helper's purpose when unclear, why the dependency exists, important
+side effects, platform limitations, and significant external dependencies in implementation comments or documentation.
+Do not require verbose commentary for trivial calls or change existing comment-based help conventions.
+
+Judge architecture by ease of understanding, troubleshooting and modification, predictability, testability, reliability,
+compatibility, security, and appropriate reuse. Function count, reuse percentage, and total line count alone are not
+quality measures. The goal is to remove unnecessary complexity while retaining valuable helpers.
+
+Preserve public commands, parameter binding, aliases, output schemas, and compatibility contracts. Architecture guidance
+does not authorize API changes or bulk rewrites; use the existing deprecation and migration process for breaking changes.
+
+### Keldor Application
+
+Preserve Windows, Linux, and macOS compatibility and the declared Windows PowerShell 5.1 parser baseline. Retain the
+canonical platform helper and bootstrap boundary where they provide compatibility or loading value. Platform-specific
+helpers must provide meaningful value; avoid unnecessary abstraction around native commands. Keep build-time tooling
+separate from runtime modules and preserve the existing fleet, remoting, input/output, security, and testing contracts.
 
 ## Function Design
 
@@ -780,6 +868,12 @@ When touching a legacy function, modernize nearby code when practical:
 
 Reviewers should ask:
 
+- Can a developer new to the repository understand the operation from the public source file?
+- Does each helper, wrapper, or dispatcher provide meaningful value, with non-obvious exceptions documented?
+- Are custom call paths three or more layers deep reviewed for distinct responsibilities rather than rejected by depth?
+- Is reuse justified by complexity, consistency, security, or maintenance rather than line count alone?
+- Are meaningful orchestration, dependency purposes, and public compatibility contracts preserved?
+
 - Does the function use an approved verb?
 - Does it use the Keldor function layout?
 - Does it include lean comment-based help?
@@ -810,4 +904,5 @@ Reviewers should ask:
 - `Test-KeldorPerformance`
 - `Test-KeldorStyle`
 
-The standard should become enforceable through tooling, not just inspirational wall art.
+Architecture and call-depth judgments require contextual review; automated findings must not become arbitrary depth
+limits. Other objective standards should become enforceable through tooling.

@@ -13,7 +13,8 @@ files loaded by Windows PowerShell 5.1.
 ## Coding Standards
 
 - One public function per file.
-- One private helper per file.
+- One private helper per file when a helper is justified by the
+  [function architecture and readability standard](../standards/Keldor_PowerShell_Engineering_Standard.md#function-architecture-and-readability).
 - Use approved PowerShell verbs.
 - Prefer pipeline support where appropriate.
 - Include comment-based help.

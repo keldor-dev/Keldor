@@ -68,7 +68,8 @@ Public documentation lives in the separate `keldor-dev/docs` repository.
 ## Design Principles
 
 - One function per file
-- Small focused functions
+- Cohesive functions understandable from their public source files; small size alone is not a reason to extract helpers.
+  Follow the [function architecture standard](../standards/Keldor_PowerShell_Engineering_Standard.md#function-architecture-and-readability).
 - Cross-platform where practical
 - Public API stability
 - Windows PowerShell 5.1 parser compatibility in shared production files
