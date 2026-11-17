@@ -239,6 +239,24 @@ Describe "Set-KeldorSecret" {
         }
     }
 
+    It "reports the missing OnePassword CLI without trying another provider" {
+        InModuleScope Keldor {
+            Mock Get-Command { $null } -ParameterFilter { $Name -eq 'op' }
+            Mock Set-KeldorSecretToEnvironment { throw 'Unexpected fallback.' }
+            { Set-KeldorSecret -Name FixtureToken -Secret 'fixture' -Provider OnePassword -Confirm:$false } |
+                Should -Throw "The OnePassword CLI command 'op' is not installed."
+            Should -Invoke Set-KeldorSecretToEnvironment -Times 0
+        }
+    }
+
+    It "does not probe OnePassword when WhatIf declines the write" {
+        InModuleScope Keldor {
+            Mock Get-Command { throw 'Unexpected CLI probe.' } -ParameterFilter { $Name -eq 'op' }
+            Set-KeldorSecret -Name FixtureToken -Secret 'fixture' -Provider OnePassword -WhatIf
+            Should -Invoke Get-Command -Times 0 -ParameterFilter { $Name -eq 'op' }
+        }
+    }
+
     It "rejects unsupported secret input types" {
         InModuleScope Keldor {
             { Set-KeldorSecret -Name GitHubToken -Secret 123 -Provider Environment } |

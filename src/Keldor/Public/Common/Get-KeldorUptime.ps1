@@ -64,12 +64,34 @@ function Get-KeldorUptime {
 
     process {
         $parameters = @{
-            Type       = 'Uptime'
             TargetKind = $PSCmdlet.ParameterSetName
         }
         if ($ComputerName) { $parameters.ComputerName = $ComputerName }
         if ($PSSession) { $parameters.PSSession = $PSSession }
         if ($Credential) { $parameters.Credential = $Credential }
-        Invoke-KeldorInventoryCollection @parameters
+        # Collection owns remoting and platform details; this command owns its output contract.
+        $snapshots = @(Get-KeldorInventorySnapshot @parameters)
+        foreach ($snapshot in $snapshots) {
+            $value = $Snapshot.Uptime
+            $uptime = $value.Uptime
+            $result = [pscustomobject][ordered]@{
+                ComputerName  = $Snapshot.ComputerName
+                Platform      = $Snapshot.Platform
+                LastBootTime  = $value.LastBootTime
+                CurrentTime   = $value.CurrentTime
+                Uptime        = $uptime
+                TotalDays     = if ($null -ne $uptime) { [double]$uptime.TotalDays } else { $null }
+                TotalHours    = if ($null -ne $uptime) { [double]$uptime.TotalHours } else { $null }
+                TotalMinutes  = if ($null -ne $uptime) { [double]$uptime.TotalMinutes } else { $null }
+                Source        = $value.Source
+                IsSuccessful  = $Snapshot.IsSuccessful
+                ErrorCategory = $Snapshot.ErrorCategory
+                ErrorCode     = $Snapshot.ErrorCode
+                ErrorMessage  = $Snapshot.ErrorMessage
+                CollectedAt   = $Snapshot.CollectedAt
+            }
+            $result.PSObject.TypeNames.Insert(0, 'Keldor.Uptime')
+            $result
+        }
     }
 }

@@ -1,10 +1,6 @@
-function Invoke-KeldorInventoryCollection {
+function Get-KeldorInventorySnapshot {
     [CmdletBinding()]
     param(
-        [Parameter(Mandatory = $true)]
-        [ValidateSet('SystemInfo', 'OperatingSystem', 'LinuxDistribution', 'Kernel', 'Uptime', 'HardwareInfo')]
-        [string]$Type,
-
         [Parameter(Mandatory = $true)]
         [ValidateSet('Local', 'ComputerName', 'PSSession')]
         [string]$TargetKind,
@@ -16,6 +12,7 @@ function Invoke-KeldorInventoryCollection {
         [pscredential]$Credential
     )
 
+    # Share session ownership and per-target failure handling across inventory commands.
     if ($TargetKind -eq 'Local') {
         $snapshots = @(Get-KeldorSystemSnapshot)
     } elseif ($TargetKind -eq 'PSSession') {
@@ -62,16 +59,5 @@ function Invoke-KeldorInventoryCollection {
         }
     }
 
-    foreach ($snapshot in $snapshots) {
-        if ($Type -eq 'LinuxDistribution' -and $snapshot.Platform -and $snapshot.Platform -ne 'Linux') {
-            Write-Error `
-                -Message "Get-KeldorLinuxDistribution is not applicable to platform '$($snapshot.Platform)'." `
-                -Category InvalidOperation `
-                -ErrorId 'Keldor.LinuxDistribution.NotApplicable' `
-                -TargetObject $snapshot.ComputerName
-            continue
-        }
-
-        ConvertTo-KeldorInventoryResult -Type $Type -Snapshot $snapshot
-    }
+    $snapshots
 }

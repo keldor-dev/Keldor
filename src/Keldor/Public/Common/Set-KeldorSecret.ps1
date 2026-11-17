@@ -122,7 +122,13 @@ function Set-KeldorSecret {
 
         $ProviderAction = switch ($SelectedProvider) {
             'OnePassword' {
-                Set-KeldorSecretToOnePassword -Name $Name -Secret $Secret -Vault $Vault -Field $Field -Force:$Force
+                $OnePasswordCommand = Get-Command -Name 'op' -ErrorAction SilentlyContinue
+                if ($null -eq $OnePasswordCommand) {
+                    throw "The OnePassword CLI command 'op' is not installed."
+                }
+
+                throw ("Writing secrets with the OnePassword provider is not supported until a safe op CLI " +
+                    "input method is available. Specify -Provider SecretManagement or -Provider Environment.")
             }
             'SecretManagement' {
                 Set-KeldorSecretToSecretManagement -Name $Name -Secret $Secret -Vault $Vault -Field $Field -Force:$Force

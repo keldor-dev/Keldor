@@ -65,12 +65,51 @@ function Get-KeldorLinuxDistribution {
 
     process {
         $parameters = @{
-            Type       = 'LinuxDistribution'
             TargetKind = $PSCmdlet.ParameterSetName
         }
         if ($ComputerName) { $parameters.ComputerName = $ComputerName }
         if ($PSSession) { $parameters.PSSession = $PSSession }
         if ($Credential) { $parameters.Credential = $Credential }
-        Invoke-KeldorInventoryCollection @parameters
+        # Collection owns remoting and platform details; this command owns its output contract.
+        $snapshots = @(Get-KeldorInventorySnapshot @parameters)
+        foreach ($snapshot in $snapshots) {
+            if ($snapshot.Platform -and $snapshot.Platform -ne 'Linux') {
+                $errorParameters = @{
+                    Message      = "Get-KeldorLinuxDistribution is not applicable to platform '$($snapshot.Platform)'."
+                    Category     = 'InvalidOperation'
+                    ErrorId      = 'Keldor.LinuxDistribution.NotApplicable'
+                    TargetObject = $snapshot.ComputerName
+                }
+                Write-Error @errorParameters
+                continue
+            }
+
+            $value = $Snapshot.LinuxDistribution
+            $result = [pscustomobject][ordered]@{
+                ComputerName    = $Snapshot.ComputerName
+                Platform        = $Snapshot.Platform
+                Name            = $value.Name
+                Id              = $value.Id
+                IdLike          = $value.IdLike
+                PrettyName      = $value.PrettyName
+                Version         = $value.Version
+                VersionId       = $value.VersionId
+                VersionCodename = $value.VersionCodename
+                BuildId         = $value.BuildId
+                Variant         = $value.Variant
+                VariantId       = $value.VariantId
+                HomeUrl         = $value.HomeUrl
+                SupportUrl      = $value.SupportUrl
+                BugReportUrl    = $value.BugReportUrl
+                SourcePath      = $value.SourcePath
+                IsSuccessful    = $Snapshot.IsSuccessful
+                ErrorCategory   = $Snapshot.ErrorCategory
+                ErrorCode       = $Snapshot.ErrorCode
+                ErrorMessage    = $Snapshot.ErrorMessage
+                CollectedAt     = $Snapshot.CollectedAt
+            }
+            $result.PSObject.TypeNames.Insert(0, 'Keldor.LinuxDistribution')
+            $result
+        }
     }
 }

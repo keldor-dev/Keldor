@@ -65,12 +65,36 @@ function Get-KeldorKernel {
 
     process {
         $parameters = @{
-            Type       = 'Kernel'
             TargetKind = $PSCmdlet.ParameterSetName
         }
         if ($ComputerName) { $parameters.ComputerName = $ComputerName }
         if ($PSSession) { $parameters.PSSession = $PSSession }
         if ($Credential) { $parameters.Credential = $Credential }
-        Invoke-KeldorInventoryCollection @parameters
+        # Collection owns remoting and platform details; this command owns its output contract.
+        $snapshots = @(Get-KeldorInventorySnapshot @parameters)
+        foreach ($snapshot in $snapshots) {
+            $value = $Snapshot.Kernel
+            $result = [pscustomobject][ordered]@{
+                ComputerName           = $Snapshot.ComputerName
+                Platform               = $Snapshot.Platform
+                KernelName             = $value.KernelName
+                KernelVersion          = $value.KernelVersion
+                KernelRelease          = $value.KernelRelease
+                Architecture           = $value.Architecture
+                HostName               = $value.HostName
+                DomainName             = $value.DomainName
+                BootId                 = $value.BootId
+                Is64BitOperatingSystem = $value.Is64BitOperatingSystem
+                Is64BitProcess         = $value.Is64BitProcess
+                Source                 = $value.Source
+                IsSuccessful           = $Snapshot.IsSuccessful
+                ErrorCategory          = $Snapshot.ErrorCategory
+                ErrorCode              = $Snapshot.ErrorCode
+                ErrorMessage           = $Snapshot.ErrorMessage
+                CollectedAt            = $Snapshot.CollectedAt
+            }
+            $result.PSObject.TypeNames.Insert(0, 'Keldor.Kernel')
+            $result
+        }
     }
 }

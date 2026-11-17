@@ -83,7 +83,8 @@ Describe 'Keldor system information commands' {
             $snapshot.OperatingSystem.Name = $Name
             $snapshot.OperatingSystem.Version = $Version
             $snapshot.OperatingSystem.Caption = $Name
-            $result = New-KeldorOperatingSystemResult -Snapshot $snapshot
+            Mock Get-KeldorSystemSnapshot { $snapshot }
+            $result = Get-KeldorOperatingSystem
 
             $result.Platform | Should -Be $Platform
             $result.Name | Should -Be $Name
@@ -94,7 +95,8 @@ Describe 'Keldor system information commands' {
 
         It 'preserves stable operating-system property order' {
             $snapshot = New-KeldorSystemSnapshot -ComputerName 'fixture01' -Platform 'Windows'
-            $result = New-KeldorOperatingSystemResult -Snapshot $snapshot
+            Mock Get-KeldorSystemSnapshot { $snapshot }
+            $result = Get-KeldorOperatingSystem
             @($result.PSObject.Properties.Name) | Should -Be @(
                 'ComputerName', 'Platform', 'Name', 'Caption', 'Edition', 'Version', 'VersionString', 'BuildNumber',
                 'Architecture', 'InstallationType', 'IsServer', 'IsDomainController', 'ProductType', 'ProductId',
@@ -107,7 +109,8 @@ Describe 'Keldor system information commands' {
             $snapshot = New-KeldorSystemSnapshot -ComputerName 'mac01' -Platform 'macOS'
             $snapshot.Kernel.KernelName = 'Darwin'
             $snapshot.Kernel.KernelRelease = '24.5.0'
-            $result = New-KeldorKernelResult -Snapshot $snapshot
+            Mock Get-KeldorSystemSnapshot { $snapshot }
+            $result = Get-KeldorKernel
 
             $result.Platform | Should -Be 'macOS'
             $result.KernelName | Should -Be 'Darwin'
@@ -119,7 +122,8 @@ Describe 'Keldor system information commands' {
             $snapshot.Uptime.CurrentTime = [datetimeoffset]::UtcNow
             $snapshot.Uptime.Uptime = [timespan]::FromHours(49.5)
             $snapshot.Uptime.LastBootTime = $snapshot.Uptime.CurrentTime.Subtract($snapshot.Uptime.Uptime)
-            $result = New-KeldorUptimeResult -Snapshot $snapshot
+            Mock Get-KeldorSystemSnapshot { $snapshot }
+            $result = Get-KeldorUptime
 
             $result.Uptime | Should -BeOfType ([timespan])
             $result.LastBootTime | Should -BeOfType ([datetimeoffset])
@@ -144,7 +148,8 @@ Describe 'Keldor system information commands' {
             $virtualization = Resolve-KeldorVirtualization -Manufacturer $Manufacturer -Model $Model
             $snapshot.Hardware.IsVirtualMachine = $virtualization.IsVirtualMachine
             $snapshot.Hardware.VirtualizationPlatform = $virtualization.VirtualizationPlatform
-            $result = New-KeldorHardwareInfoResult -Snapshot $snapshot
+            Mock Get-KeldorSystemSnapshot { $snapshot }
+            $result = Get-KeldorHardwareInfo
 
             $result.MemoryBytes | Should -BeOfType ([long])
             $result.MemoryGB | Should -BeOfType ([double])
@@ -161,7 +166,8 @@ Describe 'Keldor system information commands' {
             $snapshot.Hardware.ProcessorModel = $Model
             $snapshot.Hardware.ProcessorManufacturer = $Manufacturer
             $snapshot.Hardware.Architecture = $Architecture
-            $result = New-KeldorHardwareInfoResult -Snapshot $snapshot
+            Mock Get-KeldorSystemSnapshot { $snapshot }
+            $result = Get-KeldorHardwareInfo
 
             $result.ProcessorModel | Should -Be $Model
             $result.ProcessorManufacturer | Should -Be $Manufacturer
@@ -171,7 +177,8 @@ Describe 'Keldor system information commands' {
         It 'allows missing DMI and serial information without failing hardware inventory' {
             $snapshot = New-KeldorSystemSnapshot -ComputerName 'arm-board' -Platform 'Linux'
             $snapshot.Hardware.Architecture = 'aarch64'
-            $result = New-KeldorHardwareInfoResult -Snapshot $snapshot
+            Mock Get-KeldorSystemSnapshot { $snapshot }
+            $result = Get-KeldorHardwareInfo
 
             $result.IsSuccessful | Should -BeTrue
             $result.SerialNumber | Should -BeNullOrEmpty
@@ -222,7 +229,8 @@ Describe 'Keldor system information commands' {
                 -ErrorCategory 'ConnectionError' `
                 -ErrorCode 'Keldor.TestFailure' `
                 -ErrorMessage 'Fixture failure.'
-            $result = New-KeldorSystemInfoResult -Snapshot $snapshot
+            Mock Get-KeldorSystemSnapshot { $snapshot }
+            $result = Get-KeldorSystemInfo
 
             $result.ComputerName | Should -Be 'failed01'
             $result.IsSuccessful | Should -BeFalse
@@ -231,14 +239,14 @@ Describe 'Keldor system information commands' {
         }
 
         It 'keeps successful pipeline results when another target fails' {
-            Mock Invoke-KeldorInventoryCollection {
+            Mock Get-KeldorInventorySnapshot {
                 foreach ($target in $ComputerName) {
                     $snapshot = New-KeldorSystemSnapshot `
                         -ComputerName $target `
                         -Platform $(if ($target -eq 'bad') { $null } else { 'Linux' }) `
                         -IsSuccessful ($target -ne 'bad') `
                         -ErrorMessage $(if ($target -eq 'bad') { 'Fixture failure.' } else { $null })
-                    New-KeldorSystemInfoResult -Snapshot $snapshot
+                    $snapshot
                 }
             }
 
